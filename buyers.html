@@ -36,14 +36,15 @@
 .by-ev .no{background:var(--warn-soft)}.by-ev .no svg{color:var(--warn)}
 .by-ev small{display:block;font:600 11px/1.2 var(--sans);text-transform:uppercase;letter-spacing:.05em;color:var(--ink2);margin-bottom:4px}
 .by-top{margin-top:14px;font-size:13.5px;color:var(--ink2)}
-.by-lay{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:22px;align-items:start}
+.by-lay{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px;align-items:stretch}
+.by-fd{display:grid;gap:16px;margin-top:28px}
 .by-hm{border-collapse:separate;border-spacing:3px;width:100%;min-width:560px}
 .by-hm th{font:500 12px/1.25 var(--sans);color:var(--ink2);padding:4px;text-align:left;vertical-align:bottom}
 .by-hm thead button{appearance:none;border:0;background:none;color:var(--ink2);font:500 12px/1.25 var(--sans);cursor:pointer;padding:4px 2px;text-align:center;width:100%;border-radius:3px}
 .by-hm thead button[aria-pressed="true"]{color:var(--ink1);background:var(--accent-soft);font-weight:600}
 .by-hm tbody th button{appearance:none;border:0;background:none;color:var(--ink1);font:500 13px/1.25 var(--sans);cursor:pointer;text-align:left;padding:6px 4px;border-radius:3px;width:100%}
-.by-hm tbody th button.a{background:var(--s1);color:#fff}
-.by-hm tbody th button.b{background:var(--s2);color:#fff}
+.by-hm tbody th button.a{background:var(--accent-soft);box-shadow:inset 4px 0 0 var(--s1);padding-left:10px}
+.by-hm tbody th button.b{background:var(--accent-soft);box-shadow:inset 4px 0 0 var(--s2);padding-left:10px}
 .by-hm td{height:38px;text-align:center;border-radius:4px;font:600 14px/1 var(--sans);font-variant-numeric:tabular-nums;transition:opacity .2s}
 .by-hm td.v0{background:var(--chart-bg);color:var(--ink3);box-shadow:inset 0 0 0 1px var(--grid)}
 .by-hm td.v1{background:var(--seq-1);color:var(--ink1)}
@@ -73,7 +74,7 @@
 @keyframes bydash{to{stroke-dashoffset:-40}}
 .by-ring{animation:bydash 3s linear infinite}
 @media (prefers-reduced-motion:reduce){.by-ring{animation:none}}
-@media (max-width:900px){.by-lay,.by-cyc,.by-vb{grid-template-columns:1fr}}
+@media (max-width:900px){.by-lay,.by-cyc,.by-vb{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:640px){.by-flow{grid-template-columns:1fr;gap:18px}.by-node{padding:0}.by-node:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-15px;transform:translateX(-50%) rotate(90deg)}.by-ev,.by-board{grid-template-columns:1fr}}
 </style>
 
@@ -94,21 +95,21 @@
   <span class="eyebrow">Buying criteria</span>
   <h2>Criteria Weights</h2>
   <p class="intro">Scores from 0 to 4 show how much each criterion moves the decision. Select a segment to see its profile, or a criterion to sort the segments by it.</p>
-  <div class="by-lay">
     <div class="viz rv">
       <div class="by-mode"><div class="btnrow" role="group" aria-label="Mode" id="by-mode" style="margin-top:0"><button type="button" data-k="one" aria-pressed="true">One segment</button><button type="button" data-k="two" aria-pressed="false">Compare two</button></div><span id="by-hint">Select a segment name.</span></div>
       <div class="tw" tabindex="0" role="region" aria-label="Scrollable table"><table class="by-hm" id="by-hm"><caption class="sr">Buying criteria scores from 0 to 4 by segment, my judgement</caption></table></div>
       <div class="legend" style="margin-top:12px"><span>Score</span><span class="dm-sw" style="width:14px;height:14px;border-radius:3px;background:var(--chart-bg);box-shadow:inset 0 0 0 1px var(--axis)"></span>0<span style="width:14px;height:14px;border-radius:3px;background:var(--seq-1)"></span>1<span style="width:14px;height:14px;border-radius:3px;background:var(--seq-2)"></span>2<span style="width:14px;height:14px;border-radius:3px;background:var(--seq-3)"></span>3<span style="width:14px;height:14px;border-radius:3px;background:var(--seq-5)"></span>4</div>
     </div>
+  <div class="by-lay">
     <div class="viz rv">
       <div class="viz-h"><h3 id="by-ph">Profile</h3></div>
       <div class="legend" id="by-pleg"></div>
       <div id="by-prof"></div>
     </div>
-  </div>
-  <div class="grid2">
+    <div class="by-fd">
     <div class="panel"><span class="icon"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></span><h3>Local compliance</h3><p>It is the only criterion that scores high almost everywhere, which is why the company packages by market.</p></div>
     <div class="panel"><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/><path d="M15 8h5v5"/></svg></span><h3>Revenue impact</h3><p>It separates manufacturers and contractors, who buy for the specification or the bid won, from designers, who buy to get the permit and the credit with the least effort.</p></div>
+  </div>
   </div>
 </section>
 

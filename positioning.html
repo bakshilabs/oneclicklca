@@ -152,7 +152,7 @@ var L=[["Category leader",2023,2025,"“The world's number one construction LCA 
 ["The largest LCA platform",2025+8/12,2026+10/12,"“The world's largest LCA platform, delivering impact, compliance, and growth.”","Since September 2025","SimaPro widens the story from construction to every industry. This is the claim in use today."]];
 var E=[[2025+8/12+1/365,"2 Sep 2025","SimaPro and PRé join the group"],[2025+9/12+15/365,"16 Oct 2025","2026 compliance tools launch: “Compliance is no longer optional.”"],[2026+5/12+14/365,"15 Jun 2026","CEO interview frames the two brands as depth with SimaPro and speed with One Click LCA"],[2026+9/12+22/365,"23 Oct 2026","Homepage reads “Do more LCAs and EPDs, faster”; the manufacturer page says “Win more bids with EPDs”"]];
 var selL=2,ahost=$("arc"),lanes=[];
-function arc(){ahost.innerHTML="";lanes=[];var w=Math.max(300,ahost.clientWidth),m=w<600,lh=m?34:38,l=8,r=8,top=26,h=top+L.length*(lh+8)+46;
+function arc(){if(VZ.hideTip)VZ.hideTip();ahost.innerHTML="";lanes=[];var w=Math.max(300,ahost.clientWidth),m=w<600,lh=m?34:38,l=8,r=8,top=26,h=top+L.length*(lh+8)+46;
  var s=VZ.svg(ahost,w,h,"Timeline of One Click LCA headline claims. Category leader ran from 2023 to 2024. Automation and compliance as growth ran through 2025. The largest LCA platform has run since September 2025.");s.setAttribute("role","group");
  var X=VZ.lin(2023,2027,l,w-r),base=top+L.length*(lh+8)+4;
  for(var y=2023;y<=2027;y++){VZ.el("line",{x1:X(y),x2:X(y),y1:top-6,y2:base,class:"grid"},s);if(y<2027)VZ.el("text",{x:X(y+.5),y:14,"text-anchor":"middle",class:"t-strong"},s).textContent=y}
