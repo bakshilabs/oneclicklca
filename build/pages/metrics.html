@@ -1,0 +1,78 @@
+<!--meta title="Win Rate" desc="How product marketing moves win rate, launch adoption and pipeline at One Click LCA, how to measure it in the CRM, and a model of what it is worth."-->
+<header class="phead">
+  <span class="eyebrow">Improve win rates and hit targets</span>
+  <h1>Win Rate</h1>
+  <p class="lede">The listing asks for business judgment about what positioning will do to a metric. That needs three things: a model of how the metric responds, the CRM fields to measure it, and a rule for which changes product marketing can claim. This page sets out all three.</p>
+</header>
+
+<section class="sec">
+  <span class="eyebrow">Model</span>
+  <h2>What a few points of win rate are worth</h2>
+  <p class="intro">Enter the pipeline for one segment. The model shows the extra annual contract value from better positioning and enablement. Defaults are illustrative; in the role they would come from Salesforce.</p>
+  <div class="model">
+    <div class="controls" id="wctl">
+      <h3>Segment pipeline</h3>
+      <div class="ctl"><label for="o">Qualified opportunities a quarter<output id="oo"></output></label><input type="range" id="o" min="10" max="400" step="10" value="120"></div>
+      <div class="ctl"><label for="w">Current win rate<output id="ow"></output></label><input type="range" id="w" min="5" max="60" step="1" value="22"></div>
+      <div class="ctl"><label for="nd">Share lost to no decision<output id="ond"></output></label><input type="range" id="nd" min="0" max="80" step="5" value="45"><span class="hint">Deals that end with the buyer doing nothing or staying with a consultant</span></div>
+      <div class="ctl"><label for="acv">Average first-year contract value (€)<output id="oacv"></output></label><input type="range" id="acv" min="2000" max="80000" step="1000" value="9000"></div>
+      <h3 style="margin-top:22px">Product marketing levers</h3>
+      <div class="ctl"><label for="nd2">No-decision losses recovered<output id="ond2"></output></label><input type="range" id="nd2" min="0" max="40" step="5" value="10"><span class="hint">Through the business case and cost of doing nothing</span></div>
+      <div class="ctl"><label for="cw">Competitive losses recovered<output id="ocw"></output></label><input type="range" id="cw" min="0" max="40" step="5" value="10"><span class="hint">Through battlecards and positioning against named rivals</span></div>
+    </div>
+    <div class="result" aria-live="polite" id="wout"></div>
+  </div>
+  <div class="callout"><p><b>Why no decision gets its own lever.</b> In a category where many buyers can still hire a consultant or wait for the rule, the largest loss is often to no decision. A business case that prices the wait moves more deals than a better battlecard. Most CRMs record these as "closed lost, other", so the first change is a loss reason that separates them.</p></div>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Measurement</span>
+  <h2>Fields to add to every opportunity</h2>
+  <div class="tw"><table class="t">
+    <thead><tr><th style="width:22%">Field</th><th style="width:38%">Values</th><th>What it lets us see</th></tr></thead>
+    <tbody>
+      <tr><th>Segment and sub-segment</th><td>Role by country, matching the Segment Model</td><td>Win rate and cycle length per priority segment</td></tr>
+      <tr><th>Trigger</th><td>Regulation, scheme, client request, tender, specifier request, internal target</td><td>Which forcing dates actually create deals</td></tr>
+      <tr><th>Primary alternative</th><td>Named competitor, national tool, consultant, spreadsheet, no decision, SimaPro</td><td>Win rate against each alternative; where to build the next battlecard</td></tr>
+      <tr><th>Loss reason</th><td>Price, missing feature, BIM workflow, compliance gap, timing, no decision, lost to named rival</td><td>What to fix in product, packaging or message</td></tr>
+      <tr><th>Launch influence</th><td>The launch the deal was sourced or influenced by, if any</td><td>Launch-sourced pipeline and adoption against target</td></tr>
+      <tr><th>Enablement used</th><td>Business case, battlecard, demo script</td><td>Whether materials change outcomes, by comparing deals that used them with deals that did not</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Metric tree</span>
+  <h2>What product marketing owns, shares and influences</h2>
+  <div class="grid3">
+    <div class="panel accent"><h3>Owns</h3><ul><li>Win rate against each named alternative in priority segments</li><li>Launch adoption at 30, 60 and 90 days against agreed targets</li><li>Share of closed deals with a recorded loss reason and alternative</li><li>Seller and partner certification on each tier one launch</li></ul></div>
+    <div class="panel"><h3>Shares with sales</h3><ul><li>Overall win rate and sales cycle length</li><li>No-decision rate</li><li>Expansion from Business to Designer and Expert Pack</li><li>Partner-sourced pipeline</li></ul></div>
+    <div class="panel"><h3>Influences</h3><ul><li>Pipeline from campaigns, through message choice and segment lists</li><li>Demo to opportunity conversion</li><li>Web shop conversion, through pricing page and packaging clarity</li><li>Retention, through what customers expect when they buy</li></ul></div>
+  </div>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Attribution</span>
+  <h2>How to claim a change honestly</h2>
+  <ol class="steps">
+    <li><b>Set the baseline first</b>Record two quarters of win rate by segment and alternative before changing positioning, or use the previous year where the data exists.</li>
+    <li><b>Change one segment at a time</b>Roll a new message or kit into one priority segment and keep a comparable segment as a control for a quarter.</li>
+    <li><b>Compare deals that used the material with those that did not</b>Within the same segment and quarter, so seasonality and pricing affect both.</li>
+    <li><b>Report the range, not a single number</b>Small samples per segment make win rate noisy. A change of a few points needs a few hundred closed deals before it is reliable.</li>
+  </ol>
+</section>
+
+<script>
+(function(){
+function v(id){return +document.getElementById(id).value}
+function eur(x){return "€"+Math.round(x).toLocaleString("en-GB")}
+function go(){
+ var o=v("o")*4,w=v("w")/100,nd=v("nd")/100,acv=v("acv"),r1=v("nd2")/100,r2=v("cw")/100;
+ document.getElementById("oo").textContent=v("o");document.getElementById("ow").textContent=v("w")+"%";document.getElementById("ond").textContent=v("nd")+"%";document.getElementById("oacv").textContent=eur(acv);document.getElementById("ond2").textContent=v("nd2")+"%";document.getElementById("ocw").textContent=v("cw")+"%";
+ var lost=o*(1-w),lnd=lost*nd,lcomp=lost*(1-nd);
+ var won0=o*w,add=lnd*r1+lcomp*r2,won1=won0+add,w1=won1/o;
+ document.getElementById("wout").innerHTML='<span class="eyebrow">Extra first-year contract value a year</span><span class="big" style="margin-top:10px">'+eur(add*acv)+'</span><p>Win rate moves from '+(w*100).toFixed(0)+'% to '+(w1*100).toFixed(1)+'%, or '+(add).toFixed(0)+' more deals a year from '+o+' opportunities.</p><div class="kpis"><div><b>'+Math.round(lnd)+'</b><span>Deals a year lost to no decision today</span></div><div><b>'+Math.round(lcomp)+'</b><span>Deals a year lost to a named alternative</span></div><div><b>+'+((w1-w)*100).toFixed(1)+' pts</b><span>Change in win rate</span></div></div><p class="src" style="margin-top:14px">Simple model: recovered losses become wins at the same contract value. It ignores longer-term expansion.</p>';
+}
+["o","w","nd","acv","nd2","cw"].forEach(function(id){document.getElementById(id).addEventListener("input",go)});go();
+})();
+</script>

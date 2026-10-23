@@ -94,7 +94,7 @@ def build_page(i, fname):
     m = re.match(r'\s*<!--meta title="([^"]*)" desc="([^"]*)"-->\s*', src)
     if not m:
         raise SystemExit(f"{fname}: missing meta comment")
-    body = src[m.end():]
+    body = src[m.end():].replace('<div class="tw">', '<div class="tw" tabindex="0" role="region" aria-label="Scrollable table">')
     out = (HEAD.format(guard=GUARD, title=html.escape(m.group(1)), desc=html.escape(m.group(2)))
            + '<a class="skip" href="#main">Skip to content</a>\n' + nav(fname)
            + f'\n<main class="wrap page" id="main" tabindex="-1">\n{body}\n</main>\n'

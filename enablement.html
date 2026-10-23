@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<script>try{if(sessionStorage.getItem("pw")!=="ok"){document.documentElement.style.visibility="hidden";location.replace("index.html?next="+encodeURIComponent(location.pathname.split("/").pop()))}}catch(e){location.replace("index.html")}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enablement</title>
+<meta name="description" content="A business case calculator, a discovery guide, objection handling and a battlecard for One Click LCA sellers and partners.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/nav.css">
+<link rel="stylesheet" href="assets/a11y.css">
+<link rel="stylesheet" href="assets/pages.css">
+<script>try{var s=localStorage.getItem("theme");if(s==="light"||s==="dark")document.documentElement.setAttribute("data-theme",s)}catch(e){}</script>
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%23007a5e%27/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="sitenav"><div class="in"><a class="brand" href="overview.html">Arpan Bakshi<span>One Click LCA product marketing</span></a><button class="theme" type="button" aria-label="Switch to dark mode">Dark</button><button class="menu" type="button" aria-expanded="false" aria-controls="sitelinks">Menu</button><nav class="links" id="sitelinks" aria-label="Site pages"><a href="overview.html">Overview</a><a href="role.html">The Role</a><a href="fit.html">Fit</a><a href="portfolio.html">Portfolio</a><a href="demand.html">Demand Drivers</a><a href="buyers.html">Buyers</a><a href="segments.html">Segment Model</a><a href="alternatives.html">Alternatives</a><a href="positioning.html">Positioning</a><a href="launch.html">Launch Playbook</a><a href="enablement.html" aria-current="page">Enablement</a><a href="metrics.html">Win Rate</a><a href="first-90-days.html">90 Days</a><a href="ai.html">AI Workflow</a><a href="cv.html">CV</a></nav></div></header><script>(function(){var r=document.documentElement,t=document.querySelector('.sitenav .theme');function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}function show(){var d=cur()==='dark';t.textContent=d?'Light':'Dark';t.setAttribute('aria-label','Switch to '+(d?'light':'dark')+' mode')}if(t){t.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n)}catch(e){}show()});show()}var b=document.querySelector('.sitenav .menu'),l=document.getElementById('sitelinks');if(!b)return;b.addEventListener('click',function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');b.textContent=o?'Close':'Menu';});l.addEventListener('click',function(e){if(e.target.tagName==='A'){l.classList.remove('open');b.textContent='Menu';b.setAttribute('aria-expanded','false');}});})();</script>
+<main class="wrap page" id="main" tabindex="-1">
+<header class="phead">
+  <span class="eyebrow">Train sales channels</span>
+  <h1>Enablement</h1>
+  <p class="lede">Sellers and resellers have to explain an LCA product to a buyer who is not an LCA expert, and justify its price against a free tool. Enablement works when a seller can use it on a live call without product marketing in the room. Everything on this page is built for that test.</p>
+</header>
+
+<section class="sec">
+  <span class="eyebrow">Business case</span>
+  <h2>Cost of doing nothing calculator</h2>
+  <p class="intro">A seller fills this in with the buyer on a call. Defaults are illustrative and every input can be changed. Published licence prices are used where they exist; manufacturer licences are quoted, so that figure is an assumption.</p>
+  <div class="btnrow" role="group" aria-label="Buyer type" id="mode"><button type="button" aria-pressed="true" data-m="d">Design firm</button><button type="button" aria-pressed="false" data-m="m">Manufacturer</button></div>
+  <div class="model" style="margin-top:16px">
+    <div class="controls" id="inputs"></div>
+    <div class="result" aria-live="polite" id="bc"></div>
+  </div>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Discovery</span>
+  <h2>Questions that find the trigger and the signer</h2>
+  <div class="grid3">
+    <div class="panel"><h3>Design firms</h3><ul><li>Which projects this year need a whole life carbon result, and for which rule or scheme?</li><li>Who does those assessments today, and what does each one cost in fees or hours?</li><li>What happens if a result fails a limit late in design?</li><li>Which BIM tools does the team model in?</li><li>Who would sign for a firm-wide tool?</li></ul></div>
+    <div class="panel"><h3>Contractors</h3><ul><li>How many tenders in the past year scored carbon, and how did you score?</li><li>When do you get supplier EPDs, before or after the bid?</li><li>Which clients ask for as-built carbon reporting?</li><li>Do site emission limits or CSRD apply to you?</li><li>Who owns the bid budget?</li></ul></div>
+    <div class="panel"><h3>Manufacturers</h3><ul><li>How many products do you sell, and how many have EPDs today?</li><li>Which specifiers, tenders or markets have asked for EPDs in the past year?</li><li>What did your last EPD cost and how long did it take?</li><li>Which programme operator do your markets accept?</li><li>Who would see the sales benefit, and do they know about this project?</li></ul></div>
+  </div>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Objections</span>
+  <h2>The objections that come up most, with answers</h2>
+  <div class="tw" tabindex="0" role="region" aria-label="Scrollable table"><table class="t">
+    <thead><tr><th style="width:26%">Objection</th><th style="width:44%">Answer</th><th>Proof to show</th></tr></thead>
+    <tbody>
+      <tr><th>"EC3 is free."</th><td>EC3 is a good EPD database for procurement. A permit, LEED v5 credit or national limit needs a whole-building assessment to a defined method, which EC3 does not produce.</td><td>A compliant report from the same model; the scheme list</td></tr>
+      <tr><th>"Our national tool is official and cheaper."</th><td>It covers one country. Your next project abroad, your certification and the EU method from 2028 need a second tool, or one tool that does all of them.</td><td>Country bundle plus certification on one model</td></tr>
+      <tr><th>"We only need one or two assessments a year."</th><td>Then compare the licence with the consultant fees for those studies, and add the fee income from offering the work to clients yourselves.</td><td>The calculator above</td></tr>
+      <tr><th>"Tally is easier in Revit."</th><td>Ask which results Tally gives for the local rule and certification. Show AI mapping and the new interface on the buyer's own model.</td><td>A live import of the buyer's file</td></tr>
+      <tr><th>"Verification takes too long."</th><td>Pre-verified EPD methods reduce the verifier's work, and template EPDs for a product range share most of the review.</td><td>Time to publish in a similar customer case</td></tr>
+      <tr><th>"We pay upfront for a whole year."</th><td>Show the cost per assessment or per EPD over the year, set against the alternatives, before the price itself.</td><td>Cost per result, from the calculator</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Battlecard</span>
+  <h2>Against an AI-first EPD startup</h2>
+  <div class="grid2">
+    <div class="panel"><h3>When you meet them</h3><p>A mid-size construction product manufacturer in DACH, the Nordics or the US, starting an EPD programme, with an AI-led pitch and startup pricing in front of them.</p><p class="k">What they say</p><p>"AI turns your spreadsheets and invoices into verified EPDs in weeks."</p><p class="k">Where they are strong</p><p>A modern story, hands-on service, introductory pricing, and in Norway an EPD Global grant.</p></div>
+    <div class="panel accent"><h3>How to win</h3><ul><li><b>Ask about the range.</b> The cost per EPD across fifty products matters more than the first one.</li><li><b>Ask where EPDs will be published.</b> One Click LCA publishes through eight programme operators.</li><li><b>Show what happens after publication.</b> Designers find the product inside One Click LCA with real data, and usage analytics show who used it.</li><li><b>Show the verification record.</b> Use a named customer with a similar product range.</li></ul><p class="k">Landmine to set</p><p>"Ask them how many of their EPDs have been verified by your market's programme operator, and how long the last ten took."</p></div>
+  </div>
+</section>
+
+<script>
+(function(){
+var M={
+d:{f:[["a","Whole life carbon assessments a year",12,1,200,1,""],["c","Consultant fee per assessment (€)",6000,500,40000,500,""],["h","Internal hours per assessment with the tool",24,4,120,2,""],["r","Internal hourly cost (€)",75,30,200,5,""],["l","Licence cost a year (€)",5180,1000,60000,10,"Business concurrent licence is €5,180 a year per market bundle"],["s","Share of assessments billed to clients (%)",30,0,100,5,""],["b","Fee billed per assessment (€)",4000,0,30000,500,""]],
+calc:function(v){var out=v.a*v.c;var inn=v.l+v.a*v.h*v.r;var fee=v.a*v.s/100*v.b;var net=out-inn+fee;return {rows:[["Outsourced cost a year",out],["In-house cost a year (licence and hours)",inn],["Fee income from billed assessments",fee]],net:net,unit:(inn/v.a),ul:"In-house cost per assessment"}}},
+m:{f:[["p","Products that need EPDs",40,1,1000,1,""],["y","EPDs to publish this year",15,1,300,1,""],["c","Consultant cost per EPD (€)",10000,2000,30000,500,"Vendor-cited surveys put this at €5,000 to €20,000"],["v","Verification and publishing per EPD with the tool (€)",1500,0,10000,100,""],["h","Internal hours per EPD with the tool",16,2,120,2,""],["r","Internal hourly cost (€)",70,30,200,5,""],["l","Licence cost a year (€)",12000,2000,150000,500,"Assumed. Manufacturer licences are quoted"],["w","Revenue at risk per product without an EPD (€ a year)",20000,0,500000,1000,"Sales lost when a specifier or tender requires an EPD"],["k","Share of that revenue the EPD protects (%)",20,0,100,5,""]],
+calc:function(v){var out=v.y*v.c;var inn=v.l+v.y*(v.v+v.h*v.r);var prot=v.y*v.w*v.k/100;var net=out-inn+prot;return {rows:[["Consultant route a year",out],["Tool route a year (licence, verification and hours)",inn],["Revenue protected by this year's EPDs",prot]],net:net,unit:(inn/v.y),ul:"Tool cost per EPD"}}}
+};
+var mode="d",V={};
+function eur(x){return "€"+Math.round(x).toLocaleString("en-GB")}
+function build(){var c=document.getElementById("inputs");c.innerHTML='<h3>'+(mode==="d"?"Design firm":"Manufacturer")+'</h3><p>Change any figure to match the buyer.</p>';V={};
+M[mode].f.forEach(function(f){V[f[0]]=f[2];var d=document.createElement("div");d.className="ctl";d.innerHTML='<label for="i_'+f[0]+'">'+f[1]+'</label><input type="number" id="i_'+f[0]+'" min="'+f[3]+'" max="'+f[4]+'" step="'+f[5]+'" value="'+f[2]+'">'+(f[6]?'<span class="hint">'+f[6]+'</span>':'');c.appendChild(d);d.querySelector("input").addEventListener("input",function(e){var x=parseFloat(e.target.value);V[f[0]]=isNaN(x)?0:x;draw()})});draw()}
+function draw(){var r=M[mode].calc(V);
+document.getElementById("bc").innerHTML='<span class="eyebrow">Net benefit in year one</span><span class="big" style="margin-top:10px;color:'+(r.net>=0?'var(--accent)':'var(--bad)')+'">'+eur(r.net)+'</span><p>'+(r.net>=0?"The tool route costs less than the alternative once the benefit is counted.":"At these figures the alternative costs less. Look at volume next year before deciding.")+'</p><div class="tw" style="margin-top:16px"><table class="t" style="min-width:0"><tbody>'+r.rows.map(function(x){return '<tr><th>'+x[0]+'</th><td class="n">'+eur(x[1])+'</td></tr>'}).join("")+'<tr class="hl"><th>'+r.ul+'</th><td class="n">'+eur(r.unit)+'</td></tr></tbody></table></div><p class="src" style="margin-top:12px">Illustrative model for a sales conversation. It is not a quote.</p>'}
+[].forEach.call(document.querySelectorAll("#mode button"),function(b){b.addEventListener("click",function(){mode=b.getAttribute("data-m");[].forEach.call(document.querySelectorAll("#mode button"),function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});build()})});
+build();
+})();
+</script>
+
+</main>
+<nav class="pager" aria-label="Page navigation"><a class="prev" href="launch.html"><small>Previous</small><b>Launch Playbook</b></a><a class="next" href="metrics.html"><small>Next</small><b>Win Rate</b></a></nav><footer class="site-foot"><span>Prepared 23 October 2026 by Arpan Bakshi for the Senior Product Marketing Manager role at One Click LCA. Independent work from public sources; not produced or endorsed by One Click LCA.</span></footer>
+</body>
+</html>
