@@ -27,7 +27,7 @@ PAGES = [
     ("launch.html", "Launch Playbook"),
     ("enablement.html", "Enablement"),
     ("metrics.html", "Win Rate"),
-    ("first-90-days.html", "90 Days"),
+    ("first-90-days.html", "First 90 Days"),
     ("ai.html", "AI Workflow"),
     ("cv.html", "CV"),
 ]
