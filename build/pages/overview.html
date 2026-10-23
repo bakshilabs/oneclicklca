@@ -2,6 +2,9 @@
 <style>
 .ov-hero{padding:56px 0 0;display:grid;grid-template-columns:5fr 7fr;gap:32px;align-items:start}
 .ov-hv{margin-top:0}
+.ov-pin{background:var(--panel);border-radius:5px;padding:12px 14px;margin-top:10px;min-height:64px;font-size:14px;display:grid;gap:4px}
+.ov-pin .pd{font-weight:600;margin-right:8px}
+.ov-pin a{font-size:13px}
 .ov-hv .btnrow{margin:0 0 10px}
 .ov-hl .ov-cap{margin-top:24px}
 .viz svg .t-muted{font-size:12px}
@@ -36,22 +39,22 @@
 @media (max-width:600px){.ov-find{grid-template-columns:1fr}}
 
 .ov-filter{margin-top:24px}
-.ov-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
-.ov-c{background:var(--panel);border-radius:6px;padding:18px 18px 16px;color:var(--ink);text-decoration:none;display:flex;flex-direction:column;gap:4px;transition:transform .18s,background .18s,opacity .2s}
-.ov-c:hover{transform:translateY(-3px);background:var(--accent-soft)}
+.ov-cards{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-top:20px}
+.ov-c{background:var(--panel);border-radius:6px;padding:12px 12px 12px;color:var(--ink);text-decoration:none;display:flex;flex-direction:column;gap:6px;transition:transform .18s,background .18s}
+.ov-c:hover,.ov-c:focus-visible{transform:translateY(-3px);background:var(--accent-soft)}
 .ov-c[hidden]{display:none}
-.ov-c .icon{margin-bottom:8px}
-.ov-c h3{font-size:18px}
-.ov-c p{font-size:13.5px;color:var(--muted)}
-.ov-c .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:10px}
-.ov-c.feat{background:var(--accent);color:var(--on-accent)}
-.ov-c.feat p{color:var(--on-accent);opacity:.85}
-.ov-c.feat .icon{background:rgba(255,255,255,.18);color:var(--on-accent)}
-.ov-c.feat .chip{background:rgba(255,255,255,.18);color:var(--on-accent)}
-.ov-c.feat:hover{background:var(--accent);filter:brightness(1.08)}
-@media (max-width:980px){.ov-cards{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:700px){.ov-cards{grid-template-columns:1fr 1fr}}
-@media (max-width:440px){.ov-cards{grid-template-columns:1fr}}
+.ov-c .th{display:block;width:100%;height:auto;background:var(--chart-bg);border-radius:4px;padding:8px}
+.ov-c .th *{fill:var(--ink3)}
+.ov-c .th .a{fill:var(--s1)}
+.ov-c .th .l{fill:none;stroke:var(--ink3);stroke-width:1.5}
+.ov-c .th .l2{fill:none;stroke:var(--s1);stroke-width:2}
+.ov-c h3{font-size:15px;line-height:1.2}
+.ov-c .chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:auto}
+.ov-c .chip{font-size:11.5px;padding:2px 7px}
+.ov-c.feat{outline:2px solid var(--accent);outline-offset:-2px}
+@media (max-width:1100px){.ov-cards{grid-template-columns:repeat(5,1fr)}}
+@media (max-width:760px){.ov-cards{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:480px){.ov-cards{grid-template-columns:1fr 1fr}.ov-c .th{height:60px}}
 </style>
 
 <section class="ov-hero">
@@ -62,7 +65,7 @@
     <div class="ov-cap" id="ov-cap" aria-live="polite"></div>
   </div>
   <div class="viz ov-hv">
-    <div class="viz-h"><h3>Three waves of forced buyers</h3><p>Each dot is one forcing date, 2025 to 2031.</p></div>
+    <div class="viz-h"><h3>Three waves of forced buyers</h3><p>Each dot is one forcing date. Select a dot to pin it.</p></div>
     <div class="btnrow" id="ov-waves" role="group" aria-label="Choose a wave">
       <button type="button" data-w="all" aria-pressed="true">All dates</button>
       <button type="button" data-w="0" aria-pressed="false">Now</button>
@@ -71,6 +74,7 @@
     </div>
     <div class="legend" aria-hidden="true"><span><i style="background:var(--s1)"></i>EU-wide</span><span><i style="background:var(--s2)"></i>National</span><span><i style="background:var(--s3)"></i>Outside Europe</span></div>
     <div id="ov-chart"></div>
+    <div class="ov-pin" id="ov-pin" aria-live="polite"></div>
     <details class="more"><summary>All dates in the chart</summary><div class="tw"><table class="t" id="ov-table"><thead><tr><th>Date</th><th>Where</th><th>What happens</th></tr></thead><tbody></tbody></table></div></details>
   </div>
 </section>
@@ -83,8 +87,8 @@
       <b class="n"><span class="count" data-to="1000">0</span> m²</b>
       <p>From 1 January 2028 every new EU building above this size must disclose life cycle carbon. Most of these design teams have never bought an LCA tool.</p>
       <svg viewBox="0 0 260 56" role="img" aria-label="Disclosure scope widens from national leaders now, to new EU buildings over 1,000 square metres in 2028, to all new buildings in 2030">
-        <path d="M0 52H86V38H172V24H260" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
-        <path d="M0 52H86V38H172V24H260V56H0z" style="fill:var(--accent)" opacity=".1"/>
+        <path d="M0 52H86V38H172V24H260" fill="none" style="stroke:var(--s1)" stroke-width="2"/>
+        <path d="M0 52H86V38H172V24H260V56H0z" style="fill:var(--s1)" opacity=".1"/>
         <text x="4" y="46">Now</text><text x="90" y="32">2028</text><text x="176" y="18">2030</text>
       </svg>
       <small>Demand Drivers</small>
@@ -98,6 +102,7 @@
         <text x="0" y="44">AEC professionals requiring EPDs</text>
         <path d="M0 48h150a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4H0z" style="fill:var(--s1)"/><text class="tv" x="160" y="57">65%</text>
       </svg>
+      <span class="src" style="margin-top:8px">One Click LCA press release, 6 May 2026</span>
       <small>Alternatives</small>
     </a>
     <a class="ov-f rv" href="enablement.html">
@@ -108,6 +113,7 @@
         <text x="0" y="35">Ease of use</text><path d="M96 26h108a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H96z" style="fill:var(--ink3)"/><text class="tv" x="215" y="36">4.4</text>
         <text x="0" y="57">Value for money</text><path d="M96 48h94a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H96z" style="fill:var(--s2)"/><text class="tv" x="201" y="58">4.0</text>
       </svg>
+      <span class="src" style="margin-top:8px">Capterra, updated 20 Jul 2026, 18 reviews</span>
       <small>Enablement</small>
     </a>
     <a class="ov-f rv" href="launch.html">
@@ -142,6 +148,7 @@
 <section class="block">
   <span class="eyebrow">Explore</span>
   <h2>Fourteen pages in the order of the job</h2>
+  <p class="kicker">Hover a page for a summary.</p>
   <div class="btnrow ov-filter" id="ov-filter" role="group" aria-label="Filter pages">
     <button type="button" data-f="all" aria-pressed="true">All</button>
     <button type="button" data-f="profile" aria-pressed="false">Profile</button>
@@ -199,43 +206,48 @@ function caption(){
  if(sel==="all"){cap.innerHTML='<span class="yr">26</span><h3>forcing dates from 2025 to 2031</h3><p style="margin-top:8px">Three steps widen the market: national leaders now, the EU-wide step in 2028 and all new buildings in 2030.</p><p class="k">Launch window</p><p>National roadmaps with limit values are due on 1 January 2027, about fourteen months before the first EU disclosure deadline.</p>';return}
  var w=WAVES[sel];cap.innerHTML='<span class="yr">'+w.big+'</span><h3>'+w.name+'</h3><p style="margin-top:8px">'+w.who+'</p><p class="k">What wins</p><p>'+w.wins+'</p>';
 }
+var pin=null;
+function showPin(){var el=document.getElementById("ov-pin");if(pin===null){el.innerHTML='<p class="mini">Select a dot to pin its detail here.</p>';return}var d=D[pin];
+ el.innerHTML='<div><b class="pd"></b><span class="mini pg"></span></div><p class="pt"></p><a href="demand.html">Open Demand Drivers</a>';
+ el.querySelector(".pd").textContent=d[1]+(d[1].indexOf(String(d[0]))<0?" "+d[0]:"")+", "+d[2];el.querySelector(".pg").textContent=GEO[d[3]]+" · wave: "+WAVES[waveOf(d[0])].big;el.querySelector(".pt").textContent=d[4];}
 function draw(){
- host.innerHTML="";var W=Math.max(300,host.clientWidth),H=W<560?300:380,m={l:4,r:4,t:44,b:28};
- var s=VZ.svg(host,W,H,"Stepped chart of 26 forcing dates from 2025 to 2031 in three waves: national leaders now, the EU-wide step in 2028 and all new buildings in 2030. 2026 has the most dates, seven.");
- var x=VZ.lin(2025,2032,m.l,W-m.r),base=H-m.b,ph=base-m.t;
- var lv=[.6,.8,1];
+ host.innerHTML="";var W=Math.max(300,host.clientWidth),R=W<560?6:7,gap=W<560?15:18,maxH=7*gap+R,m={l:4,r:4,b:28},step=W<560?24:28;
+ var H=m.b+maxH+14+2*step+44,base=H-m.b,top0=base-maxH-14;
+ var s=VZ.svg(host,W,H,"Stepped chart of 26 forcing dates from 2025 to 2031 in three waves: national leaders now, the EU-wide step in 2028 and all new buildings in 2030. 2026 has the most dates, seven.");s.setAttribute("role","group");
+ var x=VZ.lin(2025,2032,m.l,W-m.r);
  WAVES.forEach(function(w,i){
-  var g=VZ.el("g",{"class":"band"},s),x0=x(w.y0),x1=x(w.y1),top=base-ph*lv[i];
+  var g=VZ.el("g",{"class":"band"},s),x0=x(w.y0),x1=x(w.y1),top=top0-step*i;
   var on=sel==="all"||+sel===i;
-  VZ.el("rect",{x:x0,y:top,width:x1-x0,height:base-top,style:"fill:var(--accent)",opacity:on?(sel==="all"?.07+.03*i:.16):.03},g);
-  VZ.el("path",{d:"M"+x0+","+top+"H"+x1,fill:"none",style:"stroke:var(--accent)","stroke-width":2,opacity:on?1:.3},g);
+  VZ.el("rect",{x:x0,y:top,width:x1-x0,height:base-top,style:"fill:var(--s1)",opacity:on?(sel==="all"?.05+.025*i:.12):.02},g);
+  VZ.el("path",{d:"M"+x0+","+top+"H"+x1,fill:"none",style:"stroke:"+(on?"var(--ink2)":"var(--ink3)"),"stroke-width":2},g);
   var t=VZ.el("text",{x:x0+6,y:top-22,"class":"t-strong",style:"font-size:"+(W<560?14:17)+"px"},g);t.textContent=w.big;
   var t2=VZ.el("text",{x:x0+6,y:top-7,"class":"t-muted"},g);t2.textContent=W<560?["National","EU step","All new"][i]:w.name;
   g.addEventListener("click",function(){setWave(String(i))});
  });
- if(W>=560){}
  for(var y=2025;y<=2031;y++){var tx=VZ.el("text",{x:(x(y)+x(y+1))/2,y:H-8,"text-anchor":"middle"},s);tx.textContent=y;}
  VZ.el("line",{x1:m.l,x2:W-m.r,y1:base,y2:base,"class":"axis"},s);
- var cnt={},R=W<560?6:7,gap=W<560?15:18;
- D.forEach(function(d){
+ var cnt={};
+ D.forEach(function(d,i){
   var k=cnt[d[0]]=(cnt[d[0]]||0)+1,cx=(x(d[0])+x(d[0]+1))/2,cy=base-gap*(k-1)-R-6;
-  var on=sel==="all"||waveOf(d[0])===+sel;
-  var g=VZ.el("g",{"class":"dot"+(on?"":" dim"),role:"img","aria-label":d[1]+" "+d[0]+", "+d[2]+": "+d[4]},s);
+  var on=sel==="all"||waveOf(d[0])===+sel,pinned=pin===i;
+  var g=VZ.el("g",{"class":"dot"+(on?"":" dim"),tabindex:0,role:"button","aria-pressed":pinned,"aria-label":d[1]+" "+d[0]+", "+d[2]+": "+d[4]},s);
   VZ.el("circle",{cx:cx,cy:cy,r:11,fill:"transparent"},g);
-  VZ.el("circle",{"class":"ring",cx:cx,cy:cy,r:R,style:"fill:"+(on?COL[d[3]]:"var(--ink3)")+";stroke:var(--chart-bg)","stroke-width":2},g);
+  VZ.el("circle",{"class":"ring",cx:cx,cy:cy,r:pinned?R+2:R,style:"fill:"+(on?COL[d[3]]:"var(--ink3)")+";stroke:"+(pinned?"var(--ink1)":"var(--chart-bg)"),"stroke-width":2},g);
   VZ.tip(g,function(){return "<b>"+d[1]+(d[1].indexOf(String(d[0]))<0?" "+d[0]:"")+", "+d[2]+"</b>"+d[4]+'<div class="m">'+GEO[d[3]]+"</div>"});
+  function p(){pin=i;draw();showPin()}
+  g.addEventListener("click",p);g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();p()}});
  });
 }
 function setWave(w){sel=w;[].forEach.call(document.querySelectorAll("#ov-waves button"),function(b){b.setAttribute("aria-pressed",b.dataset.w===w)});VZ.hideTip();draw();caption()}
 [].forEach.call(document.querySelectorAll("#ov-waves button"),function(b){b.addEventListener("click",function(){setWave(b.dataset.w)})});
 var tb=document.querySelector("#ov-table tbody");D.forEach(function(d){var tr=document.createElement("tr");[d[1]+(d[1].indexOf(String(d[0]))<0?" "+d[0]:""),d[2],d[4]].forEach(function(v){var td=document.createElement("td");td.textContent=v;tr.appendChild(td)});tb.appendChild(tr)});
-draw();caption();
+draw();caption();showPin();
 var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(draw,120)});
 
 /* monthly releases mini */
 var mm=document.getElementById("ov-months");
-for(var i=0;i<12;i++){var hi=i===3||i===9,mid=i===6;VZ.el("rect",{x:i*21.6,y:hi?2:10,width:17,height:hi?26:18,rx:3,style:"fill:"+(hi?"var(--accent)":mid?"var(--seq-3)":"var(--grid)")},mm)}
-var lt=VZ.el("text",{x:0,y:40},mm);lt.textContent="Full launch";
+for(var i=0;i<12;i++){var hi=i===3||i===9,mid=i===6;VZ.el("rect",{x:i*21.6,y:hi?2:10,width:17,height:hi?26:18,rx:3,style:"fill:"+(hi?"var(--s1)":mid?"var(--s4)":"var(--grid)")},mm)}
+var lt=VZ.el("text",{x:0,y:40},mm);lt.textContent="Full launches, blue; a possible third, amber";
 /* loss reasons mini */
 var lg=document.getElementById("ov-loss"),L=["Competitor","Free tool","Consultant","No decision"];
 L.forEach(function(n,i){var last=i===3,X=(i%2)*132,Y=Math.floor(i/2)*24;VZ.el("rect",{x:X,y:Y,width:126,height:20,rx:3,style:"fill:"+(last?"var(--s2)":"var(--grid)")},lg);var t=VZ.el("text",{x:X+8,y:Y+14,style:last?"fill:#111;font-weight:600":""},lg);t.textContent=n;});
@@ -264,7 +276,7 @@ var C=[
  ["demand","Demand Drivers","market","The regulatory dates that force each segment to buy.",["3 waves"]],
  ["buyers","Buyers","market","Buying committees, criteria and objections per segment.",["6 segments","9 criteria"]],
  ["segments","Segment Model","model","A scoring model that picks priority sub-segments per launch.",["15 sub-segments","6 factors"]],
- ["alternatives","Alternatives","message","Competitors, free national tools, consultants and doing nothing.",["10 alternatives"]],
+ ["alternatives","Alternatives","message","Competitors, free national tools, consultants and doing nothing.",["11 alternatives"]],
  ["positioning","Positioning","message","Message houses and a product rule for One Click LCA and SimaPro.",["6 segments"]],
  ["launch","Launch Playbook","model","A tiering tool for monthly releases and a 2027 calendar.",["3 tiers","7 launches"]],
  ["enablement","Enablement","model","A business case calculator, objection handling and a battlecard.",["2 calculators"]],
@@ -273,11 +285,12 @@ var C=[
  ["ai","AI Workflow","plan","How this site was researched with agents, and the routines for the role.",["4 agents"]],
  ["cv","Curriculum Vitae","profile","Go-to-market and carbon strategy lead, London.",["LEED AP"]]
 ];
+var TH={"role": "<circle cx=\"32\" cy=\"18\" r=\"6\" class=\"a\"/><circle cx=\"12\" cy=\"8\" r=\"4\"/><circle cx=\"52\" cy=\"8\" r=\"4\"/><circle cx=\"12\" cy=\"28\" r=\"4\"/><circle cx=\"52\" cy=\"28\" r=\"4\"/><path d=\"M16 9l11 6M48 9l-11 6M16 27l11-6M48 27l-11-6\" class=\"l\"/>", "fit": "<rect x=\"4\" y=\"5\" width=\"14\" height=\"6\" rx=\"2\"/><rect x=\"16\" y=\"13\" width=\"18\" height=\"6\" rx=\"2\"/><rect x=\"32\" y=\"21\" width=\"28\" height=\"6\" rx=\"2\" class=\"a\"/>", "portfolio": "<rect x=\"4\" y=\"4\" width=\"16\" height=\"12\" rx=\"2\"/><rect x=\"24\" y=\"4\" width=\"16\" height=\"12\" rx=\"2\" class=\"a\"/><rect x=\"44\" y=\"4\" width=\"16\" height=\"12\" rx=\"2\"/><rect x=\"4\" y=\"20\" width=\"16\" height=\"12\" rx=\"2\"/><rect x=\"24\" y=\"20\" width=\"16\" height=\"12\" rx=\"2\"/><rect x=\"44\" y=\"20\" width=\"16\" height=\"12\" rx=\"2\"/>", "demand": "<path d=\"M4 30H22V22H40V12H60\" class=\"l2\"/><circle cx=\"12\" cy=\"26\" r=\"2.5\"/><circle cx=\"30\" cy=\"18\" r=\"2.5\" class=\"a\"/><circle cx=\"50\" cy=\"8\" r=\"2.5\"/>", "buyers": "<circle cx=\"14\" cy=\"12\" r=\"5\"/><circle cx=\"32\" cy=\"12\" r=\"5\" class=\"a\"/><circle cx=\"50\" cy=\"12\" r=\"5\"/><path d=\"M6 30a8 7 0 0 1 16 0zM24 30a8 7 0 0 1 16 0zM42 30a8 7 0 0 1 16 0z\"/>", "segments": "<rect x=\"4\" y=\"4\" width=\"52\" height=\"6\" rx=\"2\" class=\"a\"/><rect x=\"4\" y=\"14\" width=\"40\" height=\"6\" rx=\"2\"/><rect x=\"4\" y=\"24\" width=\"26\" height=\"6\" rx=\"2\"/>", "alternatives": "<path d=\"M4 32H60M4 32V2\" class=\"l\"/><circle cx=\"14\" cy=\"22\" r=\"3\"/><circle cx=\"26\" cy=\"12\" r=\"3\"/><circle cx=\"44\" cy=\"8\" r=\"4\" class=\"a\"/><circle cx=\"50\" cy=\"24\" r=\"3\"/>", "positioning": "<path d=\"M32 3 56 16H8z\" class=\"a\"/><rect x=\"12\" y=\"18\" width=\"10\" height=\"14\" rx=\"1\"/><rect x=\"27\" y=\"18\" width=\"10\" height=\"14\" rx=\"1\"/><rect x=\"42\" y=\"18\" width=\"10\" height=\"14\" rx=\"1\"/>", "launch": "<rect x=\"4\" y=\"22\" width=\"16\" height=\"10\" rx=\"2\"/><rect x=\"24\" y=\"14\" width=\"16\" height=\"18\" rx=\"2\"/><rect x=\"44\" y=\"4\" width=\"16\" height=\"28\" rx=\"2\" class=\"a\"/>", "enablement": "<rect x=\"4\" y=\"18\" width=\"10\" height=\"14\" rx=\"2\"/><rect x=\"18\" y=\"10\" width=\"10\" height=\"8\" rx=\"2\"/><rect x=\"32\" y=\"6\" width=\"10\" height=\"4\" rx=\"1\"/><rect x=\"46\" y=\"6\" width=\"12\" height=\"26\" rx=\"2\" class=\"a\"/>", "metrics": "<rect x=\"4\" y=\"4\" width=\"56\" height=\"7\" rx=\"2\"/><rect x=\"12\" y=\"14\" width=\"40\" height=\"7\" rx=\"2\"/><rect x=\"22\" y=\"24\" width=\"20\" height=\"7\" rx=\"2\" class=\"a\"/>", "first-90-days": "<rect x=\"4\" y=\"4\" width=\"20\" height=\"5\" rx=\"2\"/><rect x=\"14\" y=\"11\" width=\"22\" height=\"5\" rx=\"2\"/><rect x=\"26\" y=\"18\" width=\"20\" height=\"5\" rx=\"2\" class=\"a\"/><rect x=\"38\" y=\"25\" width=\"22\" height=\"5\" rx=\"2\"/>", "ai": "<rect x=\"2\" y=\"13\" width=\"12\" height=\"10\" rx=\"2\"/><rect x=\"24\" y=\"3\" width=\"14\" height=\"8\" rx=\"2\"/><rect x=\"24\" y=\"14\" width=\"14\" height=\"8\" rx=\"2\"/><rect x=\"24\" y=\"25\" width=\"14\" height=\"8\" rx=\"2\"/><rect x=\"50\" y=\"13\" width=\"12\" height=\"10\" rx=\"2\" class=\"a\"/><path d=\"M14 18l10-11M14 18h10M14 18l10 11M38 7l12 11M38 18h12M38 29l12-11\" class=\"l\"/>", "cv": "<rect x=\"4\" y=\"4\" width=\"14\" height=\"18\" rx=\"2\"/><rect x=\"24\" y=\"5\" width=\"34\" height=\"4\" rx=\"1\" class=\"a\"/><rect x=\"24\" y=\"13\" width=\"28\" height=\"3\" rx=\"1\"/><rect x=\"24\" y=\"20\" width=\"30\" height=\"3\" rx=\"1\"/><rect x=\"4\" y=\"27\" width=\"54\" height=\"3\" rx=\"1\"/>"};
 var ch=document.getElementById("ov-cards");
 C.forEach(function(c){
  var a=document.createElement("a");a.className="ov-c rv"+(c[5]?" feat":"");a.href=c[0]+".html";a.dataset.g=c[2];
- a.innerHTML='<span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24">'+I[c[0]]+'</svg></span><h3></h3><p></p><div class="chips"></div>';
- a.querySelector("h3").textContent=c[1];a.querySelector("p").textContent=c[3];
+ a.innerHTML='<svg class="th" viewBox="0 0 64 36" aria-hidden="true">'+TH[c[0]]+'</svg><h3></h3><div class="chips"></div>';
+ a.querySelector("h3").textContent=c[1];a.setAttribute("aria-label",c[1]+": "+c[3]);VZ.tip(a,function(){return "<b>"+c[1]+"</b>"+c[3]});
  c[4].forEach(function(t){var s=document.createElement("span");s.className="chip";s.textContent=t;a.querySelector(".chips").appendChild(s)});
  ch.appendChild(a);
 });

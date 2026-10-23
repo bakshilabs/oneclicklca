@@ -42,7 +42,7 @@ button.fi-row:hover{background:var(--panel)}
 button.fi-row[aria-expanded="true"]{background:var(--accent-soft)}
 .fi-row .rq{padding:12px 10px 12px 0;font-size:14.5px;font-weight:500;display:flex;align-items:center;gap:8px}
 .fi-row .c{display:grid;place-items:center;height:100%}
-.fi-row .c i{width:14px;height:14px;border-radius:50%;background:var(--accent);display:block}
+.fi-row .c i{width:14px;height:14px;border-radius:50%;background:var(--s1);display:block}
 .fi-row .c i.o{background:none;border:1.5px solid var(--ink3);width:8px;height:8px}
 .fi-row .chev{width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:2;transition:transform .2s}
 button.fi-row[aria-expanded="true"] .chev{transform:rotate(180deg)}
@@ -70,6 +70,8 @@ button.fi-row[aria-expanded="true"] .chev{transform:rotate(180deg)}
 .fi-ld h3{font-size:19px}
 .fi-ld p{font-size:14.5px}
 .fi-ld a.btn{margin-top:14px}
+.fi-lv{margin:14px 0 4px;background:var(--chart-bg);border-radius:5px;padding:12px}
+.fi-lv svg{display:block;width:100%;height:auto;max-height:150px}
 @media (max-width:760px){.fi-lw{grid-template-columns:1fr}}
 .viz svg .t-muted{font-size:12px}
 </style>
@@ -92,7 +94,7 @@ button.fi-row[aria-expanded="true"] .chev{transform:rotate(180deg)}
 </div>
 
 <div class="stats4">
-  <div class="stat rv"><b class="count" data-to="18">0</b><span>Years selling to the developers, contractors, manufacturers and public clients who buy LCA software</span></div>
+  <div class="stat rv"><b class="count" data-to="18">0</b><span>Years in sustainability, selling to the developers, contractors and manufacturers who buy LCA software</span></div>
   <div class="stat rv hi"><b class="count" data-to="10" data-prefix="£" data-suffix="m+">£0m+</b><span>Fees won a year through pitches and bids as Associate Partner at Foster + Partners</span></div>
   <div class="stat rv"><b class="count" data-to="250" data-suffix="+">0+</b><span>Senior professionals trained to use Claude Code, Cowork and other AI tools</span></div>
   <div class="stat rv"><b class="count" data-to="11">0</b><span>Conferences, panels and keynotes on the CV, from SimBuild to COP28</span></div>
@@ -162,8 +164,8 @@ function draw(){
  R.forEach(function(r,i){var y=laneY(rows[i]),x0=x(r.a),x1=x(r.b),w=x1-x0;
   var g=VZ.el("g",{"class":"band",tabindex:0,role:"button","aria-label":r.n+", "+r.role+(r.fee?", fees "+r.fee:"")},s);
   var p=VZ.bar(g,x0,y,w-(i===3?2:0),bh,"var(--s1)","h");p.setAttribute("style","fill:var(--s1)");if(i===5)p.setAttribute("style","fill:var(--s3)");
-  if(nar){var nl=r.s.replace("Associate Partner","Foster + Partners, Assoc. Partner")+(r.fee?", "+r.fee.replace(" a year","/yr"):""),nw=nl.length*6.2,lx=Math.min(x0,W-m.r-nw);var nt=VZ.el("text",{x:Math.max(m.l,lx),y:y-5,style:"fill:var(--ink1);font-weight:600;font-size:11.5px"},g);nt.textContent=nl;}else{
-  var lab=r.s,lw=lab.length*6.6+16;if(r.fee)lab+="  ·  "+r.fee,lw=lab.length*6.4+16;
+  if(nar){var nl=r.s.replace("Associate Partner","Foster + Partners, Assoc. Partner")+(r.fee?", "+r.fee.replace(" a year","/yr"):""),nw=nl.length*6.2,fits=x0+nw<=W-m.r;if(!fits)nl=nl.replace("Foster + Partners, ","");var nt=VZ.el("text",fits?{x:x0,y:y-5,style:"fill:var(--ink1);font-weight:600;font-size:12px"}:{x:x0-6,y:y+bh/2+4,"text-anchor":"end",style:"fill:var(--ink1);font-weight:600;font-size:12px"},g);nt.textContent=nl;}else{
+  var lab=r.s+(r.fee?" · "+r.fee.replace(" a year","/yr"):""),lw=lab.length*6.6+16;
   var inside=lw<w,tx=VZ.el("text",{x:inside?x0+8:(i===5?x0-6:x1+6),y:y+bh/2+4,"text-anchor":(!inside&&i===5)?"end":"start",style:inside?"fill:#fff;font-weight:600":"fill:var(--ink1);font-weight:600"},g);tx.textContent=lab;
   }
   VZ.tip(g,function(){return "<b>"+r.n+"</b>"+r.role+(r.fee?'<div class="m">Fees won: '+r.fee+"</div>":"")});act(g,"r",i);
@@ -213,10 +215,17 @@ var LS=[
  ["Visual evidence wins the room",'<path d="M3 20h18M6 16l4-5 3 3 5-7"/>',"A chart that shows two design options against a limit does more than a report. Buyers decide when they can see the consequence.","Give sellers a business case calculator that shows the buyer's own numbers against the alternative.","Enablement","enablement.html"],
  ["Trust is the person on the call",'<path d="M4 5h16v11H9l-5 4V5z"/>',"Clients came back because someone answered fast and knew the rule. The One Click LCA reviews say the same about its support team.","Use the 4.9 support score as a proof point and train sellers to answer rule questions on the call.","Positioning","positioning.html"]
 ];
+var T12='font-size:12px;fill:var(--ink2);font-family:var(--sans)',TS='font-size:12px;fill:var(--ink1);font-weight:600;font-family:var(--sans)';
+var LV=[
+ '<svg viewBox="0 0 320 96" role="img" aria-label="Schematic: purchases cluster just before a regulatory deadline"><line x1="10" y1="70" x2="310" y2="70" style="stroke:var(--axis)"/>'+[0,1,2,3,4,5,6,7].map(function(k){var h=[6,8,10,14,22,34,46,10][k];return '<rect x="'+(30+k*28)+'" y="'+(70-h)+'" width="16" height="'+h+'" rx="3" style="fill:var(--s1)"/>'}).join("")+'<line x1="254" y1="10" x2="254" y2="74" style="stroke:var(--s2)" stroke-width="2"/><text x="250" y="20" text-anchor="end" style="'+TS+'">Deadline</text><text x="10" y="90" style="'+T12+'">Schematic: buying clusters before the date</text></svg>',
+ '<svg viewBox="0 0 320 96" role="img" aria-label="Schematic: one pitch must serve the analyst and the partner"><rect x="120" y="36" width="80" height="26" rx="3" style="fill:var(--panel);stroke:var(--axis)"/><text x="160" y="53" text-anchor="middle" style="'+TS+'">Pitch</text><path d="M120 49H80M200 49H240" style="stroke:var(--axis)" stroke-width="1.5"/><circle cx="56" cy="40" r="10" style="fill:var(--s1)"/><path d="M38 66a18 14 0 0 1 36 0z" style="fill:var(--s1)"/><circle cx="264" cy="40" r="10" style="fill:var(--s7)"/><path d="M246 66a18 14 0 0 1 36 0z" style="fill:var(--s7)"/><text x="56" y="86" text-anchor="middle" style="'+T12+'">Analyst: fewer hours</text><text x="264" y="86" text-anchor="middle" style="'+T12+'">Partner: fee or win</text></svg>',
+ '<svg viewBox="0 0 320 96" role="img" aria-label="Schematic: two design options against a carbon limit"><line x1="70" y1="30" x2="310" y2="30" style="stroke:var(--s2)" stroke-width="2"/><text x="310" y="22" text-anchor="end" style="'+TS+'">Limit</text><text x="10" y="54" style="'+T12+'">Option A</text><path d="M70 44h196a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H70z" style="fill:var(--s1)"/><text x="10" y="80" style="'+T12+'">Option B</text><path d="M70 70h128a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H70z" style="fill:var(--s1)"/><text x="210" y="81" style="'+T12+'">under the limit</text></svg>',
+ '<svg viewBox="0 0 320 96" role="img" aria-label="Capterra sub-scores: customer service 4.9, ease of use 4.4, value for money 4.0"><text x="0" y="20" style="'+T12+'">Customer service</text><path d="M120 10h147a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H120z" style="fill:var(--s1)"/><text x="278" y="21" style="'+TS+'">4.9</text><text x="0" y="46" style="'+T12+'">Ease of use</text><path d="M120 36h128a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H120z" style="fill:var(--ink3)"/><text x="259" y="47" style="'+TS+'">4.4</text><text x="0" y="72" style="'+T12+'">Value for money</text><path d="M120 62h116a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H120z" style="fill:var(--ink3)"/><text x="247" y="73" style="'+TS+'">4.0</text><text x="0" y="93" style="font-size:12px;fill:var(--ink3);font-family:var(--sans)">Capterra, updated 20 Jul 2026, 18 reviews</text></svg>'
+];
 var lg=document.getElementById("fi-les"),ld=document.getElementById("fi-ld");
 function showL(i){[].forEach.call(lg.children,function(b,j){b.setAttribute("aria-pressed",i===j)});var l=LS[i];
  ld.innerHTML='<span class="eyebrow">Lesson '+(i+1)+' of 4</span><h3 style="margin-top:8px"></h3><p class="k">What I saw on the buying side</p><p class="s"></p><p class="k">How I would apply it at One Click LCA</p><p class="a"></p><a class="btn ghost" href="'+l[5]+'"></a>';
- txt(ld.querySelector("h3"),l[0]);txt(ld.querySelector(".s"),l[2]);txt(ld.querySelector(".a"),l[3]);txt(ld.querySelector("a"),"See it on "+l[4]);}
+ txt(ld.querySelector("h3"),l[0]);txt(ld.querySelector(".s"),l[2]);txt(ld.querySelector(".a"),l[3]);txt(ld.querySelector("a"),"See it on "+l[4]);var vw=document.createElement("div");vw.className="fi-lv";vw.innerHTML=LV[i];ld.insertBefore(vw,ld.querySelector(".k"));}
 LS.forEach(function(l,i){var b=document.createElement("button");b.type="button";b.innerHTML='<span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24">'+l[1]+'</svg></span><span style="display:block"></span>';txt(b.lastChild,l[0]);b.addEventListener("click",function(){showL(i)});lg.appendChild(b)});
 showL(0);
 })();

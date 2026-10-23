@@ -22,9 +22,9 @@
 <header class="sitenav"><div class="in"><a class="brand" href="overview.html">Arpan Bakshi<span>One Click LCA product marketing</span></a><button class="theme" type="button" aria-label="Switch to dark mode">Dark</button><button class="menu" type="button" aria-expanded="false" aria-controls="sitelinks">Menu</button><nav class="links" id="sitelinks" aria-label="Site pages"><a href="overview.html">Overview</a><a href="role.html">The Role</a><a href="fit.html">Fit</a><a href="portfolio.html">Portfolio</a><a href="demand.html">Demand Drivers</a><a href="buyers.html">Buyers</a><a href="segments.html">Segment Model</a><a href="alternatives.html">Alternatives</a><a href="positioning.html">Positioning</a><a href="launch.html">Launch Playbook</a><a href="enablement.html">Enablement</a><a href="metrics.html" aria-current="page">Win Rate</a><a href="first-90-days.html">First 90 Days</a><a href="ai.html">AI Workflow</a><a href="cv.html">CV</a></nav></div></header><script>(function(){var r=document.documentElement,t=document.querySelector('.sitenav .theme');function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}function show(){var d=cur()==='dark';t.textContent=d?'Light':'Dark';t.setAttribute('aria-label','Switch to '+(d?'light':'dark')+' mode')}if(t){t.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n)}catch(e){}show()});show()}var b=document.querySelector('.sitenav .menu'),l=document.getElementById('sitelinks');if(!b)return;b.addEventListener('click',function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');b.textContent=o?'Close':'Menu';});l.addEventListener('click',function(e){if(e.target.tagName==='A'){l.classList.remove('open');b.textContent='Menu';b.setAttribute('aria-expanded','false');}});})();</script>
 <main class="wrap page" id="main" tabindex="-1">
 <style>
-#wr-main .viz{margin-top:0}
-#wr-main svg .t-muted{font-size:12px}
-#wr-main svg .t-strong{paint-order:stroke;stroke:var(--chart-bg);stroke-width:3px;stroke-linejoin:round}
+main .viz{margin-top:0}
+main svg .t-muted{font-size:12px}
+main svg .t-strong{paint-order:stroke;stroke:var(--chart-bg);stroke-width:3px;stroke-linejoin:round}
 .wr-model{display:grid;grid-template-columns:320px minmax(0,1fr);gap:20px;margin-top:24px;align-items:start}
 .wr-model .controls{background:var(--panel);border-radius:6px;padding:18px 20px 16px;position:sticky;top:76px}
 .wr-model .controls h3{font-size:16px}
@@ -38,9 +38,11 @@
 .wr-keys b{color:var(--ink1);font-variant-numeric:tabular-nums;margin-left:auto}
 .wr-sk path{transition:opacity .2s}
 .wr-sk .fl:hover{opacity:.7}
-.wr-pre{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-.wr-pre button{appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:6px 12px;font:500 12.5px/1 var(--sans);cursor:pointer}
-.wr-pre button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.wr-pre{margin-top:12px}
+.wr-nc{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:end}
+.wr-nc .ctl{flex:1;min-width:240px;max-width:460px}
+.wr-verd{margin-top:12px;font-size:15px}
+.wr-verd b.y{color:var(--ok)}.wr-verd b.n{color:var(--warn)}
 .wr-crm{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:16px;margin-top:24px;align-items:start}
 .wr-rec{border:1px solid var(--line);border-radius:6px;background:var(--surface);overflow:hidden}
 .wr-rech{padding:14px 18px;background:var(--panel);display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:space-between}
@@ -51,7 +53,7 @@
 .wr-stage span.on{background:var(--accent)}
 .wr-stl{display:flex;justify-content:space-between;padding:4px 18px 0;font-size:11px;color:var(--muted)}
 .wr-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px 18px 18px}
-.wr-fields button{appearance:none;font:inherit;color:inherit;text-align:left;border:1px solid var(--line);background:var(--bg);border-radius:5px;padding:10px 12px;cursor:pointer;position:relative}
+.wr-fields button{appearance:none;font:inherit;color:inherit;text-align:left;border:1px solid transparent;background:var(--panel);border-radius:3px;padding:10px 12px;cursor:pointer;position:relative}
 .wr-fields button:hover{border-color:var(--accent)}
 .wr-fields button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
 .wr-fields small{display:block;font-size:11.5px;color:var(--muted);letter-spacing:.02em}
@@ -64,25 +66,12 @@
 .wr-side .opts button{appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:3px;padding:6px 10px;font:400 13px/1.2 var(--sans);cursor:pointer}
 .wr-side .opts button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
 .wr-side p{font-size:14.5px}
-.wr-tree{margin-top:26px}
-.wr-root{display:flex;justify-content:center}
-.wr-root div{background:var(--ink);color:var(--bg);border-radius:6px;padding:12px 20px;font-weight:600;font-size:15px;text-align:center}
-.wr-br{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative;padding-top:34px}
-.wr-br:before{content:"";position:absolute;top:0;left:16.66%;right:16.66%;height:17px;border:2px solid var(--line);border-bottom:0;border-radius:6px 6px 0 0}
-.wr-br:after{content:"";position:absolute;top:-14px;left:50%;height:14px;border-left:2px solid var(--line)}
-.wr-col{position:relative;transition:opacity .25s}
-.wr-col:before{content:"";position:absolute;top:-17px;left:50%;height:17px;border-left:2px solid var(--line)}
-.wr-col.dim{opacity:.3}
-.wr-node{border-radius:6px;padding:12px 16px;text-align:center;font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px}
-.wr-node em{font-style:normal;font-weight:400;font-size:12px;color:var(--muted)}
-.wr-col.o .wr-node{background:var(--accent);color:var(--on-accent)}.wr-col.o .wr-node em{color:var(--on-accent);opacity:.85}
-.wr-col.s .wr-node{background:var(--accent-soft);color:var(--ink);border:2px solid var(--accent)}
-.wr-col.i .wr-node{background:var(--bg);color:var(--ink);border:2px dashed var(--line)}
-.wr-leaves{list-style:none;margin:12px 0 0 18px;padding:0;border-left:2px solid var(--line)}
-.wr-col.o .wr-leaves{border-left:3px solid var(--accent)}
-.wr-leaves li{position:relative;padding:8px 0 8px 18px;font-size:14px}
-.wr-leaves li:before{content:"";position:absolute;left:0;top:18px;width:12px;border-top:2px solid var(--line)}
-.wr-col.o .wr-leaves li:before{border-top-color:var(--accent)}
+.wr-t .lk{fill:none;transition:stroke .2s}
+.wr-t .dim .lk{stroke:var(--ink3)!important}
+.wr-t .dim rect.nb{fill:var(--ink3)!important}
+.wr-t .dim text{fill:var(--ink3)!important}
+.wr-t .dim circle{fill:var(--ink3)!important}
+.wr-t text.on{font-size:12.5px;font-weight:600}
 .wr-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:24px;counter-reset:f}
 .wr-flow button{appearance:none;font:inherit;color:var(--ink);border:0;background:var(--panel);padding:14px 26px 14px 30px;text-align:left;cursor:pointer;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%,16px 50%);margin-right:-10px;counter-increment:f;min-height:70px}
 .wr-flow button:first-child{clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%);padding-left:18px}
@@ -98,15 +87,14 @@
 .wr-mini div b{display:block;font-size:14px}
 .wr-mini div.t{background:var(--accent-soft);border:2px solid var(--accent)}
 @media (max-width:900px){.wr-model,.wr-crm{grid-template-columns:1fr}.wr-model .controls{position:static}}
-@media (max-width:760px){.wr-br{grid-template-columns:1fr;padding-top:16px}.wr-br:before,.wr-col:before{display:none}.wr-br:after{top:0;height:16px}.wr-flow{grid-template-columns:1fr 1fr;gap:6px}.wr-flow button,.wr-flow button:first-child{clip-path:none;margin:0;border-radius:5px;padding:12px 14px}.wr-fd{grid-template-columns:1fr}}
-@media (max-width:640px){#wr-main .viz{padding:16px 12px 12px}.wr-fields{grid-template-columns:1fr}}
+@media (max-width:760px){.wr-flow{grid-template-columns:1fr 1fr;gap:6px}.wr-flow button,.wr-flow button:first-child{clip-path:none;margin:0;border-radius:5px;padding:12px 14px}.wr-fd{grid-template-columns:1fr}}
+@media (max-width:640px){main .viz{padding:16px 12px 12px}.wr-fields{grid-template-columns:1fr}}
 </style>
 <header class="phead">
   <span class="eyebrow">Improve win rates and hit targets</span>
   <h1>Win Rate</h1>
   <p class="lede">Judging what positioning will do to a metric needs a model of how it responds, CRM fields to measure it and a rule for what product marketing can claim.</p>
 </header>
-<div id="wr-main">
 <section class="sec lead-viz" aria-labelledby="wr-h1">
   <span class="eyebrow">Model</span>
   <h2 id="wr-h1">Win rate value</h2>
@@ -119,7 +107,7 @@
       <div class="ctl"><label for="nd">Share of losses to no decision<output id="ond"></output></label><input type="range" id="nd" min="0" max="80" step="5" value="45"><span class="hint">The buyer does nothing or stays with a consultant</span></div>
       <div class="ctl"><label for="acv">Average first-year contract value<output id="oacv"></output></label><input type="range" id="acv" min="2000" max="80000" step="1000" value="9000"></div>
       <h3 style="margin-top:22px">Product marketing levers</h3>
-      <div class="wr-pre" role="group" aria-label="Lever presets" id="wr-pre"><button type="button" data-a="0" data-b="0">None</button><button type="button" data-a="10" data-b="10" aria-pressed="true">Base</button><button type="button" data-a="20" data-b="10">Business case push</button><button type="button" data-a="10" data-b="25">Battlecard push</button></div>
+      <div class="btnrow wr-pre" role="group" aria-label="Lever presets" id="wr-pre"><button type="button" data-a="0" data-b="0">None</button><button type="button" data-a="10" data-b="10" aria-pressed="true">Base</button><button type="button" data-a="20" data-b="10">Business case push</button><button type="button" data-a="10" data-b="25">Battlecard push</button></div>
       <div class="ctl"><label for="nd2">No-decision losses recovered<output id="ond2"></output></label><input type="range" id="nd2" min="0" max="40" step="5" value="10"><span class="hint">Through the business case and cost of doing nothing</span></div>
       <div class="ctl"><label for="cw">Competitive losses recovered<output id="ocw"></output></label><input type="range" id="cw" min="0" max="40" step="5" value="10"><span class="hint">Through battlecards and positioning against named rivals</span></div>
     </div>
@@ -159,13 +147,9 @@
   <span class="eyebrow">Metric tree</span>
   <h2 id="wr-h3">Metric ownership</h2>
   <div class="btnrow" role="group" aria-label="Highlight a branch" id="wr-tb"><button type="button" aria-pressed="true" data-b="">All</button><button type="button" aria-pressed="false" data-b="o">Owns</button><button type="button" aria-pressed="false" data-b="s">Shares with sales</button><button type="button" aria-pressed="false" data-b="i">Influences</button></div>
-  <div class="wr-tree rv">
-    <div class="wr-root"><div>Product marketing metrics</div></div>
-    <div class="wr-br" id="wr-br">
-      <div class="wr-col o" data-b="o"><div class="wr-node">Owns <em>direct control</em></div><ul class="wr-leaves"><li>Win rate against each named alternative in priority segments</li><li>Launch adoption at 30, 60 and 90 days against agreed targets</li><li>Share of closed deals with a recorded loss reason and alternative</li><li>Seller and partner certification on each tier one launch</li></ul></div>
-      <div class="wr-col s" data-b="s"><div class="wr-node">Shares with sales <em>joint</em></div><ul class="wr-leaves"><li>Overall win rate and sales cycle length</li><li>No-decision rate</li><li>Expansion from Business to Designer and Expert Pack</li><li>Partner-sourced pipeline</li></ul></div>
-      <div class="wr-col i" data-b="i"><div class="wr-node">Influences <em>indirect</em></div><ul class="wr-leaves"><li>Pipeline from campaigns, through message choice and segment lists</li><li>Demo to opportunity conversion</li><li>Web shop conversion, through pricing page and packaging clarity</li><li>Retention, through what customers expect when they buy</li></ul></div>
-    </div>
+  <div class="viz rv" style="margin-top:18px">
+    <div class="viz-h"><h3>Metric tree</h3><p>Hover a metric for how product marketing moves it.</p></div>
+    <div id="wr-tree" class="wr-t"></div>
   </div>
 </section>
 
@@ -175,13 +159,13 @@
   <div class="wr-flow" role="group" aria-label="Attribution steps" id="wr-flow"></div>
   <div class="wr-fd" id="wr-fd" aria-live="polite"></div>
   <div class="viz" style="margin-top:14px">
-    <div class="viz-h"><h3>How noisy win rate is at a given sample</h3><p>95% range around the current win rate</p></div>
-    <div class="ctl" style="max-width:420px;margin-top:0"><label for="wr-n">Closed deals in the segment<output id="wr-no"></output></label><input type="range" id="wr-n" min="20" max="800" step="10" value="100"></div>
+    <div class="viz-h"><h3>Can the model's lift be seen through the noise?</h3><p>95% ranges before and after the levers</p></div>
+    <div class="wr-nc"><div class="ctl" style="margin-top:0"><label for="wr-n">Closed deals in each period<output id="wr-no"></output></label><input type="range" id="wr-n" min="20" max="1500" step="10" value="100"></div><div class="btnrow" style="margin-top:0"><button type="button" id="wr-need"></button></div></div>
+    <p id="wr-verd" class="wr-verd" aria-live="polite"></p>
     <div id="wr-ci"></div>
-    <p class="src">Normal approximation of a binomial proportion, using the win rate set in the model above.</p>
+    <p class="src">Normal approximation of a binomial proportion. Win rates and lift come from the model at the top of the page.</p>
   </div>
 </section>
-</div>
 
 <script>
 (function(){
@@ -236,14 +220,22 @@ function drawSens(){var s=S,h=clr("wr-sens"),W=Math.max(290,h.clientWidth||600),
  ov.addEventListener("pointermove",function(e){var r=svg.getBoundingClientRect(),px=(e.clientX-r.left)*W/r.width,pt=Math.max(0,Math.min(xm,Math.round((px-L)/(R-L)*xm*2)/2));hair.setAttribute("x1",x(pt));hair.setAttribute("x2",x(pt));hair.setAttribute("opacity",1);var t=myTip();t.innerHTML='<b>'+eur(pt*per)+'</b><span class="m">+'+pt+' points of win rate</span>';t.classList.add("on");t.style.left=Math.min(innerWidth-200,e.clientX+14)+"px";t.style.top=(e.clientY+14)+"px"});
  ov.addEventListener("pointerleave",function(){hair.setAttribute("opacity",0);myTip().classList.remove("on")});}
 var mt;function myTip(){if(!mt){mt=document.createElement("div");mt.className="vz-tip";mt.setAttribute("role","tooltip");document.body.appendChild(mt)}return mt}
-function drawCI(){var n=v("wr-n"),w=S.w,h=clr("wr-ci"),W=Math.max(290,h.clientWidth||600),H=120,L=10,R=W-10;$("wr-no").textContent=n;
- var m=1.96*Math.sqrt(w*(1-w)/n),lo=Math.max(0,w-m),hi=Math.min(1,w+m),m20=1.96*Math.sqrt(w*(1-w)/20),xt=nice(Math.max(0,w-m20)*100,Math.min(100,(w+m20)*100),W<520?4:8),x=VZ.lin(xt[0]/100,xt[xt.length-1]/100,L,R);
- var svg=VZ.svg(h,W,H,"At "+n+" closed deals a "+(w*100).toFixed(0)+"% win rate could truly be anywhere from "+(lo*100).toFixed(1)+"% to "+(hi*100).toFixed(1)+"%.");
- xt.forEach(function(p){VZ.el("line",{x1:x(p/100),x2:x(p/100),y1:38,y2:84,"class":"grid"},svg);var t=VZ.el("text",{x:x(p/100),y:102,"text-anchor":"middle","class":"t-muted"},svg);t.textContent=p+"%"});
- VZ.el("rect",{x:x(lo),y:50,width:Math.max(2,x(hi)-x(lo)),height:22,rx:4,fill:"var(--s1)",opacity:.45},svg);
- VZ.el("line",{x1:x(w),x2:x(w),y1:44,y2:78,stroke:"var(--ink1)","stroke-width":2},svg);
- [[lo,"end",-6],[hi,"start",6]].forEach(function(d){var t=VZ.el("text",{x:x(d[0])+d[2],y:66,"text-anchor":d[1],"class":"t-strong"},svg);t.textContent=(d[0]*100).toFixed(1)+"%";if(x(d[0])+d[2]<L+40||x(d[0])+d[2]>R-40)t.remove()});
- var tl=VZ.el("text",{x:Math.min(Math.max(x(w),130),W-130),y:24,"text-anchor":"middle","class":"t-strong"},svg);tl.textContent=(w*100).toFixed(0)+"% measured, ±"+(m*100).toFixed(1)+" pts at "+n+" deals";}
+function need(){var w=S.w,w1=S.w1,d=w1-w;return d>0?Math.ceil(1.96*1.96*(w*(1-w)+w1*(1-w1))/(d*d)/10)*10:null}
+function drawCI(){var n=v("wr-n"),w=S.w,w1=S.w1,h=clr("wr-ci"),W=Math.max(290,h.clientWidth||600),nar=W<560,L=nar?4:118,R=W-10,H=150;$("wr-no").textContent=n;
+ var me=function(p){return 1.96*Math.sqrt(p*(1-p)/n)},m0=me(w),m1=me(w1),M20=function(p){return 1.96*Math.sqrt(p*(1-p)/20)};
+ var xt=nice(Math.max(0,w-M20(w))*100,Math.min(100,(w1+M20(w1))*100),nar?4:8),x=VZ.lin(xt[0]/100,xt[xt.length-1]/100,L,R);
+ var nd=need(),sep=w1-w>1.96*Math.sqrt(w*(1-w)/n+w1*(1-w1)/n);
+ var svg=VZ.svg(h,W,H,"Before the levers "+(w*100).toFixed(0)+"% ±"+(m0*100).toFixed(1)+" points; after "+(w1*100).toFixed(1)+"% ±"+(m1*100).toFixed(1)+" points at "+n+" closed deals.");
+ xt.forEach(function(p){VZ.el("line",{x1:x(p/100),x2:x(p/100),y1:8,y2:H-26,"class":"grid"},svg);var t=VZ.el("text",{x:x(p/100),y:H-8,"text-anchor":"middle","class":"t-muted"},svg);t.textContent=p+"%"});
+ [[w,m0,"Before",28,"var(--s2)"],[w1,m1,"After levers",88,"var(--s1)"]].forEach(function(r){var y=r[3]+(nar?10:0),lo=Math.max(xt[0]/100,r[0]-r[1]),hi=Math.min(xt[xt.length-1]/100,r[0]+r[1]);
+  var lb=VZ.el("text",{x:nar?4:0,y:nar?y-6:y+15,"class":"t-strong"},svg);lb.textContent=r[2]+" "+(r[0]*100).toFixed(1)+"%";
+  VZ.el("rect",{x:x(lo),y:y,width:Math.max(2,x(hi)-x(lo)),height:22,rx:4,fill:r[4],"fill-opacity":.25,stroke:r[4],"stroke-width":1.5},svg);
+  VZ.el("line",{x1:x(r[0]),x2:x(r[0]),y1:y-3,y2:y+25,stroke:r[4],"stroke-width":3},svg);
+  var rt=VZ.el("text",{x:x(hi)+6,y:y+15,"class":"t-muted"},svg);rt.textContent="±"+(r[1]*100).toFixed(1);if(x(hi)+40>R){rt.setAttribute("x",x(lo)-6);rt.setAttribute("text-anchor","end")}});
+ var gl=VZ.el("text",{x:(x(w)+x(w1))/2,y:nar?76:70,"text-anchor":"middle","class":"t-strong"},svg);gl.textContent="+"+((w1-w)*100).toFixed(1)+" pts lift";
+ $("wr-need").textContent=nd?"Set to "+nd.toLocaleString("en-GB")+" deals needed":"No lift to test";$("wr-need").disabled=!nd;
+ $("wr-verd").innerHTML=!nd?"Set a lever above zero to test a lift.":sep?'<b class="y">✓ Detectable.</b> At '+n+' closed deals in each period, a +'+((w1-w)*100).toFixed(1)+' point lift stands out from noise.':'<b class="n">⚠ Not yet detectable.</b> At '+n+' closed deals the ranges overlap too much. A +'+((w1-w)*100).toFixed(1)+' point lift needs about '+nd.toLocaleString("en-GB")+' closed deals in each period.';}
+$("wr-need").addEventListener("click",function(){var nd=need();if(nd){$("wr-n").value=Math.min(1500,nd);drawCI()}});
 $("wr-n").addEventListener("input",drawCI);
 ["o","w","nd","acv","nd2","cw"].forEach(function(id){$(id).addEventListener("input",go)});
 [].forEach.call($("wr-pre").querySelectorAll("button"),function(b){if(!b.hasAttribute("aria-pressed"))b.setAttribute("aria-pressed","false");b.addEventListener("click",function(){$("nd2").value=b.dataset.a;$("cw").value=b.dataset.b;go()})});
@@ -263,7 +255,33 @@ function crm(){$("wr-fields").innerHTML=F.map(function(f,i){return '<button type
 crm();
 
 /* tree */
-[].forEach.call($("wr-tb").querySelectorAll("button"),function(b){b.addEventListener("click",function(){var k=b.dataset.b;[].forEach.call($("wr-tb").querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x===b)});[].forEach.call($("wr-br").children,function(c){c.classList.toggle("dim",!!k&&c.dataset.b!==k)})})});
+var TB=[["o","Owns","direct control","var(--s1)","#fff",2.5,["Win rate against each named alternative in priority segments","Launch adoption at 30, 60 and 90 days against agreed targets","Share of closed deals with a recorded loss reason and alternative","Seller and partner certification on each tier one launch"]],
+["s","Shares with sales","joint","var(--s2)","#fff",2,["Overall win rate and sales cycle length","No-decision rate","Expansion from Business to Designer and Expert Pack","Partner-sourced pipeline"]],
+["i","Influences","indirect","var(--s4)","#0b0b0b",1.5,["Pipeline from campaigns, through message choice and segment lists","Demo to opportunity conversion","Web shop conversion, through pricing page and packaging clarity","Retention, through what customers expect when they buy"]]];
+var tk="";
+function wrap(t,n){var w=t.split(" "),L=[],c="";w.forEach(function(x){if((c+" "+x).trim().length>n){L.push(c);c=x}else c=(c+" "+x).trim()});L.push(c);return L}
+function tree(){var h=clr("wr-tree"),W=Math.max(290,h.clientWidth||900),nar=W<700,svg,G=[];
+ if(!nar){var lh=30,gg=18,top=6,H=top+12*lh+2*gg+6,rx=0,rw=170,bx=240,bw=180,lx=bx+bw+70;
+  svg=VZ.svg(h,W,H,"Metric tree: product marketing owns four metrics, shares four with sales and influences four.");svg.setAttribute("role","group");
+  var ry=H/2;
+  TB.forEach(function(b,bi){var g=VZ.el("g",{"data-b":b[0]},svg);G.push(g);var y0=top+bi*(4*lh+gg),by=y0+2*lh;
+   VZ.el("path",{"class":"lk",d:"M"+(rx+rw)+","+ry+"C"+(rx+rw+40)+","+ry+" "+(bx-40)+","+by+" "+bx+","+by,stroke:b[3],"stroke-width":b[5]},g);
+   b[6].forEach(function(l,li){var ly=y0+li*lh+lh/2;VZ.el("path",{"class":"lk",d:"M"+(bx+bw)+","+by+"C"+(bx+bw+40)+","+by+" "+(lx-40)+","+ly+" "+(lx-8)+","+ly,stroke:b[3],"stroke-width":b[5]},g);
+    var lg=VZ.el("g",{role:"img","aria-label":b[1]+": "+l},g);VZ.el("circle",{cx:lx-4,cy:ly,r:4.5,fill:b[3],stroke:"var(--ring)","stroke-width":2},lg);VZ.el("rect",{x:lx-10,y:ly-lh/2,width:W-lx+10,height:lh,fill:"transparent"},lg);
+    var t=VZ.el("text",{x:lx+8,y:ly+4.5,style:"font-size:13.5px;fill:var(--ink1)"},lg);t.textContent=l;VZ.tip(lg,function(){return '<b>'+b[1]+'</b>'+l+'<br><span class="m">'+(b[0]==="o"?"Product marketing is accountable for this number.":b[0]==="s"?"Product marketing and sales report it together.":"Product marketing moves it indirectly, so it is not claimed alone.")+'</span>'})});
+   VZ.el("rect",{"class":"nb",x:bx,y:by-24,width:bw,height:48,rx:4,fill:b[3]},g);var t1=VZ.el("text",{x:bx+bw/2,y:by-3,"text-anchor":"middle",style:"font-size:14px;font-weight:600;fill:"+b[4]},g);t1.textContent=b[1];var t2=VZ.el("text",{x:bx+bw/2,y:by+15,"text-anchor":"middle",style:"font-size:12px;fill:"+b[4]},g);t2.textContent=b[2]});
+  VZ.el("rect",{x:rx,y:ry-34,width:rw,height:68,rx:4,fill:"var(--panel)",stroke:"var(--ink3)"},svg);var r1=VZ.el("text",{x:rx+rw/2,y:ry-4,"text-anchor":"middle","class":"t-strong"},svg);r1.textContent="Product marketing";var r2=VZ.el("text",{x:rx+rw/2,y:ry+14,"text-anchor":"middle"},svg);r2.textContent="metrics";}
+ else{var per=Math.floor((W-40)/7.2),rows=[];var y=70;TB.forEach(function(b){var it={b:b,y:y,leaves:[]};y+=58;b[6].forEach(function(l){var L=wrap(l,per);it.leaves.push({L:L,y:y});y+=L.length*17+12});y+=10;rows.push(it)});
+  svg=VZ.svg(h,W,y,"Metric tree: product marketing owns four metrics, shares four with sales and influences four.");svg.setAttribute("role","group");
+  VZ.el("rect",{x:0,y:0,width:W,height:44,rx:4,fill:"var(--panel)",stroke:"var(--ink3)"},svg);var rt=VZ.el("text",{x:W/2,y:27,"text-anchor":"middle","class":"t-strong"},svg);rt.textContent="Product marketing metrics";
+  rows.forEach(function(it,ri){var b=it.b,g=VZ.el("g",{"data-b":b[0]},svg);G.push(g);
+   VZ.el("path",{d:"M10,44V"+(it.y+20)+"H18",fill:"none",stroke:"var(--ink3)","stroke-width":1.5},g);
+   VZ.el("rect",{"class":"nb",x:18,y:it.y,width:W-18,height:40,rx:4,fill:b[3]},g);var t=VZ.el("text",{x:30,y:it.y+25,style:"font-size:14px;font-weight:600;fill:"+b[4]},g);t.textContent=b[1]+" · "+b[2];
+   it.leaves.forEach(function(lf){VZ.el("path",{"class":"lk",d:"M30,"+(it.y+40)+"V"+(lf.y+8)+"H40",stroke:b[3],"stroke-width":b[5]},g);VZ.el("circle",{cx:44,cy:lf.y+8,r:4.5,fill:b[3],stroke:"var(--ring)","stroke-width":2},g);
+    lf.L.forEach(function(ln,k){var tx=VZ.el("text",{x:56,y:lf.y+12+k*17,style:"font-size:13px;fill:var(--ink1)"},g);tx.textContent=ln})})});}
+ G.forEach(function(g){g.classList.toggle("dim",!!tk&&g.dataset.b!==tk)});
+}
+[].forEach.call($("wr-tb").querySelectorAll("button"),function(b){b.addEventListener("click",function(){tk=b.dataset.b;[].forEach.call($("wr-tb").querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x===b)});tree()})});
 
 /* attribution */
 var A=[["Set the baseline first","Record two quarters of win rate by segment and alternative before changing positioning, or use the previous year where the data exists.",'<div class="wr-mini"><div><b>Q1</b>Baseline</div><div><b>Q2</b>Baseline</div><div class="t"><b>Q3</b>Change</div></div>'],
@@ -274,8 +292,8 @@ $("wr-flow").innerHTML=A.map(function(a,i){return '<button type="button" aria-pr
 function fl(i){[].forEach.call($("wr-flow").querySelectorAll("button"),function(b,j){b.setAttribute("aria-pressed",i===j)});$("wr-fd").innerHTML='<p><b>Step '+(i+1)+'.</b> '+A[i][1]+'</p>'+A[i][2]}
 [].forEach.call($("wr-flow").querySelectorAll("button"),function(b,i){b.addEventListener("click",function(){fl(i)})});fl(0);
 
-var lw=innerWidth,rt;addEventListener("resize",function(){if(innerWidth===lw)return;lw=innerWidth;clearTimeout(rt);rt=setTimeout(go,150)});
-go();
+var lw=innerWidth,rt;addEventListener("resize",function(){if(innerWidth===lw)return;lw=innerWidth;clearTimeout(rt);rt=setTimeout(function(){go();tree()},150)});
+go();tree();
 })();
 </script>
 

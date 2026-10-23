@@ -1,97 +1,91 @@
 <!--meta title="Positioning" desc="A reading of One Click LCA's current positioning, segment message houses, a product rule for One Click LCA and SimaPro, and a test plan."-->
 <style>
-#ps .ps-tl-d{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:16px}
-#ps .ps-tl-d .q{font-size:19px;line-height:1.4;letter-spacing:-.01em}
 #ps .ps-lane{cursor:pointer;outline:none}
 #ps .ps-lane:focus-visible rect.m,#ps .ps-lane.sel rect.m{stroke:var(--ink1);stroke-width:2}
 #ps .ps-lane text{pointer-events:none}
 #ps .ps-ev{outline:none}
-#ps .ps-ev:focus-visible circle{stroke:var(--ink1)}
-#ps .ps-stmt{font-size:clamp(17px,1.8vw,21px);line-height:1.6;max-width:880px;margin-top:20px}
-#ps .ps-stmt span{border-bottom:3px solid transparent;transition:background .3s,border-color .3s;padding:1px 0}
-#ps .ps-stmt span.on{border-color:var(--c)}
-#ps .ps-stmt span.on{background:color-mix(in srgb,var(--c) 14%,transparent)}
-#ps .ps-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-#ps .ps-chips button{appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:3px;padding:7px 12px;font:500 13px/1 var(--sans);cursor:pointer;display:inline-flex;align-items:center;gap:7px}
-#ps .ps-chips button i{width:12px;height:4px;border-radius:2px;display:inline-block}
-#ps .ps-chips button[aria-pressed="false"]{opacity:.45}
+#ps .ps-ev:focus-visible circle{stroke:var(--accent);stroke-width:3}
+#ps .ps-evk{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px 18px;font-size:13px;color:var(--ink2)}
+#ps .ps-evk li{display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:start}
+#ps .ps-evk .n{width:20px;height:20px;border-radius:50%;background:var(--ink2);color:var(--chart-bg);font:600 12px/20px var(--sans);text-align:center}
+#ps .ps-evk b{color:var(--ink);font-weight:600}
+#ps .ps-evk .src{display:block;margin-top:2px}
+#ps .ps-arcd{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;margin-top:16px;background:var(--panel);border-radius:6px;padding:16px 20px;border-left:4px solid var(--s1)}
+#ps .ps-arcd .q{font-size:18px;line-height:1.4;letter-spacing:-.01em;margin-top:6px}
+#ps .ps-arcd p.r{font-size:14px;color:var(--ink2)}
+#ps .ps-flow{display:grid;grid-template-columns:1fr 26px 1fr 26px 1.15fr 26px 1fr;margin-top:18px;align-items:stretch}
+#ps .ps-flow .ar{display:grid;place-items:center;color:var(--ink3)}
+#ps .ps-node{background:var(--panel);border-radius:6px;padding:16px 16px 18px;border-top:5px solid var(--c);transition:opacity .3s}
+#ps .ps-node.off{opacity:.4;border-top-color:var(--grid)}
+#ps .ps-node .k{font:500 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--ink2)}
+#ps .ps-node h3{font-size:18px;margin:6px 0 6px}
+#ps .ps-node p{font-size:13.5px;color:var(--ink2)}
+#ps .ps-ic{display:grid;gap:6px;margin-top:10px}
+#ps .ps-ic span{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--ink)}
+#ps .ps-ic svg{width:22px;height:22px;flex:none;padding:3px;border-radius:4px;background:var(--bg);stroke:var(--ink2);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#ps .ps-pf{display:grid;gap:6px;margin-top:10px}
+#ps .ps-pf div{display:grid;grid-template-columns:84px 1fr;gap:8px;align-items:baseline;font-size:13px;color:var(--ink2)}
+#ps .ps-pf b{font:600 20px/1 var(--sans);color:var(--ink);letter-spacing:-.02em}
 #ps .ps-house{margin-top:22px}
-#ps .ps-roof{background:var(--accent);color:var(--on-accent);clip-path:polygon(50% 0,100% 62%,100% 100%,0 100%,0 62%);padding:86px 40px 22px;text-align:center}
-#ps .ps-roof span{display:block;font:500 11.5px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;opacity:.85}
+#ps .ps-roof{background:var(--accent);color:var(--on-accent);clip-path:polygon(50% 0,100% 62%,100% 100%,0 100%,0 62%);padding:80px 40px 20px;text-align:center}
+#ps .ps-roof span{display:block;font:500 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;opacity:.85}
 #ps .ps-roof h3{font-size:clamp(20px,2.4vw,28px);margin-top:6px;letter-spacing:-.02em}
 #ps .ps-pil{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 18px 0}
-#ps .ps-pil div{background:var(--panel);border-radius:0 0 4px 4px;padding:18px 18px 22px;border-top:4px solid var(--accent);font-size:14px;color:var(--ink2);animation:psin .45s ease both}
+#ps .ps-pil div{background:var(--panel);border-radius:0 0 4px 4px;padding:16px 18px 20px;border-top:4px solid var(--accent);font-size:14px;color:var(--ink2);animation:psin .45s ease both;display:grid;grid-template-columns:auto 1fr auto;gap:4px 12px;align-items:start;min-height:118px}
 #ps .ps-pil div:nth-child(2){animation-delay:.07s}#ps .ps-pil div:nth-child(3){animation-delay:.14s}
-#ps .ps-pil b{display:block;color:var(--ink);font-weight:600;font-size:15px;margin-bottom:4px}
-#ps .ps-found{margin-top:10px;background:var(--ink);color:var(--bg);border-radius:4px;padding:14px 20px;display:flex;flex-wrap:wrap;gap:6px 22px;justify-content:center;font-size:13.5px}
+#ps .ps-pil .icon{margin:0;grid-row:1/3}
+#ps .ps-pil b{color:var(--ink);font-weight:600;font-size:15px}
+#ps .ps-pil em{font-style:normal;grid-row:1/3;grid-column:3;text-align:right;font:600 22px/1 var(--sans);color:var(--ink);letter-spacing:-.02em}
+#ps .ps-pil em small{display:block;font:400 12px/1.3 var(--sans);color:var(--ink2);margin-top:4px;max-width:90px}
+#ps .ps-pil p{grid-column:2/3}
+#ps .ps-found{margin-top:10px;background:var(--accent-soft);color:var(--ink);border-radius:4px;padding:14px 20px;display:flex;flex-wrap:wrap;gap:6px 22px;justify-content:center;font-size:13.5px;transition:box-shadow .3s}
 #ps .ps-found b{font-weight:600}
+#ps .ps-found.hl{box-shadow:0 0 0 3px var(--s3)}
 #ps .ps-beats{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px;font-size:14px}
-#ps .ps-beats .tag{font-size:13px}
 @keyframes psin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-#ps .ps-dt{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:20px;margin-top:28px;align-items:start}
-#ps .ps-q h3{font-size:20px;margin:6px 0 14px}
+#ps .ps-dt{display:grid;grid-template-columns:330px minmax(0,1fr);gap:20px;margin-top:24px;align-items:start}
+#ps .ps-q h3{font-size:19px;margin:6px 0 14px}
 #ps .ps-q .opts{display:grid;gap:8px}
-#ps .ps-q .opts button{appearance:none;text-align:left;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:5px;padding:12px 14px;font:400 14.5px/1.35 var(--sans);cursor:pointer;display:flex;gap:10px;align-items:center}
-#ps .ps-q .opts button:hover{border-color:var(--accent)}
-#ps .ps-q .opts button::after{content:"→";margin-left:auto;color:var(--ink3)}
+#ps .ps-q .opts button{appearance:none;text-align:left;border:0;border-left:3px solid var(--accent);background:var(--panel);color:var(--ink);border-radius:3px;padding:11px 12px;font:500 14px/1.35 var(--sans);cursor:pointer;display:flex;gap:10px;align-items:center}
+#ps .ps-q .opts button:hover{background:var(--accent-soft)}
+#ps .ps-q .opts button::after{content:"→";margin-left:auto;color:var(--ink2)}
 #ps .ps-trail{list-style:none;padding:0;margin:0 0 14px;font-size:13px;color:var(--ink2)}
-#ps .ps-trail li{padding:4px 0 4px 16px;border-left:2px solid var(--accent);margin-left:4px}
-#ps .ps-res{background:var(--accent);color:var(--on-accent);border-radius:6px;padding:18px 20px;animation:psin .4s ease both}
-#ps .ps-res span{font:500 11.5px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;opacity:.85}
-#ps .ps-res b{display:block;font:600 24px/1.2 var(--sans);letter-spacing:-.02em;margin:4px 0 6px}
-#ps .ps-again{appearance:none;margin-top:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:3px;padding:8px 12px;font:500 13px/1 var(--sans);cursor:pointer}
+#ps .ps-trail li{padding:4px 0 4px 14px;border-left:2px solid var(--accent);margin-left:4px}
+#ps .ps-res{background:var(--panel);border-radius:6px;padding:16px 18px 16px 26px;position:relative;animation:psin .4s ease both;font-size:14px}
+#ps .ps-res::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;border-radius:6px 0 0 6px;background:var(--pc)}
+#ps .ps-res span{font:500 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--ink2)}
+#ps .ps-res b{display:block;font:600 22px/1.2 var(--sans);letter-spacing:-.02em;margin:4px 0 6px}
+#ps .ps-tsvg .nd rect{fill:var(--panel);stroke:var(--line);stroke-width:1}
+#ps .ps-tsvg .nd.on rect{fill:var(--accent-soft);stroke:var(--ink1);stroke-width:2}
+#ps .ps-tsvg .nd text{font-size:13px;fill:var(--ink1);font-weight:600}
+#ps .ps-tsvg .lf{cursor:pointer;outline:none}
+#ps .ps-tsvg .lf:focus-visible rect{stroke:var(--accent);stroke-width:3}
+#ps .ps-tsvg .eg{fill:none;stroke:var(--axis);stroke-width:1.5;transition:stroke .3s}
+#ps .ps-tsvg .eg.on{stroke:var(--ink1);stroke-width:2.5}
+#ps .ps-tsvg .el{font-size:12px;fill:var(--ink2);paint-order:stroke;stroke:var(--chart-bg);stroke-width:4px;stroke-linejoin:round}
+#ps .ps-tsvg .el.on{fill:var(--ink1);font-weight:600}
 #ps .ps-tree,#ps .ps-tree ul{list-style:none;margin:0;padding:0}
 #ps .ps-tree ul{margin-left:12px;padding-left:16px;border-left:1px solid var(--line)}
-#ps .ps-tree li{position:relative;padding:5px 0}
-#ps .ps-tree ul>li::before{content:"";position:absolute;left:-16px;top:17px;width:12px;border-top:1px solid var(--line)}
-#ps .ps-tree .nd{display:inline-block;font-size:13px;padding:4px 9px;border-radius:4px;color:var(--ink2);transition:background .3s,color .3s}
+#ps .ps-tree li{position:relative;padding:3px 0}
+#ps .ps-tree ul>li::before{content:"";position:absolute;left:-16px;top:15px;width:12px;border-top:1px solid var(--line)}
+#ps .ps-tree .nd{display:inline-block;font-size:13px;padding:4px 9px;border-radius:3px;color:var(--ink2)}
 #ps .ps-tree .nd.qn{font-weight:600;color:var(--ink)}
-#ps .ps-tree .nd.lf{background:var(--panel);color:var(--ink);font-weight:600}
-#ps .ps-tree .nd.on{background:var(--accent-soft);color:var(--ink)}
-#ps .ps-tree .nd.lf.on{background:var(--accent);color:var(--on-accent)}
-#ps .ps-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:28px;position:relative}
-#ps .ps-steps button{appearance:none;text-align:left;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:6px;padding:16px;font:inherit;cursor:pointer;position:relative}
-#ps .ps-steps button[aria-selected="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--accent-soft)}
-#ps .ps-steps .n{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--on-accent);font:600 13px/1 var(--sans);margin-bottom:10px}
-#ps .ps-steps b{display:block;font-size:14.5px;font-weight:600;line-height:1.3}
-#ps .ps-steps button:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:22px;color:var(--ink3);font-size:14px;background:var(--bg);line-height:1}
-#ps .ps-sp{margin-top:12px;animation:psin .35s ease both}
-#ps .ps-ab{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center}
-#ps .ps-ab div{background:var(--panel);border-radius:6px;padding:16px;font-size:17px;font-weight:500;text-align:center}
-#ps .ps-ab i{font-style:normal;color:var(--ink2);font-size:13px}
-@media (max-width:900px){#ps .ps-dt,#ps .ps-tl-d{grid-template-columns:1fr}#ps .ps-steps{grid-template-columns:1fr 1fr}#ps .ps-steps button::after{display:none}}
-@media (max-width:640px){#ps .ps-pil{grid-template-columns:1fr;margin:10px 0 0}#ps .ps-roof{padding:56px 18px 18px;clip-path:polygon(50% 0,100% 45%,100% 100%,0 100%,0 45%)}#ps .ps-ab{grid-template-columns:1fr}}
-#ps .ps-arc{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:28px;align-items:start}
-#ps .ps-arcd{background:var(--panel);border-radius:6px;padding:18px 20px;border-left:4px solid var(--s1)}
-#ps .ps-arcd .q{font-size:18px;line-height:1.4;letter-spacing:-.01em;margin-top:8px}
-#ps .ps-arcd p.r{font-size:14px;color:var(--ink2);margin-top:10px}
-#ps .ps-evk{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;font-size:13px;color:var(--ink2)}
-#ps .ps-evk li{display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:start}
-#ps .ps-evk .n{width:20px;height:20px;border-radius:50%;background:var(--ink1);color:var(--chart-bg);font:600 12px/20px var(--sans);text-align:center}
-#ps .ps-evk b{color:var(--ink);font-weight:600}
-#ps .ps-st{margin-top:20px;border:1px solid var(--line);border-radius:6px;overflow:hidden}
-#ps .ps-st>div{display:grid;grid-template-columns:180px minmax(0,1fr);gap:16px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);border-left:5px solid var(--c);transition:opacity .3s,background .3s}
-#ps .ps-st>div:last-child{border-bottom:0}
-#ps .ps-st>div.off{opacity:.38;border-left-color:var(--grid)}
-#ps .ps-st>div.on{background:color-mix(in srgb,var(--c) 8%,transparent)}
-#ps .ps-st .k{font:500 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--ink2)}
-#ps .ps-st p{font-size:16.5px;line-height:1.4}
-#ps .ps-st .pf{display:flex;flex-wrap:wrap;gap:6px}
-#ps .ps-st .pf span{background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:4px 10px;font-size:14.5px}
-#ps .ps-found.hl{box-shadow:0 0 0 3px var(--s3)}
+#ps .ps-tree .nd.lf{background:var(--panel);color:var(--ink);font-weight:600;cursor:pointer;border:2px solid transparent}
 #ps .ps-tree .nd.lf::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--pc);margin-right:7px;vertical-align:-1px}
-#ps .ps-tree .nd.lf{cursor:pointer;border:2px solid transparent}
-#ps .ps-tree .nd.lf.on{background:var(--accent-soft);color:var(--ink);border-color:var(--ink1)}
-#ps .ps-res{background:var(--panel)!important;color:var(--ink)!important;position:relative;padding-left:28px!important}#ps .ps-res::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;border-radius:6px 0 0 6px;background:var(--pc)}
-#ps .ps-res span{color:var(--ink2)}
-#ps .ps-prods{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
-#ps .ps-prods button{appearance:none;text-align:left;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:6px;padding:12px 14px;font:400 13px/1.35 var(--sans);cursor:pointer;color:var(--ink2)}
-#ps .ps-prods button b{display:flex;align-items:center;gap:8px;color:var(--ink);font-size:14px;font-weight:600;margin-bottom:4px}
-#ps .ps-prods button b i{width:12px;height:12px;border-radius:50%;background:var(--pc);flex:none}
-#ps .ps-prods button[aria-pressed="true"]{border-color:var(--ink1);box-shadow:inset 0 0 0 1px var(--ink1)}
-#ps .ps-tree li{padding:3px 0}
-@media (max-width:900px){#ps .ps-arc{grid-template-columns:1fr}}
-@media (max-width:640px){#ps .ps-st>div{grid-template-columns:1fr;gap:4px}#ps .ps-evk{grid-template-columns:1fr}}
+#ps .ps-tree .nd.on{background:var(--accent-soft);color:var(--ink)}
+#ps .ps-tree .nd.lf.on{border-color:var(--ink1)}
+#ps .ps-tgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+#ps .ps-cell{background:var(--chart-bg);border:1px solid var(--line);border-radius:6px;padding:12px 12px 8px;transition:box-shadow .3s,border-color .3s}
+#ps .ps-cell.on{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+#ps .ps-cell h4{font:600 13px/1.3 var(--sans);margin:0 0 6px;color:var(--ink)}
+#ps .ps-cell h4 span{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--accent);color:var(--on-accent);font-size:12px;margin-right:6px}
+#ps .ps-cell svg{display:block;width:100%;height:auto}
+#ps .ps-cell svg text{font-family:var(--sans);font-size:12px;fill:var(--ink2)}
+#ps .ps-cell svg .t-strong{fill:var(--ink1);font-weight:600}
+#ps .ps-cap{margin-top:12px;font-size:14.5px;color:var(--ink2);min-height:22px}
+@media (max-width:980px){#ps .ps-flow{grid-template-columns:1fr 1fr;gap:10px}#ps .ps-flow .ar{display:none}#ps .ps-tgrid{grid-template-columns:1fr 1fr}#ps .ps-evk{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){#ps .ps-dt{grid-template-columns:1fr}}
+@media (max-width:640px){#ps .ps-pil{grid-template-columns:1fr;margin:10px 0 0}#ps .ps-roof{padding:56px 18px 18px;clip-path:polygon(50% 0,100% 45%,100% 100%,0 100%,0 45%)}#ps .ps-flow,#ps .ps-tgrid,#ps .ps-evk,#ps .ps-arcd{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){#ps *{animation:none!important;transition:none!important}}
 </style>
 <div id="ps">
@@ -104,8 +98,10 @@
 
 <section class="sec" style="margin-top:36px">
   <div class="viz" style="margin-top:0">
-    <div class="viz-h"><h3>The positioning arc, 2023 to 2026</h3><p>Click a claim to read it</p></div>
-    <div class="ps-arc"><div><div id="arc"></div><ol class="ps-evk" id="evk"></ol></div><div class="ps-arcd" id="arcd" aria-live="polite"></div></div>
+    <div class="viz-h"><h3>The positioning arc, 2023 to 2026</h3><p>Click a claim to read it; hover a numbered event</p></div>
+    <div id="arc"></div>
+    <ol class="ps-evk" id="evk"></ol>
+    <div class="ps-arcd" id="arcd" aria-live="polite"></div>
   </div>
   <div class="callout"><p><b>Reading.</b> The platform story suits investors and enterprise buyers; other buyers need their own reason. The site tells manufacturers "Win more bids with EPDs", yet product pages address the sustainability manager.</p></div>
 </section>
@@ -113,14 +109,23 @@
 <section class="sec">
   <span class="eyebrow">Positioning statement</span>
   <h2>A statement the whole company can use</h2>
-  <div class="ps-chips" id="chips" role="group" aria-label="Highlight parts of the statement"></div>
-  <div class="ps-st" id="stmt">
-    <div data-k="0"><span class="k">Buyer</span><p>Design, construction and manufacturing firms that have to prove the carbon of their buildings and products</p></div>
-    <div data-k="1"><span class="k">Category and job</span><p>The LCA platform that turns each market's rules into a finished, verifiable result in the least time</p></div>
-    <div data-k="2"><span class="k">Three proofs</span><p class="pf"><span>The largest construction LCA database</span><span>More than a hundred standards in one model</span><span>EPDs automated from data to publication</span></p></div>
-    <div data-k="3"><span class="k">Outcome</span><p>Permits, certifications, bids and specifications won in every country they work in</p></div>
+  <div class="legend" id="chips" role="group" aria-label="Highlight parts of the statement" style="margin-top:20px"></div>
+  <div class="ps-flow" id="stmt">
+    <div class="ps-node" data-k="0"><span class="k">For the buyer</span><h3>Firms that must prove carbon</h3>
+      <div class="ps-ic"><span><svg viewBox="0 0 24 24"><path d="M4 20h16M6 20V9l6-5 6 5v11"/></svg>Design firms</span><span><svg viewBox="0 0 24 24"><path d="M3 20h18M6 20V10h5v10M13 20V5h5v15"/></svg>Construction firms</span><span><svg viewBox="0 0 24 24"><path d="M3 20V10l5 3V10l5 3V6h8v14z"/></svg>Manufacturers</span></div>
+      <p style="margin-top:10px">of their buildings and products</p></div>
+    <div class="ar" aria-hidden="true">→</div>
+    <div class="ps-node" data-k="1"><span class="k">One Click LCA is</span><h3>The LCA platform</h3>
+      <div class="ps-ic"><span><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5zM9 9h6M9 13h6M9 17h3"/></svg>Each market's rules in</span><span><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>Finished, verifiable result out</span><span><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M12 13V9M10 3h4"/></svg>In the least time</span></div></div>
+    <div class="ar" aria-hidden="true">→</div>
+    <div class="ps-node" data-k="2"><span class="k">Proved by</span><h3>Three proofs</h3>
+      <div class="ps-pf"><div><b>Largest</b>construction LCA database</div><div><b>100+</b>standards in one model</div><div><b>EPD</b>automation from data to publication</div></div></div>
+    <div class="ar" aria-hidden="true">→</div>
+    <div class="ps-node" data-k="3"><span class="k">So firms win</span><h3>Four outcomes</h3>
+      <div class="ps-ic"><span><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6zM9 12l2 2 4-4"/></svg>Permits</span><span><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M9 13.5L8 21l4-2 4 2-1-7.5"/></svg>Certifications</span><span><svg viewBox="0 0 24 24"><path d="M4 7h16v12H4zM9 7V4h6v3"/></svg>Bids</span><span><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Specifications</span></div>
+      <p style="margin-top:10px">in every country they work in</p></div>
   </div>
-  <p class="mini" style="margin-top:10px">The three proofs are also the foundation of every message house below.</p>
+  <details class="more"><summary>The statement as one sentence</summary><p style="margin-top:8px;max-width:80ch">For design, construction and manufacturing firms that have to prove the carbon of their buildings and products, One Click LCA is the LCA platform that turns each market's rules into a finished, verifiable result in the least time. It holds the largest construction LCA database, covers more than a hundred standards in one model and automates EPDs from data to publication. Firms use it to win permits, certifications, bids and specifications in every country they work in.</p></details>
 </section>
 
 <section class="sec">
@@ -133,20 +138,20 @@
 <section class="sec">
   <span class="eyebrow">Two brands</span>
   <h2>Which product leads on a first call</h2>
-  <p class="intro">The CEO frames the two brands as speed against depth. Answer the questions as the buyer would to see which one the seller leads with.</p>
   <div class="ps-dt">
-    <div><div class="result ps-q" id="quiz" aria-live="polite"></div>
-    <div class="ps-prods" id="prods" role="group" aria-label="Jump to a product"></div></div>
-    <div class="viz" style="margin-top:0"><div class="viz-h"><h3>The whole rule</h3><p>Click a product to see its route</p></div><ul class="ps-tree" id="tree"></ul></div>
+    <div class="result ps-q" id="quiz" aria-live="polite"></div>
+    <div class="viz" style="margin-top:0"><div class="viz-h"><h3>The whole rule</h3><p>Click a product to see its route</p></div><div id="tree"></div></div>
   </div>
+  <p class="src" style="margin-top:10px">The CEO frames the two brands as depth with SimaPro and speed with One Click LCA (Climate Solutions News, 15 Jun 2026).</p>
 </section>
 
 <section class="sec">
   <span class="eyebrow">Testing</span>
   <h2>How I would test a message before changing the site</h2>
-  <div class="ps-steps" role="tablist" aria-label="Test steps" id="tsteps"></div>
-  <div class="viz" id="tpanel" role="tabpanel" style="margin-top:12px"></div>
-  <div class="btnrow"><button type="button" id="play" aria-pressed="false">Play the four steps</button></div>
+  <div class="tabs" role="tablist" aria-label="Test steps" id="tsteps"></div>
+  <div class="ps-tgrid" id="tgrid" role="tabpanel" aria-labelledby="ts0"></div>
+  <p class="ps-cap" id="tcap" aria-live="polite"></p>
+  <div class="btnrow" style="margin-top:8px"><button type="button" id="play" aria-pressed="false">Play the four steps</button></div>
 </section>
 
 <section class="sources"><details class="more" style="margin-top:0"><summary>Sources</summary><ul>
@@ -160,103 +165,145 @@
 <script>
 (function(){
 function $(id){return document.getElementById(id)}
+function txt(p,x,y,t,attrs){var e=VZ.el("text",Object.assign({x:x,y:y},attrs||{}),p);e.textContent=t;return e}
 /* ---------- arc ---------- */
 var L=[["Category leader",2023,2025,"“The world's number one construction LCA and EPD software.”","2023 to 2024","The claim rests on database size and compliance coverage, aimed at sustainability practitioners."],
 ["Automation and compliance as growth",2025,2026,"“AI-powered end-to-end sustainability platform.”","2025","The October 2025 launch framed regulation as a growth opportunity: “Compliance is no longer optional.”"],
 ["The largest LCA platform",2025+8/12,2026+10/12,"“The world's largest LCA platform, delivering impact, compliance, and growth.”","Since September 2025","SimaPro widens the story from construction to every industry. This is the claim in use today."]];
-var E=[[2025+8/12+1/365,"2 Sep 2025","SimaPro and PRé join the group"],[2025+9/12+15/365,"16 Oct 2025","2026 compliance tools launch: “Compliance is no longer optional.”"],[2026+5/12+14/365,"15 Jun 2026","CEO interview frames the two brands as depth with SimaPro and speed with One Click LCA"],[2026+9/12+22/365,"23 Oct 2026","Homepage reads “Do more LCAs and EPDs, faster”; the manufacturer page says “Win more bids with EPDs”"]];
+var E=[[2025+8/12+1/365,"2 Sep 2025","SimaPro and PRé join the group","Press release, 2 Sep 2025"],[2025+9/12+15/365,"16 Oct 2025","2026 compliance tools launch: “Compliance is no longer optional.”","Launch press release, 16 Oct 2025"],[2026+5/12+14/365,"15 Jun 2026","CEO interview frames the brands as depth with SimaPro and speed with One Click LCA","Climate Solutions News, 15 Jun 2026"],[2026+9/12+22/365,"23 Oct 2026","Homepage reads “Do more LCAs and EPDs, faster”","oneclicklca.com, read 23 Oct 2026"]];
 var selL=2,ahost=$("arc"),lanes=[];
-$("evk").innerHTML=E.map(function(e,i){return '<li><span class="n">'+(i+1)+'</span><span><b>'+e[1]+'</b> '+e[2]+'</span></li>'}).join("");
-function arc(){if(VZ.hideTip)VZ.hideTip();ahost.innerHTML="";lanes=[];var w=Math.max(280,ahost.clientWidth),m=w<520,lw=m?0:200,lh=26,rowH=m?lh+26:lh+10,top=24,y0=top+(m?18:4);
- var X=VZ.lin(2023,2027,lw+4,w-12),evY=y0+L.length*rowH+12,ys=[],h;
- E.forEach(function(e,i){var y=evY;if(i&&X(e[0])-X(E[i-1][0])<24&&ys[i-1]===evY)y=evY+24;ys.push(y)});h=Math.max.apply(null,ys)+16;
+$("evk").innerHTML=E.map(function(e,i){return '<li><span class="n">'+(i+1)+'</span><span><b>'+e[1]+'</b> '+e[2]+'<span class="src">'+e[3]+'</span></span></li>'}).join("");
+function arc(){if(VZ.hideTip)VZ.hideTip();ahost.innerHTML="";lanes=[];var w=Math.max(280,ahost.clientWidth),m=w<560,lw=m?0:270,lh=m?30:38,rowH=m?lh+26:lh+14,top=26,y0=top+(m?20:6);
+ var X=VZ.lin(2023,2027,lw+4,w-14),evY=y0+L.length*rowH+20,h=evY+22;
  var s=VZ.svg(ahost,w,h,"Timeline of One Click LCA headline claims. Category leader ran from 2023 to 2024. Automation and compliance as growth ran through 2025. The largest LCA platform has run since September 2025. Four numbered events are listed below the chart.");s.setAttribute("role","group");
- for(var y=2023;y<=2027;y++){VZ.el("line",{x1:X(y),x2:X(y),y1:top-4,y2:evY,class:"grid"},s);if(y<2027)VZ.el("text",{x:X(y+.5),y:14,"text-anchor":"middle",class:"t-strong"},s).textContent=y}
- L.forEach(function(d,i){var y=y0+i*rowH+(m?18:0),g=VZ.el("g",{class:"ps-lane"+(i===selL?" sel":""),role:"button","aria-label":d[0]+", "+d[4],"aria-pressed":i===selL?"true":"false"},s),x0=X(d[1]),x1=X(d[2]);
-  VZ.el("rect",{x:m?x0:0,y:m?y-20:y,width:m?w-x0:x1,height:m?lh+20:lh,fill:"transparent"},g);
+ for(var y=2023;y<=2027;y++){VZ.el("line",{x1:X(y),x2:X(y),y1:top-6,y2:evY,class:"grid"},s);if(y<2027){var yt=txt(s,X(y+.5),16,y,{"text-anchor":"middle",class:"t-strong"});yt.style.fontSize="14px"}}
+ VZ.el("line",{x1:lw+4,x2:w-14,y1:evY,y2:evY,class:"axis"},s);
+ L.forEach(function(d,i){var y=y0+i*rowH+(m?20:0),g=VZ.el("g",{class:"ps-lane"+(i===selL?" sel":""),role:"button","aria-label":d[0]+", "+d[4],"aria-pressed":i===selL?"true":"false"},s),x0=X(d[1]),x1=X(d[2]);
+  VZ.el("rect",{x:m?0:0,y:m?y-22:y,width:w,height:m?lh+22:lh,fill:"transparent"},g);
   VZ.el("rect",{class:"m",x:x0,y:y,width:x1-x0,height:lh,rx:4,fill:"var(--s1)"},g);
-  var t=VZ.el("text",{x:m?x0:0,y:m?y-7:y+lh/2+5},g);t.style.fontSize="13px";t.style.fill="var(--ink1)";t.style.fontWeight=i===selL?"700":"500";t.textContent=d[0];
+  var t=txt(g,m?x0:0,m?y-8:y+lh/2+5,d[0]);t.style.fontSize=m?"13px":"15px";t.style.fill="var(--ink1)";t.style.fontWeight=i===selL?"700":"500";
   if(m&&x0+d[0].length*7.2>w){t.setAttribute("x",w-4);t.setAttribute("text-anchor","end")}
+  if(!m){var dt=txt(g,0,y+lh/2+22,d[4]);dt.style.fontSize="12px";dt.style.fill="var(--ink2)";if(d[4].length>30)dt.remove()}
   g.addEventListener("click",function(){selL=i;arc()});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();selL=i;arc();lanes[i].focus()}});
   VZ.tip(g,function(){return "<b>"+d[4]+"</b><span class='m'>"+d[3]+"</span>"});lanes.push(g)});
- if(!m){var et=VZ.el("text",{x:0,y:evY+5},s);et.style.fill="var(--ink2)";et.textContent="Events"}
- E.forEach(function(e,i){var g=VZ.el("g",{class:"ps-ev","aria-label":e[1]+": "+e[2]},s),x=X(e[0]),y=ys[i];
-  VZ.el("line",{x1:x,x2:x,y1:evY-14,y2:y,stroke:"var(--axis)","stroke-width":1},g);VZ.el("circle",{cx:x,cy:y,r:10,fill:"var(--ink1)",stroke:"var(--ring)","stroke-width":2},g);
-  var t=VZ.el("text",{x:x,y:y+4,"text-anchor":"middle"},g);t.style.fill="var(--chart-bg)";t.style.fontWeight="600";t.textContent=i+1;
-  VZ.tip(g,function(){return "<b>"+e[1]+"</b><span class='m'>"+e[2]+"</span>"})});
- var d=L[selL];$("arcd").innerHTML='<span class="eyebrow">'+d[4]+' · '+d[0]+'</span><p class="q">'+d[3]+'</p><p class="r">'+d[5]+'</p>'}
+ if(!m){var et=txt(s,0,evY+5,"Events");et.style.fill="var(--ink2)";et.style.fontSize="13px"}
+ var prev=-1e9;E.forEach(function(e,i){var tx=X(e[0]),x=Math.max(tx,prev+26);prev=x;var g=VZ.el("g",{class:"ps-ev","aria-label":e[1]+": "+e[2]},s);
+  VZ.el("line",{x1:tx,x2:tx,y1:evY-8,y2:evY,stroke:"var(--ink2)","stroke-width":2},g);
+  if(x!==tx)VZ.el("path",{d:"M"+tx+","+evY+" L"+x+","+evY,stroke:"var(--ink2)","stroke-width":1.5,fill:"none"},g);
+  VZ.el("circle",{cx:x,cy:evY,r:11,fill:"var(--ink2)",stroke:"var(--ring)","stroke-width":2},g);
+  var t=txt(g,x,evY+4,i+1,{"text-anchor":"middle"});t.style.fill="var(--chart-bg)";t.style.fontWeight="600";
+  VZ.tip(g,function(){return "<b>"+e[1]+"</b><span class='m'>"+e[2]+"<br>Source: "+e[3]+"</span>"})});
+ var d=L[selL];$("arcd").innerHTML='<div><span class="eyebrow">'+d[4]+' · '+d[0]+'</span><p class="q">'+d[3]+'</p></div><div><p class="r">'+d[5]+'</p></div>'}
 arc();
 
 /* ---------- statement ---------- */
-var K=[["Buyer","var(--s1)"],["Category and job","var(--s2)"],["Three proofs","var(--s3)"],["Outcome","var(--s7)"]],on=[1,1,1,1];
-var spans=[].slice.call(document.querySelectorAll("#stmt>div"));spans.forEach(function(sp){sp.style.setProperty("--c",K[sp.dataset.k][1])});
-K.forEach(function(k,i){var b=document.createElement("button");b.type="button";b.setAttribute("aria-pressed","true");b.innerHTML='<i style="background:'+k[1]+'"></i>'+k[0];b.onclick=function(){on[i]=1-on[i];b.setAttribute("aria-pressed",on[i]?"true":"false");paintS()};$("chips").appendChild(b)});
-function paintS(){var all=on.every(function(x){return x});spans.forEach(function(sp){var o=!!on[sp.dataset.k];sp.classList.toggle("off",!o);sp.classList.toggle("on",o&&!all)});var f=document.querySelector(".ps-found");if(f)f.classList.toggle("hl",!!on[2]&&!all)}paintS();
+var K=[["Buyer","var(--s1)"],["Category and job","var(--s2)"],["Three proofs","var(--s3)"],["Outcome","var(--s4)"]],on=[1,1,1,1];
+var nodes=[].slice.call(document.querySelectorAll("#stmt .ps-node"));nodes.forEach(function(sp){sp.style.setProperty("--c",K[sp.dataset.k][1])});
+K.forEach(function(k,i){var b=document.createElement("button");b.type="button";b.setAttribute("aria-pressed","true");b.innerHTML='<i style="background:'+k[1]+';border-radius:2px"></i>'+k[0];b.onclick=function(){on[i]=1-on[i];b.setAttribute("aria-pressed",on[i]?"true":"false");paintS()};$("chips").appendChild(b)});
+function allOn(){return on.every(function(x){return x})}
+function paintS(){nodes.forEach(function(sp){sp.classList.toggle("off",!on[sp.dataset.k])});var f=document.querySelector(".ps-found");if(f)f.classList.toggle("hl",!!on[2]&&!allOn())}paintS();
 
 /* ---------- message houses ---------- */
-var H=[["Architects","Get to a compliant design early, while changes are cheap",[["Early answers","Carbon Designer 3D compares options before a model exists, with reference buildings for more than twenty regions."],["Your model, your rules","Revit, Archicad and Rhino integrations, and the local compliance path in the same tool."],["Help when it counts","Support that reviewers rate 4.9 of 5."]],["Hiring a consultant for each project","Tally in the US"]],
-["Engineers and consultancies","More assessments per person, in every country you work in",[["One method everywhere","More than a hundred standards and national methods on one project model."],["Data you can defend","The largest construction database, each value traceable to its EPD, with plausibility checks."],["Throughput","AI mapping that matches materials across languages and spellings."]],["National tools per country","Spreadsheets with free data"]],
-["Contractors","Win carbon-scored tenders and deliver what you promised",[["Bid stage","Early design tools fill the gaps when data is missing."],["Procurement","Compare supplier EPDs before committing."],["As built","Report the delivered building against the tender, including site emissions where limits apply."]],["Consultant studies after award","EC3 for procurement only"]],
-["Manufacturers, commercial director","Get specified more often",[["Coverage","EPDs for the whole range at a known cost per EPD, published through the operator each market accepts."],["Visibility","Products appear with real data inside the tool designers use, instead of default values."],["Evidence of return","Usage analytics show where EPDs are used and by whom."]],["Consultant EPDs one product at a time","Ecochain and AI startups"]],
-["Manufacturers, sustainability manager","Verified EPDs in days, without an LCA team",[["Pre-verified method","Lower verification effort through eight programme operators."],["Templates","Sector generators for concrete, luminaires, electronics and HVAC."],["Ready for CPR","EN 15804+A2 throughout, with passports on the roadmap."]],["Spreadsheets and consultants","Sphera for smaller ranges"]],
-["Enterprise","One carbon standard across every office and portfolio",[["Consistency","One method, one database and shared templates across countries."],["Reporting","Portfolio results for CSRD, Taxonomy and client reporting."],["Control","Internal verification, SSO, API and SOC 2 and ISO 27001."]],["Each office choosing its own tool"]]];
+var IC={bolt:'<path d="M13 3L5 14h6l-1 7 8-11h-6z"/>',cube:'<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9zM12 12l8-4.5M12 12v9M12 12L4 7.5"/>',chat:'<path d="M4 5h16v11H9l-5 4z"/>',globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',db:'<ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/>',gauge:'<path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4-5"/>',doc:'<path d="M6 3h9l3 3v15H6zM9 11h6M9 15h6"/>',cmp:'<path d="M4 6h7v12H4zM13 6h7v12h-7"/>',bld:'<path d="M3 20h18M6 20V9h5v11M13 20V5h5v15"/>',lay:'<path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/>',eye:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',chart:'<path d="M4 20V10M10 20V4M16 20v-7M3 20h18"/>',chk:'<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>',grid:'<path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/>',shd:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>'};
+var H=[["Architects","Get to a compliant design early, while changes are cheap",[["Early answers","Carbon Designer 3D compares options before a model exists, with reference buildings for more than twenty regions.","bolt",["20+","regions"]],["Your model, your rules","Revit, Archicad and Rhino integrations, and the local compliance path in the same tool.","cube"],["Help when it counts","Support that reviewers rate 4.9 of 5.","chat",["4.9","of 5 for support"]]],["Hiring a consultant for each project","Tally in the US"]],
+["Engineers and consultancies","More assessments per person, in every country you work in",[["One method everywhere","More than a hundred standards and national methods on one project model.","globe",["100+","standards"]],["Data you can defend","The largest construction database, each value traceable to its EPD, with plausibility checks.","db"],["Throughput","AI mapping that matches materials across languages and spellings.","gauge"]],["National tools per country","Spreadsheets with free data"]],
+["Contractors","Win carbon-scored tenders and deliver what you promised",[["Bid stage","Early design tools fill the gaps when data is missing.","doc"],["Procurement","Compare supplier EPDs before committing.","cmp"],["As built","Report the delivered building against the tender, including site emissions where limits apply.","bld"]],["Consultant studies after award","EC3 for procurement only"]],
+["Manufacturers, commercial director","Get specified more often",[["Coverage","EPDs for the whole range at a known cost per EPD, published through the operator each market accepts.","lay"],["Visibility","Products appear with real data inside the tool designers use, instead of default values.","eye"],["Evidence of return","Usage analytics show where EPDs are used and by whom.","chart"]],["Consultant EPDs one product at a time","Ecochain and AI startups"]],
+["Manufacturers, sustainability manager","Verified EPDs in days, without an LCA team",[["Pre-verified method","Lower verification effort through eight programme operators.","chk",["8","operators"]],["Templates","Sector generators for concrete, luminaires, electronics and HVAC.","grid",["4","sector generators"]],["Ready for CPR","EN 15804+A2 throughout, with passports on the roadmap.","shd"]],["Spreadsheets and consultants","Sphera for smaller ranges"]],
+["Enterprise","One carbon standard across every office and portfolio",[["Consistency","One method, one database and shared templates across countries.","lay"],["Reporting","Portfolio results for CSRD, Taxonomy and client reporting.","chart"],["Control","Internal verification, SSO, API and SOC 2 and ISO 27001.","lock"]],["Each office choosing its own tool"]]];
 var ht=$("htabs");H.forEach(function(h,i){var b=document.createElement("button");b.setAttribute("role","tab");b.id="ht"+i;b.setAttribute("aria-controls","house");b.setAttribute("aria-selected",i===0?"true":"false");b.textContent=h[0];b.dataset.i=i;ht.appendChild(b)});
-function house(i){var h=H[i];$("house").hidden=false;$("house").setAttribute("aria-labelledby","ht"+i);$("house").innerHTML='<div class="ps-house"><div class="ps-roof"><span>Promise to '+h[0].toLowerCase()+'</span><h3>'+h[1]+'</h3></div><div class="ps-pil">'+h[2].map(function(p){return '<div><b>'+p[0]+'</b>'+p[1]+'</div>'}).join("")+'</div><div class="ps-found'+(on[2]&&!on.every(function(x){return x})?" hl":"")+'"><span><b>Foundation:</b> the largest construction LCA database</span><span>More than a hundred standards in one model</span><span>EPD automation from data to publication</span></div><div class="ps-beats"><span class="mini">Beats</span>'+h[3].map(function(x){return '<span class="tag b">'+x+'</span>'}).join("")+'</div></div>'}
+function house(i){var h=H[i],el=$("house");el.hidden=false;el.setAttribute("aria-labelledby","ht"+i);
+ el.innerHTML='<div class="ps-house"><div class="ps-roof"><span>Promise to '+h[0].toLowerCase()+'</span><h3>'+h[1]+'</h3></div><div class="ps-pil">'+h[2].map(function(p){return '<div><span class="icon"><svg viewBox="0 0 24 24">'+IC[p[2]]+'</svg></span><b>'+p[0]+'</b>'+(p[3]?'<em>'+p[3][0]+'<small>'+p[3][1]+'</small></em>':'')+'<p>'+p[1]+'</p></div>'}).join("")+'</div><div class="ps-found'+(on[2]&&!allOn()?" hl":"")+'"><span><b>Foundation:</b> the largest construction LCA database</span><span>More than a hundred standards in one model</span><span>EPD automation from data to publication</span></div><div class="ps-beats"><span class="mini">Beats</span>'+h[3].map(function(x){return '<span class="tag b">'+x+'</span>'}).join("")+'</div></div>'}
 VZ.tabs(ht,function(t){house(+t.dataset.i)});
 
 /* ---------- decision tree ---------- */
 var N={
-q1:{q:"What does the buyer need?",t:"Need?",o:[["Results for a building or infrastructure project against a code or scheme","ocl","Building results against a code"],["EPDs or footprints for products it makes","q2","Footprints for its products"],["Expert models of complex processes, in any sector","sp1","Expert process models"]]},
-q2:{q:"Are they construction products?",t:"Construction products?",o:[["Yes, construction products for markets and specifiers","q3","Yes"],["No: consumer goods, chemicals or pharma","sp2","No: consumer goods, chemicals, pharma"]]},
-q3:{q:"Does it have an LCA expert team and a large product range?",t:"Expert team and large range?",o:[["Yes, an expert team and a large construction range","both","Yes"],["No, it needs EPDs without an LCA team","epd","No"]]},
+q1:{q:"What does the buyer need?",t:["What does the","buyer need?"],o:[["Results for a building or infrastructure project against a code or scheme","ocl","Building results against a code"],["EPDs or footprints for products it makes","q2","Product footprints"],["Expert models of complex processes, in any sector","sp1","Expert process models"]]},
+q2:{q:"Are they construction products?",t:["Construction","products?"],o:[["Yes, construction products for markets and specifiers","q3","Yes"],["No: consumer goods, chemicals or pharma","sp2","No: consumer goods, chemicals, pharma"]]},
+q3:{q:"Does it have an LCA expert team and a large product range?",t:["Expert team and","large range?"],o:[["Yes, an expert team and a large construction range","both","Yes"],["No, it needs EPDs without an LCA team","epd","No"]]},
 ocl:{r:"One Click LCA",c:"var(--s1)",w:"Compliance paths, BIM integration and construction data are built in."},
 epd:{r:"One Click LCA EPD Generator",c:"var(--s1)",w:"Templates, pre-verification and specifier reach."},
 sp1:{r:"SimaPro",c:"var(--s7)",w:"Depth of modelling, scientific control and an established expert community."},
 sp2:{r:"SimaPro",c:"var(--s7)",w:"The expansion the CEO describes runs through SimaPro."},
-both:{r:"Both, as one account",c:"linear-gradient(90deg,var(--s1) 50%,var(--s7) 50%)",w:"Experts model in SimaPro and the range is published through the EPD Generator. One account team prevents two sellers competing."}};
+both:{r:"Both, as one account",c:"var(--s1)",c2:"var(--s7)",w:"Experts model in SimaPro and the range is published through the EPD Generator. One account team prevents two sellers competing."}};
 function route(t,id,pp,aa){id=id||"q1";pp=pp||["q1"];aa=aa||[];if(id===t)return [pp,aa];var n=N[id];if(!n.o)return null;for(var i=0;i<n.o.length;i++){var o=n.o[i],r=route(t,o[1],pp.concat([id+":"+o[1],o[1]]),aa.concat([o[0]]));if(r)return r}return null}
-var path=["q1"],ans=[];
-function tree(){function nd(id,label,cls,c){return '<span class="nd '+cls+(path.indexOf(id)>=0?" on":"")+'"'+(c?' style="--pc:'+c+'" role="button" tabindex="0" data-leaf="'+id+'"':'')+'>'+label+'</span>'}
- function br(id){var n=N[id];if(n.r)return nd(id,n.r,"lf",n.c);return nd(id,n.t,"qn")+'<ul>'+n.o.map(function(o){return '<li>'+nd(id+":"+o[1],o[2],"")+'<ul><li>'+br(o[1])+'</li></ul></li>'}).join("")+'</ul>'}
- var T=$("tree");T.innerHTML='<li>'+br("q1")+'</li>';
- [].forEach.call(T.querySelectorAll("[data-leaf]"),function(el){function go(){var r=route(el.dataset.leaf);path=r[0];ans=r[1];quiz()}el.onclick=go;el.onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}}})}
+var path=["q1"],ans=[],thost=$("tree");
+function goLeaf(k){var r=route(k);path=r[0];ans=r[1];quiz()}
+function outline(){function nd(id,label,cls,c){return '<span class="nd '+cls+(path.indexOf(id)>=0?" on":"")+'"'+(c?' style="--pc:'+c+'" role="button" tabindex="0" data-leaf="'+id+'"':'')+'>'+label+'</span>'}
+ function br(id){var n=N[id];if(n.r)return nd(id,n.r,"lf",n.c);return nd(id,n.t.join(" "),"qn")+'<ul>'+n.o.map(function(o){return '<li>'+nd(id+":"+o[1],o[2],"")+'<ul><li>'+br(o[1])+'</li></ul></li>'}).join("")+'</ul>'}
+ thost.innerHTML='<ul class="ps-tree"><li>'+br("q1")+'</li></ul>';
+ [].forEach.call(thost.querySelectorAll("[data-leaf]"),function(el){el.onclick=function(){goLeaf(el.dataset.leaf)};el.onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();goLeaf(el.dataset.leaf)}}})}
+function drawTree(){var W=thost.clientWidth;if(W<620){outline();return}
+ thost.innerHTML="";var rh=66,y0=26,H=y0+4*rh+34,RY=function(r){return y0+r*rh},lw=Math.min(200,W*.27),lx=W-lw,
+  P={q1:[0,RY(2),118],q2:[W*.3,RY(2.25),128],q3:[W*.3+128+40,RY(1.5),128],ocl:[lx,RY(0),lw],both:[lx,RY(1),lw],epd:[lx,RY(2),lw],sp2:[lx,RY(3),lw],sp1:[lx,RY(4),lw]};
+ var s=VZ.svg(thost,W,H,"Decision tree. If the buyer needs building results against a code, lead with One Click LCA. If it needs expert process models, lead with SimaPro. If it needs product footprints: for non-construction products lead with SimaPro; for construction products with an expert team and a large range, lead with both as one account; otherwise lead with the EPD Generator.");s.setAttribute("role","group");s.setAttribute("class","ps-tsvg");
+ var nh=44;
+ function edge(a,b,label,on,elbowX,labelPos){var A=P[a],B=P[b],x1=A[0]+A[2],y1=A[1],x2=B[0],y2=B[1],ex=elbowX,r=8,dy=y2>y1?1:-1;
+  var d=Math.abs(y2-y1)<2?"M"+x1+","+y1+"H"+x2:"M"+x1+","+y1+"H"+(ex-r)+"Q"+ex+","+y1+" "+ex+","+(y1+dy*r)+"V"+(y2-dy*r)+"Q"+ex+","+y2+" "+(ex+r)+","+y2+"H"+x2;
+  VZ.el("path",{d:d,class:"eg"+(on?" on":"")},s);
+  var lp=labelPos||[ex+10,y2-8];label.split("|").forEach(function(t,i){txt(s,lp[0],lp[1]+i*14,t,{class:"el"+(on?" on":"")})})}
+ var onE=function(a,b){return path.indexOf(a+":"+b)>=0};
+ var e1=P.q1[2]+20;
+ edge("q1","ocl","Building results against a code",onE("q1","ocl"),e1);
+ edge("q1","sp1","Expert process models",onE("q1","sp1"),e1);
+ edge("q1","q2","Product|footprints",onE("q1","q2"),e1,[e1+8,P.q2[1]-22]);
+ var e2=P.q2[0]+P.q2[2]+24;
+ edge("q2","q3","Yes",onE("q2","q3"),e2,[e2+6,(P.q2[1]+P.q3[1])/2+12]);
+ edge("q2","sp2","No: consumer goods,|chemicals, pharma",onE("q2","sp2"),e2,[e2+10,P.sp2[1]-22]);
+ var e3=(P.q3[0]+P.q3[2]+lx)/2;
+ edge("q3","both","Yes",onE("q3","both"),e3);edge("q3","epd","No",onE("q3","epd"),e3);
+ ["q1","q2","q3"].forEach(function(k){var p=P[k],g=VZ.el("g",{class:"nd"+(path.indexOf(k)>=0?" on":"")},s);VZ.el("rect",{x:p[0],y:p[1]-nh/2,width:p[2],height:nh,rx:4},g);N[k].t.forEach(function(t,i){txt(g,p[0]+10,p[1]-3+i*15,t)})});
+ ["ocl","both","epd","sp2","sp1"].forEach(function(k){var p=P[k],n=N[k],g=VZ.el("g",{class:"nd lf"+(path.indexOf(k)>=0?" on":""),role:"button",tabindex:"0","aria-label":"Lead with "+n.r},s);
+  VZ.el("rect",{x:p[0],y:p[1]-18,width:p[2],height:36,rx:4},g);
+  if(n.c2){VZ.el("circle",{cx:p[0]+15,cy:p[1],r:5,fill:n.c},g);VZ.el("circle",{cx:p[0]+27,cy:p[1],r:5,fill:n.c2},g)}else VZ.el("circle",{cx:p[0]+15,cy:p[1],r:5,fill:n.c},g);
+  var lab=n.r==="One Click LCA EPD Generator"&&p[2]<215?"EPD Generator":n.r;txt(g,p[0]+(n.c2?40:28),p[1]+5,lab);
+  g.addEventListener("click",function(){goLeaf(k)});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();goLeaf(k)}});
+  VZ.tip(g,function(){return "<b>"+n.r+"</b><span class='m'>"+n.w+"</span>"})})}
 function quiz(){var id=path[path.length-1],n=N[id],q=$("quiz"),h="";
  if(ans.length)h+='<ol class="ps-trail">'+ans.map(function(a){return '<li>'+a+'</li>'}).join("")+'</ol>';
- if(n.r){h+='<div class="ps-res" style="--pc:'+n.c+'"><span>Lead with</span><b>'+n.r+'</b>'+n.w+'</div><button type="button" class="ps-again">Start again</button>'}
- else{h+='<span class="eyebrow">Question '+(path.filter(function(p){return N[p]&&N[p].q}).length)+'</span><h3>'+n.q+'</h3><div class="opts">'+n.o.map(function(o,i){return '<button type="button" data-i="'+i+'">'+o[0]+'</button>'}).join("")+'</div>'}
+ if(n.r){h+='<div class="ps-res" style="--pc:'+(n.c2?"linear-gradient(var(--s1) 50%,var(--s7) 50%)":n.c)+'"><span>Lead with</span><b>'+n.r+'</b>'+n.w+'</div><div class="btnrow"><button type="button" class="ps-again">Start again</button></div>'}
+ else{h+='<span class="eyebrow">Question '+(path.filter(function(p){return N[p]&&N[p].q}).length)+' of up to 3</span><h3>'+n.q+'</h3><div class="opts">'+n.o.map(function(o,i){return '<button type="button" data-i="'+i+'">'+o[0]+'</button>'}).join("")+'</div>'}
  q.innerHTML=h;
- $("prods").innerHTML=["ocl","epd","sp1","both"].map(function(k){var x=N[k];return '<button type="button" data-k="'+k+'" aria-pressed="'+(id===k||(k==="sp1"&&id==="sp2")?"true":"false")+'" style="--pc:'+x.c+'"><b><i></i>'+x.r+'</b>'+x.w+'</button>'}).join("");
- [].forEach.call($("prods").children,function(b){b.onclick=function(){var r=route(b.dataset.k);path=r[0];ans=r[1];quiz()}});
  [].forEach.call(q.querySelectorAll(".opts button"),function(b){b.onclick=function(){var o=n.o[+b.dataset.i];ans.push(o[0]);path.push(id+":"+o[1]);path.push(o[1]);quiz();var f=q.querySelector("button");if(f)f.focus()}});
  var ag=q.querySelector(".ps-again");if(ag)ag.onclick=function(){path=["q1"];ans=[];quiz();q.querySelector("button").focus()};
- tree()}
+ drawTree()}
 quiz();
 
 /* ---------- test plan ---------- */
-var T=[["Write two or three versions of the promise","For one segment, for example manufacturers.",'<div class="ps-ab"><div>“Get specified more often”</div><i>against</i><div>“Verified EPDs in days”</div></div>'],
-["Run them in discovery calls first","Sellers open with one version for two weeks and the other for two weeks, and record the buyer's response in a CRM field.","gantt"],
-["Then in paid and outbound campaigns","Same audience list, split by message. Measure meetings booked and opportunities created, not clicks.","split"],
-["Keep what moves opportunities","Change the website and the deck only after both tests point the same way.","gate"]];
-var cs=0,ts=$("tsteps");T.forEach(function(t,i){var b=document.createElement("button");b.setAttribute("role","tab");b.id="ts"+i;b.setAttribute("aria-controls","tpanel");b.setAttribute("aria-selected",i===0?"true":"false");b.dataset.i=i;b.innerHTML='<span class="n">'+(i+1)+'</span><b>'+t[0]+'</b>';ts.appendChild(b)});
-function step(i){cs=i;var t=T[i],p=$("tpanel");p.setAttribute("aria-labelledby","ts"+i);p.innerHTML='<div class="ps-sp"><div class="viz-h"><h3>'+(i+1)+'. '+t[0]+'</h3></div><p class="mini" style="font-size:14.5px;margin-bottom:14px">'+t[1]+'</p><div class="vis"></div></div>';
- var v=p.querySelector(".vis"),w=Math.max(280,p.clientWidth-44);
- if(t[2]==="gantt"){var s=VZ.svg(v,w,96,"Four weeks of discovery calls: version A in weeks 1 and 2, version B in weeks 3 and 4"),X=VZ.lin(0,4,90,w-6);
-  for(var k=0;k<=4;k++){VZ.el("line",{x1:X(k),x2:X(k),y1:4,y2:72,class:"grid"},s);if(k<4)VZ.el("text",{x:X(k+.5),y:90,"text-anchor":"middle"},s).textContent="Week "+(k+1)}
-  [["Version A",0,2,"var(--s1)"],["Version B",2,4,"var(--s2)"]].forEach(function(r,j){var y=12+j*30;VZ.el("text",{x:0,y:y+15,class:"t-strong"},s).textContent=r[0];VZ.bar(s,X(r[1]),y,X(r[2])-X(r[1])-2,20,r[3],"h")})}
- else if(t[2]==="split"){var s2=VZ.svg(v,w,84,"One audience list split in two, one half per message, measured on meetings booked and opportunities created"),mid=w/2;
-  VZ.el("rect",{x:0,y:8,width:w,height:22,rx:4,fill:"var(--grid)"},s2);VZ.el("text",{x:w/2,y:23,"text-anchor":"middle",class:"t-strong"},s2).textContent="One audience list";
-  VZ.el("path",{d:"M"+(w/2)+",30 L"+(w/4)+",48 M"+(w/2)+",30 L"+(3*w/4)+",48",stroke:"var(--axis)","stroke-width":1.5,fill:"none"},s2);
-  VZ.bar(s2,0,50,mid-3,22,"var(--s1)","h");VZ.bar(s2,mid+3,50,mid-3,22,"var(--s2)","h");
-  [["Message A",mid/2],["Message B",mid+3+mid/2]].forEach(function(q){var tt=VZ.el("text",{x:q[1],y:65,"text-anchor":"middle"},s2);tt.style.fill="#fff";tt.style.fontWeight="600";tt.textContent=q[0]});
-  var kp=document.createElement("div");kp.className="kpis";kp.innerHTML='<div><b>Meetings</b><span>booked, per message</span></div><div><b>Opportunities</b><span>created, per message</span></div><div><b style="color:var(--ink3);text-decoration:line-through">Clicks</b><span>not the measure</span></div>';v.appendChild(kp)}
- else if(t[2]==="gate"){v.innerHTML='<div class="kpis"><div><b>✓ Calls</b><span>Discovery-call test agrees</span></div><div><b>✓ Campaigns</b><span>Campaign test agrees</span></div><div style="background:var(--accent-soft)"><b>Change</b><span>the website and the deck</span></div></div>'}
- else v.innerHTML=t[2];
+var T=[["Write the versions","Write two or three versions of the promise for one segment, for example manufacturers."],
+["Discovery calls","Sellers open with one version for two weeks and the other for two weeks, and record the buyer's response in a CRM field."],
+["Campaigns","Same audience list, split by message. Measure meetings booked and opportunities created, not clicks."],
+["Decide","Keep what moves opportunities. Change the website and the deck only after both tests point the same way."]];
+var ts=$("tsteps"),tg=$("tgrid"),cs=0,cells=[];
+T.forEach(function(t,i){var b=document.createElement("button");b.setAttribute("role","tab");b.id="ts"+i;b.setAttribute("aria-controls","tgrid");b.setAttribute("aria-selected",i===0?"true":"false");b.textContent=(i+1)+". "+t[0];ts.appendChild(b);
+ var c=document.createElement("div");c.className="ps-cell";c.innerHTML='<h4><span>'+(i+1)+'</span>'+t[0]+'</h4>';tg.appendChild(c);cells.push(c)});
+function cellSvg(c,label){return VZ.svg(c,260,190,label)}
+(function(){var s=cellSvg(cells[0],"Two message variants: A, Get specified more often. B, Verified EPDs in days.");
+ [["A","“Get specified","more often”","var(--s1)"],["B","“Verified EPDs","in days”","var(--s2)"]].forEach(function(v,j){var y=14+j*88;VZ.el("rect",{x:0,y:y,width:260,height:74,rx:4,fill:"var(--panel)"},s);VZ.el("rect",{x:0,y:y,width:6,height:74,rx:2,fill:v[3]},s);
+  txt(s,18,y+22,"Version "+v[0],{class:"t-strong"});var a=txt(s,18,y+44,v[1]);a.style.fontSize="15px";a.style.fill="var(--ink1)";var b=txt(s,18,y+62,v[2]);b.style.fontSize="15px";b.style.fill="var(--ink1)"})})();
+(function(){var s=cellSvg(cells[1],"Four weeks of discovery calls: version A in weeks 1 and 2, version B in weeks 3 and 4, with the response logged in the CRM"),X=VZ.lin(0,4,30,256);
+ for(var k=0;k<=4;k++){VZ.el("line",{x1:X(k),x2:X(k),y1:10,y2:100,class:"grid"},s);if(k<4)txt(s,X(k+.5),118,"Wk "+(k+1),{"text-anchor":"middle"})}
+ txt(s,0,40,"A",{class:"t-strong"});txt(s,0,80,"B",{class:"t-strong"});
+ VZ.bar(s,X(0),24,X(2)-X(0)-2,22,"var(--s1)","h");VZ.bar(s,X(2),64,X(4)-X(2),22,"var(--s2)","h");
+ VZ.el("rect",{x:30,y:140,width:226,height:40,rx:4,fill:"var(--panel)"},s);txt(s,143,165,"Buyer response → CRM field",{"text-anchor":"middle",class:"t-strong"})})();
+(function(){var s=cellSvg(cells[2],"One audience list split in two, one half per message");
+ VZ.el("rect",{x:0,y:6,width:260,height:30,rx:4,fill:"var(--panel)"},s);txt(s,130,26,"One audience list",{"text-anchor":"middle",class:"t-strong"});
+ VZ.el("path",{d:"M130,36 C130,56 65,52 65,72 M130,36 C130,56 195,52 195,72",fill:"none",stroke:"var(--axis)","stroke-width":2},s);
+ [["A",0,"var(--s1)"],["B",134,"var(--s2)"]].forEach(function(v){VZ.el("rect",{x:v[1],y:74,width:126,height:34,rx:4,fill:v[2]},s);var t=txt(s,v[1]+63,96,"Message "+v[0],{"text-anchor":"middle"});t.style.fill="#fff";t.style.fontWeight="600"});
+ txt(s,0,138,"Measure:",{class:"t-strong"});txt(s,0,158,"✓ meetings booked");txt(s,130,158,"✓ opportunities");txt(s,0,180,"✗ clicks are not the measure")})();
+(function(){var s=cellSvg(cells[3],"Illustrative outcome bars: version A ahead of version B on meetings booked and opportunities created in both tests, so the site changes to version A");
+ var V=[["Meetings",[10,6]],["Opportunities",[6,3]]],X=VZ.lin(0,12,92,250);
+ V.forEach(function(r,j){var y=10+j*58;txt(s,0,y+22,r[0],{class:"t-strong"});r[1].forEach(function(v,k){VZ.bar(s,92,y+k*24,X(v)-92,18,k?"var(--s2)":"var(--s1)","h");txt(s,X(v)+5,y+k*24+14,k?"B":"A")})});
+ var t=txt(s,0,134,"Illustrative values, not data");t.style.fontStyle="italic";
+ VZ.el("rect",{x:0,y:146,width:260,height:36,rx:4,fill:"var(--accent-soft)"},s);txt(s,130,169,"Both tests agree → change site and deck",{"text-anchor":"middle",class:"t-strong"})})();
+function step(i){cs=i;cells.forEach(function(c,j){c.classList.toggle("on",j===i)});$("tcap").innerHTML="<b style=\"color:var(--ink)\">Step "+(i+1)+".</b> "+T[i][1];tg.setAttribute("aria-labelledby","ts"+i);
  [].forEach.call(ts.children,function(b,j){b.setAttribute("aria-selected",j===i?"true":"false");b.tabIndex=j===i?0:-1})}
 [].forEach.call(ts.children,function(b,i){b.addEventListener("click",function(){stopPlay();step(i)});b.addEventListener("keydown",function(e){var k=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;if(k){var n=(i+k+4)%4;ts.children[n].focus();stopPlay();step(n)}})});
+cells.forEach(function(c,i){c.addEventListener("click",function(){stopPlay();step(i)})});
 step(0);
 var timer=null,pb=$("play");function stopPlay(){clearInterval(timer);timer=null;pb.setAttribute("aria-pressed","false");pb.textContent="Play the four steps"}
 pb.onclick=function(){if(timer){stopPlay();return}pb.setAttribute("aria-pressed","true");pb.textContent="Pause";step(0);timer=setInterval(function(){if(cs>=3){stopPlay();return}step(cs+1)},2600)};
 
-var rt,lw=ahost.clientWidth;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){if(Math.abs(ahost.clientWidth-lw)>4){lw=ahost.clientWidth;arc();step(cs)}},150)});
+var rt,lw=ahost.clientWidth;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){if(Math.abs(ahost.clientWidth-lw)>4){lw=ahost.clientWidth;arc();drawTree()}},150)});
 })();
 </script>

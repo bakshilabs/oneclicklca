@@ -21,8 +21,22 @@
 .nd-out p{font-size:13.5px;color:var(--muted)}
 .nd-out svg.dia{position:absolute;right:18px;top:20px;width:18px;height:18px}
 @media (max-width:760px){.nd-out{grid-template-columns:1fr}}
+.nd-kpi{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:10px 0 12px}
+.nd-kpi button{appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:3px;padding:10px 12px;text-align:left;cursor:pointer;font:inherit}
+.nd-kpi button b{display:block;font:600 26px/1 var(--sans);letter-spacing:-.02em}
+.nd-kpi button span{display:block;font-size:12.5px;color:var(--muted);margin-top:4px}
+.nd-kpi button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.nd-kpi button[aria-pressed="true"] span{color:var(--on-accent)}
+@media (max-width:760px){.nd-kpi{grid-template-columns:1fr 1fr}}
 .nd-stats{grid-template-columns:repeat(5,1fr)}
-@media (max-width:900px){.nd-stats{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){.nd-kpi{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:10px 0 12px}
+.nd-kpi button{appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:3px;padding:10px 12px;text-align:left;cursor:pointer;font:inherit}
+.nd-kpi button b{display:block;font:600 26px/1 var(--sans);letter-spacing:-.02em}
+.nd-kpi button span{display:block;font-size:12.5px;color:var(--muted);margin-top:4px}
+.nd-kpi button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.nd-kpi button[aria-pressed="true"] span{color:var(--on-accent)}
+@media (max-width:760px){.nd-kpi{grid-template-columns:1fr 1fr}}
+.nd-stats{grid-template-columns:1fr 1fr}}
 .nd-team{margin:12px 0 4px;align-items:center}
 .nd-team span.mini{margin-right:4px}
 .nd-prw{display:grid;grid-template-columns:320px 1fr;gap:18px;margin-top:28px;align-items:start}
@@ -45,7 +59,7 @@
 </header>
 
 <div class="viz rv">
-  <div class="viz-h"><h3>The 90-day plan</h3><p>Durations are my planning estimate. Select a phase, a team, a task or an output.</p></div>
+  <div class="viz-h"><h3>The 90-day plan</h3><p>Durations are my planning estimate. Select a phase, team, number, task or output.</p></div>
   <div class="tabs" role="tablist" aria-label="Phase" id="nd-tabs" style="margin-top:0">
     <button role="tab" aria-selected="true" data-p="-1">All 90 days</button>
     <button role="tab" aria-selected="false" data-p="0">Listen</button>
@@ -53,6 +67,13 @@
     <button role="tab" aria-selected="false" data-p="2">Ship</button>
   </div>
   <div class="btnrow nd-team" id="nd-team" role="group" aria-label="Highlight the tasks a team is involved in"><span class="mini">Team view</span></div>
+  <div class="nd-kpi" id="nd-kpi" role="group" aria-label="Highlight the tasks behind each number">
+    <button type="button" aria-pressed="false" data-t="3"><b>10</b><span>Sales calls shadowed</span></button>
+    <button type="button" aria-pressed="false" data-t="4"><b>15</b><span>Customer and lost-prospect interviews</span></button>
+    <button type="button" aria-pressed="false" data-t="6"><b>3</b><span>Priority sub-segments agreed</span></button>
+    <button type="button" aria-pressed="false" data-t="10"><b>2</b><span>Battlecards released</span></button>
+    <button type="button" aria-pressed="false" data-t="13"><b>2</b><span>Partners briefed</span></button>
+  </div>
   <div class="legend" id="nd-leg" aria-hidden="true"></div>
   <div id="nd-g" class="pre"></div>
   <div class="nd-det" id="nd-det" aria-live="polite"></div>
@@ -63,26 +84,20 @@
   </div>
 </div>
 
-<div class="stats4 nd-stats">
-  <div class="stat rv"><b class="count" data-to="10">0</b><span>Sales calls shadowed, including two lost deals</span></div>
-  <div class="stat rv"><b class="count" data-to="15">0</b><span>Interviews: ten customers and five lost prospects</span></div>
-  <div class="stat rv hi"><b class="count" data-to="3">0</b><span>Priority sub-segments agreed with product and sales</span></div>
-  <div class="stat rv"><b class="count" data-to="2">0</b><span>Battlecards for the alternatives seen most in lost deals</span></div>
-  <div class="stat rv"><b class="count" data-to="2">0</b><span>Reseller or association partners briefed with the kit</span></div>
-</div>
+
 
 <section class="sec">
   <span class="eyebrow">Working principles</span>
   <h2>How I would approach the job</h2>
   <div class="nd-prw">
     <div class="nd-pr" id="nd-pr" role="group" aria-label="Choose a principle"></div>
-    <div class="viz nd-pv"><p class="w" id="nd-pw"></p><div id="nd-pg"></div></div>
+    <div class="viz nd-pv"><p class="w" id="nd-pw"></p><div id="nd-pg"></div><div class="btnrow"><button type="button" id="nd-pgo"></button></div></div>
   </div>
 </section>
 <script>
 (function(){
 function txt(el,t){el.textContent=t;return el}
-var WS=["Stakeholders and partners","Customers and deals","Data and CRM","Segments and launches","Messaging and proof","Enablement"];
+var SC=[1,2,3,4,5,7];var WS=["Stakeholders and partners","Customers and deals","Data and CRM","Segments and launches","Messaging and proof","Enablement"];
 var TEAMS=["Product","Sales","Marketing","Revenue operations","Partners","Customers"];
 /* phase, workstream, label, detail, start, end, teams */
 var A=[
@@ -106,13 +121,14 @@ var MS=[[30,"Findings memo","What buyers say, where deals are lost, and what the
 var PH=["Listen","Decide","Ship"];
 var host=document.getElementById("nd-g"),det=document.getElementById("nd-det"),mode={t:"all"},sel=null,els=[];
 var leg=document.getElementById("nd-leg");
-WS.forEach(function(w,i){var sp=document.createElement("span");sp.innerHTML='<i style="background:var(--s'+(i+1)+');border-radius:2px"></i>';sp.appendChild(document.createTextNode(w));leg.appendChild(sp)});
-function inFocus(i){var a=A[i];if(mode.t==="phase")return a[0]===mode.p;if(mode.t==="team")return a[6].indexOf(mode.k)>=0;if(mode.t==="out")return MS[mode.k][3].indexOf(i)>=0;return true}
+WS.forEach(function(w,i){var sp=document.createElement("span");sp.innerHTML='<i style="background:var(--s'+SC[i]+');border-radius:2px"></i>';sp.appendChild(document.createTextNode(w));leg.appendChild(sp)});
+function inFocus(i){var a=A[i];if(mode.t==="phase")return a[0]===mode.p;if(mode.t==="team")return a[6].indexOf(mode.k)>=0;if(mode.t==="out")return MS[mode.k][3].indexOf(i)>=0;if(mode.t==="kpi")return i===mode.k;return true}
 function range(a){return "Days "+a[4]+" to "+a[5]+" · "+(a[5]-a[4]+1)+" days"}
 function listInto(ul,idx){idx.forEach(function(i){var li=document.createElement("li");li.textContent=A[i][2]+" (days "+A[i][4]+" to "+A[i][5]+")";ul.appendChild(li)})}
 function showDet(){var h,sub,body,list=null;
  if(sel!==null){var a=A[sel];h=a[2];sub=range(a)+" · "+PH[a[0]];body=a[3]+" With: "+a[6].map(function(t){return TEAMS[t]}).join(", ")+"."}
  else if(mode.t==="team"){var ix=A.map(function(a,i){return i}).filter(inFocus);h=TEAMS[mode.k];sub="Involved in "+ix.length+" of 15 tasks";body="";list=ix}
+ else if(mode.t==="kpi"){var a=A[mode.k];h=a[2];sub=range(a);body=a[3]}
  else if(mode.t==="out"){var m=MS[mode.k];h="Day "+m[0]+": "+m[1];sub="Fed by "+m[3].length+" tasks";body=m[2];list=m[3]}
  else if(mode.t==="phase"){h=PH[mode.p];sub="Days "+(mode.p*30+1)+" to "+(mode.p*30+30)+" · output "+MS[mode.p][1].toLowerCase();body="Five tasks belong to this phase; several start earlier or finish later because the work overlaps.";}
  else{h="15 tasks, 3 outputs";sub="Days 1 to 90";body="Listening overlaps with deciding, and message testing runs into the launch month."}
@@ -130,7 +146,7 @@ function draw(){
  A.forEach(function(a,i){var y=top+i*rh,on=inFocus(i),x0=x(a[4]-1),x1=x(a[5]);
   var g=VZ.el("g",{"class":"bar",tabindex:0,role:"button","aria-label":a[2]+", days "+a[4]+" to "+a[5],"data-i":i},s);
   VZ.el("rect",{x:nar?x0:0,y:y,width:nar?x1-x0:W,height:rh,fill:"transparent"},g);
-  var by=nar?y+rh-16:y+(rh-14)/2,p=VZ.bar(g,x0+1,by,x1-x0-2,14,"","h");p.setAttribute("style","fill:"+(on?"var(--s"+(a[1]+1)+")":"var(--ink3)")+";transition-delay:"+(a[4]/90*0.9)+"s");
+  var by=nar?y+rh-16:y+(rh-14)/2,p=VZ.bar(g,x0+1,by,x1-x0-2,14,"","h");p.setAttribute("style","fill:"+(on?"var(--s"+SC[a[1]]+")":"var(--ink3)")+";transition-delay:"+(a[4]/90*0.9)+"s");
   var tx=nar?VZ.el("text",{x:Math.max(0,Math.min(x0+1,W-12-a[2].length*6.2)),y:y+rh-21,"class":on?"":"t-muted"},g):VZ.el("text",{x:0,y:y+rh/2+4,"class":on?"t-strong":"t-muted",style:on?"font-weight:500":""},g);tx.textContent=a[2];
   VZ.tip(g,function(){return "<b>"+a[2]+"</b>"+a[3]+'<div class="m">'+range(a)+"</div>"});
   g.addEventListener("click",function(){sel=i;showDet()});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();sel=i;showDet()}});els.push(g);});
@@ -143,7 +159,9 @@ function draw(){
  showDet();
 }
 var tbtn=document.getElementById("nd-team"),obtn=[].slice.call(document.querySelectorAll("#nd-out button"));
-function clearCtl(){[].forEach.call(tbtn.querySelectorAll("button"),function(b){b.setAttribute("aria-pressed","false")});obtn.forEach(function(b){b.setAttribute("aria-pressed","false")})}
+var kbtn=[].slice.call(document.querySelectorAll("#nd-kpi button"));
+function clearCtl(){[].forEach.call(tbtn.querySelectorAll("button"),function(b){b.setAttribute("aria-pressed","false")});obtn.forEach(function(b){b.setAttribute("aria-pressed","false")});kbtn.forEach(function(b){b.setAttribute("aria-pressed","false")})}
+kbtn.forEach(function(b){b.addEventListener("click",function(){clearCtl();b.setAttribute("aria-pressed","true");mode={t:"kpi",k:+b.dataset.t};sel=null;draw()})});
 function setOut(i){clearCtl();obtn[i].setAttribute("aria-pressed","true");mode={t:"out",k:i};sel=null;draw()}
 obtn.forEach(function(b,i){b.addEventListener("click",function(){setOut(i)})});
 TEAMS.forEach(function(t,k){var b=document.createElement("button");b.type="button";b.setAttribute("aria-pressed","false");b.textContent=t;b.addEventListener("click",function(){var was=mode.t==="team"&&mode.k===k;clearCtl();if(was){mode={t:"all"}}else{b.setAttribute("aria-pressed","true");mode={t:"team",k:k}}sel=null;draw()});tbtn.appendChild(b)});
@@ -153,19 +171,28 @@ var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){host.class
 
 /* principles */
 var PR=[
- ["Evidence before opinion",'<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',"Every positioning choice cites a buyer interview, a deal or a number. When evidence is missing, collecting it comes first.",[2,3,4,8]],
- ["Fewer, better launches",'<path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M14 4c3-1 6-1 6-1s0 3-1 6l-6 6-5-5 6-6z"/>',"Most monthly releases get a good release note. The effort goes to the few launches that move revenue in named segments.",[6,7,11]],
- ["Material that works without me",'<path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>',"A battlecard or business case is finished when a seller or reseller has used it on a call and won.",[10,12,13]],
- ["One number per launch",'<path d="M3 20h18M6 16l4-5 3 3 5-7"/>',"Adoption and pipeline targets are set with sales before release, so results can be judged against something.",[5,11,14]]
+ ["Evidence before opinion",'<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',0,"15 interviews and 10 calls before any message changes","Every positioning choice cites a buyer interview, a deal or a number."],
+ ["Fewer, better launches",'<path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M14 4c3-1 6-1 6-1s0 3-1 6l-6 6-5-5 6-6z"/>',1,"Two or three launches a year get the whole company","The tiering rule in the two-quarter plan sets the effort per release."],
+ ["Material that works without me",'<path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>',2,"Sellers use the kit on calls without help","A battlecard is finished when a seller has used it and won."],
+ ["One number per launch",'<path d="M3 20h18M6 16l4-5 3 3 5-7"/>',2,"A win rate baseline and a 90-day adoption goal","Targets are agreed with sales before release."]
 ];
 var pg=document.getElementById("nd-pr"),pgh=document.getElementById("nd-pg"),pw=document.getElementById("nd-pw"),psel=0;
-function drawP(){[].forEach.call(pg.children,function(b,j){b.setAttribute("aria-pressed",j===psel)});var pr=PR[psel];txt(pw,pr[2]);
- pgh.innerHTML="";var W=Math.max(280,pgh.clientWidth),rh=40,H=pr[3].length*rh+30,x=VZ.lin(0,90,2,W-4);
- var s=VZ.svg(pgh,W,H,"Tasks driven by the principle "+pr[0]+": "+pr[3].map(function(i){return A[i][2]+" days "+A[i][4]+" to "+A[i][5]}).join("; "));
- [0,30,60,90].forEach(function(d){VZ.el("line",{x1:x(d),x2:x(d),y1:0,y2:H-22,"class":"grid"},s);var t=VZ.el("text",{x:x(d),y:H-6,"text-anchor":d===0?"start":d===90?"end":"middle","class":"t-muted"},s);t.textContent="Day "+(d||1)});
- pr[3].forEach(function(i,r){var a=A[i],y=r*rh,x0=x(a[4]-1),x1=x(a[5]);var t=VZ.el("text",{x:Math.max(2,Math.min(x0,W-4-a[2].length*6.6)),y:y+13},s);t.textContent=a[2];
-  var g=VZ.el("g",{},s);var p=VZ.bar(g,x0,y+18,x1-x0,12,"","h");p.setAttribute("style","fill:var(--s"+(a[1]+1)+")");VZ.tip(g,function(){return "<b>"+a[2]+"</b>"+range(a)});});}
+function drawP(){[].forEach.call(pg.children,function(b,j){b.setAttribute("aria-pressed",j===psel)});var pr=PR[psel],m=MS[pr[2]];txt(pw,pr[4]);
+ pgh.innerHTML="";var W=Math.max(280,pgh.clientWidth),H=150,x=VZ.lin(0,90,16,W-16);
+ var s=VZ.svg(pgh,W,H,pr[0]+" shapes the day "+m[0]+" output, "+m[1]+". Measure: "+pr[3]+".");
+ VZ.el("line",{x1:x(0),x2:x(90),y1:40,y2:40,"class":"axis","stroke-width":2},s);
+ MS.forEach(function(mm,i){var on=i===pr[2],cx=x(mm[0]);VZ.el("path",{d:"M"+cx+",30l10,10l-10,10l-10,-10z",style:"fill:"+(on?"var(--s1)":"var(--ink3)")+";stroke:var(--chart-bg)","stroke-width":2},s);
+  var t=VZ.el("text",{x:cx,y:18,"text-anchor":i===0?"middle":i===2?"end":"middle","class":on?"t-strong":"t-muted"},s);t.textContent="Day "+mm[0]+(W>420?": "+mm[1]:"");});
+ var cx=x(m[0]);VZ.el("path",{d:"M"+cx+",52V82",style:"stroke:var(--s1)","stroke-width":2},s);
+ var two=pr[3].length*7+28>W-8,ws=pr[3].split(" "),hf=Math.ceil(ws.length/2),lines=two?[ws.slice(0,hf).join(" "),ws.slice(hf).join(" ")]:[pr[3]];
+ var bw=Math.min(W-8,Math.max(220,Math.max.apply(null,lines.map(function(l){return l.length}))*7+28)),bx=Math.max(4,Math.min(cx-bw/2,W-4-bw)),bh2=two?62:44;
+ if(two){H=168;s.setAttribute("viewBox","0 0 "+W+" "+H)}
+ VZ.el("rect",{x:bx,y:82,width:bw,height:bh2,rx:3,style:"fill:var(--panel);stroke:var(--s1)","stroke-width":1.5},s);
+ var k=VZ.el("text",{x:bx+12,y:99,"class":"t-muted"},s);k.textContent="Measure";
+ lines.forEach(function(l,j){var v=VZ.el("text",{x:bx+12,y:117+j*17,"class":"t-strong"},s);v.textContent=l;});
+ var go=document.getElementById("nd-pgo");go.textContent="Show the day "+m[0]+" tasks in the plan";}
 PR.forEach(function(p,i){var b=document.createElement("button");b.type="button";b.innerHTML='<span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24">'+p[1]+'</svg></span><b></b>';txt(b.querySelector("b"),p[0]);b.addEventListener("click",function(){psel=i;drawP()});pg.appendChild(b)});
+document.getElementById("nd-pgo").addEventListener("click",function(){setOut(PR[psel][2]);host.scrollIntoView({behavior:"smooth",block:"center"})});
 drawP();
 var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){draw();drawP()},120)});
 })();

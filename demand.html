@@ -45,9 +45,9 @@
 .dm-tile:hover{transform:scale(1.06)}
 .dm-tile[aria-pressed="true"]{outline:2.5px solid var(--ink1);outline-offset:1px}
 .dm-tile.dim{background:var(--chart-bg)!important;color:var(--ink2)!important;box-shadow:inset 0 0 0 1px var(--axis)!important}
-.dm-tile.st4{background:var(--seq-5);color:var(--dm-t5)}
-.dm-tile.st3{background:var(--seq-4);color:var(--dm-t4)}
-.dm-tile.st2{background:var(--seq-3);color:var(--dm-t3)}
+.dm-tile.st4{background:color-mix(in srgb,var(--s1) 34%,var(--chart-bg));box-shadow:inset 0 0 0 2px var(--s1);color:var(--ink1)}
+.dm-tile.st3{background:color-mix(in srgb,var(--s2) 30%,var(--chart-bg));box-shadow:inset 0 0 0 2px var(--s2);color:var(--ink1)}
+.dm-tile.st2{background:color-mix(in srgb,var(--s5) 30%,var(--chart-bg));box-shadow:inset 0 0 0 2px var(--s5);color:var(--ink1)}
 .dm-tile.st1{background:var(--panel);color:var(--ink2);box-shadow:inset 0 0 0 1px var(--line)}
 :root{--dm-t5:#fff;--dm-t4:#0b0b0b;--dm-t3:#0b0b0b}
 @media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){--dm-t5:#0b0b0b;--dm-t4:#0b0b0b;--dm-t3:#fff}}
@@ -57,7 +57,7 @@
 #dm-sleg button{padding:4px 8px}
 .dm-maplay{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:28px;align-items:start}
 .dm-sw{width:12px;height:12px;border-radius:3px;display:inline-block}
-.dm-sw.st4{background:var(--seq-5)}.dm-sw.st3{background:var(--seq-4)}.dm-sw.st2{background:var(--seq-3)}.dm-sw.st1{background:var(--panel);box-shadow:inset 0 0 0 1px var(--axis)}
+.dm-sw.st4{background:var(--s1)}.dm-sw.st3{background:var(--s2)}.dm-sw.st2{background:var(--s5)}.dm-sw.st1{background:var(--panel);box-shadow:inset 0 0 0 1px var(--axis)}
 .dm-cinfo{background:var(--panel);border-radius:6px;padding:18px 20px;font-size:15px;min-height:120px}
 .dm-cinfo h3{font-size:18px;margin-bottom:4px}
 .dm-cinfo .st{font-size:13px;color:var(--ink2);display:flex;align-items:center;gap:7px;margin-bottom:8px}
@@ -74,15 +74,28 @@
 .dm-hm button{appearance:none;border:0;width:100%;height:44px;border-radius:4px;font:600 15px/1 var(--sans);cursor:pointer;font-variant-numeric:tabular-nums}
 .dm-hm button[aria-pressed="true"]{outline:2.5px solid var(--ink1);outline-offset:1px}
 .dm-hm .h0{background:var(--chart-bg);color:var(--ink3);box-shadow:inset 0 0 0 1px var(--grid)}
-.dm-hm .h1{background:var(--seq-1);color:var(--ink1)}
-.dm-hm .h2{background:var(--seq-2);color:var(--ink1)}
-.dm-hm .h3{background:var(--seq-3);color:var(--dm-t3)}
-.dm-hm .h4{background:var(--seq-5);color:var(--dm-t5)}
+.dm-hm .h1{background:color-mix(in srgb,var(--s1) 15%,var(--chart-bg));color:var(--ink1)}
+.dm-hm .h2{background:color-mix(in srgb,var(--s1) 35%,var(--chart-bg));color:var(--ink1)}
+.dm-hm .h3{background:color-mix(in srgb,var(--s1) 62%,var(--chart-bg));color:var(--ink1)}
+.dm-hm .h4{background:var(--s1);color:#0b0b0b}
 .dm-hlist{margin-top:14px;background:var(--panel);border-radius:6px;padding:16px 20px}
 .dm-hlist ul{margin:8px 0 0;padding-left:18px;font-size:14.5px}
 .dm-hlist li{margin-top:4px}
 .dm-vol .panel{position:relative}
 .dm-vol .tags{margin-top:12px}
+.dm-vg{display:grid;grid-template-columns:190px repeat(3,minmax(0,1fr));gap:4px;margin-top:16px;font-size:13.5px}
+.dm-vg>div{padding:10px 12px;background:var(--panel);border-radius:4px;transition:background .25s,box-shadow .25s}
+.dm-vg .rh{background:none;font-weight:600;color:var(--ink1);display:flex;gap:8px;align-items:flex-start}
+.dm-vg .rh i{width:10px;height:10px;border-radius:2px;flex:none;margin-top:4px}
+.dm-vg .ch{background:none;font:600 12px/1.2 var(--sans);text-transform:uppercase;letter-spacing:.04em;color:var(--ink2)}
+.dm-vg .on{background:var(--accent-soft);box-shadow:inset 0 0 0 2px var(--accent)}
+.dm-vg .dots{display:flex;gap:4px;margin-bottom:6px}
+.dm-vg .dots i{width:9px;height:9px;border-radius:50%}
+.dm-vg .none{color:var(--ink2)}
+.dm-vmsg{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:14.5px}
+.dm-vmsg div{border-radius:6px;padding:14px 16px;background:var(--panel)}
+.dm-vmsg small{display:block;font:600 11px/1.2 var(--sans);text-transform:uppercase;letter-spacing:.05em;color:var(--ink2);margin-bottom:4px}
+@media (max-width:640px){.dm-vg{grid-template-columns:96px repeat(3,minmax(0,1fr));font-size:12.5px}.dm-vg>div{padding:8px 6px}.dm-vmsg{grid-template-columns:1fr}}
 .dm-msg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
 .dm-msg div{border-radius:6px;padding:16px 18px;font-size:15px;border:1px solid var(--line)}
 .dm-msg small{display:block;font:600 11px/1.2 var(--sans);text-transform:uppercase;letter-spacing:.05em;color:var(--ink2);margin-bottom:6px}
@@ -134,7 +147,7 @@
   <h2>Segment deadlines</h2>
   <p class="intro">Each cell counts the forcing events on the timeline that reach a segment in a year. Select a cell to list them.</p>
   <div class="viz rv">
-    <div class="legend"><span>Fewer</span><span class="dm-sw" style="background:var(--seq-1)"></span><span class="dm-sw" style="background:var(--seq-2)"></span><span class="dm-sw" style="background:var(--seq-3)"></span><span class="dm-sw" style="background:var(--seq-5)"></span><span>More events</span></div>
+    <div class="legend"><span>Fewer</span><span class="dm-sw" style="background:color-mix(in srgb,var(--s1) 15%,var(--chart-bg))"></span><span class="dm-sw" style="background:color-mix(in srgb,var(--s1) 35%,var(--chart-bg))"></span><span class="dm-sw" style="background:color-mix(in srgb,var(--s1) 62%,var(--chart-bg))"></span><span class="dm-sw" style="background:var(--s1)"></span><span>More events</span></div>
     <div class="tw" tabindex="0" role="region" aria-label="Scrollable table"><table class="dm-hm" id="dm-hm"><caption class="sr">Forcing events per segment and year</caption></table></div>
     <div class="dm-hlist" id="dm-hlist" aria-live="polite"></div>
   </div>
@@ -143,13 +156,15 @@
 <section class="sec">
   <span class="eyebrow">Where demand is softer</span>
   <h2>Voluntary markets</h2>
-  <div class="tw" tabindex="0" role="region" aria-label="Scrollable table"><table class="t dm-volt" style="min-width:0;margin-top:24px">
-    <thead><tr><th>Market</th><th>Why demand is voluntary</th><th>What drives purchases</th></tr></thead>
-    <tbody>
-    <tr><th>United States</th><td>Federal Buy Clean funding was rescinded in July 2025, and EC3 is free.</td><td><div class="tags" style="margin-top:0"><span class="tag">California CALGreen</span><span class="tag">States and cities</span><span class="tag">LEED v5</span><span class="tag w">Free rival: EC3</span></div></td></tr>
-    <tr><th>United Kingdom</th><td>Part Z is not adopted, and the Future Homes Standard covers operational energy only.</td><td><div class="tags" style="margin-top:0"><span class="tag">London Plan</span><span class="tag">RICS whole life carbon</span><span class="tag w">Rival: CarboniCa, RICS validated</span></div></td></tr>
-    <tr><th>Middle East and Asia Pacific</th><td>No binding UAE rule was found.</td><td><div class="tags" style="margin-top:0"><span class="tag">LEED</span><span class="tag">Estidama</span><span class="tag">GSAS</span><span class="tag">Mostadam</span><span class="tag">Green Star</span><span class="tag">Green Mark</span><span class="tag">NABERS</span></div></td></tr>
-    </tbody></table></div>
+  <div class="viz rv">
+    <div class="viz-h"><h3>What pushes buyers where no national rule forces them</h3><p>Select a market to compare its drivers and the message to lead with.</p></div>
+    <div class="tabs" role="tablist" aria-label="Market" id="dm-vt" style="margin-top:0">
+      <button role="tab" id="dm-v0" aria-controls="dm-vp" aria-selected="true">United States</button>
+      <button role="tab" id="dm-v1" aria-controls="dm-vp" aria-selected="false">United Kingdom</button>
+      <button role="tab" id="dm-v2" aria-controls="dm-vp" aria-selected="false">Middle East and Asia Pacific</button>
+    </div>
+    <div id="dm-vp" role="tabpanel" aria-labelledby="dm-v0"><div class="dm-vg" id="dm-vg"></div><div class="dm-vmsg" id="dm-vmsg" aria-live="polite"></div></div>
+  </div>
   <div class="dm-msg">
     <div><small>Where a rule forces the purchase</small>The message is compliance done faster and with less risk.</div>
     <div style="background:var(--accent-soft);border-color:transparent"><small>Where demand is voluntary</small>The message is the bid won, the certification credit gained or the client target met, because nobody is fined for doing nothing.</div>
@@ -222,18 +237,30 @@ function detail(i){selE=i;var e=EV[i];evEls.forEach(function(g,k){if(g)g.classLi
  document.getElementById("dm-detail").innerHTML='<div><div class="d">'+esc(e.d)+'</div><div class="j">'+esc(ROWS[e.r])+'</div></div><div>'+(e.flag?'<span class="tag a">'+esc(e.flag)+'</span> ':'')+esc(e.x)+'<div>'+segTags(e.s)+'</div></div>'}
 
 responsive(document.getElementById("dm-gantt"),function(CW){var host=document.getElementById("dm-gantt");evEls=[];
- if(CW<640){var html='<ol class="dm-mob">';
-  [2025,2026,2027,2028,2029,2030,2031].forEach(function(y){var L=EV.filter(function(e){return e.y===y}).sort(function(a,b){return a.t-b.t});
-   html+='<li class="yr"><span>'+y+'</span>'+(y===2027?' <span class="tag a">Launch window</span>':'')+'</li>';
-   L.forEach(function(e){html+='<li class="dm-ev" data-i="'+e.i+'"><span class="dots">'+e.s.map(function(k){return'<i style="background:'+segCol[k]+'"></i>'}).join("")+'</span><span><b>'+esc(e.d)+', '+esc(ROWS[e.r])+'.</b> '+esc(e.x)+(e.flag?' <span class="tag a">'+esc(e.flag)+'</span>':'')+'</span></li>'})});
-  host.innerHTML=html+'</ol>';var els=[].slice.call(host.querySelectorAll(".dm-ev"));EV.forEach(function(e,i){evEls[i]=els.filter(function(x){return +x.dataset.i===i})[0]});
-  document.getElementById("dm-detail").hidden=true;apply();return}
+ if(CW<640){document.getElementById("dm-detail").hidden=false;
+  var AB=["EU","FI","DK","NL","FR","SE","IE","IS","CA","LEED"],W=CW,LY=38,T=58,PY=78,cwd=(W-LY)/10,H=T+6.9*PY+10;
+  var y=VZ.lin(2025,2031.9,T,T+6.9*PY),xc=function(r){return LY+r*cwd+cwd/2};
+  var s=VZ.svg(host,W,H,"Vertical timeline of forcing events from 2025 to 2031, one column per jurisdiction.");s.setAttribute("role","group");
+  var lw=VZ.el("rect",{x:LY,y:y(2027),width:W-LY,height:y(2028)-y(2027)},s);lw.style.fill="var(--accent-soft)";
+  for(var yr=2025;yr<=2031;yr++){VZ.el("line",{x1:LY,x2:W,y1:y(yr),y2:y(yr),class:"grid"},s);VZ.el("text",{x:0,y:y(yr)+4,class:"t-strong"},s).textContent=yr}
+  VZ.el("text",{x:W-4,y:y(2027)+16,"text-anchor":"end",class:"t-muted"},s).textContent="Launch window";
+  var ny=y(d(2026,10,23));VZ.el("line",{x1:LY,x2:W,y1:ny,y2:ny,stroke:"var(--ink1)","stroke-width":1.5},s);VZ.el("text",{x:W-4,y:ny-5,"text-anchor":"end",class:"t-muted"},s).textContent="Today";
+  AB.forEach(function(a,r){var t=VZ.el("text",{x:xc(r),y:T-10,"text-anchor":"start",transform:"rotate(-55 "+xc(r)+" "+(T-10)+")",class:"t-strong"},s);t.textContent=a;
+   if(FORCE[r]!==undefined){var b=VZ.el("rect",{x:xc(r)-2,y:y(FORCE[r]),width:4,height:y(2031.9)-y(FORCE[r]),rx:2},s);b.style.fill="var(--axis)"}});
+  var ends={};EV.slice().sort(function(a,b){return a.t-b.t}).forEach(function(e){var yy=y(e.t),L=ends[e.r]||(ends[e.r]=[]),k=0;while(L[k]!==undefined&&yy-L[k]<15)k++;L[k]=yy;e.mlane=k});
+  EV.forEach(function(e,i){var cx=xc(e.r)+(e.mlane?(e.mlane%2?8:-8):0),cy=y(e.t);
+   var g=VZ.el("g",{class:"dm-ev",role:"button","aria-label":e.d+", "+ROWS[e.r]+": "+e.x},s),big=e.flag?6.5:5;
+   if(e.s.length>1){var o=VZ.el("circle",{cx:cx,cy:cy,r:big+3,fill:"none","stroke-width":2,class:"o"},g);o.style.stroke=segCol[e.s[1]]}
+   var c=VZ.el("circle",{cx:cx,cy:cy,r:big,"stroke-width":2,class:"c"},g);c.style.fill=segCol[e.s[0]];c.style.stroke="var(--ring)";
+   VZ.el("circle",{cx:cx,cy:cy,r:14,fill:"transparent"},g);
+   g.addEventListener("click",function(){detail(i)});g.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();detail(i)}});evEls[i]=g});
+  apply();detail(selE);return}
  document.getElementById("dm-detail").hidden=false;
- var W=CW,L=112,R=W-14,T=30,GAP=26,LH=22;
+ var W=CW,L=112,R=W-14,T=30,GAP=26,LH=26;
  var x=VZ.lin(2025,2031.75,L,R);
  /* assign sub-lanes so markers never overlap */
  var lanesOf={},laneEnd={};EV.slice().sort(function(a,b){return a.t-b.t}).forEach(function(e){var cx=x(e.t),ends=laneEnd[e.r]||(laneEnd[e.r]=[]),k=0;while(ends[k]!==undefined&&cx-ends[k]<GAP)k++;ends[k]=cx;e.lane=k;e.cx=cx});
- var rowTop=[],y0=T;ROWS.forEach(function(r,i){var n=(laneEnd[i]||[0]).length;rowTop[i]={y:y0,h:Math.max(36,n*LH+14),n:n};y0+=rowTop[i].h});
+ var rowTop=[],y0=T;ROWS.forEach(function(r,i){var n=(laneEnd[i]||[0]).length;rowTop[i]={y:y0,h:Math.max(38,n*LH+18),n:n};y0+=rowTop[i].h});
  var B=y0,H=B+18;
  var s=VZ.svg(host,W,H,"Timeline of regulatory forcing events from 2025 to 2031 by jurisdiction, coloured by the segment that must act.");s.setAttribute("role","group");
  var lw=VZ.el("rect",{x:x(2027),y:T-6,width:x(2028)-x(2027),height:B-T+6},s);lw.style.fill="var(--accent-soft)";
@@ -283,7 +310,16 @@ var WAVES=[
 var wave=0,hl=null,selC="FI",tiles={};
 function lab(k){if(k===3)return["Calculation required","Calculation or disclosure required","Disclosure required; national limit values due"][wave];if(k===4)return"Limit values in force";return ST[k]}
 function stat(c){var base=c[4],nonEU=c[6];if(nonEU||wave===0)return base;return Math.max(base,3)}
-function note(c){var s=c[5]||"No national building LCA rule was found in this research.";if(!c[6]&&wave===1&&c[4]<4)s+=" From 1 January 2028 new buildings over 1,000 m² must disclose life cycle GWP.";if(!c[6]&&wave===2&&c[4]<4)s+=" From 2030 all new buildings must disclose, and national limit values are due under its roadmap.";return s}
+var WN={FI:["Limits stay in force, and EU disclosure for new buildings over 1,000 m² begins.","Limits tightened at the start of 2029, and disclosure now covers all new buildings."],
+ DK:["Limits stay in force. Further tightening steps are signposted for 2027 and 2029, not yet final.","Disclosure now covers all new buildings. The 2029 tightening step was signposted, not final."],
+ NL:["A proposed GWP indicator would be required with permits above 1,000 m², alongside MPG.","The aim to halve the MPG requirement by 2030 is a policy aim, not law."],
+ FR:["RE2020 construction carbon step two applies, 10 to 18% lower.","Disclosure covers all new buildings, and the final RE2020 step follows on 1 January 2031."],
+ SE:["An extended climate declaration is expected from 2028.","Limit values are expected in force by 2030."],
+ IE:["GWP goes on the BER certificate for new buildings over 1,000 m².","GWP on the BER certificate extends to all new buildings."],
+ UK:["Not bound by the EPBD, so no EU disclosure date applies.","Not bound by the EPBD, so no EU disclosure date applies."],
+ CH:["Not bound by the EPBD. Cantonal grey energy limits come later.","Not bound by the EPBD. Grey energy limits start canton by canton, in St. Gallen from 2031 at the earliest."]};
+function note(c){if(wave===0)return c[5]||"No national building LCA rule was found in this research.";var w=WN[c[0]],t=w?w[wave-1]:"";
+ if(!c[6]&&c[4]<4&&!(c[0]==="IE"))t+=(t?" ":"")+(wave===1?"From 1 January 2028 new buildings over 1,000 m² must disclose life cycle GWP.":"From 2030 all new buildings must disclose, and national limit values are due under the country's roadmap.");return t}
 var tw=document.getElementById("dm-tiles");
 for(var r=0;r<7;r++)for(var cc=0;cc<9;cc++){var hit=C.filter(function(c){return c[2]===cc&&c[3]===r})[0];
  if(!hit){var sp=document.createElement("span");sp.setAttribute("aria-hidden","true");tw.appendChild(sp);continue}
@@ -300,6 +336,18 @@ function paint(){var n={1:0,2:0,3:0,4:0};C.forEach(function(c){n[stat(c)]++});if
  document.getElementById("dm-wave").innerHTML='<b>'+WAVES[wave].h+'</b> '+WAVES[wave].w;
  document.getElementById("dm-counts").innerHTML=KS.map(function(k){return'<div><b>'+n[k]+'</b><span><span class="dm-sw st'+k+'"></span>'+lab(k)+'</span></div>'}).join("")}
 VZ.tabs(document.getElementById("dm-waves"),function(t){wave=+t.id.slice(-1);document.getElementById("dm-wp").hidden=false;document.getElementById("dm-wp").setAttribute("aria-labelledby",t.id);paint()});
+
+/* voluntary markets */
+var VR=[["Binding national rule","var(--ink3)"],["Local or regional rules","var(--s1)"],["Certification schemes","var(--s2)"],["Free or rival tools","var(--s4)"]];
+var VM=[{n:"US",c:[["Federal Buy Clean funding rescinded, July 2025"],["California CALGreen","States and cities"],["LEED v5"],["EC3, free and the default reference"]],why:"Federal Buy Clean funding was rescinded in July 2025, so demand rests on California, a few states and cities, and LEED v5.",msg:"Lead with the LEED v5 credit and the bid won, and answer EC3 being free."},
+ {n:"UK",c:[["Part Z not adopted","Future Homes Standard covers operational energy only"],["London Plan","RICS whole life carbon standard"],[],["CarboniCa, now RICS validated"]],why:"Part Z is still not adopted, so the London Plan and the RICS standard drive demand.",msg:"Lead with London Plan and RICS assessments done faster, and answer CarboniCa on validation."},
+ {n:"ME and APAC",c:[["No binding UAE rule found"],[],["LEED","Estidama","GSAS","Mostadam","Green Star","Green Mark","NABERS embodied carbon rating"],[]],why:"No binding UAE rule was found, so certification schemes drive demand.",msg:"Lead with the certification credit gained, scheme by scheme."}];
+var vg=document.getElementById("dm-vg"),vsel=0;
+function drawV(){var h='<div class="ch"></div>'+VM.map(function(m,k){return'<div class="ch'+(k===vsel?' on':'')+'">'+m.n+'</div>'}).join("");
+ VR.forEach(function(r,ri){h+='<div class="rh"><i style="background:'+r[1]+'"></i>'+r[0]+'</div>';
+  VM.forEach(function(m,k){var L=m.c[ri];h+='<div class="'+(k===vsel?'on':'')+'">'+(L.length?(ri?'<div class="dots" aria-hidden="true">'+L.map(function(){return'<i style="background:'+r[1]+'"></i>'}).join("")+'</div>':'')+L.join(", "):'<span class="none">None listed</span>')+'</div>'})});
+ vg.innerHTML=h;var m=VM[vsel];document.getElementById("dm-vmsg").innerHTML='<div><small>Why demand is voluntary</small>'+esc(m.why)+'</div><div style="background:var(--accent-soft)"><small>Message to lead with, my judgement</small>'+esc(m.msg)+'</div>'}
+VZ.tabs(document.getElementById("dm-vt"),function(t){vsel=+t.id.slice(-1);var vp=document.getElementById("dm-vp");vp.hidden=false;vp.setAttribute("aria-labelledby",t.id);drawV()});
 
 /* heatmap */
 var YRS=[2025,2026,2027,2028,2029,2030,2031],hm=document.getElementById("dm-hm");

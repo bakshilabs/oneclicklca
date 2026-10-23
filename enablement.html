@@ -22,8 +22,8 @@
 <header class="sitenav"><div class="in"><a class="brand" href="overview.html">Arpan Bakshi<span>One Click LCA product marketing</span></a><button class="theme" type="button" aria-label="Switch to dark mode">Dark</button><button class="menu" type="button" aria-expanded="false" aria-controls="sitelinks">Menu</button><nav class="links" id="sitelinks" aria-label="Site pages"><a href="overview.html">Overview</a><a href="role.html">The Role</a><a href="fit.html">Fit</a><a href="portfolio.html">Portfolio</a><a href="demand.html">Demand Drivers</a><a href="buyers.html">Buyers</a><a href="segments.html">Segment Model</a><a href="alternatives.html">Alternatives</a><a href="positioning.html">Positioning</a><a href="launch.html">Launch Playbook</a><a href="enablement.html" aria-current="page">Enablement</a><a href="metrics.html">Win Rate</a><a href="first-90-days.html">First 90 Days</a><a href="ai.html">AI Workflow</a><a href="cv.html">CV</a></nav></div></header><script>(function(){var r=document.documentElement,t=document.querySelector('.sitenav .theme');function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}function show(){var d=cur()==='dark';t.textContent=d?'Light':'Dark';t.setAttribute('aria-label','Switch to '+(d?'light':'dark')+' mode')}if(t){t.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n)}catch(e){}show()});show()}var b=document.querySelector('.sitenav .menu'),l=document.getElementById('sitelinks');if(!b)return;b.addEventListener('click',function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');b.textContent=o?'Close':'Menu';});l.addEventListener('click',function(e){if(e.target.tagName==='A'){l.classList.remove('open');b.textContent='Menu';b.setAttribute('aria-expanded','false');}});})();</script>
 <main class="wrap page" id="main" tabindex="-1">
 <style>
-#en-main .viz{margin-top:0}
-#en-main svg .t-muted{font-size:12px}
+main .viz{margin-top:0}
+main svg .t-muted{font-size:12px}
 .en-calc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:20px;margin-top:20px;align-items:start}
 .en-calc .controls{background:var(--panel);border-radius:6px;padding:16px 20px 16px}
 .en-calc .controls h3{font-size:16px}
@@ -34,23 +34,36 @@
 .en-hero .big{margin:0;font-size:clamp(36px,4.4vw,54px)}
 .en-hero p{font-size:14px;color:var(--muted);max-width:44ch}
 .en-hero .stat-ic{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;border-radius:3px;padding:3px 8px}
-.en-s3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.en-s3{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .en-s3 div{background:var(--panel);border-radius:5px;padding:12px 14px}
 .en-s3 b{display:block;font:600 20px/1.15 var(--sans);letter-spacing:-.02em}
 .en-s3 span{font-size:12.5px;color:var(--muted)}
+.en-s3 .be{background:var(--accent-soft)}
 .en-be{margin-top:14px}
-.en-qs{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:18px;list-style:none;padding:0;counter-reset:q}
-.en-qs li{background:var(--panel);border-radius:6px;padding:16px 18px 16px;font-size:15px;line-height:1.4;counter-increment:q;position:relative;animation:enIn .4s ease both}
-.en-qs li:before{content:counter(q);position:absolute;right:16px;top:14px;font:600 28px/1 var(--sans);color:var(--line)}
-.en-qs .tag{margin-bottom:10px;display:inline-flex;align-items:center;gap:5px}
+.en-disc{display:grid;grid-template-columns:350px minmax(0,1fr);gap:20px;margin-top:18px;align-items:start}
+.en-g{display:grid;grid-template-columns:auto repeat(3,minmax(0,1fr));gap:4px;align-items:center;font-size:13px}
+.en-g .hd{font-size:11.5px;overflow-wrap:anywhere;text-align:center;color:var(--muted);padding-bottom:4px}
+.en-g .hd.on{color:var(--ink);font-weight:600}
+.en-g .rl{display:flex;gap:6px;align-items:center;color:var(--ink2)}
+.en-g .rl svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.en-g .c,.en-g .c0{height:26px;border-radius:3px}
+.en-g .c0{background:var(--panel)}
+.en-g .c{appearance:none;border:0;background:var(--ink3);color:#fff;font:600 12px/1 var(--sans);cursor:pointer}
+.en-g .c.on{background:var(--s1)}
+.en-g .c.pk{outline:2px solid var(--ink);outline-offset:1px}
+.en-qs{list-style:none;margin:0;padding:0;counter-reset:q;display:grid;gap:6px}
+.en-qs li{counter-increment:q;display:grid;grid-template-columns:28px 104px 1fr;gap:10px;align-items:center;background:var(--panel);border-radius:5px;padding:10px 14px;font-size:15px;transition:opacity .2s}
+.en-qs li:before{content:counter(q);font:600 18px/1 var(--sans);color:var(--muted)}
+.en-qs li.dim{opacity:.45}
+.en-qs li.hl{background:var(--accent-soft)}
+.en-qs .tag{display:inline-flex;align-items:center;gap:5px;justify-self:start}
 .en-qs .tag svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.en-cov{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:13px;color:var(--muted)}
-.en-cov span{display:inline-flex;gap:6px;align-items:center}
-.en-cov b{color:var(--ink);font-variant-numeric:tabular-nums}
+@media (max-width:900px){.en-disc{grid-template-columns:1fr}}
+@media (max-width:640px){.en-qs li{grid-template-columns:24px 1fr}.en-qs li>span:last-child{grid-column:1/-1}}
 @keyframes enIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .en-obj{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:14px;margin-top:20px;align-items:start}
 .en-ol{display:grid;gap:6px;align-content:start}
-.en-ol button{appearance:none;font:inherit;color:var(--ink);text-align:left;border:1px solid var(--line);background:var(--bg);border-radius:5px;padding:10px 14px;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center}
+.en-ol button{appearance:none;font:inherit;color:var(--ink);text-align:left;border:1px solid transparent;background:var(--panel);border-radius:3px;padding:10px 14px;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center}
 .en-ol button:hover{border-color:var(--accent)}
 .en-ol button[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
 .en-ol small{font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
@@ -76,21 +89,19 @@
 .en-vsh i{width:10px;height:10px;border-radius:2px;display:inline-block}
 .en-vsh em{font-style:normal;justify-self:center;width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:600 13px/1 var(--sans)}
 .en-rows{list-style:none;margin:0;padding:0}
-.en-rows li{border-top:1px solid var(--line)}
-.en-rows button{appearance:none;border:0;background:none;width:100%;font:inherit;color:inherit;display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,1.2fr) minmax(0,1fr);align-items:center;gap:12px;padding:10px 20px;cursor:pointer}
-.en-rows button:hover,.en-rows button[aria-expanded="true"]{background:var(--panel)}
-.en-rows .d{font-size:14px;font-weight:500}
-.en-rows .L .d{text-align:right;grid-column:1}.en-rows .R .d{text-align:left;grid-column:3}
-.en-rows .sd{grid-column:2;grid-row:1;height:14px;position:relative;border-radius:3px}
+.en-rows li{border-top:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,1fr) minmax(0,1fr);align-items:center;gap:14px;padding:10px 20px}
+.en-rows .cell.l{text-align:right}.en-rows .cell.r{text-align:left}
+.en-rows .d{font-size:14px;font-weight:600;display:block}
+.en-rows .tt{font-size:13.5px;color:var(--ink2);display:block;line-height:1.4}
+.en-rows .sd{height:14px;position:relative}
 .en-rows .sd:before{content:"";position:absolute;left:50%;top:-6px;bottom:-6px;border-left:1px solid var(--ink3)}
-.en-rows .sd i{position:absolute;top:0;bottom:0;transition:width .5s}
+.en-rows .sd i{position:absolute;top:0;bottom:0}
 .en-rows .L .sd i{right:50%;background:var(--s2);border-radius:4px 0 0 4px}
 .en-rows .R .sd i{left:50%;background:var(--s1);border-radius:0 4px 4px 0}
 .en-rows .st{font-size:12px;color:var(--muted);display:block;font-weight:400}
-.en-rows .det{padding:0 20px 14px;font-size:14px;max-width:76ch;margin:0 auto;text-align:center}
 .en-tally{display:flex;justify-content:space-between;padding:12px 20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);gap:12px;flex-wrap:wrap}
 @media (max-width:900px){.en-calc,.en-obj{grid-template-columns:1fr}}
-@media (max-width:640px){.en-s3{grid-template-columns:1fr 1fr}#en-main .viz{padding:16px 12px 12px}.en-meet{grid-template-columns:1fr}.en-meet>div+div{border-left:0;border-top:1px solid var(--line)}.en-rows button{grid-template-columns:1fr;gap:6px;padding:10px 14px}.en-rows .L .d,.en-rows .R .d{grid-column:1;text-align:left}.en-rows .sd{grid-row:2;grid-column:1}.en-vsh{grid-template-columns:1fr 44px 1fr}.en-vsh div{padding:12px}.en-vsh h3{font-size:14px}}
+@media (max-width:640px){.en-s3{grid-template-columns:1fr 1fr}main .viz{padding:16px 12px 12px}.en-meet{grid-template-columns:1fr}.en-meet>div+div{border-left:0;border-top:1px solid var(--line)}.en-rows li{grid-template-columns:1fr;gap:6px;padding:10px 14px}.en-rows .cell.l,.en-rows .cell.r{text-align:left}.en-rows .L .cell.r,.en-rows .R .cell.l{order:3}.en-rows .sd{order:2}.en-vsh{grid-template-columns:1fr 44px 1fr}.en-vsh div{padding:12px}.en-vsh h3{font-size:14px}}
 @media (prefers-reduced-motion:reduce){.en-qs li{animation:none}}
 </style>
 <header class="phead">
@@ -98,7 +109,6 @@
   <h1>Enablement</h1>
   <p class="lede">Sellers must justify an LCA licence to buyers who are not LCA experts, often against a free tool. Each tool here works on a live call without product marketing present.</p>
 </header>
-<div id="en-main">
 <section class="sec lead-viz" aria-labelledby="en-h1">
   <span class="eyebrow">Business case</span>
   <h2 id="en-h1">Cost of doing nothing</h2>
@@ -109,15 +119,18 @@
       <div class="en-hero" aria-live="polite" id="en-hero"></div>
       <div class="en-s3" id="en-s3"></div>
       <div class="viz" id="en-wfv">
-        <div class="viz-h"><h3>Year one, from the alternative to the net benefit</h3><p>Euros a year</p></div>
-        <div class="legend"><span><i style="background:var(--s1);border-radius:2px"></i>Saving or income</span><span><i style="background:var(--s2);border-radius:2px"></i>Cost of the tool route</span><span><i style="background:var(--ink2);border-radius:2px"></i>Net benefit</span></div>
+        <div class="tabs" role="tablist" aria-label="Chart" id="en-ct" style="margin-top:0"><button role="tab" id="en-ct1" aria-controls="en-cp1" aria-selected="true">Year one breakdown</button><button role="tab" id="en-ct2" aria-controls="en-cp2" aria-selected="false">Break-even by volume</button></div>
+        <div role="tabpanel" id="en-cp1" aria-labelledby="en-ct1">
+        <div class="viz-h" style="margin-top:14px"><h3>From the alternative to the net benefit</h3><p>Euros a year. Hover a bar for detail.</p></div>
+        <div class="legend"><span><i style="background:var(--s1);border-radius:2px"></i>Saving or income</span><span><i style="background:var(--s2);border-radius:2px"></i>Cost of the tool route</span><span><i style="background:var(--s3);border-radius:2px"></i>Net benefit</span></div>
         <div id="en-wf"></div>
+        </div>
+        <div role="tabpanel" id="en-cp2" aria-labelledby="en-ct2" hidden>
+        <div class="viz-h" style="margin-top:14px"><h3 id="en-beh">Break-even</h3><p>Click the chart to set the volume.</p></div>
+        <div id="en-be"></div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="viz en-be">
-    <div class="viz-h"><h3 id="en-beh">Break-even</h3><p>Click the chart to set the volume.</p></div>
-    <div id="en-be"></div>
   </div>
   <p class="src" style="margin-top:10px">Illustrative model for a sales conversation, not a quote. Published licence prices are used where they exist; manufacturer licences are quoted, so that figure is an assumption.</p>
 </section>
@@ -131,7 +144,7 @@
     <button role="tab" id="en-t-c" aria-controls="en-p" aria-selected="false" data-p="c">Contractors</button>
     <button role="tab" id="en-t-m" aria-controls="en-p" aria-selected="false" data-p="m">Manufacturers</button>
   </div>
-  <div role="tabpanel" id="en-p" tabindex="0" aria-labelledby="en-t-d"><div class="en-cov" id="en-cov"></div><ol class="en-qs" id="en-qs"></ol></div>
+  <div role="tabpanel" id="en-p" tabindex="0" aria-labelledby="en-t-d"><div class="en-disc"><div id="en-cov"></div><ol class="en-qs" id="en-qs"></ol></div></div>
 </section>
 
 <section class="sec" aria-labelledby="en-h3">
@@ -153,11 +166,10 @@
   <div class="en-vs rv">
     <div class="en-vsh"><div><i style="background:var(--s2)"></i><h3>AI-first startup</h3></div><em aria-hidden="true">vs</em><div><h3>One Click LCA</h3><i style="background:var(--s1)"></i></div></div>
     <ul class="en-rows" id="en-rows"></ul>
-    <div class="en-tally"><span>Bar length is the size of the edge, from slight to strong. Select a row for the talk track.</span><span>Edges are my judgement from the battlecard.</span></div>
+    <div class="en-tally"><span>Bar length is the size of the edge, from slight to strong. The text opposite is the talk track.</span><span>Edges are my judgement from the battlecard.</span></div>
   </div>
   <div class="callout rv" style="max-width:none"><p><b>Landmine to set.</b> "Ask them how many of their EPDs have been verified by your market's programme operator, and how long the last ten took."</p></div>
 </section>
-</div>
 
 <script>
 (function(){
@@ -166,10 +178,10 @@ function eur(x){return (x<0?"−€":"€")+Math.abs(Math.round(x)).toLocaleStri
 function k(x){var a=Math.abs(x),s=x<0?"−":"";return a>=1e6?s+"€"+(+(a/1e6).toFixed(1))+"m":a>=1e3?s+"€"+Math.round(a/1e3)+"k":s+"€"+Math.round(a)}
 function nice(mn,mx,n){var span=mx-mn||1,raw=span/n,st=Math.pow(10,Math.floor(Math.log10(raw))),e=raw/st;st*=e>=5?10:e>=2.5?5:e>=1.2?2:1;var a=Math.floor(mn/st)*st,b=Math.ceil(mx/st)*st,t=[];for(var v=a;v<=b+st/2;v+=st)t.push(Math.round(v*1e6)/1e6);return t}
 var M={
-d:{vol:"a",vn:"assessments a year",f:[["a","Whole life carbon assessments a year",12,1,200,1,""],["c","Consultant fee per assessment (€)",6000,500,40000,500,""],["h","Internal hours per assessment with the tool",24,4,120,2,""],["r","Internal hourly cost (€)",75,30,200,5,""],["l","Licence cost a year (€)",5180,1000,60000,10,"Business concurrent licence is €5,180 a year per market bundle"],["s","Share of assessments billed to clients (%)",30,0,100,5,""],["b","Fee billed per assessment (€)",4000,0,30000,500,""]],
+d:{vol:"a",vn:"assessments a year",f:[["a","Whole life carbon assessments a year",12,1,200,1,""],["c","Consultant fee per assessment (€)",3000,500,40000,500,""],["h","Internal hours per assessment with the tool",28,4,120,2,""],["r","Internal hourly cost (€)",75,30,200,5,""],["l","Licence cost a year (€)",5180,1000,60000,10,"Business concurrent licence is €5,180 a year per market bundle"],["s","Share of assessments billed to clients (%)",10,0,100,5,""],["b","Fee billed per assessment (€)",2500,0,30000,500,""]],
  steps:function(v){return [["Consultant fees avoided",v.a*v.c,"Outsourced cost a year: "+v.a+" assessments at "+eur(v.c)],["Licence",-v.l,"Licence cost a year"],["Internal hours",-v.a*v.h*v.r,v.a*v.h+" hours at "+eur(v.r)],["Fee income",v.a*v.s/100*v.b,"Fee income from the "+v.s+"% of assessments billed to clients"]]},
  tool:function(v){return v.l+v.a*v.h*v.r},out:function(v){return v.a*v.c},ul:"In-house cost per assessment"},
-m:{vol:"y",vn:"EPDs a year",f:[["p","Products that need EPDs",40,1,1000,1,""],["y","EPDs to publish this year",15,1,300,1,""],["c","Consultant cost per EPD (€)",10000,2000,30000,500,"Vendor-cited surveys put this at €5,000 to €20,000"],["v","Verification and publishing per EPD with the tool (€)",1500,0,10000,100,""],["h","Internal hours per EPD with the tool",16,2,120,2,""],["r","Internal hourly cost (€)",70,30,200,5,""],["l","Licence cost a year (€)",12000,2000,150000,500,"Assumed. Manufacturer licences are quoted"],["w","Revenue at risk per product without an EPD (€ a year)",20000,0,500000,1000,"Sales lost when a specifier or tender requires an EPD"],["k","Share of that revenue the EPD protects (%)",20,0,100,5,""]],
+m:{vol:"y",vn:"EPDs a year",f:[["p","Products that need EPDs",40,1,1000,1,""],["y","EPDs to publish this year",15,1,300,1,""],["c","Consultant cost per EPD (€)",6000,2000,30000,500,"Vendor-cited surveys put this at €5,000 to €20,000"],["v","Verification and publishing per EPD with the tool (€)",1500,0,10000,100,""],["h","Internal hours per EPD with the tool",20,2,120,2,""],["r","Internal hourly cost (€)",70,30,200,5,""],["l","Licence cost a year (€)",20000,2000,150000,500,"Assumed. Manufacturer licences are quoted"],["w","Revenue at risk per product without an EPD (€ a year)",10000,0,500000,1000,"Sales lost when a specifier or tender requires an EPD"],["k","Share of that revenue the EPD protects (%)",10,0,100,5,""]],
  steps:function(v){return [["Consultant cost avoided",v.y*v.c,"Consultant route a year: "+v.y+" EPDs at "+eur(v.c)],["Licence",-v.l,"Licence cost a year"],["Verification",-v.y*v.v,"Verification and publishing for "+v.y+" EPDs"],["Internal hours",-v.y*v.h*v.r,v.y*v.h+" hours at "+eur(v.r)],["Revenue protected",v.y*v.w*v.k/100,"Revenue protected by this year's EPDs"]]},
  tool:function(v){return v.l+v.y*(v.v+v.h*v.r)},out:function(v){return v.y*v.c},ul:"Tool cost per EPD"}
 };
@@ -178,10 +190,11 @@ function fmt(f,x){return /€/.test(f[1])?eur(x):/%/.test(f[1])?x+"%":x.toLocale
 function build(){var c=$("en-inputs");c.innerHTML='<h3>'+(mode==="d"?"Design firm":"Manufacturer")+'</h3><p class="mini">Move any figure to match the buyer.</p>';V={};
  M[mode].f.forEach(function(f){V[f[0]]=f[2];var d=document.createElement("div");d.className="ctl";d.innerHTML='<label for="en_'+f[0]+'">'+f[1].replace(/ \((€|%)\)/,"").replace(" (€ a year)"," a year")+'<output id="eno_'+f[0]+'">'+fmt(f,f[2])+'</output></label><input type="range" id="en_'+f[0]+'" min="'+f[3]+'" max="'+f[4]+'" step="'+f[5]+'" value="'+f[2]+'">'+(f[6]?'<span class="hint">'+f[6]+'</span>':'');c.appendChild(d);
   d.querySelector("input").addEventListener("input",function(e){V[f[0]]=+e.target.value;$("eno_"+f[0]).textContent=fmt(f,V[f[0]]);draw()})});draw()}
+function beN(){var m=M[mode],v0=Object.assign({},V);v0[m.vol]=0;var fx=net(v0);v0[m.vol]=1;var sl=net(v0)-fx;return sl>0?Math.ceil(-fx/sl):"None"}
 function net(v){return M[mode].steps(v).reduce(function(a,s){return a+s[1]},0)}
 function draw(){var m=M[mode],st=m.steps(V),n=net(V),vol=V[m.vol],tool=m.tool(V),out=m.out(V);
  $("en-hero").innerHTML='<div><span class="eyebrow">Net benefit in year one</span><span class="big" style="color:'+(n>=0?'var(--accent)':'var(--bad)')+'">'+eur(n)+'</span></div><p><span class="stat-ic" style="background:'+(n>=0?'var(--ok-soft);color:var(--ok)':'var(--bad-soft);color:var(--bad)')+'">'+(n>=0?"✓ Tool route wins":"✕ Alternative wins")+'</span><br>'+(n>=0?"The tool route costs less than the alternative once the benefit is counted.":"At these figures the alternative costs less. Look at next year's volume before deciding.")+'</p>';
- $("en-s3").innerHTML='<div><b>'+eur(out)+'</b><span>'+(mode==="d"?"Outsourced route a year":"Consultant route a year")+'</span></div><div><b>'+eur(tool)+'</b><span>Tool route a year</span></div><div><b>'+eur(tool/vol)+'</b><span>'+m.ul+'</span></div>';
+ $("en-s3").innerHTML='<div><b>'+eur(out)+'</b><span>'+(mode==="d"?"Outsourced route a year":"Consultant route a year")+'</span></div><div><b>'+eur(tool)+'</b><span>Tool route a year</span></div><div><b>'+eur(tool/vol)+'</b><span>'+m.ul+'</span></div><div class="be"><b>'+beN()+'</b><span>Break-even, '+m.vn+'</span></div>';
  drawWf(st,n);drawBe();obj(cur);}
 function host(id){var h=$(id);h.innerHTML="";return h}
 function drawWf(st,n){var h=host("en-wf"),W=Math.max(290,h.clientWidth||600),narrow=W<560;
@@ -189,7 +202,7 @@ function drawWf(st,n){var h=host("en-wf"),W=Math.max(290,h.clientWidth||600),nar
  cols.forEach(function(c,i){var isT=i===st.length,a=isT?0:run,b=isT?c[1]:run+c[1];if(!isT)run=b;seg.push([a,b])});
  var all=[0];seg.forEach(function(s){all.push(s[0],s[1])});var tk=nice(Math.min.apply(null,all),Math.max.apply(null,all),4),mn=tk[0],mx=tk[tk.length-1];
  var lab="Waterfall: "+cols.map(function(c){return c[0]+" "+eur(c[1])}).join(", ");
- function fillOf(i,c){return i===st.length?"var(--ink2)":c[1]>=0?"var(--s1)":"var(--s2)"}
+ function fillOf(i,c){return i===st.length?"var(--s3)":c[1]>=0?"var(--s1)":"var(--s2)"}
  if(narrow){var rh=46,top=8,H=top+cols.length*rh+26,L=4,R=W-6,x=VZ.lin(mn,mx,L,R);var svg=VZ.svg(h,W,H,lab);svg.setAttribute("role","group");
   tk.forEach(function(v){VZ.el("line",{x1:x(v),x2:x(v),y1:top,y2:H-22,"class":v===0?"axis":"grid"},svg);var t=VZ.el("text",{x:x(v),y:H-6,"text-anchor":v===mn?"start":v===mx?"end":"middle","class":"t-muted"},svg);t.textContent=k(v)});
   cols.forEach(function(c,i){var y=top+i*rh,a=seg[i][0],b=seg[i][1],x0=x(Math.min(a,b)),x1=x(Math.max(a,b)),g=VZ.el("g",{role:"img","aria-label":c[0]+": "+eur(c[1])},svg);
@@ -242,10 +255,14 @@ var IC={Trigger:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',Cost:'<circle cx="12" c
 var D={d:{n:"Design firms",q:[["Trigger","Which projects this year need a whole life carbon result, and for which rule or scheme?"],["Cost","Who does those assessments today, and what does each one cost in fees or hours?"],["Risk","What happens if a result fails a limit late in design?"],["Workflow","Which BIM tools does the team model in?"],["Signer","Who would sign for a firm-wide tool?"]]},
 c:{n:"Contractors",q:[["Trigger","How many tenders in the past year scored carbon, and how did you score?"],["Timing","When do you get supplier EPDs, before or after the bid?"],["Trigger","Which clients ask for as-built carbon reporting?"],["Risk","Do site emission limits or CSRD apply to you?"],["Signer","Who owns the bid budget?"]]},
 m:{n:"Manufacturers",q:[["Scope","How many products do you sell, and how many have EPDs today?"],["Trigger","Which specifiers, tenders or markets have asked for EPDs in the past year?"],["Cost","What did your last EPD cost and how long did it take?"],["Route","Which programme operator do your markets accept?"],["Signer","Who would see the sales benefit, and do they know about this project?"]]}};
-VZ.tabs($("en-tabs"),function(t){var p=D[t.dataset.p];$("en-p").hidden=false;$("en-p").setAttribute("aria-labelledby",t.id);
- var cnt={};p.q.forEach(function(q){cnt[q[0]]=(cnt[q[0]]||0)+1});
- $("en-cov").innerHTML='<span>What the five questions uncover:</span>'+Object.keys(cnt).map(function(c){return '<span class="tag a" style="display:inline-flex;gap:5px;align-items:center"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">'+IC[c]+'</svg>'+c+' <b>'+cnt[c]+'</b></span>'}).join("");
- $("en-qs").innerHTML=p.q.map(function(q,i){return '<li style="animation-delay:'+i*60+'ms"><span class="tag a"><svg viewBox="0 0 24 24" aria-hidden="true">'+IC[q[0]]+'</svg>'+q[0]+'</span><br>'+q[1]+'</li>'}).join("")});
+var INT=["Trigger","Scope","Timing","Cost","Risk","Workflow","Route","Signer"],PK=["d","c","m"],fInt=null,curP="d";
+function grid(){var h='<div class="en-g" role="group" aria-label="Question coverage by buyer"><span></span>'+PK.map(function(p){return '<span class="hd'+(p===curP?" on":"")+'">'+D[p].n.replace(" firms","")+'</span>'}).join("");
+ INT.forEach(function(it){h+='<span class="rl"><svg viewBox="0 0 24 24" aria-hidden="true">'+IC[it]+'</svg>'+it+'</span>';PK.forEach(function(p){var n=D[p].q.filter(function(q){return q[0]===it}).length;
+  h+=n?'<button type="button" class="c'+(p===curP?" on":"")+(p===curP&&fInt===it?" pk":"")+'" data-p="'+p+'" data-i="'+it+'" aria-pressed="'+(p===curP&&fInt===it)+'" aria-label="'+D[p].n+', '+it+': '+n+' question'+(n>1?"s":"")+'">'+(n>1?n:"")+'</button>':'<span class="c0" aria-hidden="true"></span>'})});
+ $("en-cov").innerHTML=h+'</div><p class="mini" style="margin-top:8px">Select a filled cell to highlight its questions.</p>';
+ [].forEach.call($("en-cov").querySelectorAll("button"),function(b){b.addEventListener("click",function(){var p=b.dataset.p,it=b.dataset.i;fInt=(fInt===it&&curP===p)?null:it;if(p!==curP){$("en-t-"+p).click();}else{list()}})})}
+function list(){var p=D[curP];$("en-qs").innerHTML=p.q.map(function(q,i){return '<li class="'+(fInt&&q[0]!==fInt?"dim":"")+(fInt===q[0]?" hl":"")+'"><span class="tag a"><svg viewBox="0 0 24 24" aria-hidden="true">'+IC[q[0]]+'</svg>'+q[0]+'</span><span>'+q[1]+'</span></li>'}).join("");grid()}
+VZ.tabs($("en-tabs"),function(t){curP=t.dataset.p;$("en-p").hidden=false;$("en-p").setAttribute("aria-labelledby",t.id);list()});
 
 /* objections */
 var O=[["Free tool","EC3 is free.","EC3 is a good EPD database for procurement. A permit, LEED v5 credit or national limit needs a whole-building assessment to a defined method, which EC3 does not produce.","A compliant report from the same model, and the scheme list",""],
@@ -269,10 +286,10 @@ function obj(i){cur=i;ob.forEach(function(b,j){b.setAttribute("aria-pressed",i==
 var SN={1:"Slight edge",2:"Clear edge",3:"Strong edge"};
 var B=[["L","Story and pitch",2,"A modern, AI-led story that promises verified EPDs in weeks."],["L","Hands-on service",2,"They do much of the work with the manufacturer's team."],["L","Introductory pricing",3,"Startup pricing, and in Norway an EPD Global grant."],
 ["R","Cost per EPD across the range",3,"Ask about the range. The cost per EPD across fifty products matters more than the first one."],["R","Publishing reach",3,"Ask where the EPDs will be published. One Click LCA publishes through eight programme operators."],["R","Demand after publication",2,"Designers find the product inside One Click LCA with real data, and usage analytics show who used it."],["R","Verification record",1,"Show the record with a named customer that has a similar product range."]];
-$("en-rows").innerHTML=B.map(function(b,i){return '<li class="'+b[0]+'"><button type="button" aria-expanded="false" aria-controls="en-r'+i+'"><span class="d">'+b[1]+'<span class="st">'+(b[0]==="L"?"Their ":"Our ")+SN[b[2]].toLowerCase()+'</span></span><span class="sd" aria-hidden="true"><i style="width:'+(b[2]/3*50)+'%"></i></span></button><div class="det" id="en-r'+i+'" hidden>'+b[3]+'</div></li>'}).join("");
-[].forEach.call($("en-rows").querySelectorAll("button"),function(b){b.addEventListener("click",function(){var o=b.getAttribute("aria-expanded")==="true";b.setAttribute("aria-expanded",!o);$(b.getAttribute("aria-controls")).hidden=o})});
+$("en-rows").innerHTML=B.map(function(b,i){var L=b[0]==="L";return '<li class="'+b[0]+'"><div class="cell l">'+(L?'<span class="d">'+b[1]+'<span class="st">Their '+SN[b[2]].toLowerCase()+'</span></span>':'<span class="tt">'+b[3]+'</span>')+'</div><span class="sd" role="img" aria-label="'+(L?"Their ":"Our ")+SN[b[2]].toLowerCase()+'"><i style="width:'+(b[2]/3*50)+'%"></i></span><div class="cell r">'+(L?'<span class="tt">'+b[3]+'</span>':'<span class="d">'+b[1]+'<span class="st">Our '+SN[b[2]].toLowerCase()+'</span></span>')+'</div></li>'}).join("");
 
 var lw=innerWidth,rt;addEventListener("resize",function(){if(innerWidth===lw)return;lw=innerWidth;clearTimeout(rt);rt=setTimeout(draw,150)});
+VZ.tabs($("en-ct"),function(){if(typeof M!=="undefined"&&V[M[mode].vol]!==undefined){drawWf(M[mode].steps(V),net(V));drawBe()}});
 build();
 })();
 </script>

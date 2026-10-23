@@ -23,6 +23,12 @@
 <main class="wrap page" id="main" tabindex="-1">
 <style>
 .viz svg .t-muted{font-size:12px}
+.pf-t{cursor:pointer}.pf-t:focus-visible{outline:none}.pf-t:focus-visible .tb{stroke-width:4}
+.pf-t.off .tb{fill:var(--chart-bg)!important;stroke:var(--ink3)!important}.pf-t.off text{fill:var(--ink3)}
+.pf-key{display:none}
+.pf-key button[aria-pressed="false"]{opacity:1}.pf-key button.off{color:var(--ink2)}.pf-key button[aria-pressed="true"]{outline:2px solid var(--accent);outline-offset:1px}
+.pf-key button.off i{background:var(--ink3)!important}
+@media (max-width:640px){.pf-key{display:grid;grid-template-columns:1fr 1fr;gap:2px 8px;margin-top:10px}.pf-key button{font-size:12.5px;text-align:left}}
 .pf-lanes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
 .pf-lane{background:var(--panel);border-radius:6px;padding:10px;display:flex;flex-direction:column;gap:8px}
 .pf-lane h4{font:600 12px/1.25 var(--sans);text-transform:uppercase;letter-spacing:.04em;color:var(--ink2);display:flex;justify-content:space-between;gap:6px;margin:0 0 2px}
@@ -36,8 +42,12 @@
 .pf-chip:hover{transform:translateY(-1px)}
 .pf-chip[aria-pressed="true"]{outline:2px solid var(--accent);outline-offset:1px}
 .pf-chip.off{color:var(--ink2);border-style:dotted;background:transparent}.pf-chip.off i{background:var(--ink3)!important}.pf-chip.off small{display:none}
-.pf-lay{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:18px;align-items:start}
-.pf-card{background:var(--panel);border-radius:6px;padding:20px 22px;position:sticky;top:80px}
+.pf-lay{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.pf-card{background:var(--panel);border-radius:6px;padding:16px 20px;display:grid;grid-template-columns:240px 1fr;gap:6px 24px;align-items:start}
+.pf-card .hd{grid-row:span 2}
+.pf-card dl{margin:0!important;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px 18px!important}
+@media (max-width:900px){.pf-card{grid-template-columns:1fr}.pf-card dl{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.pf-card dl{grid-template-columns:1fr}}
 .pf-card h3{font-size:19px;margin:6px 0 2px}
 .pf-card .sub{font-size:13px;color:var(--ink2)}
 .pf-card dl{margin:14px 0 0;display:grid;gap:10px}
@@ -70,6 +80,8 @@
 .pf-bars .lb b{color:var(--ink1);font-weight:600;font-variant-numeric:tabular-nums}
 .pf-bars .tr{height:20px;background:transparent;border-bottom:1px solid var(--axis)}
 .pf-bars .fl{height:20px;background:var(--s1);border-radius:0 4px 4px 0;transition:width .7s cubic-bezier(.2,.7,.2,1)}
+.pf-res{margin-top:12px;font-size:14px;background:var(--panel);border-radius:4px;padding:10px 12px}
+.pf-res b{font-variant-numeric:tabular-nums}
 .pf-quote{margin-top:16px;font-size:14px;color:var(--ink2);border-left:3px solid var(--accent);padding-left:12px}
 .pf-tp{margin-top:20px}
 .pf-tp .grid2{margin-top:0}
@@ -106,12 +118,12 @@
 </header>
 
 <section class="viz lead-viz rv" aria-labelledby="pf-map-h">
-  <div class="viz-h"><h3 id="pf-map-h">Product map by stage of work</h3><p>Select a product to see its buyer, job, trigger and the marketing work it needs.</p></div>
+  <div class="viz-h"><h3 id="pf-map-h">Product map by buyer and stage of work</h3><p>Select a product to see its buyer, its licence tiers and the marketing work it needs.</p></div>
   <div class="legend" id="pf-leg" role="group" aria-label="Filter by product line"></div>
   <div class="pf-lay">
     <div>
-      <div class="pf-lanes" id="pf-map"></div>
-      <div class="pf-arrow" aria-hidden="true">Earlier in the work, from learning to selling</div>
+      <div id="pf-map"></div>
+      <div class="legend pf-key" id="pf-key" role="group" aria-label="Products"></div>
     </div>
     <aside class="pf-card" id="pf-card" aria-live="polite"></aside>
   </div>
@@ -128,13 +140,15 @@
       <div class="pf-sum" id="pf-tierinfo" aria-live="polite"></div>
     </div>
     <div class="viz rv" style="margin-top:0">
-      <div class="viz-h"><h3>Business licence, per year</h3></div>
-      <div class="btnrow" role="group" aria-label="Licence type" style="margin-top:0">
-        <button type="button" data-k="n" aria-pressed="true">Named user</button>
-        <button type="button" data-k="c" aria-pressed="false">Concurrent user</button>
+      <div class="viz-h"><h3>Business licence cost per person, per year</h3></div>
+      <div class="btnrow" role="group" aria-label="Bundle" id="pf-bun" style="margin-top:0">
+        <button type="button" data-k="0" aria-pressed="true">Market bundle</button>
+        <button type="button" data-k="1" aria-pressed="false">LEED v4 with EN 15804</button>
       </div>
+      <div class="ctl" style="margin-top:14px"><label for="pf-n">People sharing one concurrent seat <output id="pf-no">3</output></label><input type="range" id="pf-n" min="1" max="5" value="3"></div>
       <ul class="pf-bars" id="pf-bars"></ul>
-      <p class="mini" style="margin-top:12px">Published web shop prices, per market bundle. The three sales-led tiers are priced on request.</p>
+      <p class="pf-res" id="pf-res" aria-live="polite"></p>
+      <p class="mini" style="margin-top:8px">Published web shop prices per market bundle. Sharing assumes the people never use the tool at the same time.</p>
       <p class="pf-quote">Reviewers on G2 and Capterra complain about licence gating, user management and paying a year upfront. Even Revit mapping suggestions depend on "the relevant license feature".</p>
     </div>
   </div>
@@ -153,7 +167,7 @@
   <div role="tabpanel" id="pf-p1" aria-labelledby="pf-t1" class="pf-tp">
     <div class="viz" style="margin-top:0">
       <div class="viz-h"><h3>The same claims, different numbers</h3><p>Each row has its own scale from zero. Hover a mark for where it appears.</p></div>
-      <div class="legend"><span><i style="background:var(--s1)"></i>Figure claimed in copy</span><span><i style="background:var(--s2);border-radius:2px;transform:rotate(45deg)"></i>Count on the site itself</span></div>
+      <div class="legend"><span><i style="background:var(--s1)"></i>Figure claimed in copy</span><span><i style="background:var(--s2);border-radius:2px;transform:rotate(45deg)"></i>Count on the site itself, on its own line</span></div>
       <div id="pf-dots"></div>
       <details class="more"><summary>Table of figures</summary><div class="tw" tabindex="0" role="region" aria-label="Scrollable table"><table class="t" style="min-width:0"><thead><tr><th>Claim</th><th>Figures in use</th></tr></thead><tbody><tr><td>Standards and methods</td><td>140+, 100+, 80+; the compliance page shows about 98 cards</td></tr><tr><td>Datasets</td><td>500,000+ and 300,000+</td></tr><tr><td>Integrations</td><td>20+, while the integrations page lists about 32</td></tr><tr><td>People</td><td>170, 180+, 200+, 300+, 330+</td></tr></tbody></table></div></details>
     </div>
@@ -234,18 +248,51 @@ var P=[
 ];
 var lineOf={};LINES.forEach(function(L){lineOf[L[0]]=L});
 var map=document.getElementById("pf-map"),card=document.getElementById("pf-card"),leg=document.getElementById("pf-leg");
-var chips=[];
-STAGES.forEach(function(st,ci){var lane=document.createElement("div");lane.className="pf-lane";var items=P.map(function(p,pi){return[p,pi]}).filter(function(x){return x[0].c===ci});
- lane.innerHTML='<h4>'+esc(st)+'<span>'+items.length+'</span></h4>';
- items.forEach(function(x){var p=x[0],pi=x[1],b=document.createElement("button");b.type="button";b.className="pf-chip";b.setAttribute("aria-pressed","false");
-  b.innerHTML='<i style="background:var(--s'+lineOf[p.l][2]+')"></i><span>'+esc(p.sh||p.n)+'<small>'+esc(ROWS[p.r])+'</small></span>';b.setAttribute("aria-label",p.n+", for "+ROWS[p.r]);b.onclick=function(){show(pi)};lane.appendChild(b);chips[pi]=b});
- map.appendChild(lane)});
-function show(i){var p=P[i],L=lineOf[p.l];chips.forEach(function(c,k){c.setAttribute("aria-pressed",k===i)});
- card.innerHTML='<span class="tag"><i style="display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;background:var(--s'+L[2]+')"></i>'+esc(L[1])+'</span><h3>'+esc(p.n)+'</h3>'+(p.s?'<p class="sub">'+esc(p.s)+'</p>':'')+
- '<dl><div><dt>Main buyer</dt><dd>'+esc(p.b)+'</dd></div><div><dt>Job to be done</dt><dd>'+esc(p.j)+'</dd></div><div><dt>Purchase trigger</dt><dd>'+esc(p.t)+'</dd></div><div class="pmm"><dt>Product marketing work</dt><dd>'+esc(p.w)+'</dd></div></dl>'}
-var on={};LINES.forEach(function(L){on[L[0]]=true;var b=document.createElement("button");b.type="button";b.setAttribute("aria-pressed","true");b.innerHTML='<i style="background:var(--s'+L[2]+')"></i>'+esc(L[1]);
- b.onclick=function(){on[L[0]]=!on[L[0]];b.setAttribute("aria-pressed",on[L[0]]);P.forEach(function(p,k){chips[k].classList.toggle("off",!on[p.l])})};leg.appendChild(b)});
-show(2);
+var TI=[[[], "Free"],[[1,3],"Designer tier; generative design in Power Pack"],[[0,1,2,3],"Every tier, from the Business licence"],[[0,1],"Business compliance bundle and the Designer compliance module"],[[],"Tier not published"],[[],"Tier not published"],[[],"Manufacturing tiers, priced on request"],[[],"Manufacturing tiers, priced on request"],[[],"Manufacturer Pages are free for up to 50 EPDs in the manufacturing Power Pack"],[[],"Tier not published"],[[],"Sold separately under the SimaPro brand"]];
+var TN=["Business","Designer","Expert Pack","Power Pack"];
+var on={},sel=2,tiles=[],keyBtns=[];
+function wrap(t,n){var w=t.split(" "),L=[""];w.forEach(function(x){if((L[L.length-1]+" "+x).trim().length>n)L.push(x);else L[L.length-1]=(L[L.length-1]+" "+x).trim()});return L}
+function drawMap(W){map.innerHTML="";var nar=W<640,LW=nar?0:150,TW=nar?0:118,cw=(W-LW-TW-(nar?0:18))/5,HD=nar?40:44,TS=nar?26:28;
+ var cnt={};P.forEach(function(p){var k=p.r+"_"+p.c;cnt[k]=(cnt[k]||0)+1});
+ var rh=ROWS.map(function(r,ri){var m=1;for(var c=0;c<5;c++)m=Math.max(m,cnt[ri+"_"+c]||0);return (nar?22:0)+Math.max(nar?40:58,m*(nar?32:46)+12)});
+ var ys=[HD];rh.forEach(function(h,i){ys.push(ys[i]+h)});var H=ys[6]+8;
+ var s=VZ.svg(map,W,H,"Matrix of One Click LCA products by buyer and stage of work, with the licence tiers that include them.");s.setAttribute("role","group");
+ var cx=function(c){return LW+c*cw};
+ STAGES.forEach(function(st,c){wrap(st,nar?8:14).forEach(function(l,k,a){var t=VZ.el("text",{x:cx(c)+cw/2,y:HD-10-(a.length-1-k)*14,"text-anchor":"middle",class:"t-strong"},s);t.textContent=l;t.style.fontSize="12px"})});
+ for(var c=1;c<5;c++)VZ.el("line",{x1:cx(c),x2:cx(c),y1:HD-4,y2:ys[6],class:"grid"},s);
+ ROWS.forEach(function(r,ri){var y0=ys[ri];VZ.el("line",{x1:0,x2:LW+5*cw,y1:y0,y2:y0,class:"grid"},s);
+  if(nar){VZ.el("text",{x:0,y:y0+15,class:"t-strong"},s).textContent=r}else{wrap(r,20).forEach(function(l,k,a){VZ.el("text",{x:0,y:y0+rh[ri]/2+4+(k-(a.length-1)/2)*15,class:"t-strong"},s).textContent=l})}
+  for(var c=0;c<5;c++)if(!cnt[ri+"_"+c]){var d=VZ.el("circle",{cx:cx(c)+cw/2,cy:y0+(nar?22:0)+(rh[ri]-(nar?22:0))/2,r:2.5},s);d.style.fill="var(--axis)"}});
+ VZ.el("line",{x1:0,x2:LW+5*cw,y1:ys[6],y2:ys[6],class:"grid"},s);
+ /* tier column */
+ var tierY=[],tx=W-TW;
+ if(!nar){VZ.el("text",{x:tx,y:HD-10,class:"t-strong"},s).textContent="Licence tiers";
+  TN.forEach(function(t,k){var y=ys[1]+k*(Math.min(64,(ys[6]-ys[1])/4)),b=VZ.el("rect",{x:tx,y:y,width:TW,height:34,rx:3,class:"tierbox","data-k":k},s);b.style.fill="var(--chart-bg)";b.style.stroke="var(--axis)";
+   VZ.el("text",{x:tx+10,y:y+21,class:"t-strong"},s).textContent=t;tierY.push(y+17)})}
+ var links=VZ.el("g",{},s);
+ var seen={};tiles=[];
+ P.forEach(function(p,i){var k=p.r+"_"+p.c,n=seen[k]||0;seen[k]=n+1;var m=cnt[k],top=ys[p.r]+(nar?22:0),hh=rh[p.r]-(nar?22:0);
+  var yy=top+hh/2-(m*(nar?32:46)-(nar?32:46))/2+n*(nar?32:46)-TS/2,xx=nar?cx(p.c)+cw/2-TS/2:cx(p.c)+10;
+  var g=VZ.el("g",{class:"pf-t",role:"button",tabindex:0,"aria-label":(i+1)+". "+p.n+", for "+ROWS[p.r]+", stage "+STAGES[p.c]},s);
+  var col="var(--s"+lineOf[p.l][2]+")",rc=VZ.el("rect",{x:xx,y:yy,width:TS,height:TS,rx:4,"stroke-width":2,class:"tb"},g);rc.style.fill="color-mix(in srgb,"+col+" 26%,var(--chart-bg))";rc.style.stroke=col;
+  var nt=VZ.el("text",{x:xx+TS/2,y:yy+TS/2+4.5,"text-anchor":"middle",class:"t-strong"},g);nt.textContent=i+1;
+  if(!nar)wrap(p.sh||p.n,nar?13:19).slice(0,2).forEach(function(l,k2,a){VZ.el("text",{x:xx+TS+8,y:yy+TS/2+4+(k2-(a.length-1)/2)*14},g).textContent=l});
+  g.addEventListener("click",function(){show(i)});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();show(i)}});
+  VZ.tip(g,function(){return"<b>"+esc(p.n)+"</b>"+esc(ROWS[p.r])+" · "+esc(STAGES[p.c])+"<br><span class='m'>"+esc(TI[i][1])+"</span>"});
+  var lw=Math.max.apply(0,wrap(p.sh||p.n,nar?13:19).slice(0,2).map(function(l){return l.length}))*6.6+14;tiles[i]={g:g,x:xx+TS+lw,y:yy+TS/2,rc:rc}});
+ map._links=links;map._tierY=tierY;map._tx=tx;map._nar=nar;
+ apply();show(sel)}
+function apply(){tiles.forEach(function(t,k){var off=!on[P[k].l];t.g.classList.toggle("off",off)});keyBtns.forEach(function(b,k){b.classList.toggle("off",!on[P[k].l])})}
+function show(i){sel=i;var p=P[i],L=lineOf[p.l];tiles.forEach(function(t,k){t.g.setAttribute("aria-pressed",k===i);t.rc.setAttribute("stroke-width",k===i?3.5:2)});keyBtns.forEach(function(b,k){b.setAttribute("aria-pressed",k===i)});
+ var lk=map._links;if(lk){lk.innerHTML="";var t=tiles[i];[].forEach.call(map.querySelectorAll(".tierbox"),function(b){var on2=TI[i][0].indexOf(+b.dataset.k)>=0;b.style.stroke=on2?"var(--s1)":"var(--axis)";b.style.strokeWidth=on2?2:1});
+  if(!map._nar)TI[i][0].forEach(function(k){var y2=map._tierY[k],x1=t.x+90,x2=map._tx;var pth=VZ.el("path",{opacity:.75,d:"M"+(t.x+2)+","+t.y+" C"+(x2-60)+","+t.y+" "+(x2-60)+","+y2+" "+x2+","+y2,fill:"none","stroke-width":1.5},lk);pth.style.stroke="var(--s1)"})}
+ var tiers=TI[i][0].length?'<div class="pf-feat">'+TN.map(function(n,k){return'<span style="'+(TI[i][0].indexOf(k)>=0?'border-color:var(--s1);box-shadow:inset 3px 0 0 var(--s1)':'opacity:.75')+'">'+n+'</span>'}).join("")+'</div>':'';
+ card.innerHTML='<div class="hd"><span class="tag"><i style="display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;background:var(--s'+L[2]+')"></i>'+esc(L[1])+'</span><h3>'+(i+1)+'. '+esc(p.n)+'</h3>'+(p.s?'<p class="sub">'+esc(p.s)+'</p>':'')+'</div>'+
+ '<dl><div><dt>Main buyer</dt><dd>'+esc(p.b)+'</dd></div><div><dt>Job to be done</dt><dd>'+esc(p.j)+'</dd></div><div><dt>Purchase trigger</dt><dd>'+esc(p.t)+'</dd></div><div><dt>Licence</dt><dd>'+esc(TI[i][1])+tiers+'</dd></div><div class="pmm"><dt>Product marketing work</dt><dd>'+esc(p.w)+'</dd></div></dl>'}
+LINES.forEach(function(L){on[L[0]]=true;var b=document.createElement("button");b.type="button";b.setAttribute("aria-pressed","true");b.innerHTML='<i style="background:var(--s'+L[2]+')"></i>'+esc(L[1]);
+ b.onclick=function(){on[L[0]]=!on[L[0]];b.setAttribute("aria-pressed",on[L[0]]);apply()};leg.appendChild(b)});
+var key=document.getElementById("pf-key");P.forEach(function(p,i){var b=document.createElement("button");b.type="button";b.setAttribute("aria-pressed","false");b.innerHTML='<i style="background:var(--s'+lineOf[p.l][2]+')"></i>'+(i+1)+'. '+esc(p.sh||p.n);b.onclick=function(){show(i)};key.appendChild(b);keyBtns.push(b)});
+responsive(map,drawMap);
 
 /* ---------- licence ladder ---------- */
 var TIERS=[
@@ -255,22 +302,26 @@ var TIERS=[
  {n:"Power Pack",k:"Firm-wide",f:["Internal verification","Custom templates","Generative design"],fill:"var(--seq-5)"}];
 var lic="n",selT=3,stepEls=[];
 var info=document.getElementById("pf-tierinfo"),lad=document.getElementById("pf-ladder");
-function price(){return lic==="n"?"€3,030":"€5,180"}
+function price(){return"€3,030"}
 TIERS.forEach(function(t,i){var b=document.createElement("button");b.type="button";b.className="pf-step";b.style.setProperty("--i",i);
  b.innerHTML='<span class="bar" style="background:'+(i?t.fill:"var(--axis)")+'"></span><b>'+esc(t.n)+'</b><span class="k">'+esc(t.k)+'</span><span class="pr'+(i?' q':'')+'">'+(i?'Price on request':'<span class="pf-bp">'+price()+'</span> a year')+'</span><ul>'+t.f.map(function(x){return"<li>"+esc(x)+"</li>"}).join("")+'</ul>';
  b.onclick=function(){selT=i;tierInfo()};lad.appendChild(b);stepEls.push(b)});
 function tierInfo(){var n=0;TIERS.forEach(function(t,i){if(i<=selT)n+=t.f.length});
  stepEls.forEach(function(b,i){b.classList.toggle("inc",i<=selT);b.setAttribute("aria-pressed",i===selT)});
- info.innerHTML='<span><b class="n">'+n+'</b> headline features in '+esc(TIERS[selT].n)+'</span><span class="mini">'+(selT?'Price on request. Only the Business tier has a published price.':price()+' a year per market bundle, bought online.')+'</span>'}
+ info.innerHTML='<span><b class="n">'+n+'</b> headline features in '+esc(TIERS[selT].n)+'</span><span class="mini">'+(selT?'Price on request. Only the Business tier has a published price.':'€3,030 a year named or €5,180 concurrent, per market bundle, bought online.')+'</span>'}
 tierInfo();
 
-var BARS=[["Market bundle, for example RE2020 and HQE",3030,5180],["LEED v4 with EN 15804 indicators",4380,7270],["Add-on, for example Global Carbon or Level(s)",830,1350]];
-var barsEl=document.getElementById("pf-bars");
-BARS.forEach(function(b){var li=document.createElement("li");li.innerHTML='<div class="lb"><span>'+esc(b[0])+'</span><b></b></div><div class="tr"><div class="fl" style="width:0"></div></div>';barsEl.appendChild(li);
- VZ.tip(li,function(){return"<b>"+esc(b[0])+"</b>Named €"+b[1].toLocaleString("en-GB")+" a year<br>Concurrent €"+b[2].toLocaleString("en-GB")+" a year"})});
-function drawBars(){[].forEach.call(barsEl.children,function(li,i){var v=BARS[i][lic==="n"?1:2];li.querySelector("b").textContent="€"+v.toLocaleString("en-GB");li.querySelector(".fl").style.width=(v/7270*100)+"%"});
- [].forEach.call(document.querySelectorAll(".pf-bp"),function(e){e.textContent=price()});tierInfo()}
-[].forEach.call(document.querySelectorAll("[aria-label='Licence type'] button"),function(b,_,all){b.onclick=function(){lic=b.dataset.k;[].forEach.call(b.parentNode.children,function(x){x.setAttribute("aria-pressed",x===b)});drawBars()}});
+var BUN=[["Market bundle",3030,5180],["LEED v4 with EN 15804",4380,7270]],bun=0;
+var barsEl=document.getElementById("pf-bars"),nIn=document.getElementById("pf-n");
+function eur(v){return"€"+Math.round(v).toLocaleString("en-GB")}
+[["Named licence, one per person","n"],["Concurrent seat, shared","c"]].forEach(function(b){var li=document.createElement("li");li.innerHTML='<div class="lb"><span>'+b[0]+'</span><b></b></div><div class="tr"><div class="fl"'+(b[1]==="c"?' style="background:var(--s2)"':'')+'></div></div>';barsEl.appendChild(li);
+ VZ.tip(li,function(){var B=BUN[bun],n=+nIn.value;return b[1]==="n"?"<b>Named</b>"+eur(B[1])+" a year for each person":"<b>Concurrent</b>"+eur(B[2])+" a year for one seat, shared by "+n+(n>1?" people":" person")})});
+function drawBars(){var B=BUN[bun],n=+nIn.value,per=[B[1],B[2]/n];document.getElementById("pf-no").textContent=n;
+ [].forEach.call(barsEl.children,function(li,i){li.querySelector("b").textContent=eur(per[i]);li.querySelector(".fl").style.width=(per[i]/7270*100)+"%"});
+ var tn=B[1]*n,diff=tn-B[2];
+ document.getElementById("pf-res").innerHTML="For "+n+(n>1?" people":" person")+": named licences cost <b>"+eur(tn)+"</b> and one concurrent seat costs <b>"+eur(B[2])+"</b>. "+(diff>0?"Sharing saves "+eur(diff)+" a year.":"Named is cheaper by "+eur(-diff)+" a year.")}
+[].forEach.call(document.querySelectorAll("#pf-bun button"),function(b){b.onclick=function(){bun=+b.dataset.k;[].forEach.call(b.parentNode.children,function(x){x.setAttribute("aria-pressed",x===b)});drawBars()}});
+nIn.addEventListener("input",drawBars);
 setTimeout(drawBars,200);
 
 /* ---------- findings tabs ---------- */
@@ -283,17 +334,20 @@ function dots(){var D=[
  {n:"LCA datasets",max:550000,fmt:function(v){return(v/1000)+"k+"},c:[[500000,"500,000+ on the homepage, after the SimaPro deal"],[300000,"300,000+ in the 2025 press boilerplate"]],k:[]},
  {n:"Integrations",max:40,fmt:function(v){return v+"+"},c:[[20,"20+ in the integrations page headline"]],k:[[32,"About 32 integrations listed on the same page"]]},
  {n:"People",max:360,fmt:function(v){return v},c:[[170,"170 experts, enterprise page"],[180,"Over 180, press-room boilerplate"],[200,"200+, leadership release 2025"],[300,"300+, figure in use"],[330,"330+, figure in use"]],k:[]}];
- responsive(document.getElementById("pf-dots"),function(W){var narrow=W<560,L=narrow?0:170,rowH=narrow?78:62,H=D.length*rowH+10;
+ responsive(document.getElementById("pf-dots"),function(W){var narrow=W<560,L=narrow?0:170,rowH=narrow?104:88,H=D.length*rowH+6;
   var s=VZ.svg(document.getElementById("pf-dots"),W,H,"Dot plot of inconsistent proof points: standards 80+, 100+ and 140+ against about 98 shown; datasets 300,000+ and 500,000+; integrations 20+ against about 32 listed; people from 170 to 330+.");G(s);
-  D.forEach(function(d,i){var y0=i*rowH,y=y0+(narrow?44:30),x=VZ.lin(0,d.max,L+8,W-16);
-   VZ.el("text",{x:narrow?0:0,y:narrow?y0+16:y+4,class:"t-strong"},s).textContent=d.n;
-   VZ.el("line",{x1:x(0),x2:x(d.max),y1:y,y2:y,class:"grid"},s);
-   [0,d.max/2,d.max].forEach(function(v){VZ.el("text",{x:x(v),y:y+22,"text-anchor":v?"middle":"start",class:"t-muted"},s).textContent=v>=1000?(v/1000)+"k":v});
-   var all=d.c.map(function(c){return c[0]}).concat(d.k.map(function(k){return k[0]})),mn=Math.min.apply(0,all),mx=Math.max.apply(0,all);
-   VZ.el("line",{x1:x(mn),x2:x(mx),y1:y,y2:y,stroke:"var(--ink3)","stroke-width":2},s);
-   d.c.forEach(function(c){var m=VZ.el("circle",{cx:x(c[0]),cy:y,r:6,stroke:"var(--ring)","stroke-width":2},s);m.style.fill="var(--s1)";m.setAttribute("role","img");m.setAttribute("aria-label",d.fmt(c[0])+": "+c[1]);VZ.tip(m,function(){return"<b>"+d.fmt(c[0])+"</b>"+esc(c[1])})});
-   d.k.forEach(function(k){var X=x(k[0]),m=VZ.el("rect",{x:X-5.5,y:y-5.5,width:11,height:11,transform:"rotate(45 "+X+" "+y+")",stroke:"var(--ring)","stroke-width":2},s);m.style.fill="var(--s2)";m.setAttribute("role","img");m.setAttribute("aria-label","About "+k[0]+": "+k[1]);VZ.tip(m,function(){return"<b>About "+k[0]+"</b>"+esc(k[1])})});
-   VZ.el("text",{x:W-16,y:narrow?y0+16:y-12,"text-anchor":"end",class:"t-muted"},s).textContent="Highest is "+(mx/mn).toFixed(1).replace(".0","")+"× lowest";
+  D.forEach(function(d,i){var y0=i*rowH,y=y0+(narrow?48:30),y2=y+20,x=VZ.lin(0,d.max,L+8,W-20);
+   VZ.el("text",{x:0,y:narrow?y0+16:y+4,class:"t-strong"},s).textContent=d.n;
+   VZ.el("line",{x1:x(0),x2:x(d.max),y1:y,y2:y,class:"grid"},s);if(d.k.length)VZ.el("line",{x1:x(0),x2:x(d.max),y1:y2,y2:y2,class:"grid"},s);
+   var ya=(d.k.length?y2:y)+20;
+   [0,d.max/2,d.max].forEach(function(v){VZ.el("text",{x:x(v),y:ya,"text-anchor":v===d.max?"end":v?"middle":"start",class:"t-muted"},s).textContent=v>=1000?(v/1000)+"k":v});
+   var cv=d.c.map(function(c){return c[0]}),mn=Math.min.apply(0,cv),mx=Math.max.apply(0,cv);
+   VZ.el("line",{x1:x(mn),x2:x(mx),y1:y,y2:y,stroke:"var(--s1)","stroke-width":2},s);
+   d.c.forEach(function(c){var m=VZ.el("circle",{cx:x(c[0]),cy:y,r:6,stroke:"var(--ring)","stroke-width":2},s);m.style.fill="var(--s1)";m.setAttribute("role","img");m.setAttribute("aria-label",d.fmt(c[0])+": "+c[1]);VZ.tip(m,function(){return"<b>"+d.fmt(c[0])+"</b>"+esc(c[1])});
+    if(c[0]===mn||c[0]===mx)VZ.el("text",{x:x(c[0]),y:y-11,"text-anchor":"middle",class:"t-strong"},s).textContent=d.fmt(c[0])});
+   d.k.forEach(function(k){var X=x(k[0]),m=VZ.el("rect",{x:X-5.5,y:y2-5.5,width:11,height:11,transform:"rotate(45 "+X+" "+y2+")",stroke:"var(--ring)","stroke-width":2},s);m.style.fill="var(--s2)";m.setAttribute("role","img");m.setAttribute("aria-label","About "+k[0]+": "+k[1]);VZ.tip(m,function(){return"<b>About "+k[0]+"</b>"+esc(k[1])});
+    VZ.el("text",{x:X+11,y:y2+4,class:"t-strong"},s).textContent="about "+k[0]});
+   VZ.el("text",{x:W-20,y:narrow?y0+16:y0+12,"text-anchor":"end",class:"t-muted"},s).textContent="Highest claim is "+(mx/mn).toFixed(1).replace(".0","")+"× the lowest";
   })})}
 
 function venn(){var Z={
