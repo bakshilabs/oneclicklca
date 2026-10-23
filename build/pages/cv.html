@@ -36,11 +36,24 @@
   .cv-rc .co{font-weight:600;font-size:14px;line-height:1.25;min-height:2.5em}
   .cv-rc .ro{font-size:12.5px;color:var(--ink2);line-height:1.3;min-height:2.6em}
   .cv-rc .v{font:600 28px/1.1 var(--sans);letter-spacing:-.02em;margin-top:8px}
-  .cv-rc .vl{font-size:12.5px;color:var(--ink2);line-height:1.3;min-height:2.6em}
+  .cv-rc .res{font-size:13px;font-weight:500;line-height:1.35;margin-top:10px;padding-top:8px;border-top:1px solid var(--grid);hyphens:none;overflow-wrap:normal}
   .cv-rc .yb{display:block;height:8px;border-bottom:1px solid var(--axis);margin-top:10px}
   .cv-rc .yb span{display:block;height:8px;background:var(--s1);border-radius:0 3px 3px 0}
   .cv-rc .yr{font-size:12.5px;color:var(--ink2);margin-top:4px}
-  .cv-band{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:16px}
+  .cv-band{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:16px;align-items:start}
+  @media screen and (min-width:981px){.cv-band>:nth-child(1){grid-column:3;grid-row:1}.cv-band>:nth-child(2){grid-column:1/3;grid-row:1/3}.cv-band>:nth-child(3){grid-column:3;grid-row:2}.cv-band .cv-pt{columns:2;column-gap:28px}.cv-band .cv-pt li{break-inside:avoid}.cv-band{grid-template-rows:auto 1fr}}
+  .cv-sec{display:flex;gap:10px;align-items:baseline;margin-top:8px}
+  .cv-sec b{flex:none;width:118px}
+  @media (max-width:640px){.cv-sec{display:block}}
+  .cv-also{display:flex;flex-wrap:wrap;gap:6px}.cv-also li{margin:0;background:var(--surface);border-radius:3px;padding:4px 10px;font-size:13px}
+  @media print{.cv-also{display:block}.cv-also li{background:none;padding:0}}
+  .cv-two{display:grid;align-items:center;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:28px;margin-top:20px;border-top:1px solid var(--grid);padding-top:16px}
+  .cv-two h3{font-size:15px}
+  .cv-sec{margin-top:10px}
+  .cv-sec b{display:block;font:600 11px/1.2 var(--sans);text-transform:uppercase;letter-spacing:.05em;color:var(--ink2);margin-bottom:5px}
+  .cv-sec .tags span{font-size:12.5px;padding:4px 9px;cursor:default;background:var(--panel)}
+  .cv-sec .tags span:focus-visible{outline:2px solid var(--accent)}
+  @media (max-width:760px){.cv-two{grid-template-columns:minmax(0,1fr)}}
   .cv-band:empty{display:none}
   .cv-band h2{font-size:22px;margin-bottom:14px}
   @media print{.cv-band h2{font-size:11pt;margin-bottom:4px}}
@@ -77,7 +90,11 @@
     <div class="viz rv">
       <div class="viz-h"><h3>CV at a glance, most recent role first</h3><p>Select a role to open its full entry below.</p></div>
       <div class="cv-rx" id="cv-rx"></div>
-      <p class="mini" style="margin-top:10px">Fees are yearly totals won through pitches and bids, each in its own currency. Bars show years in each role on one scale from 0 to 7 years.</p>
+      <p class="mini" style="margin-top:10px">The figure is years in the role, and the bar shows it on one scale from 0 to 7 years. Fees are yearly totals won through pitches and bids, each in its own currency.</p>
+      <div class="cv-two">
+        <div><h3>Talks and panels by year</h3><p class="mini">Hover or select a dot for the event. Two more are undated.</p><div id="cv-talks"></div></div>
+        <div><h3>Clients by sector</h3><p class="mini">Hover or select a client for the firm I served it at.</p><div id="cv-cl"></div></div>
+      </div>
     </div>
   </div>
   <section class="cv-profile">
@@ -108,15 +125,32 @@ function openJob(id){var el=document.getElementById(id);setOpen(el,true);el.scro
 [].forEach.call(document.querySelectorAll(".cv-side .side-block"),function(sb,i){if(i<2)return;sb.classList.add("mc");var h=sb.querySelector("h2"),row=document.createElement("div");row.className="btnrow";var b=document.createElement("button");b.type="button";b.textContent="Show";b.setAttribute("aria-expanded","false");
  b.setAttribute("aria-label","Show "+h.textContent);b.onclick=function(){var on=!sb.classList.contains("open");sb.classList.toggle("open",on);b.textContent=on?"Hide":"Show";b.setAttribute("aria-expanded",on);b.setAttribute("aria-label",(on?"Hide ":"Show ")+h.textContent)};row.appendChild(b);h.insertAdjacentElement("afterend",row)});
 /* role index */
-var RX=[["Atlas Learn","Co-Founder","2025 to now",1.0,"250+","senior professionals trained in AI tools","cv-atlas"],
- ["Foster + Partners, Associate Partner","Associate Partner","2020 to 2026",6.5,"£10m+","fees won a year","cv-foster"],
- ["Foster + Partners, Associate","Associate","2015 to 2020",4.25,"£5m+","fees won a year","cv-foster"],
- ["SOM","High Performance Design Lead","2013 to 2015",2.0,"$3m+","fees won a year","cv-som"],
- ["WSP","Sustainability Manager, YR&G","2010 to 2013",3.25,"$2m+","fees won a year","cv-wsp"],
- ["Rafael Viñoly Architects","Computational and Environmental Designer","2008 to 2010",1.33,"Co-founder","of the firm's Technology Group","cv-rva"]];
-var rx=document.getElementById("cv-rx");RX.forEach(function(r){var b=document.createElement("button");b.type="button";b.className="cv-rc";b.setAttribute("aria-label",r[0]+", "+r[1]+", "+r[2]+". "+r[4]+" "+r[5]+". Open the role");
- b.innerHTML='<span class="co">'+r[0]+'</span><span class="ro">'+r[1]+'</span><span class="v">'+r[4]+'</span><span class="vl">'+r[5]+'</span><span class="yb"><span style="width:'+(r[3]/7*100)+'%"></span></span><span class="yr">'+r[2]+'</span>';
- b.onclick=function(){openJob(r[6])};rx.appendChild(b)});
+var RX=[["Atlas Learn","Co-Founder","Oct 2025 to now",1,"250+ senior professionals trained in AI tools","cv-atlas"],
+ ["Foster + Partners, Associate Partner","Associate Partner","2020 to Jul 2026",6.5,"£10m+ fees won a year","cv-foster"],
+ ["Foster + Partners, Associate","Associate","Oct 2015 to 2020",4.25,"£5m+ fees won a year","cv-foster"],
+ ["SOM","High Performance Design Lead","Oct 2013 to Oct 2015",2,"$3m+ fees won a year","cv-som"],
+ ["WSP","Sustainability Manager, YR&G","Jul 2010 to Oct 2013",3.25,"$2m+ fees won a year","cv-wsp"],
+ ["Rafael Viñoly Architects","Computational and Environmental Designer","Oct 2008 to Jan 2010",1.33,"Co-founded the firm's Technology Group","cv-rva"]];
+function yrs(v){var r=Math.floor(v*2+0.25)/2;return(r%1?r.toFixed(1):r)+(r===1?" year":" years")}
+var rx=document.getElementById("cv-rx");RX.forEach(function(r){var b=document.createElement("button");b.type="button";b.className="cv-rc";b.setAttribute("aria-label",r[0]+", "+r[1]+", "+r[2]+", about "+yrs(r[3])+". "+r[4]+". Open the role");
+ b.innerHTML='<span class="co">'+r[0]+'</span><span class="ro">'+r[1]+'</span><span class="v">'+yrs(r[3])+'</span><span class="yb"><span style="width:'+(r[3]/7*100)+'%"></span></span><span class="yr">'+r[2]+'</span><span class="res">'+r[4]+'</span>';
+ b.onclick=function(){openJob(r[5])};rx.appendChild(b)});
+/* talks by year */
+var TK=[[2012,"Intersections","Speaker, then panel moderator in 2013"],[2017,"Bâtiment durable Québec","Lecture on 6D BIM design"],[2018,"BPAC and SimBuild","Keynote on building performance simulation"],[2021,"COP26 Buildings Pavilion","Two sessions on net zero carbon and whole life carbon"],[2021,"Dezeen and Velux panel","Panel on COP26 and cities"],[2022,"LCA Forum","Organised the London meeting"],[2023,"One Click LCA Bootcamp","Panel on life cycle assessment"],[2023,"UN COP28, Dubai","Lecture on sustainable architecture"],[2023,"CoreNet Global Summit","Listed speaker, Dubai"]];
+var th=document.getElementById("cv-talks");
+function drawTalks(){th.innerHTML="";var W=th.clientWidth||400,H=230,x=VZ.lin(2011.5,2023.5,10,W-10),base=H-28;
+ var s=VZ.svg(th,W,H,"Dot chart of talks by year: one each in 2012, 2017, 2018 and 2022, two in 2021 and three in 2023.");s.setAttribute("role","group");
+ VZ.el("line",{x1:0,x2:W,y1:base+8,y2:base+8,class:"axis"},s);
+ [2012,2015,2018,2021,2023].forEach(function(y){VZ.el("text",{x:x(y),y:H-6,"text-anchor":"middle",class:"t-muted"},s).textContent=y});
+ var n={};TK.forEach(function(t){var k=n[t[0]]||0;n[t[0]]=k+1;var c=VZ.el("circle",{cx:x(t[0]),cy:base-k*32,r:11,stroke:"var(--ring)","stroke-width":2,role:"img","aria-label":t[0]+": "+t[1]+", "+t[2]},s);c.style.fill="var(--s1)";
+  VZ.tip(c,function(){return"<b>"+t[1]+", "+t[0]+"</b>"+t[2]})});
+ [2021,2023].forEach(function(y){VZ.el("text",{x:x(y)+14,y:base-(n[y]-1)*32+4,class:"t-strong"},s).textContent=n[y]});
+ [[2012,"Intersections"],[2018,"SimBuild keynote"]].forEach(function(a){VZ.el("text",{x:x(a[0]),y:base-22,"text-anchor":a[0]===2012?"start":"middle",class:"t-muted"},s).textContent=a[1]})}
+drawTalks();var tt;addEventListener("resize",function(){clearTimeout(tt);tt=setTimeout(drawTalks,150)});
+/* clients by sector */
+var CL=[["Finance",[["JPMorgan Chase","Foster + Partners"],["Citigroup","SOM"],["Shenzhen Rural Commercial Bank","SOM"],["Essence Securities","WSP"]]],["Technology",[["Apple","Foster + Partners"],["Alibaba","Foster + Partners"],["Oracle","Foster + Partners"]]],["Life sciences",[["Roche","Foster + Partners"],["Genentech","Foster + Partners"]]],["Automotive",[["Hyundai","Foster + Partners"]]],["Media",[["ESPN","WSP"]]],["Conglomerate",[["Lotte","WSP"]]],["Public sector",[["Empire State Development","SOM"]]]];
+document.getElementById("cv-cl").innerHTML=CL.map(function(g){return'<div class="cv-sec"><b>'+g[0]+' ('+g[1].length+')</b><div class="tags">'+g[1].map(function(c){return'<span data-f="'+c[1]+'">'+c[0]+'</span>'}).join("")+'</div></div>'}).join("");
+[].forEach.call(document.querySelectorAll("#cv-cl .tags span"),function(sp){VZ.tip(sp,function(){return"<b>"+sp.textContent+"</b>Client while I was at "+sp.dataset.f})});
 /* open the two most recent roles by default */
 setOpen(document.getElementById("cv-atlas"),true);setOpen(document.getElementById("cv-foster"),true);
 /* on wide screens, move the last three sidebar groups into a band under both columns */
