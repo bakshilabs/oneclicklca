@@ -45,9 +45,9 @@
 .ov-c[hidden]{display:none}
 .ov-c .th{display:block;width:100%;height:auto;background:var(--chart-bg);border-radius:4px;padding:8px}
 .ov-c .th *{fill:var(--ink3)}
-.ov-c .th .a{fill:var(--s1)}
+.ov-c .th .a{fill:var(--ink2)}
 .ov-c .th .l{fill:none;stroke:var(--ink3);stroke-width:1.5}
-.ov-c .th .l2{fill:none;stroke:var(--s1);stroke-width:2}
+.ov-c .th .l2{fill:none;stroke:var(--ink2);stroke-width:2}
 .ov-c h3{font-size:15px;line-height:1.2}
 .ov-c .chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:auto}
 .ov-c .chip{font-size:11.5px;padding:2px 7px}
@@ -72,7 +72,7 @@
       <button type="button" data-w="1" aria-pressed="false">2028</button>
       <button type="button" data-w="2" aria-pressed="false">2030</button>
     </div>
-    <div class="legend" aria-hidden="true"><span><i style="background:var(--s1)"></i>EU-wide</span><span><i style="background:var(--s2)"></i>National</span><span><i style="background:var(--s3)"></i>Outside Europe</span></div>
+    <div class="legend" aria-hidden="true"><span><i style="background:var(--s3)"></i>EU-wide</span><span><i style="background:var(--s2)"></i>National</span><span><i style="background:var(--s4)"></i>Outside Europe</span></div>
     <div id="ov-chart"></div>
     <div class="ov-pin" id="ov-pin" aria-live="polite"></div>
     <details class="more"><summary>All dates in the chart</summary><div class="tw"><table class="t" id="ov-table"><thead><tr><th>Date</th><th>Where</th><th>What happens</th></tr></thead><tbody></tbody></table></div></details>
@@ -87,8 +87,8 @@
       <b class="n"><span class="count" data-to="1000">0</span> m²</b>
       <p>From 1 January 2028 every new EU building above this size must disclose life cycle carbon. Most of these design teams have never bought an LCA tool.</p>
       <svg viewBox="0 0 260 56" role="img" aria-label="Disclosure scope widens from national leaders now, to new EU buildings over 1,000 square metres in 2028, to all new buildings in 2030">
-        <path d="M0 52H86V38H172V24H260" fill="none" style="stroke:var(--s1)" stroke-width="2"/>
-        <path d="M0 52H86V38H172V24H260V56H0z" style="fill:var(--s1)" opacity=".1"/>
+        <path d="M0 52H86V38H172V24H260" fill="none" style="stroke:var(--ink2)" stroke-width="2"/>
+        <path d="M0 52H86V38H172V24H260V56H0z" style="fill:var(--ink3)" opacity=".15"/>
         <text x="4" y="46">Now</text><text x="90" y="32">2028</text><text x="176" y="18">2030</text>
       </svg>
       <small>Demand Drivers</small>
@@ -98,9 +98,9 @@
       <p>of manufacturers have EPDs for more than half their portfolio, while 65% of AEC professionals require EPDs on all or most projects.</p>
       <svg viewBox="0 0 260 58" role="img" aria-label="22 percent of manufacturers against 65 percent of AEC professionals">
         <text x="0" y="12">Manufacturers with EPDs for most products</text>
-        <path d="M0 18h52.2a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H0z" style="fill:var(--s2)"/><text class="tv" x="62" y="28">22%</text>
+        <path d="M0 18h52.2a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H0z" style="fill:var(--ink2)"/><text class="tv" x="62" y="28">22%</text>
         <text x="0" y="44">AEC professionals requiring EPDs</text>
-        <path d="M0 48h150a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4H0z" style="fill:var(--s1)"/><text class="tv" x="160" y="57">65%</text>
+        <path d="M0 48h150a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4H0z" style="fill:var(--ink3)"/><text class="tv" x="160" y="57">65%</text>
       </svg>
       <span class="src" style="margin-top:8px">One Click LCA press release, 6 May 2026</span>
       <small>Alternatives</small>
@@ -111,7 +111,7 @@
       <svg viewBox="0 0 260 62" role="img" aria-label="Capterra sub-scores: support 4.9, ease of use 4.4, value for money 4.0">
         <text x="0" y="13">Support</text><path d="M96 4h125a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H96z" style="fill:var(--ink3)"/><text class="tv" x="232" y="14">4.9</text>
         <text x="0" y="35">Ease of use</text><path d="M96 26h108a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H96z" style="fill:var(--ink3)"/><text class="tv" x="215" y="36">4.4</text>
-        <text x="0" y="57">Value for money</text><path d="M96 48h94a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H96z" style="fill:var(--s2)"/><text class="tv" x="201" y="58">4.0</text>
+        <text x="0" y="57">Value for money</text><path d="M96 48h94a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H96z" style="fill:var(--ink2)"/><text class="tv" x="201" y="58">4.0</text>
       </svg>
       <span class="src" style="margin-top:8px">Capterra, updated 20 Jul 2026, 18 reviews</span>
       <small>Enablement</small>
@@ -120,7 +120,7 @@
       <b class="n"><span class="count" data-to="12">0</span> a year</b>
       <p>Product ships a major update every month. A tiering rule picks the two or three a year that get the whole company.</p>
       <svg viewBox="0 0 260 64" role="img" aria-label="Twelve monthly releases, of which two or three get a full launch" id="ov-months"></svg>
-      <div class="legend" aria-hidden="true" style="margin:8px 0 0"><span><i style="background:var(--ink2);border-radius:2px"></i>Full launch</span><span><i style="background:var(--ink3);border-radius:2px;opacity:.6"></i>Possible third</span><span><i style="background:var(--grid);border-radius:2px"></i>Release note</span></div>
+      <div class="legend" aria-hidden="true" style="margin:8px 0 0"><span><i style="background:var(--ink2);border-radius:2px"></i>Full launch</span><span><i style="background:var(--ink3);border-radius:2px"></i>Possible third</span><span><i style="border:1px solid var(--ink3);border-radius:2px"></i>Release note</span></div>
       <small>Launch Playbook</small>
     </a>
     <a class="ov-f rv" href="positioning.html">
@@ -200,7 +200,7 @@ var WAVES=[
  {y0:2028,y1:2030,big:"2028",name:"The EU-wide step",who:"Every new EU and EEA building over 1,000 m² must disclose life cycle GWP, reaching design teams that have never bought an LCA tool.",wins:"Education, an easy first project and a trusted EU method."},
  {y0:2030,y1:2032,big:"2030",name:"All buildings and products",who:"Disclosure covers all new buildings and national limits apply. CPR product declarations arrive family by family, cement first.",wins:"Scale, automation and product data that flows from manufacturer to project."}
 ];
-var COL=["var(--s1)","var(--s2)","var(--s3)"],GEO=["EU-wide","National","Outside Europe"];
+var COL=["var(--s3)","var(--s2)","var(--s4)"],GEO=["EU-wide","National","Outside Europe"];
 var host=document.getElementById("ov-chart"),cap=document.getElementById("ov-cap"),sel="all";
 function waveOf(y){return y>=2030?2:y>=2028?1:0}
 function caption(){
@@ -219,7 +219,7 @@ function draw(){
  WAVES.forEach(function(w,i){
   var g=VZ.el("g",{"class":"band"},s),x0=x(w.y0),x1=x(w.y1),top=top0-step*i;
   var on=sel==="all"||+sel===i;
-  VZ.el("rect",{x:x0,y:top,width:x1-x0,height:base-top,style:"fill:var(--s1)",opacity:on?(sel==="all"?.05+.025*i:.12):.02},g);
+  VZ.el("rect",{x:x0,y:top,width:x1-x0,height:base-top,style:"fill:var(--ink3)",opacity:on?(sel==="all"?.06+.03*i:.14):.02},g);
   VZ.el("path",{d:"M"+x0+","+top+"H"+x1,fill:"none",style:"stroke:"+(on?"var(--ink2)":"var(--ink3)"),"stroke-width":2},g);
   var t=VZ.el("text",{x:x0+6,y:top-22,"class":"t-strong",style:"font-size:"+(W<560?14:17)+"px"},g);t.textContent=w.big;
   var t2=VZ.el("text",{x:x0+6,y:top-7,"class":"t-muted"},g);t2.textContent=W<560?["National","EU step","All new"][i]:w.name;
@@ -247,10 +247,10 @@ var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(draw,
 
 /* monthly releases mini */
 var mm=document.getElementById("ov-months");
-for(var i=0;i<12;i++){var hi=i===3||i===9,mid=i===6;VZ.el("rect",{x:i*21.6,y:hi?4:mid?18:30,width:17,height:hi?40:mid?26:14,rx:3,style:"fill:"+(hi?"var(--ink2)":mid?"var(--ink3)":"var(--grid)"),opacity:mid?.6:1},mm);var mt=VZ.el("text",{x:i*21.6+8.5,y:60,"text-anchor":"middle"},mm);mt.textContent="JFMAMJJASOND"[i]}
+for(var i=0;i<12;i++){var hi=i===3||i===9,mid=i===6;VZ.el("rect",{x:i*21.6,y:hi?4:mid?18:30,width:17,height:hi?40:mid?26:14,rx:3,style:hi?"fill:var(--ink2)":mid?"fill:var(--ink3)":"fill:none;stroke:var(--ink3)"},mm);var mt=VZ.el("text",{x:i*21.6+8.5,y:60,"text-anchor":"middle"},mm);mt.textContent="JFMAMJJASOND"[i]}
 /* loss reasons mini */
 var lg=document.getElementById("ov-loss"),L=["Competitor","Free tool","Consultant","No decision"];
-L.forEach(function(n,i){var last=i===3,X=(i%2)*132,Y=Math.floor(i/2)*24;VZ.el("rect",{x:X,y:Y,width:126,height:20,rx:3,style:"fill:"+(last?"var(--s2)":"var(--grid)")},lg);var t=VZ.el("text",{x:X+8,y:Y+14,style:last?"fill:#111;font-weight:600":""},lg);t.textContent=n;});
+L.forEach(function(n,i){var last=i===3,X=(i%2)*132,Y=Math.floor(i/2)*24;VZ.el("rect",{x:X,y:Y,width:126,height:20,rx:3,style:last?"fill:var(--ink2)":"fill:none;stroke:var(--ink3)"},lg);var t=VZ.el("text",{x:X+8,y:Y+14,style:last?"fill:var(--chart-bg);font-weight:600":""},lg);t.textContent=n;});
 
 /* page cards */
 var I={
