@@ -73,3 +73,15 @@
 details.more{margin-top:14px;font-size:14px}
 details.more summary{cursor:pointer;color:var(--accent);font-weight:500}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* section stepper: fixed up and down buttons that jump between top-level sections */
+.secnav{position:fixed;right:20px;bottom:20px;z-index:150;display:flex;flex-direction:column;align-items:center;gap:6px;background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:8px;padding:6px;box-shadow:0 4px 18px rgba(0,0,0,.10)}
+.secnav button{appearance:none;width:44px;height:44px;border:0;border-radius:5px;background:var(--panel);color:var(--ink);cursor:pointer;display:grid;place-items:center;transition:background .15s,color .15s}
+.secnav button:hover:not(:disabled){background:var(--accent);color:var(--on-accent)}
+.secnav button:disabled{opacity:.35;cursor:default}
+.secnav svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.secnav output{font:600 12px/1 var(--sans);color:var(--ink2);font-variant-numeric:tabular-nums;padding:2px 0}
+@media (max-width:640px){.secnav{right:12px;bottom:12px;padding:4px;gap:4px}.secnav button{width:40px;height:40px}}
+@media print{.secnav{display:none!important}}
+@media (max-width:640px){.secnav{right:8px;bottom:10px;opacity:.92}.secnav button{width:36px;height:36px}.secnav output{font-size:11px}}
+body:has(.secnav){padding-bottom:72px}

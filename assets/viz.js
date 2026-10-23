@@ -45,6 +45,29 @@ VZ.reveal=function(){var els=[].slice.call(document.querySelectorAll(".rv,.count
  els.forEach(function(e){io.observe(e)})};
 /* redraw on theme toggle: VZ.onTheme(fn) */
 VZ.onTheme=function(fn){new MutationObserver(fn).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});matchMedia("(prefers-color-scheme: dark)").addEventListener("change",fn)};
+
+/* section stepper. Sections are the visible top-level blocks of <main>. */
+VZ.secnav=function(){var main=document.getElementById("main");if(!main||document.querySelector(".secnav"))return;
+ function blocks(el){return [].slice.call(el.children).filter(function(e){return !/^(SCRIPT|STYLE|NOSCRIPT|TEMPLATE)$/.test(e.tagName)&&e.offsetHeight>40&&getComputedStyle(e).position!=="fixed"})}
+ function wrapper(e){var k=blocks(e);return k.length>1&&(!e.className||k.filter(function(c){return c.tagName==="SECTION"}).length>1)&&e.tagName!=="SECTION"}
+ function flat(L,d){var o=[];L.forEach(function(e){if(d<3&&wrapper(e))o=o.concat(flat(blocks(e),d+1));else o.push(e)});return o}
+ function secs(){var L=blocks(main),d=0;while(L.length===1&&d++<3){var k=blocks(L[0]);if(k.length<2)break;L=k}return flat(L,0)}
+ if(secs().length<2)return;
+ var nav=document.createElement("nav");nav.className="secnav";nav.setAttribute("aria-label","Section navigation");
+ nav.innerHTML='<button type="button" class="up" aria-label="Previous section"><svg viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg></button><output aria-live="polite"></output><button type="button" class="dn" aria-label="Next section"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>';
+ document.body.appendChild(nav);var up=nav.querySelector(".up"),dn=nav.querySelector(".dn"),out=nav.querySelector("output");
+ function off(){var h=document.querySelector(".sitenav");return (h?h.offsetHeight:0)+12}
+ function cur(){var L=secs(),y=scrollY+off()+4,i=0;L.forEach(function(e,k){if(e.getBoundingClientRect().top+scrollY<=y)i=k});
+  if(innerHeight+scrollY>=document.documentElement.scrollHeight-2)i=L.length-1;return {i:i,L:L}}
+ function upd(){var c=cur();out.textContent=(c.i+1)+" / "+c.L.length;up.disabled=c.i===0&&scrollY<4;dn.disabled=c.i>=c.L.length-1}
+ function go(d){var c=cur(),L=c.L,t;
+  if(d<0){var top=L[c.i].getBoundingClientRect().top+scrollY-off();t=(scrollY-top>8)?L[c.i]:L[Math.max(0,c.i-1)]}else t=L[Math.min(L.length-1,c.i+1)];
+  var y=t===L[0]?0:t.getBoundingClientRect().top+scrollY-off();
+  scrollTo({top:y,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}
+ up.addEventListener("click",function(){go(-1)});dn.addEventListener("click",function(){go(1)});
+ document.addEventListener("keydown",function(e){var t=e.target;if(e.altKey||e.ctrlKey||e.metaKey||/^(INPUT|SELECT|TEXTAREA)$/.test(t.tagName)||t.isContentEditable)return;
+  if(e.key==="j"){go(1);e.preventDefault()}else if(e.key==="k"){go(-1);e.preventDefault()}});
+ var raf;addEventListener("scroll",function(){cancelAnimationFrame(raf);raf=requestAnimationFrame(upd)},{passive:true});addEventListener("resize",upd);upd();};
 window.VZ=VZ;
-document.addEventListener("DOMContentLoaded",VZ.reveal);
+document.addEventListener("DOMContentLoaded",function(){VZ.reveal();VZ.secnav()});
 })();
