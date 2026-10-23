@@ -195,7 +195,7 @@ var SM=["Finland","Denmark","NL design","NL makers","France","Germany","Italy, S
 var sortF=null;
 var P={"Compliance module":{p:35,v:10,n:15,f:15,r:15,c:10},"Manufacturer revenue":{p:15,v:30,n:15,f:15,r:15,c:10},"AI workflow":{p:10,v:15,n:25,f:20,r:20,c:10},"Enterprise":{p:10,v:40,n:5,f:20,r:15,c:10}};
 var W=Object.assign({},P["Compliance module"]),R=[],rankOf={},sel=null,AX={x:0,y:1,z:2};
-function col(i){return "var(--s"+[2,3,4,5,7,8][i]+")"}
+function col(i){return "var(--s"+[7,2,3,5,4,8][i]+")"}
 function $(id){return document.getElementById(id)}
 function esc(t){var d=document.createElement("div");d.textContent=t;return d.innerHTML}
 
@@ -241,7 +241,7 @@ function place(){if(!svg)return;var groups={};
  geo.xt.textContent=F[AX.x][1]+" (1 to 5)";geo.yt.textContent=F[AX.y][1]+" (1 to 5)";
  S.forEach(function(s,i){var k=s[AX.x+1]+","+s[AX.y+1];(groups[k]=groups[k]||[]).push(i)});
  var rad=function(i){return geo.rmin+(S[i][AX.z+1]-1)/4*(geo.rmax-geo.rmin)};
- Object.keys(groups).forEach(function(k){var g=groups[k],n=g.length,rm=Math.max.apply(null,g.map(rad)),dd=n>1?(2*rm+4)/(2*Math.sin(Math.PI/n)):0;g.forEach(function(i,j){var s=S[i],a=-Math.PI/2+j*2*Math.PI/n,d=dd,
+ Object.keys(groups).forEach(function(k){var g=groups[k],n=g.length,rm=Math.max.apply(null,g.map(rad)),dd=n>1?(2*rm+10)/(2*Math.sin(Math.PI/n)):0;g.forEach(function(i,j){var s=S[i],a=-Math.PI/2+j*2*Math.PI/n,d=dd,
   x=geo.X(s[AX.x+1])+Math.cos(a)*d,y=geo.Y(s[AX.y+1])+Math.sin(a)*d,r=geo.rmin+(s[AX.z+1]-1)/4*(geo.rmax-geo.rmin);
   G[i].style.transform="translate("+x.toFixed(1)+"px,"+y.toFixed(1)+"px)";G[i].querySelector("circle.m").setAttribute("r",r.toFixed(1));POS[i]=[x,y,r]})});
  labels();

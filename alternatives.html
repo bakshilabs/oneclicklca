@@ -69,11 +69,11 @@
 #al .cn-flow .st b{display:block;font:500 11.5px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px}
 #al .cn-flow .st.cost{background:var(--bad-soft)}
 #al .cn-flow .ar{display:grid;place-items:center;color:var(--ink3)}
-#al .rk-lay{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(0,1fr);gap:20px;margin-top:28px;align-items:start}
+#al .rk-lay{display:grid;grid-template-columns:1fr;gap:12px;margin-top:28px;align-items:start}
 #al .rk-tw{margin-top:0}
-#al .rk-m{display:grid;grid-template-columns:minmax(230px,1fr) repeat(7,minmax(62px,82px));min-width:700px;font-size:13px}
+#al .rk-m{display:grid;grid-template-columns:minmax(220px,300px) repeat(7,minmax(76px,1fr));min-width:780px;font-size:13px}
 #al .rk-m>div{border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center;min-height:46px;transition:background .3s}
-#al .rk-m>div.hd{font:500 12px/1.25 var(--sans);color:var(--ink2);background:var(--panel);text-align:center;padding:8px 4px;min-height:40px}
+#al .rk-m>div.hd{font:500 12px/1.25 var(--sans);color:var(--ink2);background:var(--panel);text-align:center;padding:8px 6px;min-height:52px;align-items:flex-end}
 #al .rk-m>div.on{background:var(--accent-soft)}
 #al .rk-m>div.sr2{background:color-mix(in srgb,var(--s1) 8%,transparent)}
 #al .rk-m>div.rt{justify-content:flex-start;padding:4px 8px}
@@ -236,7 +236,7 @@ function build(){host.innerHTML="";G=[];var w=Math.max(300,host.clientWidth),m=w
   VZ.el("circle",{r:Math.max(rad,14),fill:"transparent"},g);VZ.el("circle",{class:"m",r:rad,fill:TY[a[2]][1]},g);
   var lab=m&&SH[a[0]]?SH[a[0]]:a[0],tw=lab.length*(i<2?7.4:6.9),best=null,bs=1e9;
   [[rad+5,4,"start"],[-rad-5,4,"end"],[rad+5,-6,"start"],[-rad-5,-6,"end"],[rad+5,14,"start"],[-rad-5,14,"end"],[0,-rad-6,"middle"],[0,rad+16,"middle"]].forEach(function(c,ci){var x0=x+c[0]-(c[2]==="end"?tw:c[2]==="middle"?tw/2:0),bx=[x0,y+c[1]-12,x0+tw,y+c[1]+3],sc=0;
-   if(bx[0]<l+2||bx[2]>w-r-2||bx[1]<t+2||bx[3]>h-b-2)sc+=500;sc+=ci<2?0:ci<6?3:30;boxes.forEach(function(q){if(ov(bx,q))sc+=100});
+   if(bx[0]<l+2||bx[2]>w-r-2||bx[1]<t+2||bx[3]>h-b-2)sc+=500;if(bx[0]<X(50)&&bx[2]>X(50))sc+=60;if(bx[1]<Y(50)&&bx[3]>Y(50))sc+=60;sc+=ci<2?0:ci<6?3:30;boxes.forEach(function(q){if(ov(bx,q))sc+=100});
    P.forEach(function(q,j){if(j===i)return;var cx=Math.max(bx[0],Math.min(q[0],bx[2])),cy=Math.max(bx[1],Math.min(q[1],bx[3]));if((cx-q[0])*(cx-q[0])+(cy-q[1])*(cy-q[1])<(q[2]+2)*(q[2]+2))sc+=20});
    if(sc<bs){bs=sc;best=[c,bx]}});
   boxes.push(best[1]);var tx=VZ.el("text",{x:best[0][0],y:best[0][1],"text-anchor":best[0][2]},g);tx.textContent=lab;if(i<2)tx.style.fontWeight="600";
@@ -262,7 +262,7 @@ function ladder(){var h="";
 
 /* risks */
 var selR=0;var SA={us:"US",nord:"Nordic, FR, NL",uk:"UK",msme:"Makers SME",ment:"Makers ent.",exp:"Experts",low:"Low-freq."};
-function risks(){var h='<div class="hd"></div>'+SEG.slice(1).map(function(sg){return '<div class="hd'+(cur===sg[0]?" on":"")+'" title="'+sg[1]+'">'+SA[sg[0]]+'</div>'}).join("");
+function risks(){var h='<div class="hd"></div>'+SEG.slice(1).map(function(sg){return '<div class="hd'+(cur===sg[0]?" on":"")+'">'+sg[1]+'</div>'}).join("");
  RISK.forEach(function(r,i){h+='<div class="rt"><button type="button" aria-pressed="'+(i===selR)+'" data-i="'+i+'"><span class="icon"><svg viewBox="0 0 24 24">'+r[3]+'</svg></span><span>'+(i+1)+'. '+r[0]+'</span></button></div>'+SEG.slice(1).map(function(sg){var y=r[2].indexOf(sg[0])>=0;return '<div class="c'+(cur===sg[0]?" on":"")+(i===selR?" sr2":"")+'">'+(y?'<i role="img" aria-label="'+sg[1]+'"></i>':'')+'</div>'}).join("")});
  $("risks").innerHTML=h;[].forEach.call($("risks").querySelectorAll("button"),function(b){b.onclick=function(){selR=+b.dataset.i;risks()}});
  var r=RISK[selR];$("rkd").innerHTML='<span class="eyebrow">Risk '+(selR+1)+' of 6</span><h3 style="font-size:18px;margin:6px 0 8px">'+r[0]+'</h3><p style="font-size:14.5px;color:var(--ink2)">'+r[1]+'</p><div class="tags" style="margin-top:14px">'+r[2].map(function(k){return '<span class="tag a">'+SEG.filter(function(x){return x[0]===k})[0][1]+'</span>'}).join("")+'</div>'}

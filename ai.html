@@ -112,7 +112,7 @@
     <div class="viz" style="margin-top:16px">
       <div class="viz-h"><h3>When each routine runs across 2027</h3><p>The selected routine is highlighted. Hover a mark for detail.</p></div>
       <div id="ai-cad"></div>
-      <p class="src">Launch kit runs follow the six tier one and tier two launches on the <a href="launch.html">2027 launch calendar</a>.</p>
+      <p class="src">Launch kit runs follow the six tier one and tier two launches on the <a href="launch.html">2027 launch calendar</a>, placed within each launch's quarter. Use the tabs above to change routine; hover a mark for detail.</p>
     </div>
   </div>
   <div class="ai-me rv"><b class="count" data-to="250" data-suffix="+">0+</b><p>I co-founded Atlas Learn, where I have trained more than 250 senior professionals to use Claude Code, Cowork and other AI tools. I would bring the same habits to this team.</p></div>
@@ -213,7 +213,7 @@ var RT=[
  ["Launch kit drafting","Each launch",'<path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M14 4c3-1 6-1 6-1s0 3-1 6l-6 6-5-5 6-6z"/>',["The launch brief"],"First drafts in each launch language","A battlecard, FAQ, release article and partner email","A subject expert reviews each draft before use"],
  ["Proof point checks","Monthly",'<path d="M20 6 9 17l-5-5"/>',["The website, sales decks and partner kits"],"A scan against the proof point sheet","A list of claims that disagree, such as the number of standards, datasets or integrations","Owners fix each claim and the sheet stays the single source"]
 ];
-var LA=[[0.3,"EU 2028 readiness"],[0.5,"CPR readiness"],[3.5,"Workflow release"],[4.2,"BR18 update"],[7,"Get specified"],[10,"Cement and concrete"]];
+var LA=[[0.7,"EU 2028 readiness (Q1)"],[2.1,"CPR readiness (Q1)"],[3.7,"Workflow release (Q2)"],[5.1,"BR18 update (Q2)"],[7.5,"Get specified (Q3)"],[10.5,"Cement and concrete (Q4)"]];
 var rt=document.getElementById("ai-rt"),pipe=document.getElementById("ai-pipe"),stepEl=document.getElementById("ai-step"),stp=3,cur=0,timer=null,RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
 function paint(){[].forEach.call(pipe.children,function(d,j){d.className=j<stp?"":j===stp?"now":"todo"});txt(stepEl.querySelector(".mini"),"Step "+(stp+1)+" of 4: "+["input","agent","output","human check"][stp])}
 [].forEach.call(stepEl.querySelectorAll("button"),function(b){b.addEventListener("click",function(){clearInterval(timer);stp=Math.max(0,Math.min(3,stp+ +b.dataset.d));paint()})});
@@ -229,7 +229,7 @@ function cad(){var h=document.getElementById("ai-cad");if(!h)return;h.innerHTML=
  RT.forEach(function(r,i){var y=top+i*rh,g=VZ.el("g",{"class":"rw"+(i===cur?"":" dim")},svg),c="var(--s"+(i+1)+")",cy=nar?y+rh-14:y+rh/2;
   if(i===cur)VZ.el("rect",{x:0,y:y,width:W,height:rh,rx:3,fill:"var(--accent-soft)"},g);
   var lb=VZ.el("text",{x:4,y:nar?y+16:y+rh/2+4,"class":i===cur?"t-strong":""},g);lb.textContent=r[0];
-  function mark(el,tip){el.setAttribute("class","mk");g.appendChild(el);VZ.tip(el,function(){return '<b>'+r[0]+'</b>'+tip})}
+  function mark(el,tip){el.setAttribute("class","mk");g.appendChild(el);VZ.tip(el,function(){return '<b>'+r[0]+'</b>'+tip});el.setAttribute("tabindex","-1")}
   if(i===0){for(var wk=0;wk<52;wk++){mark(VZ.el("rect",{x:x(wk*12/52),y:cy-7,width:Math.max(2,(x(1)-x(0))/4.33-2),height:14,rx:1,fill:c}),"Week "+(wk+1)+" digest")}}
   else if(i===1){mark(VZ.el("rect",{x:x(0),y:cy-5,width:x(12)-x(0),height:10,rx:4,fill:c}),"Runs on each call and new review, all year")}
   else if(i===2){LA.forEach(function(l){mark(VZ.el("circle",{cx:x(l[0]),cy:cy,r:7,fill:c,stroke:"var(--ring)","stroke-width":2}),"Kit drafts for "+l[1])})}

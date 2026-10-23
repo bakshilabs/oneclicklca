@@ -91,8 +91,9 @@ main svg .t-muted{font-size:12px}
 .lp-cal .row.dim text{fill:var(--ink3)}
 .lp-cal .row{cursor:pointer;transition:opacity .2s}
 .lp-cal .row:focus{outline:none}
-.lp-cal .row:focus .hit,.lp-cal .row:hover .hit{fill:var(--grid)}
-.lp-cal .row.sel .hit{fill:var(--grid)}
+.lp-cal .row:focus .hit,.lp-cal .row:hover .hit{fill:var(--accent-soft)}
+.lp-cal .row.sel .hit{fill:var(--accent-soft)}
+.lp-cal .row tspan.t-muted{fill:var(--ink2)}
 .lp-det{margin-top:12px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;font-size:14px;background:var(--panel);border-radius:6px;padding:14px 18px}
 .lp-det dt{color:var(--muted)}
 .lp-det dd{margin:0}
@@ -128,7 +129,7 @@ main svg .t-muted{font-size:12px}
 <section class="sec" aria-labelledby="lp-h2">
   <span class="eyebrow">Worked example</span>
   <h2 id="lp-h2">EU 2028 launch plan</h2>
-  <p class="intro">A tier one launch built around the EU life cycle GWP method, timed to the national roadmaps due on 1 January 2027 and aimed at first-time buyers before the 1 January 2028 deadline.</p>
+  <p class="intro">A tier one launch built around the EU life cycle GWP method, aimed at first-time buyers in the twelve-month window between national roadmaps (1 January 2027) and EU disclosure (1 January 2028).</p>
   <div class="lp-brief rv">
     <div><p class="k">Goal</p>New logos in large EU markets with no national LCA habit. Example target: Business and Designer licences in Germany, Italy and Spain within two quarters.</div>
     <div><p class="k">Priority segments</p><div class="tags"><span class="tag a">German designers, first-time buyers</span><span class="tag a">Italian and Spanish designers</span><span class="tag a">Global engineering firms</span></div><p class="mini" style="margin-top:6px">Chosen with the <a href="segments.html">Segment Model</a>.</p></div>
@@ -137,7 +138,7 @@ main svg .t-muted{font-size:12px}
   <div class="viz rv">
     <div class="viz-h"><h3>Launch Gantt, T minus 8 weeks to T plus 12 weeks</h3><p>Drag the week or press play. Select a bar to pin its detail.</p></div>
     <div class="lp-ctl"><button type="button" id="lp-play"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z" fill="currentColor"/></svg><span>Play</span></button><label class="sr" for="lp-wk">Launch week</label><input type="range" id="lp-wk" min="-8" max="12" step="1" value="-8"><output id="lp-wko" for="lp-wk">All weeks</output></div>
-    <div class="legend"><span><i style="background:var(--s2);border-radius:2px;width:22px"></i>Solid bar: lead owner</span><span><i style="background:color-mix(in srgb,var(--s2) 55%,transparent);border:2px solid var(--s2);border-radius:2px;width:22px"></i>Light bar: supporting owner</span><span><i style="background:var(--s4);border-radius:0;transform:rotate(45deg);width:9px;height:9px"></i>Launch day</span><span>Colour follows the owner lane</span></div>
+    <div class="legend"><span><i style="background:var(--s7);border-radius:2px;width:22px"></i>Solid bar: lead owner</span><span><i style="background:color-mix(in srgb,var(--s7) 50%,transparent);border:2px solid var(--s7);border-radius:2px;width:22px"></i>Light bar: supporting owner</span><span><i style="background:var(--s4);border-radius:0;transform:rotate(45deg);width:9px;height:9px"></i>Launch day</span><span>Rows are owners</span></div>
     <div id="lp-gantt" class="lp-g"></div>
     <div class="lp-now" id="lp-now" aria-live="polite"></div>
   </div>
@@ -156,6 +157,7 @@ main svg .t-muted{font-size:12px}
     <div id="lp-cal" class="lp-cal"></div>
     <dl class="lp-det" id="lp-det" aria-live="polite"></dl>
   </div>
+  <p class="src" style="margin-top:10px">CPR penalties from 8 Jan 2027: secondary sources only (cobuilder.com, construction-products.eu, via research/regulation.md), so this date is still to confirm.</p>
   <details class="more"><summary>Calendar as a table</summary>
   <div class="tw" tabindex="0" role="region" aria-label="Scrollable table"><table class="t">
     <thead><tr><th>Quarter</th><th>Date that drives it</th><th>Launch</th><th>Tier</th></tr></thead>
@@ -188,7 +190,7 @@ var T={
 };
 /* questions as chip radios */
 var qs=$("lp-qs");
-qs.innerHTML='<h3 style="font-size:16px">Describe the release</h3><p class="mini">Six questions. The tier and kit update as you answer.</p>'+Q.map(function(q,i){return '<fieldset><legend><i style="background:var(--s'+(i+1)+')"></i>'+q.l+'</legend><div class="lp-chips">'+q.o.map(function(o,j){return '<label><input type="radio" name="'+q.id+'" value="'+o[0]+'"'+(j===0?' checked':'')+'><span>'+o[1]+'<em>+'+o[0]+'</em></span></label>'}).join("")+'</div></fieldset>'}).join("");
+qs.innerHTML='<h3 style="font-size:16px">Describe the release</h3><p class="mini">Six questions. The tier and kit update as you answer.</p>'+Q.map(function(q,i){return '<fieldset><legend>'+q.l+'</legend><div class="lp-chips">'+q.o.map(function(o,j){return '<label><input type="radio" name="'+q.id+'" value="'+o[0]+'"'+(j===0?' checked':'')+'><span>'+o[1]+'<em>+'+o[0]+'</em></span></label>'}).join("")+'</div></fieldset>'}).join("");
 var pr=document.querySelector(".lp-presets");
 P.forEach(function(p,i){var b=document.createElement("button");b.type="button";b.textContent=p.n;b.setAttribute("aria-pressed","false");b.addEventListener("click",function(){p.a.forEach(function(ix,k){qs.querySelectorAll('input[name="'+Q[k].id+'"]')[ix].checked=true});go(i)});pr.appendChild(b)});
 qs.addEventListener("change",function(){go(-1)});
@@ -212,7 +214,7 @@ function drawScore(v,s,t){var host=$("lp-score");host.innerHTML="";var W=Math.ma
  VZ.el("rect",{x:L,y:26,width:R-L,height:22,rx:3,fill:"var(--grid)"},svg);
  var acc=0;v.forEach(function(val,i){if(!val)return;var x0=x(acc)+(acc?1:0),x1=x(acc+val)-1;acc+=val;var last=acc===s;
   var g=VZ.el("g",{role:"img","aria-label":Q[i].s+": +"+val},svg);
-  var p=last?VZ.bar(g,x0,26,x1-x0+1,22,"var(--s"+(i+1)+")","h"):VZ.el("rect",{x:x0,y:26,width:Math.max(0,x1-x0),height:22,fill:"var(--s"+(i+1)+")"},g);
+  var p=last?VZ.bar(g,x0,26,x1-x0+1,22,TC[t],"h"):VZ.el("rect",{x:x0,y:26,width:Math.max(0,x1-x0),height:22,fill:TC[t]},g);
   VZ.tip(g,function(){return '<b>+'+val+' points</b><span class="m">'+Q[i].l+'</span>'})});
  var mx=x(s);VZ.el("line",{x1:mx,x2:mx,y1:20,y2:54,stroke:"var(--ink2)","stroke-width":2},svg);
  var lab=VZ.el("text",{x:Math.min(Math.max(mx,40),W-40),y:14,"text-anchor":"middle","class":"t-strong"},svg);lab.textContent="Score "+s+" of 16";
@@ -238,9 +240,9 @@ function drawGantt(){var host=$("lp-gantt");host.innerHTML="";gEls=[];var W=Math
  var svg=VZ.svg(host,W,H,"Gantt of the EU 2028 launch from T minus 8 weeks to T plus 12 weeks. The selected task is described below the chart.");svg.setAttribute("role","group");
  for(var k=-8;k<=12;k+=narrow?4:2){VZ.el("line",{x1:x(k),x2:x(k),y1:top-4,y2:H-6,"class":"grid"},svg);var tx=VZ.el("text",{x:x(k),y:14,"text-anchor":k===-8&&narrow?"start":k===12&&narrow?"end":"middle","class":k===0?"t-strong":"t-muted"},svg);tx.textContent=wl(k)}
  var cur=VZ.el("g",{"pointer-events":"none"},svg);VZ.el("line",{x1:0,x2:0,y1:top-4,y2:H-6,stroke:"var(--ink2)","stroke-width":2},cur);
- function mk(t,ti,ln,li,y,lab){var g=VZ.el("g",{"class":"bar",role:"button","aria-label":wl(t.s)+": "+t.w+". "+t.o+". Output: "+t.out},svg),c="var(--s"+(ln+1)+")";
+ function mk(t,ti,ln,li,y,lab){var g=VZ.el("g",{"class":"bar",role:"button","aria-label":wl(t.s)+": "+t.w+". "+t.o+". Output: "+t.out},svg),c=t.e===t.s?"var(--s4)":"var(--s7)";
   if(t.e===t.s){var cx=x(t.s),cy=y+bh/2;VZ.el("rect",{x:cx-8,y:cy-8,width:16,height:16,transform:"rotate(45 "+cx+" "+cy+")",fill:c,stroke:"var(--ring)","stroke-width":2},g)}
-  else{var x0=x(t.s)+1,x1=x(t.e)-1;var p=VZ.bar(g,x0,y,x1-x0,bh,c,"h");if(li>0){p.setAttribute("fill-opacity",".55");p.setAttribute("stroke",c);p.setAttribute("stroke-width","2");p.setAttribute("class","sup")}
+  else{var x0=x(t.s)+1,x1=x(t.e)-1;var p=VZ.bar(g,x0,y,x1-x0,bh,c,"h");if(li>0){p.setAttribute("fill-opacity",".5");p.setAttribute("stroke",c);p.setAttribute("stroke-width","2");p.setAttribute("class","sup")}
    if(lab&&x1-x0>t.n.length*7+12){var tx=VZ.el("text",{x:x0+8,y:y+bh/2+4,"class":"in","pointer-events":"none"},g);tx.textContent=t.n}}
   VZ.tip(g,function(){return '<b>'+wl(t.s)+(t.e!==t.s?" to "+wl(t.e):"")+'</b>'+t.w+'<br><span class="m">'+(li?"Supporting: ":"Lead: ")+t.o+'</span>'});
   function pick(){selT=ti;setWk(t.s)}
@@ -269,7 +271,7 @@ msb.forEach(function(b,i){b.addEventListener("click",function(){ms(i);stop();set
 /* calendar */
 var C=[
  {q:1,t:1,dr:"National GWP roadmaps due 1 Jan 2027",d:[1,1],n:"EU 2028 readiness",f:"EU method, EPC report and country roadmap guides"},
- {q:1,t:2,dr:"CPR penalties apply 8 Jan 2027",d:[1,8],n:"CPR readiness",f:"Declaration templates and data checks for manufacturers"},
+ {q:1,t:2,dr:"CPR penalties apply 8 Jan 2027 (secondary sources, to confirm)",d:[1,8],n:"CPR readiness",f:"Declaration templates and data checks for manufacturers"},
  {q:2,t:1,dr:"Spring live launch event",n:"Workflow release",f:"AI mapping and the new interface, aimed at users who compared Tally"},
  {q:2,t:2,dr:"Denmark's signposted 2027 step",n:"BR18 update",f:"For designers and contractors"},
  {q:3,t:2,dr:"Manufacturer budgets for 2028",n:"Get specified",f:"Market intelligence and Manufacturer Pages for commercial directors"},
@@ -290,7 +292,7 @@ function drawCal(){var host=$("lp-cal");host.innerHTML="";cEls=[];var W=Math.max
  C.forEach(function(c,i){if(!c.d)return;var dx=x((c.d[1]-1)/31)+(i?14:6),dy=i?62:46,ry=top+i*rh+rh/2;
   VZ.el("line",{x1:dx,x2:dx,y1:dy+6,y2:ry-(narrow?2:10),stroke:"var(--s8)","stroke-width":1.5},svg);
   var g=VZ.el("g",{role:"img","aria-label":c.dr},svg);VZ.el("rect",{x:dx-6,y:dy-6,width:12,height:12,transform:"rotate(45 "+dx+" "+dy+")",fill:"var(--s8)",stroke:"var(--ring)","stroke-width":2},g);
-  var t=VZ.el("text",{x:dx+12,y:dy+4,"class":"t-strong"},g);t.textContent=c.d[1]+" Jan: "+(i?"CPR penalties":"GWP roadmaps due");VZ.tip(g,function(){return '<b>'+c.dr+'</b><span class="m">Drives: '+c.n+'</span>'})});
+  var t=VZ.el("text",{x:dx+12,y:dy+4,"class":"t-strong"},g);t.textContent=c.d[1]+" Jan: "+(i?"CPR penalties, to confirm":"GWP roadmaps due");VZ.tip(g,function(){return '<b>'+c.dr+'</b><span class="m">Drives: '+c.n+'</span>'})});
  C.forEach(function(c,i){var y=top+i*rh,g=VZ.el("g",{"class":"row",role:"button","aria-label":c.n+", "+TN[c.t]+", "+(c.q?"Q"+c.q:"monthly")+". Driven by "+c.dr},svg);
   VZ.el("rect",{"class":"hit",x:0,y:y,width:W,height:rh,fill:"transparent",rx:3},g);
   var bh=c.t===1?18:12,by=narrow?y+rh-24+(18-bh)/2:y+(rh-bh)/2;
@@ -301,8 +303,8 @@ function drawCal(){var host=$("lp-cal");host.innerHTML="";cEls=[];var W=Math.max
   g.addEventListener("click",function(){sel=i;paintCal()});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();sel=i;paintCal()}});
   cEls.push(g)});paintCal()}
 function paintCal(){cEls.forEach(function(g,i){g.classList.toggle("dim",!!filt&&C[i].t!==filt);g.classList.toggle("sel",i===sel)});var c=C[sel];
- $("lp-det").innerHTML='<dt>Launch</dt><dd><b>'+c.n+'</b>: '+c.f+'</dd><dt>Driver</dt><dd>'+c.dr+'</dd><dt>When</dt><dd>'+(c.q?"Q"+c.q+" 2027":"Every month")+' · '+TN[c.t]+'</dd><dt>Kit</dt><dd><ul class="lp-dk">'+T[c.t].k.map(function(x){return '<li>'+x+'</li>'}).join("")+'</ul></dd>'}
-[].forEach.call($("lp-filt").querySelectorAll("button"),function(b){b.addEventListener("click",function(){filt=+b.dataset.t;[].forEach.call($("lp-filt").querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x===b)});var f=C.findIndex(function(c){return !filt||c.t===filt});if(filt&&C[sel].t!==filt)sel=f;paintCal()})});
+ $("lp-det").innerHTML=(filt?'<dt>'+TN[filt]+'</dt><dd>'+C.filter(function(x){return x.t===filt}).map(function(x){return x.n}).join(", ")+'</dd>':'')+'<dt>Launch</dt><dd><b>'+c.n+'</b>: '+c.f+'</dd><dt>Driver</dt><dd>'+c.dr+'</dd><dt>When</dt><dd>'+(c.q?"Q"+c.q+" 2027":"Every month")+' · '+TN[c.t]+'</dd><dt>Kit</dt><dd><ul class="lp-dk">'+T[c.t].k.map(function(x){return '<li>'+x+'</li>'}).join("")+'</ul></dd>'}
+[].forEach.call($("lp-filt").querySelectorAll("button"),function(b){b.addEventListener("click",function(){filt=+b.dataset.t;[].forEach.call($("lp-filt").querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x===b)});var f=C.findIndex(function(c){return !filt||c.t===filt});if(filt)sel=f;paintCal()})});
 
 var rt,lw=innerWidth;addEventListener("resize",function(){if(innerWidth===lw)return;lw=innerWidth;clearTimeout(rt);rt=setTimeout(function(){var v=vals();drawScore(v,v.reduce(function(a,b){return a+b},0),lastTier);drawGantt();drawCal()},150)});
 P[0].a.forEach(function(ix,k){qs.querySelectorAll('input[name="'+Q[k].id+'"]')[ix].checked=true});

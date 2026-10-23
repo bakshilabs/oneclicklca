@@ -11,6 +11,23 @@
 @media (max-width:700px){.fi-det{grid-template-columns:1fr}}
 
 .fi-mx{margin-top:28px}
+#fi-layers .st{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:0 5px}
+#fi-layers button[aria-pressed="false"]{opacity:1;text-decoration:line-through}
+#fi-layers button[aria-pressed="false"] i{background:transparent!important;border:1.5px solid var(--ink3)}
+.fi-ev{display:grid;grid-template-columns:minmax(260px,360px) 1fr;gap:18px;align-items:start;margin-top:24px}
+.fi-rl{display:grid;gap:6px}
+.fi-rl button{appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:3px;padding:10px 12px;text-align:left;cursor:pointer;font:500 14px/1.3 var(--sans);display:grid;grid-template-columns:1fr 64px;gap:4px 10px;align-items:center}
+.fi-rl button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.fi-rl .cov{display:flex;gap:2px}
+.fi-rl .cov i{flex:1;height:8px;border-radius:2px;border:1px solid var(--ink3)}
+.fi-rl .cov i.on{background:var(--s1);border-color:var(--s1)}
+.fi-rl button[aria-pressed="true"] .cov i{border-color:var(--on-accent)}
+.fi-rl button[aria-pressed="true"] .cov i.on{background:var(--on-accent);border-color:var(--on-accent)}
+.fi-rl .fi-gap{grid-column:1/-1;justify-self:start}
+.fi-em{margin-top:0}
+.fi-em .e{font-size:14.5px;margin-top:12px}
+.fi-em .l{font-size:14px;margin-top:8px}
+@media (max-width:820px){.fi-ev{grid-template-columns:1fr}}
 .fi-row{display:grid;grid-template-columns:minmax(200px,300px) repeat(7,1fr) 28px;align-items:center;gap:0;border-bottom:1px solid var(--line)}
 .fi-row.h{border-bottom:1px solid var(--line);font:500 12px/1.25 var(--sans);color:var(--muted);text-align:center}
 .fi-row.h>span{padding:8px 2px}
@@ -37,10 +54,11 @@ button.fi-row[aria-expanded="true"] .chev{transform:rotate(180deg)}
  .fi-row.h .lg{display:none}.fi-row.h .sm{display:inline!important;font-size:10.5px}
  .fi-ex{grid-template-columns:1fr}
 }
-.fi-lw{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;align-items:stretch}
-.fi-les{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.fi-les button{appearance:none;border:0;text-align:left;background:var(--panel);color:var(--ink);border-radius:6px;padding:16px;font:500 15px/1.3 var(--sans);cursor:pointer;transition:transform .15s,background .15s}
-.fi-les button:hover{transform:translateY(-2px)}
+.fi-lw{display:grid;grid-template-columns:300px 1fr;gap:16px;margin-top:28px;align-items:start}
+.fi-les{display:grid;gap:8px}
+.fi-les button{appearance:none;border:0;text-align:left;background:var(--panel);color:var(--ink);border-radius:6px;padding:12px 14px;font:500 15px/1.3 var(--sans);cursor:pointer;display:flex;gap:12px;align-items:center;transition:background .15s}
+.fi-les button .icon{margin:0;flex:none}
+.fi-les button:hover{background:var(--accent-soft)}
 .fi-les button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
 .fi-les button[aria-pressed="true"] .icon{background:rgba(255,255,255,.2);color:var(--on-accent)}
 .fi-ld{background:var(--accent-soft);border-radius:6px;padding:20px 22px}
@@ -49,7 +67,7 @@ button.fi-row[aria-expanded="true"] .chev{transform:rotate(180deg)}
 .fi-ld p{font-size:14.5px}
 .fi-ld a.btn{margin-top:14px}
 .fi-lv{margin:14px 0 4px;background:var(--chart-bg);border-radius:5px;padding:12px}
-.fi-lv svg{display:block;width:100%;height:auto;max-height:150px}
+.fi-lv svg{display:block;width:100%;max-width:440px;height:auto}
 @media (max-width:760px){.fi-lw{grid-template-columns:1fr}}
 .viz svg .t-muted{font-size:12px}
 </style>
@@ -61,12 +79,8 @@ button.fi-row[aria-expanded="true"] .chev{transform:rotate(180deg)}
 </header>
 
 <div class="viz rv">
-  <div class="viz-h"><h3>Career, 2008 to 2026</h3><p>Select a role or a marker. Fees are the yearly totals won through pitches and bids.</p></div>
-  <div class="btnrow" id="fi-layers" role="group" aria-label="Show layers" style="margin-top:0">
-    <button type="button" data-l="talk" aria-pressed="true">Talks and panels</button>
-    <button type="button" data-l="learn" aria-pressed="true">Study and credentials</button>
-  </div>
-  <div class="legend" aria-hidden="true"><span><i style="background:var(--s1)"></i>Role</span><span><i style="background:var(--s4)"></i>Talk or panel</span><span><i style="background:var(--s7)"></i>Study</span></div>
+  <div class="viz-h"><h3>Career, 2008 to 2026</h3><p>Select a role or a marker. Fees are in each office's currency, dollars in New York and pounds in London; bar length shows time only.</p></div>
+  <div class="legend" id="fi-layers" role="group" aria-label="Show or hide marker layers"><span><i style="background:var(--s1);border-radius:2px"></i>Role, with yearly fees won</span><button type="button" data-l="talk" aria-pressed="true"><i style="background:var(--s4)"></i>Talks and panels <span class="st">shown</span></button><button type="button" data-l="learn" aria-pressed="true"><i style="background:var(--s7)"></i>Study <span class="st">shown</span></button></div>
   <div id="fi-tl"></div>
   <div class="fi-det" id="fi-det" aria-live="polite"></div>
 </div>
@@ -81,9 +95,11 @@ button.fi-row[aria-expanded="true"] .chev{transform:rotate(180deg)}
 <section class="sec">
   <span class="eyebrow">Requirements</span>
   <h2>What the listing asks for and where the evidence comes from</h2>
-  <p class="intro">Each dot marks where the evidence for a requirement comes from. Select a requirement to read it.</p>
-  <p class="mini" style="margin-top:6px">On small screens, RVA is Rafael Viñoly Architects and F+P is Foster + Partners.</p>
-  <div class="fi-mx" id="fi-mx"></div>
+  <p class="intro">Select a requirement. The bars show how many of seven sources back it, and the career map lights up where the evidence comes from.</p>
+  <div class="fi-ev">
+    <div class="fi-rl" id="fi-rl" role="group" aria-label="Requirements"></div>
+    <div class="viz fi-em"><div class="legend" aria-hidden="true" style="margin-top:0"><span><i style="background:var(--s1);border-radius:2px"></i>Evidence for this requirement</span><span><i style="background:var(--ink3);border-radius:2px"></i>No evidence</span></div><div id="fi-map"></div><p class="e" id="fi-e" aria-live="polite"></p><p class="l" id="fi-l"></p></div>
+  </div>
   <div class="callout" style="display:flex;gap:14px;align-items:flex-start"><span class="fi-gap" style="margin-top:3px"><svg viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3zM12 10v5M12 18v.5"/></svg>Gap</span><p>My title has never been product marketing manager. The closest work is launching a service line at Foster + Partners and running sales and marketing at Atlas Learn.</p></div>
 </section>
 
@@ -141,7 +157,7 @@ function draw(){
  for(var y=2008;y<=2026;y+=2){VZ.el("line",{x1:x(y),x2:x(y),y1:m.t,y2:H-24,"class":"grid"},s);var t=VZ.el("text",{x:x(y),y:H-6,"text-anchor":"middle"},s);t.textContent=nar?"’"+String(y).slice(2):y}
  R.forEach(function(r,i){var y=laneY(rows[i]),x0=x(r.a),x1=x(r.b),w=x1-x0;
   var g=VZ.el("g",{"class":"band",tabindex:0,role:"button","aria-label":r.n+", "+r.role+(r.fee?", fees "+r.fee:"")},s);
-  var p=VZ.bar(g,x0,y,w-(i===3?2:0),bh,"var(--s1)","h");p.setAttribute("style","fill:var(--s1)");if(i===5)p.setAttribute("style","fill:var(--s3)");
+  var p=VZ.bar(g,x0,y,w-(i===3?2:0),bh,"var(--s1)","h");p.setAttribute("style","fill:var(--s1)");
   if(nar){var nl=r.s.replace("Associate Partner","Foster + Partners, Assoc. Partner")+(r.fee?", "+r.fee.replace(" a year","/yr"):""),nw=nl.length*6.2,fits=x0+nw<=W-m.r;if(!fits)nl=nl.replace("Foster + Partners, ","");var nt=VZ.el("text",fits?{x:x0,y:y-5,style:"fill:var(--ink1);font-weight:600;font-size:12px"}:{x:x0-6,y:y+bh/2+4,"text-anchor":"end",style:"fill:var(--ink1);font-weight:600;font-size:12px"},g);nt.textContent=nl;}else{
   var lab=r.s+(r.fee?" · "+r.fee.replace(" a year","/yr"):""),lw=lab.length*6.6+16;
   var inside=lw<w,tx=VZ.el("text",{x:inside?x0+8:(i===5?x0-6:x1+6),y:y+bh/2+4,"text-anchor":(!inside&&i===5)?"end":"start",style:inside?"fill:#fff;font-weight:600":"fill:var(--ink1);font-weight:600"},g);tx.textContent=lab;
@@ -157,7 +173,7 @@ function draw(){
    VZ.tip(g,function(){return "<b>"+d[2]+", "+d[1]+"</b>"+d[3]});act(g,"m",i);});}
  showDet();
 }
-[].forEach.call(document.querySelectorAll("#fi-layers button"),function(b){b.addEventListener("click",function(){show[b.dataset.l]=!show[b.dataset.l];b.setAttribute("aria-pressed",show[b.dataset.l]);if(sel.t==="m"&&!show[M[sel.i][0]])sel={t:"r",i:4};draw()})});
+[].forEach.call(document.querySelectorAll("#fi-layers button"),function(b){b.addEventListener("click",function(){show[b.dataset.l]=!show[b.dataset.l];b.setAttribute("aria-pressed",show[b.dataset.l]);b.querySelector(".st").textContent=show[b.dataset.l]?"shown":"hidden";if(sel.t==="m"&&!show[M[sel.i][0]])sel={t:"r",i:4};draw()})});
 draw();var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(draw,120)});
 
 /* ---------- requirement matrix ---------- */
@@ -172,20 +188,24 @@ var Q=[
  ["Construction or manufacturing sustainability, LCA or EPDs",[0,1,1,1,0,0,0],"LEED AP and Estidama Pearl QP. I have worked under LEED, BREEAM, GSAS, Mostadam, Green Star and the Living Building Challenge, and on Lusail Stadium, San Siro and Old Trafford.",[["CV","cv.html"]]],
  ["Training others",[0,0,0,1,1,1,0],"I led internal LEED training for hundreds of architects and taught whole life carbon to studio partners. I teach at Imperial College London and taught at City University of New York.",[["Enablement","enablement.html"]]]
 ];
-var mx=document.getElementById("fi-mx"),CH='<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
-var hd=document.createElement("div");hd.className="fi-row h";hd.setAttribute("aria-hidden","true");hd.innerHTML="<span>Requirement</span>";var SM=["RVA","WSP","SOM","F+P","Atlas","Talks","Site"];COLS.forEach(function(c,j){var sp=document.createElement("span");sp.innerHTML='<span class="lg"></span><span class="sm" style="display:none"></span>';txt(sp.firstChild,c);txt(sp.lastChild,SM[j]);hd.appendChild(sp)});hd.appendChild(document.createElement("span"));mx.appendChild(hd);
-Q.forEach(function(q,i){
- var b=document.createElement("button");b.type="button";b.className="fi-row";b.setAttribute("aria-expanded",i===0);b.setAttribute("aria-controls","fi-ex"+i);
- var rq=document.createElement("span");rq.className="rq";rq.appendChild(document.createTextNode(q[0]));if(q[4]){var g=document.createElement("span");g.className="fi-gap";g.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3zM12 10v5M12 18v.5"/></svg>Title gap';rq.appendChild(g)}b.appendChild(rq);
- q[1].forEach(function(v,j){var c=document.createElement("span");c.className="c";c.innerHTML=v?'<i></i>':'<i class="o"></i>';b.appendChild(c)});
- var sr=document.createElement("span");sr.className="sr";sr.textContent="Evidence from: "+COLS.filter(function(c,j){return q[1][j]}).join(", ");b.appendChild(sr);
- var cv=document.createElement("span");cv.className="c";cv.innerHTML=CH;b.appendChild(cv);
- var ex=document.createElement("div");ex.className="fi-ex";ex.id="fi-ex"+i;ex.hidden=i!==0;
- ex.innerHTML='<div><p class="k">Evidence</p><p class="e"></p></div><div><p class="k">Where to see it</p><p class="l"></p></div>';txt(ex.querySelector(".e"),q[2]);
- q[3].forEach(function(l,k){var a=document.createElement("a");a.href=l[1];a.textContent=l[0];if(k)ex.querySelector(".l").appendChild(document.createTextNode(", "));ex.querySelector(".l").appendChild(a)});
- b.addEventListener("click",function(){var o=b.getAttribute("aria-expanded")!=="true";b.setAttribute("aria-expanded",o);ex.hidden=!o});
- mx.appendChild(b);mx.appendChild(ex);
+var SRC=[[2008+9/12,2010],[2010+6/12,2013+9/12],[2013+9/12,2015+9/12],[2015+9/12,2026+6/12],[2025+9/12,2026+9.7/12],null,null];
+var rl=document.getElementById("fi-rl"),map=document.getElementById("fi-map"),qsel=0;
+function drawMap(){map.innerHTML="";var q=Q[qsel],W=Math.max(280,map.clientWidth),nar=W<520,lw=nar?84:150,rh=28,H=7*rh+26;
+ var s=VZ.svg(map,W,H,"Evidence map for "+q[0]+": "+COLS.filter(function(c,j){return q[1][j]}).join(", "));
+ var x=VZ.lin(2008,2027,lw,W-6);
+ [2010,2014,2018,2022,2026].forEach(function(y){VZ.el("line",{x1:x(y),x2:x(y),y1:0,y2:H-20,"class":"grid"},s);var t=VZ.el("text",{x:x(y),y:H-4,"text-anchor":"middle","class":"t-muted"},s);t.textContent=y});
+ COLS.forEach(function(c,j){var y=j*rh+4,on=!!q[1][j],col=on?"var(--s1)":"var(--ink3)";
+  var t=VZ.el("text",{x:0,y:y+15,"class":on?"t-strong":"t-muted"},s);t.textContent=nar?["Viñoly","WSP","SOM","Foster + P.","Atlas Learn","Talks","This site"][j]:c;
+  if(SRC[j]){var p=VZ.bar(s,x(SRC[j][0]),y+4,x(SRC[j][1])-x(SRC[j][0]),14,"","h");p.setAttribute("style","fill:"+col);}
+  else if(j===5){M.filter(function(m){return m[0]==="talk"}).forEach(function(m){VZ.el("circle",{cx:x(m[1]+.5),cy:y+11,r:5,style:"fill:"+(on?"var(--s4)":"var(--ink3)")+";stroke:var(--chart-bg)","stroke-width":2},s)})}
+  else{VZ.el("rect",{x:x(2026.8)-7,y:y+4,width:14,height:14,rx:3,style:"fill:"+col},s)}
 });
+ txt(document.getElementById("fi-e"),q[2]);var l=document.getElementById("fi-l");l.innerHTML="Where to see it: ";q[3].forEach(function(lk,k){var a=document.createElement("a");a.href=lk[1];a.textContent=lk[0];if(k)l.appendChild(document.createTextNode(", "));l.appendChild(a)});
+ [].forEach.call(rl.children,function(b,j){b.setAttribute("aria-pressed",j===qsel)});}
+Q.forEach(function(q,i){var b=document.createElement("button");b.type="button";var n=q[1].reduce(function(a,v){return a+v},0);
+ b.innerHTML='<span class="t"></span><span class="cov" aria-hidden="true">'+q[1].map(function(v){return '<i class="'+(v?"on":"")+'"></i>'}).join("")+'</span>'+(q[4]?'<span class="fi-gap"><svg viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3zM12 10v5M12 18v.5"/></svg>Title gap</span>':'');
+ txt(b.querySelector(".t"),q[0]);b.setAttribute("aria-label",q[0]+", evidence from "+n+" of 7 sources"+(q[4]?", title gap":""));b.addEventListener("click",function(){qsel=i;drawMap()});rl.appendChild(b)});
+drawMap();addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){draw();drawMap()},130)});
 /* ---------- lessons ---------- */
 var LS=[
  ["The trigger is a date",'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',"Clients bought carbon work when a permit, a certification or a board target set a deadline. Without a date, the work slipped to next year.","Tie every launch to the next regulatory date for its segment, and start the campaign before that date.","Demand Drivers","demand.html"],
@@ -195,10 +215,10 @@ var LS=[
 ];
 var T12='font-size:12px;fill:var(--ink2);font-family:var(--sans)',TS='font-size:12px;fill:var(--ink1);font-weight:600;font-family:var(--sans)';
 var LV=[
- '<svg viewBox="0 0 320 96" role="img" aria-label="Schematic: purchases cluster just before a regulatory deadline"><line x1="10" y1="70" x2="310" y2="70" style="stroke:var(--axis)"/>'+[0,1,2,3,4,5,6,7].map(function(k){var h=[6,8,10,14,22,34,46,10][k];return '<rect x="'+(30+k*28)+'" y="'+(70-h)+'" width="16" height="'+h+'" rx="3" style="fill:var(--s1)"/>'}).join("")+'<line x1="254" y1="10" x2="254" y2="74" style="stroke:var(--s2)" stroke-width="2"/><text x="250" y="20" text-anchor="end" style="'+TS+'">Deadline</text><text x="10" y="90" style="'+T12+'">Schematic: buying clusters before the date</text></svg>',
- '<svg viewBox="0 0 320 96" role="img" aria-label="Schematic: one pitch must serve the analyst and the partner"><rect x="120" y="36" width="80" height="26" rx="3" style="fill:var(--panel);stroke:var(--axis)"/><text x="160" y="53" text-anchor="middle" style="'+TS+'">Pitch</text><path d="M120 49H80M200 49H240" style="stroke:var(--axis)" stroke-width="1.5"/><circle cx="56" cy="40" r="10" style="fill:var(--s1)"/><path d="M38 66a18 14 0 0 1 36 0z" style="fill:var(--s1)"/><circle cx="264" cy="40" r="10" style="fill:var(--s7)"/><path d="M246 66a18 14 0 0 1 36 0z" style="fill:var(--s7)"/><text x="56" y="86" text-anchor="middle" style="'+T12+'">Analyst: fewer hours</text><text x="264" y="86" text-anchor="middle" style="'+T12+'">Partner: fee or win</text></svg>',
- '<svg viewBox="0 0 320 96" role="img" aria-label="Schematic: two design options against a carbon limit"><line x1="70" y1="30" x2="310" y2="30" style="stroke:var(--s2)" stroke-width="2"/><text x="310" y="22" text-anchor="end" style="'+TS+'">Limit</text><text x="10" y="54" style="'+T12+'">Option A</text><path d="M70 44h196a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H70z" style="fill:var(--s1)"/><text x="10" y="80" style="'+T12+'">Option B</text><path d="M70 70h128a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H70z" style="fill:var(--s1)"/><text x="210" y="81" style="'+T12+'">under the limit</text></svg>',
- '<svg viewBox="0 0 320 96" role="img" aria-label="Capterra sub-scores: customer service 4.9, ease of use 4.4, value for money 4.0"><text x="0" y="20" style="'+T12+'">Customer service</text><path d="M120 10h147a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H120z" style="fill:var(--s1)"/><text x="278" y="21" style="'+TS+'">4.9</text><text x="0" y="46" style="'+T12+'">Ease of use</text><path d="M120 36h128a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H120z" style="fill:var(--ink3)"/><text x="259" y="47" style="'+TS+'">4.4</text><text x="0" y="72" style="'+T12+'">Value for money</text><path d="M120 62h116a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H120z" style="fill:var(--ink3)"/><text x="247" y="73" style="'+TS+'">4.0</text><text x="0" y="93" style="font-size:12px;fill:var(--ink3);font-family:var(--sans)">Capterra, updated 20 Jul 2026, 18 reviews</text></svg>'
+ '<svg viewBox="0 0 320 96" role="img" aria-label="Schematic: purchases cluster just before a regulatory deadline"><line x1="10" y1="70" x2="310" y2="70" style="stroke:var(--axis)"/>'+[0,1,2,3,4,5,6,7].map(function(k){var h=[6,8,10,14,22,34,46,10][k];return '<rect x="'+(30+k*28)+'" y="'+(70-h)+'" width="16" height="'+h+'" rx="3" style="fill:var(--ink3)"/>'}).join("")+'<line x1="254" y1="10" x2="254" y2="74" style="stroke:var(--s2)" stroke-width="2"/><text x="250" y="20" text-anchor="end" style="'+TS+'">Deadline</text><text x="10" y="90" style="'+T12+'">Schematic: buying clusters before the date</text></svg>',
+ '<svg viewBox="0 0 320 96" role="img" aria-label="Schematic: one pitch must serve the analyst and the partner"><rect x="120" y="36" width="80" height="26" rx="3" style="fill:var(--panel);stroke:var(--axis)"/><text x="160" y="53" text-anchor="middle" style="'+TS+'">Pitch</text><path d="M120 49H80M200 49H240" style="stroke:var(--axis)" stroke-width="1.5"/><circle cx="56" cy="40" r="10" style="fill:var(--ink3)"/><path d="M38 66a18 14 0 0 1 36 0z" style="fill:var(--ink3)"/><circle cx="264" cy="40" r="10" style="fill:var(--ink2)"/><path d="M246 66a18 14 0 0 1 36 0z" style="fill:var(--ink2)"/><text x="56" y="86" text-anchor="middle" style="'+T12+'">Analyst: fewer hours</text><text x="264" y="86" text-anchor="middle" style="'+T12+'">Partner: fee or win</text></svg>',
+ '<svg viewBox="0 0 320 96" role="img" aria-label="Schematic: two design options against a carbon limit"><line x1="70" y1="30" x2="310" y2="30" style="stroke:var(--s2)" stroke-width="2"/><text x="310" y="22" text-anchor="end" style="'+TS+'">Limit</text><text x="10" y="54" style="'+T12+'">Option A</text><path d="M70 44h196a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H70z" style="fill:var(--ink3)"/><text x="10" y="80" style="'+T12+'">Option B</text><path d="M70 70h128a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H70z" style="fill:var(--ink2)"/><text x="210" y="81" style="'+T12+'">under the limit</text></svg>',
+ '<svg viewBox="0 0 320 96" role="img" aria-label="Capterra sub-scores: customer service 4.9, ease of use 4.4, value for money 4.0"><text x="0" y="20" style="'+T12+'">Customer service</text><path d="M120 10h147a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H120z" style="fill:var(--ink2)"/><text x="278" y="21" style="'+TS+'">4.9</text><text x="0" y="46" style="'+T12+'">Ease of use</text><path d="M120 36h128a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H120z" style="fill:var(--ink3)"/><text x="259" y="47" style="'+TS+'">4.4</text><text x="0" y="72" style="'+T12+'">Value for money</text><path d="M120 62h116a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H120z" style="fill:var(--ink3)"/><text x="247" y="73" style="'+TS+'">4.0</text><text x="0" y="93" style="font-size:12px;fill:var(--ink3);font-family:var(--sans)">Capterra, updated 20 Jul 2026, 18 reviews</text></svg>'
 ];
 var lg=document.getElementById("fi-les"),ld=document.getElementById("fi-ld");
 function showL(i){[].forEach.call(lg.children,function(b,j){b.setAttribute("aria-pressed",i===j)});var l=LS[i];

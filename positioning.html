@@ -46,7 +46,7 @@
 #ps .ps-ic span{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--ink)}
 #ps .ps-ic svg{width:22px;height:22px;flex:none;padding:3px;border-radius:4px;background:var(--bg);stroke:var(--ink2);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 #ps .ps-pf{display:grid;gap:6px;margin-top:10px}
-#ps .ps-pf div{display:grid;grid-template-columns:84px 1fr;gap:8px;align-items:baseline;font-size:13px;color:var(--ink2)}
+#ps .ps-pf div{display:grid;grid-template-columns:84px 1fr;gap:8px;align-items:center;font-size:13px;line-height:1.3;color:var(--ink2);min-height:34px}
 #ps .ps-pf b{font:600 20px/1 var(--sans);color:var(--ink);letter-spacing:-.02em}
 #ps .ps-house{margin-top:22px}
 #ps .ps-roof{background:var(--accent);color:var(--on-accent);clip-path:polygon(50% 0,100% 62%,100% 100%,0 100%,0 62%);padding:80px 40px 20px;text-align:center}
@@ -99,6 +99,7 @@
 #ps .ps-tgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
 #ps .ps-cell{background:var(--chart-bg);border:1px solid var(--line);border-radius:6px;padding:12px 12px 8px;transition:box-shadow .3s,border-color .3s}
 #ps .ps-cell.on{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+#ps .ps-cell{position:relative}#ps .ps-cell .todo{display:none;position:absolute;inset:40px 12px 12px;place-items:center;text-align:center;font-size:13.5px;color:var(--ink2);background:var(--panel);border-radius:4px;padding:10px}#ps .ps-cell.later svg{visibility:hidden}#ps .ps-cell.later .todo{display:grid}#ps .ps-cell.later h4{color:var(--ink2)}
 #ps .ps-cell h4{font:600 13px/1.3 var(--sans);margin:0 0 6px;color:var(--ink)}
 #ps .ps-cell h4 span{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--accent);color:var(--on-accent);font-size:12px;margin-right:6px}
 #ps .ps-cell svg{display:block;width:100%;height:auto}
@@ -195,7 +196,7 @@ var L=[["Category leader",2023,2025,"“The world's number one construction LCA 
 var E=[[2025+8/12+1/365,"2 Sep 2025","SimaPro and PRé join the group","Press release, 2 Sep 2025"],[2025+9/12+15/365,"16 Oct 2025","2026 compliance tools launch: “Compliance is no longer optional.”","Launch press release, 16 Oct 2025"],[2026+5/12+14/365,"15 Jun 2026","CEO interview frames the brands as depth with SimaPro and speed with One Click LCA","Climate Solutions News, 15 Jun 2026"],[2026+9/12+22/365,"23 Oct 2026","Homepage reads “Do more LCAs and EPDs, faster”","oneclicklca.com, read 23 Oct 2026"]];
 var selL=2,ahost=$("arc"),lanes=[];
 $("evk").innerHTML=E.map(function(e,i){return '<li><span class="n">'+(i+1)+'</span><span><b>'+e[1]+'</b> '+e[2]+'<span class="src">'+e[3]+'</span></span></li>'}).join("");
-function arc(){if(VZ.hideTip)VZ.hideTip();ahost.innerHTML="";lanes=[];var w=Math.max(280,ahost.clientWidth),m=w<560,lw=m?0:270,lh=m?30:38,rowH=m?lh+26:lh+14,top=26,y0=top+(m?20:6);
+function arc(){if(VZ.hideTip)VZ.hideTip();ahost.innerHTML="";lanes=[];var w=Math.max(280,ahost.clientWidth),m=w<560,lw=m?0:310,lh=m?30:38,rowH=m?lh+26:lh+14,top=26,y0=top+(m?20:6);
  var X=VZ.lin(2023,2027,lw+4,w-14),evY=y0+L.length*rowH+20,h=evY+22;
  var s=VZ.svg(ahost,w,h,"Timeline of One Click LCA headline claims. Category leader ran from 2023 to 2024. Automation and compliance as growth ran through 2025. The largest LCA platform has run since September 2025. Four numbered events are listed below the chart.");s.setAttribute("role","group");
  for(var y=2023;y<=2027;y++){VZ.el("line",{x1:X(y),x2:X(y),y1:top-6,y2:evY,class:"grid"},s);if(y<2027){var yt=txt(s,X(y+.5),16,y,{"text-anchor":"middle",class:"t-strong"});yt.style.fontSize="14px"}}
@@ -203,13 +204,13 @@ function arc(){if(VZ.hideTip)VZ.hideTip();ahost.innerHTML="";lanes=[];var w=Math
  L.forEach(function(d,i){var y=y0+i*rowH+(m?20:0),g=VZ.el("g",{class:"ps-lane"+(i===selL?" sel":""),role:"button","aria-label":d[0]+", "+d[4],"aria-pressed":i===selL?"true":"false"},s),x0=X(d[1]),x1=X(d[2]);
   VZ.el("rect",{x:m?0:0,y:m?y-22:y,width:w,height:m?lh+22:lh,fill:"transparent"},g);
   VZ.el("rect",{class:"m",x:x0,y:y,width:x1-x0,height:lh,rx:4,fill:"var(--s1)"},g);
-  var t=txt(g,m?x0:0,m?y-8:y+lh/2+5,d[0]);t.style.fontSize=m?"13px":"15px";t.style.fill="var(--ink1)";t.style.fontWeight=i===selL?"700":"500";
+  var t=txt(g,m?x0:0,m?y-8:y+lh/2+5,d[0]);t.style.fontSize=m?"13px":"14px";t.style.fill="var(--ink1)";t.style.fontWeight=i===selL?"700":"500";
   if(m&&x0+d[0].length*7.2>w){t.setAttribute("x",w-4);t.setAttribute("text-anchor","end")}
   if(!m){var dt=txt(g,0,y+lh/2+22,d[4]);dt.style.fontSize="12px";dt.style.fill="var(--ink2)";if(d[4].length>30)dt.remove()}
   g.addEventListener("click",function(){selL=i;arc()});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();selL=i;arc();lanes[i].focus()}});
   VZ.tip(g,function(){return "<b>"+d[4]+"</b><span class='m'>"+d[3]+"</span>"});lanes.push(g)});
  if(!m){var et=txt(s,0,evY+5,"Events");et.style.fill="var(--ink2)";et.style.fontSize="13px"}
- var prev=-1e9;E.forEach(function(e,i){var tx=X(e[0]),x=Math.max(tx,prev+26);prev=x;var g=VZ.el("g",{class:"ps-ev","aria-label":e[1]+": "+e[2]},s);
+ var prev=-1e9;E.forEach(function(e,i){var tx=X(e[0]),x=Math.max(tx,prev+(m?25:30));prev=x;var g=VZ.el("g",{class:"ps-ev","aria-label":e[1]+": "+e[2]},s);
   VZ.el("line",{x1:tx,x2:tx,y1:evY-8,y2:evY,stroke:"var(--ink2)","stroke-width":2},g);
   if(x!==tx)VZ.el("path",{d:"M"+tx+","+evY+" L"+x+","+evY,stroke:"var(--ink2)","stroke-width":1.5,fill:"none"},g);
   VZ.el("circle",{cx:x,cy:evY,r:11,fill:"var(--ink2)",stroke:"var(--ring)","stroke-width":2},g);
@@ -256,7 +257,7 @@ function outline(){function nd(id,label,cls,c){return '<span class="nd '+cls+(pa
  thost.innerHTML='<ul class="ps-tree"><li>'+br("q1")+'</li></ul>';
  [].forEach.call(thost.querySelectorAll("[data-leaf]"),function(el){el.onclick=function(){goLeaf(el.dataset.leaf)};el.onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();goLeaf(el.dataset.leaf)}}})}
 function drawTree(){var W=thost.clientWidth;if(W<620){outline();return}
- thost.innerHTML="";var rh=66,y0=26,H=y0+4*rh+34,RY=function(r){return y0+r*rh},lw=Math.min(200,W*.27),lx=W-lw,
+ thost.innerHTML="";var rh=54,y0=22,H=y0+4*rh+34,RY=function(r){return y0+r*rh},lw=Math.min(200,W*.27),lx=W-lw,
   P={q1:[0,RY(2),118],q2:[W*.3,RY(2.25),128],q3:[W*.3+128+40,RY(1.5),128],ocl:[lx,RY(0),lw],both:[lx,RY(1),lw],epd:[lx,RY(2),lw],sp2:[lx,RY(3),lw],sp1:[lx,RY(4),lw]};
  var s=VZ.svg(thost,W,H,"Decision tree. If the buyer needs building results against a code, lead with One Click LCA. If it needs expert process models, lead with SimaPro. If it needs product footprints: for non-construction products lead with SimaPro; for construction products with an expert team and a large range, lead with both as one account; otherwise lead with the EPD Generator.");s.setAttribute("role","group");s.setAttribute("class","ps-tsvg");
  var nh=44;
@@ -298,7 +299,7 @@ var T=[["Write the versions","Write two or three versions of the promise for one
 ["Decide","Keep what moves opportunities. Change the website and the deck only after both tests point the same way."]];
 var ts=$("tsteps"),tg=$("tgrid"),cs=0,cells=[];
 T.forEach(function(t,i){var b=document.createElement("button");b.setAttribute("role","tab");b.id="ts"+i;b.setAttribute("aria-controls","tgrid");b.setAttribute("aria-selected",i===0?"true":"false");b.textContent=(i+1)+". "+t[0];ts.appendChild(b);
- var c=document.createElement("div");c.className="ps-cell";c.innerHTML='<h4><span>'+(i+1)+'</span>'+t[0]+'</h4>';tg.appendChild(c);cells.push(c)});
+ var c=document.createElement("div");c.className="ps-cell";c.innerHTML='<h4><span>'+(i+1)+'</span>'+t[0]+'</h4><div class="todo">Added at step '+(i+1)+'. Select it or press Play to build the plan.</div>';tg.appendChild(c);cells.push(c)});
 function cellSvg(c,label){return VZ.svg(c,260,190,label)}
 (function(){var s=cellSvg(cells[0],"Two message variants: A, Get specified more often. B, Verified EPDs in days.");
  [["A","“Get specified","more often”","var(--s1)"],["B","“Verified EPDs","in days”","var(--s2)"]].forEach(function(v,j){var y=14+j*88;VZ.el("rect",{x:0,y:y,width:260,height:74,rx:4,fill:"var(--panel)"},s);VZ.el("rect",{x:0,y:y,width:6,height:74,rx:2,fill:v[3]},s);
@@ -318,7 +319,7 @@ function cellSvg(c,label){return VZ.svg(c,260,190,label)}
  V.forEach(function(r,j){var y=10+j*58;txt(s,0,y+22,r[0],{class:"t-strong"});r[1].forEach(function(v,k){VZ.bar(s,92,y+k*24,X(v)-92,18,k?"var(--s2)":"var(--s1)","h");txt(s,X(v)+5,y+k*24+14,k?"B":"A")})});
  var t=txt(s,0,134,"Illustrative values, not data");t.style.fontStyle="italic";
  VZ.el("rect",{x:0,y:146,width:260,height:36,rx:4,fill:"var(--accent-soft)"},s);txt(s,130,169,"Both tests agree → change site and deck",{"text-anchor":"middle",class:"t-strong"})})();
-function step(i){cs=i;cells.forEach(function(c,j){c.classList.toggle("on",j===i)});$("tcap").innerHTML="<b style=\"color:var(--ink)\">Step "+(i+1)+".</b> "+T[i][1];tg.setAttribute("aria-labelledby","ts"+i);
+function step(i){cs=i;cells.forEach(function(c,j){c.classList.toggle("on",j===i);c.classList.toggle("later",j>i)});$("tcap").innerHTML="<b style=\"color:var(--ink)\">Step "+(i+1)+".</b> "+T[i][1];tg.setAttribute("aria-labelledby","ts"+i);
  [].forEach.call(ts.children,function(b,j){b.setAttribute("aria-selected",j===i?"true":"false");b.tabIndex=j===i?0:-1})}
 [].forEach.call(ts.children,function(b,i){b.addEventListener("click",function(){stopPlay();step(i)});b.addEventListener("keydown",function(e){var k=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;if(k){var n=(i+k+4)%4;ts.children[n].focus();stopPlay();step(n)}})});
 cells.forEach(function(c,i){c.addEventListener("click",function(){stopPlay();step(i)})});

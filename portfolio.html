@@ -276,10 +276,10 @@ function drawMap(W){map.innerHTML="";var nar=W<640,LW=nar?0:150,TW=nar?0:118,cw=
   var g=VZ.el("g",{class:"pf-t",role:"button",tabindex:0,"aria-label":(i+1)+". "+p.n+", for "+ROWS[p.r]+", stage "+STAGES[p.c]},s);
   var col="var(--s"+lineOf[p.l][2]+")",rc=VZ.el("rect",{x:xx,y:yy,width:TS,height:TS,rx:4,"stroke-width":2,class:"tb"},g);rc.style.fill="color-mix(in srgb,"+col+" 26%,var(--chart-bg))";rc.style.stroke=col;
   var nt=VZ.el("text",{x:xx+TS/2,y:yy+TS/2+4.5,"text-anchor":"middle",class:"t-strong"},g);nt.textContent=i+1;
-  if(!nar)wrap(p.sh||p.n,nar?13:19).slice(0,2).forEach(function(l,k2,a){VZ.el("text",{x:xx+TS+8,y:yy+TS/2+4+(k2-(a.length-1)/2)*14},g).textContent=l});
+  if(!nar)wrap(p.sh||p.n,nar?13:15).slice(0,2).forEach(function(l,k2,a){VZ.el("text",{x:xx+TS+8,y:yy+TS/2+4+(k2-(a.length-1)/2)*14},g).textContent=l});
   g.addEventListener("click",function(){show(i)});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();show(i)}});
   VZ.tip(g,function(){return"<b>"+esc(p.n)+"</b>"+esc(ROWS[p.r])+" · "+esc(STAGES[p.c])+"<br><span class='m'>"+esc(TI[i][1])+"</span>"});
-  var lw=Math.max.apply(0,wrap(p.sh||p.n,nar?13:19).slice(0,2).map(function(l){return l.length}))*6.6+14;tiles[i]={g:g,x:xx+TS+lw,y:yy+TS/2,rc:rc}});
+  var lw=Math.max.apply(0,wrap(p.sh||p.n,nar?13:15).slice(0,2).map(function(l){return l.length}))*6.6+14;tiles[i]={g:g,x:xx+TS+lw,y:yy+TS/2,rc:rc}});
  map._links=links;map._tierY=tierY;map._tx=tx;map._nar=nar;
  apply();show(sel)}
 function apply(){tiles.forEach(function(t,k){var off=!on[P[k].l];t.g.classList.toggle("off",off)});keyBtns.forEach(function(b,k){b.classList.toggle("off",!on[P[k].l])})}
@@ -334,10 +334,12 @@ function dots(){var D=[
  {n:"LCA datasets",max:550000,fmt:function(v){return(v/1000)+"k+"},c:[[500000,"500,000+ on the homepage, after the SimaPro deal"],[300000,"300,000+ in the 2025 press boilerplate"]],k:[]},
  {n:"Integrations",max:40,fmt:function(v){return v+"+"},c:[[20,"20+ in the integrations page headline"]],k:[[32,"About 32 integrations listed on the same page"]]},
  {n:"People",max:360,fmt:function(v){return v},c:[[170,"170 experts, enterprise page"],[180,"Over 180, press-room boilerplate"],[200,"200+, leadership release 2025"],[300,"300+, figure in use"],[330,"330+, figure in use"]],k:[]}];
- responsive(document.getElementById("pf-dots"),function(W){var narrow=W<560,L=narrow?0:170,rowH=narrow?104:88,H=D.length*rowH+6;
+ responsive(document.getElementById("pf-dots"),function(W){var narrow=W<560,L=narrow?0:170,rowH=narrow?116:88,H=D.length*rowH+6;
   var s=VZ.svg(document.getElementById("pf-dots"),W,H,"Dot plot of inconsistent proof points: standards 80+, 100+ and 140+ against about 98 shown; datasets 300,000+ and 500,000+; integrations 20+ against about 32 listed; people from 170 to 330+.");G(s);
-  D.forEach(function(d,i){var y0=i*rowH,y=y0+(narrow?48:30),y2=y+20,x=VZ.lin(0,d.max,L+8,W-20);
+  D.forEach(function(d,i){var y0=i*rowH,y=y0+(narrow?62:30),y2=y+20,x=VZ.lin(0,d.max,L+8,W-20);
    VZ.el("text",{x:0,y:narrow?y0+16:y+4,class:"t-strong"},s).textContent=d.n;
+   var cv0=d.c.map(function(c){return c[0]}),r0=Math.max.apply(0,cv0)/Math.min.apply(0,cv0);
+   if(r0>1)VZ.el("text",{x:0,y:narrow?y0+33:y+22,class:"t-muted"},s).textContent="Highest claim "+r0.toFixed(1).replace(".0","")+"× the lowest";
    VZ.el("line",{x1:x(0),x2:x(d.max),y1:y,y2:y,class:"grid"},s);if(d.k.length)VZ.el("line",{x1:x(0),x2:x(d.max),y1:y2,y2:y2,class:"grid"},s);
    var ya=(d.k.length?y2:y)+20;
    [0,d.max/2,d.max].forEach(function(v){VZ.el("text",{x:x(v),y:ya,"text-anchor":v===d.max?"end":v?"middle":"start",class:"t-muted"},s).textContent=v>=1000?(v/1000)+"k":v});
@@ -347,7 +349,6 @@ function dots(){var D=[
     if(c[0]===mn||c[0]===mx)VZ.el("text",{x:x(c[0]),y:y-11,"text-anchor":"middle",class:"t-strong"},s).textContent=d.fmt(c[0])});
    d.k.forEach(function(k){var X=x(k[0]),m=VZ.el("rect",{x:X-5.5,y:y2-5.5,width:11,height:11,transform:"rotate(45 "+X+" "+y2+")",stroke:"var(--ring)","stroke-width":2},s);m.style.fill="var(--s2)";m.setAttribute("role","img");m.setAttribute("aria-label","About "+k[0]+": "+k[1]);VZ.tip(m,function(){return"<b>About "+k[0]+"</b>"+esc(k[1])});
     VZ.el("text",{x:X+11,y:y2+4,class:"t-strong"},s).textContent="about "+k[0]});
-   VZ.el("text",{x:W-20,y:narrow?y0+16:y0+12,"text-anchor":"end",class:"t-muted"},s).textContent="Highest claim is "+(mx/mn).toFixed(1).replace(".0","")+"× the lowest";
   })})}
 
 function venn(){var Z={

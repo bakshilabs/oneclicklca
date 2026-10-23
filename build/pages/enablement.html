@@ -26,8 +26,8 @@ main svg .t-muted{font-size:12px}
 .en-g .rl svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .en-g .c,.en-g .c0{height:26px;border-radius:3px}
 .en-g .c0{background:var(--panel)}
-.en-g .c{appearance:none;border:0;background:var(--ink3);color:#fff;font:600 12px/1 var(--sans);cursor:pointer}
-.en-g .c.on{background:var(--s1)}
+.en-g .c{appearance:none;border:0;background:var(--ink3);font:600 12px/1 var(--sans);cursor:pointer}
+.en-g .c.on{background:var(--accent)}
 .en-g .c.pk{outline:2px solid var(--ink);outline-offset:1px}
 .en-qs{list-style:none;margin:0;padding:0;counter-reset:q;display:grid;gap:6px}
 .en-qs li{counter-increment:q;display:grid;grid-template-columns:28px 104px 1fr;gap:10px;align-items:center;background:var(--panel);border-radius:5px;padding:10px 14px;font-size:15px;transition:opacity .2s}
@@ -100,7 +100,7 @@ main svg .t-muted{font-size:12px}
         <div class="tabs" role="tablist" aria-label="Chart" id="en-ct" style="margin-top:0"><button role="tab" id="en-ct1" aria-controls="en-cp1" aria-selected="true">Year one breakdown</button><button role="tab" id="en-ct2" aria-controls="en-cp2" aria-selected="false">Break-even by volume</button></div>
         <div role="tabpanel" id="en-cp1" aria-labelledby="en-ct1">
         <div class="viz-h" style="margin-top:14px"><h3>From the alternative to the net benefit</h3><p>Euros a year. Hover a bar for detail.</p></div>
-        <div class="legend"><span><i style="background:var(--s1);border-radius:2px"></i>Saving or income</span><span><i style="background:var(--s2);border-radius:2px"></i>Cost of the tool route</span><span><i style="background:var(--s3);border-radius:2px"></i>Net benefit</span></div>
+        <div class="legend"><span><i style="background:var(--s3);border-radius:2px"></i>Saving or income</span><span><i style="background:var(--s8);border-radius:2px"></i>Cost of the tool route</span><span><i style="background:var(--s7);border-radius:2px"></i>Net benefit</span></div>
         <div id="en-wf"></div>
         </div>
         <div role="tabpanel" id="en-cp2" aria-labelledby="en-ct2" hidden>
@@ -146,7 +146,7 @@ main svg .t-muted{font-size:12px}
     <ul class="en-rows" id="en-rows"></ul>
     <div class="en-tally"><span>Bar length is the size of the edge, from slight to strong. The text opposite is the talk track.</span><span>Edges are my judgement from the battlecard.</span></div>
   </div>
-  <div class="callout rv" style="max-width:none"><p><b>Landmine to set.</b> "Ask them how many of their EPDs have been verified by your market's programme operator, and how long the last ten took."</p></div>
+  <div class="callout rv"><p><b>Landmine to set.</b> "Ask them how many of their EPDs have been verified by your market's programme operator, and how long the last ten took."</p></div>
 </section>
 
 <script>
@@ -180,7 +180,7 @@ function drawWf(st,n){var h=host("en-wf"),W=Math.max(290,h.clientWidth||600),nar
  cols.forEach(function(c,i){var isT=i===st.length,a=isT?0:run,b=isT?c[1]:run+c[1];if(!isT)run=b;seg.push([a,b])});
  var all=[0];seg.forEach(function(s){all.push(s[0],s[1])});var tk=nice(Math.min.apply(null,all),Math.max.apply(null,all),4),mn=tk[0],mx=tk[tk.length-1];
  var lab="Waterfall: "+cols.map(function(c){return c[0]+" "+eur(c[1])}).join(", ");
- function fillOf(i,c){return i===st.length?"var(--s3)":c[1]>=0?"var(--s1)":"var(--s2)"}
+ function fillOf(i,c){return i===st.length?"var(--s7)":c[1]>=0?"var(--s3)":"var(--s8)"}
  if(narrow){var rh=46,top=8,H=top+cols.length*rh+26,L=4,R=W-6,x=VZ.lin(mn,mx,L,R);var svg=VZ.svg(h,W,H,lab);svg.setAttribute("role","group");
   tk.forEach(function(v){VZ.el("line",{x1:x(v),x2:x(v),y1:top,y2:H-22,"class":v===0?"axis":"grid"},svg);var t=VZ.el("text",{x:x(v),y:H-6,"text-anchor":v===mn?"start":v===mx?"end":"middle","class":"t-muted"},svg);t.textContent=k(v)});
   cols.forEach(function(c,i){var y=top+i*rh,a=seg[i][0],b=seg[i][1],x0=x(Math.min(a,b)),x1=x(Math.max(a,b)),g=VZ.el("g",{role:"img","aria-label":c[0]+": "+eur(c[1])},svg);
@@ -216,9 +216,9 @@ function drawBe(){var m=M[mode],h=host("en-be"),W=Math.max(290,h.clientWidth||60
  xt.forEach(function(xv){var tx2=VZ.el("text",{x:x(xv),y:H-bot+17,"text-anchor":"middle","class":"t-muted"},svg);tx2.textContent=xv});
  var xl=VZ.el("text",{x:R,y:H-4,"text-anchor":"end","class":"t-muted"},svg);xl.textContent=m.vn.charAt(0).toUpperCase()+m.vn.slice(1);
  if(be!==null&&be>0&&be<xmax){VZ.el("line",{x1:x(be),x2:x(be),y1:top,y2:H-bot,stroke:"var(--ink3)","stroke-width":1},svg);var bl=VZ.el("text",{x:x(be)+6,y:top+4,"class":"t-strong"},svg);bl.textContent="Break-even "+bi;if(x(be)>R-110){bl.setAttribute("x",x(be)-6);bl.setAttribute("text-anchor","end")}}
- VZ.el("path",{d:"M"+x(0)+","+y(N(0))+"L"+x(xmax)+","+y(N(xmax))+"L"+x(xmax)+","+y(0)+"L"+x(0)+","+y(0)+"Z",fill:"var(--s1)",opacity:.1},svg);
- VZ.el("path",{d:"M"+x(0)+","+y(N(0))+"L"+x(xmax)+","+y(N(xmax)),stroke:"var(--s1)","stroke-width":2,fill:"none","stroke-linecap":"round"},svg);
- var cc=Math.min(cur,xmax),cy=y(N(cc));VZ.el("circle",{cx:x(cc),cy:cy,r:6,fill:"var(--s1)",stroke:"var(--ring)","stroke-width":2},svg);
+ VZ.el("path",{d:"M"+x(0)+","+y(N(0))+"L"+x(xmax)+","+y(N(xmax))+"L"+x(xmax)+","+y(0)+"L"+x(0)+","+y(0)+"Z",fill:"var(--s7)",opacity:.1},svg);
+ VZ.el("path",{d:"M"+x(0)+","+y(N(0))+"L"+x(xmax)+","+y(N(xmax)),stroke:"var(--s7)","stroke-width":2,fill:"none","stroke-linecap":"round"},svg);
+ var cc=Math.min(cur,xmax),cy=y(N(cc));VZ.el("circle",{cx:x(cc),cy:cy,r:6,fill:"var(--s7)",stroke:"var(--ring)","stroke-width":2},svg);
  var cl=VZ.el("text",{x:x(cc)+(x(cc)>R-150?-10:10),y:cy+20,"text-anchor":x(cc)>R-150?"end":"start","class":"t-strong"},svg);cl.textContent="Now: "+cur+", "+k(N(cur));
  var hair=VZ.el("line",{x1:0,x2:0,y1:top,y2:H-bot,stroke:"var(--ink2)","stroke-width":1,opacity:0},svg);
  var ov=VZ.el("rect",{x:L,y:top,width:R-L,height:H-bot-top,fill:"transparent",style:"cursor:crosshair"},svg);
@@ -236,7 +236,7 @@ m:{n:"Manufacturers",q:[["Scope","How many products do you sell, and how many ha
 var INT=["Trigger","Scope","Timing","Cost","Risk","Workflow","Route","Signer"],PK=["d","c","m"],fInt=null,curP="d";
 function grid(){var h='<div class="en-g" role="group" aria-label="Question coverage by buyer"><span></span>'+PK.map(function(p){return '<span class="hd'+(p===curP?" on":"")+'">'+D[p].n.replace(" firms","")+'</span>'}).join("");
  INT.forEach(function(it){h+='<span class="rl"><svg viewBox="0 0 24 24" aria-hidden="true">'+IC[it]+'</svg>'+it+'</span>';PK.forEach(function(p){var n=D[p].q.filter(function(q){return q[0]===it}).length;
-  h+=n?'<button type="button" class="c'+(p===curP?" on":"")+(p===curP&&fInt===it?" pk":"")+'" data-p="'+p+'" data-i="'+it+'" aria-pressed="'+(p===curP&&fInt===it)+'" aria-label="'+D[p].n+', '+it+': '+n+' question'+(n>1?"s":"")+'">'+(n>1?n:"")+'</button>':'<span class="c0" aria-hidden="true"></span>'})});
+  h+=n?'<button type="button" class="c'+(p===curP?" on":"")+(p===curP&&fInt===it?" pk":"")+'" data-p="'+p+'" data-i="'+it+'" aria-pressed="'+(p===curP&&fInt===it)+'" aria-label="'+D[p].n+', '+it+': '+n+' question'+(n>1?"s":"")+'"></button>':'<span class="c0" aria-hidden="true"></span>'})});
  $("en-cov").innerHTML=h+'</div><p class="mini" style="margin-top:8px">Select a filled cell to highlight its questions.</p>';
  [].forEach.call($("en-cov").querySelectorAll("button"),function(b){b.addEventListener("click",function(){var p=b.dataset.p,it=b.dataset.i;fInt=(fInt===it&&curP===p)?null:it;if(p!==curP){$("en-t-"+p).click();}else{list()}})})}
 function list(){var p=D[curP];$("en-qs").innerHTML=p.q.map(function(q,i){return '<li class="'+(fInt&&q[0]!==fInt?"dim":"")+(fInt===q[0]?" hl":"")+'"><span class="tag a"><svg viewBox="0 0 24 24" aria-hidden="true">'+IC[q[0]]+'</svg>'+q[0]+'</span><span>'+q[1]+'</span></li>'}).join("");grid()}

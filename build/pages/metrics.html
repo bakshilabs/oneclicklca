@@ -10,10 +10,10 @@ main svg .t-strong{paint-order:stroke;stroke:var(--chart-bg);stroke-width:3px;st
 .wr-hero{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 22px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px 22px}
 .wr-hero .big{margin:0;font-size:clamp(36px,4.4vw,54px)}
 .wr-hero p{font-size:14px;color:var(--muted);max-width:46ch}
-.wr-keys{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:6px 24px;margin-top:10px;font-size:13px;list-style:none;padding:0}
-.wr-keys li{display:flex;align-items:center;gap:8px;color:var(--ink2)}
+.wr-keys{display:grid;grid-template-columns:1fr;max-width:380px;gap:6px;margin-top:10px;font-size:13px;list-style:none;padding:0}
+.wr-keys li{display:grid;grid-template-columns:10px 1fr auto;align-items:center;gap:8px;color:var(--ink2)}
 .wr-keys i{width:10px;height:10px;border-radius:2px;flex:none}
-.wr-keys b{color:var(--ink1);font-variant-numeric:tabular-nums;margin-left:auto}
+.wr-keys b{color:var(--ink1);font-variant-numeric:tabular-nums;text-align:right}
 .wr-sk path{transition:opacity .2s}
 .wr-sk .fl:hover{opacity:.7}
 .wr-pre{margin-top:12px}
@@ -21,7 +21,7 @@ main svg .t-strong{paint-order:stroke;stroke:var(--chart-bg);stroke-width:3px;st
 .wr-nc .ctl{flex:1;min-width:240px;max-width:460px}
 .wr-verd{margin-top:12px;font-size:15px}
 .wr-verd b.y{color:var(--ok)}.wr-verd b.n{color:var(--warn)}
-.wr-crm{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:16px;margin-top:24px;align-items:start}
+.wr-crm{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:16px;margin-top:24px;align-items:stretch}
 .wr-rec{border:1px solid var(--line);border-radius:6px;background:var(--surface);overflow:hidden}
 .wr-rech{padding:14px 18px;background:var(--panel);display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:space-between}
 .wr-rech b{font-size:15px}
@@ -30,7 +30,7 @@ main svg .t-strong{paint-order:stroke;stroke:var(--chart-bg);stroke-width:3px;st
 .wr-stage span{flex:1;height:8px;background:var(--grid);border-radius:2px}
 .wr-stage span.on{background:var(--accent)}
 .wr-stl{display:flex;justify-content:space-between;padding:4px 18px 0;font-size:11px;color:var(--muted)}
-.wr-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px 18px 18px}
+.wr-fields{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:14px 18px 18px}
 .wr-fields button{appearance:none;font:inherit;color:inherit;text-align:left;border:1px solid transparent;background:var(--panel);border-radius:3px;padding:10px 12px;cursor:pointer;position:relative}
 .wr-fields button:hover{border-color:var(--accent)}
 .wr-fields button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
@@ -63,10 +63,12 @@ main svg .t-strong{paint-order:stroke;stroke:var(--chart-bg);stroke-width:3px;st
 .wr-mini{display:flex;gap:10px}
 .wr-mini div{flex:1;border-radius:5px;padding:12px;font-size:13px;background:var(--panel);text-align:center}
 .wr-mini div b{display:block;font-size:14px}
-.wr-mini div.t{background:var(--accent-soft);border:2px solid var(--accent)}
+.wr-mini div.t{background:var(--accent-soft);box-shadow:inset 0 0 0 2px var(--accent)}
 @media (max-width:900px){.wr-model,.wr-crm{grid-template-columns:1fr}.wr-model .controls{position:static}}
 @media (max-width:760px){.wr-flow{grid-template-columns:1fr 1fr;gap:6px}.wr-flow button,.wr-flow button:first-child{clip-path:none;margin:0;border-radius:5px;padding:12px 14px}.wr-fd{grid-template-columns:1fr}}
 @media (max-width:640px){main .viz{padding:16px 12px 12px}.wr-fields{grid-template-columns:1fr}}
+@media (min-width:641px) and (max-width:1100px){.wr-fields{grid-template-columns:1fr 1fr}}
+.wr-flow button:last-child{margin-right:0}
 </style>
 <header class="phead">
   <span class="eyebrow">Improve win rates and hit targets</span>
@@ -112,7 +114,7 @@ main svg .t-strong{paint-order:stroke;stroke:var(--chart-bg);stroke-width:3px;st
   <p class="intro">Six fields to add to every opportunity. Select a field to see its values and what it reveals.</p>
   <div class="wr-crm">
     <div class="wr-rec rv">
-      <div class="wr-rech"><b>Example opportunity: German design firm</b><span>Illustrative record</span></div>
+      <div class="wr-rech"><b id="wr-rt">Example opportunity: Designer · Germany</b><span>Illustrative record</span></div>
       <div class="wr-stage" aria-hidden="true"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div>
       <div class="wr-stl" aria-hidden="true"><span>Qualified</span><span>Discovery</span><span>Proposal</span><span>Negotiation</span><span>Closed</span></div>
       <div class="wr-fields" role="group" aria-label="Opportunity fields" id="wr-fields"></div>
@@ -124,7 +126,6 @@ main svg .t-strong{paint-order:stroke;stroke:var(--chart-bg);stroke-width:3px;st
 <section class="sec" aria-labelledby="wr-h3">
   <span class="eyebrow">Metric tree</span>
   <h2 id="wr-h3">Metric ownership</h2>
-  <div class="btnrow" role="group" aria-label="Highlight a branch" id="wr-tb"><button type="button" aria-pressed="true" data-b="">All</button><button type="button" aria-pressed="false" data-b="o">Owns</button><button type="button" aria-pressed="false" data-b="s">Shares with sales</button><button type="button" aria-pressed="false" data-b="i">Influences</button></div>
   <div class="viz rv" style="margin-top:18px">
     <div class="viz-h"><h3>Metric tree</h3><p>Hover a metric for how product marketing moves it.</p></div>
     <div id="wr-tree" class="wr-t"></div>
@@ -205,7 +206,7 @@ function drawCI(){var n=v("wr-n"),w=S.w,w1=S.w1,h=clr("wr-ci"),W=Math.max(290,h.
  var nd=need(),sep=w1-w>1.96*Math.sqrt(w*(1-w)/n+w1*(1-w1)/n);
  var svg=VZ.svg(h,W,H,"Before the levers "+(w*100).toFixed(0)+"% ±"+(m0*100).toFixed(1)+" points; after "+(w1*100).toFixed(1)+"% ±"+(m1*100).toFixed(1)+" points at "+n+" closed deals.");
  xt.forEach(function(p){VZ.el("line",{x1:x(p/100),x2:x(p/100),y1:8,y2:H-26,"class":"grid"},svg);var t=VZ.el("text",{x:x(p/100),y:H-8,"text-anchor":"middle","class":"t-muted"},svg);t.textContent=p+"%"});
- [[w,m0,"Before",28,"var(--s2)"],[w1,m1,"After levers",88,"var(--s1)"]].forEach(function(r){var y=r[3]+(nar?10:0),lo=Math.max(xt[0]/100,r[0]-r[1]),hi=Math.min(xt[xt.length-1]/100,r[0]+r[1]);
+ [[w,m0,"Before",28,"var(--ink3)"],[w1,m1,"After levers",88,"var(--s1)"]].forEach(function(r){var y=r[3]+(nar?10:0),lo=Math.max(xt[0]/100,r[0]-r[1]),hi=Math.min(xt[xt.length-1]/100,r[0]+r[1]);
   var lb=VZ.el("text",{x:nar?4:0,y:nar?y-6:y+15,"class":"t-strong"},svg);lb.textContent=r[2]+" "+(r[0]*100).toFixed(1)+"%";
   VZ.el("rect",{x:x(lo),y:y,width:Math.max(2,x(hi)-x(lo)),height:22,rx:4,fill:r[4],"fill-opacity":.25,stroke:r[4],"stroke-width":1.5},svg);
   VZ.el("line",{x1:x(r[0]),x2:x(r[0]),y1:y-3,y2:y+25,stroke:r[4],"stroke-width":3},svg);
@@ -226,16 +227,16 @@ var F=[["Segment and sub-segment",["Designer · Germany","Designer · Italy","De
 ["Launch influence",["EU 2028 readiness","CPR readiness","Workflow release","None"],0,"Launch-sourced pipeline and adoption against target."],
 ["Enablement used",["Business case","Battlecard","Demo script"],0,"Whether materials change outcomes, by comparing deals that used them with deals that did not."]];
 var fs=0;
-function crm(){$("wr-fields").innerHTML=F.map(function(f,i){return '<button type="button" aria-pressed="'+(i===fs)+'"><span class="new">New</span><small>'+f[0]+'</small><b>'+f[1][f[2]]+'</b></button>'}).join("");
+function crm(){$("wr-rt").textContent="Example opportunity: "+F[0][1][F[0][2]];$("wr-fields").innerHTML=F.map(function(f,i){return '<button type="button" aria-pressed="'+(i===fs)+'"><span class="new">New</span><small>'+f[0]+'</small><b>'+f[1][f[2]]+'</b></button>'}).join("");
  [].forEach.call($("wr-fields").querySelectorAll("button"),function(b,i){b.addEventListener("click",function(){fs=i;crm();$("wr-fields").querySelectorAll("button")[i].focus()})});
  var f=F[fs];$("wr-side").innerHTML='<h3>'+f[0]+'</h3><p class="k">Values</p><div class="opts" role="group" aria-label="Values for '+f[0]+'">'+f[1].map(function(o,j){return '<button type="button" aria-pressed="'+(j===f[2])+'">'+o+'</button>'}).join("")+'</div><p class="k">What it lets us see</p><p>'+f[3]+'</p>';
  [].forEach.call($("wr-side").querySelectorAll(".opts button"),function(b,j){b.addEventListener("click",function(){f[2]=j;crm();$("wr-side").querySelectorAll(".opts button")[j].focus()})});}
 crm();
 
 /* tree */
-var TB=[["o","Owns","direct control","var(--s1)","#fff",2.5,["Win rate against each named alternative in priority segments","Launch adoption at 30, 60 and 90 days against agreed targets","Share of closed deals with a recorded loss reason and alternative","Seller and partner certification on each tier one launch"]],
-["s","Shares with sales","joint","var(--s2)","#fff",2,["Overall win rate and sales cycle length","No-decision rate","Expansion from Business to Designer and Expert Pack","Partner-sourced pipeline"]],
-["i","Influences","indirect","var(--s4)","#0b0b0b",1.5,["Pipeline from campaigns, through message choice and segment lists","Demo to opportunity conversion","Web shop conversion, through pricing page and packaging clarity","Retention, through what customers expect when they buy"]]];
+var TB=[["o","Owns","direct control","var(--s7)","#fff",2.5,["Win rate against each named alternative in priority segments","Launch adoption at 30, 60 and 90 days against agreed targets","Share of closed deals with a recorded loss reason and alternative","Seller and partner certification on each tier one launch"]],
+["s","Shares with sales","joint","var(--s5)","#fff",2,["Overall win rate and sales cycle length","No-decision rate","Expansion from Business to Designer and Expert Pack","Partner-sourced pipeline"]],
+["i","Influences","indirect","var(--s3)","#fff",1.5,["Pipeline from campaigns, through message choice and segment lists","Demo to opportunity conversion","Web shop conversion, through pricing page and packaging clarity","Retention, through what customers expect when they buy"]]];
 var tk="";
 function wrap(t,n){var w=t.split(" "),L=[],c="";w.forEach(function(x){if((c+" "+x).trim().length>n){L.push(c);c=x}else c=(c+" "+x).trim()});L.push(c);return L}
 function tree(){var h=clr("wr-tree"),W=Math.max(290,h.clientWidth||900),nar=W<700,svg,G=[];
@@ -259,7 +260,6 @@ function tree(){var h=clr("wr-tree"),W=Math.max(290,h.clientWidth||900),nar=W<70
     lf.L.forEach(function(ln,k){var tx=VZ.el("text",{x:56,y:lf.y+12+k*17,style:"font-size:13px;fill:var(--ink1)"},g);tx.textContent=ln})})});}
  G.forEach(function(g){g.classList.toggle("dim",!!tk&&g.dataset.b!==tk)});
 }
-[].forEach.call($("wr-tb").querySelectorAll("button"),function(b){b.addEventListener("click",function(){tk=b.dataset.b;[].forEach.call($("wr-tb").querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x===b)});tree()})});
 
 /* attribution */
 var A=[["Set the baseline first","Record two quarters of win rate by segment and alternative before changing positioning, or use the previous year where the data exists.",'<div class="wr-mini"><div><b>Q1</b>Baseline</div><div><b>Q2</b>Baseline</div><div class="t"><b>Q3</b>Change</div></div>'],

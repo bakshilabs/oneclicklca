@@ -119,7 +119,8 @@
     <a class="ov-f rv" href="launch.html">
       <b class="n"><span class="count" data-to="12">0</span> a year</b>
       <p>Product ships a major update every month. A tiering rule picks the two or three a year that get the whole company.</p>
-      <svg viewBox="0 0 260 40" role="img" aria-label="Twelve monthly releases, of which two or three get a full launch" id="ov-months"></svg>
+      <svg viewBox="0 0 260 64" role="img" aria-label="Twelve monthly releases, of which two or three get a full launch" id="ov-months"></svg>
+      <div class="legend" aria-hidden="true" style="margin:8px 0 0"><span><i style="background:var(--ink2);border-radius:2px"></i>Full launch</span><span><i style="background:var(--ink3);border-radius:2px;opacity:.6"></i>Possible third</span><span><i style="background:var(--grid);border-radius:2px"></i>Release note</span></div>
       <small>Launch Playbook</small>
     </a>
     <a class="ov-f rv" href="positioning.html">
@@ -246,8 +247,7 @@ var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(draw,
 
 /* monthly releases mini */
 var mm=document.getElementById("ov-months");
-for(var i=0;i<12;i++){var hi=i===3||i===9,mid=i===6;VZ.el("rect",{x:i*21.6,y:hi?2:10,width:17,height:hi?26:18,rx:3,style:"fill:"+(hi?"var(--s1)":mid?"var(--s4)":"var(--grid)")},mm)}
-var lt=VZ.el("text",{x:0,y:40},mm);lt.textContent="Full launches, blue; a possible third, amber";
+for(var i=0;i<12;i++){var hi=i===3||i===9,mid=i===6;VZ.el("rect",{x:i*21.6,y:hi?4:mid?18:30,width:17,height:hi?40:mid?26:14,rx:3,style:"fill:"+(hi?"var(--ink2)":mid?"var(--ink3)":"var(--grid)"),opacity:mid?.6:1},mm);var mt=VZ.el("text",{x:i*21.6+8.5,y:60,"text-anchor":"middle"},mm);mt.textContent="JFMAMJJASOND"[i]}
 /* loss reasons mini */
 var lg=document.getElementById("ov-loss"),L=["Competitor","Free tool","Consultant","No decision"];
 L.forEach(function(n,i){var last=i===3,X=(i%2)*132,Y=Math.floor(i/2)*24;VZ.el("rect",{x:X,y:Y,width:126,height:20,rx:3,style:"fill:"+(last?"var(--s2)":"var(--grid)")},lg);var t=VZ.el("text",{x:X+8,y:Y+14,style:last?"fill:#111;font-weight:600":""},lg);t.textContent=n;});
