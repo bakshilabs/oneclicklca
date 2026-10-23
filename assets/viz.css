@@ -99,3 +99,7 @@ body:has(.secnav){padding-bottom:72px}
  .secnav button{width:44px;height:34px}
  body:has(.secnav){padding-bottom:64px}
 }
+/* callouts span the content column; sources is a slim disclosure */
+.callout{max-width:none}
+.sources{padding:12px 18px;margin-top:48px;background:transparent;border-top:1px solid var(--line);border-radius:0}
+.sources h2{font-size:15px;margin-bottom:4px}
