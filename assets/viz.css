@@ -85,3 +85,11 @@ details.more summary{cursor:pointer;color:var(--accent);font-weight:500}
 @media print{.secnav{display:none!important}}
 @media (max-width:640px){.secnav{right:8px;bottom:10px;opacity:.92}.secnav button{width:36px;height:36px}.secnav output{font-size:11px}}
 body:has(.secnav){padding-bottom:72px}
+/* keep the stepper inside the right gutter at 1280 */
+.secnav{right:10px;padding:4px;gap:4px}
+.secnav button{width:36px;height:36px}
+.secnav output{font-size:11px}
+/* trim the gap before sources and the pager */
+.page{padding-bottom:0}
+.sources{margin-top:56px}
+.pager{margin-top:56px}
