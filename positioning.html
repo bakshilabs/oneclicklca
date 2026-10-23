@@ -203,7 +203,7 @@ function arc(){if(VZ.hideTip)VZ.hideTip();ahost.innerHTML="";lanes=[];var w=Math
   VZ.tip(g,function(){return "<b>"+d[4]+"</b><span class='m'>"+d[3]+"</span>"});lanes.push(g)});
  if(!m){var et=VZ.el("text",{x:0,y:evY+5},s);et.style.fill="var(--ink2)";et.textContent="Events"}
  E.forEach(function(e,i){var g=VZ.el("g",{class:"ps-ev","aria-label":e[1]+": "+e[2]},s),x=X(e[0]),y=ys[i];
-  VZ.el("line",{x1:x,x2:x,y1:y0,y2:y,stroke:"var(--axis)","stroke-width":1},g);VZ.el("circle",{cx:x,cy:y,r:10,fill:"var(--ink1)",stroke:"var(--ring)","stroke-width":2},g);
+  VZ.el("line",{x1:x,x2:x,y1:evY-14,y2:y,stroke:"var(--axis)","stroke-width":1},g);VZ.el("circle",{cx:x,cy:y,r:10,fill:"var(--ink1)",stroke:"var(--ring)","stroke-width":2},g);
   var t=VZ.el("text",{x:x,y:y+4,"text-anchor":"middle"},g);t.style.fill="var(--chart-bg)";t.style.fontWeight="600";t.textContent=i+1;
   VZ.tip(g,function(){return "<b>"+e[1]+"</b><span class='m'>"+e[2]+"</span>"})});
  var d=L[selL];$("arcd").innerHTML='<span class="eyebrow">'+d[4]+' · '+d[0]+'</span><p class="q">'+d[3]+'</p><p class="r">'+d[5]+'</p>'}

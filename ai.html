@@ -39,6 +39,7 @@
 .ai-bd li{display:flex;gap:8px;align-items:center}
 .ai-bd li i{width:10px;height:10px;border-radius:2px;flex:none}
 .ai-bd p{font-size:14px;margin-top:8px}
+.ai-bw>div{min-width:0}
 @media (max-width:820px){.ai-bw{grid-template-columns:1fr}}
 #ai-bars .row{cursor:pointer}
 #ai-bars .row:focus{outline:none}
@@ -100,7 +101,7 @@
     </div>
     <div class="legend" id="ai-leg" style="margin-top:14px"></div>
     <div class="ai-bw"><div id="ai-bars"></div><div class="ai-bd" id="ai-bd" aria-live="polite"></div></div>
-    <table class="sr"><caption>Research files</caption><thead><tr><th>File</th><th>Words</th><th>One Click LCA pages</th><th>Government and EU</th><th>LinkedIn</th><th>Other sources</th></tr></thead><tbody><tr><td>Company</td><td>3,511</td><td>27</td><td>0</td><td>0</td><td>8</td></tr><tr><td>Competitors</td><td>4,333</td><td>14</td><td>2</td><td>0</td><td>86</td></tr><tr><td>Regulation</td><td>6,237</td><td>7</td><td>29</td><td>0</td><td>59</td></tr><tr><td>Team and voice</td><td>6,763</td><td>37</td><td>0</td><td>22</td><td>21</td></tr></tbody></table>
+    <div class="sr"><table><caption>Research files</caption><thead><tr><th>File</th><th>Words</th><th>One Click LCA pages</th><th>Government and EU</th><th>LinkedIn</th><th>Other sources</th></tr></thead><tbody><tr><td>Company</td><td>3,511</td><td>27</td><td>0</td><td>0</td><td>8</td></tr><tr><td>Competitors</td><td>4,333</td><td>14</td><td>2</td><td>0</td><td>86</td></tr><tr><td>Regulation</td><td>6,237</td><td>7</td><td>29</td><td>0</td><td>59</td></tr><tr><td>Team and voice</td><td>6,763</td><td>37</td><td>0</td><td>22</td><td>21</td></tr></tbody></table></div>
   </div>
   <div class="callout"><p><b>Control over trust.</b> The CEO's line on AI: "it's not based on trust. It's based on verification and control mechanism guardrails." Every claim here keeps its source.</p></div>
 </section>
@@ -182,7 +183,7 @@ var bh=document.getElementById("ai-bars"),bd=document.getElementById("ai-bd"),me
 var lgd=document.getElementById("ai-leg");
 CT.forEach(function(c,k){var b=document.createElement("button");b.type="button";b.setAttribute("aria-pressed","true");b.innerHTML='<i style="background:'+c[1]+';border-radius:2px"></i>';b.appendChild(document.createTextNode(c[0]));b.addEventListener("click",function(){coff[k]=!coff[k];b.setAttribute("aria-pressed",!coff[k]);bars()});lgd.appendChild(b)});
 function showB(){var f=F[bsel],sb=SB[bsel];bd.innerHTML='<div class="d"></div><p class="mini"></p><ul></ul><p></p>';txt(bd.querySelector(".d"),f.n);txt(bd.querySelector(".mini"),f.f+" · "+f.w.toLocaleString("en-GB")+" words · "+f.u+" unique links");
- CT.forEach(function(c,k){if(!sb[k])return;var li=document.createElement("li");li.innerHTML='<i style="background:'+c[1]+'"></i>';li.appendChild(document.createTextNode(sb[k]+" "+c[0].toLowerCase()+" ("+Math.round(sb[k]/f.u*100)+"%)"));bd.querySelector("ul").appendChild(li)});
+ CT.forEach(function(c,k){if(!sb[k])return;var li=document.createElement("li");li.innerHTML='<i style="background:'+c[1]+'"></i>';li.appendChild(document.createTextNode(sb[k]+" · "+c[0]+" ("+Math.round(sb[k]/f.u*100)+"%)"));bd.querySelector("ul").appendChild(li)});
  txt(bd.lastChild,"Most cited outside the company: "+TOPD[bsel].join(", ")+".");}
 function bars(){bh.innerHTML="";var W=Math.max(300,bh.clientWidth),nar=W<560,lw=nar?0:130,rh=nar?52:44,H=F.length*rh+24;
  var vals=F.map(function(f,i){return meas?SB[i].reduce(function(a,v,k){return a+(coff[k]?0:v)},0):f.w}),mx=meas?110:7000;
