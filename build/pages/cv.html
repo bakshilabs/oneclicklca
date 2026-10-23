@@ -97,9 +97,9 @@ function draw(){host.innerHTML="";var W=Math.max(300,host.clientWidth),nar=W<620
  for(var y=2008;y<=2026;y+=2){VZ.el("line",{x1:x(y),x2:x(y),y1:0,y2:H-22,"class":"grid"},s);var t=VZ.el("text",{x:x(y),y:H-6,"text-anchor":"middle"},s);t.textContent=nar?"\u2019"+String(y).slice(2):y}
  R.forEach(function(r,i){var y=ROW[i]*rh+(nar?16:4),x0=x(r[2]),w=x(r[3])-x0-(i===3&&!nar?2:0);
   var g=VZ.el("g",{"class":"band",tabindex:0,role:"link","aria-label":r[0]+", "+r[1]+". Jump to entry"},s);
-  var p=VZ.bar(g,x0,y,w,bh,"var(--s1)","h");p.setAttribute("style","fill:var(--s"+(i===5?3:1)+")");
+  var p=VZ.bar(g,x0,y,w,bh,"var(--s1)","h");p.setAttribute("style","fill:var(--s"+(i===5?2:1)+")");
   var lab=(nar&&i===4?"Foster + Partners, Associate Partner":(!nar&&i===3?"F+P Associate":r[0]))+(r[5]?(nar?", "+r[5].replace(" a year","/yr"):"  ·  "+r[5]):""),lw=lab.length*7+14,inside=!nar&&lw<w;
-  var t=VZ.el("text",nar?{x:Math.max(4,Math.min(x0,W-6-lab.length*6.4)),y:y-4,style:"fill:var(--ink1);font-weight:600;font-size:11.5px"}:{x:inside?x0+8:(i===5?x0-6:x(r[3])+6),y:y+bh/2+4,"text-anchor":(!inside&&i===5)?"end":"start",style:inside?"fill:#fff;font-weight:600":"fill:var(--ink1);font-weight:600"},g);t.textContent=lab;
+  var t=VZ.el("text",nar?{x:Math.max(4,Math.min(x0,W-6-lab.length*6.4)),y:y-4,style:"fill:var(--ink1);font-weight:600;font-size:11.5px"}:{x:inside?x0+8:(i===5?x0-6:x(r[3])+6),y:y+bh/2+4,"text-anchor":(!inside&&i===5)?"end":"start",style:inside?"fill:#0b0b0b;font-weight:600":"fill:var(--ink1);font-weight:600"},g);t.textContent=lab;
   function go(){openJob(r[4])}
   g.addEventListener("click",go);g.addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();go()}});
   VZ.tip(g,function(){return "<b>"+r[0]+"</b>"+r[1]+(r[5]?'<div class="m">Fees won: '+r[5]+"</div>":"")});});

@@ -41,6 +41,13 @@
 .by-fcap{font-size:14px;margin-top:10px;min-height:0}
 .by-fcap:empty{display:none}
 .by-hm td.col{box-shadow:inset 0 0 0 2.5px var(--ink1)}
+.by-vo small{display:block;font:600 11px/1.2 var(--sans);text-transform:uppercase;letter-spacing:.05em;color:var(--ink2);margin:10px 0 4px}
+.by-vo .ob{font-size:15px;font-weight:500}
+.by-vo blockquote{margin:0;background:var(--panel);border-left:4px solid var(--s2);border-radius:4px;padding:12px 14px;font-size:14.5px}
+.by-vo blockquote .src{display:block;margin-top:6px;font-size:12.5px;color:var(--ink2)}
+.by-vo2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.by-sn{display:block;padding:4px 10px;font-size:14px}
+@media (max-width:640px){.by-vo2{grid-template-columns:1fr}}
 .by-lv{display:grid;gap:8px;margin-top:4px}
 .by-lv h4{font:600 12px/1.2 var(--sans);text-transform:uppercase;letter-spacing:.05em;color:var(--ink2);margin:10px 0 2px}
 .by-lv .r{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:7px 10px;background:var(--panel);border-radius:4px}
@@ -52,12 +59,15 @@
 .by-hm tbody th button{appearance:none;border:0;background:none;color:var(--ink1);font:500 13px/1.25 var(--sans);cursor:pointer;text-align:left;padding:6px 4px;border-radius:3px;width:100%}
 .by-hm tbody th button.a{background:var(--accent-soft);box-shadow:inset 4px 0 0 var(--s1);padding-left:10px}
 .by-hm tbody th button.b{background:var(--accent-soft);box-shadow:inset 4px 0 0 var(--s2);padding-left:10px}
-.by-hm td{height:38px;text-align:center;border-radius:4px;font:600 14px/1 var(--sans);font-variant-numeric:tabular-nums;transition:opacity .2s}
+.by-hm td{height:38px;padding:0;text-align:center;border-radius:4px;font:600 14px/1 var(--sans);font-variant-numeric:tabular-nums;transition:opacity .2s}
 .by-hm td.v0{background:var(--chart-bg);color:var(--ink3);box-shadow:inset 0 0 0 1px var(--grid)}
-.by-hm td.v1{background:var(--seq-1);color:var(--ink1)}
-.by-hm td.v2{background:var(--seq-2);color:var(--ink1)}
-.by-hm td.v3{background:var(--seq-3);color:var(--by-t3)}
-.by-hm td.v4{background:var(--seq-5);color:var(--by-t5)}
+.by-hm td.v1{background:color-mix(in srgb,var(--s1) 15%,var(--chart-bg));color:var(--ink1)}
+.by-hm td.v2{background:color-mix(in srgb,var(--s1) 35%,var(--chart-bg));color:var(--ink1)}
+.by-hm td.v3{background:color-mix(in srgb,var(--s1) 62%,var(--chart-bg));color:var(--ink1)}
+.by-hm td.v4{background:var(--s1);color:#0b0b0b}
+.by-hm td .cb{appearance:none;border:0;background:none;color:inherit;font:inherit;width:100%;height:38px;cursor:pointer;border-radius:4px}
+.by-hm td .cb:focus-visible{outline:2px solid var(--ink1);outline-offset:-2px}
+.by-hm td.pin{box-shadow:inset 0 0 0 3px var(--ink1)}
 :root{--by-t5:#fff;--by-t3:#0b0b0b}
 @media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){--by-t5:#0b0b0b;--by-t3:#fff}}
 :root[data-theme="dark"]{--by-t5:#0b0b0b;--by-t3:#fff}
@@ -102,11 +112,11 @@
   <h2>Criteria weights</h2>
   <p class="intro">Scores from 0 to 4 show how much each criterion moves the decision. Select a segment to see its profile, or a criterion to sort the segments by it.</p>
     <div class="viz rv">
-      <div class="by-mode"><div class="btnrow" role="group" aria-label="Mode" id="by-mode" style="margin-top:0"><button type="button" data-k="one" aria-pressed="true">One segment</button><button type="button" data-k="two" aria-pressed="false">Compare two</button></div><span id="by-hint">Select a segment name.</span></div>
+      <div class="by-mode"><div class="btnrow" role="group" aria-label="Mode" id="by-mode" style="margin-top:0"><button type="button" data-k="one" aria-pressed="true">One segment</button><button type="button" data-k="two" aria-pressed="false">Compare two</button></div><span id="by-hint">Select a cell or a segment name.</span></div>
       <div class="btnrow" id="by-find" role="group" aria-label="Findings" style="margin:0 0 12px"><button type="button" data-k="0" aria-pressed="false">Finding: local compliance</button><button type="button" data-k="7" aria-pressed="false">Finding: revenue impact</button></div>
       <div class="tw" tabindex="0" role="region" aria-label="Scrollable table"><table class="by-hm" id="by-hm"><caption class="sr">Buying criteria scores from 0 to 4 by segment, my judgement</caption></table></div>
       <p class="by-fcap" id="by-fcap" aria-live="polite"></p>
-      <div class="legend" style="margin-top:12px"><span>Score</span><span class="dm-sw" style="width:14px;height:14px;border-radius:3px;background:var(--chart-bg);box-shadow:inset 0 0 0 1px var(--axis)"></span>0<span style="width:14px;height:14px;border-radius:3px;background:var(--seq-1)"></span>1<span style="width:14px;height:14px;border-radius:3px;background:var(--seq-2)"></span>2<span style="width:14px;height:14px;border-radius:3px;background:var(--seq-3)"></span>3<span style="width:14px;height:14px;border-radius:3px;background:var(--seq-5)"></span>4</div>
+      <div class="legend" style="margin-top:12px"><span>Score</span><span style="width:14px;height:14px;border-radius:3px;background:var(--chart-bg);box-shadow:inset 0 0 0 1px var(--axis)"></span>0<span style="width:14px;height:14px;border-radius:3px;background:color-mix(in srgb,var(--s1) 15%,var(--chart-bg))"></span>1<span style="width:14px;height:14px;border-radius:3px;background:color-mix(in srgb,var(--s1) 35%,var(--chart-bg))"></span>2<span style="width:14px;height:14px;border-radius:3px;background:color-mix(in srgb,var(--s1) 62%,var(--chart-bg))"></span>3<span style="width:14px;height:14px;border-radius:3px;background:var(--s1)"></span>4</div>
     </div>
   <div class="by-lay">
     <div class="viz">
@@ -114,7 +124,7 @@
       <div class="legend" id="by-pleg"></div>
       <div id="by-prof"></div>
     </div>
-    <div class="viz" style="margin-top:28px"><div class="viz-h"><h3 id="by-lh">Message levers</h3></div><div id="by-lev"></div></div>
+    <div class="viz" style="margin-top:28px"><div class="viz-h"><h3 id="by-lh">What stalls the deal</h3></div><div id="by-lev"></div></div>
   </div>
 </section>
 
@@ -184,41 +194,44 @@ VZ.tabs(tl,function(t){var i=+t.id.slice(5),s=SEG[i];fp.hidden=false;fp.setAttri
  '<p class="by-top">Highest weighted criteria: '+top.map(function(x){return"<b>"+x[0]+"</b> ("+x[1]+")"}).join(", ")+'.</p>'});
 
 /* heatmap + profile */
-var hm=document.getElementById("by-hm"),mode="one",A=0,B=3,sortK=null;
+var hm=document.getElementById("by-hm"),mode="one",A=0,B=3,sortK=null,selK=null;
 function vcls(v){return"v"+v}
 function drawHM(){var order=SEG.map(function(_,i){return i});if(sortK!==null)order.sort(function(a,b){return SEG[b].c[sortK]-SEG[a].c[sortK]});
  var h='<caption class="sr">Buying criteria scores from 0 to 4 by segment, my judgement</caption><thead><tr><th scope="col">Segment</th>'+CR.map(function(c,k){return'<th scope="col"><button type="button" data-k="'+k+'" aria-pressed="'+(sortK===k)+'" aria-label="Sort by '+c+'">'+c+'</button></th>'}).join("")+'</tr></thead><tbody>';
  order.forEach(function(i){var s=SEG[i],cls=i===A?"a":(mode==="two"&&i===B?"b":"");var act=i===A||(mode==="two"&&i===B);
-  h+='<tr><th scope="row"><button type="button" data-i="'+i+'" class="'+cls+'" aria-pressed="'+act+'">'+s.n+'</button></th>'+s.c.map(function(v,k){return'<td class="'+vcls(v)+(sortK===k?" col":"")+'">'+v+'</td>'}).join("")+'</tr>'});
+  h+='<tr><th scope="row"><button type="button" data-i="'+i+'" class="'+cls+'" aria-pressed="'+act+'">'+s.n+'</button></th>'+s.c.map(function(v,k){return'<td class="'+vcls(v)+(sortK===k?" col":"")+((i===A||(mode==="two"&&i===B))&&k===selK?" pin":"")+'"><button type="button" class="cb" data-i="'+i+'" data-k="'+k+'" aria-label="'+s.n+', '+CR[k]+': '+v+' of 4">'+v+'</button></td>'}).join("")+'</tr>'});
  hm.innerHTML=h+'</tbody>';
  [].forEach.call(hm.querySelectorAll("thead button"),function(b){b.onclick=function(){var k=+b.dataset.k;sortK=sortK===k?null:k;drawHM();syncFind()}});
  [].forEach.call(hm.querySelectorAll("tbody th button"),function(b){b.onclick=function(){var i=+b.dataset.i;if(mode==="two"&&i!==A){B=i}else{A=i}drawHM();drawProf()}});
- [].forEach.call(hm.querySelectorAll("td"),function(td){var tr=td.parentNode,i=+tr.querySelector("th button").dataset.i,k=td.cellIndex-1;VZ.tip(td,function(){return"<b>"+SEG[i].n+"</b>"+CR[k]+": "+SEG[i].c[k]+" of 4"});td.removeAttribute("tabindex")})}
+ [].forEach.call(hm.querySelectorAll("td button"),function(b){var i=+b.dataset.i,k=+b.dataset.k;VZ.tip(b,function(){return"<b>"+SEG[i].n+"</b>"+CR[k]+": "+SEG[i].c[k]+" of 4"});
+  b.onclick=function(){selK=k;if(mode==="two"&&i!==A)B=i;else A=i;drawHM();drawProf();pinCap()}})}
+function pinCap(){if(selK===null)return;var v=SEG[A].c[selK],avg=SEG.reduce(function(t,x){return t+x.c[selK]},0)/SEG.length;
+ document.getElementById("by-fcap").innerHTML="<b>"+SEG[A].n+", "+CR[selK].toLowerCase()+": "+v+" of 4.</b> The average across segments is "+avg.toFixed(1)+(mode==="two"?", and "+SEG[B].n+" score "+SEG[B].c[selK]+".":".")}
 var mb=document.getElementById("by-mode");[].forEach.call(mb.children,function(b){b.onclick=function(){mode=b.dataset.k;[].forEach.call(mb.children,function(x){x.setAttribute("aria-pressed",x===b)});
- document.getElementById("by-hint").textContent=mode==="two"?"Select a second segment to compare.":"Select a segment name.";if(B===A)B=(A+3)%6;drawHM();drawProf()}});
+ document.getElementById("by-hint").textContent=mode==="two"?"Select a second segment or cell to compare.":"Select a cell or a segment name.";if(B===A)B=(A+3)%6;drawHM();drawProf()}});
 var profHost=document.getElementById("by-prof");
 var FIND={0:"Local compliance is the only criterion that scores high almost everywhere, which is why the company packages by market.",7:"Revenue impact separates manufacturers and contractors, who buy for the specification or the bid, from designers, who buy for the permit and the credit."};
 var fbtn=[].slice.call(document.querySelectorAll("#by-find button"));
 fbtn.forEach(function(b){b.onclick=function(){var k=+b.dataset.k;sortK=sortK===k?null:k;drawHM();syncFind()}});
-function syncFind(){fbtn.forEach(function(b){b.setAttribute("aria-pressed",+b.dataset.k===sortK)});document.getElementById("by-fcap").textContent=FIND[sortK]||(sortK!==null?"Segments sorted by "+CR[sortK].toLowerCase()+".":"")}
-function drawLev(){var two=mode==="two",el=document.getElementById("by-lev"),h="";
- if(!two){var a=SEG[A].c,strong=CR.filter(function(c,k){return a[k]>=3}),weak=CR.filter(function(c,k){return a[k]<=1});
-  document.getElementById("by-lh").textContent="Message levers for "+SEG[A].n.toLowerCase();
-  h='<div class="by-lv"><h4>Lead with (3 or 4)</h4>'+strong.map(function(c){return'<div class="r"><span>'+c+'</span><b>'+a[CR.indexOf(c)]+'</b></div>'}).join("")+
-   '<h4>Do not lead with (0 or 1)</h4>'+(weak.length?weak.map(function(c){return'<div class="r"><span>'+c+'</span><b>'+a[CR.indexOf(c)]+'</b></div>'}).join(""):'<div class="r"><span>None</span></div>')+'</div>'}
- else{var g=CR.map(function(c,k){return[c,SEG[A].c[k],SEG[B].c[k]]}).sort(function(x,y){return Math.abs(y[1]-y[2])-Math.abs(x[1]-x[2])}).slice(0,5);
-  document.getElementById("by-lh").textContent="Largest differences";
-  h='<div class="by-lv"><h4>'+esc(SEG[A].n)+' against '+esc(SEG[B].n)+'</h4>'+g.map(function(x){return'<div class="r"><span>'+x[0]+'</span><b>'+x[1]+' against '+x[2]+'</b></div>'}).join("")+'<p class="mini" style="margin-top:6px">A message built on these criteria will not carry from one segment to the other.</p></div>'}
- el.innerHTML=h}
+function syncFind(){selK=null;fbtn.forEach(function(b){b.setAttribute("aria-pressed",+b.dataset.k===sortK)});document.getElementById("by-fcap").textContent=FIND[sortK]||(sortK!==null?"Segments sorted by "+CR[sortK].toLowerCase()+".":"")}
+var QS=[["I encountered many bugs moving from Revit to the cloud, and the cloud side also seems overly complicated to use. By comparison, Tally is much easier to use.","Designer or architect, mid-market, G2, 3 of 5, translated"],
+ ["The EPD Hub verification process and buying credits is cumbersome and could be simplified.","Consultant, G2, translated"],
+ null,
+ ["The software focuses mainly on the construction sector, while I work with electric heating appliances, making it hard to find suitable material data points.","EPD user, G2, December 2025, 3 of 5, translated"],
+ null,null];
+function voice(i){var q=QS[i],sg=SEG[i];return'<div class="by-vo"><small>Top objection</small><p class="ob">'+esc(sg.st)+'</p><small>'+(q?'In a customer\'s words':'Evidence gap')+'</small>'+(q?'<blockquote>"'+esc(q[0])+'"<span class="src">'+esc(q[1])+'</span></blockquote>':'<p class="mini">No public review quote was found for '+esc(sg.n.toLowerCase())+', so this objection needs testing in interviews.</p>')+'</div>'}
+function drawLev(){var two=mode==="two",el=document.getElementById("by-lev");
+ document.getElementById("by-lh").textContent=two?"What stalls each deal":"What stalls the deal for "+SEG[A].n.toLowerCase();
+ el.innerHTML=two?'<div class="by-vo2"><div><b class="by-sn" style="box-shadow:inset 4px 0 0 var(--s1)">'+esc(SEG[A].n)+'</b>'+voice(A)+'</div><div><b class="by-sn" style="box-shadow:inset 4px 0 0 var(--s2)">'+esc(SEG[B].n)+'</b>'+voice(B)+'</div></div>':voice(A)}
 function drawProf(){profHost.innerHTML="";var two=mode==="two";
  document.getElementById("by-ph").textContent=two?SEG[A].n+" against "+SEG[B].n:SEG[A].n+" profile";
- document.getElementById("by-pleg").innerHTML=two?'<span><i style="background:var(--s1)"></i>'+esc(SEG[A].n)+'</span><span><i style="background:var(--s2)"></i>'+esc(SEG[B].n)+'</span>':'<span><i style="background:var(--seq-4);border-radius:2px"></i>Score from 0 to 4, the same values as the heatmap row</span>';
+ document.getElementById("by-pleg").innerHTML=two?'<span><i style="background:var(--s1)"></i>'+esc(SEG[A].n)+'</span><span><i style="background:var(--s2)"></i>'+esc(SEG[B].n)+'</span>':'<span><i style="background:var(--s1);border-radius:2px"></i>Score from 0 to 4, the same values and blue as the heatmap row</span>';
  var W=profHost.clientWidth||profHost.parentNode.clientWidth||360,L=Math.min(150,W*0.42),R=W-30,bh=two?10:16,rowH=two?34:30,H=CR.length*rowH+24;
  var s=VZ.svg(profHost,W,H,"Criteria profile for "+SEG[A].n+(two?" compared with "+SEG[B].n:""));s.setAttribute("role","group");
  var x=VZ.lin(0,4,L,R);
  [0,1,2,3,4].forEach(function(v){VZ.el("line",{x1:x(v),x2:x(v),y1:0,y2:H-20,class:v?"grid":"axis"},s);VZ.el("text",{x:x(v),y:H-4,"text-anchor":"middle",class:"t-muted"},s).textContent=v});
- CR.forEach(function(c,k){var y=k*rowH+6;VZ.el("text",{x:L-8,y:y+(two?15:12),"text-anchor":"end"},s).textContent=c;
-  [[A,two?"var(--s1)":"var(--seq-4)",0]].concat(two?[[B,"var(--s2)",1]]:[]).forEach(function(p){var v=SEG[p[0]].c[k],yy=y+p[2]*(bh+2);
+ CR.forEach(function(c,k){var y=k*rowH+6;if(k===selK){var hl=VZ.el("rect",{x:0,y:y-4,width:W,height:rowH-4,rx:3},s);hl.style.fill="var(--accent-soft)"}var lt=VZ.el("text",{x:L-8,y:y+(two?15:12),"text-anchor":"end",class:k===selK?"t-strong":""},s);lt.textContent=c;
+  [[A,"var(--s1)",0]].concat(two?[[B,"var(--s2)",1]]:[]).forEach(function(p){var v=SEG[p[0]].c[k],yy=y+p[2]*(bh+2);
    if(v){var r=VZ.bar(s,x(0),yy,x(v)-x(0),bh,"","h");r.style.fill=p[1]}else{var z=VZ.el("circle",{cx:x(0)+4,cy:yy+bh/2,r:4,stroke:"var(--ring)","stroke-width":2},s);z.style.fill=p[1]}
    VZ.el("text",{x:x(v)+(v?6:12),y:yy+bh/2+4,class:"t-strong"},s).textContent=v;
    var hit=VZ.el("rect",{x:L,y:yy-1,width:R-L,height:bh+2,fill:"transparent",role:"img","aria-label":SEG[p[0]].n+", "+c+": "+v},s);
