@@ -225,7 +225,7 @@ var COL=["var(--s1)","var(--s2)","var(--s3)"],GEO=["EU-wide","National","Outside
 var host=document.getElementById("ov-chart"),cap=document.getElementById("ov-cap"),sel="all";
 function waveOf(y){return y>=2030?2:y>=2028?1:0}
 function caption(){
- if(sel==="all"){cap.innerHTML='<span class="yr">26</span><h3>forcing dates from 2025 to 2031</h3><p style="margin-top:8px">Three steps widen the market: national leaders now, the EU-wide step in 2028 and all new buildings in 2030.</p><p class="k">Launch window</p><p>National roadmaps with limit values are due on 1 January 2027, about fourteen months before the first EU disclosure deadline.</p>';return}
+ if(sel==="all"){cap.innerHTML='<span class="yr">26</span><h3>forcing dates from 2025 to 2031</h3><p style="margin-top:8px">Three steps widen the market: national leaders now, the EU-wide step in 2028 and all new buildings in 2030.</p><p class="k">Launch window</p><p>National roadmaps with limit values are due on 1 January 2027, twelve months before the first EU disclosure deadline.</p>';return}
  var w=WAVES[sel];cap.innerHTML='<span class="yr">'+w.big+'</span><h3>'+w.name+'</h3><p style="margin-top:8px">'+w.who+'</p><p class="k">What wins</p><p>'+w.wins+'</p>';
 }
 var pin=null;

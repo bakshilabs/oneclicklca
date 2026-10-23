@@ -23,11 +23,17 @@ function place(x,y){var t=T(),w=t.offsetWidth,h=t.offsetHeight,X=x+14,Y=y+14;if(
 VZ.tip=function(el,fn){
  el.addEventListener("pointerenter",function(e){var t=T();t.innerHTML=fn();t.classList.add("on");place(e.clientX,e.clientY)});
  el.addEventListener("pointermove",function(e){place(e.clientX,e.clientY)});
- el.addEventListener("pointerleave",function(){T().classList.remove("on")});
+ el.addEventListener("pointerleave",function(){if(pinned!==el)T().classList.remove("on")});
  if(!el.hasAttribute("tabindex"))el.setAttribute("tabindex","0");
  el.addEventListener("focus",function(){var t=T(),r=el.getBoundingClientRect();t.innerHTML=fn();t.classList.add("on");place(r.left+r.width/2,r.top+r.height/2)});
- el.addEventListener("blur",function(){T().classList.remove("on")});
+ el.addEventListener("blur",function(){if(pinned!==el)T().classList.remove("on")});
+ /* click, tap or Enter pins the tooltip until the next click elsewhere */
+ el.addEventListener("click",function(e){var t=T(),r=el.getBoundingClientRect();t.innerHTML=fn();t.classList.add("on");pinned=el;place(e.clientX||r.left+r.width/2,e.clientY||r.top+r.height/2);e.stopPropagation()});
+ el.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){if(el.tagName!=="BUTTON")e.preventDefault();el.dispatchEvent(new MouseEvent("click",{bubbles:true}))}});
 };
+var pinned=null;
+document.addEventListener("click",function(){if(pinned){pinned=null;if(tip)tip.classList.remove("on")}});
+addEventListener("scroll",function(){if(pinned){pinned=null;if(tip)tip.classList.remove("on")}},{passive:true});
 VZ.hideTip=function(){if(tip)tip.classList.remove("on")};
 /* tabs: container with [role=tablist] buttons[role=tab][aria-controls] */
 VZ.tabs=function(list,onChange){var tabs=[].slice.call(list.querySelectorAll("[role=tab]"));

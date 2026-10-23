@@ -93,3 +93,9 @@ body:has(.secnav){padding-bottom:72px}
 .page{padding-bottom:0}
 .sources{margin-top:56px}
 .pager{margin-top:56px}
+/* phones: the stepper becomes a slim bottom bar the page scrolls past */
+@media (max-width:640px){
+ .secnav{left:0;right:0;bottom:0;border-radius:0;border-width:1px 0 0;flex-direction:row;justify-content:center;gap:18px;padding:5px 12px calc(5px + env(safe-area-inset-bottom));opacity:1;box-shadow:none;background:color-mix(in srgb,var(--bg) 94%,transparent)}
+ .secnav button{width:44px;height:34px}
+ body:has(.secnav){padding-bottom:64px}
+}
