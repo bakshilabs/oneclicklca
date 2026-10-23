@@ -200,7 +200,7 @@ function caption(){
  var w=WAVES[sel];cap.innerHTML='<span class="yr">'+w.big+'</span><h3>'+w.name+'</h3><p style="margin-top:8px">'+w.who+'</p><p class="k">What wins</p><p>'+w.wins+'</p>';
 }
 function draw(){
- host.innerHTML="";var W=Math.max(300,host.clientWidth),H=W<560?300:320,m={l:4,r:4,t:44,b:28};
+ host.innerHTML="";var W=Math.max(300,host.clientWidth),H=W<560?300:380,m={l:4,r:4,t:44,b:28};
  var s=VZ.svg(host,W,H,"Stepped chart of 26 forcing dates from 2025 to 2031 in three waves: national leaders now, the EU-wide step in 2028 and all new buildings in 2030. 2026 has the most dates, seven.");
  var x=VZ.lin(2025,2032,m.l,W-m.r),base=H-m.b,ph=base-m.t;
  var lv=[.6,.8,1];
