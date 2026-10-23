@@ -1,16 +1,19 @@
 <!--meta title="Portfolio" desc="One Click LCA's products mapped to buyer, job, trigger and the product marketing work each one needs."-->
 <style>
-.pf-map{display:grid;grid-template-columns:128px repeat(5,minmax(0,1fr));border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--chart-bg)}
-.pf-map>div{border-right:1px solid var(--grid);border-bottom:1px solid var(--grid);padding:8px;min-height:62px;display:flex;flex-direction:column;gap:6px;justify-content:center}
-.pf-map>div:nth-child(6n){border-right:0}
-.pf-map .hd{min-height:0;font:600 12px/1.25 var(--sans);color:var(--ink2);text-transform:uppercase;letter-spacing:.04em;background:var(--panel)}
-.pf-map .rl{font:500 13px/1.3 var(--sans);color:var(--ink1);background:var(--panel)}
-.pf-map .cell{align-items:flex-start}
-.pf-chip{appearance:none;display:inline-flex;align-items:center;gap:7px;text-align:left;border:1px solid var(--line);background:var(--bg);color:var(--ink1);border-radius:999px;padding:6px 11px 6px 8px;font:500 12.5px/1.2 var(--sans);cursor:pointer;transition:opacity .2s,transform .15s}
-.pf-chip i{width:12px;height:12px;border-radius:50%;flex:none;box-shadow:0 0 0 2px var(--ring)}
+.viz svg .t-muted{font-size:12px}
+.pf-lanes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.pf-lane{background:var(--panel);border-radius:6px;padding:10px;display:flex;flex-direction:column;gap:8px}
+.pf-lane h4{font:600 12px/1.25 var(--sans);text-transform:uppercase;letter-spacing:.04em;color:var(--ink2);display:flex;justify-content:space-between;gap:6px;margin:0 0 2px}
+.pf-lane h4 span{color:var(--ink1)}
+.pf-lane .pf-chip{width:100%}
+.pf-chip small{display:block;font-weight:400;font-size:12px;color:var(--ink2);margin-top:2px}
+.pf-arrow{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink2);margin-top:10px}
+.pf-arrow::after{content:"";flex:1;height:1px;background:var(--axis)}
+.pf-chip{appearance:none;display:flex;align-items:flex-start;gap:8px;text-align:left;border:1px solid var(--line);background:var(--chart-bg);color:var(--ink1);border-radius:6px;padding:8px 10px;font:500 12.5px/1.2 var(--sans);cursor:pointer;transition:opacity .2s,transform .15s}
+.pf-chip i{width:12px;height:12px;border-radius:50%;flex:none;margin-top:2px;box-shadow:0 0 0 2px var(--ring)}
 .pf-chip:hover{transform:translateY(-1px)}
 .pf-chip[aria-pressed="true"]{outline:2px solid var(--accent);outline-offset:1px}
-.pf-chip.off{opacity:.18}
+.pf-chip.off{color:var(--ink2);border-style:dotted;background:transparent}.pf-chip.off i{background:var(--ink3)!important}.pf-chip.off small{display:none}
 .pf-lay{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:18px;align-items:start}
 .pf-card{background:var(--panel);border-radius:6px;padding:20px 22px;position:sticky;top:80px}
 .pf-card h3{font-size:19px;margin:6px 0 2px}
@@ -19,8 +22,21 @@
 .pf-card dt{font:600 11px/1.2 var(--sans);text-transform:uppercase;letter-spacing:.05em;color:var(--ink2)}
 .pf-card dd{margin:3px 0 0;font-size:14px;line-height:1.4}
 .pf-card .pmm{background:var(--accent-soft);border-radius:4px;padding:10px 12px}
-.pf-axis{display:flex;justify-content:space-between;font-size:12px;color:var(--ink2);margin:8px 0 0 128px}
 .pf-ladder-wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;margin-top:28px}
+.pf-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;align-items:end}
+.pf-step{appearance:none;text-align:left;border:1px solid var(--line);background:var(--chart-bg);color:var(--ink1);border-radius:6px;padding:0 12px 12px;cursor:pointer;font:inherit;display:flex;flex-direction:column;overflow:hidden;transition:background .25s}
+.pf-step{min-height:calc(236px + var(--i) * 34px)}
+.pf-step .bar{height:6px;margin:0 -12px 10px}
+.pf-step b{font-size:15px}
+.pf-step .k{font-size:12px;color:var(--ink2)}
+.pf-step .pr{font:600 15px/1.2 var(--sans);margin:8px 0}
+.pf-step .pr.q{font-weight:400;font-size:12.5px;color:var(--ink2)}
+.pf-step ul{list-style:none;margin:0;padding:0;font-size:12.5px;line-height:1.35;display:grid;gap:4px}
+.pf-step li::before{content:"+ ";color:var(--ink2)}
+.pf-step.inc{background:var(--accent-soft);border-color:transparent}
+.pf-step[aria-pressed="true"]{outline:2px solid var(--accent);outline-offset:1px}
+.pf-sum{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;margin-top:14px;font-size:14px}
+.pf-sum b.n{font:600 28px/1 var(--sans)}
 .pf-tier{cursor:pointer}
 .pf-tier:focus-visible{outline:none}
 .pf-tier:focus-visible rect.st{stroke:var(--accent);stroke-width:2}
@@ -35,28 +51,27 @@
 .pf-quote{margin-top:16px;font-size:14px;color:var(--ink2);border-left:3px solid var(--accent);padding-left:12px}
 .pf-tp{margin-top:20px}
 .pf-tp .grid2{margin-top:0}
+.pf-vgrid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px;align-items:center}
+@media (max-width:760px){.pf-vgrid{grid-template-columns:minmax(0,1fr)}}
 .pf-venn text{font-size:13px}
 .pf-venn .zone{cursor:pointer}
 .pf-venn .zone:focus-visible{outline:none}
 .pf-venn .zone:focus-visible circle,.pf-venn .zone:focus-visible rect{stroke:var(--accent);stroke-width:3}
 .pf-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:center;margin-top:8px}
 .pf-flow .n{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:14px;font-size:14px;text-align:center}
-.pf-flow .n b{display:block;font-size:12px;color:var(--ink3);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.pf-flow .n b{display:block;font-size:12px;color:var(--ink2);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
 .pf-flow .ar{color:var(--ink3);font-size:20px}
 .pf-buyer{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
 .pf-buyer div{border-radius:6px;padding:14px;font-size:14px;background:var(--bg);border:1px solid var(--line)}
 .pf-buyer div.now{border:2px solid var(--accent)}
-.pf-buyer small{display:block;font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.pf-buyer small{display:block;font-size:12px;color:var(--ink2);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+@media (max-width:1100px){.pf-lanes{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){.pf-lay,.pf-ladder-wrap{grid-template-columns:minmax(0,1fr)}.pf-card{position:static}}
 @media (max-width:640px){
- .pf-map{display:block;border:0;background:none}
- .pf-map .hd,.pf-map .rl.blank{display:none}
- .pf-map>div{border:0;min-height:0;padding:0}
- .pf-map .rl{background:none;font:600 12px/1.3 var(--sans);text-transform:uppercase;letter-spacing:.04em;color:var(--ink2);margin-top:16px}
- .pf-map .cell{flex-direction:row;flex-wrap:wrap;padding:4px 0}
- .pf-map .cell:empty{display:none}
- .pf-map .cell[data-stage]::before{content:attr(data-stage);width:100%;font-size:12px;color:var(--ink3)}
- .pf-axis{display:none}
+ .pf-lanes{grid-template-columns:1fr}
+ .pf-arrow{display:none}
+ .pf-steps{grid-template-columns:1fr 1fr}
+ .pf-step{min-height:0}
  .pf-flow{grid-template-columns:1fr}.pf-flow .ar{transform:rotate(90deg);justify-self:center}
 }
 </style>
@@ -69,12 +84,12 @@
 </header>
 
 <section class="viz lead-viz rv" aria-labelledby="pf-map-h">
-  <div class="viz-h"><h3 id="pf-map-h">Product map by buyer and stage of work</h3><p>Select a product to see its buyer, job, trigger and the marketing work it needs.</p></div>
+  <div class="viz-h"><h3 id="pf-map-h">Product map by stage of work</h3><p>Select a product to see its buyer, job, trigger and the marketing work it needs.</p></div>
   <div class="legend" id="pf-leg" role="group" aria-label="Filter by product line"></div>
   <div class="pf-lay">
     <div>
-      <div class="pf-map" id="pf-map"></div>
-      <div class="pf-axis" aria-hidden="true"><span>Earlier in the work</span><span>Later in the work</span></div>
+      <div class="pf-lanes" id="pf-map"></div>
+      <div class="pf-arrow" aria-hidden="true">Earlier in the work, from learning to selling</div>
     </div>
     <aside class="pf-card" id="pf-card" aria-live="polite"></aside>
   </div>
@@ -82,13 +97,13 @@
 
 <section class="sec">
   <span class="eyebrow">Packaging</span>
-  <h2>Licence Ladder</h2>
+  <h2>Licence ladder</h2>
   <p class="intro">Design and construction licences climb from a self-serve Business licence to three sales-led tiers, and every tier is sold against a local compliance bundle.</p>
   <div class="pf-ladder-wrap">
     <div class="viz rv" style="margin-top:0">
-      <div class="viz-h"><h3>Four tiers</h3><p>Select a tier to see what it adds.</p></div>
-      <div id="pf-ladder"></div>
-      <div id="pf-tierinfo" aria-live="polite" style="margin-top:12px"></div>
+      <div class="viz-h"><h3>Four tiers, each adding to the one below</h3><p>Select a tier to see everything it includes. Equal steps show order, not price.</p></div>
+      <div class="pf-steps" id="pf-ladder" role="group" aria-label="Licence tiers"></div>
+      <div class="pf-sum" id="pf-tierinfo" aria-live="polite"></div>
     </div>
     <div class="viz rv" style="margin-top:0">
       <div class="viz-h"><h3>Business licence, per year</h3></div>
@@ -98,14 +113,14 @@
       </div>
       <ul class="pf-bars" id="pf-bars"></ul>
       <p class="mini" style="margin-top:12px">Published web shop prices, per market bundle. The three sales-led tiers are priced on request.</p>
-      <p class="pf-quote">G2 and Capterra reviewers complain about licence gating, user management and paying a year upfront. The Revit product lead told a forum user that mapping suggestions depend on "the relevant license feature".</p>
+      <p class="pf-quote">Reviewers on G2 and Capterra complain about licence gating, user management and paying a year upfront. Even Revit mapping suggestions depend on "the relevant license feature".</p>
     </div>
   </div>
 </section>
 
 <section class="sec">
   <span class="eyebrow">Findings</span>
-  <h2>First Quarter Fixes</h2>
+  <h2>First quarter fixes</h2>
   <div class="tabs" role="tablist" aria-label="Findings" id="pf-tabs">
     <button role="tab" id="pf-t1" aria-controls="pf-p1" aria-selected="true">Proof points</button>
     <button role="tab" id="pf-t2" aria-controls="pf-p2" aria-selected="false">Two brands</button>
@@ -126,8 +141,8 @@
   <div role="tabpanel" id="pf-p2" aria-labelledby="pf-t2" class="pf-tp" hidden>
     <div class="viz" style="margin-top:0">
       <div class="viz-h"><h3>One Click LCA and SimaPro since September 2025</h3><p>Select an area of the diagram.</p></div>
-      <div id="pf-venn"></div>
-      <div id="pf-vinfo" class="panel" aria-live="polite" style="margin-top:12px"></div>
+      <div class="pf-vgrid"><div id="pf-venn"></div>
+      <div id="pf-vinfo" class="panel" aria-live="polite"></div></div>
     </div>
     <div class="callout"><p><b>Fix.</b> Sellers need a rule for which buyer gets which product, and SimaPro resellers need to know the rule will not take their customers.</p></div>
   </div>
@@ -179,7 +194,7 @@ function G(s){s.setAttribute("role","group");return s}
 function responsive(host,draw){var w=-1;function go(){var n=host.clientWidth;if(n&&n!==w){w=n;host.innerHTML="";draw(n)}}go();var t;addEventListener("resize",function(){clearTimeout(t);t=setTimeout(go,120)})}
 
 /* ---------- product map ---------- */
-var LINES=[["dc","Design and construction",1],["mf","Manufacturing",2],["en","Enterprise",3],["fr","Free and education",4],["sp","SimaPro (separate brand)",5]];
+var LINES=[["dc","Design and construction",1],["mf","Manufacturing",2],["en","Enterprise",3],["fr","Free and education",4],["sp","SimaPro (separate brand)",7]];
 var ROWS=["Students and small firms","Architects, engineers and consultants","Urban, infrastructure and public clients","Manufacturers","Global firms and owners","LCA experts"];
 var STAGES=["Learn","Early design","Design and compliance","Product data","Selling and reporting"];
 var P=[
@@ -197,12 +212,12 @@ var P=[
 ];
 var lineOf={};LINES.forEach(function(L){lineOf[L[0]]=L});
 var map=document.getElementById("pf-map"),card=document.getElementById("pf-card"),leg=document.getElementById("pf-leg");
-function add(cls,txt,attrs){var d=document.createElement("div");d.className=cls;if(txt)d.textContent=txt;for(var k in attrs||{})d.setAttribute(k,attrs[k]);map.appendChild(d);return d}
-add("hd rl blank","Buyer");STAGES.forEach(function(s){add("hd",s)});
 var chips=[];
-ROWS.forEach(function(r,ri){add("rl",r);STAGES.forEach(function(s,ci){var cell=add("cell","",{"data-stage":s});
-  P.forEach(function(p,pi){if(p.r===ri&&p.c===ci){var b=document.createElement("button");b.type="button";b.className="pf-chip";b.setAttribute("aria-pressed","false");
-   b.innerHTML='<i style="background:var(--s'+lineOf[p.l][2]+')"></i>'+esc(p.sh||p.n);b.setAttribute("aria-label",p.n);b.onclick=function(){show(pi)};cell.appendChild(b);chips[pi]=b}})})});
+STAGES.forEach(function(st,ci){var lane=document.createElement("div");lane.className="pf-lane";var items=P.map(function(p,pi){return[p,pi]}).filter(function(x){return x[0].c===ci});
+ lane.innerHTML='<h4>'+esc(st)+'<span>'+items.length+'</span></h4>';
+ items.forEach(function(x){var p=x[0],pi=x[1],b=document.createElement("button");b.type="button";b.className="pf-chip";b.setAttribute("aria-pressed","false");
+  b.innerHTML='<i style="background:var(--s'+lineOf[p.l][2]+')"></i><span>'+esc(p.sh||p.n)+'<small>'+esc(ROWS[p.r])+'</small></span>';b.setAttribute("aria-label",p.n+", for "+ROWS[p.r]);b.onclick=function(){show(pi)};lane.appendChild(b);chips[pi]=b});
+ map.appendChild(lane)});
 function show(i){var p=P[i],L=lineOf[p.l];chips.forEach(function(c,k){c.setAttribute("aria-pressed",k===i)});
  card.innerHTML='<span class="tag"><i style="display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;background:var(--s'+L[2]+')"></i>'+esc(L[1])+'</span><h3>'+esc(p.n)+'</h3>'+(p.s?'<p class="sub">'+esc(p.s)+'</p>':'')+
  '<dl><div><dt>Main buyer</dt><dd>'+esc(p.b)+'</dd></div><div><dt>Job to be done</dt><dd>'+esc(p.j)+'</dd></div><div><dt>Purchase trigger</dt><dd>'+esc(p.t)+'</dd></div><div class="pmm"><dt>Product marketing work</dt><dd>'+esc(p.w)+'</dd></div></dl>'}
@@ -216,32 +231,23 @@ var TIERS=[
  {n:"Designer",k:"Sales-led",f:["Local compliance module","Materials Compass","Carbon Designer 3D","20+ BIM integrations"],fill:"var(--seq-3)"},
  {n:"Expert Pack",k:"Most popular",f:["Private datasets","Plausibility checker","Life cycle costing","Biodiversity tool","Account manager"],fill:"var(--seq-4)"},
  {n:"Power Pack",k:"Firm-wide",f:["Internal verification","Custom templates","Generative design"],fill:"var(--seq-5)"}];
-var lic="n",selT=0,tierEls=[];
-var info=document.getElementById("pf-tierinfo");
-function tierInfo(){var t=TIERS[selT];info.innerHTML='<b>'+esc(t.n)+'</b> <span class="mini">'+esc(t.k)+(selT?', adds to the tier below':'')+'</span><div class="pf-feat">'+t.f.map(function(x){return"<span>"+esc(x)+"</span>"}).join("")+'</div>';
- tierEls.forEach(function(g,i){g.classList.toggle("sel",i===selT);g.setAttribute("aria-pressed",i===selT)})}
+var lic="n",selT=3,stepEls=[];
+var info=document.getElementById("pf-tierinfo"),lad=document.getElementById("pf-ladder");
 function price(){return lic==="n"?"€3,030":"€5,180"}
-responsive(document.getElementById("pf-ladder"),function(W){
- var H=250,pad=8,gap=6,sw=(W-pad*2-gap*3)/4,base=H-40,step=(base-70)/4;
- var s=VZ.svg(document.getElementById("pf-ladder"),W,H,"Four licence tiers rising from Business to Power Pack. Business costs "+price()+" a year; the others are priced on request.");G(s);
- VZ.el("line",{x1:0,x2:W,y1:base,y2:base,class:"axis"},s);tierEls=[];
- TIERS.forEach(function(t,i){var x=pad+i*(sw+gap),h=step*(i+1),y=base-h;
-  var g=VZ.el("g",{class:"pf-tier",role:"button",tabindex:0,"aria-label":t.n+", "+t.k},s);
-  var r=VZ.el("rect",{x:x,y:y,width:sw,height:h,rx:4,class:"st"},g);r.style.fill=t.fill;r.style.stroke=i?"none":"var(--axis)";if(!i)r.style.strokeWidth="1.5";
-  VZ.el("text",{x:x+sw/2,y:base+18,"text-anchor":"middle",class:"t-strong"},g).textContent=t.n;
-  VZ.el("text",{x:x+sw/2,y:base+33,"text-anchor":"middle",class:"t-muted"},g).textContent=t.k;
-  var pt=VZ.el("text",{x:x+sw/2,y:y-10,"text-anchor":"middle",class:i?"t-muted":"t-strong"},g);if(!i)pt.id="pf-ptxt";pt.textContent=i?"On request":price();if(!i)pt.style.fontSize="15px";
-  g.addEventListener("click",function(){selT=i;tierInfo()});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();selT=i;tierInfo()}});
-  VZ.tip(g,function(){return"<b>"+esc(t.n)+"</b><span class='m'>"+(i?"Price on request. ":price()+" a year per market bundle. ")+t.f.length+" headline features</span>"});
-  tierEls.push(g)});
- tierInfo()});
+TIERS.forEach(function(t,i){var b=document.createElement("button");b.type="button";b.className="pf-step";b.style.setProperty("--i",i);
+ b.innerHTML='<span class="bar" style="background:'+(i?t.fill:"var(--axis)")+'"></span><b>'+esc(t.n)+'</b><span class="k">'+esc(t.k)+'</span><span class="pr'+(i?' q':'')+'">'+(i?'Price on request':'<span class="pf-bp">'+price()+'</span> a year')+'</span><ul>'+t.f.map(function(x){return"<li>"+esc(x)+"</li>"}).join("")+'</ul>';
+ b.onclick=function(){selT=i;tierInfo()};lad.appendChild(b);stepEls.push(b)});
+function tierInfo(){var n=0;TIERS.forEach(function(t,i){if(i<=selT)n+=t.f.length});
+ stepEls.forEach(function(b,i){b.classList.toggle("inc",i<=selT);b.setAttribute("aria-pressed",i===selT)});
+ info.innerHTML='<span><b class="n">'+n+'</b> headline features in '+esc(TIERS[selT].n)+'</span><span class="mini">'+(selT?'Price on request. Only the Business tier has a published price.':price()+' a year per market bundle, bought online.')+'</span>'}
+tierInfo();
 
 var BARS=[["Market bundle, for example RE2020 and HQE",3030,5180],["LEED v4 with EN 15804 indicators",4380,7270],["Add-on, for example Global Carbon or Level(s)",830,1350]];
 var barsEl=document.getElementById("pf-bars");
 BARS.forEach(function(b){var li=document.createElement("li");li.innerHTML='<div class="lb"><span>'+esc(b[0])+'</span><b></b></div><div class="tr"><div class="fl" style="width:0"></div></div>';barsEl.appendChild(li);
  VZ.tip(li,function(){return"<b>"+esc(b[0])+"</b>Named €"+b[1].toLocaleString("en-GB")+" a year<br>Concurrent €"+b[2].toLocaleString("en-GB")+" a year"})});
 function drawBars(){[].forEach.call(barsEl.children,function(li,i){var v=BARS[i][lic==="n"?1:2];li.querySelector("b").textContent="€"+v.toLocaleString("en-GB");li.querySelector(".fl").style.width=(v/7270*100)+"%"});
- var pt=document.getElementById("pf-ptxt");if(pt)pt.textContent=price()}
+ [].forEach.call(document.querySelectorAll(".pf-bp"),function(e){e.textContent=price()});tierInfo()}
 [].forEach.call(document.querySelectorAll("[aria-label='Licence type'] button"),function(b,_,all){b.onclick=function(){lic=b.dataset.k;[].forEach.call(b.parentNode.children,function(x){x.setAttribute("aria-pressed",x===b)});drawBars()}});
 setTimeout(drawBars,200);
 
@@ -271,14 +277,14 @@ function dots(){var D=[
 function venn(){var Z={
  ocl:{t:"One Click LCA: go fast",d:"Construction and manufacturing software for designers, contractors and manufacturers, sold per market compliance bundle. The CEO calls it \"the ability to go fast\"."},
  both:{t:"Where the brands overlap",d:"Both include product LCA and EPD tools. A manufacturer can be sold either one, so sellers need a rule for which buyer gets which product."},
- sp:{t:"SimaPro: go deep",d:"General-purpose expert LCA software from PRé Sustainability with more than 30 years of history, used by LCA experts in industry, consultancies and universities. The CEO calls it \"the ability to go deep\"."}};
+ sp:{t:"SimaPro: go deep",d:"General-purpose expert LCA software from PRé Sustainability, over 30 years old, used by LCA experts in industry, consultancies and universities. The CEO calls it \"the ability to go deep\"."}};
  var vinfo=document.getElementById("pf-vinfo");
  function pick(k){vinfo.innerHTML="<h3>"+esc(Z[k].t)+"</h3><p>"+esc(Z[k].d)+"</p>";[].forEach.call(document.querySelectorAll(".pf-venn .zone"),function(z){z.setAttribute("aria-pressed",z.dataset.k===k)})}
- responsive(document.getElementById("pf-venn"),function(W){var H=W<560?230:260,cx=W/2,R=Math.min(W*0.3,150),off=R*0.62,cy=H/2;
+ responsive(document.getElementById("pf-venn"),function(W){var R=Math.min(W*0.3,120),H=2*R+52,cx=W/2,off=R*0.62,cy=R+14;
   var s=VZ.svg(document.getElementById("pf-venn"),W,H,"Two overlapping circles: One Click LCA for speed and SimaPro for depth, overlapping on product LCA and EPD tools.");G(s);s.setAttribute("class","pf-venn");
   function zone(k,lbl,sub,x){var g=VZ.el("g",{class:"zone",role:"button",tabindex:0,"data-k":k,"aria-label":Z[k].t},s);return g}
   var a=zone("ocl"),c1=VZ.el("circle",{cx:cx-off,cy:cy,r:R,"fill-opacity":.18,stroke:"var(--s1)","stroke-width":2},a);c1.style.fill="var(--s1)";
-  var b=zone("sp"),c2=VZ.el("circle",{cx:cx+off,cy:cy,r:R,"fill-opacity":.18,stroke:"var(--s5)","stroke-width":2},b);c2.style.fill="var(--s5)";
+  var b=zone("sp"),c2=VZ.el("circle",{cx:cx+off,cy:cy,r:R,"fill-opacity":.18,stroke:"var(--s7)","stroke-width":2},b);c2.style.fill="var(--s7)";
   var o=zone("both"),ow=Math.max(2*R-2*off,40),orr=VZ.el("rect",{x:cx-ow/2+4,y:cy-R*0.55,width:ow-8,height:R*1.1,rx:8,fill:"transparent"},o);
   function txt(x,y,t,cls){var e=VZ.el("text",{x:x,y:y,"text-anchor":"middle",class:cls||"","pointer-events":"none"},s);e.textContent=t;return e}
   var fs=W<560;

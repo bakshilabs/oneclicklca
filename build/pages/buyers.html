@@ -1,5 +1,6 @@
 <!--meta title="Buyers" desc="Buying committees, criteria and objections for each One Click LCA segment, with the customer's own words from public reviews."-->
 <style>
+.viz svg .t-muted{font-size:12px}
 .by-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:22px;position:relative}
 .by-node{position:relative;padding:0 14px 0 0}
 .by-node .bx{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:16px;height:100%;font-size:14.5px;line-height:1.4}
@@ -15,7 +16,13 @@
 .by-ev small{display:block;font:600 11px/1.2 var(--sans);text-transform:uppercase;letter-spacing:.05em;color:var(--ink2);margin-bottom:4px}
 .by-top{margin-top:14px;font-size:13.5px;color:var(--ink2)}
 .by-lay{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px;align-items:stretch}
-.by-fd{display:grid;gap:16px;margin-top:28px}
+.by-fcap{font-size:14px;margin-top:10px;min-height:0}
+.by-fcap:empty{display:none}
+.by-hm td.col{box-shadow:inset 0 0 0 2.5px var(--ink1)}
+.by-lv{display:grid;gap:8px;margin-top:4px}
+.by-lv h4{font:600 12px/1.2 var(--sans);text-transform:uppercase;letter-spacing:.05em;color:var(--ink2);margin:10px 0 2px}
+.by-lv .r{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:7px 10px;background:var(--panel);border-radius:4px}
+.by-lv .r b{font-variant-numeric:tabular-nums}
 .by-hm{border-collapse:separate;border-spacing:3px;width:100%;min-width:560px}
 .by-hm th{font:500 12px/1.25 var(--sans);color:var(--ink2);padding:4px;text-align:left;vertical-align:bottom}
 .by-hm thead button{appearance:none;border:0;background:none;color:var(--ink2);font:500 12px/1.25 var(--sans);cursor:pointer;padding:4px 2px;text-align:center;width:100%;border-radius:3px}
@@ -29,7 +36,6 @@
 .by-hm td.v2{background:var(--seq-2);color:var(--ink1)}
 .by-hm td.v3{background:var(--seq-3);color:var(--by-t3)}
 .by-hm td.v4{background:var(--seq-5);color:var(--by-t5)}
-.by-hm td.fade{opacity:.35}
 :root{--by-t5:#fff;--by-t3:#0b0b0b}
 @media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){--by-t5:#0b0b0b;--by-t3:#fff}}
 :root[data-theme="dark"]{--by-t5:#0b0b0b;--by-t3:#fff}
@@ -60,7 +66,7 @@
   <span class="eyebrow">Users and buyers</span>
   <h1>Buyers</h1>
   <p class="lede">The user runs the LCA and judges the tool by the hours it takes. The buyer signs for it and judges it by the permit, bid, certification or sale it secures.</p>
-  <p class="meta">Built from public reviews, case studies and forum threads, and from my experience selling sustainability services to these firms at Foster + Partners, SOM and WSP. Criteria weights are my judgement, to be tested in interviews.</p>
+  <p class="meta">Built from public reviews, case studies, forum threads and my experience selling sustainability services at Foster + Partners, SOM and WSP. Criteria weights are my judgement.</p>
 </header>
 
 <section class="viz lead-viz rv" aria-labelledby="by-fh">
@@ -71,29 +77,28 @@
 
 <section class="sec">
   <span class="eyebrow">Buying criteria</span>
-  <h2>Criteria Weights</h2>
+  <h2>Criteria weights</h2>
   <p class="intro">Scores from 0 to 4 show how much each criterion moves the decision. Select a segment to see its profile, or a criterion to sort the segments by it.</p>
     <div class="viz rv">
       <div class="by-mode"><div class="btnrow" role="group" aria-label="Mode" id="by-mode" style="margin-top:0"><button type="button" data-k="one" aria-pressed="true">One segment</button><button type="button" data-k="two" aria-pressed="false">Compare two</button></div><span id="by-hint">Select a segment name.</span></div>
+      <div class="btnrow" id="by-find" role="group" aria-label="Findings" style="margin:0 0 12px"><button type="button" data-k="0" aria-pressed="false">Finding: local compliance</button><button type="button" data-k="7" aria-pressed="false">Finding: revenue impact</button></div>
       <div class="tw"><table class="by-hm" id="by-hm"><caption class="sr">Buying criteria scores from 0 to 4 by segment, my judgement</caption></table></div>
+      <p class="by-fcap" id="by-fcap" aria-live="polite"></p>
       <div class="legend" style="margin-top:12px"><span>Score</span><span class="dm-sw" style="width:14px;height:14px;border-radius:3px;background:var(--chart-bg);box-shadow:inset 0 0 0 1px var(--axis)"></span>0<span style="width:14px;height:14px;border-radius:3px;background:var(--seq-1)"></span>1<span style="width:14px;height:14px;border-radius:3px;background:var(--seq-2)"></span>2<span style="width:14px;height:14px;border-radius:3px;background:var(--seq-3)"></span>3<span style="width:14px;height:14px;border-radius:3px;background:var(--seq-5)"></span>4</div>
     </div>
   <div class="by-lay">
-    <div class="viz rv">
+    <div class="viz">
       <div class="viz-h"><h3 id="by-ph">Profile</h3></div>
       <div class="legend" id="by-pleg"></div>
       <div id="by-prof"></div>
     </div>
-    <div class="by-fd">
-    <div class="panel"><span class="icon"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></span><h3>Local compliance</h3><p>It is the only criterion that scores high almost everywhere, which is why the company packages by market.</p></div>
-    <div class="panel"><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/><path d="M15 8h5v5"/></svg></span><h3>Revenue impact</h3><p>It separates manufacturers and contractors, who buy for the specification or the bid won, from designers, who buy to get the permit and the credit with the least effort.</p></div>
-  </div>
+    <div class="viz" style="margin-top:28px"><div class="viz-h"><h3 id="by-lh">Message levers</h3></div><div id="by-lev"></div></div>
   </div>
 </section>
 
 <section class="sec">
   <span class="eyebrow">In their words</span>
-  <h2>Praise and Complaints</h2>
+  <h2>Praise and complaints</h2>
   <div class="viz rv">
     <div class="viz-h"><h3>G2 review tags, number of reviews</h3><p>Select a tag to read what customers wrote.</p></div>
     <div class="legend"><span><i style="background:var(--s1)"></i>Praise tags</span><span><i style="background:var(--s2)"></i>Complaint tags</span></div>
@@ -103,15 +108,15 @@
     <p class="mini" style="margin-top:12px">Quotes are grouped under tags by my reading. G2 quotes were read on the machine-translated Italian page and translated back, so wording may differ from the original.</p>
   </div>
   <div class="by-vb">
-    <div class="viz rv"><div class="viz-h"><h3>Capterra sub-scores</h3><p>18 reviews, out of 5</p></div><div id="by-cap"></div></div>
-    <div class="viz rv"><div class="viz-h"><h3>G2 star ratings</h3><p>4.5 out of 5 from 99 reviews</p></div><div id="by-g2"></div><div class="legend" style="margin-top:10px"><span><i style="background:var(--seq-5);border-radius:2px"></i>5 stars</span><span><i style="background:var(--seq-4);border-radius:2px"></i>4 stars</span><span><i style="background:var(--seq-3);border-radius:2px"></i>3 stars</span><span><i style="background:var(--axis);border-radius:2px"></i>Lower</span></div></div>
+    <div class="viz rv"><div class="viz-h"><h3>Capterra sub-scores</h3><p>18 reviews, out of 5</p></div><div id="by-cap"></div><p class="mini" id="by-capr" aria-live="polite" style="margin-top:8px"></p></div>
+    <div class="viz rv"><div class="viz-h"><h3>G2 star ratings</h3><p>4.5 out of 5 from 99 reviews</p></div><div id="by-g2"></div><p class="mini" id="by-g2r" aria-live="polite" style="margin-top:4px"></p><div class="legend" style="margin-top:10px"><span><i style="background:var(--seq-5);border-radius:2px"></i>5 stars</span><span><i style="background:var(--seq-4);border-radius:2px"></i>4 stars</span><span><i style="background:var(--seq-3);border-radius:2px"></i>3 stars</span><span><i style="background:var(--axis);border-radius:2px"></i>Lower</span></div></div>
   </div>
-  <div class="callout"><p><b>Positioning implication.</b> Customers praise the data and the people and complain about the interface and the BIM round-trip, so positioning should lead with data and support. Launches that improve the workflow, such as AI mapping and the new interface, belong in front of evaluators who have tried Tally.</p></div>
+  <div class="callout"><p><b>Positioning implication.</b> Customers praise the data and the support, and complain about the interface and the BIM round-trip. Lead with data and support, and show workflow launches to evaluators who tried Tally.</p></div>
 </section>
 
 <section class="sec">
   <span class="eyebrow">Interview programme</span>
-  <h2>Buyer and User Interviews</h2>
+  <h2>Buyer and user interviews</h2>
   <div class="stats4">
     <div class="stat"><b class="count" data-to="25">0</b><span>accounts each quarter: ten wins, ten losses and five churned or downgraded</span></div>
     <div class="stat"><b class="count" data-to="30" data-suffix=" min">0 min</b><span>for each interview, with the signer and the user seen separately</span></div>
@@ -162,27 +167,41 @@ function vcls(v){return"v"+v}
 function drawHM(){var order=SEG.map(function(_,i){return i});if(sortK!==null)order.sort(function(a,b){return SEG[b].c[sortK]-SEG[a].c[sortK]});
  var h='<caption class="sr">Buying criteria scores from 0 to 4 by segment, my judgement</caption><thead><tr><th scope="col">Segment</th>'+CR.map(function(c,k){return'<th scope="col"><button type="button" data-k="'+k+'" aria-pressed="'+(sortK===k)+'" aria-label="Sort by '+c+'">'+c+'</button></th>'}).join("")+'</tr></thead><tbody>';
  order.forEach(function(i){var s=SEG[i],cls=i===A?"a":(mode==="two"&&i===B?"b":"");var act=i===A||(mode==="two"&&i===B);
-  h+='<tr><th scope="row"><button type="button" data-i="'+i+'" class="'+cls+'" aria-pressed="'+act+'">'+s.n+'</button></th>'+s.c.map(function(v,k){return'<td class="'+vcls(v)+(sortK!==null&&k!==sortK?" fade":"")+'">'+v+'</td>'}).join("")+'</tr>'});
+  h+='<tr><th scope="row"><button type="button" data-i="'+i+'" class="'+cls+'" aria-pressed="'+act+'">'+s.n+'</button></th>'+s.c.map(function(v,k){return'<td class="'+vcls(v)+(sortK===k?" col":"")+'">'+v+'</td>'}).join("")+'</tr>'});
  hm.innerHTML=h+'</tbody>';
- [].forEach.call(hm.querySelectorAll("thead button"),function(b){b.onclick=function(){var k=+b.dataset.k;sortK=sortK===k?null:k;drawHM()}});
+ [].forEach.call(hm.querySelectorAll("thead button"),function(b){b.onclick=function(){var k=+b.dataset.k;sortK=sortK===k?null:k;drawHM();syncFind()}});
  [].forEach.call(hm.querySelectorAll("tbody th button"),function(b){b.onclick=function(){var i=+b.dataset.i;if(mode==="two"&&i!==A){B=i}else{A=i}drawHM();drawProf()}});
  [].forEach.call(hm.querySelectorAll("td"),function(td){var tr=td.parentNode,i=+tr.querySelector("th button").dataset.i,k=td.cellIndex-1;VZ.tip(td,function(){return"<b>"+SEG[i].n+"</b>"+CR[k]+": "+SEG[i].c[k]+" of 4"});td.removeAttribute("tabindex")})}
 var mb=document.getElementById("by-mode");[].forEach.call(mb.children,function(b){b.onclick=function(){mode=b.dataset.k;[].forEach.call(mb.children,function(x){x.setAttribute("aria-pressed",x===b)});
  document.getElementById("by-hint").textContent=mode==="two"?"Select a second segment to compare.":"Select a segment name.";if(B===A)B=(A+3)%6;drawHM();drawProf()}});
 var profHost=document.getElementById("by-prof");
+var FIND={0:"Local compliance is the only criterion that scores high almost everywhere, which is why the company packages by market.",7:"Revenue impact separates manufacturers and contractors, who buy for the specification or the bid, from designers, who buy for the permit and the credit."};
+var fbtn=[].slice.call(document.querySelectorAll("#by-find button"));
+fbtn.forEach(function(b){b.onclick=function(){var k=+b.dataset.k;sortK=sortK===k?null:k;drawHM();syncFind()}});
+function syncFind(){fbtn.forEach(function(b){b.setAttribute("aria-pressed",+b.dataset.k===sortK)});document.getElementById("by-fcap").textContent=FIND[sortK]||(sortK!==null?"Segments sorted by "+CR[sortK].toLowerCase()+".":"")}
+function drawLev(){var two=mode==="two",el=document.getElementById("by-lev"),h="";
+ if(!two){var a=SEG[A].c,strong=CR.filter(function(c,k){return a[k]>=3}),weak=CR.filter(function(c,k){return a[k]<=1});
+  document.getElementById("by-lh").textContent="Message levers for "+SEG[A].n.toLowerCase();
+  h='<div class="by-lv"><h4>Lead with (3 or 4)</h4>'+strong.map(function(c){return'<div class="r"><span>'+c+'</span><b>'+a[CR.indexOf(c)]+'</b></div>'}).join("")+
+   '<h4>Do not lead with (0 or 1)</h4>'+(weak.length?weak.map(function(c){return'<div class="r"><span>'+c+'</span><b>'+a[CR.indexOf(c)]+'</b></div>'}).join(""):'<div class="r"><span>None</span></div>')+'</div>'}
+ else{var g=CR.map(function(c,k){return[c,SEG[A].c[k],SEG[B].c[k]]}).sort(function(x,y){return Math.abs(y[1]-y[2])-Math.abs(x[1]-x[2])}).slice(0,5);
+  document.getElementById("by-lh").textContent="Largest differences";
+  h='<div class="by-lv"><h4>'+esc(SEG[A].n)+' against '+esc(SEG[B].n)+'</h4>'+g.map(function(x){return'<div class="r"><span>'+x[0]+'</span><b>'+x[1]+' against '+x[2]+'</b></div>'}).join("")+'<p class="mini" style="margin-top:6px">A message built on these criteria will not carry from one segment to the other.</p></div>'}
+ el.innerHTML=h}
 function drawProf(){profHost.innerHTML="";var two=mode==="two";
- document.getElementById("by-ph").textContent=two?SEG[A].n+" against "+SEG[B].n:SEG[A].n;
- document.getElementById("by-pleg").innerHTML='<span><i style="background:var(--s1)"></i>'+esc(SEG[A].n)+'</span>'+(two?'<span><i style="background:var(--s2)"></i>'+esc(SEG[B].n)+'</span>':'');
- var W=profHost.clientWidth||360,L=Math.min(150,W*0.42),R=W-24,bh=two?9:16,rowH=two?34:30,H=CR.length*rowH+24;
+ document.getElementById("by-ph").textContent=two?SEG[A].n+" against "+SEG[B].n:SEG[A].n+" profile";
+ document.getElementById("by-pleg").innerHTML=two?'<span><i style="background:var(--s1)"></i>'+esc(SEG[A].n)+'</span><span><i style="background:var(--s2)"></i>'+esc(SEG[B].n)+'</span>':'<span><i style="background:var(--seq-4);border-radius:2px"></i>Score from 0 to 4, the same values as the heatmap row</span>';
+ var W=profHost.clientWidth||profHost.parentNode.clientWidth||360,L=Math.min(150,W*0.42),R=W-30,bh=two?10:16,rowH=two?34:30,H=CR.length*rowH+24;
  var s=VZ.svg(profHost,W,H,"Criteria profile for "+SEG[A].n+(two?" compared with "+SEG[B].n:""));s.setAttribute("role","group");
  var x=VZ.lin(0,4,L,R);
  [0,1,2,3,4].forEach(function(v){VZ.el("line",{x1:x(v),x2:x(v),y1:0,y2:H-20,class:v?"grid":"axis"},s);VZ.el("text",{x:x(v),y:H-4,"text-anchor":"middle",class:"t-muted"},s).textContent=v});
- CR.forEach(function(c,k){var y=k*rowH+6;VZ.el("text",{x:L-8,y:y+(two?13:12),"text-anchor":"end"},s).textContent=c;
-  [[A,1,0]].concat(two?[[B,2,1]]:[]).forEach(function(p){var v=SEG[p[0]].c[k],yy=y+p[2]*(bh+3);
-   var r=VZ.bar(s,x(0),yy,Math.max(x(v)-x(0),0.01),bh,"","h");r.style.fill="var(--s"+p[1]+")";
-   if(!v){var z=VZ.el("circle",{cx:x(0)+3,cy:yy+bh/2,r:3},s);z.style.fill="var(--s"+p[1]+")"}
+ CR.forEach(function(c,k){var y=k*rowH+6;VZ.el("text",{x:L-8,y:y+(two?15:12),"text-anchor":"end"},s).textContent=c;
+  [[A,two?"var(--s1)":"var(--seq-4)",0]].concat(two?[[B,"var(--s2)",1]]:[]).forEach(function(p){var v=SEG[p[0]].c[k],yy=y+p[2]*(bh+2);
+   if(v){var r=VZ.bar(s,x(0),yy,x(v)-x(0),bh,"","h");r.style.fill=p[1]}else{var z=VZ.el("circle",{cx:x(0)+4,cy:yy+bh/2,r:4,stroke:"var(--ring)","stroke-width":2},s);z.style.fill=p[1]}
+   VZ.el("text",{x:x(v)+(v?6:12),y:yy+bh/2+4,class:"t-strong"},s).textContent=v;
    var hit=VZ.el("rect",{x:L,y:yy-1,width:R-L,height:bh+2,fill:"transparent",role:"img","aria-label":SEG[p[0]].n+", "+c+": "+v},s);
-   VZ.tip(hit,function(){return"<b>"+esc(SEG[p[0]].n)+"</b>"+c+": "+v+" of 4"})})})}
+   VZ.tip(hit,function(){return"<b>"+esc(SEG[p[0]].n)+"</b>"+c+": "+v+" of 4"})})});
+ drawLev()}
 drawHM();drawProf();var pt;addEventListener("resize",function(){clearTimeout(pt);pt=setTimeout(drawProf,150)});
 
 /* review tags */
@@ -220,19 +239,26 @@ responsive(document.getElementById("by-tags"),function(W){var narrow=W<600,rowH=
 XTRA.forEach(function(t){var b=document.createElement("button");b.type="button";b.textContent=t.n;b.setAttribute("aria-pressed","false");b.onclick=function(){showQ(t,b)};document.getElementById("by-xtra").appendChild(b);xb.push(b)});
 
 /* capterra dot plot */
-responsive(document.getElementById("by-cap"),function(W){var D=[["Customer service",4.9],["Ease of use",4.4],["Value for money",4.0]],L=Math.min(130,W*.38),R=W-30,H=D.length*36+26;
+function act(el,fn){el.style.cursor="pointer";el.addEventListener("click",fn);el.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();fn()}});el.addEventListener("focus",fn)}
+var CAPN={"Customer service":"Customer service is Capterra's highest sub-score, and G2 reviewers name individual support staff.","Ease of use":"Ease of use sits in the middle, matching the G2 split between Ease of Use praise and complexity complaints.","Value for money":"Value for money is the lowest sub-score, in line with complaints about annual upfront payment and licence gating."};
+responsive(document.getElementById("by-cap"),function(W){var D=[["Customer service",4.9],["Ease of use",4.4],["Value for money",4.0]],L=Math.min(130,W*.38),R=W-30,H=D.length*36+26,out=document.getElementById("by-capr"),dots=[];
  var s=VZ.svg(document.getElementById("by-cap"),W,H,"Capterra sub-scores: customer service 4.9, ease of use 4.4, value for money 4.0 out of 5.");s.setAttribute("role","group");var x=VZ.lin(3.5,5,L,R);
  [3.5,4,4.5,5].forEach(function(v){VZ.el("line",{x1:x(v),x2:x(v),y1:0,y2:H-22,class:"grid"},s);VZ.el("text",{x:x(v),y:H-6,"text-anchor":"middle",class:"t-muted"},s).textContent=v.toFixed(1)});
+ function pick(i){dots.forEach(function(c,k){c.setAttribute("r",k===i?8:6)});out.innerHTML="<b>"+D[i][0]+", "+D[i][1].toFixed(1)+".</b> "+esc(CAPN[D[i][0]])}
  D.forEach(function(d,i){var y=i*36+16;VZ.el("text",{x:L-10,y:y+4,"text-anchor":"end"},s).textContent=d[0];VZ.el("line",{x1:x(3.5),x2:x(d[1]),y1:y,y2:y,stroke:"var(--axis)","stroke-width":2},s);
-  var c=VZ.el("circle",{cx:x(d[1]),cy:y,r:6,stroke:"var(--ring)","stroke-width":2,role:"img","aria-label":d[0]+" "+d[1]},s);c.style.fill="var(--s1)";
+  var c=VZ.el("circle",{cx:x(d[1]),cy:y,r:6,stroke:"var(--ring)","stroke-width":2,role:"button","aria-label":d[0]+" "+d[1]},s);c.style.fill="var(--s1)";dots.push(c);
   VZ.el("text",{x:x(d[1])+(d[1]>4.8?-12:12),y:y-9,"text-anchor":d[1]>4.8?"end":"start",class:"t-strong"},s).textContent=d[1].toFixed(1);
-  VZ.tip(c,function(){return"<b>"+d[0]+"</b>"+d[1]+" out of 5 on Capterra"})})});
+  VZ.tip(c,function(){return"<b>"+d[0]+"</b>"+d[1]+" out of 5 on Capterra"});act(c,function(){pick(i)})});
+ pick(2)});
 /* g2 stacked */
-responsive(document.getElementById("by-g2"),function(W){var D=[[66,"5 stars","var(--seq-5)"],[28,"4 stars","var(--seq-4)"],[5,"3 stars","var(--seq-3)"],[1,"Lower or unrounded","var(--axis)"]],H=70;
+responsive(document.getElementById("by-g2"),function(W){var D=[[66,"5 stars","var(--seq-5)"],[28,"4 stars","var(--seq-4)"],[5,"3 stars","var(--seq-3)"],[1,"Lower or unrounded","var(--axis)"]],H=62,out=document.getElementById("by-g2r"),segs=[];
  var s=VZ.svg(document.getElementById("by-g2"),W,H,"G2 ratings: 66% five stars, 28% four stars, 5% three stars.");s.setAttribute("role","group");var x=VZ.lin(0,100,0,W),acc=0;
- D.forEach(function(d){var x0=x(acc),w=x(acc+d[0])-x0-2;acc+=d[0];var r=VZ.el("rect",{x:x0,y:10,width:Math.max(w,1),height:24,rx:d[0]>3?3:0,role:"img","aria-label":d[1]+" "+d[0]+"%"},s);r.style.fill=d[2];
-  if(d[0]>=5)VZ.el("text",{x:x0+(d[0]>10?0:w/2),y:54,"text-anchor":d[0]>10?"start":"middle",class:"t-strong"},s).textContent=d[0]+"%";
-  VZ.tip(r,function(){return"<b>"+d[1]+"</b>"+d[0]+"% of 99 G2 reviews"})})});
+ function pick(i){segs.forEach(function(r,k){r.style.stroke=k===i?"var(--ink1)":"none"});var d=D[i];out.innerHTML="<b>"+d[1]+": "+d[0]+"%</b> of 99 reviews, about "+Math.round(d[0]*0.99)+" reviews."+(i===0?" Two thirds give full marks.":"")}
+ D.forEach(function(d,i){var x0=x(acc),x1=x(acc+d[0]),w=x1-x0-2,mid=x0+w/2;acc+=d[0];
+  var r=VZ.el("rect",{x:x0,y:6,width:Math.max(w,2),height:24,rx:3,role:"button","aria-label":d[1]+" "+d[0]+"%","stroke-width":2},s);r.style.fill=d[2];segs.push(r);
+  if(d[0]>=5){var tx=Math.min(Math.max(mid,14),W-14);VZ.el("line",{x1:mid,x2:mid,y1:32,y2:38,class:"axis"},s);VZ.el("text",{x:tx,y:54,"text-anchor":"middle",class:"t-strong"},s).textContent=d[0]+"%"}
+  VZ.tip(r,function(){return"<b>"+d[1]+"</b>"+d[0]+"% of 99 G2 reviews"});act(r,function(){pick(i)})});
+ pick(0)});
 
 /* interview cycle */
 var STEPS=[

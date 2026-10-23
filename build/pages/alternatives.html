@@ -3,16 +3,16 @@
 #al .al-filter{display:flex;flex-wrap:wrap;gap:6px;margin-top:24px}
 #al .al-filter button{appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:3px;padding:8px 12px;font:500 13px/1 var(--sans);cursor:pointer}
 #al .al-filter button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
-#al .al-brief{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+#al .al-brief{display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px}#al .al-side{margin-top:28px;position:sticky;top:76px}
 #al .al-brief div{background:var(--panel);border-radius:6px;padding:12px 14px;font-size:13.5px}
 #al .al-brief b{display:block;font:500 11.5px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px}
 #al .al-lay{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:20px;align-items:start;margin-top:4px}
 #al .al-b{cursor:pointer;outline:none;transition:opacity .35s}
-#al .al-b.dim{opacity:.18}
+#al .al-b.dim circle.m{fill:var(--ink3)}#al .al-b.dim text{fill:var(--ink2);font-weight:400!important}#al .al-b.dim{opacity:.85}
 #al .al-b circle.m{stroke:var(--ring);stroke-width:2}
 #al .al-b.sel circle.m,#al .al-b:focus-visible circle.m{stroke:var(--ink1);stroke-width:2.5}
 #al .al-b text{font-size:12px;fill:var(--ink1)}
-#al .al-card{margin-top:28px;position:sticky;top:76px}
+#al .al-card{margin-top:0}
 #al .al-card h3{font-size:20px;margin:6px 0 2px}
 #al .al-card .sub{font-size:13px;color:var(--ink2)}
 #al .al-card dl{margin:14px 0 0;font-size:14px}
@@ -20,15 +20,19 @@
 #al .al-card dd{margin:3px 0 0}
 #al .lvl{display:inline-flex;align-items:center;gap:6px;font:500 12.5px/1 var(--sans);padding:5px 9px;border-radius:3px;background:var(--panel);color:var(--ink)}
 #al .lvl i{width:10px;height:10px;border-radius:50%;display:inline-block}
-#al .al-lad{margin-top:28px;display:grid;grid-template-columns:minmax(130px,220px) repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:6px;overflow:hidden;font-size:13.5px}
-#al .al-lad>div{padding:10px 12px;border-bottom:1px solid var(--line);border-left:1px solid var(--line);transition:background .3s,opacity .3s}
-#al .al-lad>div.h{background:var(--panel);font:500 12px/1.3 var(--sans);color:var(--ink2);display:flex;align-items:center;gap:6px}
-#al .al-lad>div.rh{border-left:0;font-weight:500}
-#al .al-lad>div.rh button{appearance:none;border:0;background:none;color:var(--ink);font:inherit;text-align:left;padding:0;cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
-#al .al-lad>div.on{background:var(--accent-soft)}
-#al .al-lad>div.off{opacity:.35}
-#al .al-lad .chip2{display:inline-flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:4px 8px;margin:2px 4px 2px 0;font-size:12.5px}
-#al .al-lad .chip2 i{width:9px;height:9px;border-radius:50%;display:inline-block}
+#al .al-lad{margin-top:28px;border:1px solid var(--line);border-radius:6px;overflow:hidden;font-size:13.5px}
+#al .al-lad .row{display:grid;grid-template-columns:minmax(150px,230px) 150px minmax(0,1fr);gap:14px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);transition:background .3s,opacity .3s}
+#al .al-lad .row:last-child{border-bottom:0}
+#al .al-lad .row button{appearance:none;border:0;background:none;color:var(--ink);font:500 13.5px/1.3 var(--sans);text-align:left;padding:0;cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+#al .al-lad .row.on{background:var(--accent-soft)}
+#al .al-lad .row.off{opacity:.5}
+#al .al-lad .mt{display:flex;align-items:center;gap:10px}
+#al .al-lad .cells{display:flex;gap:2px}
+#al .al-lad .cells span{width:28px;height:16px}
+#al .al-lad .cells span:last-child{border-radius:0 4px 4px 0}
+#al .al-lad .mt b{font-weight:600;font-size:13px}
+#al .al-lad .chip2{display:inline-flex;align-items:center;gap:7px;background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:4px 8px;margin:2px 4px 2px 0;font-size:13px}
+#al .lvl .sig{margin-right:2px}
 #al .cn-pane{margin-top:20px}
 #al .cn-gap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;margin-top:0}
 #al .cn-bar{margin-top:16px}
@@ -53,9 +57,9 @@
 #al .rk .segs span{font-size:11.5px;padding:2px 7px;border-radius:3px;background:var(--bg);color:var(--ink2);border:1px solid var(--line)}
 #al .rk .segs span.y{background:var(--accent-soft);color:var(--ink);border-color:transparent;font-weight:500}
 #al .rk .icon{background:var(--bad-soft);color:var(--bad)}
-@media (max-width:980px){#al .al-lay{grid-template-columns:1fr}#al .al-card{position:static}#al .rk-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:980px){#al .al-lay{grid-template-columns:1fr}#al .al-side{position:static}#al .rk-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){#al .al-brief,#al .cn-gap,#al .rk-grid{grid-template-columns:1fr}#al .cn-flow{grid-template-columns:1fr}#al .cn-flow .ar{height:26px;transform:rotate(90deg)}
-#al .al-lad{grid-template-columns:1fr}#al .al-lad>div{border-left:0}#al .al-lad>div.h:not(.hx){display:none}#al .al-lad>div.c:empty{display:none}#al .al-lad>div.c::before{content:attr(data-l);display:block;font-size:11.5px;color:var(--ink2);margin-bottom:2px}}
+#al .al-lad .row{grid-template-columns:1fr;gap:8px}}
 @media (prefers-reduced-motion:reduce){#al *{transition:none!important}}
 </style>
 <div id="al">
@@ -68,14 +72,13 @@
 
 <section class="sec" style="margin-top:36px">
   <div class="al-filter" id="flt" role="group" aria-label="Filter by segment"></div>
-  <div class="al-brief" id="brief" aria-live="polite"></div>
   <div class="al-lay">
     <div class="viz">
       <div class="viz-h"><h3>Price against scope</h3><p>Click a bubble to open its card</p></div>
       <div class="legend" id="mlegend" aria-hidden="true"></div>
       <div id="map"></div>
     </div>
-    <div class="result al-card" id="card" aria-live="polite"></div>
+    <div class="al-side"><div class="result al-card" id="card" aria-live="polite"></div><div class="al-brief" id="brief" aria-live="polite"></div></div>
   </div>
   <details class="more"><summary>The full landscape as a table</summary><div class="tw"><table class="t" id="ltable">
     <thead><tr><th>Alternative</th><th>Where it competes</th><th>Price</th><th>Why buyers choose it</th><th>One Click LCA's best answer</th><th>Threat</th></tr></thead><tbody></tbody></table></div></details>
@@ -85,7 +88,7 @@
   <span class="eyebrow">Threat</span>
   <h2>Threat level by segment</h2>
   <div class="al-lad" id="lad"></div>
-  <p class="mini" style="margin-top:10px">An upward arrow marks a threat that is rising. Click a segment name to filter the whole page.</p>
+  <p class="mini" style="margin-top:10px">Bars show the highest threat in each segment; the signal icon shows each alternative's level and an upward arrow marks a rising threat. Click a segment to filter the page.</p>
 </section>
 
 <section class="sec">
@@ -156,12 +159,12 @@ msme:["Ecochain, Emidat, EPD Hub packs and association tools","Lower entry price
 ment:["Sphera, the incumbent, and Makersite","Enterprise suite cross-sell and PLM scale across product catalogues.","The SimaPro and One Click LCA portfolio with construction depth."],
 exp:["openLCA","It is free.","SimaPro, now in the group."],
 low:["Consultant and spreadsheet","No subscription for one or two projects a year.","Per-project and consultant licences, and cost per EPD against €5,000 to €20,000 consultant EPDs."]};
-var TY=[["One Click LCA group","var(--s1)"],["Free or public","var(--s2)"],["Paid software","var(--s3)"],["Services and spreadsheets","var(--s4)"]];
-var LV={3:["High","var(--critical)"],2:["Medium","var(--warning)"],1:["Low","var(--good)"]};
+var TY=[["One Click LCA","var(--s1)"],["Free or public","var(--s2)"],["Paid software","var(--s3)"],["Services and spreadsheets","var(--s4)"],["SimaPro, in the group","var(--s7)"]];
+var LV={3:"High",2:"Medium",1:"Low"};
 /* name, sub, type, price x, scope y, threat level, rising, segments, where, price, why, answer, tag */
 var A=[
 ["One Click LCA","",0,78,80,0,0,["all"],"Every segment on this page","Subscriptions; value for money is its weakest review score (Capterra 4.0)","","",""],
-["SimaPro","PRé Sustainability, in the group since September 2025",0,66,74,0,0,["exp","ment"],"LCA experts and multi-sector manufacturers","Not compared here","Depth of modelling, scientific control and an established expert community","The expert tier of the portfolio","In the group"],
+["SimaPro","PRé Sustainability, in the group since September 2025",4,66,74,0,0,["exp","ment"],"LCA experts and multi-sector manufacturers","Not compared here","Depth of modelling, scientific control and an established expert community","The expert tier of the portfolio","In the group"],
 ["EC3","Building Transparency, non-profit",1,20,66,3,0,["us"],"US designers, contractors and procurement","Core free; EC3 2.0 beta with a paid membership announced 20 Oct 2026","Free, neutral, the default EPD database for US procurement","Whole-building compliance across schemes, Carbon Designer 3D, Autodesk partnership, global data","High in US"],
 ["openLCA","",1,12,52,1,0,["exp"],"LCA experts and universities","Free software","Free","SimaPro for experts; One Click LCA for speed","Low"],
 ["National tools","LCAbyg, IVL BM, ELODIE, NMD tools",1,18,24,3,0,["nord"],"Single-country designers in Denmark, Sweden, France and the Netherlands","LCAbyg DKK 5,900 to 9,900 a year; IVL BM has a free tier","Official status, local language, low price","One platform across countries and schemes; readiness for the EU method in 2028; certification on the same model","High locally"],
@@ -185,28 +188,36 @@ function inSeg(a){return cur==="all"||a[7].indexOf("all")>=0||a[7].indexOf(cur)>
 
 /* filter */
 var flt=$("flt");SEG.forEach(function(s){var b=document.createElement("button");b.type="button";b.textContent=s[1];b.dataset.k=s[0];b.onclick=function(){setSeg(s[0])};flt.appendChild(b)});
-$("mlegend").innerHTML=TY.map(function(t){return '<span><i style="background:'+t[1]+'"></i>'+t[0]+'</span>'}).join("")+'<span>Bubble size: threat level</span>';
+$("mlegend").innerHTML=TY.map(function(t){return '<span><i style="background:'+t[1]+'"></i>'+t[0]+'</span>'}).join("")+'<span>Bubble size and bars: threat level</span>';
 
 /* table */
 var tb=document.querySelector("#ltable tbody");A.slice(2).forEach(function(a){var tr=document.createElement("tr");[a[0]+(a[1]?" ("+a[1]+")":""),a[8],a[9],a[10],a[11],a[12]].forEach(function(t,i){var c=document.createElement(i?"td":"th");c.textContent=t;tr.appendChild(c)});tb.appendChild(tr)});
 
 /* map */
 var host=$("map"),svg,G=[];
-function build(){host.innerHTML="";G=[];var w=Math.max(300,host.clientWidth),m=w<560,h=m?Math.round(w*1.45):460,l=m?22:30,r=m?8:12,t=10,b=m?30:34;
+function build(){host.innerHTML="";G=[];var w=Math.max(300,host.clientWidth),m=w<560,h=m?Math.round(w*1.35):480,l=m?22:30,r=m?8:12,t=10,b=m?30:34;
  svg=VZ.svg(host,w,h,"Map of alternatives by price to the buyer and scope. One Click LCA and SimaPro sit at premium price and broad scope. EC3, openLCA and national tools sit at low price. Sphera and Makersite sit at premium price and broad scope for manufacturers. Consultant studies are paid and narrow. The table below the map lists every alternative.");svg.setAttribute("role","group");
- var X=VZ.lin(0,100,l,w-r),Y=VZ.lin(0,100,h-b,t);
+ var X=VZ.lin(0,100,l,w-r),Y=VZ.lin(0,100,h-b,t),boxes=[],P=[];
  VZ.el("rect",{x:l,y:t,width:w-l-r,height:h-t-b,fill:"none",class:"axis"},svg);
  VZ.el("line",{x1:X(50),x2:X(50),y1:t,y2:h-b,class:"grid"},svg);VZ.el("line",{x1:l,x2:w-r,y1:Y(50),y2:Y(50),class:"grid"},svg);
- [["Free and broad",l+8,t+16,"start"],["Paid and broad",w-r-8,t+16,"end"],["Free and narrow",l+8,h-b-8,"start"],["Paid and narrow",w-r-8,h-b-8,"end"]].forEach(function(q){VZ.el("text",{x:q[1],y:q[2],"text-anchor":q[3],class:"t-muted"},svg).textContent=q[0].toUpperCase()});
+ [["Free and broad",l+8,t+18,"start"],["Paid and broad",w-r-8,t+18,"end"],["Free and narrow",l+8,Y(50)+18,"start"],["Paid and narrow",w-r-8,Y(50)+18,"end"]].forEach(function(q){var tx=VZ.el("text",{x:q[1],y:q[2],"text-anchor":q[3]},svg);tx.style.fill="var(--ink2)";tx.style.fontSize="12px";tx.style.letterSpacing=".04em";tx.textContent=q[0].toUpperCase();var bw=q[0].length*8.2;boxes.push(q[3]==="end"?[q[1]-bw,q[2]-12,q[1],q[2]+3]:[q[1],q[2]-12,q[1]+bw,q[2]+3])});
  VZ.el("text",{x:(l+w-r)/2,y:h-8,"text-anchor":"middle",class:"t-strong"},svg).textContent="Price to the buyer: free to premium →";
- VZ.el("text",{x:-(t+h-b)/2,y:m?12:14,"text-anchor":"middle",class:"t-strong",transform:"rotate(-90)"},svg).textContent="Scope: one task to multi-standard →";
- A.forEach(function(a,i){var x=X(a[3]),y=Y(a[4]),rad=(m?.75:1)*(a[5]?[0,7,10,13][a[5]]:12),g=VZ.el("g",{class:"al-b",role:"button",transform:"translate("+x+","+y+")","aria-label":a[0]},svg);
+ VZ.el("text",{x:-(t+h-b)/2,y:14,"text-anchor":"middle",class:"t-strong",transform:"rotate(-90)"},svg).textContent="Scope: one task to multi-standard →";
+ A.forEach(function(a,i){P.push([X(a[3]),Y(a[4]),(m?.8:1)*(a[5]?[0,7,10,13][a[5]]:12)])});
+ var SH={"Spreadsheets and free data":"Spreadsheets","CarboniCa and Preoptima":"CarboniCa","Emidat and Pathways":"Emidat","Tally and C.Scale":"Tally","Consultant studies":"Consultants","National tools":"National tools"},ov=function(a,b){return a[0]<b[2]&&a[2]>b[0]&&a[1]<b[3]&&a[3]>b[1]};
+ A.forEach(function(a,i){var p=P[i],x=p[0],y=p[1],rad=p[2],g=VZ.el("g",{class:"al-b",role:"button",transform:"translate("+x+","+y+")","aria-label":a[0]},svg);
   VZ.el("circle",{r:Math.max(rad,14),fill:"transparent"},g);VZ.el("circle",{class:"m",r:rad,fill:TY[a[2]][1]},g);
-  var SH={"Spreadsheets and free data":"Spreadsheets","CarboniCa and Preoptima":"CarboniCa","Emidat and Pathways":"Emidat, Pathways","Tally and C.Scale":"Tally","Consultant studies":"Consultants"},right=a[3]<(m?55:70),tx=VZ.el("text",{x:right?rad+5:-rad-5,y:4,"text-anchor":right?"start":"end"},g);tx.textContent=m&&SH[a[0]]?SH[a[0]]:a[0];if(m)tx.style.fontSize="11px";if(i<2)tx.style.fontWeight="600";
-  VZ.tip(g,function(){return "<b>"+(a[5]?LV[a[5]][0]+" threat"+(a[6]?", rising":""):"One Click LCA group")+"</b><span class='m'>"+a[0]+"<br>"+a[9]+"</span>"});
+  var lab=m&&SH[a[0]]?SH[a[0]]:a[0],tw=lab.length*(i<2?7.4:6.9),best=null,bs=1e9;
+  [[rad+5,4,"start"],[-rad-5,4,"end"],[0,-rad-6,"middle"],[0,rad+16,"middle"],[rad*.7+3,-rad*.7-4,"start"],[-rad*.7-3,-rad*.7-4,"end"],[rad*.7+3,rad*.7+13,"start"],[-rad*.7-3,rad*.7+13,"end"]].forEach(function(c){var x0=x+c[0]-(c[2]==="end"?tw:c[2]==="middle"?tw/2:0),bx=[x0,y+c[1]-12,x0+tw,y+c[1]+3],sc=0;
+   if(bx[0]<l+2||bx[2]>w-r-2||bx[1]<t+2||bx[3]>h-b-2)sc+=500;boxes.forEach(function(q){if(ov(bx,q))sc+=100});
+   P.forEach(function(q,j){if(j===i)return;var cx=Math.max(bx[0],Math.min(q[0],bx[2])),cy=Math.max(bx[1],Math.min(q[1],bx[3]));if((cx-q[0])*(cx-q[0])+(cy-q[1])*(cy-q[1])<(q[2]+2)*(q[2]+2))sc+=20});
+   if(sc<bs){bs=sc;best=[c,bx]}});
+  boxes.push(best[1]);var tx=VZ.el("text",{x:best[0][0],y:best[0][1],"text-anchor":best[0][2]},g);tx.textContent=lab;if(i<2)tx.style.fontWeight="600";
+  VZ.tip(g,function(){return "<b>"+(a[5]?LV[a[5]]+" threat"+(a[6]?", rising":""):TY[a[2]][0])+"</b><span class='m'>"+a[0]+"<br>"+a[9]+"</span>"});
   g.addEventListener("click",function(){selA=i;paint()});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();selA=i;paint()}});G.push(g)});
  paint()}
-function lvl(a){if(!a[5])return '<span class="lvl"><i style="background:var(--s1)"></i>'+a[12]+'</span>';return '<span class="lvl"><i style="background:'+LV[a[5]][1]+'"></i>'+a[12]+(a[6]?" ↑":"")+'</span>'}
+function sig(l){var o='<svg class="sig" width="16" height="13" viewBox="0 0 16 13" aria-hidden="true">';for(var k=1;k<=3;k++)o+='<rect x="'+(k-1)*5.5+'" y="'+(13-k*4.3)+'" width="4" height="'+(k*4.3)+'" rx="1" style="fill:'+(k<=l?'var(--ink1)':'var(--axis)')+'"/>';return o+'</svg>'}
+function lvl(a){if(!a[5])return '<span class="lvl"><i style="background:'+TY[a[2]][1]+'"></i>'+a[12]+'</span>';return '<span class="lvl">'+sig(a[5])+a[12]+(a[6]?" ↑":"")+'</span>'}
 function card(){var a=A[selA],c=$("card");c.innerHTML="";
  var h='<span class="eyebrow">'+TY[a[2]][0]+'</span><h3></h3>'+(a[1]?'<p class="sub"></p>':'')+'<div style="margin-top:10px">'+lvl(a)+'</div><dl></dl>';c.innerHTML=h;c.querySelector("h3").textContent=a[0];if(a[1])c.querySelector(".sub").textContent=a[1];
  var dl=c.querySelector("dl");[["Where it competes",a[8]],["Price",a[9]],["Why buyers choose it",a[10]],["One Click LCA's best answer",a[11]]].forEach(function(r){if(!r[1])return;var dt=document.createElement("dt"),dd=document.createElement("dd");dt.textContent=r[0];dd.textContent=r[1];dl.appendChild(dt);dl.appendChild(dd)});
@@ -215,10 +226,10 @@ function paint(){G.forEach(function(g,i){g.classList.toggle("dim",!inSeg(A[i]));
 
 /* threat ladder */
 var lad=$("lad");
-function ladder(){var h='<div class="h hx rh">Segment</div>'+[3,2,1].map(function(l){return '<div class="h"><i style="width:10px;height:10px;border-radius:50%;display:inline-block;background:'+LV[l][1]+'"></i>'+LV[l][0]+' threat</div>'}).join("");
- SEG.slice(1).forEach(function(s){var cls=cur==="all"?"":cur===s[0]?" on":" off";h+='<div class="rh'+cls+'"><button type="button" data-k="'+s[0]+'">'+s[1]+'</button></div>';
-  [3,2,1].forEach(function(l){var items=A.filter(function(a){return a[5]===l&&a[7].indexOf(s[0])>=0&&!(s[0]==="uk"&&a[0].indexOf("Spreadsheets")===0)});
-   h+='<div class="c'+cls+'" data-l="'+LV[l][0]+' threat">'+items.map(function(a){return '<span class="chip2"><i style="background:'+LV[l][1]+'"></i>'+a[0]+(a[6]?" ↑":"")+'</span>'}).join("")+'</div>'})});
+function ladder(){var h="";
+ SEG.slice(1).forEach(function(s){var cls=cur==="all"?"":cur===s[0]?" on":" off",items=A.filter(function(a){return a[5]&&a[7].indexOf(s[0])>=0&&!(s[0]==="uk"&&a[0].indexOf("Spreadsheets")===0)}).sort(function(a,b){return b[5]-a[5]}),mx=Math.max.apply(null,items.map(function(a){return a[5]}));
+  var cells="";for(var k=1;k<=3;k++)cells+='<span style="background:'+(k<=mx?"var(--seq-"+(k+2)+")":"var(--grid)")+'"></span>';
+  h+='<div class="row'+cls+'"><button type="button" data-k="'+s[0]+'">'+s[1]+'</button><div class="mt" role="img" aria-label="Highest threat: '+LV[mx]+'"><span class="cells">'+cells+'</span><b>'+LV[mx]+'</b></div><div class="ch">'+items.map(function(a){return '<span class="chip2">'+sig(a[5])+a[0]+(a[6]?" ↑":"")+'</span>'}).join("")+'</div></div>'});
  lad.innerHTML=h;[].forEach.call(lad.querySelectorAll("button"),function(b){b.onclick=function(){setSeg(b.dataset.k);$("flt").scrollIntoView({behavior:"smooth",block:"start"})}})}
 
 /* risks */

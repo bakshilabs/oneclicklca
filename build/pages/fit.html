@@ -21,7 +21,7 @@ button.fi-row[aria-expanded="true"]{background:var(--accent-soft)}
 .fi-row .rq{padding:12px 10px 12px 0;font-size:14.5px;font-weight:500;display:flex;align-items:center;gap:8px}
 .fi-row .c{display:grid;place-items:center;height:100%}
 .fi-row .c i{width:14px;height:14px;border-radius:50%;background:var(--accent);display:block}
-.fi-row .c i.o{background:none;border:1.5px solid var(--grid);width:8px;height:8px}
+.fi-row .c i.o{background:none;border:1.5px solid var(--ink3);width:8px;height:8px}
 .fi-row .chev{width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:2;transition:transform .2s}
 button.fi-row[aria-expanded="true"] .chev{transform:rotate(180deg)}
 .fi-gap{display:inline-flex;align-items:center;gap:4px;font:500 11.5px/1.2 var(--sans);color:var(--warn);background:var(--warn-soft);border-radius:3px;padding:2px 7px;white-space:nowrap}
@@ -37,12 +37,19 @@ button.fi-row[aria-expanded="true"] .chev{transform:rotate(180deg)}
  .fi-row.h .lg{display:none}.fi-row.h .sm{display:inline!important;font-size:10.5px}
  .fi-ex{grid-template-columns:1fr}
 }
-.fi-les{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
-.fi-les div{background:var(--panel);border-radius:6px;padding:20px}
-.fi-les h3{font-size:17px;margin-bottom:6px}
-.fi-les p{font-size:14px;color:var(--muted)}
-@media (max-width:900px){.fi-les{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){.fi-les{grid-template-columns:1fr}}
+.fi-lw{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;align-items:stretch}
+.fi-les{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fi-les button{appearance:none;border:0;text-align:left;background:var(--panel);color:var(--ink);border-radius:6px;padding:16px;font:500 15px/1.3 var(--sans);cursor:pointer;transition:transform .15s,background .15s}
+.fi-les button:hover{transform:translateY(-2px)}
+.fi-les button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.fi-les button[aria-pressed="true"] .icon{background:rgba(255,255,255,.2);color:var(--on-accent)}
+.fi-ld{background:var(--accent-soft);border-radius:6px;padding:20px 22px}
+.fi-ld .k{font:500 11.5px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:14px 0 4px}
+.fi-ld h3{font-size:19px}
+.fi-ld p{font-size:14.5px}
+.fi-ld a.btn{margin-top:14px}
+@media (max-width:760px){.fi-lw{grid-template-columns:1fr}}
+.viz svg .t-muted{font-size:12px}
 </style>
 
 <header class="phead">
@@ -75,17 +82,15 @@ button.fi-row[aria-expanded="true"] .chev{transform:rotate(180deg)}
   <p class="intro">Each dot marks where the evidence for a requirement comes from. Select a requirement to read it.</p>
   <p class="mini" style="margin-top:6px">On small screens, RVA is Rafael Viñoly Architects and F+P is Foster + Partners.</p>
   <div class="fi-mx" id="fi-mx"></div>
-  <div class="callout" style="display:flex;gap:14px;align-items:flex-start"><span class="fi-gap" style="margin-top:3px"><svg viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3zM12 10v5M12 18v.5"/></svg>Gap</span><p>My title has never been product marketing manager. The closest work is co-creating and launching a service line at Foster + Partners and running sales and marketing at Atlas Learn. This site shows the work at the standard the role needs.</p></div>
+  <div class="callout" style="display:flex;gap:14px;align-items:flex-start"><span class="fi-gap" style="margin-top:3px"><svg viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3zM12 10v5M12 18v.5"/></svg>Gap</span><p>My title has never been product marketing manager. The closest work is launching a service line at Foster + Partners and running sales and marketing at Atlas Learn.</p></div>
 </section>
 
 <section class="sec">
   <span class="eyebrow">What the buying side teaches</span>
   <h2>Four things I learnt from selling to these buyers</h2>
-  <div class="fi-les">
-    <div class="rv"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><h3>The trigger is a date</h3><p>Clients bought carbon work when a permit, a certification or a board target set a deadline. Without a date, the work slipped to next year.</p></div>
-    <div class="rv"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3.5"/><circle cx="16" cy="8" r="3.5"/><path d="M2 20a6 6 0 0 1 12 0M10 20a6 6 0 0 1 12 0"/></svg></span><h3>User and signer differ</h3><p>The analyst wants fewer hours. The partner wants the fee, the credit or the win. A pitch that serves only one of them stalls.</p></div>
-    <div class="rv"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 20h18M6 16l4-5 3 3 5-7"/></svg></span><h3>Visual evidence wins</h3><p>A chart that shows two design options against a limit does more than a report. Buyers decide when they can see the consequence.</p></div>
-    <div class="rv"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z"/></svg></span><h3>Trust is the person on the call</h3><p>Clients came back because someone answered fast and knew the rule. The One Click LCA reviews say the same about its support team.</p></div>
+  <div class="fi-lw">
+    <div class="fi-les" id="fi-les" role="group" aria-label="Choose a lesson"></div>
+    <div class="fi-ld" id="fi-ld" aria-live="polite"></div>
   </div>
 </section>
 
@@ -128,7 +133,7 @@ function showDet(){
 function act(g,t,i){g.dataset.k=t+i;g.addEventListener("click",function(){sel={t:t,i:i};showDet()});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();sel={t:t,i:i};showDet()}});items.push(g)}
 function draw(){
  host.innerHTML="";items=[];var W=Math.max(300,host.clientWidth),nar=W<620,m={l:4,r:6,t:6},bh=nar?16:30,
-  rows=nar?[0,1,2,3,4,5]:[0,1,2,3,3,4],rh=nar?bh+22:bh+8,laneY=function(r){return m.t+r*rh+(nar?16:0)},rolesH=(nar?6:5)*rh,mkTop=m.t+rolesH+14,mkH=(show.talk||show.learn)?(nar?92:84):0,H=mkTop+mkH+26;
+  rows=nar?[0,1,2,3,4,5]:[0,1,2,3,3,4],rh=nar?bh+22:bh+8,laneY=function(r){return m.t+r*rh+(nar?16:0)},rolesH=(nar?6:5)*rh,mkTop=m.t+rolesH+(nar?2:6),mkH=(show.talk||show.learn)?(nar?58:62):0,H=mkTop+mkH+26;
  var s=VZ.svg(host,W,H,"Career timeline from 2008 to 2026: Rafael Viñoly Architects 2008 to 2010, WSP 2010 to 2013, SOM 2013 to 2015, Foster + Partners 2015 to 2026, Atlas Learn from 2025, with talks and study as markers.");s.setAttribute("role","group");
  var x=VZ.lin(2008,2027,m.l,W-m.r);
  for(var y=2008;y<=2026;y+=2){VZ.el("line",{x1:x(y),x2:x(y),y1:m.t,y2:H-24,"class":"grid"},s);var t=VZ.el("text",{x:x(y),y:H-6,"text-anchor":"middle"},s);t.textContent=nar?"’"+String(y).slice(2):y}
@@ -156,7 +161,7 @@ draw();var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeou
 /* ---------- requirement matrix ---------- */
 var COLS=["Viñoly","WSP","SOM","Foster + Partners","Atlas Learn","Teaching and talks","This site"];
 var Q=[
- ["7+ years of product marketing or closely related",[0,1,1,1,1,0,1],"Eighteen years of selling and launching technical services to the same buyers. I co-created and launched an advisory service line at Foster + Partners, led pitches that won more than £10 million a year in fees and now run sales, marketing and commercial operations at Atlas Learn.",[["CV","cv.html"]],1],
+ ["7+ years of product marketing or closely related",[0,1,1,1,1,0,0],"Eighteen years of selling and launching technical services to the same buyers. I co-created and launched an advisory service line at Foster + Partners, led pitches that won more than £10 million a year in fees and now run sales, marketing and commercial operations at Atlas Learn.",[["CV","cv.html"]],1],
  ["Complex, engineering-driven products",[1,1,1,1,0,1,0],"I built early design tools that estimate whole life carbon before building elements are detailed and sat on the Foster + Partners whole life carbon leadership team. I have modelled building performance in EnergyPlus, Radiance, IES and Ladybug since 2008, spoke on a One Click LCA Bootcamp panel in 2023 and organised the London LCA Forum in 2022.",[["Portfolio","portfolio.html"],["Buyers","buyers.html"]]],
  ["Positioning and clear communication",[0,0,0,1,0,1,1],"I correlated every rating system Foster + Partners works with into one framework of ten themes, the same problem as explaining 140 standards to a buyer. I have presented to Fortune 500 chief executives and at COP26, COP28, SimBuild and Bâtiment durable Québec.",[["Positioning","positioning.html"]]],
  ["Business judgment about metrics",[0,0,0,1,0,0,1],"I set building performance targets that fitted client budgets and ESG commitments. I also priced, negotiated and won a multi-year advisory contract with a global pharmaceutical company.",[["Win Rate","metrics.html"],["Enablement","enablement.html"]]],
@@ -179,5 +184,18 @@ Q.forEach(function(q,i){
  b.addEventListener("click",function(){var o=b.getAttribute("aria-expanded")!=="true";b.setAttribute("aria-expanded",o);ex.hidden=!o});
  mx.appendChild(b);mx.appendChild(ex);
 });
+/* ---------- lessons ---------- */
+var LS=[
+ ["The trigger is a date",'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',"Clients bought carbon work when a permit, a certification or a board target set a deadline. Without a date, the work slipped to next year.","Tie every launch to the next regulatory date for its segment, and start the campaign before that date.","Demand Drivers","demand.html"],
+ ["The user and the signer differ",'<circle cx="8" cy="8" r="3.5"/><circle cx="16" cy="8" r="3.5"/><path d="M2 20a6 6 0 0 1 12 0M10 20a6 6 0 0 1 12 0"/>',"The analyst wants fewer hours. The partner wants the fee, the credit or the win. A pitch that serves only one of them stalls.","Write a separate message for the practitioner and for the signer in each buying committee.","Buyers","buyers.html"],
+ ["Visual evidence wins the room",'<path d="M3 20h18M6 16l4-5 3 3 5-7"/>',"A chart that shows two design options against a limit does more than a report. Buyers decide when they can see the consequence.","Give sellers a business case calculator that shows the buyer's own numbers against the alternative.","Enablement","enablement.html"],
+ ["Trust is the person on the call",'<path d="M4 5h16v11H9l-5 4V5z"/>',"Clients came back because someone answered fast and knew the rule. The One Click LCA reviews say the same about its support team.","Use the 4.9 support score as a proof point and train sellers to answer rule questions on the call.","Positioning","positioning.html"]
+];
+var lg=document.getElementById("fi-les"),ld=document.getElementById("fi-ld");
+function showL(i){[].forEach.call(lg.children,function(b,j){b.setAttribute("aria-pressed",i===j)});var l=LS[i];
+ ld.innerHTML='<span class="eyebrow">Lesson '+(i+1)+' of 4</span><h3 style="margin-top:8px"></h3><p class="k">What I saw on the buying side</p><p class="s"></p><p class="k">How I would apply it at One Click LCA</p><p class="a"></p><a class="btn ghost" href="'+l[5]+'"></a>';
+ txt(ld.querySelector("h3"),l[0]);txt(ld.querySelector(".s"),l[2]);txt(ld.querySelector(".a"),l[3]);txt(ld.querySelector("a"),"See it on "+l[4]);}
+LS.forEach(function(l,i){var b=document.createElement("button");b.type="button";b.innerHTML='<span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24">'+l[1]+'</svg></span><span style="display:block"></span>';txt(b.lastChild,l[0]);b.addEventListener("click",function(){showL(i)});lg.appendChild(b)});
+showL(0);
 })();
 </script>

@@ -1,11 +1,14 @@
 <!--meta title="Enablement" desc="A business case calculator, a discovery guide, objection handling and a battlecard for One Click LCA sellers and partners."-->
 <style>
 #en-main .viz{margin-top:0}
+#en-main svg .t-muted{font-size:12px}
 .en-calc{display:grid;grid-template-columns:320px minmax(0,1fr);gap:20px;margin-top:20px;align-items:start}
-.en-calc .controls{background:var(--panel);border-radius:6px;padding:18px 20px 16px;position:sticky;top:76px}
+.en-calc .controls{background:var(--panel);border-radius:6px;padding:16px 20px 16px}
 .en-calc .controls h3{font-size:16px}
+.en-calc .ctl{margin-top:11px}
+.en-calc .ctl .hint{font-size:11.5px}
 .en-out{display:grid;gap:14px;min-width:0}
-.en-hero{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 20px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px 22px}
+.en-hero{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 20px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 22px}
 .en-hero .big{margin:0;font-size:clamp(36px,4.4vw,54px)}
 .en-hero p{font-size:14px;color:var(--muted);max-width:44ch}
 .en-hero .stat-ic{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;border-radius:3px;padding:3px 8px}
@@ -13,117 +16,122 @@
 .en-s3 div{background:var(--panel);border-radius:5px;padding:12px 14px}
 .en-s3 b{display:block;font:600 20px/1.15 var(--sans);letter-spacing:-.02em}
 .en-s3 span{font-size:12.5px;color:var(--muted)}
-.en-qs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin-top:18px;list-style:none;padding:0;counter-reset:q}
+.en-be{margin-top:14px}
+.en-qs{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:18px;list-style:none;padding:0;counter-reset:q}
 .en-qs li{background:var(--panel);border-radius:6px;padding:16px 18px 16px;font-size:15px;line-height:1.4;counter-increment:q;position:relative;animation:enIn .4s ease both}
 .en-qs li:before{content:counter(q);position:absolute;right:16px;top:14px;font:600 28px/1 var(--sans);color:var(--line)}
 .en-qs .tag{margin-bottom:10px;display:inline-flex;align-items:center;gap:5px}
 .en-qs .tag svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.en-persona{display:flex;gap:14px;align-items:center;margin-top:18px;font-size:14px;color:var(--muted)}
+.en-cov{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:13px;color:var(--muted)}
+.en-cov span{display:inline-flex;gap:6px;align-items:center}
+.en-cov b{color:var(--ink);font-variant-numeric:tabular-nums}
 @keyframes enIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.en-flip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
-.en-card{appearance:none;border:0;padding:0;background:none;font:inherit;color:inherit;text-align:left;cursor:pointer;perspective:1200px;display:grid}
-.en-in{display:grid;transition:transform .55s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}
-.en-card[aria-pressed="true"] .en-in{transform:rotateY(180deg)}
-.en-f{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:6px;padding:18px 20px;min-height:170px;display:flex;flex-direction:column;transition:visibility 0s linear .28s}
-.en-f.fr{background:var(--panel)}
-.en-f.bk{background:var(--accent-soft);transform:rotateY(180deg);visibility:hidden}
-.en-card[aria-pressed="true"] .fr{visibility:hidden}
-.en-card[aria-pressed="true"] .bk{visibility:visible}
-.en-f q{font:500 19px/1.3 var(--sans);letter-spacing:-.01em;quotes:"\201C" "\201D"}
-.en-f .who{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:block}
-.en-f .hint{margin-top:auto;padding-top:14px;font-size:12.5px;color:var(--accent);font-weight:500;display:flex;align-items:center;gap:6px}
-.en-f p{font-size:14px}
-.en-f .proof{margin-top:auto;padding-top:12px;font-size:13px;border-top:1px solid color-mix(in srgb,var(--accent) 30%,transparent);margin-top:12px}
-.en-f .proof b{display:block;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:500}
-.en-card:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
-.en-vs{margin-top:20px;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface)}
+.en-obj{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:14px;margin-top:20px;align-items:start}
+.en-ol{display:grid;gap:6px;align-content:start}
+.en-ol button{appearance:none;font:inherit;color:var(--ink);text-align:left;border:1px solid var(--line);background:var(--bg);border-radius:5px;padding:10px 14px;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center}
+.en-ol button:hover{border-color:var(--accent)}
+.en-ol button[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
+.en-ol small{font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.en-ol b{font-weight:500;font-size:15px;grid-column:1}
+.en-ol i{grid-row:1/3;grid-column:2;font-style:normal;color:var(--muted)}
+.en-od{background:var(--panel);border-radius:6px;padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.en-od q{font:500 21px/1.3 var(--sans);letter-spacing:-.01em}
+.en-od p{font-size:15px}
+.en-od .pf{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;background:var(--surface);border-radius:5px;padding:12px 14px;font-size:14px}
+.en-od .pf b{display:block;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.en-od .live{border-left:3px solid var(--accent);padding:10px 14px;background:var(--accent-soft);border-radius:0 5px 5px 0;font-size:14px}
+.en-od .live strong{font-size:18px}
+.en-meet{display:grid;grid-template-columns:1.2fr 1fr;margin-top:20px;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+.en-meet>div{padding:14px 18px;font-size:14px}
+.en-meet>div+div{border-left:1px solid var(--line)}
+.en-meet .k{font:500 12px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.en-meet q{font:500 16px/1.35 var(--sans)}
+.en-vs{margin-top:12px;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface)}
 .en-vsh{display:grid;grid-template-columns:1fr 64px 1fr;align-items:center;background:var(--panel)}
-.en-vsh div{padding:16px 20px}
-.en-vsh div:last-child{text-align:right}
-.en-vsh h3{font-size:17px}
-.en-vsh span{font-size:12.5px;color:var(--muted)}
-.en-vsh em{font-style:normal;justify-self:center;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:600 13px/1 var(--sans)}
+.en-vsh div{padding:14px 20px;display:flex;align-items:center;gap:8px}
+.en-vsh div:last-child{justify-content:flex-end}
+.en-vsh h3{font-size:16px}
+.en-vsh i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.en-vsh em{font-style:normal;justify-self:center;width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:600 13px/1 var(--sans)}
 .en-rows{list-style:none;margin:0;padding:0}
 .en-rows li{border-top:1px solid var(--line)}
-.en-rows button{appearance:none;border:0;background:none;width:100%;font:inherit;color:inherit;display:grid;grid-template-columns:1fr minmax(110px,200px) 1fr;align-items:center;gap:10px;padding:12px 20px;cursor:pointer;text-align:center}
+.en-rows button{appearance:none;border:0;background:none;width:100%;font:inherit;color:inherit;display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,1.2fr) minmax(0,1fr);align-items:center;gap:12px;padding:10px 20px;cursor:pointer}
 .en-rows button:hover,.en-rows button[aria-expanded="true"]{background:var(--panel)}
 .en-rows .d{font-size:14px;font-weight:500}
-.en-rows .sd{height:12px;border-radius:3px;background:var(--grid);position:relative}
-.en-rows .sd i{position:absolute;top:0;bottom:0;width:50%;border-radius:3px;transition:transform .5s}
-.en-rows .L .sd i{left:0;background:var(--s2)}
-.en-rows .R .sd i{right:0;background:var(--s1)}
-.en-rows .lab{font-size:12.5px;color:var(--muted)}
-.en-rows .L .lab.l,.en-rows .R .lab.r{color:var(--ink);font-weight:600}
-.en-rows .lab.l{text-align:left}.en-rows .lab.r{text-align:right}
-.en-rows .det{padding:0 20px 14px;font-size:14px;text-align:center;max-width:70ch;margin:0 auto}
-.en-tally{display:flex;justify-content:space-between;padding:14px 20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);gap:12px;flex-wrap:wrap}
-.en-btm{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-.en-btm .panel{padding:18px 20px}
-.en-btm q{font:500 17px/1.35 var(--sans)}
-@media (max-width:980px){.en-flip{grid-template-columns:1fr 1fr}}
-@media (max-width:900px){.en-calc{grid-template-columns:1fr}.en-calc .controls{position:static}}
-@media (max-width:640px){.en-flip,.en-btm{grid-template-columns:1fr}.en-s3{grid-template-columns:1fr 1fr}#en-main .viz{padding:16px 12px 12px}.en-f{min-height:0}.en-rows button{grid-template-columns:56px 1fr 56px;gap:6px;padding:12px 10px}.en-rows .lab{font-size:11px}.en-vsh{grid-template-columns:1fr 44px 1fr}.en-vsh div{padding:12px}.en-vsh h3{font-size:15px}}
-@media (prefers-reduced-motion:reduce){.en-in{transition:none}.en-qs li{animation:none}}
+.en-rows .L .d{text-align:right;grid-column:1}.en-rows .R .d{text-align:left;grid-column:3}
+.en-rows .sd{grid-column:2;grid-row:1;height:14px;position:relative;border-radius:3px}
+.en-rows .sd:before{content:"";position:absolute;left:50%;top:-6px;bottom:-6px;border-left:1px solid var(--ink3)}
+.en-rows .sd i{position:absolute;top:0;bottom:0;transition:width .5s}
+.en-rows .L .sd i{right:50%;background:var(--s2);border-radius:4px 0 0 4px}
+.en-rows .R .sd i{left:50%;background:var(--s1);border-radius:0 4px 4px 0}
+.en-rows .st{font-size:12px;color:var(--muted);display:block;font-weight:400}
+.en-rows .det{padding:0 20px 14px;font-size:14px;max-width:76ch;margin:0 auto;text-align:center}
+.en-tally{display:flex;justify-content:space-between;padding:12px 20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);gap:12px;flex-wrap:wrap}
+@media (max-width:900px){.en-calc,.en-obj{grid-template-columns:1fr}}
+@media (max-width:640px){.en-s3{grid-template-columns:1fr 1fr}#en-main .viz{padding:16px 12px 12px}.en-meet{grid-template-columns:1fr}.en-meet>div+div{border-left:0;border-top:1px solid var(--line)}.en-rows button{grid-template-columns:1fr;gap:6px;padding:10px 14px}.en-rows .L .d,.en-rows .R .d{grid-column:1;text-align:left}.en-rows .sd{grid-row:2;grid-column:1}.en-vsh{grid-template-columns:1fr 44px 1fr}.en-vsh div{padding:12px}.en-vsh h3{font-size:14px}}
+@media (prefers-reduced-motion:reduce){.en-qs li{animation:none}}
 </style>
 <header class="phead">
   <span class="eyebrow">Train sales channels</span>
   <h1>Enablement</h1>
-  <p class="lede">Sellers and resellers must justify an LCA licence to a buyer who is not an LCA expert, often against a free tool. Every tool here is built to be used on a live call without product marketing in the room.</p>
+  <p class="lede">Sellers must justify an LCA licence to buyers who are not LCA experts, often against a free tool. Each tool here works on a live call without product marketing present.</p>
 </header>
 <div id="en-main">
 <section class="sec lead-viz" aria-labelledby="en-h1">
   <span class="eyebrow">Business case</span>
-  <h2 id="en-h1">Cost of Doing Nothing</h2>
+  <h2 id="en-h1">Cost of doing nothing</h2>
   <div class="btnrow" role="group" aria-label="Buyer type" id="en-mode"><button type="button" aria-pressed="true" data-m="d">Design firm</button><button type="button" aria-pressed="false" data-m="m">Manufacturer</button></div>
   <div class="en-calc">
     <div class="controls" id="en-inputs"></div>
-    <div class="en-out">
+    <div class="en-out" id="en-out">
       <div class="en-hero" aria-live="polite" id="en-hero"></div>
       <div class="en-s3" id="en-s3"></div>
-      <div class="viz">
+      <div class="viz" id="en-wfv">
         <div class="viz-h"><h3>Year one, from the alternative to the net benefit</h3><p>Euros a year</p></div>
         <div class="legend"><span><i style="background:var(--s1);border-radius:2px"></i>Saving or income</span><span><i style="background:var(--s2);border-radius:2px"></i>Cost of the tool route</span><span><i style="background:var(--ink2);border-radius:2px"></i>Net benefit</span></div>
         <div id="en-wf"></div>
       </div>
-      <div class="viz">
-        <div class="viz-h"><h3 id="en-beh">Break-even</h3><p>Click the chart to set the volume.</p></div>
-        <div id="en-be"></div>
-      </div>
-      <p class="src">Illustrative model for a sales conversation, not a quote. Defaults are illustrative. Published licence prices are used where they exist; manufacturer licences are quoted, so that figure is an assumption.</p>
     </div>
   </div>
+  <div class="viz en-be">
+    <div class="viz-h"><h3 id="en-beh">Break-even</h3><p>Click the chart to set the volume.</p></div>
+    <div id="en-be"></div>
+  </div>
+  <p class="src" style="margin-top:10px">Illustrative model for a sales conversation, not a quote. Published licence prices are used where they exist; manufacturer licences are quoted, so that figure is an assumption.</p>
 </section>
 
 <section class="sec" aria-labelledby="en-h2">
   <span class="eyebrow">Discovery</span>
-  <h2 id="en-h2">Discovery Questions</h2>
+  <h2 id="en-h2">Discovery questions</h2>
   <p class="intro">Five questions per buyer that find the trigger, the cost today and the person who signs.</p>
   <div class="tabs" role="tablist" aria-label="Buyer persona" id="en-tabs">
     <button role="tab" id="en-t-d" aria-controls="en-p" aria-selected="true" data-p="d">Design firms</button>
     <button role="tab" id="en-t-c" aria-controls="en-p" aria-selected="false" data-p="c">Contractors</button>
     <button role="tab" id="en-t-m" aria-controls="en-p" aria-selected="false" data-p="m">Manufacturers</button>
   </div>
-  <div role="tabpanel" id="en-p" tabindex="0" aria-labelledby="en-t-d"><ol class="en-qs" id="en-qs"></ol></div>
+  <div role="tabpanel" id="en-p" tabindex="0" aria-labelledby="en-t-d"><div class="en-cov" id="en-cov"></div><ol class="en-qs" id="en-qs"></ol></div>
 </section>
 
 <section class="sec" aria-labelledby="en-h3">
   <span class="eyebrow">Objections</span>
-  <h2 id="en-h3">Objection Handling</h2>
-  <div class="lp-ctl" style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;align-items:center"><button type="button" class="en-all" id="en-all" style="appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:3px;padding:8px 12px;font:500 13px/1 var(--sans);cursor:pointer">Show all answers</button><span class="mini">Select a card to see the answer and the proof to show.</span></div>
-  <div class="en-flip" id="en-flip"></div>
+  <h2 id="en-h3">Objection handling</h2>
+  <div class="en-obj">
+    <div class="en-ol" role="group" aria-label="Objections" id="en-ol"></div>
+    <div class="en-od" id="en-od" aria-live="polite"></div>
+  </div>
 </section>
 
 <section class="sec" aria-labelledby="en-h4">
   <span class="eyebrow">Battlecard</span>
-  <h2 id="en-h4">Battlecard: AI-First EPD Startup</h2>
-  <div class="en-btm">
-    <div class="panel rv"><span class="icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg></span><h3>When you meet them</h3><p>A mid-size construction product manufacturer in DACH, the Nordics or the US, starting an EPD programme, with an AI-led pitch and startup pricing in front of them.</p></div>
-    <div class="panel rv"><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></span><h3>What they say</h3><q>AI turns your spreadsheets and invoices into verified EPDs in weeks.</q></div>
+  <h2 id="en-h4">Battlecard against an AI-first EPD startup</h2>
+  <div class="en-meet rv">
+    <div><p class="k">When you meet them</p>A mid-size product manufacturer in DACH, the Nordics or the US, starting an EPD programme, with an AI-led pitch and startup pricing in front of them.</div>
+    <div><p class="k">What they say</p><q>AI turns your spreadsheets and invoices into verified EPDs in weeks.</q></div>
   </div>
   <div class="en-vs rv">
-    <div class="en-vsh"><div><h3>AI-first startup</h3><span>Where they are strong</span></div><em aria-hidden="true">vs</em><div><h3>One Click LCA</h3><span>How to win</span></div></div>
+    <div class="en-vsh"><div><i style="background:var(--s2)"></i><h3>AI-first startup</h3></div><em aria-hidden="true">vs</em><div><h3>One Click LCA</h3><i style="background:var(--s1)"></i></div></div>
     <ul class="en-rows" id="en-rows"></ul>
-    <div class="en-tally"><span>Select a row for the talk track.</span><span>Edge on each row is my judgement from the battlecard.</span></div>
+    <div class="en-tally"><span>Bar length is the size of the edge, from slight to strong. Select a row for the talk track.</span><span>Edges are my judgement from the battlecard.</span></div>
   </div>
   <div class="callout rv" style="max-width:none"><p><b>Landmine to set.</b> "Ask them how many of their EPDs have been verified by your market's programme operator, and how long the last ten took."</p></div>
 </section>
@@ -133,7 +141,8 @@
 (function(){
 var $=function(id){return document.getElementById(id)};
 function eur(x){return (x<0?"−€":"€")+Math.abs(Math.round(x)).toLocaleString("en-GB")}
-function k(x){var a=Math.abs(x),s=x<0?"−":"";return a>=1e6?s+"€"+(a/1e6).toFixed(a>=1e7?0:1)+"m":a>=1e3?s+"€"+Math.round(a/1e3)+"k":s+"€"+Math.round(a)}
+function k(x){var a=Math.abs(x),s=x<0?"−":"";return a>=1e6?s+"€"+(+(a/1e6).toFixed(1))+"m":a>=1e3?s+"€"+Math.round(a/1e3)+"k":s+"€"+Math.round(a)}
+function nice(mn,mx,n){var span=mx-mn||1,raw=span/n,st=Math.pow(10,Math.floor(Math.log10(raw))),e=raw/st;st*=e>=5?10:e>=2.5?5:e>=1.2?2:1;var a=Math.floor(mn/st)*st,b=Math.ceil(mx/st)*st,t=[];for(var v=a;v<=b+st/2;v+=st)t.push(Math.round(v*1e6)/1e6);return t}
 var M={
 d:{vol:"a",vn:"assessments a year",f:[["a","Whole life carbon assessments a year",12,1,200,1,""],["c","Consultant fee per assessment (€)",6000,500,40000,500,""],["h","Internal hours per assessment with the tool",24,4,120,2,""],["r","Internal hourly cost (€)",75,30,200,5,""],["l","Licence cost a year (€)",5180,1000,60000,10,"Business concurrent licence is €5,180 a year per market bundle"],["s","Share of assessments billed to clients (%)",30,0,100,5,""],["b","Fee billed per assessment (€)",4000,0,30000,500,""]],
  steps:function(v){return [["Consultant fees avoided",v.a*v.c,"Outsourced cost a year: "+v.a+" assessments at "+eur(v.c)],["Licence",-v.l,"Licence cost a year"],["Internal hours",-v.a*v.h*v.r,v.a*v.h+" hours at "+eur(v.r)],["Fee income",v.a*v.s/100*v.b,"Fee income from the "+v.s+"% of assessments billed to clients"]]},
@@ -145,51 +154,59 @@ m:{vol:"y",vn:"EPDs a year",f:[["p","Products that need EPDs",40,1,1000,1,""],["
 var mode="d",V={};
 function fmt(f,x){return /€/.test(f[1])?eur(x):/%/.test(f[1])?x+"%":x.toLocaleString("en-GB")}
 function build(){var c=$("en-inputs");c.innerHTML='<h3>'+(mode==="d"?"Design firm":"Manufacturer")+'</h3><p class="mini">Move any figure to match the buyer.</p>';V={};
- M[mode].f.forEach(function(f){V[f[0]]=f[2];var d=document.createElement("div");d.className="ctl";d.innerHTML='<label for="en_'+f[0]+'">'+f[1].replace(/ \((€|%)\)/,"")+'<output id="eno_'+f[0]+'">'+fmt(f,f[2])+'</output></label><input type="range" id="en_'+f[0]+'" min="'+f[3]+'" max="'+f[4]+'" step="'+f[5]+'" value="'+f[2]+'">'+(f[6]?'<span class="hint">'+f[6]+'</span>':'');c.appendChild(d);
+ M[mode].f.forEach(function(f){V[f[0]]=f[2];var d=document.createElement("div");d.className="ctl";d.innerHTML='<label for="en_'+f[0]+'">'+f[1].replace(/ \((€|%)\)/,"").replace(" (€ a year)"," a year")+'<output id="eno_'+f[0]+'">'+fmt(f,f[2])+'</output></label><input type="range" id="en_'+f[0]+'" min="'+f[3]+'" max="'+f[4]+'" step="'+f[5]+'" value="'+f[2]+'">'+(f[6]?'<span class="hint">'+f[6]+'</span>':'');c.appendChild(d);
   d.querySelector("input").addEventListener("input",function(e){V[f[0]]=+e.target.value;$("eno_"+f[0]).textContent=fmt(f,V[f[0]]);draw()})});draw()}
 function net(v){return M[mode].steps(v).reduce(function(a,s){return a+s[1]},0)}
 function draw(){var m=M[mode],st=m.steps(V),n=net(V),vol=V[m.vol],tool=m.tool(V),out=m.out(V);
  $("en-hero").innerHTML='<div><span class="eyebrow">Net benefit in year one</span><span class="big" style="color:'+(n>=0?'var(--accent)':'var(--bad)')+'">'+eur(n)+'</span></div><p><span class="stat-ic" style="background:'+(n>=0?'var(--ok-soft);color:var(--ok)':'var(--bad-soft);color:var(--bad)')+'">'+(n>=0?"✓ Tool route wins":"✕ Alternative wins")+'</span><br>'+(n>=0?"The tool route costs less than the alternative once the benefit is counted.":"At these figures the alternative costs less. Look at next year's volume before deciding.")+'</p>';
  $("en-s3").innerHTML='<div><b>'+eur(out)+'</b><span>'+(mode==="d"?"Outsourced route a year":"Consultant route a year")+'</span></div><div><b>'+eur(tool)+'</b><span>Tool route a year</span></div><div><b>'+eur(tool/vol)+'</b><span>'+m.ul+'</span></div>';
- drawWf(st,n);drawBe();}
+ drawWf(st,n);drawBe();obj(cur);}
 function host(id){var h=$(id);h.innerHTML="";return h}
-function drawWf(st,n){var h=host("en-wf"),W=Math.max(290,h.clientWidth||600),narrow=W<520,H=narrow?250:270,top=24,bot=narrow?50:40,L=narrow?40:50;
- var cols=st.concat([["Net benefit",n,"Net benefit in year one"]]),acc=0,lv=[0];
- cols.forEach(function(c,i){if(i<st.length){acc+=c[1];lv.push(acc)}});var mn=Math.min.apply(null,lv.concat([n,0])),mx=Math.max.apply(null,lv.concat([n,0]));if(mx===mn)mx=mn+1;
- var y=VZ.lin(mn,mx,H-bot,top),band=(W-L)/cols.length,bw=Math.min(narrow?34:56,band*.62);
- var svg=VZ.svg(h,W,H,"Waterfall: "+cols.map(function(c){return c[0]+" "+eur(c[1])}).join(", "));svg.setAttribute("role","group");
- var ticks=4,stp=(mx-mn)/ticks;for(var t=0;t<=ticks;t++){var v=mn+stp*t,yy=y(v);VZ.el("line",{x1:L,x2:W,y1:yy,y2:yy,"class":"grid"},svg);if(narrow&&t===ticks)continue;var tx=VZ.el("text",{x:L-6,y:yy+4,"text-anchor":"end","class":"t-muted"},svg);tx.textContent=k(v)}
- VZ.el("line",{x1:L,x2:W,y1:y(0),y2:y(0),stroke:"var(--ink3)","stroke-width":1},svg);
- var run=0;cols.forEach(function(c,i){var isT=i===st.length,a=isT?0:run,b=isT?c[1]:run+c[1];if(!isT)run=b;
-  var cx=L+band*i+band/2,x0=cx-bw/2,y0=y(Math.max(a,b)),y1=y(Math.min(a,b)),hh=Math.max(1,y1-y0);
-  var fill=isT?"var(--ink2)":c[1]>=0?"var(--s1)":"var(--s2)";
+function drawWf(st,n){var h=host("en-wf"),W=Math.max(290,h.clientWidth||600),narrow=W<560;
+ var cols=st.concat([["Net benefit",n,"Net benefit in year one"]]),run=0,seg=[];
+ cols.forEach(function(c,i){var isT=i===st.length,a=isT?0:run,b=isT?c[1]:run+c[1];if(!isT)run=b;seg.push([a,b])});
+ var all=[0];seg.forEach(function(s){all.push(s[0],s[1])});var tk=nice(Math.min.apply(null,all),Math.max.apply(null,all),4),mn=tk[0],mx=tk[tk.length-1];
+ var lab="Waterfall: "+cols.map(function(c){return c[0]+" "+eur(c[1])}).join(", ");
+ function fillOf(i,c){return i===st.length?"var(--ink2)":c[1]>=0?"var(--s1)":"var(--s2)"}
+ if(narrow){var rh=46,top=8,H=top+cols.length*rh+26,L=4,R=W-6,x=VZ.lin(mn,mx,L,R);var svg=VZ.svg(h,W,H,lab);svg.setAttribute("role","group");
+  tk.forEach(function(v){VZ.el("line",{x1:x(v),x2:x(v),y1:top,y2:H-22,"class":v===0?"axis":"grid"},svg);var t=VZ.el("text",{x:x(v),y:H-6,"text-anchor":v===mn?"start":v===mx?"end":"middle","class":"t-muted"},svg);t.textContent=k(v)});
+  cols.forEach(function(c,i){var y=top+i*rh,a=seg[i][0],b=seg[i][1],x0=x(Math.min(a,b)),x1=x(Math.max(a,b)),g=VZ.el("g",{role:"img","aria-label":c[0]+": "+eur(c[1])},svg);
+   VZ.el("rect",{x:0,y:y,width:W,height:rh,fill:"transparent"},g);
+   var nm=VZ.el("text",{x:L,y:y+14,"class":"t-strong"},g);nm.textContent=c[0];
+   VZ.el("rect",{x:x0,y:y+20,width:Math.max(2,x1-x0),height:16,rx:3,fill:fillOf(i,c)},g);
+   var vt=VZ.el("text",{y:y+33,"class":"t-strong"},g);vt.textContent=(c[1]>=0&&i<st.length?"+":"")+k(c[1]);
+   if(R-x1>60){vt.setAttribute("x",x1+6)}else if(x0-L>60){vt.setAttribute("x",x0-6);vt.setAttribute("text-anchor","end")}else{vt.setAttribute("x",R);vt.setAttribute("text-anchor","end");vt.setAttribute("y",y+14)}
+   VZ.tip(g,function(){return '<b>'+eur(c[1])+'</b><span class="m">'+c[2]+'</span>'})});return}
+ /* fill the column next to the inputs */
+ var H=280;if(innerWidth>900){var ch=$("en-inputs").offsetHeight,oh=$("en-hero").offsetHeight+$("en-s3").offsetHeight+28,vh=$("en-wfv").offsetHeight-$("en-wf").offsetHeight;H=Math.max(260,Math.min(520,ch-oh-vh))}
+ var top=24,bot=40,L=52,y=VZ.lin(mn,mx,H-bot,top),band=(W-L)/cols.length,bw=Math.min(56,band*.62);
+ var svg=VZ.svg(h,W,H,lab);svg.setAttribute("role","group");
+ tk.forEach(function(v){var yy=y(v);VZ.el("line",{x1:L,x2:W,y1:yy,y2:yy,"class":v===0?"axis":"grid"},svg);var tx=VZ.el("text",{x:L-8,y:yy+4,"text-anchor":"end","class":"t-muted"},svg);tx.textContent=k(v)});
+ cols.forEach(function(c,i){var isT=i===st.length,a=seg[i][0],b=seg[i][1],cx=L+band*i+band/2,x0=cx-bw/2,y0=y(Math.max(a,b)),y1=y(Math.min(a,b));
   var g=VZ.el("g",{role:"img","aria-label":c[0]+": "+eur(c[1])},svg);
   VZ.el("rect",{x:cx-band/2,y:top,width:band,height:H-bot-top,fill:"transparent"},g);
-  var up=b>=a;var p=VZ.el("rect",{x:x0,y:y0,width:bw,height:hh,rx:3,fill:fill},g);
-  if(!isT){var nx=L+band*(i+1)+band/2-bw/2;VZ.el("line",{x1:x0+bw,x2:nx,y1:y(b),y2:y(b),stroke:"var(--ink3)","stroke-width":1},svg)}
-  var lt=VZ.el("text",{x:cx,y:(c[1]>=0?y0-6:y1+14),"text-anchor":"middle","class":"t-strong"},g);lt.textContent=(c[1]>=0&&!isT?"+":"")+k(c[1]);if(narrow)lt.setAttribute("font-size","10.5");
-  var nm=VZ.el("text",{x:cx,y:H-bot+16,"text-anchor":"middle"},g);var words=c[0].split(" ");
-  var SH={"Consultant fees avoided":"Avoided","Consultant cost avoided":"Avoided","Internal hours":"Hours","Fee income":"Fees","Revenue protected":"Revenue","Verification":"Verify","Net benefit":"Net"};if(narrow&&SH[c[0]]){nm.setAttribute("font-size","11");nm.textContent=SH[c[0]]}
-  else if(narrow&&words.length>1){nm.setAttribute("font-size","10.5");var t1=VZ.el("tspan",{x:cx},nm);t1.textContent=words[0];var t2=VZ.el("tspan",{x:cx,dy:12},nm);t2.textContent=words.slice(1).join(" ")}else nm.textContent=c[0];
+  VZ.el("rect",{x:x0,y:y0,width:bw,height:Math.max(1,y1-y0),rx:3,fill:fillOf(i,c)},g);
+  if(!isT){VZ.el("line",{x1:x0+bw,x2:L+band*(i+1)+band/2-bw/2,y1:y(b),y2:y(b),stroke:"var(--ink3)","stroke-width":1},svg)}
+  var lt=VZ.el("text",{x:cx,y:(c[1]>=0?y0-6:y1+15),"text-anchor":"middle","class":"t-strong"},g);lt.textContent=(c[1]>=0&&!isT?"+":"")+k(c[1]);
+  var nm=VZ.el("text",{x:cx,y:H-bot+17,"text-anchor":"middle"},g),w=c[0].split(" ");var t1=VZ.el("tspan",{x:cx},nm);t1.textContent=w[0];if(w.length>1){var t2=VZ.el("tspan",{x:cx,dy:14},nm);t2.textContent=w.slice(1).join(" ")}
   VZ.tip(g,function(){return '<b>'+eur(c[1])+'</b><span class="m">'+c[2]+'</span>'})});}
 var mt;function myTip(){if(!mt){mt=document.createElement("div");mt.className="vz-tip";mt.setAttribute("role","tooltip");document.body.appendChild(mt)}return mt}
-function drawBe(){var m=M[mode],h=host("en-be"),W=Math.max(290,h.clientWidth||600),H=230,top=18,bot=36,L=W<520?40:50,R=W-12;
+function drawBe(){var m=M[mode],h=host("en-be"),W=Math.max(290,h.clientWidth||600),H=240,top=22,bot=40,L=W<520?46:56,R=W-14;
  var f=m.f.filter(function(x){return x[0]===m.vol})[0],cur=V[m.vol];
  var v0=Object.assign({},V);v0[m.vol]=0;var fixed=net(v0);v0[m.vol]=1;var slope=net(v0)-fixed;var be=slope>0?-fixed/slope:null;
- var xmax=Math.min(f[4],Math.max(10,Math.ceil(Math.max(cur*2,be?be*2:0)/5)*5));
- var N=function(a){return fixed+slope*a},vals=[N(0),N(xmax),0],mn=Math.min.apply(null,vals),mx=Math.max.apply(null,vals);if(mx===mn)mx++;
- var x=VZ.lin(0,xmax,L,R),y=VZ.lin(mn,mx,H-bot,top);
- $("en-beh").textContent=be&&be<=f[4]?"Break-even at "+Math.ceil(be)+" "+(Math.ceil(be)===1?m.vn.replace("s a"," a"):m.vn):"Net benefit by volume";
- var svg=VZ.svg(h,W,H,"Net benefit against "+m.vn+". "+(be?"Break-even at about "+Math.ceil(be)+". ":"")+"Current input "+cur+" gives "+eur(N(cur)));svg.setAttribute("role","group");
- for(var t=0;t<=4;t++){var vv=mn+(mx-mn)*t/4,yy=y(vv);VZ.el("line",{x1:L,x2:R,y1:yy,y2:yy,"class":"grid"},svg);var tx=VZ.el("text",{x:L-6,y:yy+4,"text-anchor":"end","class":"t-muted"},svg);tx.textContent=k(vv)}
- for(var t2=0;t2<=5;t2++){var xv=Math.round(xmax*t2/5),tx2=VZ.el("text",{x:x(xv),y:H-bot+16,"text-anchor":"middle","class":"t-muted"},svg);tx2.textContent=xv}
+ var xt=nice(0,Math.min(f[4],Math.max(10,cur*2,be?be*2:0)),W<520?4:6),xmax=xt[xt.length-1];
+ var N=function(a){return fixed+slope*a},yt=nice(Math.min(N(0),N(xmax),0),Math.max(N(0),N(xmax),0),4),mn=yt[0],mx=yt[yt.length-1];
+ var x=VZ.lin(0,xmax,L,R),y=VZ.lin(mn,mx,H-bot,top),bi=be?Math.ceil(be):0;
+ $("en-beh").textContent=be&&be<=f[4]?"Break-even at "+bi+" "+(bi===1?m.vn.replace("s a"," a"):m.vn):"Net benefit by volume";
+ var svg=VZ.svg(h,W,H,"Net benefit against "+m.vn+". "+(be?"Break-even at about "+bi+". ":"")+"Current input "+cur+" gives "+eur(N(cur)));svg.setAttribute("role","group");
+ yt.forEach(function(vv){var yy=y(vv);VZ.el("line",{x1:L,x2:R,y1:yy,y2:yy,"class":vv===0?"axis":"grid"},svg);var tx=VZ.el("text",{x:L-8,y:yy+4,"text-anchor":"end","class":"t-muted"},svg);tx.textContent=k(vv)});
+ xt.forEach(function(xv){var tx2=VZ.el("text",{x:x(xv),y:H-bot+17,"text-anchor":"middle","class":"t-muted"},svg);tx2.textContent=xv});
  var xl=VZ.el("text",{x:R,y:H-4,"text-anchor":"end","class":"t-muted"},svg);xl.textContent=m.vn.charAt(0).toUpperCase()+m.vn.slice(1);
- VZ.el("line",{x1:L,x2:R,y1:y(0),y2:y(0),stroke:"var(--ink3)","stroke-width":1},svg);
- if(be!==null&&be>0&&be<xmax){VZ.el("rect",{x:L,y:top,width:x(be)-L,height:H-bot-top,fill:"var(--s2)",opacity:.08},svg);VZ.el("rect",{x:x(be),y:top,width:R-x(be),height:H-bot-top,fill:"var(--s1)",opacity:.08},svg);
-  VZ.el("line",{x1:x(be),x2:x(be),y1:top,y2:H-bot,stroke:"var(--ink3)","stroke-width":1},svg);var bl=VZ.el("text",{x:x(be)+6,y:top+12,"class":"t-strong"},svg);bl.textContent="Break-even "+Math.ceil(be);if(x(be)>R-110){bl.setAttribute("x",x(be)-6);bl.setAttribute("text-anchor","end")}}
+ if(be!==null&&be>0&&be<xmax){VZ.el("line",{x1:x(be),x2:x(be),y1:top,y2:H-bot,stroke:"var(--ink3)","stroke-width":1},svg);var bl=VZ.el("text",{x:x(be)+6,y:top+4,"class":"t-strong"},svg);bl.textContent="Break-even "+bi;if(x(be)>R-110){bl.setAttribute("x",x(be)-6);bl.setAttribute("text-anchor","end")}}
+ VZ.el("path",{d:"M"+x(0)+","+y(N(0))+"L"+x(xmax)+","+y(N(xmax))+"L"+x(xmax)+","+y(0)+"L"+x(0)+","+y(0)+"Z",fill:"var(--s1)",opacity:.1},svg);
  VZ.el("path",{d:"M"+x(0)+","+y(N(0))+"L"+x(xmax)+","+y(N(xmax)),stroke:"var(--s1)","stroke-width":2,fill:"none","stroke-linecap":"round"},svg);
- var cy=y(N(Math.min(cur,xmax)));VZ.el("circle",{cx:x(Math.min(cur,xmax)),cy:cy,r:6,fill:"var(--s1)",stroke:"var(--ring)","stroke-width":2},svg);
- var cl=VZ.el("text",{x:x(Math.min(cur,xmax)),y:cy-12,"text-anchor":x(cur)>R-60?"end":x(cur)<L+60?"start":"middle","class":"t-strong"},svg);cl.textContent="You: "+cur+", "+k(N(cur));
+ var cc=Math.min(cur,xmax),cy=y(N(cc));VZ.el("circle",{cx:x(cc),cy:cy,r:6,fill:"var(--s1)",stroke:"var(--ring)","stroke-width":2},svg);
+ var cl=VZ.el("text",{x:x(cc)+(x(cc)>R-150?-10:10),y:cy+20,"text-anchor":x(cc)>R-150?"end":"start","class":"t-strong"},svg);cl.textContent="Now: "+cur+", "+k(N(cur));
  var hair=VZ.el("line",{x1:0,x2:0,y1:top,y2:H-bot,stroke:"var(--ink2)","stroke-width":1,opacity:0},svg);
  var ov=VZ.el("rect",{x:L,y:top,width:R-L,height:H-bot-top,fill:"transparent",style:"cursor:crosshair"},svg);
  function at(e){var r=svg.getBoundingClientRect(),px=(e.clientX-r.left)*W/r.width;return Math.max(f[3],Math.min(xmax,Math.round((px-L)/(R-L)*xmax)))}
@@ -203,25 +220,34 @@ var IC={Trigger:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',Cost:'<circle cx="12" c
 var D={d:{n:"Design firms",q:[["Trigger","Which projects this year need a whole life carbon result, and for which rule or scheme?"],["Cost","Who does those assessments today, and what does each one cost in fees or hours?"],["Risk","What happens if a result fails a limit late in design?"],["Workflow","Which BIM tools does the team model in?"],["Signer","Who would sign for a firm-wide tool?"]]},
 c:{n:"Contractors",q:[["Trigger","How many tenders in the past year scored carbon, and how did you score?"],["Timing","When do you get supplier EPDs, before or after the bid?"],["Trigger","Which clients ask for as-built carbon reporting?"],["Risk","Do site emission limits or CSRD apply to you?"],["Signer","Who owns the bid budget?"]]},
 m:{n:"Manufacturers",q:[["Scope","How many products do you sell, and how many have EPDs today?"],["Trigger","Which specifiers, tenders or markets have asked for EPDs in the past year?"],["Cost","What did your last EPD cost and how long did it take?"],["Route","Which programme operator do your markets accept?"],["Signer","Who would see the sales benefit, and do they know about this project?"]]}};
-VZ.tabs($("en-tabs"),function(t){var p=D[t.dataset.p];$("en-p").hidden=false;$("en-p").setAttribute("aria-labelledby",t.id);$("en-qs").innerHTML=p.q.map(function(q,i){return '<li style="animation-delay:'+i*60+'ms"><span class="tag a"><svg viewBox="0 0 24 24" aria-hidden="true">'+IC[q[0]]+'</svg>'+q[0]+'</span><br>'+q[1]+'</li>'}).join("")});
+VZ.tabs($("en-tabs"),function(t){var p=D[t.dataset.p];$("en-p").hidden=false;$("en-p").setAttribute("aria-labelledby",t.id);
+ var cnt={};p.q.forEach(function(q){cnt[q[0]]=(cnt[q[0]]||0)+1});
+ $("en-cov").innerHTML='<span>What the five questions uncover:</span>'+Object.keys(cnt).map(function(c){return '<span class="tag a" style="display:inline-flex;gap:5px;align-items:center"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">'+IC[c]+'</svg>'+c+' <b>'+cnt[c]+'</b></span>'}).join("");
+ $("en-qs").innerHTML=p.q.map(function(q,i){return '<li style="animation-delay:'+i*60+'ms"><span class="tag a"><svg viewBox="0 0 24 24" aria-hidden="true">'+IC[q[0]]+'</svg>'+q[0]+'</span><br>'+q[1]+'</li>'}).join("")});
 
 /* objections */
-var O=[["Free tool","EC3 is free.","EC3 is a good EPD database for procurement. A permit, LEED v5 credit or national limit needs a whole-building assessment to a defined method, which EC3 does not produce.","A compliant report from the same model, and the scheme list"],
-["National tool","Our national tool is official and cheaper.","It covers one country. The next project abroad, the certification and the EU method from 2028 need a second tool, or one tool that does all of them.","Country bundle plus certification on one model"],
-["Low volume","We only need one or two assessments a year.","Then compare the licence with the consultant fees for those studies, and add the fee income from offering the work to clients.","The calculator at the top of this page"],
-["BIM workflow","Tally is easier in Revit.","Ask which results Tally gives for the local rule and certification. Show AI mapping and the new interface on the buyer's own model.","A live import of the buyer's file"],
-["Speed","Verification takes too long.","Pre-verified EPD methods reduce the verifier's work, and template EPDs for a product range share most of the review.","Time to publish in a similar customer case"],
-["Payment terms","We pay upfront for a whole year.","Show the cost per assessment or per EPD over the year, set against the alternatives, before the price itself.","Cost per result, from the calculator"]];
-$("en-flip").innerHTML=O.map(function(o){return '<button type="button" class="en-card" aria-pressed="false"><span class="en-in"><span class="en-f fr"><span class="who">'+o[0]+'</span><q>'+o[1]+'</q><span class="hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 4v4h-4M20 12a8 8 0 0 1-14 5.3M4 20v-4h4"/></svg>Show the answer</span></span><span class="en-f bk"><span class="who">Answer</span><p>'+o[2]+'</p><span class="proof"><b>Proof to show</b>'+o[3]+'</span></span></span></button>'}).join("");
-var cards=[].slice.call($("en-flip").querySelectorAll(".en-card"));
-cards.forEach(function(c){c.addEventListener("click",function(){c.setAttribute("aria-pressed",c.getAttribute("aria-pressed")!=="true");syncAll()})});
-function syncAll(){var all=cards.every(function(c){return c.getAttribute("aria-pressed")==="true"});$("en-all").textContent=all?"Show all objections":"Show all answers"}
-$("en-all").addEventListener("click",function(){var all=cards.every(function(c){return c.getAttribute("aria-pressed")==="true"});cards.forEach(function(c){c.setAttribute("aria-pressed",!all)});syncAll()});
+var O=[["Free tool","EC3 is free.","EC3 is a good EPD database for procurement. A permit, LEED v5 credit or national limit needs a whole-building assessment to a defined method, which EC3 does not produce.","A compliant report from the same model, and the scheme list",""],
+["National tool","Our national tool is official and cheaper.","It covers one country. The next project abroad, the certification and the EU method from 2028 need a second tool, or one tool that does all of them.","Country bundle plus certification on one model",""],
+["Low volume","We only need one or two assessments a year.","Then compare the licence with the consultant fees for those studies, and add the fee income from offering the work to clients.","The calculator at the top of this page","be"],
+["BIM workflow","Tally is easier in Revit.","Ask which results Tally gives for the local rule and certification. Show AI mapping and the new interface on the buyer's own model.","A live import of the buyer's file",""],
+["Speed","Verification takes too long.","Pre-verified EPD methods reduce the verifier's work, and template EPDs for a product range share most of the review.","Time to publish in a similar customer case",""],
+["Payment terms","We pay upfront for a whole year.","Show the cost per assessment or per EPD over the year, set against the alternatives, before the price itself.","Cost per result, from the calculator","unit"]];
+var cur=2;
+$("en-ol").innerHTML=O.map(function(o,i){return '<button type="button" aria-pressed="'+(i===cur)+'"><small>'+o[0]+'</small><b>"'+o[1]+'"</b><i aria-hidden="true">›</i></button>'}).join("");
+var ob=[].slice.call($("en-ol").querySelectorAll("button"));
+ob.forEach(function(b,i){b.addEventListener("click",function(){obj(i)})});
+function live(kind){var m=M[mode],vol=V[m.vol],tool=m.tool(V),out=m.out(V),n=net(V),unit=mode==="d"?"assessment":"EPD";
+ if(kind==="unit")return '<div class="live">Live from the calculator: <strong>'+eur(tool/vol)+'</strong> per '+unit+' with the tool against <strong>'+eur(out/vol)+'</strong> with the alternative.</div>';
+ if(kind==="be"){var v0=Object.assign({},V);v0[m.vol]=0;var fx=net(v0);v0[m.vol]=1;var sl=net(v0)-fx,be=sl>0?Math.ceil(-fx/sl):null;return '<div class="live">Live from the calculator: the tool pays back at <strong>'+(be?be:"no")+' '+(be===1?unit:unit+"s")+' a year</strong>, and the current '+vol+' give a net benefit of <strong>'+eur(n)+'</strong>.</div>'}
+ return ""}
+function obj(i){cur=i;ob.forEach(function(b,j){b.setAttribute("aria-pressed",i===j)});var o=O[i];
+ $("en-od").innerHTML='<small class="eyebrow">'+o[0]+'</small><q>'+o[1]+'</q><p>'+o[2]+'</p><div class="pf"><span class="icon" style="margin:0;width:30px;height:30px"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg></span><div><b>Proof to show</b>'+o[3]+'</div></div>'+live(o[4])}
 
-/* battlecard */
-var B=[["L","Story and pitch","A modern, AI-led story that promises verified EPDs in weeks."],["L","Hands-on service","They do much of the work with the manufacturer's team."],["L","Introductory pricing","Startup pricing, and in Norway an EPD Global grant."],
-["R","Cost per EPD across the range","Ask about the range. The cost per EPD across fifty products matters more than the first one."],["R","Publishing reach","Ask where the EPDs will be published. One Click LCA publishes through eight programme operators."],["R","Demand after publication","Show what happens after publication. Designers find the product inside One Click LCA with real data, and usage analytics show who used it."],["R","Verification record","Show the record with a named customer that has a similar product range."]];
-$("en-rows").innerHTML=B.map(function(b,i){return '<li class="'+b[0]+'"><button type="button" aria-expanded="false" aria-controls="en-r'+i+'"><span class="lab l">'+(b[0]==="L"?"Their edge":"")+'</span><span><span class="d">'+b[1]+'</span><span class="sd" aria-hidden="true" style="display:block;margin-top:6px"><i></i></span></span><span class="lab r">'+(b[0]==="R"?"Our edge":"")+'</span></button><div class="det" id="en-r'+i+'" hidden><span class="sr">'+(b[0]==="L"?"Their edge. ":"Our edge. ")+'</span>'+b[2]+'</div></li>'}).join("");
+/* battlecard: edge size 1 slight, 2 clear, 3 strong (judgement) */
+var SN={1:"Slight edge",2:"Clear edge",3:"Strong edge"};
+var B=[["L","Story and pitch",2,"A modern, AI-led story that promises verified EPDs in weeks."],["L","Hands-on service",2,"They do much of the work with the manufacturer's team."],["L","Introductory pricing",3,"Startup pricing, and in Norway an EPD Global grant."],
+["R","Cost per EPD across the range",3,"Ask about the range. The cost per EPD across fifty products matters more than the first one."],["R","Publishing reach",3,"Ask where the EPDs will be published. One Click LCA publishes through eight programme operators."],["R","Demand after publication",2,"Designers find the product inside One Click LCA with real data, and usage analytics show who used it."],["R","Verification record",1,"Show the record with a named customer that has a similar product range."]];
+$("en-rows").innerHTML=B.map(function(b,i){return '<li class="'+b[0]+'"><button type="button" aria-expanded="false" aria-controls="en-r'+i+'"><span class="d">'+b[1]+'<span class="st">'+(b[0]==="L"?"Their ":"Our ")+SN[b[2]].toLowerCase()+'</span></span><span class="sd" aria-hidden="true"><i style="width:'+(b[2]/3*50)+'%"></i></span></button><div class="det" id="en-r'+i+'" hidden>'+b[3]+'</div></li>'}).join("");
 [].forEach.call($("en-rows").querySelectorAll("button"),function(b){b.addEventListener("click",function(){var o=b.getAttribute("aria-expanded")==="true";b.setAttribute("aria-expanded",!o);$(b.getAttribute("aria-controls")).hidden=o})});
 
 var lw=innerWidth,rt;addEventListener("resize",function(){if(innerWidth===lw)return;lw=innerWidth;clearTimeout(rt);rt=setTimeout(draw,150)});

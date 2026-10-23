@@ -33,17 +33,19 @@
 .lp-kit li svg{position:absolute;left:12px;top:12px;width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .lp-k{font:500 12px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-top:18px}
 @keyframes lpIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.lp-brief{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:12px;margin-top:28px}
-.lp-brief .panel{padding:18px 20px}
-.lp-brief .panel p,.lp-brief .panel li{font-size:14px}
-.lp-brief blockquote{margin:0;font:500 19px/1.35 var(--sans);letter-spacing:-.01em;color:var(--ink)}
+.lp-brief{display:grid;grid-template-columns:1fr 1.1fr 1.3fr;margin-top:24px;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+.lp-brief>div{padding:14px 18px;font-size:14px}
+.lp-brief>div+div{border-left:1px solid var(--line)}
+.lp-brief .k{font:500 12px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.lp-brief .tags{margin-top:0}
+.lp-brief blockquote{margin:0;font:500 17px/1.35 var(--sans);color:var(--ink)}
 .lp-ctl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:2px 0 8px}
 .lp-ctl button{appearance:none;border:1px solid var(--accent);background:var(--accent);color:var(--on-accent);border-radius:3px;padding:8px 14px;font:500 13px/1 var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
 .lp-ctl input[type=range]{flex:1;min-width:160px;accent-color:var(--accent)}
 .lp-ctl output{font:600 14px/1 var(--sans);font-variant-numeric:tabular-nums;min-width:70px}
-.lp-now{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;margin-top:12px;min-height:76px}
-.lp-now div{border-left:3px solid var(--accent);background:var(--panel);border-radius:0 5px 5px 0;padding:10px 12px;font-size:13.5px}
-.lp-now div b{display:block;font-weight:600}
+.lp-now{display:grid;gap:6px;margin-top:12px}
+.lp-now div{border-left:3px solid var(--accent);background:var(--panel);border-radius:0 5px 5px 0;padding:8px 12px;font-size:13.5px;display:flex;flex-wrap:wrap;gap:2px 14px;align-items:baseline}
+.lp-now div b{font-weight:600}
 .lp-now div span{color:var(--muted);font-size:12.5px}
 .lp-now p{font-size:13.5px;color:var(--muted);padding:10px 0}
 .lp-g .bar{cursor:pointer;transition:opacity .2s}
@@ -59,6 +61,13 @@
 .lp-ms .t0 i{border-color:var(--ink3);background:var(--ink3)}
 .lp-msd{margin-top:14px;background:var(--accent-soft);border-radius:6px;padding:14px 18px;font-size:15px;min-height:52px}
 #lp-main svg .t-strong{paint-order:stroke;stroke:var(--chart-bg);stroke-width:3px;stroke-linejoin:round}
+#lp-main svg .t-muted{font-size:12px}
+.lp-g .bar text.in{fill:#fff;font-size:12px}
+.lp-g .bar.off path,.lp-g .bar.off rect{fill:var(--ink3)}
+.lp-g .bar.off .sup{fill:var(--ink3);stroke:var(--ink3)}
+.lp-g .bar.off text.in{fill:#0b0b0b}
+.lp-cal .row.dim path,.lp-cal .row.dim circle{fill:var(--ink3)}
+.lp-cal .row.dim text{fill:var(--ink3)}
 .lp-cal .row{cursor:pointer;transition:opacity .2s}
 .lp-cal .row:focus{outline:none}
 .lp-cal .row:focus .hit,.lp-cal .row:hover .hit{fill:var(--grid)}
@@ -66,7 +75,7 @@
 .lp-det{margin-top:12px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;font-size:14px;background:var(--panel);border-radius:6px;padding:14px 18px}
 .lp-det dt{color:var(--muted)}
 .lp-det dd{margin:0}
-@media (max-width:900px){.lp-tool{grid-template-columns:1fr}.lp-res{position:static}.lp-brief{grid-template-columns:1fr}}
+@media (max-width:900px){.lp-tool{grid-template-columns:1fr}.lp-res{position:static}.lp-brief{grid-template-columns:1fr}.lp-brief>div+div{border-left:0;border-top:1px solid var(--line)}}
 @media (max-width:640px){.lp-ladder{grid-template-columns:1fr}.lp-ms{grid-template-columns:repeat(2,1fr);row-gap:18px}.lp-ms:before{display:none}#lp-main .viz{padding:16px 12px 12px}}
 @media (prefers-reduced-motion:reduce){.lp-kit li{animation:none}}
 </style>
@@ -78,7 +87,7 @@
 <div id="lp-main">
 <section class="sec lead-viz" aria-labelledby="lp-h1">
   <span class="eyebrow">Tiering</span>
-  <h2 id="lp-h1">Release Tiering</h2>
+  <h2 id="lp-h1">Release tiering</h2>
   <div class="lp-presets" role="group" aria-label="Example releases"><span>Try an example release</span></div>
   <div class="lp-tool">
     <div class="lp-qs" id="lp-qs"></div>
@@ -95,17 +104,17 @@
 
 <section class="sec" aria-labelledby="lp-h2">
   <span class="eyebrow">Worked example</span>
-  <h2 id="lp-h2">EU 2028 Launch Plan</h2>
+  <h2 id="lp-h2">EU 2028 launch plan</h2>
   <p class="intro">A tier one launch built around the EU life cycle GWP method, timed to the national roadmaps due on 1 January 2027 and aimed at first-time buyers before the 1 January 2028 deadline.</p>
-  <div class="lp-brief">
-    <div class="panel rv"><span class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><h3>Goal</h3><p>Turn the 2028 deadline into new logos in large EU markets with no national LCA habit. The adoption target is agreed with sales before release, for example new Business and Designer licences in Germany, Italy and Spain in the first two quarters.</p></div>
-    <div class="panel rv"><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><h3>Priority segments</h3><p>Chosen with the <a href="segments.html">Segment Model</a> using compliance weights.</p><ul><li>German designers buying for the first time</li><li>Italian and Spanish designers</li><li>Global engineering firms standardising one EU method</li></ul></div>
-    <div class="panel accent rv"><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></span><h3>Core message</h3><blockquote>"The EU method, done once, accepted everywhere you build."</blockquote><p style="margin-top:10px">The proof is the EU method on the same model as national rules and certifications, an EPC-ready report and local support.</p></div>
+  <div class="lp-brief rv">
+    <div><p class="k">Goal</p>New logos in large EU markets with no national LCA habit. Example target: Business and Designer licences in Germany, Italy and Spain within two quarters.</div>
+    <div><p class="k">Priority segments</p><div class="tags"><span class="tag a">German designers, first-time buyers</span><span class="tag a">Italian and Spanish designers</span><span class="tag a">Global engineering firms</span></div><p class="mini" style="margin-top:6px">Chosen with the <a href="segments.html">Segment Model</a>.</p></div>
+    <div><p class="k">Core message</p><blockquote>"The EU method, done once, accepted everywhere you build."</blockquote><p class="mini" style="margin-top:6px">Proof: EU method on the same model as national rules, an EPC-ready report, local support.</p></div>
   </div>
   <div class="viz rv">
     <div class="viz-h"><h3>Launch Gantt, T minus 8 weeks to T plus 12 weeks</h3><p>Drag the week or press play. Select a bar for its output.</p></div>
-    <div class="lp-ctl"><button type="button" id="lp-play"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z" fill="currentColor"/></svg><span>Play</span></button><label class="sr" for="lp-wk">Launch week</label><input type="range" id="lp-wk" min="-8" max="12" step="1" value="-8"><output id="lp-wko" for="lp-wk">T−8</output></div>
-    <div class="legend"><span><i style="background:var(--ink2);border-radius:2px"></i>Lead owner</span><span><i style="background:var(--ink3);opacity:.45;border-radius:2px"></i>Supporting owner</span><span><i style="background:var(--ink1);border-radius:0;transform:rotate(45deg);width:9px;height:9px"></i>Launch day</span></div>
+    <div class="lp-ctl"><button type="button" id="lp-play"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z" fill="currentColor"/></svg><span>Play</span></button><label class="sr" for="lp-wk">Launch week</label><input type="range" id="lp-wk" min="-8" max="12" step="1" value="-8"><output id="lp-wko" for="lp-wk">All weeks</output></div>
+    <div class="legend"><span><i style="background:var(--ink2);border-radius:2px"></i>Lead owner</span><span><i style="background:color-mix(in srgb,var(--ink3) 35%,transparent);border:1.5px solid var(--ink3);border-radius:2px"></i>Supporting owner</span><span><i style="background:var(--ink1);border-radius:0;transform:rotate(45deg);width:9px;height:9px"></i>Launch day</span></div>
     <div id="lp-gantt" class="lp-g"></div>
     <div class="lp-now" id="lp-now" aria-live="polite"></div>
   </div>
@@ -115,12 +124,12 @@
 
 <section class="sec" aria-labelledby="lp-h3">
   <span class="eyebrow">Calendar</span>
-  <h2 id="lp-h3">2027 Launch Calendar</h2>
+  <h2 id="lp-h3">2027 launch calendar</h2>
   <p class="intro">Each launch sits in the quarter its regulatory or budget date drives.</p>
   <div class="btnrow" role="group" aria-label="Filter by tier" id="lp-filt"><button type="button" aria-pressed="true" data-t="0">All tiers</button><button type="button" aria-pressed="false" data-t="1">Tier one</button><button type="button" aria-pressed="false" data-t="2">Tier two</button><button type="button" aria-pressed="false" data-t="3">Tier three</button></div>
   <div class="viz rv">
     <div class="viz-h"><h3>Launches across 2027</h3><p>Select a row for detail.</p></div>
-    <div class="legend"><span><i style="background:var(--seq-5);border-radius:2px"></i>Tier one</span><span><i style="background:var(--seq-4);border-radius:2px"></i>Tier two</span><span><i style="background:var(--seq-3);border-radius:2px"></i>Tier three</span><span><i style="background:var(--ink1);border-radius:0;transform:rotate(45deg);width:9px;height:9px"></i>Fixed regulatory date</span></div>
+    <div class="legend"><span><i style="background:var(--seq-5);border-radius:2px;height:12px"></i>Tier one</span><span><i style="background:var(--seq-3);border-radius:2px;height:7px"></i>Tier two</span><span><i style="background:var(--ink3)"></i>Tier three</span><span><i style="background:var(--ink1);border-radius:0;transform:rotate(45deg);width:9px;height:9px"></i>Fixed regulatory date</span></div>
     <div id="lp-cal" class="lp-cal"></div>
     <dl class="lp-det" id="lp-det" aria-live="polite"></dl>
   </div>
@@ -135,7 +144,7 @@
 <script>
 (function(){
 var $=function(id){return document.getElementById(id)};
-var TC={1:"var(--seq-5)",2:"var(--seq-4)",3:"var(--seq-3)"},TN={1:"Tier one",2:"Tier two",3:"Tier three"};
+var TC={1:"var(--seq-5)",2:"var(--seq-3)",3:"var(--ink3)"},TN={1:"Tier one",2:"Tier two",3:"Tier three"};
 var Q=[
  {id:"q1",s:"Revenue",l:"Expected new or expansion revenue in 12 months",o:[[0,"Under €250k"],[2,"€250k to €1m"],[4,"Over €1m"]]},
  {id:"q2",s:"Reach",l:"Who it changes things for",o:[[0,"Existing users of one module"],[1,"One segment in a few markets"],[3,"Several segments or a new buyer"]]},
@@ -175,10 +184,10 @@ function go(pi){
 function drawScore(v,s,t){var host=$("lp-score");host.innerHTML="";var W=Math.max(260,host.clientWidth||500),H=96,L=6,R=W-6,x=VZ.lin(0,16,L,R);
  var svg=VZ.svg(host,W,H,"Score "+s+" of 16, "+TN[t]+". Contributions: "+Q.map(function(q,i){return q.s+" "+v[i]}).join(", "));svg.setAttribute("role","group");
  /* tier bands */
- [[0,4,3],[4,9,2],[9,16,1]].forEach(function(b){var g=VZ.el("rect",{x:x(b[0])+(b[0]?1:0),y:56,width:x(b[1])-x(b[0])-(b[0]?1:0)-(b[1]<16?1:0),height:8,rx:2,fill:TC[b[2]],opacity:b[2]===t?1:.45},svg);
+ [[0,4,3],[4,9,2],[9,16,1]].forEach(function(b){var g=VZ.el("rect",{x:x(b[0])+(b[0]?1:0),y:56,width:x(b[1])-x(b[0])-(b[0]?1:0)-(b[1]<16?1:0),height:8,rx:2,fill:TC[b[2]]},svg);
   var tx=VZ.el("text",{x:(x(b[0])+x(b[1]))/2,y:82,"text-anchor":"middle","class":b[2]===t?"t-strong":""},svg);tx.textContent=TN[b[2]]});
  [4,9].forEach(function(k){VZ.el("line",{x1:x(k),x2:x(k),y1:22,y2:66,"class":"axis"},svg);var tx=VZ.el("text",{x:x(k),y:14,"text-anchor":"middle","class":"t-muted"},svg);tx.textContent=k});
- VZ.el("rect",{x:L,y:26,width:R-L,height:22,rx:3,fill:"var(--grid)",opacity:.5},svg);
+ VZ.el("rect",{x:L,y:26,width:R-L,height:22,rx:3,fill:"var(--grid)"},svg);
  var acc=0;v.forEach(function(val,i){if(!val)return;var x0=x(acc)+(acc?1:0),x1=x(acc+val)-1;acc+=val;var last=acc===s;
   var g=VZ.el("g",{role:"img","aria-label":Q[i].s+": +"+val},svg);
   var p=last?VZ.bar(g,x0,26,x1-x0+1,22,"var(--s"+(i+1)+")","h"):VZ.el("rect",{x:x0,y:26,width:Math.max(0,x1-x0),height:22,fill:"var(--s"+(i+1)+")"},g);
@@ -200,38 +209,39 @@ var G=[
  {s:2,e:12,l:0,sp:[4],w:"Weekly adoption and pipeline review, loss reasons on early deals and message fixes",o:"Product marketing and revenue operations",out:"30, 60 and 90 day reports",n:"Adoption and pipeline review"}
 ];
 function wl(w){return w===0?"T":w<0?"T−"+(-w):"T+"+w}
-var wk=-8,gEls=[];
-function active(t){return t.e===t.s?wk===t.s:(wk>=t.s&&wk<t.e)||(wk===12&&t.e===12)}
+var wk=-8,showAll=true,gEls=[];
+function active(t){if(showAll)return true;return t.e===t.s?wk===t.s:(wk>=t.s&&wk<t.e)||(wk===12&&t.e===12)}
 function drawGantt(){var host=$("lp-gantt");host.innerHTML="";gEls=[];var W=Math.max(300,host.clientWidth||700),narrow=W<620;
- var LW=narrow?0:150,top=26,rh=narrow?50:42,bh=narrow?18:20,H=top+LN.length*rh+8,x=VZ.lin(-8,12,LW+8,W-10);
+ var LW=narrow?0:150,top=26,rh=narrow?58:42,bh=narrow?18:20,H=top+LN.length*rh+8,x=VZ.lin(-8,12,LW+8,W-10);
  var svg=VZ.svg(host,W,H,"Gantt of the EU 2028 launch from T minus 8 weeks to T plus 12 weeks across five owner lanes. Full list below the chart.");svg.setAttribute("role","group");
  for(var k=-8;k<=12;k+=narrow?4:2){VZ.el("line",{x1:x(k),x2:x(k),y1:top-4,y2:H-6,"class":"grid"},svg);var tx=VZ.el("text",{x:x(k),y:14,"text-anchor":"middle","class":k===0?"t-strong":"t-muted"},svg);tx.textContent=wl(k)}
  var cur=VZ.el("g",{"pointer-events":"none"},svg);VZ.el("line",{x1:0,x2:0,y1:top-4,y2:H-6,stroke:"var(--ink1)","stroke-width":2},cur);
- LN.forEach(function(n,i){var y=top+i*rh;VZ.el("line",{x1:0,x2:W,y1:y,y2:y,"class":"grid"},svg);var tx=VZ.el("text",{x:narrow?0:0,y:narrow?y+14:y+rh/2+4,"class":"t-strong"},svg);tx.textContent=n;tx.setAttribute("font-size",narrow?"11.5":"12.5")});
+ LN.forEach(function(n,i){var y=top+i*rh;VZ.el("line",{x1:0,x2:W,y1:y,y2:y,"class":"grid"},svg);var tx=VZ.el("text",{x:narrow?0:0,y:narrow?y+16:y+rh/2+4,"class":"t-strong"},svg);tx.textContent=n;tx.setAttribute("font-size",narrow?"12":"12.5")});
  G.forEach(function(t,ti){var lanes=[t.l].concat(t.sp);lanes.forEach(function(ln,li){var y=top+ln*rh+(narrow?rh-bh-8:(rh-bh)/2);
   var g=VZ.el("g",{"class":"bar",role:"button","aria-label":wl(t.s)+": "+t.w+". "+t.o+". Output: "+t.out},svg);
   if(t.e===t.s){var cx=x(t.s),cy=y+bh/2;VZ.el("rect",{x:cx-8,y:cy-8,width:16,height:16,transform:"rotate(45 "+cx+" "+cy+")",fill:"var(--s"+(ln+1)+")"},g)}
-  else{var x0=x(t.s)+1,x1=x(t.e)-1;var p=VZ.bar(g,x0,y,x1-x0,bh,"var(--s"+(ln+1)+")","h");if(li>0)p.setAttribute("opacity",".45");
-   if(!narrow&&li===0&&x1-x0>t.n.length*6.6+12){var tx=VZ.el("text",{x:x0+8,y:y+bh/2+4,fill:"#fff","font-size":"11.5","pointer-events":"none"},g);tx.style.fill="#fff";tx.textContent=t.n}}
+  else{var x0=x(t.s)+1,x1=x(t.e)-1;var p=VZ.bar(g,x0,y,x1-x0,bh,"var(--s"+(ln+1)+")","h");if(li>0){p.setAttribute("fill-opacity",".35");p.setAttribute("stroke","var(--s"+(ln+1)+")");p.setAttribute("stroke-width","1.5");p.setAttribute("class","sup")}
+   if(!narrow&&li===0&&x1-x0>t.n.length*7+12){var tx=VZ.el("text",{x:x0+8,y:y+bh/2+4,"class":"in","pointer-events":"none"},g);tx.textContent=t.n}}
   VZ.tip(g,function(){return '<b>'+wl(t.s)+(t.e!==t.s?" to "+wl(t.e):"")+'</b>'+t.w+'<br><span class="m">'+(li?"Supporting: ":"Lead: ")+t.o+'<br>Output: '+t.out+'</span>'});
   g.addEventListener("click",function(){setWk(t.s)});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();setWk(t.s)}});
   gEls.push({g:g,t:t})})});
  drawGantt.cur=cur;drawGantt.x=x;paint();
 }
-function paint(){gEls.forEach(function(o){o.g.style.opacity=active(o.t)?1:.28});if(drawGantt.cur)drawGantt.cur.setAttribute("transform","translate("+drawGantt.x(wk)+",0)");
- $("lp-wko").textContent=wl(wk)+(wk===0?" launch":"");
- var a=G.filter(active);$("lp-now").innerHTML=a.length?a.map(function(t){return '<div><b>'+t.w+'</b><span>'+t.o+'. Output: '+t.out+'</span></div>'}).join(""):'<p>'+wl(wk)+': launch week activity winds down; adoption reviews begin at T+2.</p>'}
-function setWk(w){wk=w;$("lp-wk").value=w;paint()}
+function paint(){gEls.forEach(function(o){o.g.classList.toggle("off",!active(o.t))});if(drawGantt.cur){drawGantt.cur.setAttribute("transform","translate("+drawGantt.x(wk)+",0)");drawGantt.cur.style.display=showAll?"none":""}
+ $("lp-wko").textContent=showAll?"All weeks":wl(wk)+(wk===0?" launch":"");
+ var a=G.filter(active);$("lp-now").innerHTML=a.length?a.map(function(t){return '<div><b>'+wl(t.s)+(t.e!==t.s?" to "+wl(t.e):"")+' · '+t.w+'</b><span>'+t.o+' · Output: '+t.out+'</span></div>'}).join(""):'<p>'+wl(wk)+': launch week activity winds down; adoption reviews begin at T+2.</p>'}
+function setWk(w){showAll=false;wk=w;$("lp-wk").value=w;paint()}
 $("lp-wk").addEventListener("input",function(e){stop();setWk(+e.target.value)});
 var timer=null;function stop(){if(timer){clearInterval(timer);timer=null;$("lp-play").querySelector("span").textContent="Play"}}
-$("lp-play").addEventListener("click",function(){if(timer){stop();return}if(wk>=12)setWk(-8);this.querySelector("span").textContent="Pause";timer=setInterval(function(){if(wk>=12){stop();return}setWk(wk+1)},420)});
+$("lp-play").addEventListener("click",function(){if(timer){stop();return}setWk(wk>=12||showAll?-8:wk);this.querySelector("span").textContent="Pause";timer=setInterval(function(){if(wk>=12){stop();return}setWk(wk+1)},420)});
 
 /* milestones */
 var MS=[["T","Launch day","Live event, press release and customer story go out."],["30 days","Readiness","Sellers trained and pipeline created in the priority segments."],["60 days","Competition","Opportunities and win rate against the national tool and consultants."],["90 days","Results","New licences against target, and feature use in the accounts that bought."]];
 $("lp-ms").innerHTML=MS.map(function(m,i){return '<button type="button" class="'+(i===0?"t0":"")+'" aria-pressed="'+(i===1)+'"><i></i><b>'+m[0]+'</b><span>'+m[1]+'</span></button>'}).join("");
 var msb=[].slice.call($("lp-ms").querySelectorAll("button"));
 function ms(i){msb.forEach(function(b,j){b.setAttribute("aria-pressed",i===j)});$("lp-msd").innerHTML='<b>'+MS[i][0]+(i?" after launch":"")+'.</b> '+MS[i][2]}
-msb.forEach(function(b,i){b.addEventListener("click",function(){ms(i)})});ms(1);
+var MW=[0,4,9,12];
+msb.forEach(function(b,i){b.addEventListener("click",function(){ms(i);stop();setWk(MW[i])})});ms(1);
 
 /* calendar */
 var C=[
@@ -246,7 +256,7 @@ var C=[
 $("lp-caltb").innerHTML=C.map(function(c){return '<tr><th>'+(c.q?"Q"+c.q+" 2027":"Monthly")+'</th><td>'+c.dr+'</td><td>'+c.n+': '+c.f+'</td><td>'+TN[c.t]+'</td></tr>'}).join("");
 var filt=0,sel=0,cEls=[];
 function drawCal(){var host=$("lp-cal");host.innerHTML="";cEls=[];var W=Math.max(300,host.clientWidth||700),narrow=W<620;
- var LW=narrow?0:190,top=40,rh=narrow?50:40,H=top+C.length*rh+4,x=VZ.lin(0,12,LW+4,W-4);
+ var LW=narrow?0:190,top=40,rh=narrow?54:40,H=top+C.length*rh+4,x=VZ.lin(0,12,LW+4,W-4);
  var svg=VZ.svg(host,W,H,"2027 launch calendar with seven launches by quarter and tier. Table version below.");svg.setAttribute("role","group");
  var MN=["J","F","M","A","M","J","J","A","S","O","N","D"];
  for(var q=0;q<4;q++){var tx=VZ.el("text",{x:(x(q*3)+x(q*3+3))/2,y:12,"text-anchor":"middle","class":"t-strong"},svg);tx.textContent="Q"+(q+1);VZ.el("line",{x1:x(q*3),x2:x(q*3),y1:0,y2:H,"class":"axis"},svg)}
@@ -254,16 +264,16 @@ function drawCal(){var host=$("lp-cal");host.innerHTML="";cEls=[];var W=Math.max
  for(var m=0;m<12;m++){var tm=VZ.el("text",{x:(x(m)+x(m+1))/2,y:30,"text-anchor":"middle","class":"t-muted"},svg);tm.textContent=MN[m];if(m%3)VZ.el("line",{x1:x(m),x2:x(m),y1:20,y2:H,"class":"grid"},svg)}
  C.forEach(function(c,i){var y=top+i*rh,g=VZ.el("g",{"class":"row",role:"button","aria-label":c.n+", "+TN[c.t]+", "+(c.q?"Q"+c.q:"monthly")+". Driven by "+c.dr},svg);
   VZ.el("rect",{"class":"hit",x:0,y:y,width:W,height:rh,fill:"transparent",rx:3},g);
-  var by=narrow?y+rh-20:y+(rh-14)/2;
-  var lb=VZ.el("text",{x:narrow?2:6,y:narrow?y+15:y+rh/2+4,"class":"t-strong"},g);lb.textContent=c.n;
-  if(c.q){var x0=x((c.q-1)*3)+3,x1=x(c.q*3)-3;VZ.bar(g,x0,by,x1-x0,14,TC[c.t],"h");}
-  else{for(var m=0;m<12;m++){var cx=(x(m)+x(m+1))/2;VZ.el("circle",{cx:cx,cy:by+7,r:4.5,fill:TC[3],stroke:"var(--ring)","stroke-width":2},g)}}
-  if(c.d){var dx=x((c.d[1]-1)/31),dy=by+7;VZ.el("rect",{x:dx-6,y:dy-6,width:12,height:12,transform:"rotate(45 "+dx+" "+dy+")",fill:"var(--ink1)",stroke:"var(--ring)","stroke-width":2},g)}
+  var bh=c.t===1?18:12,by=narrow?y+rh-24+(18-bh)/2:y+(rh-bh)/2;
+  var lb=VZ.el("text",{x:narrow?2:6,y:narrow?y+15:y+rh/2+4,"class":"t-strong"},g);lb.textContent=c.n+" ";var ts=VZ.el("tspan",{"class":"t-muted"},lb);ts.textContent=TN[c.t];
+  if(c.q){var x0=x((c.q-1)*3)+3,x1=x(c.q*3)-3;VZ.bar(g,x0,by,x1-x0,bh,TC[c.t],"h");}
+  else{for(var m=0;m<12;m++){var cx=(x(m)+x(m+1))/2;VZ.el("circle",{cx:cx,cy:by+bh/2,r:4.5,fill:TC[3],stroke:"var(--ring)","stroke-width":2},g)}}
+  if(c.d){var dx=x((c.d[1]-1)/31),dy=by+bh/2;VZ.el("rect",{x:dx-6,y:dy-6,width:12,height:12,transform:"rotate(45 "+dx+" "+dy+")",fill:"var(--ink1)",stroke:"var(--ring)","stroke-width":2},g)}
   VZ.tip(g,function(){return '<b>'+c.n+'</b>'+c.f+'<br><span class="m">'+TN[c.t]+' · '+(c.q?"Q"+c.q+" 2027":"Every month")+'<br>Driver: '+c.dr+'</span>'});
   g.addEventListener("click",function(){sel=i;paintCal()});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();sel=i;paintCal()}});
   cEls.push(g)});paintCal()}
-function paintCal(){cEls.forEach(function(g,i){g.style.opacity=(!filt||C[i].t===filt)?1:.2;g.classList.toggle("sel",i===sel)});var c=C[sel];
- $("lp-det").innerHTML='<dt>Launch</dt><dd><b>'+c.n+'</b>: '+c.f+'</dd><dt>Driver</dt><dd>'+c.dr+'</dd><dt>When</dt><dd>'+(c.q?"Q"+c.q+" 2027":"Every month")+' · '+TN[c.t]+'</dd>'}
+function paintCal(){cEls.forEach(function(g,i){g.classList.toggle("dim",!!filt&&C[i].t!==filt);g.classList.toggle("sel",i===sel)});var c=C[sel];
+ $("lp-det").innerHTML='<dt>Launch</dt><dd><b>'+c.n+'</b>: '+c.f+'</dd><dt>Driver</dt><dd>'+c.dr+'</dd><dt>When</dt><dd>'+(c.q?"Q"+c.q+" 2027":"Every month")+' · '+TN[c.t]+'</dd><dt>Kit</dt><dd><div class="tags" style="margin-top:0">'+T[c.t].k.map(function(x){return '<span class="tag">'+x+'</span>'}).join("")+'</div></dd>'}
 [].forEach.call($("lp-filt").querySelectorAll("button"),function(b){b.addEventListener("click",function(){filt=+b.dataset.t;[].forEach.call($("lp-filt").querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x===b)});var f=C.findIndex(function(c){return !filt||c.t===filt});if(filt&&C[sel].t!==filt)sel=f;paintCal()})});
 
 var rt,lw=innerWidth;addEventListener("resize",function(){if(innerWidth===lw)return;lw=innerWidth;clearTimeout(rt);rt=setTimeout(function(){var v=vals();drawScore(v,v.reduce(function(a,b){return a+b},0),lastTier);drawGantt();drawCal()},150)});

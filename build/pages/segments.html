@@ -16,13 +16,13 @@
 #sg .sg-b{transition:transform .7s cubic-bezier(.2,.7,.2,1);cursor:pointer;outline:none}
 #sg .sg-b circle.m{transition:r .5s,fill .4s,opacity .4s;stroke:var(--ring);stroke-width:2}
 #sg .sg-b.top circle.m{fill:var(--s1);opacity:1}
-#sg .sg-b:not(.top) circle.m{fill:var(--ink3);opacity:.45}
+#sg .sg-b:not(.top) circle.m{fill:var(--ink3);opacity:1}
 #sg .sg-b.sel circle.m,#sg .sg-b:focus-visible circle.m{stroke:var(--ink1);stroke-width:2.5;opacity:1}
 #sg .sg-b text{fill:#fff;font-weight:600;font-size:12px;pointer-events:none}
 #sg .sg-split{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px;margin-top:28px;align-items:start}
 #sg .sg-rank{position:relative;list-style:none;padding:0;margin:0}
 #sg .sg-rank li{position:absolute;left:0;right:0;top:0;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-#sg .sg-rank button{appearance:none;border:0;background:none;color:var(--ink);font:inherit;width:100%;height:100%;cursor:pointer;display:grid;grid-template-columns:22px minmax(0,240px) minmax(0,1fr) 38px;gap:10px;align-items:center;text-align:left;padding:0 6px;border-radius:4px;font-size:13.5px}
+#sg .sg-rank button{appearance:none;border:0;background:none;color:var(--ink);font:inherit;width:100%;height:100%;cursor:pointer;display:grid;grid-template-columns:22px minmax(0,240px) minmax(0,1fr) 46px;gap:10px;align-items:center;text-align:left;padding:0 6px;border-radius:4px;font-size:13.5px}
 #sg .sg-rank button:hover{background:var(--panel)}
 #sg .sg-rank button[aria-pressed="true"]{background:var(--accent-soft)}
 #sg .sg-rank .rk{color:var(--ink2);font-size:12px;font-variant-numeric:tabular-nums}
@@ -32,7 +32,7 @@
 #sg .sg-rank .tr{display:flex;gap:2px;height:16px}
 #sg .sg-rank .tr span{display:block;height:100%;transition:width .5s;min-width:0}
 #sg .sg-rank .tr span:last-child{border-radius:0 4px 4px 0}
-#sg .sg-rank .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+#sg .sg-rank .v{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600}
 #sg .sg-prof{position:sticky;top:76px}
 #sg .sg-prof h3{font-size:18px;margin:4px 0 2px}
 #sg .sg-prof .why{font-size:14px;color:var(--ink2);margin-top:14px}
@@ -57,8 +57,26 @@
 #sg .sg-flow .ar{display:grid;place-items:center;color:var(--ink3)}
 #sg .sg-flow .st.hi{background:var(--accent-soft)}
 @media (max-width:980px){#sg .sg-lay,#sg .sg-split{grid-template-columns:1fr}#sg .controls,#sg .sg-prof{position:static}#sg .sg-tiles{grid-template-columns:1fr 1fr}}
-@media (max-width:640px){#sg .sg-top{grid-template-columns:1fr}#sg .sg-tiles{grid-template-columns:1fr}#sg .sg-flow{grid-template-columns:1fr}#sg .sg-flow .ar{height:28px;transform:rotate(90deg)}
-#sg .sg-rank button{grid-template-columns:22px minmax(0,1fr) 38px;grid-template-rows:auto 14px;row-gap:4px;padding:4px 6px}#sg .sg-rank .tr{grid-column:2/3;grid-row:2;height:12px}#sg .sg-rank .v{grid-column:3;grid-row:1}}
+@media (max-width:640px){#sg .sg-top{display:none}#sg .sg-tiles{grid-template-columns:1fr}#sg .sg-flow{grid-template-columns:1fr}#sg .sg-flow .ar{height:28px;transform:rotate(90deg)}
+#sg .sg-rank button{grid-template-columns:22px minmax(0,1fr) 46px;grid-template-rows:auto 14px;row-gap:4px;padding:4px 6px}#sg .sg-rank .tr{grid-column:2/3;grid-row:2;height:12px}#sg .sg-rank .v{grid-column:3;grid-row:1}}
+#sg .sg-mini{margin-top:18px;border-top:1px solid var(--line);padding-top:12px}
+#sg .sg-mini h4{font:500 11.5px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);margin:0 0 6px}
+#sg #mini>div{display:grid;grid-template-columns:16px minmax(0,1fr) 60px 32px;gap:8px;align-items:center;font-size:13px;padding:3px 0}
+#sg #mini>div span:first-child{color:var(--ink2);font-variant-numeric:tabular-nums}
+#sg #mini>div em{font-style:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#sg #mini>div i{display:block;height:8px;border-radius:0 4px 4px 0;background:var(--s1);transition:width .4s}
+#sg #mini>div b{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+#sg .sg-lbl text{font-size:12px;fill:var(--ink1);font-weight:500;paint-order:stroke;stroke:var(--chart-bg);stroke-width:3px;stroke-linejoin:round;pointer-events:none}
+#sg .sg-sort{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-top:22px}
+#sg .sg-sort button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:6px;padding:10px 10px 9px;font:500 13px/1.25 var(--sans);cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:6px}
+#sg .sg-sort button[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--accent-soft)}
+#sg .sg-sort .icon{width:28px;height:28px;margin:0}
+#sg .sg-sort .icon svg{width:16px;height:16px}
+#sg .sg-sort small{font:400 12px var(--sans);color:var(--ink2);display:flex;align-items:center;gap:6px}
+#sg .sg-sort small i{width:10px;height:10px;border-radius:2px;display:inline-block}
+#sg .sg-def{margin-top:12px;font-size:14px;color:var(--ink2);min-height:21px}
+@media (max-width:980px){#sg .sg-sort{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:640px){#sg .sg-sort{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (prefers-reduced-motion:reduce){#sg *{transition:none!important}}
 </style>
 <div id="sg">
@@ -76,6 +94,7 @@
       <p>Each preset sets the six weights for a kind of release.</p>
       <div class="btnrow" id="presets" role="group" aria-label="Launch type presets"></div>
       <div id="sliders"></div>
+      <div class="sg-mini" aria-hidden="true"><h4>Top five now</h4><div id="mini"></div></div>
     </div>
     <div>
       <div class="sg-top" id="top" aria-live="polite"></div>
@@ -86,7 +105,7 @@
           <label>Up<select id="ax-y"></select></label>
           <label>Bubble size<select id="ax-z"></select></label>
         </div>
-        <div class="legend" aria-hidden="true"><span><i style="background:var(--s1)"></i>Top three for this launch, numbered by rank</span><span><i style="background:var(--ink3);opacity:.5"></i>Other sub-segments</span></div>
+        <div class="legend" aria-hidden="true"><span><i style="background:var(--s1)"></i>Top three for this launch, numbered by rank</span><span><i style="background:var(--ink3)"></i>Other sub-segments; ranks four and five labelled</span></div>
         <div id="bub"></div>
       </div>
     </div>
@@ -96,7 +115,9 @@
 <section class="sec">
   <span class="eyebrow">Ranking</span>
   <h2>Weighted score and what drives it</h2>
-  <div class="legend" id="flegend" style="margin-top:18px" aria-hidden="true"></div>
+  <div class="sg-sort" id="sort" role="group" aria-label="Sort the ranking"></div>
+  <p class="sg-def" id="def" aria-live="polite"></p>
+  <div class="legend" id="flegend" style="margin-top:14px" aria-hidden="true"></div>
   <div class="sg-split">
     <ul class="sg-rank" id="rank" aria-label="Sub-segments ranked by weighted score"></ul>
     <div class="result sg-prof" id="prof" aria-live="polite"></div>
@@ -108,11 +129,6 @@
   </table></div></details>
 </section>
 
-<section class="sec">
-  <span class="eyebrow">Factors</span>
-  <h2>What each factor measures</h2>
-  <div class="sg-tiles" id="tiles"></div>
-</section>
 
 <section class="sec">
   <span class="eyebrow">In practice</span>
@@ -152,6 +168,9 @@ var S=[
 ["Middle East, designers",1,4,3,4,4,3,"Demand comes from certification schemes. Grey Matters resells in the UAE. Few local tools."],
 ["Sweden, developers",3,3,3,4,2,4,"Declarations in force; limits expected 2028 to 2030. The IVL tool has a free tier."]
 ];
+var SN=["Finland","Denmark","NL designers","NL manufacturers","France manufacturers","Germany","Italy and Spain","UK","Ireland","Cement and concrete","MEP and HVAC","Global firms","US designers","Middle East","Sweden"];
+var SM=["Finland","Denmark","NL design","NL makers","France","Germany","Italy, Spain","UK","Ireland","Cement","MEP, HVAC","Global firms","US","Mid East","Sweden"];
+var sortF=null;
 var P={"Compliance module":{p:35,v:10,n:15,f:15,r:15,c:10},"Manufacturer revenue":{p:15,v:30,n:15,f:15,r:15,c:10},"AI workflow":{p:10,v:15,n:25,f:20,r:20,c:10},"Enterprise":{p:10,v:40,n:5,f:20,r:15,c:10}};
 var W=Object.assign({},P["Compliance module"]),R=[],rankOf={},sel=null,AX={x:0,y:1,z:2};
 function col(i){return "var(--s"+(i+1)+")"}
@@ -170,7 +189,8 @@ var tb=document.querySelector("#scoretable tbody");
 S.forEach(function(s){var tr=document.createElement("tr");tr.innerHTML="<th>"+s[0]+"</th>"+s.slice(1,7).map(function(x){return '<td class="h'+Math.max(0,x-1)+'">'+x+"</td>"}).join("")+"<td>"+s[7]+"</td>";tb.appendChild(tr)});
 
 /* factor tiles */
-$("tiles").innerHTML=F.map(function(f,i){return '<div class="sg-tile rv"><span class="icon"><svg viewBox="0 0 24 24">'+f[4]+'</svg></span><span class="wt"><span id="tw_'+f[0]+'">0%</span><small>weight now</small></span><h3>'+f[1]+'</h3><p>'+f[3]+'</p><div class="meter"><span id="tm_'+f[0]+'" style="background:'+col(i)+'"></span></div></div>'}).join("");
+var so=$("sort");so.innerHTML='<button type="button" aria-pressed="true" data-f=""><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 18h4V9H4zM10 18h4V5h-4zM16 18h4v-6h-4z"/></svg></span>Weighted score<small>all six factors</small></button>'+F.map(function(f,i){return '<button type="button" aria-pressed="false" data-f="'+i+'"><span class="icon"><svg viewBox="0 0 24 24">'+f[4]+'</svg></span>'+f[1]+'<small><i style="background:'+col(i)+'"></i>weight <span id="tw_'+f[0]+'">0%</span></small></button>'}).join("");
+[].forEach.call(so.children,function(b){b.onclick=function(){sortF=b.dataset.f===""?null:+b.dataset.f;[].forEach.call(so.children,function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});update()}});
 
 /* ranking list */
 var ul=$("rank"),rows=[];
@@ -181,8 +201,8 @@ S.forEach(function(s,i){var li=document.createElement("li"),b=document.createEle
  b.setAttribute("tabindex","0")});
 
 /* bubble chart */
-var host=$("bub"),svg,G=[],geo={};
-function build(){host.innerHTML="";var w=Math.max(300,host.clientWidth),m=w<560,h=m?Math.round(w*1.0):440;
+var host=$("bub"),svg,G=[],geo={},POS=[],LG;
+function build(){host.innerHTML="";var w=Math.max(300,host.clientWidth),m=w<560,h=m?Math.round(w*1.25):520;
  geo={w:w,h:h,l:m?34:52,r:m?12:20,t:14,b:m?40:46,rmin:m?6:8,rmax:m?14:22,off:m?13:22};
  svg=VZ.svg(host,w,h,"");svg.setAttribute("role","group");G=[];
  var X=VZ.lin(.5,5.5,geo.l,w-geo.r),Y=VZ.lin(.5,5.5,h-geo.b,geo.t);geo.X=X;geo.Y=Y;
@@ -190,6 +210,7 @@ function build(){host.innerHTML="";var w=Math.max(300,host.clientWidth),m=w<560,
   VZ.el("text",{x:X(v),y:h-geo.b+18,"text-anchor":"middle"},svg).textContent=v;VZ.el("text",{x:geo.l-12,y:Y(v)+4,"text-anchor":"end"},svg).textContent=v}
  geo.xt=VZ.el("text",{x:(geo.l+w-geo.r)/2,y:h-6,"text-anchor":"middle",class:"t-strong"},svg);
  geo.yt=VZ.el("text",{x:-(geo.t+h-geo.b)/2,y:12,"text-anchor":"middle",class:"t-strong",transform:"rotate(-90)"},svg);
+ LG=VZ.el("g",{class:"sg-lbl","aria-hidden":"true"},svg);
  S.forEach(function(s,i){var g=VZ.el("g",{class:"sg-b",role:"button"},svg);VZ.el("circle",{r:24,fill:"transparent"},g);VZ.el("circle",{class:"m",r:10},g);VZ.el("text",{"text-anchor":"middle",y:4},g);
   VZ.tip(g,function(){return "<b>"+esc(s[0])+"</b><span class='m'>"+F[AX.x][2]+" "+s[AX.x+1]+", "+F[AX.y][2]+" "+s[AX.y+1]+", "+F[AX.z][2]+" "+s[AX.z+1]+"<br>Rank "+rankOf[i]+", score "+R[rankOf[i]-1].s.toFixed(2)+"</span>"});
   g.addEventListener("click",function(){select(i)});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();select(i)}});G.push(g)});
@@ -199,22 +220,35 @@ function place(){if(!svg)return;var groups={};
  S.forEach(function(s,i){var k=s[AX.x+1]+","+s[AX.y+1];(groups[k]=groups[k]||[]).push(i)});
  Object.keys(groups).forEach(function(k){var g=groups[k],n=g.length;g.forEach(function(i,j){var s=S[i],a=-Math.PI/2+j*2*Math.PI/n,d=n>1?geo.off*(n>3?1.25:1):0,
   x=geo.X(s[AX.x+1])+Math.cos(a)*d,y=geo.Y(s[AX.y+1])+Math.sin(a)*d,r=geo.rmin+(s[AX.z+1]-1)/4*(geo.rmax-geo.rmin);
-  G[i].style.transform="translate("+x.toFixed(1)+"px,"+y.toFixed(1)+"px)";G[i].querySelector("circle.m").setAttribute("r",r.toFixed(1))})});
+  G[i].style.transform="translate("+x.toFixed(1)+"px,"+y.toFixed(1)+"px)";G[i].querySelector("circle.m").setAttribute("r",r.toFixed(1));POS[i]=[x,y,r]})});
+ labels();
  svg.setAttribute("aria-label","Bubble chart of fifteen sub-segments. Across: "+F[AX.x][1]+". Up: "+F[AX.y][1]+". Bubble size: "+F[AX.z][1]+". The full scores are in the table below the ranking.")}
 function paint(){G.forEach(function(g,i){var r=rankOf[i];g.classList.toggle("top",r<=3);g.classList.toggle("sel",sel===i);g.querySelector("text").textContent=r<=3?r:"";g.setAttribute("aria-label",S[i][0]+", rank "+r)});
- if(svg)G.filter(function(g,i){return rankOf[i]<=3}).forEach(function(g){svg.appendChild(g)})}
+ if(svg){G.filter(function(g,i){return rankOf[i]<=3}).forEach(function(g){svg.appendChild(g)});labels()}}
+function labels(){if(!LG||!POS.length||!R.length)return;svg.appendChild(LG);LG.innerHTML="";var boxes=[],ov=function(a,b){return a[0]<b[2]&&a[2]>b[0]&&a[1]<b[3]&&a[3]>b[1]};
+ R.slice(0,5).forEach(function(x,k){var p=POS[x.i],t=(k+1)+" "+(geo.w<560?SM:SN)[x.i],w=t.length*6.9,h=14,best=null,bs=1e9;
+  [[p[2]+5,4,"start"],[-p[2]-5,4,"end"],[0,-p[2]-6,"middle"],[0,p[2]+15,"middle"],[p[2]*.7+3,-p[2]*.7-4,"start"],[-p[2]*.7-3,-p[2]*.7-4,"end"],[p[2]*.7+3,p[2]*.7+12,"start"],[-p[2]*.7-3,p[2]*.7+12,"end"],[0,-p[2]-22,"middle"],[0,p[2]+31,"middle"],[-p[2]-5,-16,"end"],[-p[2]-5,22,"end"]].forEach(function(c){var x0=p[0]+c[0]-(c[2]==="end"?w:c[2]==="middle"?w/2:0),y0=p[1]+c[1]-11,bx=[x0,y0,x0+w,y0+h],sc=0;
+   if(bx[0]<geo.l||bx[2]>geo.w-2||bx[1]<0||bx[3]>geo.h-geo.b)sc+=500;
+   boxes.forEach(function(b){if(ov(bx,b))sc+=100});
+   POS.forEach(function(q,j){if(j===x.i)return;var cx=Math.max(bx[0],Math.min(q[0],bx[2])),cy=Math.max(bx[1],Math.min(q[1],bx[3]));if((cx-q[0])*(cx-q[0])+(cy-q[1])*(cy-q[1])<q[2]*q[2])sc+=10});
+   if(sc<bs){bs=sc;best=[c,bx]}});
+  boxes.push(best[1]);var tx=VZ.el("text",{x:p[0]+best[0][0],y:p[1]+best[0][1],"text-anchor":best[0][2]},LG);tx.textContent=t})}
 
 function tot(){return F.reduce(function(a,f){return a+W[f[0]]},0)||1}
 function update(){var t=tot();
- F.forEach(function(f){var p=Math.round(W[f[0]]/t*100)+"%";$("o_"+f[0]).textContent=p;$("tw_"+f[0]).textContent=p;$("tm_"+f[0]).style.width=(W[f[0]]/50*100)+"%"});
+ F.forEach(function(f){var p=Math.round(W[f[0]]/t*100)+"%";$("o_"+f[0]).textContent=p;$("tw_"+f[0]).textContent=p});
  R=S.map(function(s,i){var parts=F.map(function(f,j){return W[f[0]]*s[j+1]/t});return {i:i,s:parts.reduce(function(a,b){return a+b},0),parts:parts}}).sort(function(a,b){return b.s-a.s});
  R.forEach(function(x,k){rankOf[x.i]=k+1});
+ var L=sortF===null?R:R.slice().sort(function(a,b){return S[b.i][sortF+1]-S[a.i][sortF+1]||b.s-a.s});
+ $("def").innerHTML=sortF===null?"Sorted by weighted score. Each bar shows how much every factor adds. Pick a factor to sort by it alone.":"<b style=\"color:var(--ink)\">"+F[sortF][1]+".</b> "+F[sortF][3];
+ $("rank").setAttribute("aria-label",sortF===null?"Sub-segments ranked by weighted score":"Sub-segments sorted by "+F[sortF][1]);
+ $("mini").innerHTML=R.slice(0,5).map(function(x,k){return '<div><span>'+(k+1)+'</span><em>'+SN[x.i]+'</em><span><i style="width:'+((x.s-1)/4*100).toFixed(0)+'%"></i></span><b>'+x.s.toFixed(2)+'</b></div>'}).join("");
  if(sel===null)sel=R[0].i;
  var mob=matchMedia("(max-width:640px)").matches,rh=mob?50:36;ul.style.height=(S.length*rh)+"px";
- R.forEach(function(x,k){var li=rows[x.i],b=li.firstChild;li.style.height=rh+"px";li.style.transform="translateY("+(k*rh)+"px)";li.className=k<3?"top":"";
-  b.querySelector(".rk").textContent=k+1;b.querySelector(".v").textContent=x.s.toFixed(2);
-  var sp=b.querySelectorAll(".tr span");x.parts.forEach(function(p,j){sp[j].style.width=(p/5*100)+"%"});
-  b.setAttribute("aria-label","Rank "+(k+1)+", "+S[x.i][0]+", score "+x.s.toFixed(2)+" of 5")});
+ L.forEach(function(x,k){var li=rows[x.i],b=li.firstChild;li.style.height=rh+"px";li.style.transform="translateY("+(k*rh)+"px)";li.className=k<3?"top":"";
+  b.querySelector(".rk").textContent=k+1;b.querySelector(".v").textContent=sortF===null?x.s.toFixed(2):S[x.i][sortF+1]+" of 5";
+  var sp=b.querySelectorAll(".tr span");x.parts.forEach(function(p,j){sp[j].style.width=sortF===null?(p/5*100)+"%":j===sortF?(S[x.i][j+1]/5*100)+"%":"0%";sp[j].style.display=sortF===null||j===sortF?"":"none"});
+  b.setAttribute("aria-label",(k+1)+", "+S[x.i][0]+(sortF===null?", score "+x.s.toFixed(2)+" of 5":", "+F[sortF][1]+" "+S[x.i][sortF+1]+" of 5"))});
  $("top").innerHTML=R.slice(0,3).map(function(x,k){return '<button type="button" data-i="'+x.i+'"><span class="n">'+(k+1)+'</span><b>'+esc(S[x.i][0])+'</b><span>score '+x.s.toFixed(2)+' of 5</span></button>'}).join("");
  [].forEach.call($("top").children,function(b){b.onclick=function(){select(+b.dataset.i)}});
  paint();profile()}

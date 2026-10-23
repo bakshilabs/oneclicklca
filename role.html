@@ -19,7 +19,7 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="sitenav"><div class="in"><a class="brand" href="overview.html">Arpan Bakshi<span>One Click LCA product marketing</span></a><button class="theme" type="button" aria-label="Switch to dark mode">Dark</button><button class="menu" type="button" aria-expanded="false" aria-controls="sitelinks">Menu</button><nav class="links" id="sitelinks" aria-label="Site pages"><a href="overview.html">Overview</a><a href="role.html" aria-current="page">The Role</a><a href="fit.html">Fit</a><a href="portfolio.html">Portfolio</a><a href="demand.html">Demand Drivers</a><a href="buyers.html">Buyers</a><a href="segments.html">Segment Model</a><a href="alternatives.html">Alternatives</a><a href="positioning.html">Positioning</a><a href="launch.html">Launch Playbook</a><a href="enablement.html">Enablement</a><a href="metrics.html">Win Rate</a><a href="first-90-days.html">90 Days</a><a href="ai.html">AI Workflow</a><a href="cv.html">CV</a></nav></div></header><script>(function(){var r=document.documentElement,t=document.querySelector('.sitenav .theme');function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}function show(){var d=cur()==='dark';t.textContent=d?'Light':'Dark';t.setAttribute('aria-label','Switch to '+(d?'light':'dark')+' mode')}if(t){t.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n)}catch(e){}show()});show()}var b=document.querySelector('.sitenav .menu'),l=document.getElementById('sitelinks');if(!b)return;b.addEventListener('click',function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');b.textContent=o?'Close':'Menu';});l.addEventListener('click',function(e){if(e.target.tagName==='A'){l.classList.remove('open');b.textContent='Menu';b.setAttribute('aria-expanded','false');}});})();</script>
+<header class="sitenav"><div class="in"><a class="brand" href="overview.html">Arpan Bakshi<span>One Click LCA product marketing</span></a><button class="theme" type="button" aria-label="Switch to dark mode">Dark</button><button class="menu" type="button" aria-expanded="false" aria-controls="sitelinks">Menu</button><nav class="links" id="sitelinks" aria-label="Site pages"><a href="overview.html">Overview</a><a href="role.html" aria-current="page">The Role</a><a href="fit.html">Fit</a><a href="portfolio.html">Portfolio</a><a href="demand.html">Demand Drivers</a><a href="buyers.html">Buyers</a><a href="segments.html">Segment Model</a><a href="alternatives.html">Alternatives</a><a href="positioning.html">Positioning</a><a href="launch.html">Launch Playbook</a><a href="enablement.html">Enablement</a><a href="metrics.html">Win Rate</a><a href="first-90-days.html">First 90 Days</a><a href="ai.html">AI Workflow</a><a href="cv.html">CV</a></nav></div></header><script>(function(){var r=document.documentElement,t=document.querySelector('.sitenav .theme');function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}function show(){var d=cur()==='dark';t.textContent=d?'Light':'Dark';t.setAttribute('aria-label','Switch to '+(d?'light':'dark')+' mode')}if(t){t.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n)}catch(e){}show()});show()}var b=document.querySelector('.sitenav .menu'),l=document.getElementById('sitelinks');if(!b)return;b.addEventListener('click',function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');b.textContent=o?'Close':'Menu';});l.addEventListener('click',function(e){if(e.target.tagName==='A'){l.classList.remove('open');b.textContent='Menu';b.setAttribute('aria-expanded','false');}});})();</script>
 <main class="wrap page" id="main" tabindex="-1">
 <style>
 .ro-hub{display:grid;grid-template-columns:1.15fr 1fr;gap:22px;align-items:center}
@@ -61,13 +61,17 @@
 .ro-dd .k{font:500 11.5px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
 @media (max-width:900px){.ro-duties{grid-template-columns:1fr 1fr}.ro-dd{grid-template-columns:1fr}}
 
-.ro-cyc{display:grid;grid-template-columns:340px 1fr;gap:26px;align-items:center;margin-top:28px}
-#ro-cycsvg .ring{cursor:pointer}
-#ro-cycsvg .ring:focus{outline:none}
-.ro-cyc ul{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px}
-.ro-cyc li{background:var(--panel);border-radius:5px;padding:12px 14px 12px 40px;position:relative;font-size:14.5px}
-.ro-cyc li::before{content:"";position:absolute;left:15px;top:17px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
-@media (max-width:760px){.ro-cyc{grid-template-columns:1fr}.ro-cyc>div:first-child{max-width:300px;margin:0 auto}}
+.ro-cyc{display:grid;grid-template-columns:1fr 300px;gap:22px;align-items:start}
+#ro-cal .cell,#ro-cal .wk{cursor:pointer}
+#ro-cal .wk:focus{outline:none}
+#ro-cal .wk:focus-visible rect.h{stroke:var(--ink1);stroke-width:2}
+.ro-week{background:var(--panel);border-radius:6px;padding:18px 20px}
+.ro-week .d{font:600 26px/1 var(--sans);letter-spacing:-.02em;color:var(--accent)}
+.ro-week ul{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:6px}
+.ro-week li{font-size:14px;display:flex;gap:8px;align-items:baseline}
+.ro-week li i{flex:none;width:10px;height:10px;border-radius:2px;display:inline-block;transform:translateY(1px)}
+@media (max-width:860px){.ro-cyc{grid-template-columns:1fr}}
+.viz svg .t-muted{font-size:12px}
 
 .ro-ms ul{list-style:none;padding:0;margin:16px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .ro-ms li{background:var(--panel);border-radius:5px;padding:14px 16px 14px 44px;position:relative;font-size:14.5px;transition:opacity .2s,background .2s}
@@ -77,10 +81,19 @@
 #ro-mssvg .m{cursor:pointer}
 #ro-mssvg .m:focus{outline:none}
 
-.ro-q{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px;counter-reset:q}
-.ro-q div{counter-increment:q;background:var(--panel);border-radius:6px;padding:14px 16px 14px 52px;position:relative;font-size:14.5px}
-.ro-q div::before{content:counter(q);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font:600 13px/26px var(--sans);text-align:center}
-@media (max-width:700px){.ro-q{grid-template-columns:1fr}}
+.ro-qw{display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:start;margin-top:20px}
+.ro-q{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ro-q button{appearance:none;border:0;text-align:left;background:var(--panel);color:var(--ink);border-radius:6px;padding:14px 16px;font:500 14.5px/1.35 var(--sans);cursor:pointer;display:flex;flex-direction:column;gap:8px;transition:transform .15s,background .15s}
+.ro-q button:hover{transform:translateY(-2px)}
+.ro-q button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.ro-q button[aria-pressed="true"] .tag{background:transparent;color:var(--on-accent);border-color:var(--on-accent)}
+.ro-q button[hidden]{display:none}
+.ro-qd{background:var(--accent-soft);border-radius:6px;padding:18px 20px;position:sticky;top:80px}
+.ro-qd .k{font:500 11.5px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:12px 0 4px}
+.ro-qd h3{font-size:17px}
+.ro-qd p{font-size:14.5px}
+@media (max-width:860px){.ro-qw{grid-template-columns:1fr}.ro-qd{position:static}}
+@media (max-width:560px){.ro-q{grid-template-columns:1fr}}
 </style>
 
 <header class="phead">
@@ -114,7 +127,7 @@
     <div id="ro-tl"></div>
     <div class="ro-ev" id="ro-ev" aria-live="polite"></div>
   </div>
-  <div class="callout"><p><b>Inference.</b> The listing sits in Product Management and prefers Finland or the Netherlands, where Helsinki is headquarters and PRé is in Amersfoort. The February 2026 listing covered manufacturing, so this role may cover design and construction or the shared One Click LCA and SimaPro story. I would ask which.</p></div>
+  <div class="callout"><p><b>Inference.</b> The listing sits in Product and prefers Finland or the Netherlands, home to the Helsinki headquarters and PRé. I would ask which product line it covers.</p></div>
 </section>
 
 <section class="sec">
@@ -127,17 +140,18 @@
 <section class="sec">
   <span class="eyebrow">Operating rhythm</span>
   <h2>How I would run the job week to week</h2>
-  <div class="ro-cyc">
-    <div id="ro-cycsvg"></div>
-    <div>
-      <div class="tabs" role="tablist" aria-label="Cadence" id="ro-cyctabs" style="margin-top:0">
-        <button role="tab" id="ro-t0" aria-controls="ro-p0" aria-selected="true">Every week</button>
-        <button role="tab" id="ro-t1" aria-controls="ro-p1" aria-selected="false">Every month</button>
-        <button role="tab" id="ro-t2" aria-controls="ro-p2" aria-selected="false">Every quarter</button>
-      </div>
-      <div role="tabpanel" id="ro-p0" aria-labelledby="ro-t0"><ul><li>Two conversations with users or buyers, recorded and tagged.</li><li>Review three sales calls, one of them lost or stalled.</li><li>Answer the sales channel's open questions in one shared thread.</li><li>Check launch readiness for anything due in the next eight weeks.</li></ul></div>
-      <div role="tabpanel" id="ro-p1" aria-labelledby="ro-t1" hidden><ul><li>Win and loss summary by segment and named alternative.</li><li>Update the regulation calendar with new dates and drafts.</li><li>Refresh one battlecard and one business case.</li><li>Run one partner training session.</li></ul></div>
-      <div role="tabpanel" id="ro-p2" aria-labelledby="ro-t2" hidden><ul><li>Re-score sub-segments and set launch priorities with product and sales.</li><li>Review positioning: which messages won and which stalled.</li><li>Audit proof points across the website and sales decks.</li><li>Plan the next quarter's launches and campaigns per region.</li></ul></div>
+  <div class="viz rv">
+    <div class="viz-h"><h3>One quarter of routines</h3><p>Twelve routines across thirteen weeks. Filter by cadence or select a week.</p></div>
+    <div class="tabs" role="tablist" aria-label="Cadence" id="ro-cyctabs" style="margin-top:0">
+      <button role="tab" aria-selected="true" data-c="-1">All</button>
+      <button role="tab" aria-selected="false" data-c="0">Every week</button>
+      <button role="tab" aria-selected="false" data-c="1">Every month</button>
+      <button role="tab" aria-selected="false" data-c="2">Every quarter</button>
+    </div>
+    <div class="legend" aria-hidden="true" style="margin-top:14px"><span><i style="background:var(--s1);border-radius:2px"></i>Weekly</span><span><i style="background:var(--s2);border-radius:2px"></i>Monthly</span><span><i style="background:var(--s7);border-radius:2px"></i>Quarterly</span></div>
+    <div class="ro-cyc" style="margin-top:6px">
+      <div id="ro-cal"></div>
+      <div class="ro-week" id="ro-week" aria-live="polite"></div>
     </div>
   </div>
 </section>
@@ -155,14 +169,16 @@
 <section class="sec">
   <span class="eyebrow">For the panel</span>
   <h2>Questions I would ask</h2>
-  <div class="ro-q">
-    <div><b>Where does product marketing report after the 2026 leadership changes,</b> and which metric is the role judged by?</div>
-    <div><b>Which product line and segments would this role own:</b> design and construction, manufacturing, data products or the shared SimaPro story?</div>
-    <div><b>Which segment is growing fastest,</b> and which is the company most worried about?</div>
-    <div><b>How is win rate measured today?</b> Are loss reasons and named competitors recorded in the CRM?</div>
-    <div><b>How will One Click LCA and SimaPro be positioned</b> for buyers who could use either?</div>
-    <div><b>What share of new revenue comes through resellers and partners,</b> and in which regions?</div>
-    <div><b>Which launch in the past year went better than expected,</b> and which went worse?</div>
+  <div class="btnrow" id="ro-qf" role="group" aria-label="Filter questions by theme">
+    <button type="button" data-t="all" aria-pressed="true">All seven</button>
+    <button type="button" data-t="Scope" aria-pressed="false">Scope</button>
+    <button type="button" data-t="Market" aria-pressed="false">Market</button>
+    <button type="button" data-t="Measurement" aria-pressed="false">Measurement</button>
+    <button type="button" data-t="Portfolio" aria-pressed="false">Portfolio</button>
+  </div>
+  <div class="ro-qw">
+    <div class="ro-q" id="ro-q" role="group" aria-label="Questions"></div>
+    <div class="ro-qd" id="ro-qd" aria-live="polite"></div>
   </div>
 </section>
 
@@ -187,21 +203,21 @@ function txt(el,t){el.textContent=t;return el}
 /* ---------- hub and spoke ---------- */
 var T=[
  {n:"Product",s:"Product",who:"Product leadership and the product managers for integrations, manufacturing, retention and Carbon Designer 3D. The role sits in this department.",b:"Buyer evidence, segment priorities, launch tier, naming and packaging input.",t:"Roadmap, release dates and the technical truth about what each feature does."},
- {n:"Sales and customer success",s:"Sales and CS",who:"Regional business development managers, SDR teams, sales enablement, customer success and the Academy.",b:"Battlecards, discovery guides, business cases, training and support on hard competitive deals.",t:"Call recordings, loss reasons, objections and expansion signals."},
+ {n:"Sales and customer success",s:"Sales|and CS",who:"Regional business development managers, SDR teams, sales enablement, customer success and the Academy.",b:"Battlecards, discovery guides, business cases, training and support on hard competitive deals.",t:"Call recordings, loss reasons, objections and expansion signals."},
  {n:"Marketing",s:"Marketing",who:"Regional marketing, outbound and ABM, website and web shop, content, the Carbon Experts Summits and the Lead Product Marketing role.",b:"Messaging, launch narratives, segment lists and proof points.",t:"Campaign results that show which messages convert."},
  {n:"Partners and channel",s:"Partners",who:"Resellers such as Symetri, Harpaceas and Sumitomo; technology partners such as Autodesk, Bentley and Vectorworks.",b:"Partner kits and training that work without us in the room.",t:"Local market feedback and regulation knowledge."},
  {n:"Ecosystem",s:"Ecosystem",who:"Green building councils, programme operators (EPD Hub, International EPD System, INIES, UL) and trade associations.",b:"Co-marketing for launches tied to standards and rules.",t:"Early sight of methodology and rule changes."},
- {n:"SimaPro and PRé",s:"SimaPro",who:"The general-purpose LCA product line in Amersfoort.",b:"A clear account of which buyer gets which product.",t:"Industry LCA expertise and an existing customer base for cross-sell."}
+ {n:"SimaPro and PRé",s:"SimaPro|and PRé",who:"The general-purpose LCA product line in Amersfoort.",b:"A clear account of which buyer gets which product.",t:"Industry LCA expertise and an existing customer base for cross-sell."}
 ];
 var hub=document.getElementById("ro-hubsvg"),det=document.getElementById("ro-det"),hs=0,nodes=[],spokes=[];
 function showTeam(i){hs=i;var t=T[i];
  det.innerHTML='<span class="eyebrow">Team '+(i+1)+' of 6</span><h3></h3><p class="who"></p><div class="ro-io"><div><p class="k">'+IN+'Product marketing brings</p><p class="b"></p></div><div><p class="k">'+OUT+'Product marketing takes</p><p class="tk"></p></div></div>';
  txt(det.querySelector("h3"),t.n);txt(det.querySelector(".who"),t.who);txt(det.querySelector(".b"),t.b);txt(det.querySelector(".tk"),t.t);
- nodes.forEach(function(g,j){g.setAttribute("aria-pressed",j===i);g.querySelector("circle.c").setAttribute("style",j===i?"fill:var(--accent)":"fill:var(--chart-bg);stroke:var(--accent)");g.querySelector("text").setAttribute("style",j===i?"fill:var(--on-accent);font-weight:600":"fill:var(--ink1)")});
+ nodes.forEach(function(g,j){g.setAttribute("aria-pressed",j===i);g.querySelector("circle.c").setAttribute("style",j===i?"fill:var(--accent)":"fill:var(--chart-bg);stroke:var(--accent)");[].forEach.call(g.querySelectorAll("text"),function(tt){tt.setAttribute("style","font-size:12px;"+(j===i?"fill:var(--on-accent);font-weight:600":"fill:var(--ink1)"))})});
  spokes.forEach(function(s,j){s.classList.toggle("on",j===i)});
 }
 function drawHub(){
- hub.innerHTML="";nodes=[];spokes=[];var W=Math.max(300,hub.clientWidth),S=Math.min(W,520),nr=S<400?40:48,H=S<400?S*1.02:S*0.86,cx=W/2,cy=H/2,R=Math.min(W/2-nr*0.85-2,H/2-nr*0.85-2);
+ hub.innerHTML="";nodes=[];spokes=[];var W=Math.max(300,hub.clientWidth),S=Math.min(W,520),nr=S<400?40:54,H=S<400?S*1.02:S*0.86,cx=W/2,cy=H/2,R=Math.min(W/2-nr*0.85-2,H/2-nr*0.85-2);
  var s=VZ.svg(hub,W,H,"Hub and spoke diagram: the Senior Product Marketing Manager at the centre, connected to Product, Sales and customer success, Marketing, Partners and channel, Ecosystem, and SimaPro and PRé.");s.setAttribute("role","group");
  T.forEach(function(t,i){var a=-Math.PI/2+i*Math.PI/3,x=cx+R*Math.cos(a),y=cy+R*Math.sin(a);
   spokes.push(VZ.el("line",{x1:cx,y1:cy,x2:x,y2:y,"class":"spoke"},s));t.x=x;t.y=y;});
@@ -211,7 +227,7 @@ function drawHub(){
  T.forEach(function(t,i){
   var g=VZ.el("g",{"class":"node",tabindex:0,role:"button","aria-label":t.n,"aria-pressed":"false"},s);
   VZ.el("circle",{"class":"c",cx:t.x,cy:t.y,r:nr*0.82,"stroke-width":2},g);
-  var tx=VZ.el("text",{x:t.x,y:t.y+4,"text-anchor":"middle",style:"font-size:"+(S<400?10:12.5)+"px"},g);tx.textContent=S<400?t.s.replace("Sales and CS","Sales"):t.s;
+  var ls=t.s.split("|");ls.forEach(function(l,k){var tx=VZ.el("text",{x:t.x,y:t.y+4+(k-(ls.length-1)/2)*15,"text-anchor":"middle",style:"font-size:12px"},g);tx.textContent=l;});
   g.addEventListener("click",function(){showTeam(i)});
   g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();showTeam(i)}});
   nodes.push(g);
@@ -277,20 +293,50 @@ function showDuty(i){[].forEach.call(dg.children,function(b,j){b.setAttribute("a
 DU.forEach(function(d,i){var b=document.createElement("button");b.type="button";b.className="ro-duty";b.innerHTML='<span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24">'+d[4]+'</svg></span><span class="num">Duty '+(i+1)+'</span><span class="t"></span>';txt(b.querySelector(".t"),d[0]);b.addEventListener("click",function(){showDuty(i)});dg.appendChild(b)});
 showDuty(0);
 
-/* ---------- cycle ---------- */
-var cyc=document.getElementById("ro-cycsvg"),ctabs=document.getElementById("ro-cyctabs"),csel=0,rings=[];
-(function(){var s=VZ.svg(cyc,320,320,"Three concentric cycles: weekly at the centre, monthly around it and quarterly outside, each with four routines.");var labs=["Week","Month","Quarter"],R=[52,98,144];
- for(var i=2;i>=0;i--){(function(i){var g=VZ.el("g",{"class":"ring",tabindex:-1},s);
-  VZ.el("circle",{cx:160,cy:160,r:R[i],"class":"rc",fill:"none","stroke-width":i===0?0:26},g);
-  if(i===0)VZ.el("circle",{cx:160,cy:160,r:R[0]-4,"class":"rf"},g);
-  for(var k=0;k<4;k++){var a=-Math.PI/2+k*Math.PI/2+(i*0.4);VZ.el("circle",{cx:160+(i===0?30:R[i])*Math.cos(a),cy:160+(i===0?30:R[i])*Math.sin(a),r:5,"class":"tk",style:"stroke:var(--chart-bg)","stroke-width":2},g)}
-  var t=VZ.el("text",{x:160,y:i===0?165:160-R[i]+4,"text-anchor":"middle","class":"t-strong"},g);t.textContent=labs[i];
-  g.addEventListener("click",function(){ctabs.querySelectorAll("[role=tab]")[i].click()});rings[i]=g;})(i)}
-})();
-function paintCyc(){rings.forEach(function(g,i){var on=i===csel;var rc=g.querySelector(".rc");rc.setAttribute("style","stroke:"+(on?"var(--accent)":"var(--grid)"));var rf=g.querySelector(".rf");if(rf)rf.setAttribute("style","fill:"+(on?"var(--accent)":"var(--grid)"));
- [].forEach.call(g.querySelectorAll(".tk"),function(c){c.style.fill=on?(i===0?"var(--chart-bg)":"var(--chart-bg)"):"var(--ink3)"});
- var t=g.querySelector("text");t.style.fill=on?"var(--on-accent)":"var(--ink1)";})}
-VZ.tabs(ctabs,function(t){csel=[].indexOf.call(ctabs.querySelectorAll("[role=tab]"),t);paintCyc()});
+/* ---------- quarter calendar ---------- */
+var CAD=["Weekly","Monthly","Quarterly"],CC=["var(--s1)","var(--s2)","var(--s7)"];
+var RT=[[0,"Two user or buyer conversations"],[0,"Review three sales calls"],[0,"Answer the sales channel's questions"],[0,"Check launch readiness, next eight weeks"],
+ [1,"Win and loss summary"],[1,"Update the regulation calendar"],[1,"Refresh a battlecard and a business case"],[1,"One partner training session"],
+ [2,"Re-score sub-segments and set launch priorities"],[2,"Positioning review"],[2,"Proof point audit"],[2,"Plan next quarter's launches"]];
+function on(r,w){return r[0]===0||(r[0]===1&&(w===4||w===8||w===13))||(r[0]===2&&w===13)}
+var cal=document.getElementById("ro-cal"),wk=document.getElementById("ro-week"),ctabs=document.getElementById("ro-cyctabs"),cf=-1,wsel=13;
+function showWeek(){var list=RT.filter(function(r){return (cf<0||r[0]===cf)&&on(r,wsel)});
+ wk.innerHTML='<span class="eyebrow">Week '+wsel+' of 13</span><div class="d" style="margin-top:8px"></div><ul></ul>';txt(wk.querySelector(".d"),list.length+" routine"+(list.length===1?"":"s"));
+ list.forEach(function(r){var li=document.createElement("li");li.innerHTML='<i style="background:'+CC[r[0]]+'"></i>';li.appendChild(document.createTextNode(r[1]));wk.querySelector("ul").appendChild(li)});
+ if(!list.length)wk.querySelector("ul").appendChild(txt(document.createElement("li"),"Nothing at this cadence this week."));}
+function drawCal(){cal.innerHTML="";var W=Math.max(300,cal.clientWidth),nar=W<600,lw=nar?0:250,rows=RT.filter(function(r){return cf<0||r[0]===cf}),rh=nar?36:30,top=24,H=top+rows.length*rh+24;
+ var s=VZ.svg(cal,W,H,"Calendar of one quarter: four weekly routines run every week, four monthly routines in weeks 4, 8 and 13, and four quarterly routines in week 13.");s.setAttribute("role","group");
+ var cw=(W-lw)/13;
+ for(var w=1;w<=13;w++){(function(w){var g=VZ.el("g",{"class":"wk",tabindex:0,role:"button","aria-label":"Week "+w,"aria-pressed":w===wsel},s);
+  VZ.el("rect",{"class":"h",x:lw+(w-1)*cw+1,y:0,width:cw-2,height:H-4,rx:4,style:"fill:"+(w===wsel?"var(--accent-soft)":"transparent")},g);
+  var t=VZ.el("text",{x:lw+(w-.5)*cw,y:15,"text-anchor":"middle","class":w===wsel?"t-strong":""},g);t.textContent=(nar||cw<34)?w:"W"+w;
+  var n=RT.filter(function(r){return (cf<0||r[0]===cf)&&on(r,w)}).length;var t2=VZ.el("text",{x:lw+(w-.5)*cw,y:H-8,"text-anchor":"middle","class":"t-muted"},g);t2.textContent=n;
+  g.addEventListener("click",function(){wsel=w;drawCal()});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();wsel=w;drawCal()}});})(w)}
+ rows.forEach(function(r,i){var y=top+i*rh;
+  var t=VZ.el("text",nar?{x:0,y:y+11,"class":"t-muted"}:{x:0,y:y+rh/2+4},s);t.textContent=r[1];
+  for(var w=1;w<=13;w++){if(!on(r,w))continue;var cx=lw+(w-.5)*cw,cy=nar?y+rh-9:y+rh/2;
+   VZ.el("rect",{x:cx-Math.min(10,cw/2-3),y:cy-5,width:Math.min(20,cw-6),height:10,rx:3,style:"fill:"+CC[r[0]],"pointer-events":"none"},s);}});
+ showWeek();}
+VZ.tabs(ctabs,function(t){cf=+t.dataset.c;drawCal()});
+[].forEach.call(ctabs.querySelectorAll("[role=tab]"),function(b){b.removeAttribute("aria-controls")});
+
+/* ---------- questions ---------- */
+var QS=[
+ ["Scope","Where does product marketing report after the 2026 leadership changes, and which metric is the role judged by?","The listing sits in Product Management, while product marketers appear under Marketing in public profiles. The metric decides where the effort goes.",["Win Rate","metrics.html"]],
+ ["Scope","Which product line and segments would this role own?","The February 2026 listing covered manufacturing, so this role may own design and construction, data products or the shared SimaPro story.",["Portfolio","portfolio.html"]],
+ ["Market","Which segment is growing fastest, and which is the company most worried about?","The segment model needs a starting priority. Growth and risk decide which sub-segments the first launches lead with.",["Segment Model","segments.html"]],
+ ["Measurement","How is win rate measured today? Are loss reasons and named competitors recorded in the CRM?","The listing names win rate as an outcome. Without loss reasons and named alternatives, it cannot be read by segment.",["Win Rate","metrics.html"]],
+ ["Portfolio","How will One Click LCA and SimaPro be positioned for buyers who could use either?","Both brands now serve manufacturers, and sellers need a rule for which buyer gets which product.",["Positioning","positioning.html"]],
+ ["Market","What share of new revenue comes through resellers and partners, and in which regions?","Resellers such as Symetri, Harpaceas and Sumitomo need kits that work without product marketing in the room.",["Enablement","enablement.html"]],
+ ["Measurement","Which launch in the past year went better than expected, and which went worse?","The tiering rule should learn from real launches. The October 2025 and June 2026 events are the obvious cases.",["Launch Playbook","launch.html"]]
+];
+var qg=document.getElementById("ro-q"),qd=document.getElementById("ro-qd"),qsel=0;
+function showQ(i){qsel=i;[].forEach.call(qg.children,function(b,j){b.setAttribute("aria-pressed",i===j)});var q=QS[i];
+ qd.innerHTML='<span class="eyebrow">Question '+(i+1)+' · '+q[0]+'</span><h3 style="margin-top:8px"></h3><p class="k">Why I would ask</p><p class="w"></p><p class="k">Where this site covers it</p><p><a></a></p>';
+ txt(qd.querySelector("h3"),q[1]);txt(qd.querySelector(".w"),q[2]);var a=qd.querySelector("a");a.href=q[3][1];a.textContent=q[3][0];}
+QS.forEach(function(q,i){var b=document.createElement("button");b.type="button";b.dataset.t=q[0];b.innerHTML='<span class="tag"></span><span class="q"></span>';txt(b.firstChild,q[0]);txt(b.lastChild,q[1]);b.addEventListener("click",function(){showQ(i)});qg.appendChild(b)});
+[].forEach.call(document.querySelectorAll("#ro-qf button"),function(b){b.addEventListener("click",function(){[].forEach.call(document.querySelectorAll("#ro-qf button"),function(x){x.setAttribute("aria-pressed",x===b)});var first=-1;[].forEach.call(qg.children,function(c,j){var vis=b.dataset.t==="all"||c.dataset.t===b.dataset.t;c.hidden=!vis;if(vis&&first<0)first=j});if(first>=0)showQ(first)})});
+showQ(0);
 
 /* ---------- milestones ---------- */
 var MS=[
@@ -313,7 +359,7 @@ function drawMs(){msh.innerHTML="";var W=Math.max(300,msh.clientWidth),H=74,x=VZ
 }
 
 drawHub();drawTl();drawMs();
-var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){drawHub();drawTl();drawMs()},120)});
+var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){drawHub();drawTl();drawMs();drawCal()},120)});
 })();
 </script>
 

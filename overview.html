@@ -19,22 +19,27 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="sitenav"><div class="in"><a class="brand" href="overview.html">Arpan Bakshi<span>One Click LCA product marketing</span></a><button class="theme" type="button" aria-label="Switch to dark mode">Dark</button><button class="menu" type="button" aria-expanded="false" aria-controls="sitelinks">Menu</button><nav class="links" id="sitelinks" aria-label="Site pages"><a href="overview.html" aria-current="page">Overview</a><a href="role.html">The Role</a><a href="fit.html">Fit</a><a href="portfolio.html">Portfolio</a><a href="demand.html">Demand Drivers</a><a href="buyers.html">Buyers</a><a href="segments.html">Segment Model</a><a href="alternatives.html">Alternatives</a><a href="positioning.html">Positioning</a><a href="launch.html">Launch Playbook</a><a href="enablement.html">Enablement</a><a href="metrics.html">Win Rate</a><a href="first-90-days.html">90 Days</a><a href="ai.html">AI Workflow</a><a href="cv.html">CV</a></nav></div></header><script>(function(){var r=document.documentElement,t=document.querySelector('.sitenav .theme');function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}function show(){var d=cur()==='dark';t.textContent=d?'Light':'Dark';t.setAttribute('aria-label','Switch to '+(d?'light':'dark')+' mode')}if(t){t.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n)}catch(e){}show()});show()}var b=document.querySelector('.sitenav .menu'),l=document.getElementById('sitelinks');if(!b)return;b.addEventListener('click',function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');b.textContent=o?'Close':'Menu';});l.addEventListener('click',function(e){if(e.target.tagName==='A'){l.classList.remove('open');b.textContent='Menu';b.setAttribute('aria-expanded','false');}});})();</script>
+<header class="sitenav"><div class="in"><a class="brand" href="overview.html">Arpan Bakshi<span>One Click LCA product marketing</span></a><button class="theme" type="button" aria-label="Switch to dark mode">Dark</button><button class="menu" type="button" aria-expanded="false" aria-controls="sitelinks">Menu</button><nav class="links" id="sitelinks" aria-label="Site pages"><a href="overview.html" aria-current="page">Overview</a><a href="role.html">The Role</a><a href="fit.html">Fit</a><a href="portfolio.html">Portfolio</a><a href="demand.html">Demand Drivers</a><a href="buyers.html">Buyers</a><a href="segments.html">Segment Model</a><a href="alternatives.html">Alternatives</a><a href="positioning.html">Positioning</a><a href="launch.html">Launch Playbook</a><a href="enablement.html">Enablement</a><a href="metrics.html">Win Rate</a><a href="first-90-days.html">First 90 Days</a><a href="ai.html">AI Workflow</a><a href="cv.html">CV</a></nav></div></header><script>(function(){var r=document.documentElement,t=document.querySelector('.sitenav .theme');function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}function show(){var d=cur()==='dark';t.textContent=d?'Light':'Dark';t.setAttribute('aria-label','Switch to '+(d?'light':'dark')+' mode')}if(t){t.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n)}catch(e){}show()});show()}var b=document.querySelector('.sitenav .menu'),l=document.getElementById('sitelinks');if(!b)return;b.addEventListener('click',function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');b.textContent=o?'Close':'Menu';});l.addEventListener('click',function(e){if(e.target.tagName==='A'){l.classList.remove('open');b.textContent='Menu';b.setAttribute('aria-expanded','false');}});})();</script>
 <main class="wrap page" id="main" tabindex="-1">
 <style>
-.ov-hero{padding:72px 0 0}
-.ov-hero h1{font-size:clamp(40px,6.4vw,84px);max-width:14ch}
+.ov-hero{padding:56px 0 0;display:grid;grid-template-columns:5fr 7fr;gap:32px;align-items:start}
+.ov-hv{margin-top:0}
+.ov-hv .btnrow{margin:0 0 10px}
+.ov-hl .ov-cap{margin-top:24px}
+.viz svg .t-muted{font-size:12px}
+@media (max-width:980px){.ov-hero{grid-template-columns:1fr}.ov-hl{display:contents}.ov-hv{order:5}.ov-hl .ov-cap{order:6;margin-top:0}}
+.ov-hero h1{font-size:clamp(40px,4.8vw,66px);max-width:14ch}
 .ov-hero .lede{font-size:clamp(17px,1.6vw,21px);line-height:1.45;color:var(--muted);max-width:56ch;margin-top:20px}
 .ov-hero .meta{font-size:13px;color:var(--muted);margin-top:14px}
 .ov-wv{display:grid;grid-template-columns:1fr 280px;gap:22px;align-items:start}
-.ov-cap{background:var(--panel);border-radius:6px;padding:18px 20px;min-height:100%}
+.ov-cap{background:var(--panel);border-radius:6px;padding:18px 20px}
 .ov-cap .k{font:500 12px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:12px 0 4px}
 .ov-cap h3{font-size:18px;margin-top:6px}
 .ov-cap p{font-size:14px}
 .ov-cap .yr{font:600 34px/1 var(--sans);letter-spacing:-.03em;color:var(--accent)}
 .ov-wv .btnrow{margin:0 0 12px}
 #ov-chart .dot{cursor:pointer;transition:opacity .2s}
-#ov-chart .dim{opacity:.18}
+#ov-chart .dim{opacity:.75}
 #ov-chart .band{cursor:pointer}
 #ov-chart .dot:focus{outline:none}
 #ov-chart .dot:focus .ring{stroke:var(--ink1);stroke-width:2}
@@ -47,7 +52,7 @@
 .ov-f p{font-size:14px;color:var(--muted);margin-top:8px}
 .ov-f small{margin-top:auto;padding-top:12px;font:500 13px/1 var(--sans);color:var(--accent)}
 .ov-f svg{display:block;width:100%;height:auto;margin-top:14px}
-.ov-f svg text{font-family:var(--sans);font-size:11px;fill:var(--ink2)}
+.ov-f svg text{font-family:var(--sans);font-size:12px;fill:var(--ink2)}
 .ov-f svg .tv{fill:var(--ink1);font-weight:600}
 @media (max-width:900px){.ov-find{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){.ov-find{grid-template-columns:1fr}}
@@ -72,28 +77,25 @@
 </style>
 
 <section class="ov-hero">
-  <h1>Product Marketing at One Click LCA</h1>
-  <p class="lede">Research, decision models and plans for the Senior Product Marketing Manager role, built around the regulatory dates that force each segment to buy.</p>
-  <p class="meta">Arpan Bakshi, London. Research date 23 October 2026. Independent work from public sources.</p>
-</section>
-
-<div class="viz rv">
-  <div class="viz-h"><h3>Three waves of forced buyers</h3><p>Each dot is one forcing date from the Demand Drivers calendar, 2025 to 2031. Pick a wave.</p></div>
-  <div class="ov-wv">
-    <div>
-      <div class="btnrow" id="ov-waves" role="group" aria-label="Choose a wave">
-        <button type="button" data-w="all" aria-pressed="true">All dates</button>
-        <button type="button" data-w="0" aria-pressed="false">Now</button>
-        <button type="button" data-w="1" aria-pressed="false">2028</button>
-        <button type="button" data-w="2" aria-pressed="false">2030</button>
-      </div>
-      <div class="legend" aria-hidden="true"><span><i style="background:var(--s1)"></i>EU-wide</span><span><i style="background:var(--s2)"></i>National</span><span><i style="background:var(--s3)"></i>Outside Europe</span></div>
-      <div id="ov-chart"></div>
-    </div>
+  <div class="ov-hl">
+    <h1>Product Marketing at One Click LCA</h1>
+    <p class="lede">Research, decision models and plans for the Senior Product Marketing Manager role, built around the regulatory dates that force each segment to buy.</p>
+    <p class="meta">Arpan Bakshi, London. Research date 23 October 2026. Independent work from public sources.</p>
     <div class="ov-cap" id="ov-cap" aria-live="polite"></div>
   </div>
-  <details class="more"><summary>All dates in the chart</summary><div class="tw" tabindex="0" role="region" aria-label="Scrollable table"><table class="t" id="ov-table"><thead><tr><th>Date</th><th>Where</th><th>What happens</th></tr></thead><tbody></tbody></table></div></details>
-</div>
+  <div class="viz ov-hv">
+    <div class="viz-h"><h3>Three waves of forced buyers</h3><p>Each dot is one forcing date, 2025 to 2031.</p></div>
+    <div class="btnrow" id="ov-waves" role="group" aria-label="Choose a wave">
+      <button type="button" data-w="all" aria-pressed="true">All dates</button>
+      <button type="button" data-w="0" aria-pressed="false">Now</button>
+      <button type="button" data-w="1" aria-pressed="false">2028</button>
+      <button type="button" data-w="2" aria-pressed="false">2030</button>
+    </div>
+    <div class="legend" aria-hidden="true"><span><i style="background:var(--s1)"></i>EU-wide</span><span><i style="background:var(--s2)"></i>National</span><span><i style="background:var(--s3)"></i>Outside Europe</span></div>
+    <div id="ov-chart"></div>
+    <details class="more"><summary>All dates in the chart</summary><div class="tw" tabindex="0" role="region" aria-label="Scrollable table"><table class="t" id="ov-table"><thead><tr><th>Date</th><th>Where</th><th>What happens</th></tr></thead><tbody></tbody></table></div></details>
+  </div>
+</section>
 
 <section class="block">
   <span class="eyebrow">Headline findings</span>
@@ -103,9 +105,9 @@
       <b class="n"><span class="count" data-to="1000">0</span> m²</b>
       <p>From 1 January 2028 every new EU building above this size must disclose life cycle carbon. Most of these design teams have never bought an LCA tool.</p>
       <svg viewBox="0 0 260 56" role="img" aria-label="Disclosure scope widens from national leaders now, to new EU buildings over 1,000 square metres in 2028, to all new buildings in 2030">
-        <path d="M0 50H86V32H172V14H260" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
-        <path d="M0 50H86V32H172V14H260V56H0z" style="fill:var(--accent)" opacity=".1"/>
-        <text x="4" y="44">Now</text><text x="90" y="26">2028</text><text x="176" y="24">2030</text>
+        <path d="M0 52H86V38H172V24H260" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M0 52H86V38H172V24H260V56H0z" style="fill:var(--accent)" opacity=".1"/>
+        <text x="4" y="46">Now</text><text x="90" y="32">2028</text><text x="176" y="18">2030</text>
       </svg>
       <small>Demand Drivers</small>
     </a>
@@ -139,17 +141,19 @@
     <a class="ov-f rv" href="positioning.html">
       <b class="n">Two brands</b>
       <p>One Click LCA and SimaPro both serve manufacturers. Sellers need a rule for which buyer gets which product.</p>
-      <svg viewBox="0 0 260 78" role="img" aria-label="One Click LCA and SimaPro overlap on manufacturers">
-        <circle cx="100" cy="32" r="30" style="fill:var(--s1)" opacity=".22"/><circle cx="160" cy="32" r="30" style="fill:var(--s7)" opacity=".22"/>
-        <circle cx="100" cy="32" r="30" fill="none" style="stroke:var(--s1)" stroke-width="2"/><circle cx="160" cy="32" r="30" fill="none" style="stroke:var(--s7)" stroke-width="2"/>
-        <text x="80" y="76" text-anchor="middle">One Click LCA</text><text x="180" y="76" text-anchor="middle">SimaPro</text><text x="130" y="35" text-anchor="middle" class="tv" style="font-size:9px">Mfrs</text>
+      <svg viewBox="0 0 260 112" role="img" aria-label="One Click LCA and SimaPro overlap on manufacturers">
+        <circle cx="108" cy="54" r="38" style="fill:var(--s1)" opacity=".22"/><circle cx="152" cy="54" r="38" style="fill:var(--s7)" opacity=".22"/>
+        <circle cx="108" cy="54" r="38" fill="none" style="stroke:var(--s1)" stroke-width="2"/><circle cx="152" cy="54" r="38" fill="none" style="stroke:var(--s7)" stroke-width="2"/>
+        <text x="90" y="11" text-anchor="middle" class="tv">One Click LCA</text><text x="172" y="11" text-anchor="middle" class="tv">SimaPro</text>
+        <circle cx="130" cy="54" r="4" style="fill:var(--ink1)"/><path d="M130 58V92" style="stroke:var(--ink2)" stroke-width="1"/>
+        <text x="130" y="106" text-anchor="middle">Manufacturers</text>
       </svg>
       <small>Positioning</small>
     </a>
     <a class="ov-f rv" href="metrics.html">
       <b class="n">No decision</b>
       <p>The largest loss is often the buyer who waits or hires a consultant. Recording it as a loss reason is the first change to the CRM.</p>
-      <svg viewBox="0 0 260 44" role="img" aria-label="Loss reasons: competitor, free tool, consultant and no decision, with no decision highlighted">
+      <svg viewBox="0 0 260 46" role="img" aria-label="Loss reasons: competitor, free tool, consultant and no decision, with no decision highlighted">
         <g id="ov-loss"></g>
       </svg>
       <small>Win Rate</small>
@@ -206,15 +210,15 @@ var D=[
  [2031,"1 Jan","France",1,"RE2020 final construction carbon step."]
 ];
 var WAVES=[
- {y0:2025,y1:2028,big:"Now",name:"National leaders",who:"Denmark, Finland, the Netherlands, France, Sweden, Iceland and Ireland's public sector already require whole life carbon calculations. Buyers know LCA and compare tools, often against a cheap national tool.",wins:"Local compliance, speed per project and switching cost."},
- {y0:2028,y1:2030,big:"2028",name:"The EU-wide step",who:"Every new building over 1,000 m² in the EU and EEA must disclose life cycle GWP. This reaches design teams in Germany, Italy, Spain and Poland, most of whom have never bought an LCA tool.",wins:"Education, an easy first project and a trusted EU method."},
- {y0:2030,y1:2032,big:"2030",name:"All buildings and products",who:"Disclosure covers all new buildings and national limit values apply. Product declarations under the revised CPR arrive family by family, cement first.",wins:"Scale, automation and product data that flows from manufacturer to project."}
+ {y0:2025,y1:2028,big:"Now",name:"National leaders",who:"Seven national leaders already require whole life carbon calculations. Buyers know LCA and compare tools, often against a cheap national tool.",wins:"Local compliance, speed per project and switching cost."},
+ {y0:2028,y1:2030,big:"2028",name:"The EU-wide step",who:"Every new EU and EEA building over 1,000 m² must disclose life cycle GWP, reaching design teams that have never bought an LCA tool.",wins:"Education, an easy first project and a trusted EU method."},
+ {y0:2030,y1:2032,big:"2030",name:"All buildings and products",who:"Disclosure covers all new buildings and national limits apply. CPR product declarations arrive family by family, cement first.",wins:"Scale, automation and product data that flows from manufacturer to project."}
 ];
 var COL=["var(--s1)","var(--s2)","var(--s3)"],GEO=["EU-wide","National","Outside Europe"];
 var host=document.getElementById("ov-chart"),cap=document.getElementById("ov-cap"),sel="all";
 function waveOf(y){return y>=2030?2:y>=2028?1:0}
 function caption(){
- if(sel==="all"){cap.innerHTML='<span class="yr">26</span><h3>forcing dates from 2025 to 2031</h3><p style="margin-top:8px">Three steps widen the market: national leaders now, the EU-wide disclosure step in 2028 and all new buildings in 2030.</p><p class="k">Launch window</p><p>National roadmaps with limit values are due on 1 January 2027, about fourteen months before the first EU disclosure deadline.</p>';return}
+ if(sel==="all"){cap.innerHTML='<span class="yr">26</span><h3>forcing dates from 2025 to 2031</h3><p style="margin-top:8px">Three steps widen the market: national leaders now, the EU-wide step in 2028 and all new buildings in 2030.</p><p class="k">Launch window</p><p>National roadmaps with limit values are due on 1 January 2027, about fourteen months before the first EU disclosure deadline.</p>';return}
  var w=WAVES[sel];cap.innerHTML='<span class="yr">'+w.big+'</span><h3>'+w.name+'</h3><p style="margin-top:8px">'+w.who+'</p><p class="k">What wins</p><p>'+w.wins+'</p>';
 }
 function draw(){
@@ -240,7 +244,7 @@ function draw(){
   var on=sel==="all"||waveOf(d[0])===+sel;
   var g=VZ.el("g",{"class":"dot"+(on?"":" dim"),role:"img","aria-label":d[1]+" "+d[0]+", "+d[2]+": "+d[4]},s);
   VZ.el("circle",{cx:cx,cy:cy,r:11,fill:"transparent"},g);
-  VZ.el("circle",{"class":"ring",cx:cx,cy:cy,r:R,style:"fill:"+COL[d[3]]+";stroke:var(--chart-bg)","stroke-width":2},g);
+  VZ.el("circle",{"class":"ring",cx:cx,cy:cy,r:R,style:"fill:"+(on?COL[d[3]]:"var(--ink3)")+";stroke:var(--chart-bg)","stroke-width":2},g);
   VZ.tip(g,function(){return "<b>"+d[1]+(d[1].indexOf(String(d[0]))<0?" "+d[0]:"")+", "+d[2]+"</b>"+d[4]+'<div class="m">'+GEO[d[3]]+"</div>"});
  });
 }
@@ -253,10 +257,10 @@ var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(draw,
 /* monthly releases mini */
 var mm=document.getElementById("ov-months");
 for(var i=0;i<12;i++){var hi=i===3||i===9,mid=i===6;VZ.el("rect",{x:i*21.6,y:hi?2:10,width:17,height:hi?26:18,rx:3,style:"fill:"+(hi?"var(--accent)":mid?"var(--seq-3)":"var(--grid)")},mm)}
-var lt=VZ.el("text",{x:0,y:40},mm);lt.textContent="Full launch";lt.setAttribute("style","font-size:10px");
+var lt=VZ.el("text",{x:0,y:40},mm);lt.textContent="Full launch";
 /* loss reasons mini */
 var lg=document.getElementById("ov-loss"),L=["Competitor","Free tool","Consultant","No decision"];
-L.forEach(function(n,i){var last=i===3;VZ.el("rect",{x:i*65,y:4,width:61,height:20,rx:3,style:"fill:"+(last?"var(--s2)":"var(--grid)")},lg);var t=VZ.el("text",{x:i*65+30.5,y:40,"text-anchor":"middle"},lg);t.textContent=n;if(last)t.setAttribute("class","tv")});
+L.forEach(function(n,i){var last=i===3,X=(i%2)*132,Y=Math.floor(i/2)*24;VZ.el("rect",{x:X,y:Y,width:126,height:20,rx:3,style:"fill:"+(last?"var(--s2)":"var(--grid)")},lg);var t=VZ.el("text",{x:X+8,y:Y+14,style:last?"fill:#111;font-weight:600":""},lg);t.textContent=n;});
 
 /* page cards */
 var I={
