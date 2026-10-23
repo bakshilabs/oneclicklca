@@ -70,6 +70,7 @@
   @media print{.cv-also{display:block}.cv-also li{background:none;padding:0}}
   .cv-two{display:grid;align-items:center;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:28px;margin-top:20px;border-top:1px solid var(--grid);padding-top:16px}
   .cv-two h3{font-size:15px}
+  .cv-tn{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.cv-tn div{background:var(--panel);border-radius:6px;padding:10px 12px}.cv-tn b{display:block;font:600 24px/1 var(--sans)}.cv-tn span{font-size:12.5px;color:var(--ink2);line-height:1.3;display:block;margin-top:4px}
   .cv-sec{margin-top:10px}
   .cv-sec b{display:block;font:600 11px/1.2 var(--sans);text-transform:uppercase;letter-spacing:.05em;color:var(--ink2);margin-bottom:5px}
   .cv-sec .tags span{font-size:12.5px;padding:4px 9px;cursor:default;background:var(--panel)}
@@ -113,7 +114,7 @@
       <div class="cv-rx" id="cv-rx"></div>
       <p class="mini" style="margin-top:10px">The figure is years in the role, and the bar shows it on one scale from 0 to 7 years. Fees are yearly totals won through pitches and bids, each in its own currency.</p>
       <div class="cv-two">
-        <div><h3>Talks and panels by year</h3><p class="mini">Hover or select a dot for the event. Two more are undated.</p><div id="cv-talks"></div></div>
+        <div><h3>Talks and panels by year</h3><p class="mini">Hover or select a dot for the event. Two more are undated.</p><div id="cv-talks"></div><div class="cv-tn"><div><b>9</b><span>dated talks, panels and keynotes</span></div><div><b>2</b><span>undated, at Foster + Partners and Innovation Zero</span></div><div><b>3</b><span>in 2023, including the One Click LCA Bootcamp</span></div></div></div>
         <div><h3>Clients by sector</h3><p class="mini">Hover or select a client for the firm I served it at.</p><div id="cv-cl"></div></div>
       </div>
     </div>
@@ -159,7 +160,7 @@ var rx=document.getElementById("cv-rx");RX.forEach(function(r){var b=document.cr
 /* talks by year */
 var TK=[[2012,"Intersections","Speaker, then panel moderator in 2013"],[2017,"Bâtiment durable Québec","Lecture on 6D BIM design"],[2018,"BPAC and SimBuild","Keynote on building performance simulation"],[2021,"COP26 Buildings Pavilion","Two sessions on net zero carbon and whole life carbon"],[2021,"Dezeen and Velux panel","Panel on COP26 and cities"],[2022,"LCA Forum","Organised the London meeting"],[2023,"One Click LCA Bootcamp","Panel on life cycle assessment"],[2023,"UN COP28, Dubai","Lecture on sustainable architecture"],[2023,"CoreNet Global Summit","Listed speaker, Dubai"]];
 var th=document.getElementById("cv-talks");
-function drawTalks(){th.innerHTML="";var W=th.clientWidth||400,H=230,x=VZ.lin(2011.5,2023.5,10,W-10),base=H-28;
+function drawTalks(){th.innerHTML="";var W=th.clientWidth||400,H=160,x=VZ.lin(2011.5,2023.5,10,W-10),base=H-28;
  var s=VZ.svg(th,W,H,"Dot chart of talks by year: one each in 2012, 2017, 2018 and 2022, two in 2021 and three in 2023.");s.setAttribute("role","group");
  VZ.el("line",{x1:0,x2:W,y1:base+8,y2:base+8,class:"axis"},s);
  [2012,2015,2018,2021,2023].forEach(function(y){VZ.el("text",{x:x(y),y:H-6,"text-anchor":"middle",class:"t-muted"},s).textContent=y});

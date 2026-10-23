@@ -79,7 +79,8 @@
 .by-q.con{border-left-color:var(--s8)}
 .by-q .src{display:block;margin-top:8px;font-size:12.5px;color:var(--ink2)}
 .by-extra{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px;font-size:13px;color:var(--ink2)}
-.by-cyc{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:28px;align-items:center}
+.by-rt{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.by-rt div{background:var(--panel);border-radius:6px;padding:12px 14px}.by-rt b{display:block;font:600 28px/1 var(--sans)}.by-rt span{font-size:12.5px;color:var(--ink2)}
+.by-cyc{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:28px;align-items:center}
 .by-cyc .node{cursor:pointer}
 .by-cyc .node:focus-visible{outline:none}.by-cyc .node:focus-visible circle{stroke:var(--accent);stroke-width:3}
 .by-cinfo{background:var(--panel);border-radius:6px;padding:20px 22px}
@@ -142,7 +143,7 @@
   </div>
   <div class="by-vb">
     <div class="viz rv"><div class="viz-h"><h3>Capterra sub-scores</h3><p>18 reviews, scale 0 to 5</p></div><div id="by-cap"></div><p class="mini" id="by-capr" aria-live="polite" style="margin-top:8px"></p></div>
-    <div class="viz rv"><div class="viz-h"><h3>G2 star ratings</h3><p>4.5 out of 5 from 99 reviews</p></div><div id="by-g2"></div><p class="mini" id="by-g2r" aria-live="polite" style="margin-top:4px"></p><div class="legend" style="margin-top:10px"><span><i style="background:var(--s7);border-radius:2px"></i>5 stars</span><span><i style="background:color-mix(in srgb,var(--s7) 55%,var(--chart-bg));border-radius:2px"></i>4 stars</span><span><i style="background:color-mix(in srgb,var(--s7) 25%,var(--chart-bg));border-radius:2px"></i>3 stars</span><span><i style="background:var(--axis);border-radius:2px"></i>Lower</span></div></div>
+    <div class="viz rv"><div class="viz-h"><h3>G2 star ratings</h3><p>4.5 out of 5 from 99 reviews</p></div><div id="by-g2"></div><p class="mini" id="by-g2r" aria-live="polite" style="margin-top:4px"></p><div class="by-rt"><div><b>4.5</b><span>G2 average out of 5, 99 reviews</span></div><div><b>4.6</b><span>Capterra average out of 5, 18 reviews, mostly from 2017 to 2020</span></div></div><div class="legend" style="margin-top:10px"><span><i style="background:var(--s7);border-radius:2px"></i>5 stars</span><span><i style="background:color-mix(in srgb,var(--s7) 55%,var(--chart-bg));border-radius:2px"></i>4 stars</span><span><i style="background:color-mix(in srgb,var(--s7) 25%,var(--chart-bg));border-radius:2px"></i>3 stars</span><span><i style="background:var(--axis);border-radius:2px"></i>Lower</span></div></div>
   </div>
   <div class="callout"><p><b>Positioning implication.</b> Customers praise the data and the support, and complain about the interface and the BIM round-trip. Lead with data and support, and show workflow launches to evaluators who tried Tally.</p></div>
 </section>
@@ -225,18 +226,21 @@ function drawLev(){var two=mode==="two",el=document.getElementById("by-lev");
  document.getElementById("by-lh").textContent=two?"What stalls each deal":"What stalls the deal for "+SEG[A].n.toLowerCase();
  el.innerHTML=two?'<div class="by-vo2"><div><b class="by-sn" style="box-shadow:inset 4px 0 0 var(--s1)">'+esc(SEG[A].n)+'</b>'+voice(A)+'</div><div><b class="by-sn" style="box-shadow:inset 4px 0 0 var(--s2)">'+esc(SEG[B].n)+'</b>'+voice(B)+'</div></div>':voice(A)}
 function drawProf(){profHost.innerHTML="";var two=mode==="two";
- document.getElementById("by-ph").textContent=two?SEG[A].n+" against "+SEG[B].n:SEG[A].n+" profile";
- document.getElementById("by-pleg").innerHTML=two?'<span><i style="background:var(--s1)"></i>'+esc(SEG[A].n)+'</span><span><i style="background:var(--s2)"></i>'+esc(SEG[B].n)+'</span>':'<span><i style="background:var(--s1);border-radius:2px"></i>Score from 0 to 4, the same values and blue as the heatmap row</span>';
- var W=profHost.clientWidth||profHost.parentNode.clientWidth||360,L=Math.min(150,W*0.42),R=W-30,bh=two?10:16,rowH=two?34:30,H=CR.length*rowH+24;
+ document.getElementById("by-ph").textContent=two?SEG[A].n+" against "+SEG[B].n:SEG[A].n+" against the average";
+ document.getElementById("by-pleg").innerHTML=two?'<span><i style="background:var(--s1)"></i>'+esc(SEG[A].n)+'</span><span><i style="background:var(--s2)"></i>'+esc(SEG[B].n)+'</span><span><i style="background:var(--ink1);width:3px;height:14px;border-radius:0"></i>Average of six segments</span>':'<span><i style="background:var(--s1);border-radius:2px"></i>'+esc(SEG[A].n)+', score 0 to 4</span><span><i style="background:var(--ink1);width:3px;height:14px;border-radius:0"></i>Average of six segments</span><span>Right: gap of one point or more</span>';
+ var W=profHost.clientWidth||profHost.parentNode.clientWidth||360,L=Math.min(150,W*0.42),R=W-64,bh=two?10:16,rowH=two?34:30,H=CR.length*rowH+24;
  var s=VZ.svg(profHost,W,H,"Criteria profile for "+SEG[A].n+(two?" compared with "+SEG[B].n:""));s.setAttribute("role","group");
  var x=VZ.lin(0,4,L,R);
  [0,1,2,3,4].forEach(function(v){VZ.el("line",{x1:x(v),x2:x(v),y1:0,y2:H-20,class:v?"grid":"axis"},s);VZ.el("text",{x:x(v),y:H-4,"text-anchor":"middle",class:"t-muted"},s).textContent=v});
+ var AVG=CR.map(function(c,k){return SEG.reduce(function(t,x){return t+x.c[k]},0)/SEG.length});
  CR.forEach(function(c,k){var y=k*rowH+6;if(k===selK){var hl=VZ.el("rect",{x:0,y:y-4,width:W,height:rowH-4,rx:3},s);hl.style.fill="var(--accent-soft)"}var lt=VZ.el("text",{x:L-8,y:y+(two?15:12),"text-anchor":"end",class:k===selK?"t-strong":""},s);lt.textContent=c;
   [[A,"var(--s1)",0]].concat(two?[[B,"var(--s2)",1]]:[]).forEach(function(p){var v=SEG[p[0]].c[k],yy=y+p[2]*(bh+2);
    if(v){var r=VZ.bar(s,x(0),yy,x(v)-x(0),bh,"","h");r.style.fill=p[1]}else{var z=VZ.el("circle",{cx:x(0)+4,cy:yy+bh/2,r:4,stroke:"var(--ring)","stroke-width":2},s);z.style.fill=p[1]}
    VZ.el("text",{x:x(v)+(v?6:12),y:yy+bh/2+4,class:"t-strong"},s).textContent=v;
    var hit=VZ.el("rect",{x:L,y:yy-1,width:R-L,height:bh+2,fill:"transparent",role:"img","aria-label":SEG[p[0]].n+", "+c+": "+v},s);
-   VZ.tip(hit,function(){return"<b>"+esc(SEG[p[0]].n)+"</b>"+c+": "+v+" of 4"})})});
+   VZ.tip(hit,function(){return"<b>"+esc(SEG[p[0]].n)+"</b>"+c+": "+v+" of 4<br><span class='m'>Average of six segments: "+AVG[k].toFixed(1)+"</span>"})});
+  var ax=x(AVG[k]),y1=y-3,y2=y+(two?2*bh+5:bh+3),tk=VZ.el("line",{x1:ax,x2:ax,y1:y1,y2:y2,"stroke-width":3,"pointer-events":"none"},s);tk.style.stroke="var(--ink1)";
+  var d=SEG[A].c[k]-AVG[k];if(!two&&Math.abs(d)>=1)VZ.el("text",{x:W-2,y:y+12,class:"t-muted","text-anchor":"end"},s).textContent=(d>0?"+":"")+d.toFixed(1)});
  drawLev()}
 drawHM();drawProf();var pt;addEventListener("resize",function(){clearTimeout(pt);pt=setTimeout(drawProf,150)});
 
@@ -305,14 +309,14 @@ var STEPS=[
 var ci=document.getElementById("by-cinfo"),nodes=[],cur=0;
 function step(i){cur=i;var s=STEPS[i];nodes.forEach(function(g,k){g.setAttribute("aria-pressed",k===i);g.querySelector("circle").style.fill=k===i?"var(--accent)":"var(--chart-bg)";g.querySelector("text").style.fill=k===i?"var(--on-accent)":"var(--ink1)"});
  ci.innerHTML='<span class="eyebrow">Step '+(i+1)+' of 4</span><h3>'+esc(s.h)+'</h3><p>'+esc(s.p)+'</p><div class="nums">'+s.n.map(function(n){return"<div><b>"+n[0]+"</b><span>"+n[1]+"</span></div>"}).join("")+'</div>'}
-responsive(document.getElementById("by-cycle"),function(W){var S=Math.min(W,400),H=S,cx=W/2,cy=H/2,R=S*0.34,nr=Math.max(34,S*0.11);
+responsive(document.getElementById("by-cycle"),function(W){var S=Math.min(W,320),H=S,cx=W/2,cy=H/2,R=S*0.34,nr=Math.max(34,S*0.11);
  var s=VZ.svg(document.getElementById("by-cycle"),W,H,"Quarterly interview cycle: sample, interview, tag, return findings, then sample again.");s.setAttribute("role","group");
  var ring=VZ.el("circle",{cx:cx,cy:cy,r:R,fill:"none","stroke-width":2,"stroke-dasharray":"6 4",class:"by-ring"},s);ring.style.stroke="var(--axis)";
  VZ.el("text",{x:cx,y:cy-4,"text-anchor":"middle",class:"t-strong"},s).textContent="Every";VZ.el("text",{x:cx,y:cy+14,"text-anchor":"middle",class:"t-strong"},s).textContent="quarter";
  nodes=[];STEPS.forEach(function(st,i){var a=-Math.PI/2+i*Math.PI/2,x=cx+R*Math.cos(a),y=cy+R*Math.sin(a);
   var g=VZ.el("g",{class:"node",role:"button",tabindex:0,"aria-label":"Step "+(i+1)+": "+st.h},s);
   var c=VZ.el("circle",{cx:x,cy:y,r:nr,"stroke-width":2},g);c.style.stroke="var(--accent)";
-  var t=VZ.el("text",{x:x,y:y+5,"text-anchor":"middle",class:"t-strong"},g);t.textContent=st.t;t.style.fontSize="14px";
+  var t=VZ.el("text",{x:x,y:y+5,"text-anchor":"middle",class:"t-strong"},g);t.textContent=st.t;t.style.fontSize="13px";
   g.addEventListener("click",function(){step(i)});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();step(i)}});nodes.push(g)});
  step(cur)});
 })();

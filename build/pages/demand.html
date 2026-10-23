@@ -52,10 +52,10 @@
 .dm-hm button{appearance:none;border:0;width:100%;height:44px;border-radius:4px;font:600 15px/1 var(--sans);cursor:pointer;font-variant-numeric:tabular-nums}
 .dm-hm button[aria-pressed="true"]{outline:2.5px solid var(--ink1);outline-offset:1px}
 .dm-hm .h0{background:var(--chart-bg);color:var(--ink3);box-shadow:inset 0 0 0 1px var(--grid)}
-.dm-hm .h1{background:color-mix(in srgb,var(--s8) 15%,var(--chart-bg));color:var(--ink1)}
-.dm-hm .h2{background:color-mix(in srgb,var(--s8) 35%,var(--chart-bg));color:var(--ink1)}
-.dm-hm .h3{background:color-mix(in srgb,var(--s8) 62%,var(--chart-bg));color:var(--ink1)}
-.dm-hm .h4{background:var(--s8);color:#0b0b0b}
+.dm-hm .h1{background:var(--seq-1);color:var(--ink1)}
+.dm-hm .h2{background:var(--seq-2);color:var(--ink1)}
+.dm-hm .h3{background:var(--seq-3);color:var(--dm-t3)}
+.dm-hm .h4{background:var(--seq-5);color:var(--dm-t5)}
 .dm-hlist{margin-top:14px;background:var(--panel);border-radius:6px;padding:16px 20px}
 .dm-hlist ul{margin:8px 0 0;padding-left:18px;font-size:14.5px}
 .dm-hlist li{margin-top:4px}
@@ -123,7 +123,7 @@
   <h2>Segment deadlines</h2>
   <p class="intro">Each cell counts the forcing events on the timeline that reach a segment in a year. Select a cell to list them.</p>
   <div class="viz rv">
-    <div class="legend"><span>Fewer</span><span class="dm-sw" style="background:color-mix(in srgb,var(--s8) 15%,var(--chart-bg))"></span><span class="dm-sw" style="background:color-mix(in srgb,var(--s8) 35%,var(--chart-bg))"></span><span class="dm-sw" style="background:color-mix(in srgb,var(--s8) 62%,var(--chart-bg))"></span><span class="dm-sw" style="background:var(--s8)"></span><span>More events</span></div>
+    <div class="legend"><span>Fewer</span><span class="dm-sw" style="background:var(--seq-1)"></span><span class="dm-sw" style="background:var(--seq-2)"></span><span class="dm-sw" style="background:var(--seq-3)"></span><span class="dm-sw" style="background:var(--seq-5)"></span><span>More events</span></div>
     <div class="tw"><table class="dm-hm" id="dm-hm"><caption class="sr">Forcing events per segment and year</caption></table></div>
     <div class="dm-hlist" id="dm-hlist" aria-live="polite"></div>
   </div>
@@ -206,7 +206,7 @@ function hits(e,f){return !f||e.s.indexOf(f)>=0||e.s.indexOf("all")>=0}
 var fb=document.getElementById("dm-filter");
 [[null,"All segments"]].concat(SEG).forEach(function(s){var b=document.createElement("button");b.type="button";b.textContent=s[1];b.setAttribute("aria-pressed",s[0]===null);
  b.onclick=function(){filt=s[0];[].forEach.call(fb.children,function(x){x.setAttribute("aria-pressed",x===b)});apply()};fb.appendChild(b)});
-document.getElementById("dm-leg").innerHTML=SEG.map(function(s){return'<span><i style="background:var(--s'+s[2]+')"></i>'+s[1]+'</span>'}).join("")+'<span><i style="background:var(--ink3)"></i>All segments</span><span><i style="background:var(--axis);border-radius:2px;width:16px;height:6px"></i>Rule in force</span>';
+document.getElementById("dm-leg").innerHTML=SEG.map(function(s){return'<span><i style="background:var(--s'+s[2]+')"></i>'+s[1]+'</span>'}).join("")+'<span><i style="background:var(--ink3)"></i>All segments</span><span><i style="background:var(--axis);border-radius:2px;width:16px;height:6px"></i>Rule in force</span><span><i style="background:transparent;box-shadow:0 0 0 2px var(--ink2);width:12px;height:12px"></i>Outer ring: a second segment must act, in its colour</span><span><i style="background:var(--accent-soft);border-radius:2px;width:16px;height:12px"></i>Twelve-month launch window</span>';
 function apply(){evEls.forEach(function(g,i){if(g)g.classList.toggle("dim",!hits(EV[i],filt))})}
 function segTags(s){return s.map(function(k){return'<span class="dm-seg"><i style="background:'+segCol[k]+'"></i>'+segName[k]+'</span>'}).join("")}
 function detail(i){selE=i;var e=EV[i];evEls.forEach(function(g,k){if(g)g.classList.toggle("sel",k===i)});
@@ -219,7 +219,6 @@ responsive(document.getElementById("dm-gantt"),function(CW){var host=document.ge
   var s=VZ.svg(host,W,H,"Vertical timeline of forcing events from 2025 to 2031, one column per jurisdiction.");s.setAttribute("role","group");
   var lw=VZ.el("rect",{x:LY,y:y(2027),width:W-LY,height:y(2028)-y(2027)},s);lw.style.fill="var(--accent-soft)";
   for(var yr=2025;yr<=2031;yr++){VZ.el("line",{x1:LY,x2:W,y1:y(yr),y2:y(yr),class:"grid"},s);VZ.el("text",{x:0,y:y(yr)+4,class:"t-strong"},s).textContent=yr}
-  VZ.el("text",{x:W-4,y:y(2027)+16,"text-anchor":"end",class:"t-muted"},s).textContent="Launch window";
   var ny=y(d(2026,10,23));VZ.el("line",{x1:LY,x2:W,y1:ny,y2:ny,stroke:"var(--ink1)","stroke-width":1.5},s);VZ.el("text",{x:W-4,y:ny-5,"text-anchor":"end",class:"t-muted"},s).textContent="Today";
   AB.forEach(function(a,r){var t=VZ.el("text",{x:xc(r),y:T-10,"text-anchor":"start",transform:"rotate(-55 "+xc(r)+" "+(T-10)+")",class:"t-strong"},s);t.textContent=a;
    if(FORCE[r]!==undefined){var b=VZ.el("rect",{x:xc(r)-2,y:y(FORCE[r]),width:4,height:y(2031.9)-y(FORCE[r]),rx:2},s);b.style.fill="var(--axis)"}});
