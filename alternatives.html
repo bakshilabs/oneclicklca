@@ -21,81 +21,140 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="sitenav"><div class="in"><a class="brand" href="overview.html">Arpan Bakshi<span>One Click LCA product marketing</span></a><button class="theme" type="button" aria-label="Switch to dark mode">Dark</button><button class="menu" type="button" aria-expanded="false" aria-controls="sitelinks">Menu</button><nav class="links" id="sitelinks" aria-label="Site pages"><a href="overview.html">Overview</a><a href="role.html">The Role</a><a href="fit.html">Fit</a><a href="portfolio.html">Portfolio</a><a href="demand.html">Demand Drivers</a><a href="buyers.html">Buyers</a><a href="segments.html">Segment Model</a><a href="alternatives.html" aria-current="page">Alternatives</a><a href="positioning.html">Positioning</a><a href="launch.html">Launch Playbook</a><a href="enablement.html">Enablement</a><a href="metrics.html">Win Rate</a><a href="first-90-days.html">90 Days</a><a href="ai.html">AI Workflow</a><a href="cv.html">CV</a></nav></div></header><script>(function(){var r=document.documentElement,t=document.querySelector('.sitenav .theme');function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}function show(){var d=cur()==='dark';t.textContent=d?'Light':'Dark';t.setAttribute('aria-label','Switch to '+(d?'light':'dark')+' mode')}if(t){t.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n)}catch(e){}show()});show()}var b=document.querySelector('.sitenav .menu'),l=document.getElementById('sitelinks');if(!b)return;b.addEventListener('click',function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');b.textContent=o?'Close':'Menu';});l.addEventListener('click',function(e){if(e.target.tagName==='A'){l.classList.remove('open');b.textContent='Menu';b.setAttribute('aria-expanded','false');}});})();</script>
 <main class="wrap page" id="main" tabindex="-1">
+<style>
+#al .al-filter{display:flex;flex-wrap:wrap;gap:6px;margin-top:24px}
+#al .al-filter button{appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:3px;padding:8px 12px;font:500 13px/1 var(--sans);cursor:pointer}
+#al .al-filter button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+#al .al-brief{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+#al .al-brief div{background:var(--panel);border-radius:6px;padding:12px 14px;font-size:13.5px}
+#al .al-brief b{display:block;font:500 11.5px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px}
+#al .al-lay{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:20px;align-items:start;margin-top:4px}
+#al .al-b{cursor:pointer;outline:none;transition:opacity .35s}
+#al .al-b.dim{opacity:.18}
+#al .al-b circle.m{stroke:var(--ring);stroke-width:2}
+#al .al-b.sel circle.m,#al .al-b:focus-visible circle.m{stroke:var(--ink1);stroke-width:2.5}
+#al .al-b text{font-size:12px;fill:var(--ink1)}
+#al .al-card{margin-top:28px;position:sticky;top:76px}
+#al .al-card h3{font-size:20px;margin:6px 0 2px}
+#al .al-card .sub{font-size:13px;color:var(--ink2)}
+#al .al-card dl{margin:14px 0 0;font-size:14px}
+#al .al-card dt{font:500 11.5px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);margin-top:12px}
+#al .al-card dd{margin:3px 0 0}
+#al .lvl{display:inline-flex;align-items:center;gap:6px;font:500 12.5px/1 var(--sans);padding:5px 9px;border-radius:3px;background:var(--panel);color:var(--ink)}
+#al .lvl i{width:10px;height:10px;border-radius:50%;display:inline-block}
+#al .al-lad{margin-top:28px;display:grid;grid-template-columns:minmax(130px,220px) repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:6px;overflow:hidden;font-size:13.5px}
+#al .al-lad>div{padding:10px 12px;border-bottom:1px solid var(--line);border-left:1px solid var(--line);transition:background .3s,opacity .3s}
+#al .al-lad>div.h{background:var(--panel);font:500 12px/1.3 var(--sans);color:var(--ink2);display:flex;align-items:center;gap:6px}
+#al .al-lad>div.rh{border-left:0;font-weight:500}
+#al .al-lad>div.rh button{appearance:none;border:0;background:none;color:var(--ink);font:inherit;text-align:left;padding:0;cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+#al .al-lad>div.on{background:var(--accent-soft)}
+#al .al-lad>div.off{opacity:.35}
+#al .al-lad .chip2{display:inline-flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:4px 8px;margin:2px 4px 2px 0;font-size:12.5px}
+#al .al-lad .chip2 i{width:9px;height:9px;border-radius:50%;display:inline-block}
+#al .cn-pane{margin-top:20px}
+#al .cn-gap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;margin-top:0}
+#al .cn-bar{margin-top:16px}
+#al .cn-bar .lb{display:flex;justify-content:space-between;font-size:13.5px;gap:10px}
+#al .cn-bar .lb b{font-weight:600;font-size:22px;letter-spacing:-.02em}
+#al .cn-bar .tr{height:20px;background:var(--grid);border-radius:0 4px 4px 0;margin-top:6px}
+#al .cn-bar .tr span{display:block;height:100%;border-radius:0 4px 4px 0}
+#al .cn-calc .big{color:var(--ink1);font-variant-numeric:normal}
+#al .cn-calc input{width:100%;accent-color:var(--accent)}
+#al .cn-flow{display:grid;grid-template-columns:1fr 30px 1fr 30px 1fr;margin-top:0}
+#al .cn-flow .st{background:var(--panel);border-radius:6px;padding:18px 20px;font-size:14px}
+#al .cn-flow .st b{display:block;font:500 11.5px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px}
+#al .cn-flow .st.cost{background:var(--bad-soft)}
+#al .cn-flow .ar{display:grid;place-items:center;color:var(--ink3)}
+#al .rk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+#al .rk{background:var(--panel);border-radius:6px;padding:18px 20px;transition:opacity .3s,box-shadow .3s}
+#al .rk.off{opacity:.35}
+#al .rk.on{box-shadow:inset 0 0 0 2px var(--accent)}
+#al .rk h3{font-size:16px;margin-bottom:4px}
+#al .rk p{font-size:13.5px;color:var(--ink2)}
+#al .rk .segs{display:flex;flex-wrap:wrap;gap:4px;margin-top:12px}
+#al .rk .segs span{font-size:11.5px;padding:2px 7px;border-radius:3px;background:var(--bg);color:var(--ink2);border:1px solid var(--line)}
+#al .rk .segs span.y{background:var(--accent-soft);color:var(--ink);border-color:transparent;font-weight:500}
+#al .rk .icon{background:var(--bad-soft);color:var(--bad)}
+@media (max-width:980px){#al .al-lay{grid-template-columns:1fr}#al .al-card{position:static}#al .rk-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){#al .al-brief,#al .cn-gap,#al .rk-grid{grid-template-columns:1fr}#al .cn-flow{grid-template-columns:1fr}#al .cn-flow .ar{height:26px;transform:rotate(90deg)}
+#al .al-lad{grid-template-columns:1fr}#al .al-lad>div{border-left:0}#al .al-lad>div.h:not(.hx){display:none}#al .al-lad>div.c:empty{display:none}#al .al-lad>div.c::before{content:attr(data-l);display:block;font-size:11.5px;color:var(--ink2);margin-bottom:2px}}
+@media (prefers-reduced-motion:reduce){#al *{transition:none!important}}
+</style>
+<div id="al">
 <header class="phead">
   <span class="eyebrow">What the buyer would do otherwise</span>
   <h1>Alternatives</h1>
-  <p class="lede">The listing names three kinds of alternative: the buyer's best alternative, the cost of doing nothing, and competing or substitute solutions. In LCA the toughest are often free or local. Paid competitors matter most in manufacturing, where AI-first startups now use One Click LCA's own message of speed.</p>
-  <p class="meta">Research date 23 October 2026. Vendor claims are marked as such. Prices are only those published by the vendor.</p>
+  <p class="lede">The toughest alternatives in LCA are often free or local, and in manufacturing AI-first startups now sell One Click LCA's own message of speed. Pick a segment to see who it is up against.</p>
+  <p class="meta">Research date 23 October 2026. Vendor claims are marked as such. Prices are only those published by the vendor. Map positions and threat levels are my judgement.</p>
 </header>
 
-<section class="sec">
-  <span class="eyebrow">Map</span>
-  <h2>Where the alternatives sit</h2>
-  <p class="intro">Horizontal position shows price to the buyer, from free to premium. Vertical position shows scope, from one country or one task to a multi-standard platform. Positions are approximate.</p>
-  <div class="quad" role="img" aria-label="Map of alternatives by price and scope. One Click LCA sits at premium price and broad scope. Free national tools, EC3 and openLCA sit at low price. Sphera and Makersite sit at premium price and broad scope for manufacturers.">
-    <div class="mid-x"></div><div class="mid-y"></div>
-    <div class="q" style="left:0;top:0">Free and broad</div><div class="q" style="left:50%;top:0;text-align:right">Paid and broad</div>
-    <div class="q" style="left:0;top:50%">Free and narrow</div><div class="q" style="left:50%;top:50%;text-align:right">Paid and narrow</div>
-    <span class="pt" style="left:78%;bottom:80%">One Click LCA</span>
-    <span class="pt alt" style="left:86%;bottom:66%">Sphera</span>
-    <span class="pt alt" style="left:74%;bottom:58%">Makersite</span>
-    <span class="pt alt" style="left:20%;bottom:66%">EC3</span>
-    <span class="pt alt" style="left:12%;bottom:52%">openLCA</span>
-    <span class="pt alt" style="left:18%;bottom:24%">National tools</span>
-    <span class="pt alt" style="left:34%;bottom:12%">Spreadsheets and free data</span>
-    <span class="pt alt" style="left:60%;bottom:30%">Ecochain</span>
-    <span class="pt alt" style="left:66%;bottom:18%">Emidat</span>
-    <span class="pt alt" style="left:44%;bottom:36%">Tally and C.Scale</span>
-    <span class="pt alt" style="left:80%;bottom:8%">Consultant studies</span>
+<section class="sec" style="margin-top:36px">
+  <div class="al-filter" id="flt" role="group" aria-label="Filter by segment"></div>
+  <div class="al-brief" id="brief" aria-live="polite"></div>
+  <div class="al-lay">
+    <div class="viz">
+      <div class="viz-h"><h3>Price against scope</h3><p>Click a bubble to open its card</p></div>
+      <div class="legend" id="mlegend" aria-hidden="true"></div>
+      <div id="map"></div>
+    </div>
+    <div class="result al-card" id="card" aria-live="polite"></div>
   </div>
+  <details class="more"><summary>The full landscape as a table</summary><div class="tw" tabindex="0" role="region" aria-label="Scrollable table"><table class="t" id="ltable">
+    <thead><tr><th>Alternative</th><th>Where it competes</th><th>Price</th><th>Why buyers choose it</th><th>One Click LCA's best answer</th><th>Threat</th></tr></thead><tbody></tbody></table></div></details>
 </section>
 
 <section class="sec">
-  <span class="eyebrow">Landscape</span>
-  <h2>The alternatives that matter, by segment</h2>
-  <div class="tw" tabindex="0" role="region" aria-label="Scrollable table"><table class="t">
-    <thead><tr><th style="width:15%">Alternative</th><th style="width:14%">Where it competes</th><th style="width:14%">Price</th><th style="width:22%">Why buyers choose it</th><th style="width:25%">One Click LCA's best answer</th><th>Threat</th></tr></thead>
-    <tbody>
-      <tr><th>EC3<span class="sub">Building Transparency, non-profit</span></th><td>US designers, contractors and procurement</td><td>Core free; EC3 2.0 beta with a paid membership announced 20 Oct 2026</td><td>Free, neutral, the default EPD database for US procurement</td><td>Whole-building compliance across schemes, Carbon Designer 3D, Autodesk partnership, global data</td><td><span class="tag b">High in US</span></td></tr>
-      <tr><th>Tally and C.Scale</th><td>US architects in Revit</td><td>Tally 2.0 price not announced</td><td>Native Revit workflow; reviewers call it easier. C.Scale bought it on 7 Apr 2026</td><td>Product data per element, compliance breadth, the AI mapping and new interface</td><td><span class="tag w">Medium, rising</span></td></tr>
-      <tr><th>National tools<span class="sub">LCAbyg, IVL BM, ELODIE, NMD tools</span></th><td>Single-country designers in Denmark, Sweden, France and the Netherlands</td><td>LCAbyg DKK 5,900 to 9,900 a year; IVL BM has a free tier</td><td>Official status, local language, low price</td><td>One platform across countries and schemes; readiness for the EU method in 2028; certification on the same model</td><td><span class="tag b">High locally</span></td></tr>
-      <tr><th>CarboniCa and Preoptima</th><td>UK consultancies and contractors</td><td>Not published</td><td>CarboniCa is now the second RICS-validated tool</td><td>RICS v2 with London Plan in one bundle, data quality checks, multi-country work</td><td><span class="tag w">Medium</span></td></tr>
-      <tr><th>Ecochain</th><td>Small and mid-size manufacturers, Dutch home market</td><td>From €290 a month; "as low as €50 per EPD at scale" (vendor claim)</td><td>Low entry price, monthly plans, simple interface</td><td>Pre-verified generator across eight programme operators, specifier reach through Manufacturer Pages, depth of data</td><td><span class="tag w">Medium</span></td></tr>
-      <tr><th>Emidat and Pathways</th><td>Manufacturers in DACH and the US</td><td>Not published; Emidat users can get an EPD Global grant</td><td>AI-first story, startup pricing, hands-on service</td><td>Proven scale, verification track record, platform beyond EPDs</td><td><span class="tag w">Medium, rising</span></td></tr>
-      <tr><th>Sphera</th><td>Large multi-plant manufacturers</td><td>Not published</td><td>Enterprise EHS and ESG suite, consulting arm, incumbent at groups such as Saint-Gobain</td><td>Construction depth, EPD automation, SimaPro now in the group</td><td><span class="tag w">Medium</span></td></tr>
-      <tr><th>Makersite</th><td>Electrical, MEP and industrial makers with large SKU counts</td><td>Not published; raised €60m in July 2025</td><td>PLM integration, scale across product catalogues</td><td>EN 15804 and programme operator acceptance for construction products</td><td><span class="tag w">Medium in MEP</span></td></tr>
-      <tr><th>openLCA</th><td>LCA experts and universities</td><td>Free software</td><td>Free</td><td>SimaPro for experts; One Click LCA for speed</td><td><span class="tag">Low</span></td></tr>
-      <tr class="hl"><th>Consultant and spreadsheet</th><td>Occasional users in every segment</td><td>€5,000 to €20,000 per consultant EPD (vendor-cited surveys)</td><td>No subscription for one or two projects a year</td><td>The cost of doing nothing, below</td><td><span class="tag b">High at the low end</span></td></tr>
-    </tbody>
-  </table></div>
+  <span class="eyebrow">Threat</span>
+  <h2>Threat level by segment</h2>
+  <div class="al-lad" id="lad"></div>
+  <p class="mini" style="margin-top:10px">An upward arrow marks a threat that is rising. Click a segment name to filter the whole page.</p>
 </section>
 
 <section class="sec">
   <span class="eyebrow">Cost of doing nothing</span>
   <h2>What waiting costs each buyer</h2>
-  <div class="grid2">
-    <div class="panel"><h3>Manufacturer</h3><p>Consultant EPDs cost €5,000 to €20,000 each and take months. Only 22% of manufacturers have EPDs for more than half their portfolio, while 65% of AEC professionals say they require EPDs on all or most projects.</p><p class="k">The cost</p><p>Products missing from specifications, plus default values in designers' models that make the product look worse than it is.</p></div>
-    <div class="panel"><h3>Architect or engineer</h3><p>Where limits apply, an assessment that fails late means redesign. Outsourcing each assessment adds consultant fees and a dependency on someone else's timetable.</p><p class="k">The cost</p><p>Permit delay, redesign hours, and lost fees for carbon work the firm could sell itself.</p></div>
-    <div class="panel"><h3>Contractor</h3><p>Tenders increasingly score carbon, and Denmark now limits site emissions. Supplier EPDs arrive after the bid if they arrive at all.</p><p class="k">The cost</p><p>Lower tender scores, and margin lost when low-carbon substitutions are made after contract.</p></div>
-    <div class="panel"><h3>Developer or owner</h3><p>From 2028, life cycle GWP sits on the energy certificate of every large new building in the EU. Investors already read Taxonomy and GRESB results.</p><p class="k">The cost</p><p>Buildings that look worse to investors and tenants than competitors' buildings, and late, expensive changes to meet national limits from 2030.</p></div>
+  <div class="tabs" role="tablist" aria-label="Buyer type" id="cntabs">
+    <button role="tab" aria-selected="true" aria-controls="cn-m" id="t-m">Manufacturer</button>
+    <button role="tab" aria-selected="false" aria-controls="cn-a" id="t-a">Architect or engineer</button>
+    <button role="tab" aria-selected="false" aria-controls="cn-c" id="t-c">Contractor</button>
+    <button role="tab" aria-selected="false" aria-controls="cn-d" id="t-d">Developer or owner</button>
   </div>
-  <p class="intro" style="margin-top:20px">The calculator on the <a href="enablement.html">Enablement</a> page turns these into a business case a seller can fill in with the buyer.</p>
+  <div class="cn-pane" role="tabpanel" id="cn-m" aria-labelledby="t-m">
+    <div class="cn-gap">
+      <div class="viz" style="margin-top:0">
+        <div class="viz-h"><h3>The specification gap</h3></div>
+        <div class="cn-bar"><div class="lb"><span>AEC professionals who require EPDs on all or most projects</span><b class="count" data-to="65" data-suffix="%">0%</b></div><div class="tr"><span class="grow" style="width:65%;background:var(--s1)"></span></div></div>
+        <div class="cn-bar"><div class="lb"><span>Manufacturers with EPDs for more than half their portfolio</span><b class="count" data-to="22" data-suffix="%">0%</b></div><div class="tr"><span class="grow" style="width:22%;background:var(--s2)"></span></div></div>
+        <p class="mini" style="margin-top:14px">The cost is products missing from specifications, plus default values in designers' models that make the product look worse than it is. Source: Carbon Experts Report, May 2026.</p>
+      </div>
+      <div class="viz cn-calc" style="margin-top:0">
+        <div class="viz-h"><h3>The consultant route</h3></div>
+        <label class="ctl" for="neps" style="display:block"><span style="display:flex;justify-content:space-between;font-size:14px"><span>EPDs needed across the range</span><output id="neps-o">10</output></span>
+        <input type="range" id="neps" min="1" max="50" value="10"></label>
+        <span class="big" id="neps-r" style="margin-top:16px">€50,000 to €200,000</span>
+        <p class="mini">Consultant EPDs cost €5,000 to €20,000 each (vendor-cited surveys) and take months. The <a href="enablement.html">Enablement</a> calculator turns this into a business case with the buyer.</p>
+        <svg id="neps-s" viewBox="0 0 400 60" role="img" aria-label="Range bar of consultant EPD cost"></svg>
+      </div>
+    </div>
+  </div>
+  <div class="cn-pane" role="tabpanel" id="cn-a" aria-labelledby="t-a" hidden>
+    <div class="cn-flow"><div class="st"><b>Trigger</b>Where limits apply, an assessment that fails late means redesign.</div><div class="ar" aria-hidden="true">→</div><div class="st"><b>What happens</b>Outsourcing each assessment adds consultant fees and a dependency on someone else's timetable.</div><div class="ar" aria-hidden="true">→</div><div class="st cost"><b>The cost</b>Permit delay, redesign hours, and lost fees for carbon work the firm could sell itself.</div></div>
+  </div>
+  <div class="cn-pane" role="tabpanel" id="cn-c" aria-labelledby="t-c" hidden>
+    <div class="cn-flow"><div class="st"><b>Trigger</b>Tenders increasingly score carbon, and Denmark now limits site emissions.</div><div class="ar" aria-hidden="true">→</div><div class="st"><b>What happens</b>Supplier EPDs arrive after the bid, if they arrive at all.</div><div class="ar" aria-hidden="true">→</div><div class="st cost"><b>The cost</b>Lower tender scores, and margin lost when low-carbon substitutions are made after contract.</div></div>
+  </div>
+  <div class="cn-pane" role="tabpanel" id="cn-d" aria-labelledby="t-d" hidden>
+    <div class="cn-flow"><div class="st"><b>Trigger</b>From 2028, life cycle GWP sits on the energy certificate of every large new building in the EU.</div><div class="ar" aria-hidden="true">→</div><div class="st"><b>What happens</b>Investors already read Taxonomy and GRESB results.</div><div class="ar" aria-hidden="true">→</div><div class="st cost"><b>The cost</b>Buildings that look worse to investors and tenants than competitors' buildings, and late, expensive changes to meet national limits from 2030.</div></div>
+  </div>
 </section>
 
 <section class="sec">
   <span class="eyebrow">Exposure</span>
   <h2>Six risks a product marketer should watch</h2>
-  <ol class="steps">
-    <li><b>Value for money is the weakest review score</b>Capterra rates it 4.0, the lowest sub-score. Every free alternative makes this worse unless the business case is in the seller's hands.</li>
-    <li><b>Low-cost national tools hold the single-country buyer</b>LCAbyg, IVL BM and the French and Dutch tools are official, local and cheaper. The counter is the second country, the certification and the 2028 EU method.</li>
-    <li><b>"First and only RICS-validated" has expired</b>CarboniCa is now also validated. Claims in UK materials need updating to "first".</li>
-    <li><b>Startups use the speed and AI message</b>Emidat, Pathways and Makersite sell AI-led EPDs. Speed alone no longer separates One Click LCA; verified results at scale do.</li>
-    <li><b>Programme operators pre-verify many tools</b>That makes "verified EPD in weeks" common. Differentiation moves to cost per EPD across a range, data quality and what happens after publication.</li>
-    <li><b>Two group products overlap</b>SimaPro and the EPD Generator both serve manufacturers. Without a clear rule, sellers compete with each other and SimaPro resellers worry.</li>
-  </ol>
+  <div class="rk-grid" id="risks"></div>
 </section>
 
-<section class="sources"><h2>Sources</h2><ul>
+<section class="sources"><details class="more" style="margin-top:0"><summary>Sources</summary><ul>
 <li>EC3: buildingtransparency.org board letter (5 Jun 2025); OneStopESG (20 Oct 2026, EC3 2.0)</li>
 <li>Tally: buildingtransparency.org/c-scale-acquires-tally (7 Apr 2026)</li>
 <li>LCAbyg: lcabyg.dk (prices read 23 Oct 2026); IVL BM: Dagens PS</li>
@@ -104,7 +163,109 @@
 <li>Sphera: sphera.com; openLCA: One Click LCA EPD software overview (21 Sep 2026)</li>
 <li>EPD costs: oneclicklca.com cost of documenting products with EPDs; Emidat (May 2026); Dealroom on Pathways</li>
 <li>Carbon Experts Report press release, 6 May 2026 (22% and 65% figures); Capterra review scores</li>
-</ul></section>
+</ul></details></section>
+</div>
+
+<script>
+(function(){
+function $(id){return document.getElementById(id)}
+var SEG=[["all","All segments"],["us","US designers"],["nord","Single-country Nordic, FR, NL"],["uk","UK"],["msme","Manufacturers, SME"],["ment","Manufacturers, enterprise"],["exp","LCA experts"],["low","Low-frequency users"]];
+var BRIEF={
+us:["EC3, with C.Scale and Tally","Price and neutrality. Tally now sits in a funded concept-to-BIM workflow.","Compliance breadth, the Autodesk partnership, global EPD data and Carbon Designer 3D."],
+nord:["National tools: LCAbyg, IVL BM, ELODIE and NMD tools","Official endorsement, local language and low price.","Multi-scheme bundles, readiness for the 2028 EU method and cross-border portfolios."],
+uk:["CarboniCa, Preoptima, and Excel with BECD","The “first and only RICS-validated” message is now first of two.","RICS v2 with the London Plan in one bundle, data quality checks and multi-country work."],
+msme:["Ecochain, Emidat, EPD Hub packs and association tools","Lower entry price, the AI story and sector credibility.","The pre-verified generator across eight programme operators and specifier reach through Manufacturer Pages."],
+ment:["Sphera, the incumbent, and Makersite","Enterprise suite cross-sell and PLM scale across product catalogues.","The SimaPro and One Click LCA portfolio with construction depth."],
+exp:["openLCA","It is free.","SimaPro, now in the group."],
+low:["Consultant and spreadsheet","No subscription for one or two projects a year.","Per-project and consultant licences, and cost per EPD against €5,000 to €20,000 consultant EPDs."]};
+var TY=[["One Click LCA group","var(--s1)"],["Free or public","var(--s2)"],["Paid software","var(--s3)"],["Services and spreadsheets","var(--s4)"]];
+var LV={3:["High","var(--critical)"],2:["Medium","var(--warning)"],1:["Low","var(--good)"]};
+/* name, sub, type, price x, scope y, threat level, rising, segments, where, price, why, answer, tag */
+var A=[
+["One Click LCA","",0,78,80,0,0,["all"],"Every segment on this page","Subscriptions; value for money is its weakest review score (Capterra 4.0)","","",""],
+["SimaPro","PRé Sustainability, in the group since September 2025",0,66,74,0,0,["exp","ment"],"LCA experts and multi-sector manufacturers","Not compared here","Depth of modelling, scientific control and an established expert community","The expert tier of the portfolio","In the group"],
+["EC3","Building Transparency, non-profit",1,20,66,3,0,["us"],"US designers, contractors and procurement","Core free; EC3 2.0 beta with a paid membership announced 20 Oct 2026","Free, neutral, the default EPD database for US procurement","Whole-building compliance across schemes, Carbon Designer 3D, Autodesk partnership, global data","High in US"],
+["openLCA","",1,12,52,1,0,["exp"],"LCA experts and universities","Free software","Free","SimaPro for experts; One Click LCA for speed","Low"],
+["National tools","LCAbyg, IVL BM, ELODIE, NMD tools",1,18,24,3,0,["nord"],"Single-country designers in Denmark, Sweden, France and the Netherlands","LCAbyg DKK 5,900 to 9,900 a year; IVL BM has a free tier","Official status, local language, low price","One platform across countries and schemes; readiness for the EU method in 2028; certification on the same model","High locally"],
+["Tally and C.Scale","",2,44,36,2,1,["us"],"US architects in Revit","Tally 2.0 price not announced","Native Revit workflow; reviewers call it easier. C.Scale bought it on 7 Apr 2026","Product data per element, compliance breadth, the AI mapping and new interface","Medium, rising"],
+["CarboniCa and Preoptima","",2,54,22,2,0,["uk"],"UK consultancies and contractors","Not published","CarboniCa is now the second RICS-validated tool","RICS v2 with London Plan in one bundle, data quality checks, multi-country work","Medium"],
+["Ecochain","",2,60,32,2,0,["msme"],"Small and mid-size manufacturers, Dutch home market","From €290 a month; “as low as €50 per EPD at scale” (vendor claim)","Low entry price, monthly plans, simple interface","Pre-verified generator across eight programme operators, specifier reach through Manufacturer Pages, depth of data","Medium"],
+["Emidat and Pathways","",2,68,16,2,1,["msme"],"Manufacturers in DACH and the US","Not published; Emidat users can get an EPD Global grant","AI-first story, startup pricing, hands-on service","Proven scale, verification track record, platform beyond EPDs","Medium, rising"],
+["Sphera","",2,88,64,2,0,["ment"],"Large multi-plant manufacturers","Not published","Enterprise EHS and ESG suite, consulting arm, incumbent at groups such as Saint-Gobain","Construction depth, EPD automation, SimaPro now in the group","Medium"],
+["Makersite","",2,76,56,2,0,["ment"],"Electrical, MEP and industrial makers with large SKU counts","Not published; raised €60m in July 2025","PLM integration, scale across product catalogues","EN 15804 and programme operator acceptance for construction products","Medium in MEP"],
+["Spreadsheets and free data","Excel with BECD and other free data",3,32,10,3,0,["low","uk"],"Occasional users in every segment","Free data; staff time","No subscription for one or two projects a year","The cost of doing nothing, below","High at the low end"],
+["Consultant studies","",3,84,8,3,0,["low"],"Occasional users in every segment","€5,000 to €20,000 per consultant EPD (vendor-cited surveys)","No subscription for one or two projects a year","The cost of doing nothing, below","High at the low end"]];
+var RISK=[
+["Value for money is the weakest review score","Capterra rates it 4.0, the lowest sub-score. Every free alternative makes this worse unless the business case is in the seller's hands.",["us","nord","uk","exp","low"],'<path d="M12 3v18M16 7H10a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6H7"/>'],
+["Low-cost national tools hold the single-country buyer","LCAbyg, IVL BM and the French and Dutch tools are official, local and cheaper. The counter is the second country, the certification and the 2028 EU method.",["nord"],'<path d="M5 21V4h10l-2 4 2 4H5"/>'],
+["“First and only RICS-validated” has expired","CarboniCa is now also validated. Claims in UK materials need updating to “first”.",["uk"],'<circle cx="12" cy="9" r="5"/><path d="M9 13.5L8 21l4-2 4 2-1-7.5"/>'],
+["Startups use the speed and AI message","Emidat, Pathways and Makersite sell AI-led EPDs. Speed alone no longer separates One Click LCA; verified results at scale do.",["msme","ment"],'<path d="M13 3L5 14h6l-1 7 8-11h-6z"/>'],
+["Programme operators pre-verify many tools","That makes “verified EPD in weeks” common. Differentiation moves to cost per EPD across a range, data quality and what happens after publication.",["msme","ment"],'<path d="M5 12l4 4 10-10"/><path d="M4 20h16"/>'],
+["Two group products overlap","SimaPro and the EPD Generator both serve manufacturers. Without a clear rule, sellers compete with each other and SimaPro resellers worry.",["msme","ment","exp"],'<circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/>']];
+var cur="all",selA=2;
+function inSeg(a){return cur==="all"||a[7].indexOf("all")>=0||a[7].indexOf(cur)>=0}
+
+/* filter */
+var flt=$("flt");SEG.forEach(function(s){var b=document.createElement("button");b.type="button";b.textContent=s[1];b.dataset.k=s[0];b.onclick=function(){setSeg(s[0])};flt.appendChild(b)});
+$("mlegend").innerHTML=TY.map(function(t){return '<span><i style="background:'+t[1]+'"></i>'+t[0]+'</span>'}).join("")+'<span>Bubble size: threat level</span>';
+
+/* table */
+var tb=document.querySelector("#ltable tbody");A.slice(2).forEach(function(a){var tr=document.createElement("tr");[a[0]+(a[1]?" ("+a[1]+")":""),a[8],a[9],a[10],a[11],a[12]].forEach(function(t,i){var c=document.createElement(i?"td":"th");c.textContent=t;tr.appendChild(c)});tb.appendChild(tr)});
+
+/* map */
+var host=$("map"),svg,G=[];
+function build(){host.innerHTML="";G=[];var w=Math.max(300,host.clientWidth),m=w<560,h=m?Math.round(w*1.45):460,l=m?22:30,r=m?8:12,t=10,b=m?30:34;
+ svg=VZ.svg(host,w,h,"Map of alternatives by price to the buyer and scope. One Click LCA and SimaPro sit at premium price and broad scope. EC3, openLCA and national tools sit at low price. Sphera and Makersite sit at premium price and broad scope for manufacturers. Consultant studies are paid and narrow. The table below the map lists every alternative.");svg.setAttribute("role","group");
+ var X=VZ.lin(0,100,l,w-r),Y=VZ.lin(0,100,h-b,t);
+ VZ.el("rect",{x:l,y:t,width:w-l-r,height:h-t-b,fill:"none",class:"axis"},svg);
+ VZ.el("line",{x1:X(50),x2:X(50),y1:t,y2:h-b,class:"grid"},svg);VZ.el("line",{x1:l,x2:w-r,y1:Y(50),y2:Y(50),class:"grid"},svg);
+ [["Free and broad",l+8,t+16,"start"],["Paid and broad",w-r-8,t+16,"end"],["Free and narrow",l+8,h-b-8,"start"],["Paid and narrow",w-r-8,h-b-8,"end"]].forEach(function(q){VZ.el("text",{x:q[1],y:q[2],"text-anchor":q[3],class:"t-muted"},svg).textContent=q[0].toUpperCase()});
+ VZ.el("text",{x:(l+w-r)/2,y:h-8,"text-anchor":"middle",class:"t-strong"},svg).textContent="Price to the buyer: free to premium →";
+ VZ.el("text",{x:-(t+h-b)/2,y:m?12:14,"text-anchor":"middle",class:"t-strong",transform:"rotate(-90)"},svg).textContent="Scope: one task to multi-standard →";
+ A.forEach(function(a,i){var x=X(a[3]),y=Y(a[4]),rad=(m?.75:1)*(a[5]?[0,7,10,13][a[5]]:12),g=VZ.el("g",{class:"al-b",role:"button",transform:"translate("+x+","+y+")","aria-label":a[0]},svg);
+  VZ.el("circle",{r:Math.max(rad,14),fill:"transparent"},g);VZ.el("circle",{class:"m",r:rad,fill:TY[a[2]][1]},g);
+  var SH={"Spreadsheets and free data":"Spreadsheets","CarboniCa and Preoptima":"CarboniCa","Emidat and Pathways":"Emidat, Pathways","Tally and C.Scale":"Tally","Consultant studies":"Consultants"},right=a[3]<(m?55:70),tx=VZ.el("text",{x:right?rad+5:-rad-5,y:4,"text-anchor":right?"start":"end"},g);tx.textContent=m&&SH[a[0]]?SH[a[0]]:a[0];if(m)tx.style.fontSize="11px";if(i<2)tx.style.fontWeight="600";
+  VZ.tip(g,function(){return "<b>"+(a[5]?LV[a[5]][0]+" threat"+(a[6]?", rising":""):"One Click LCA group")+"</b><span class='m'>"+a[0]+"<br>"+a[9]+"</span>"});
+  g.addEventListener("click",function(){selA=i;paint()});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();selA=i;paint()}});G.push(g)});
+ paint()}
+function lvl(a){if(!a[5])return '<span class="lvl"><i style="background:var(--s1)"></i>'+a[12]+'</span>';return '<span class="lvl"><i style="background:'+LV[a[5]][1]+'"></i>'+a[12]+(a[6]?" ↑":"")+'</span>'}
+function card(){var a=A[selA],c=$("card");c.innerHTML="";
+ var h='<span class="eyebrow">'+TY[a[2]][0]+'</span><h3></h3>'+(a[1]?'<p class="sub"></p>':'')+'<div style="margin-top:10px">'+lvl(a)+'</div><dl></dl>';c.innerHTML=h;c.querySelector("h3").textContent=a[0];if(a[1])c.querySelector(".sub").textContent=a[1];
+ var dl=c.querySelector("dl");[["Where it competes",a[8]],["Price",a[9]],["Why buyers choose it",a[10]],["One Click LCA's best answer",a[11]]].forEach(function(r){if(!r[1])return;var dt=document.createElement("dt"),dd=document.createElement("dd");dt.textContent=r[0];dd.textContent=r[1];dl.appendChild(dt);dl.appendChild(dd)});
+ if(selA===0){var dt=document.createElement("dd");dt.style.marginTop="12px";dt.textContent="Click any other bubble to compare it with One Click LCA.";dl.appendChild(dt)}}
+function paint(){G.forEach(function(g,i){g.classList.toggle("dim",!inSeg(A[i]));g.classList.toggle("sel",i===selA)});card()}
+
+/* threat ladder */
+var lad=$("lad");
+function ladder(){var h='<div class="h hx rh">Segment</div>'+[3,2,1].map(function(l){return '<div class="h"><i style="width:10px;height:10px;border-radius:50%;display:inline-block;background:'+LV[l][1]+'"></i>'+LV[l][0]+' threat</div>'}).join("");
+ SEG.slice(1).forEach(function(s){var cls=cur==="all"?"":cur===s[0]?" on":" off";h+='<div class="rh'+cls+'"><button type="button" data-k="'+s[0]+'">'+s[1]+'</button></div>';
+  [3,2,1].forEach(function(l){var items=A.filter(function(a){return a[5]===l&&a[7].indexOf(s[0])>=0&&!(s[0]==="uk"&&a[0].indexOf("Spreadsheets")===0)});
+   h+='<div class="c'+cls+'" data-l="'+LV[l][0]+' threat">'+items.map(function(a){return '<span class="chip2"><i style="background:'+LV[l][1]+'"></i>'+a[0]+(a[6]?" ↑":"")+'</span>'}).join("")+'</div>'})});
+ lad.innerHTML=h;[].forEach.call(lad.querySelectorAll("button"),function(b){b.onclick=function(){setSeg(b.dataset.k);$("flt").scrollIntoView({behavior:"smooth",block:"start"})}})}
+
+/* risks */
+function risks(){$("risks").innerHTML=RISK.map(function(r,i){var hit=cur!=="all"&&r[2].indexOf(cur)>=0,cls=cur==="all"?"":hit?" on":" off";
+ return '<div class="rk'+cls+'"><span class="icon"><svg viewBox="0 0 24 24">'+r[3]+'</svg></span><h3>'+(i+1)+'. '+r[0]+'</h3><p>'+r[1]+'</p><div class="segs" aria-label="Segments exposed">'+SEG.slice(1).map(function(s){return '<span class="'+(r[2].indexOf(s[0])>=0?"y":"")+'">'+s[1]+'</span>'}).join("")+'</div></div>'}).join("")}
+
+function setSeg(k){cur=k;[].forEach.call(flt.children,function(b){b.setAttribute("aria-pressed",b.dataset.k===k?"true":"false")});
+ var br=$("brief");if(k==="all"){br.innerHTML='<div style="grid-column:1/-1"><b>All segments</b>Eleven alternatives across seven segments. Free and local tools hold the low end; paid rivals matter most in manufacturing.</div>'}
+ else{var d=BRIEF[k];br.innerHTML='<div><b>Main alternative</b>'+d[0]+'</div><div><b>Why buyers choose it</b>'+d[1]+'</div><div><b>Best counter</b>'+d[2]+'</div>';
+  var first=A.findIndex(function(a,i){return i>0&&a[5]&&a[7].indexOf(k)>=0});if(k==="exp")first=3;if(first>0)selA=first}
+ paint();ladder();risks()}
+
+/* cost calculator */
+var ne=$("neps");function calc(){var n=+ne.value;$("neps-o").textContent=n;$("neps-r").textContent="€"+(n*5000).toLocaleString("en-GB")+" to €"+(n*20000).toLocaleString("en-GB");
+ var s=$("neps-s");s.innerHTML="";var X=VZ.lin(0,1000000,10,390);VZ.el("line",{x1:10,x2:390,y1:22,y2:22,class:"grid"},s);
+ [0,250000,500000,750000,1000000].forEach(function(v){VZ.el("line",{x1:X(v),x2:X(v),y1:16,y2:28,class:"axis"},s);var t=VZ.el("text",{x:X(v),y:46,"text-anchor":v?v===1000000?"end":"middle":"start",fill:"var(--ink2)","font-size":"11"},s);t.textContent=v===1000000?"€1m":v?"€"+(v/1000)+"k":"€0"});
+ VZ.el("rect",{x:X(n*5000),y:15,width:Math.max(2,X(n*20000)-X(n*5000)),height:14,rx:4,fill:"var(--s2)"},s);
+ s.setAttribute("aria-label","Consultant cost for "+n+" EPDs: €"+(n*5000).toLocaleString("en-GB")+" to €"+(n*20000).toLocaleString("en-GB"))}
+ne.addEventListener("input",calc);calc();
+VZ.tabs($("cntabs"),function(){VZ.reveal()});
+
+setSeg("all");build();
+var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(build,150)});
+})();
+</script>
 
 </main>
 <nav class="pager" aria-label="Page navigation"><a class="prev" href="segments.html"><small>Previous</small><b>Segment Model</b></a><a class="next" href="positioning.html"><small>Next</small><b>Positioning</b></a></nav><footer class="site-foot"><span>Prepared 23 October 2026 by Arpan Bakshi for the Senior Product Marketing Manager role at One Click LCA. Independent work from public sources; not produced or endorsed by One Click LCA.</span></footer>

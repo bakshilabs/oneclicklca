@@ -1,35 +1,183 @@
 <!--meta title="Fit" desc="Each requirement in the listing set against evidence from Arpan Bakshi's career selling to One Click LCA's customers."-->
+<style>
+#fi-tl .band,#fi-tl .mk{cursor:pointer}
+#fi-tl .band:focus,#fi-tl .mk:focus{outline:none}
+#fi-tl .band:focus-visible path,#fi-tl .mk:focus-visible circle.v{stroke:var(--ink1);stroke-width:2}
+.fi-det{background:var(--panel);border-radius:6px;padding:16px 20px;margin-top:12px;display:grid;grid-template-columns:200px 1fr;gap:16px}
+.fi-det .d{font:600 20px/1.15 var(--sans);letter-spacing:-.02em}
+.fi-det .mini{margin-top:4px}
+.fi-det ul{margin:0;padding-left:18px;font-size:14.5px}
+.fi-det li+li{margin-top:4px}
+@media (max-width:700px){.fi-det{grid-template-columns:1fr}}
+
+.fi-mx{margin-top:28px}
+.fi-row{display:grid;grid-template-columns:minmax(200px,300px) repeat(7,1fr) 28px;align-items:center;gap:0;border-bottom:1px solid var(--line)}
+.fi-row.h{border-bottom:1px solid var(--line);font:500 12px/1.25 var(--sans);color:var(--muted);text-align:center}
+.fi-row.h>span{padding:8px 2px}
+.fi-row.h>span:first-child{text-align:left}
+button.fi-row{appearance:none;width:100%;background:none;border:0;border-bottom:1px solid var(--line);color:var(--ink);font:inherit;cursor:pointer;text-align:left;padding:0}
+button.fi-row:hover{background:var(--panel)}
+button.fi-row[aria-expanded="true"]{background:var(--accent-soft)}
+.fi-row .rq{padding:12px 10px 12px 0;font-size:14.5px;font-weight:500;display:flex;align-items:center;gap:8px}
+.fi-row .c{display:grid;place-items:center;height:100%}
+.fi-row .c i{width:14px;height:14px;border-radius:50%;background:var(--accent);display:block}
+.fi-row .c i.o{background:none;border:1.5px solid var(--grid);width:8px;height:8px}
+.fi-row .chev{width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:2;transition:transform .2s}
+button.fi-row[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.fi-gap{display:inline-flex;align-items:center;gap:4px;font:500 11.5px/1.2 var(--sans);color:var(--warn);background:var(--warn-soft);border-radius:3px;padding:2px 7px;white-space:nowrap}
+.fi-gap svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.2}
+.fi-ex{padding:14px 18px 18px;background:var(--accent-soft);border-bottom:1px solid var(--line);font-size:14.5px;display:grid;grid-template-columns:1fr 220px;gap:16px}
+.fi-ex[hidden]{display:none}
+.fi-ex .k{font:500 11.5px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+@media (max-width:760px){
+ .fi-row{grid-template-columns:repeat(7,1fr) 28px}
+ .fi-row .rq{grid-column:1/-1;padding:12px 4px 4px}
+ .fi-row .c{padding:4px 0 12px}
+ .fi-row.h>span:first-child{display:none}
+ .fi-row.h .lg{display:none}.fi-row.h .sm{display:inline!important;font-size:10.5px}
+ .fi-ex{grid-template-columns:1fr}
+}
+.fi-les{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.fi-les div{background:var(--panel);border-radius:6px;padding:20px}
+.fi-les h3{font-size:17px;margin-bottom:6px}
+.fi-les p{font-size:14px;color:var(--muted)}
+@media (max-width:900px){.fi-les{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.fi-les{grid-template-columns:1fr}}
+</style>
+
 <header class="phead">
   <span class="eyebrow">The person for the role</span>
   <h1>Fit</h1>
-  <p class="lede">I have spent eighteen years on the buying side of One Click LCA's market. At Foster + Partners, SOM and WSP I sold sustainability services to developers, contractors, manufacturers and public clients. I also chose and built the carbon tools those firms used. This page sets each requirement in the listing against that record, including the one gap.</p>
+  <p class="lede">Eighteen years on the buying side of One Click LCA's market, selling sustainability services and choosing the carbon tools at Foster + Partners, SOM and WSP.</p>
 </header>
+
+<div class="viz rv">
+  <div class="viz-h"><h3>Career, 2008 to 2026</h3><p>Select a role or a marker. Fees are the yearly totals won through pitches and bids.</p></div>
+  <div class="btnrow" id="fi-layers" role="group" aria-label="Show layers" style="margin-top:0">
+    <button type="button" data-l="talk" aria-pressed="true">Talks and panels</button>
+    <button type="button" data-l="learn" aria-pressed="true">Study and credentials</button>
+  </div>
+  <div class="legend" aria-hidden="true"><span><i style="background:var(--s1)"></i>Role</span><span><i style="background:var(--s4)"></i>Talk or panel</span><span><i style="background:var(--s7)"></i>Study</span></div>
+  <div id="fi-tl"></div>
+  <div class="fi-det" id="fi-det" aria-live="polite"></div>
+</div>
+
+<div class="stats4">
+  <div class="stat rv"><b class="count" data-to="18">0</b><span>Years selling to the developers, contractors, manufacturers and public clients who buy LCA software</span></div>
+  <div class="stat rv hi"><b class="count" data-to="10" data-prefix="£" data-suffix="m+">£0m+</b><span>Fees won a year through pitches and bids as Associate Partner at Foster + Partners</span></div>
+  <div class="stat rv"><b class="count" data-to="250" data-suffix="+">0+</b><span>Senior professionals trained to use Claude Code, Cowork and other AI tools</span></div>
+  <div class="stat rv"><b class="count" data-to="11">0</b><span>Conferences, panels and keynotes on the CV, from SimBuild to COP28</span></div>
+</div>
 
 <section class="sec">
   <span class="eyebrow">Requirements</span>
-  <h2>What the listing asks for and what I bring</h2>
-  <div class="tw"><table class="t">
-    <thead><tr><th style="width:24%">Requirement</th><th style="width:50%">Evidence</th><th>Where to see it</th></tr></thead>
-    <tbody>
-      <tr><th>7+ years of product marketing or closely related experience</th><td>Eighteen years of selling and launching technical services to the same buyers. I co-created and launched a strategic advisory service line at Foster + Partners. I led pitches and bids that won more than £10 million a year in fees, and I now run sales, marketing and commercial operations at Atlas Learn. My title has never been product marketing manager, which is the gap. This site shows the work at the standard the role needs.</td><td>CV; every page of this site</td></tr>
-      <tr><th>Complex, engineering-driven products</th><td>I built early design tools that estimate whole life carbon before building elements are detailed. I sat on the Foster + Partners whole life carbon leadership team and have modelled building performance in EnergyPlus, Radiance, IES and Ladybug since 2008. I spoke on a One Click LCA Bootcamp panel in 2023 and organised the London LCA Forum in 2022.</td><td><a href="portfolio.html">Portfolio</a>, <a href="buyers.html">Buyers</a></td></tr>
-      <tr><th>Positioning and clear communication</th><td>I correlated every rating system Foster + Partners works with into one framework of ten themes, the same problem as explaining 140 standards to a buyer. I have presented to Fortune 500 chief executives and at COP26, COP28, SimBuild and Bâtiment durable Québec.</td><td><a href="positioning.html">Positioning</a></td></tr>
-      <tr><th>Business judgment about metrics</th><td>I set building performance targets that fitted client budgets and ESG commitments. I also priced, negotiated and won a multi-year advisory contract with a global pharmaceutical company.</td><td><a href="metrics.html">Win Rate</a>, <a href="enablement.html">Enablement</a></td></tr>
-      <tr><th>Effective use of AI</th><td>I am co-founder of Atlas Learn, where I have trained more than 250 senior professionals to use Claude Code, Cowork and other AI tools. I was AI lead for my department at Foster + Partners. This site was researched and built with AI agents.</td><td><a href="ai.html">AI Workflow</a></td></tr>
-      <tr><th>Cross-functional work, market research and competitive analysis</th><td>I led a five-person research team and worked between design studios, engineering, partners and clients on every project. The research on this site covers four topics, each with a sourced file.</td><td><a href="alternatives.html">Alternatives</a>, <a href="demand.html">Demand Drivers</a></td></tr>
-      <tr><th>Construction or manufacturing sustainability, LCA or EPDs</th><td>LEED AP and Estidama Pearl QP. I have worked under LEED, BREEAM, GSAS, Mostadam, Green Star and the Living Building Challenge, and on Lusail Stadium, San Siro and Old Trafford.</td><td><a href="cv.html">CV</a></td></tr>
-      <tr><th>Training others</th><td>I led internal LEED training for hundreds of architects and taught whole life carbon to studio partners. I teach at Imperial College London and taught at City University of New York.</td><td><a href="enablement.html">Enablement</a></td></tr>
-    </tbody>
-  </table></div>
+  <h2>What the listing asks for and where the evidence comes from</h2>
+  <p class="intro">Each dot marks where the evidence for a requirement comes from. Select a requirement to read it.</p>
+  <p class="mini" style="margin-top:6px">On small screens, RVA is Rafael Viñoly Architects and F+P is Foster + Partners.</p>
+  <div class="fi-mx" id="fi-mx"></div>
+  <div class="callout" style="display:flex;gap:14px;align-items:flex-start"><span class="fi-gap" style="margin-top:3px"><svg viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3zM12 10v5M12 18v.5"/></svg>Gap</span><p>My title has never been product marketing manager. The closest work is co-creating and launching a service line at Foster + Partners and running sales and marketing at Atlas Learn. This site shows the work at the standard the role needs.</p></div>
 </section>
 
 <section class="sec">
   <span class="eyebrow">What the buying side teaches</span>
   <h2>Four things I learnt from selling to these buyers</h2>
-  <div class="grid2">
-    <div class="panel"><h3>The trigger is almost always a date</h3><p>Clients bought carbon work when a permit, a certification or a board target set a deadline. Without a date, the work slipped to next year.</p></div>
-    <div class="panel"><h3>The user and the signer want different things</h3><p>The analyst wants fewer hours. The partner wants the fee, the credit or the win. A pitch that serves only one of them stalls.</p></div>
-    <div class="panel"><h3>Visual evidence wins the room</h3><p>A chart that shows two design options against a limit does more than a report. Buyers decide when they can see the consequence.</p></div>
-    <div class="panel"><h3>Trust is built by the person on the call</h3><p>Clients came back because someone answered fast and knew the rule. The One Click LCA reviews say the same about its support team.</p></div>
+  <div class="fi-les">
+    <div class="rv"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><h3>The trigger is a date</h3><p>Clients bought carbon work when a permit, a certification or a board target set a deadline. Without a date, the work slipped to next year.</p></div>
+    <div class="rv"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3.5"/><circle cx="16" cy="8" r="3.5"/><path d="M2 20a6 6 0 0 1 12 0M10 20a6 6 0 0 1 12 0"/></svg></span><h3>User and signer differ</h3><p>The analyst wants fewer hours. The partner wants the fee, the credit or the win. A pitch that serves only one of them stalls.</p></div>
+    <div class="rv"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 20h18M6 16l4-5 3 3 5-7"/></svg></span><h3>Visual evidence wins</h3><p>A chart that shows two design options against a limit does more than a report. Buyers decide when they can see the consequence.</p></div>
+    <div class="rv"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z"/></svg></span><h3>Trust is the person on the call</h3><p>Clients came back because someone answered fast and knew the rule. The One Click LCA reviews say the same about its support team.</p></div>
   </div>
 </section>
+
+<script>
+(function(){
+function txt(el,t){el.textContent=t;return el}
+/* ---------- career timeline ---------- */
+var R=[
+ {n:"Rafael Viñoly Architects",s:"Viñoly",c:1,a:2008+9/12,b:2010+0/12,role:"Computational and Environmental Designer, New York",fee:"",pts:["Led environmental analysis, solar radiation modelling and geometry optimisation.","Co-founded the firm's Technology Group, which introduced scripting and simulation."]},
+ {n:"WSP",s:"WSP",c:1,a:2010+6/12,b:2013+9/12,role:"Sustainability Manager, YR&G, New York",fee:"$2m+ a year",pts:["Managed LEED certification and carbon reduction plans for public and private clients.","Won more than $2 million a year in fees through outreach, pitches and bids."]},
+ {n:"SOM",s:"SOM",c:1,a:2013+9/12,b:2015+9/12,role:"High Performance Design Lead, New York",fee:"$3m+ a year",pts:["Led environmental strategy for tall buildings and large urban projects.","Presented to executives at major Wall Street banks and won more than $3 million a year in fees."]},
+ {n:"Foster + Partners, Associate",s:"Foster + Partners",c:1,a:2015+9/12,b:2020,role:"Associate, London",fee:"£5m+ a year",pts:["Led pitches, bids and competition entries that won more than £5 million a year.","Managed environmental strategy, microclimate analysis and computational modelling."]},
+ {n:"Foster + Partners, Associate Partner",s:"Associate Partner",c:1,a:2020,b:2026+6/12,role:"Associate Partner, London",fee:"£10m+ a year",pts:["Co-created and launched a strategic advisory service line.","Won a multi-year contract with a global pharmaceutical company.","Sat on the whole life carbon leadership team and built early design carbon tools."]},
+ {n:"Atlas Learn",s:"Atlas Learn",c:1,a:2025+9/12,b:2026+9.7/12,role:"Co-Founder, London",fee:"",pts:["Trained more than 250 senior professionals to use Claude Code, Cowork and other AI tools.","Runs sales, marketing and commercial operations."]}
+];
+var M=[
+ ["talk",2012,"Intersections","Speaker, then panel moderator in 2013."],
+ ["talk",2015,"SimAUD 2015","Paper on low-energy high-rise residential design in megacities."],
+ ["talk",2017,"Bâtiment durable Québec","Lecture on 6D BIM design."],
+ ["talk",2018,"BPAC and SimBuild","Keynote on building performance simulation."],
+ ["talk",2021,"COP26 Buildings Pavilion","Two sessions on net zero and whole life carbon."],
+ ["talk",2021,"Dezeen and Velux panel","Panel on COP26 and cities."],
+ ["talk",2022,"LCA Forum, London","Organised the London meeting."],
+ ["talk",2023,"One Click LCA Bootcamp","Panel on life cycle assessment."],
+ ["talk",2023,"UN COP28, Dubai","Lecture on sustainable architecture."],
+ ["talk",2023,"CoreNet Global Summit","Listed speaker, Dubai."],
+ ["learn",2010,"Master of Engineering","Stevens Institute of Technology."],
+ ["learn",2011,"Building Performance Simulation","Harvard University Graduate School of Design."],
+ ["learn",2022,"Certificate in Sustainable Finance","University of Cambridge Institute for Sustainability Leadership."]
+];
+var show={talk:true,learn:true},host=document.getElementById("fi-tl"),det=document.getElementById("fi-det"),sel={t:"r",i:4},items=[];
+function showDet(){
+ var d,head,sub,pts;
+ if(sel.t==="r"){d=R[sel.i];head=d.n;sub=d.role+(d.fee?" · fees "+d.fee:"");pts=d.pts}
+ else{d=M[sel.i];head=d[2];sub=(d[0]==="talk"?"Talk or panel, ":"Study, ")+d[1];pts=[d[3]]}
+ det.innerHTML='<div><div class="d"></div><p class="mini"></p></div><ul></ul>';txt(det.querySelector(".d"),head);txt(det.querySelector(".mini"),sub);
+ pts.forEach(function(p){det.querySelector("ul").appendChild(txt(document.createElement("li"),p))});
+ items.forEach(function(g){g.setAttribute("aria-pressed",g.dataset.k===sel.t+sel.i)});
+}
+function act(g,t,i){g.dataset.k=t+i;g.addEventListener("click",function(){sel={t:t,i:i};showDet()});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();sel={t:t,i:i};showDet()}});items.push(g)}
+function draw(){
+ host.innerHTML="";items=[];var W=Math.max(300,host.clientWidth),nar=W<620,m={l:4,r:6,t:6},bh=nar?16:30,
+  rows=nar?[0,1,2,3,4,5]:[0,1,2,3,3,4],rh=nar?bh+22:bh+8,laneY=function(r){return m.t+r*rh+(nar?16:0)},rolesH=(nar?6:5)*rh,mkTop=m.t+rolesH+14,mkH=(show.talk||show.learn)?(nar?92:84):0,H=mkTop+mkH+26;
+ var s=VZ.svg(host,W,H,"Career timeline from 2008 to 2026: Rafael Viñoly Architects 2008 to 2010, WSP 2010 to 2013, SOM 2013 to 2015, Foster + Partners 2015 to 2026, Atlas Learn from 2025, with talks and study as markers.");s.setAttribute("role","group");
+ var x=VZ.lin(2008,2027,m.l,W-m.r);
+ for(var y=2008;y<=2026;y+=2){VZ.el("line",{x1:x(y),x2:x(y),y1:m.t,y2:H-24,"class":"grid"},s);var t=VZ.el("text",{x:x(y),y:H-6,"text-anchor":"middle"},s);t.textContent=nar?"’"+String(y).slice(2):y}
+ R.forEach(function(r,i){var y=laneY(rows[i]),x0=x(r.a),x1=x(r.b),w=x1-x0;
+  var g=VZ.el("g",{"class":"band",tabindex:0,role:"button","aria-label":r.n+", "+r.role+(r.fee?", fees "+r.fee:"")},s);
+  var p=VZ.bar(g,x0,y,w-(i===3?2:0),bh,"var(--s1)","h");p.setAttribute("style","fill:var(--s1)");if(i===5)p.setAttribute("style","fill:var(--s3)");if(i===3)p.setAttribute("opacity",.7);
+  if(nar){var nl=r.s.replace("Associate Partner","Foster + Partners, Assoc. Partner")+(r.fee?", "+r.fee.replace(" a year","/yr"):""),nw=nl.length*6.2,lx=Math.min(x0,W-m.r-nw);var nt=VZ.el("text",{x:Math.max(m.l,lx),y:y-5,style:"fill:var(--ink1);font-weight:600;font-size:11.5px"},g);nt.textContent=nl;}else{
+  var lab=r.s,lw=lab.length*6.6+16;if(r.fee)lab+="  ·  "+r.fee,lw=lab.length*6.4+16;
+  var inside=lw<w,tx=VZ.el("text",{x:inside?x0+8:(i===5?x0-6:x1+6),y:y+bh/2+4,"text-anchor":(!inside&&i===5)?"end":"start",style:inside?"fill:#fff;font-weight:600":"fill:var(--ink1);font-weight:600"},g);tx.textContent=lab;
+  }
+  VZ.tip(g,function(){return "<b>"+r.n+"</b>"+r.role+(r.fee?'<div class="m">Fees won: '+r.fee+"</div>":"")});act(g,"r",i);
+ });
+ if(mkH){var cnt={};VZ.el("line",{x1:m.l,x2:W-m.r,y1:mkTop+mkH-6,y2:mkTop+mkH-6,"class":"axis"},s);
+  var lt=VZ.el("text",{x:m.l,y:mkTop+4,"class":"t-muted"},s);lt.textContent="Talks, panels and study";
+  M.forEach(function(d,i){if(!show[d[0]])return;var k=cnt[d[1]]=(cnt[d[1]]||0)+1,cx=x(d[1]+.5),cy=mkTop+mkH-16-(k-1)*(nar?16:18);
+   var g=VZ.el("g",{"class":"mk",tabindex:0,role:"button","aria-label":d[2]+", "+d[1]},s);
+   VZ.el("circle",{cx:cx,cy:cy,r:10,fill:"transparent"},g);
+   VZ.el("circle",{"class":"v",cx:cx,cy:cy,r:nar?5.5:6.5,style:"fill:var("+(d[0]==="talk"?"--s4":"--s7")+");stroke:var(--chart-bg)","stroke-width":2},g);
+   VZ.tip(g,function(){return "<b>"+d[2]+", "+d[1]+"</b>"+d[3]});act(g,"m",i);});}
+ showDet();
+}
+[].forEach.call(document.querySelectorAll("#fi-layers button"),function(b){b.addEventListener("click",function(){show[b.dataset.l]=!show[b.dataset.l];b.setAttribute("aria-pressed",show[b.dataset.l]);if(sel.t==="m"&&!show[M[sel.i][0]])sel={t:"r",i:4};draw()})});
+draw();var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(draw,120)});
+
+/* ---------- requirement matrix ---------- */
+var COLS=["Viñoly","WSP","SOM","Foster + Partners","Atlas Learn","Teaching and talks","This site"];
+var Q=[
+ ["7+ years of product marketing or closely related",[0,1,1,1,1,0,1],"Eighteen years of selling and launching technical services to the same buyers. I co-created and launched an advisory service line at Foster + Partners, led pitches that won more than £10 million a year in fees and now run sales, marketing and commercial operations at Atlas Learn.",[["CV","cv.html"]],1],
+ ["Complex, engineering-driven products",[1,1,1,1,0,1,0],"I built early design tools that estimate whole life carbon before building elements are detailed and sat on the Foster + Partners whole life carbon leadership team. I have modelled building performance in EnergyPlus, Radiance, IES and Ladybug since 2008, spoke on a One Click LCA Bootcamp panel in 2023 and organised the London LCA Forum in 2022.",[["Portfolio","portfolio.html"],["Buyers","buyers.html"]]],
+ ["Positioning and clear communication",[0,0,0,1,0,1,1],"I correlated every rating system Foster + Partners works with into one framework of ten themes, the same problem as explaining 140 standards to a buyer. I have presented to Fortune 500 chief executives and at COP26, COP28, SimBuild and Bâtiment durable Québec.",[["Positioning","positioning.html"]]],
+ ["Business judgment about metrics",[0,0,0,1,0,0,1],"I set building performance targets that fitted client budgets and ESG commitments. I also priced, negotiated and won a multi-year advisory contract with a global pharmaceutical company.",[["Win Rate","metrics.html"],["Enablement","enablement.html"]]],
+ ["Effective use of AI",[0,0,0,1,1,0,1],"I co-founded Atlas Learn and have trained more than 250 senior professionals to use Claude Code, Cowork and other AI tools. I was AI lead for my department at Foster + Partners. This site was researched and built with AI agents.",[["AI Workflow","ai.html"]]],
+ ["Cross-functional work and market research",[0,0,0,1,0,0,1],"I led a five-person research team and worked between design studios, engineering, partners and clients on every project. The research on this site covers four topics, each with a sourced file.",[["Alternatives","alternatives.html"],["Demand Drivers","demand.html"]]],
+ ["Construction or manufacturing sustainability, LCA or EPDs",[0,1,1,1,0,0,0],"LEED AP and Estidama Pearl QP. I have worked under LEED, BREEAM, GSAS, Mostadam, Green Star and the Living Building Challenge, and on Lusail Stadium, San Siro and Old Trafford.",[["CV","cv.html"]]],
+ ["Training others",[0,0,0,1,1,1,0],"I led internal LEED training for hundreds of architects and taught whole life carbon to studio partners. I teach at Imperial College London and taught at City University of New York.",[["Enablement","enablement.html"]]]
+];
+var mx=document.getElementById("fi-mx"),CH='<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+var hd=document.createElement("div");hd.className="fi-row h";hd.setAttribute("aria-hidden","true");hd.innerHTML="<span>Requirement</span>";var SM=["RVA","WSP","SOM","F+P","Atlas","Talks","Site"];COLS.forEach(function(c,j){var sp=document.createElement("span");sp.innerHTML='<span class="lg"></span><span class="sm" style="display:none"></span>';txt(sp.firstChild,c);txt(sp.lastChild,SM[j]);hd.appendChild(sp)});hd.appendChild(document.createElement("span"));mx.appendChild(hd);
+Q.forEach(function(q,i){
+ var b=document.createElement("button");b.type="button";b.className="fi-row";b.setAttribute("aria-expanded",i===0);b.setAttribute("aria-controls","fi-ex"+i);
+ var rq=document.createElement("span");rq.className="rq";rq.appendChild(document.createTextNode(q[0]));if(q[4]){var g=document.createElement("span");g.className="fi-gap";g.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3zM12 10v5M12 18v.5"/></svg>Title gap';rq.appendChild(g)}b.appendChild(rq);
+ q[1].forEach(function(v,j){var c=document.createElement("span");c.className="c";c.innerHTML=v?'<i></i>':'<i class="o"></i>';b.appendChild(c)});
+ var sr=document.createElement("span");sr.className="sr";sr.textContent="Evidence from: "+COLS.filter(function(c,j){return q[1][j]}).join(", ");b.appendChild(sr);
+ var cv=document.createElement("span");cv.className="c";cv.innerHTML=CH;b.appendChild(cv);
+ var ex=document.createElement("div");ex.className="fi-ex";ex.id="fi-ex"+i;ex.hidden=i!==0;
+ ex.innerHTML='<div><p class="k">Evidence</p><p class="e"></p></div><div><p class="k">Where to see it</p><p class="l"></p></div>';txt(ex.querySelector(".e"),q[2]);
+ q[3].forEach(function(l,k){var a=document.createElement("a");a.href=l[1];a.textContent=l[0];if(k)ex.querySelector(".l").appendChild(document.createTextNode(", "));ex.querySelector(".l").appendChild(a)});
+ b.addEventListener("click",function(){var o=b.getAttribute("aria-expanded")!=="true";b.setAttribute("aria-expanded",o);ex.hidden=!o});
+ mx.appendChild(b);mx.appendChild(ex);
+});
+})();
+</script>

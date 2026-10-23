@@ -1,65 +1,306 @@
 <!--meta title="Portfolio" desc="One Click LCA's products mapped to buyer, job, trigger and the product marketing work each one needs."-->
+<style>
+.pf-map{display:grid;grid-template-columns:128px repeat(5,minmax(0,1fr));border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--chart-bg)}
+.pf-map>div{border-right:1px solid var(--grid);border-bottom:1px solid var(--grid);padding:8px;min-height:62px;display:flex;flex-direction:column;gap:6px;justify-content:center}
+.pf-map>div:nth-child(6n){border-right:0}
+.pf-map .hd{min-height:0;font:600 12px/1.25 var(--sans);color:var(--ink2);text-transform:uppercase;letter-spacing:.04em;background:var(--panel)}
+.pf-map .rl{font:500 13px/1.3 var(--sans);color:var(--ink1);background:var(--panel)}
+.pf-map .cell{align-items:flex-start}
+.pf-chip{appearance:none;display:inline-flex;align-items:center;gap:7px;text-align:left;border:1px solid var(--line);background:var(--bg);color:var(--ink1);border-radius:999px;padding:6px 11px 6px 8px;font:500 12.5px/1.2 var(--sans);cursor:pointer;transition:opacity .2s,transform .15s}
+.pf-chip i{width:12px;height:12px;border-radius:50%;flex:none;box-shadow:0 0 0 2px var(--ring)}
+.pf-chip:hover{transform:translateY(-1px)}
+.pf-chip[aria-pressed="true"]{outline:2px solid var(--accent);outline-offset:1px}
+.pf-chip.off{opacity:.18}
+.pf-lay{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:18px;align-items:start}
+.pf-card{background:var(--panel);border-radius:6px;padding:20px 22px;position:sticky;top:80px}
+.pf-card h3{font-size:19px;margin:6px 0 2px}
+.pf-card .sub{font-size:13px;color:var(--ink2)}
+.pf-card dl{margin:14px 0 0;display:grid;gap:10px}
+.pf-card dt{font:600 11px/1.2 var(--sans);text-transform:uppercase;letter-spacing:.05em;color:var(--ink2)}
+.pf-card dd{margin:3px 0 0;font-size:14px;line-height:1.4}
+.pf-card .pmm{background:var(--accent-soft);border-radius:4px;padding:10px 12px}
+.pf-axis{display:flex;justify-content:space-between;font-size:12px;color:var(--ink2);margin:8px 0 0 128px}
+.pf-ladder-wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;margin-top:28px}
+.pf-tier{cursor:pointer}
+.pf-tier:focus-visible{outline:none}
+.pf-tier:focus-visible rect.st{stroke:var(--accent);stroke-width:2}
+.pf-tier.sel rect.st{stroke:var(--accent);stroke-width:2.5}
+.pf-feat{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.pf-feat span{font-size:12.5px;background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:4px 8px}
+.pf-bars{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:14px}
+.pf-bars .lb{display:flex;justify-content:space-between;font-size:13px;color:var(--ink2);margin-bottom:5px;gap:8px}
+.pf-bars .lb b{color:var(--ink1);font-weight:600;font-variant-numeric:tabular-nums}
+.pf-bars .tr{height:20px;background:transparent;border-bottom:1px solid var(--axis)}
+.pf-bars .fl{height:20px;background:var(--s1);border-radius:0 4px 4px 0;transition:width .7s cubic-bezier(.2,.7,.2,1)}
+.pf-quote{margin-top:16px;font-size:14px;color:var(--ink2);border-left:3px solid var(--accent);padding-left:12px}
+.pf-tp{margin-top:20px}
+.pf-tp .grid2{margin-top:0}
+.pf-venn text{font-size:13px}
+.pf-venn .zone{cursor:pointer}
+.pf-venn .zone:focus-visible{outline:none}
+.pf-venn .zone:focus-visible circle,.pf-venn .zone:focus-visible rect{stroke:var(--accent);stroke-width:3}
+.pf-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:center;margin-top:8px}
+.pf-flow .n{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:14px;font-size:14px;text-align:center}
+.pf-flow .n b{display:block;font-size:12px;color:var(--ink3);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.pf-flow .ar{color:var(--ink3);font-size:20px}
+.pf-buyer{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.pf-buyer div{border-radius:6px;padding:14px;font-size:14px;background:var(--bg);border:1px solid var(--line)}
+.pf-buyer div.now{border:2px solid var(--accent)}
+.pf-buyer small{display:block;font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+@media (max-width:900px){.pf-lay,.pf-ladder-wrap{grid-template-columns:1fr}.pf-card{position:static}}
+@media (max-width:640px){
+ .pf-map{display:block;border:0;background:none}
+ .pf-map .hd,.pf-map .rl.blank{display:none}
+ .pf-map>div{border:0;min-height:0;padding:0}
+ .pf-map .rl{background:none;font:600 12px/1.3 var(--sans);text-transform:uppercase;letter-spacing:.04em;color:var(--ink2);margin-top:16px}
+ .pf-map .cell{flex-direction:row;flex-wrap:wrap;padding:4px 0}
+ .pf-map .cell:empty{display:none}
+ .pf-map .cell[data-stage]::before{content:attr(data-stage);width:100%;font-size:12px;color:var(--ink3)}
+ .pf-axis{display:none}
+ .pf-flow{grid-template-columns:1fr}.pf-flow .ar{transform:rotate(90deg);justify-self:center}
+}
+</style>
+
 <header class="phead">
   <span class="eyebrow">What there is to market</span>
   <h1>Portfolio</h1>
-  <p class="lede">One Click LCA sells more than thirty tools, two product lines, four licence tiers, about twenty regional compliance bundles and a separate brand in SimaPro. This page sorts the portfolio by the buyer and the job, which is how a product marketer has to see it before deciding what to say to whom.</p>
+  <p class="lede">One Click LCA sells more than thirty tools in two product lines, four licence tiers and about twenty regional compliance bundles, and it now owns SimaPro as a separate brand.</p>
   <p class="meta">Read from oneclicklca.com, the pricing pages and the web shop on 23 October 2026.</p>
 </header>
 
-<section class="sec">
-  <span class="eyebrow">Product map</span>
-  <h2>Who buys each product, and why</h2>
-  <div class="tw"><table class="t">
-    <thead><tr><th style="width:17%">Product</th><th style="width:17%">Main buyer</th><th style="width:22%">Job to be done</th><th style="width:20%">What triggers the purchase</th><th>Product marketing work it needs</th></tr></thead>
-    <tbody>
-      <tr><th>Building LCA<span class="sub">Design and construction</span></th><td>Sustainability lead at an architect, engineer or consultancy</td><td>Produce a compliant whole life carbon assessment from BIM, Excel or bills of quantities</td><td>A permit, certification or client requirement on a live project</td><td>Per-country compliance messaging; answers to free national tools; the Revit workflow story against Tally.</td></tr>
-      <tr><th>Carbon Designer 3D<span class="sub">Includes generative design from Buildrz</span></th><td>Design director, concept architect</td><td>Compare massing and structure options for carbon before a model exists</td><td>Competition entries, client carbon targets, early design reviews</td><td>A demo story for pitches and early design; proof that early choices change outcomes.</td></tr>
-      <tr><th>Sustainable Planner and ENVI-met</th><td>Urban designer, landscape, masterplanner</td><td>Test carbon, comfort and microclimate at site and masterplan scale</td><td>Masterplan bids, heat and comfort requirements</td><td>A clear place in the portfolio; the ENVI-met brand sits apart from the core product.</td></tr>
-      <tr><th>Infrastructure LCA</th><td>Transport, utilities and public clients, and their engineers</td><td>Carbon for bridges, roads, airports and networks under PAS 2080 and Envision</td><td>Public client carbon targets and procurement scoring</td><td>Public sector buyer messaging; there is no dedicated public sector page yet.</td></tr>
-      <tr><th>Certification and compliance tools</th><td>Everyone above</td><td>Get LEED, BREEAM, DGNB, Level(s) and national credits with less effort</td><td>Each scheme version change: LEED v5, BREEAM v7, RICS v2</td><td>Fast, repeatable launches each time a scheme updates; partner co-marketing with councils and operators.</td></tr>
-      <tr><th>EPD Generator and Pre-verified EPD Generator</th><td>Sustainability or product manager at a building product manufacturer</td><td>Publish verified EPDs for a range of products quickly and cheaply</td><td>A specifier or tender asks for EPDs; CPR, NMD, INIES</td><td>The cost per EPD against consultants; verification time; programme operator choice.</td></tr>
-      <tr><th>Product LCA and Product Carbon Footprint</th><td>Manufacturers outside construction; CBAM-exposed exporters</td><td>Product footprints to ISO 14067 and CBAM</td><td>Customer requests, CBAM reporting, corporate targets</td><td>Where this ends and SimaPro begins.</td></tr>
-      <tr><th>Market intelligence<span class="sub">EPD usage analytics, Manufacturer Pages, specification opportunities</span></th><td>Commercial director at a manufacturer</td><td>See where EPDs are used and by whom, then sell to those specifiers</td><td>Sales teams want a return on the EPD spend</td><td>A new buyer with a revenue motive. This is the shift from compliance cost to sales tool.</td></tr>
-      <tr><th>Enterprise and Sustainability Intelligence</th><td>Head of sustainability at a global firm or owner</td><td>One standard method, data and reporting across offices and portfolios</td><td>Firm-wide targets, CSRD, multi-country delivery</td><td>An ABM programme with executive-level business cases.</td></tr>
-      <tr><th>Planetary, Academy, student licences</th><td>Students, small firms, green building council members</td><td>Learn LCA and do a first embodied carbon estimate for free</td><td>Curiosity, education, council campaigns</td><td>A path from free use to paid; a clear line between Planetary and the paid tools.</td></tr>
-      <tr class="hl"><th>SimaPro<span class="sub">PRé Sustainability, separate brand</span></th><td>LCA experts in industry, consultancies and universities</td><td>Detailed, science-grade LCA for any product or sector</td><td>Research, complex products, regulated industries</td><td>A "speed against depth" story so sellers know which buyer gets which product.</td></tr>
-    </tbody>
-  </table></div>
+<section class="viz lead-viz rv" aria-labelledby="pf-map-h">
+  <div class="viz-h"><h3 id="pf-map-h">Product map by buyer and stage of work</h3><p>Select a product to see its buyer, job, trigger and the marketing work it needs.</p></div>
+  <div class="legend" id="pf-leg" role="group" aria-label="Filter by product line"></div>
+  <div class="pf-lay">
+    <div>
+      <div class="pf-map" id="pf-map"></div>
+      <div class="pf-axis" aria-hidden="true"><span>Earlier in the work</span><span>Later in the work</span></div>
+    </div>
+    <aside class="pf-card" id="pf-card" aria-live="polite"></aside>
+  </div>
 </section>
 
 <section class="sec">
   <span class="eyebrow">Packaging</span>
-  <h2>Four tiers sold per market</h2>
-  <p class="intro">Design and construction licences climb from a self-serve Business licence to three sales-led tiers. Every tier is sold against a local compliance bundle, so the market's regulation decides what the buyer gets.</p>
-  <div class="grid4">
-    <div class="panel"><span class="eyebrow">Self-serve</span><h3>Business</h3><p>"Buy online, reliable LCA for compliance and certification." €3,030 a year named or €5,180 concurrent per market bundle.</p></div>
-    <div class="panel"><span class="eyebrow">Sales-led</span><h3>Designer</h3><p>Compliance module, Materials Compass, Carbon Designer 3D and the BIM integrations.</p></div>
-    <div class="panel accent"><span class="eyebrow">Most popular</span><h3>Expert Pack</h3><p>Private datasets, plausibility checker, life cycle costing, biodiversity tool and an account manager.</p></div>
-    <div class="panel"><span class="eyebrow">Firm-wide</span><h3>Power Pack</h3><p>Internal verification, custom templates and generative design for firms scaling LCA across offices.</p></div>
+  <h2>Licence Ladder</h2>
+  <p class="intro">Design and construction licences climb from a self-serve Business licence to three sales-led tiers, and every tier is sold against a local compliance bundle.</p>
+  <div class="pf-ladder-wrap">
+    <div class="viz rv" style="margin-top:0">
+      <div class="viz-h"><h3>Four tiers</h3><p>Select a tier to see what it adds.</p></div>
+      <div id="pf-ladder"></div>
+      <div id="pf-tierinfo" aria-live="polite" style="margin-top:12px"></div>
+    </div>
+    <div class="viz rv" style="margin-top:0">
+      <div class="viz-h"><h3>Business licence, per year</h3></div>
+      <div class="btnrow" role="group" aria-label="Licence type" style="margin-top:0">
+        <button type="button" data-k="n" aria-pressed="true">Named user</button>
+        <button type="button" data-k="c" aria-pressed="false">Concurrent user</button>
+      </div>
+      <ul class="pf-bars" id="pf-bars"></ul>
+      <p class="mini" style="margin-top:12px">Published web shop prices, per market bundle. The three sales-led tiers are priced on request.</p>
+      <p class="pf-quote">G2 and Capterra reviewers complain about licence gating, user management and paying a year upfront. The Revit product lead told a forum user that mapping suggestions depend on "the relevant license feature".</p>
+    </div>
   </div>
-  <div class="callout"><p><b>What reviewers say about packaging.</b> Reviewers on G2 and Capterra complain about licence gating, user management and paying a year upfront. The product lead for Revit told a forum user that mapping suggestions depend on "the relevant license feature". When a feature a user expects sits in a higher tier, the tier has to be explained before the user finds the gap.</p></div>
 </section>
 
 <section class="sec">
   <span class="eyebrow">Findings</span>
-  <h2>Four things I would fix in the first quarter</h2>
-  <div class="grid2">
-    <div class="panel"><h3>Proof points that disagree</h3><p>The same claims appear with different numbers across the site and press boilerplate.</p>
-      <div class="tw" style="margin-top:14px"><table class="t" style="min-width:0">
-        <thead><tr><th>Claim</th><th>Figures in use</th></tr></thead>
-        <tbody><tr><td>Standards and methods</td><td>140+, 100+, 80+; the compliance page shows about 98 cards</td></tr><tr><td>Datasets</td><td>500,000+ and 300,000+</td></tr><tr><td>Integrations</td><td>20+, while the integrations page lists about 32</td></tr><tr><td>People</td><td>170, 180+, 200+, 300+, 330+</td></tr></tbody>
-      </table></div>
-      <p style="margin-top:12px">One dated proof point sheet, owned by product marketing and used by web, sales and partners, fixes this in weeks.</p></div>
-    <div class="panel"><h3>Two brands, one buyer question</h3><p>Since September 2025 the group sells One Click LCA and SimaPro. The CEO describes the split as "the ability to go deep with SimaPro, and the ability to go fast on One Click LCA". Both include product LCA and EPD tools.</p><p>Sellers need a rule for which buyer gets which product, and SimaPro resellers need to know the rule will not take their customers.</p></div>
-    <div class="panel"><h3>A revenue story for manufacturers</h3><p>The manufacturing pages have moved from "create an EPD" to "get discovered, get specified, get selected". That reaches a commercial director, a different buyer from the sustainability manager who commissions EPDs.</p><p>This buyer needs its own message, evidence from customers and a business case written in sales terms.</p></div>
-    <div class="panel"><h3>A missing public sector story</h3><p>Ireland now requires whole life carbon assessments on public projects above €5 million, Canada has a federal standard and green public procurement is being revised in the EU. Public clients appear only inside case studies.</p><p>A public sector page and a procurement-led message would give sellers something to send these buyers.</p></div>
+  <h2>First Quarter Fixes</h2>
+  <div class="tabs" role="tablist" aria-label="Findings" id="pf-tabs">
+    <button role="tab" id="pf-t1" aria-controls="pf-p1" aria-selected="true">Proof points</button>
+    <button role="tab" id="pf-t2" aria-controls="pf-p2" aria-selected="false">Two brands</button>
+    <button role="tab" id="pf-t3" aria-controls="pf-p3" aria-selected="false">Manufacturer revenue</button>
+    <button role="tab" id="pf-t4" aria-controls="pf-p4" aria-selected="false">Public sector</button>
+  </div>
+
+  <div role="tabpanel" id="pf-p1" aria-labelledby="pf-t1" class="pf-tp">
+    <div class="viz" style="margin-top:0">
+      <div class="viz-h"><h3>The same claims, different numbers</h3><p>Each row has its own scale from zero. Hover a mark for where it appears.</p></div>
+      <div class="legend"><span><i style="background:var(--s1)"></i>Figure claimed in copy</span><span><i style="background:var(--s2);border-radius:2px;transform:rotate(45deg)"></i>Count on the site itself</span></div>
+      <div id="pf-dots"></div>
+      <details class="more"><summary>Table of figures</summary><div class="tw"><table class="t" style="min-width:0"><thead><tr><th>Claim</th><th>Figures in use</th></tr></thead><tbody><tr><td>Standards and methods</td><td>140+, 100+, 80+; the compliance page shows about 98 cards</td></tr><tr><td>Datasets</td><td>500,000+ and 300,000+</td></tr><tr><td>Integrations</td><td>20+, while the integrations page lists about 32</td></tr><tr><td>People</td><td>170, 180+, 200+, 300+, 330+</td></tr></tbody></table></div></details>
+    </div>
+    <div class="callout"><p><b>Fix.</b> One dated proof point sheet, owned by product marketing and used by web, sales and partners, would settle these figures within weeks.</p></div>
+  </div>
+
+  <div role="tabpanel" id="pf-p2" aria-labelledby="pf-t2" class="pf-tp" hidden>
+    <div class="viz" style="margin-top:0">
+      <div class="viz-h"><h3>One Click LCA and SimaPro since September 2025</h3><p>Select an area of the diagram.</p></div>
+      <div id="pf-venn"></div>
+      <div id="pf-vinfo" class="panel" aria-live="polite" style="margin-top:12px"></div>
+    </div>
+    <div class="callout"><p><b>Fix.</b> Sellers need a rule for which buyer gets which product, and SimaPro resellers need to know the rule will not take their customers.</p></div>
+  </div>
+
+  <div role="tabpanel" id="pf-p3" aria-labelledby="pf-t3" class="pf-tp" hidden>
+    <div class="viz" style="margin-top:0">
+      <div class="viz-h"><h3>The manufacturing pages changed their promise</h3></div>
+      <div class="pf-flow">
+        <div class="n"><b>Step 1</b>Get discovered</div><span class="ar" aria-hidden="true">&rarr;</span>
+        <div class="n"><b>Step 2</b>Get specified</div><span class="ar" aria-hidden="true">&rarr;</span>
+        <div class="n"><b>Step 3</b>Get selected</div>
+      </div>
+      <div class="btnrow" role="group" aria-label="Message" id="pf-msg">
+        <button type="button" data-k="old" aria-pressed="false">Earlier message</button>
+        <button type="button" data-k="new" aria-pressed="true">Current message</button>
+      </div>
+      <div class="pf-buyer" id="pf-buyer">
+        <div data-k="old"><small>Earlier: "create an EPD"</small>Sustainability manager who commissions EPDs as a compliance cost.</div>
+        <div data-k="new" class="now"><small>Now: a sales tool</small>Commercial director who wants a return on EPD spend through specification wins.</div>
+      </div>
+    </div>
+    <div class="callout"><p><b>Fix.</b> The commercial director needs a separate message, customer evidence and a business case written in sales terms.</p></div>
+  </div>
+
+  <div role="tabpanel" id="pf-p4" aria-labelledby="pf-t4" class="pf-tp" hidden>
+    <div class="viz" style="margin-top:0">
+      <div class="viz-h"><h3>Ireland's public project thresholds for whole life carbon assessment</h3><p>Exchequer-funded buildings, € million.</p></div>
+      <div class="legend"><span><i style="background:var(--s1)"></i>Non-residential</span><span><i style="background:var(--s2)"></i>Residential</span></div>
+      <div id="pf-ie"></div>
+      <p class="mini" style="margin-top:10px">Canada also has a federal embodied carbon standard, and EU green public procurement is being revised. On oneclicklca.com, public clients appear only inside case studies.</p>
+    </div>
+    <div class="callout"><p><b>Fix.</b> A public sector page and a procurement-led message would give sellers something to send these buyers.</p></div>
   </div>
 </section>
 
-<section class="sources"><h2>Sources</h2><ul>
+<section class="sources"><details class="more"><summary>Sources</summary><ul>
 <li>Product pages: oneclicklca.com/software/design-construction, /software/manufacturing, /enterprise-solutions, /why-us/capabilities/integrations, /why-us/capabilities/powered-by-ai (read 23 Oct 2026)</li>
 <li>Pricing: oneclicklca.com/pricing/design-and-construction-pricing, /pricing/product-lca-and-epd-pricing; shop.oneclicklca.com/building-lca/business-licenses</li>
 <li>SimaPro and PRé press release, 2 Sep 2025; CEO interview, Climate Solutions News, 15 Jun 2026</li>
 <li>Reviews: Capterra (18 reviews), G2 (99 reviews, read on the Italian page); Carbon Leadership Forum community thread "Transitioning from Tally to One Click LCA"</li>
 <li>Ireland public sector whole life carbon thresholds: see Demand Drivers sources</li>
-</ul></section>
+</ul></details></section>
+
+<script>
+(function(){
+var VZ=window.VZ;
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function G(s){s.setAttribute("role","group");return s}
+function responsive(host,draw){var w=-1;function go(){var n=host.clientWidth;if(n&&n!==w){w=n;host.innerHTML="";draw(n)}}go();var t;addEventListener("resize",function(){clearTimeout(t);t=setTimeout(go,120)})}
+
+/* ---------- product map ---------- */
+var LINES=[["dc","Design and construction",1],["mf","Manufacturing",2],["en","Enterprise",3],["fr","Free and education",4],["sp","SimaPro (separate brand)",5]];
+var ROWS=["Students and small firms","Architects, engineers and consultants","Urban, infrastructure and public clients","Manufacturers","Global firms and owners","LCA experts"];
+var STAGES=["Learn","Early design","Design and compliance","Product data","Selling and reporting"];
+var P=[
+ {n:"Planetary, Academy, student licences",sh:"Planetary and Academy",l:"fr",r:0,c:0,b:"Students, small firms, green building council members",j:"Learn LCA and do a first embodied carbon estimate for free",t:"Curiosity, education, council campaigns",w:"A path from free use to paid, and a clear line between Planetary and the paid tools."},
+ {n:"Carbon Designer 3D",s:"Includes generative design from Buildrz",l:"dc",r:1,c:1,b:"Design director, concept architect",j:"Compare massing and structure options for carbon before a model exists",t:"Competition entries, client carbon targets, early design reviews",w:"A demo story for pitches and early design, with proof that early choices change outcomes."},
+ {n:"Building LCA",l:"dc",r:1,c:2,b:"Sustainability lead at an architect, engineer or consultancy",j:"Produce a compliant whole life carbon assessment from BIM, Excel or bills of quantities",t:"A permit, certification or client requirement on a live project",w:"Per-country compliance messaging, answers to free national tools and the Revit workflow story against Tally."},
+ {n:"Certification and compliance tools",sh:"Compliance tools",l:"dc",r:1,c:2,b:"Every design and construction buyer",j:"Get LEED, BREEAM, DGNB, Level(s) and national credits with less effort",t:"Each scheme version change: LEED v5, BREEAM v7, RICS v2",w:"Fast, repeatable launches each time a scheme updates, and co-marketing with councils and operators."},
+ {n:"Sustainable Planner and ENVI-met",sh:"Planner and ENVI-met",l:"dc",r:2,c:1,b:"Urban designer, landscape architect, masterplanner",j:"Test carbon, comfort and microclimate at site and masterplan scale",t:"Masterplan bids, heat and comfort requirements",w:"A clear place in the portfolio, since the ENVI-met brand sits apart from the core product."},
+ {n:"Infrastructure LCA",l:"dc",r:2,c:2,b:"Transport, utilities and public clients, and their engineers",j:"Carbon for bridges, roads, airports and networks under PAS 2080 and Envision",t:"Public client carbon targets and procurement scoring",w:"Public sector buyer messaging. There is no dedicated public sector page yet."},
+ {n:"EPD Generator and Pre-verified EPD Generator",sh:"EPD Generators",l:"mf",r:3,c:3,b:"Sustainability or product manager at a building product manufacturer",j:"Publish verified EPDs for a range of products quickly and cheaply",t:"A specifier or tender asks for EPDs; CPR, NMD, INIES",w:"The cost per EPD against consultants, verification time and the choice of programme operator."},
+ {n:"Product LCA and Product Carbon Footprint",sh:"Product LCA and PCF",l:"mf",r:3,c:3,b:"Manufacturers outside construction and CBAM-exposed exporters",j:"Product footprints to ISO 14067 and CBAM",t:"Customer requests, CBAM reporting, corporate targets",w:"A clear statement of where this ends and SimaPro begins."},
+ {n:"Market intelligence",s:"EPD usage analytics, Manufacturer Pages, specification opportunities",l:"mf",r:3,c:4,b:"Commercial director at a manufacturer",j:"See where EPDs are used and by whom, then sell to those specifiers",t:"Sales teams want a return on the EPD spend",w:"A new buyer with a revenue motive, which moves the EPD from compliance cost to sales tool."},
+ {n:"Enterprise and Sustainability Intelligence",sh:"Enterprise Intelligence",l:"en",r:4,c:4,b:"Head of sustainability at a global firm or owner",j:"One standard method, data and reporting across offices and portfolios",t:"Firm-wide targets, CSRD, multi-country delivery",w:"An account-based marketing programme with executive-level business cases."},
+ {n:"SimaPro",s:"PRé Sustainability, separate brand",l:"sp",r:5,c:3,b:"LCA experts in industry, consultancies and universities",j:"Detailed, science-grade LCA for any product or sector",t:"Research, complex products, regulated industries",w:"A story about speed and depth so sellers know which buyer gets which product."}
+];
+var lineOf={};LINES.forEach(function(L){lineOf[L[0]]=L});
+var map=document.getElementById("pf-map"),card=document.getElementById("pf-card"),leg=document.getElementById("pf-leg");
+function add(cls,txt,attrs){var d=document.createElement("div");d.className=cls;if(txt)d.textContent=txt;for(var k in attrs||{})d.setAttribute(k,attrs[k]);map.appendChild(d);return d}
+add("hd rl blank","Buyer");STAGES.forEach(function(s){add("hd",s)});
+var chips=[];
+ROWS.forEach(function(r,ri){add("rl",r);STAGES.forEach(function(s,ci){var cell=add("cell","",{"data-stage":s});
+  P.forEach(function(p,pi){if(p.r===ri&&p.c===ci){var b=document.createElement("button");b.type="button";b.className="pf-chip";b.setAttribute("aria-pressed","false");
+   b.innerHTML='<i style="background:var(--s'+lineOf[p.l][2]+')"></i>'+esc(p.sh||p.n);b.setAttribute("aria-label",p.n);b.onclick=function(){show(pi)};cell.appendChild(b);chips[pi]=b}})})});
+function show(i){var p=P[i],L=lineOf[p.l];chips.forEach(function(c,k){c.setAttribute("aria-pressed",k===i)});
+ card.innerHTML='<span class="tag"><i style="display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;background:var(--s'+L[2]+')"></i>'+esc(L[1])+'</span><h3>'+esc(p.n)+'</h3>'+(p.s?'<p class="sub">'+esc(p.s)+'</p>':'')+
+ '<dl><div><dt>Main buyer</dt><dd>'+esc(p.b)+'</dd></div><div><dt>Job to be done</dt><dd>'+esc(p.j)+'</dd></div><div><dt>Purchase trigger</dt><dd>'+esc(p.t)+'</dd></div><div class="pmm"><dt>Product marketing work</dt><dd>'+esc(p.w)+'</dd></div></dl>'}
+var on={};LINES.forEach(function(L){on[L[0]]=true;var b=document.createElement("button");b.type="button";b.setAttribute("aria-pressed","true");b.innerHTML='<i style="background:var(--s'+L[2]+')"></i>'+esc(L[1]);
+ b.onclick=function(){on[L[0]]=!on[L[0]];b.setAttribute("aria-pressed",on[L[0]]);P.forEach(function(p,k){chips[k].classList.toggle("off",!on[p.l])})};leg.appendChild(b)});
+show(2);
+
+/* ---------- licence ladder ---------- */
+var TIERS=[
+ {n:"Business",k:"Self-serve",f:["Buy online","One market compliance bundle","Reliable LCA for compliance and certification"],fill:"var(--chart-bg)"},
+ {n:"Designer",k:"Sales-led",f:["Local compliance module","Materials Compass","Carbon Designer 3D","20+ BIM integrations"],fill:"var(--seq-3)"},
+ {n:"Expert Pack",k:"Most popular",f:["Private datasets","Plausibility checker","Life cycle costing","Biodiversity tool","Account manager"],fill:"var(--seq-4)"},
+ {n:"Power Pack",k:"Firm-wide",f:["Internal verification","Custom templates","Generative design"],fill:"var(--seq-5)"}];
+var lic="n",selT=0,tierEls=[];
+var info=document.getElementById("pf-tierinfo");
+function tierInfo(){var t=TIERS[selT];info.innerHTML='<b>'+esc(t.n)+'</b> <span class="mini">'+esc(t.k)+(selT?', adds to the tier below':'')+'</span><div class="pf-feat">'+t.f.map(function(x){return"<span>"+esc(x)+"</span>"}).join("")+'</div>';
+ tierEls.forEach(function(g,i){g.classList.toggle("sel",i===selT);g.setAttribute("aria-pressed",i===selT)})}
+function price(){return lic==="n"?"€3,030":"€5,180"}
+responsive(document.getElementById("pf-ladder"),function(W){
+ var H=250,pad=8,gap=6,sw=(W-pad*2-gap*3)/4,base=H-40,step=(base-70)/4;
+ var s=VZ.svg(document.getElementById("pf-ladder"),W,H,"Four licence tiers rising from Business to Power Pack. Business costs "+price()+" a year; the others are priced on request.");G(s);
+ VZ.el("line",{x1:0,x2:W,y1:base,y2:base,class:"axis"},s);tierEls=[];
+ TIERS.forEach(function(t,i){var x=pad+i*(sw+gap),h=step*(i+1),y=base-h;
+  var g=VZ.el("g",{class:"pf-tier",role:"button",tabindex:0,"aria-label":t.n+", "+t.k},s);
+  var r=VZ.el("rect",{x:x,y:y,width:sw,height:h,rx:4,class:"st"},g);r.style.fill=t.fill;r.style.stroke=i?"none":"var(--axis)";if(!i)r.style.strokeWidth="1.5";
+  VZ.el("text",{x:x+sw/2,y:base+18,"text-anchor":"middle",class:"t-strong"},g).textContent=t.n;
+  VZ.el("text",{x:x+sw/2,y:base+33,"text-anchor":"middle",class:"t-muted"},g).textContent=t.k;
+  var pt=VZ.el("text",{x:x+sw/2,y:y-10,"text-anchor":"middle",class:i?"t-muted":"t-strong"},g);if(!i)pt.id="pf-ptxt";pt.textContent=i?"On request":price();if(!i)pt.style.fontSize="15px";
+  g.addEventListener("click",function(){selT=i;tierInfo()});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();selT=i;tierInfo()}});
+  VZ.tip(g,function(){return"<b>"+esc(t.n)+"</b><span class='m'>"+(i?"Price on request. ":price()+" a year per market bundle. ")+t.f.length+" headline features</span>"});
+  tierEls.push(g)});
+ tierInfo()});
+
+var BARS=[["Market bundle, for example RE2020 and HQE",3030,5180],["LEED v4 with EN 15804 indicators",4380,7270],["Add-on, for example Global Carbon or Level(s)",830,1350]];
+var barsEl=document.getElementById("pf-bars");
+BARS.forEach(function(b){var li=document.createElement("li");li.innerHTML='<div class="lb"><span>'+esc(b[0])+'</span><b></b></div><div class="tr"><div class="fl" style="width:0"></div></div>';barsEl.appendChild(li);
+ VZ.tip(li,function(){return"<b>"+esc(b[0])+"</b>Named €"+b[1].toLocaleString("en-GB")+" a year<br>Concurrent €"+b[2].toLocaleString("en-GB")+" a year"})});
+function drawBars(){[].forEach.call(barsEl.children,function(li,i){var v=BARS[i][lic==="n"?1:2];li.querySelector("b").textContent="€"+v.toLocaleString("en-GB");li.querySelector(".fl").style.width=(v/7270*100)+"%"});
+ var pt=document.getElementById("pf-ptxt");if(pt)pt.textContent=price()}
+[].forEach.call(document.querySelectorAll("[aria-label='Licence type'] button"),function(b,_,all){b.onclick=function(){lic=b.dataset.k;[].forEach.call(b.parentNode.children,function(x){x.setAttribute("aria-pressed",x===b)});drawBars()}});
+setTimeout(drawBars,200);
+
+/* ---------- findings tabs ---------- */
+var drawn={};
+VZ.tabs(document.getElementById("pf-tabs"),function(t){var id=t.id;if(drawn[id])return;drawn[id]=1;
+ if(id==="pf-t1")dots();if(id==="pf-t2")venn();if(id==="pf-t4")ireland()});
+
+function dots(){var D=[
+ {n:"Standards and methods",max:160,fmt:function(v){return v+"+"},c:[[140,"140+ on the homepage and certification page"],[100,"100+ tools for local compliance, enterprise page"],[80,"80+ elsewhere in site copy and press material"]],k:[[98,"About 98 standard cards on the compliance page"]]},
+ {n:"LCA datasets",max:550000,fmt:function(v){return(v/1000)+"k+"},c:[[500000,"500,000+ on the homepage, after the SimaPro deal"],[300000,"300,000+ in the 2025 press boilerplate"]],k:[]},
+ {n:"Integrations",max:40,fmt:function(v){return v+"+"},c:[[20,"20+ in the integrations page headline"]],k:[[32,"About 32 integrations listed on the same page"]]},
+ {n:"People",max:360,fmt:function(v){return v},c:[[170,"170 experts, enterprise page"],[180,"Over 180, press-room boilerplate"],[200,"200+, leadership release 2025"],[300,"300+, figure in use"],[330,"330+, figure in use"]],k:[]}];
+ responsive(document.getElementById("pf-dots"),function(W){var narrow=W<560,L=narrow?0:170,rowH=narrow?78:62,H=D.length*rowH+10;
+  var s=VZ.svg(document.getElementById("pf-dots"),W,H,"Dot plot of inconsistent proof points: standards 80+, 100+ and 140+ against about 98 shown; datasets 300,000+ and 500,000+; integrations 20+ against about 32 listed; people from 170 to 330+.");G(s);
+  D.forEach(function(d,i){var y0=i*rowH,y=y0+(narrow?44:30),x=VZ.lin(0,d.max,L+8,W-16);
+   VZ.el("text",{x:narrow?0:0,y:narrow?y0+16:y+4,class:"t-strong"},s).textContent=d.n;
+   VZ.el("line",{x1:x(0),x2:x(d.max),y1:y,y2:y,class:"grid"},s);
+   [0,d.max/2,d.max].forEach(function(v){VZ.el("text",{x:x(v),y:y+22,"text-anchor":v?"middle":"start",class:"t-muted"},s).textContent=v>=1000?(v/1000)+"k":v});
+   var all=d.c.map(function(c){return c[0]}).concat(d.k.map(function(k){return k[0]})),mn=Math.min.apply(0,all),mx=Math.max.apply(0,all);
+   VZ.el("line",{x1:x(mn),x2:x(mx),y1:y,y2:y,stroke:"var(--ink3)","stroke-width":2},s);
+   d.c.forEach(function(c){var m=VZ.el("circle",{cx:x(c[0]),cy:y,r:6,stroke:"var(--ring)","stroke-width":2},s);m.style.fill="var(--s1)";m.setAttribute("role","img");m.setAttribute("aria-label",d.fmt(c[0])+": "+c[1]);VZ.tip(m,function(){return"<b>"+d.fmt(c[0])+"</b>"+esc(c[1])})});
+   d.k.forEach(function(k){var X=x(k[0]),m=VZ.el("rect",{x:X-5.5,y:y-5.5,width:11,height:11,transform:"rotate(45 "+X+" "+y+")",stroke:"var(--ring)","stroke-width":2},s);m.style.fill="var(--s2)";m.setAttribute("role","img");m.setAttribute("aria-label","About "+k[0]+": "+k[1]);VZ.tip(m,function(){return"<b>About "+k[0]+"</b>"+esc(k[1])})});
+   VZ.el("text",{x:W-16,y:narrow?y0+16:y-12,"text-anchor":"end",class:"t-muted"},s).textContent="Highest is "+(mx/mn).toFixed(1).replace(".0","")+"× lowest";
+  })})}
+
+function venn(){var Z={
+ ocl:{t:"One Click LCA: go fast",d:"Construction and manufacturing software for designers, contractors and manufacturers, sold per market compliance bundle. The CEO calls it \"the ability to go fast\"."},
+ both:{t:"Where the brands overlap",d:"Both include product LCA and EPD tools. A manufacturer can be sold either one, so sellers need a rule for which buyer gets which product."},
+ sp:{t:"SimaPro: go deep",d:"General-purpose expert LCA software from PRé Sustainability with more than 30 years of history, used by LCA experts in industry, consultancies and universities. The CEO calls it \"the ability to go deep\"."}};
+ var vinfo=document.getElementById("pf-vinfo");
+ function pick(k){vinfo.innerHTML="<h3>"+esc(Z[k].t)+"</h3><p>"+esc(Z[k].d)+"</p>";[].forEach.call(document.querySelectorAll(".pf-venn .zone"),function(z){z.setAttribute("aria-pressed",z.dataset.k===k)})}
+ responsive(document.getElementById("pf-venn"),function(W){var H=W<560?230:260,cx=W/2,R=Math.min(W*0.3,150),off=R*0.62,cy=H/2;
+  var s=VZ.svg(document.getElementById("pf-venn"),W,H,"Two overlapping circles: One Click LCA for speed and SimaPro for depth, overlapping on product LCA and EPD tools.");G(s);s.setAttribute("class","pf-venn");
+  function zone(k,lbl,sub,x){var g=VZ.el("g",{class:"zone",role:"button",tabindex:0,"data-k":k,"aria-label":Z[k].t},s);return g}
+  var a=zone("ocl"),c1=VZ.el("circle",{cx:cx-off,cy:cy,r:R,"fill-opacity":.18,stroke:"var(--s1)","stroke-width":2},a);c1.style.fill="var(--s1)";
+  var b=zone("sp"),c2=VZ.el("circle",{cx:cx+off,cy:cy,r:R,"fill-opacity":.18,stroke:"var(--s5)","stroke-width":2},b);c2.style.fill="var(--s5)";
+  var o=zone("both"),ow=Math.max(2*R-2*off,40),orr=VZ.el("rect",{x:cx-ow/2+4,y:cy-R*0.55,width:ow-8,height:R*1.1,rx:8,fill:"transparent"},o);
+  function txt(x,y,t,cls){var e=VZ.el("text",{x:x,y:y,"text-anchor":"middle",class:cls||"","pointer-events":"none"},s);e.textContent=t;return e}
+  var fs=W<560;
+  txt(cx-off-R*0.35,cy-8,"One Click LCA","t-strong");txt(cx-off-R*0.35,cy+12,fs?"Go fast":"Go fast: compliance");
+  txt(cx+off+R*0.35,cy-8,"SimaPro","t-strong");txt(cx+off+R*0.35,cy+12,fs?"Go deep":"Go deep: expert LCA");
+  txt(cx,cy-6,"Product LCA","t-strong");txt(cx,cy+12,"and EPD");
+  [a,b,o].forEach(function(g){g.addEventListener("click",function(){pick(g.dataset.k)});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();pick(g.dataset.k)}})});
+  s.appendChild(o);txt(cx,H-6,"5,000+ companies use the two brands combined","t-muted")});
+ pick("both")}
+
+function ireland(){responsive(document.getElementById("pf-ie"),function(W){var H=220,L=44,R=W-10,top=14,bot=H-30;
+ var s=VZ.svg(document.getElementById("pf-ie"),W,H,"Ireland's thresholds fell on 1 June 2026 from €10 million to €5 million for non-residential and from €60 million to €30 million for residential public buildings.");G(s);
+ var x=VZ.lin(0,1,L+20,R-20),y=VZ.lin(0,60,bot,top);
+ [0,20,40,60].forEach(function(v){VZ.el("line",{x1:L,x2:R,y1:y(v),y2:y(v),class:v?"grid":"axis"},s);VZ.el("text",{x:L-8,y:y(v)+4,"text-anchor":"end",class:"t-muted"},s).textContent="€"+v+"m"});
+ ["From 1 Sep 2025","From 1 Jun 2026"].forEach(function(t,i){VZ.el("text",{x:x(i),y:H-8,"text-anchor":i?"end":"start",class:"t-strong"},s).textContent=t});
+ [["Non-residential",10,5,1],["Residential",60,30,2]].forEach(function(d){
+  VZ.el("polyline",{points:x(0)+","+y(d[1])+" "+x(1)+","+y(d[2]),fill:"none",stroke:"var(--s"+d[3]+")","stroke-width":2},s);
+  [[0,d[1]],[1,d[2]]].forEach(function(p){var m=VZ.el("circle",{cx:x(p[0]),cy:y(p[1]),r:5,stroke:"var(--ring)","stroke-width":2},s);m.style.fill="var(--s"+d[3]+")";m.setAttribute("role","img");m.setAttribute("aria-label",d[0]+" threshold €"+p[1]+" million");
+   VZ.el("text",{x:x(p[0])+(p[0]?-10:10),y:y(p[1])-9,"text-anchor":p[0]?"end":"start",class:"t-strong"},s).textContent="€"+p[1]+"m";
+   VZ.tip(m,function(){return"<b>"+d[0]+"</b>Whole life carbon assessment required above €"+p[1]+" million "+(p[0]?"from 1 June 2026":"from 1 September 2025")})})})})}
+
+/* message toggle */
+var msg=document.getElementById("pf-msg");[].forEach.call(msg.children,function(b){b.onclick=function(){[].forEach.call(msg.children,function(x){x.setAttribute("aria-pressed",x===b)});[].forEach.call(document.querySelectorAll("#pf-buyer div"),function(d){d.classList.toggle("now",d.dataset.k===b.dataset.k)})}});
+})();
+</script>

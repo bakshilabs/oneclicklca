@@ -1,45 +1,286 @@
 <!--meta title="One Click LCA Product Marketing" desc="Research, decision models and plans prepared by Arpan Bakshi for the Senior Product Marketing Manager role at One Click LCA."-->
-<section class="hero">
+<style>
+.ov-hero{padding:72px 0 0}
+.ov-hero h1{font-size:clamp(40px,6.4vw,84px);max-width:14ch}
+.ov-hero .lede{font-size:clamp(17px,1.6vw,21px);line-height:1.45;color:var(--muted);max-width:56ch;margin-top:20px}
+.ov-hero .meta{font-size:13px;color:var(--muted);margin-top:14px}
+.ov-wv{display:grid;grid-template-columns:1fr 280px;gap:22px;align-items:start}
+.ov-cap{background:var(--panel);border-radius:6px;padding:18px 20px;min-height:100%}
+.ov-cap .k{font:500 12px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:12px 0 4px}
+.ov-cap h3{font-size:18px;margin-top:6px}
+.ov-cap p{font-size:14px}
+.ov-cap .yr{font:600 34px/1 var(--sans);letter-spacing:-.03em;color:var(--accent)}
+.ov-wv .btnrow{margin:0 0 12px}
+#ov-chart .dot{cursor:pointer;transition:opacity .2s}
+#ov-chart .dim{opacity:.18}
+#ov-chart .band{cursor:pointer}
+#ov-chart .dot:focus{outline:none}
+#ov-chart .dot:focus .ring{stroke:var(--ink1);stroke-width:2}
+@media (max-width:900px){.ov-wv{grid-template-columns:1fr}}
+
+.ov-find{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+.ov-f{background:var(--panel);border-radius:6px;padding:20px 22px 18px;color:var(--ink);text-decoration:none;display:flex;flex-direction:column;transition:transform .18s,background .18s}
+.ov-f:hover{transform:translateY(-3px);background:var(--accent-soft)}
+.ov-f b.n{font:600 clamp(30px,3.2vw,42px)/1 var(--sans);letter-spacing:-.03em;color:var(--ink)}
+.ov-f p{font-size:14px;color:var(--muted);margin-top:8px}
+.ov-f small{margin-top:auto;padding-top:12px;font:500 13px/1 var(--sans);color:var(--accent)}
+.ov-f svg{display:block;width:100%;height:auto;margin-top:14px}
+.ov-f svg text{font-family:var(--sans);font-size:11px;fill:var(--ink2)}
+.ov-f svg .tv{fill:var(--ink1);font-weight:600}
+@media (max-width:900px){.ov-find{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.ov-find{grid-template-columns:1fr}}
+
+.ov-filter{margin-top:24px}
+.ov-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+.ov-c{background:var(--panel);border-radius:6px;padding:18px 18px 16px;color:var(--ink);text-decoration:none;display:flex;flex-direction:column;gap:4px;transition:transform .18s,background .18s,opacity .2s}
+.ov-c:hover{transform:translateY(-3px);background:var(--accent-soft)}
+.ov-c[hidden]{display:none}
+.ov-c .icon{margin-bottom:8px}
+.ov-c h3{font-size:18px}
+.ov-c p{font-size:13.5px;color:var(--muted)}
+.ov-c .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:10px}
+.ov-c.feat{background:var(--accent);color:var(--on-accent)}
+.ov-c.feat p{color:var(--on-accent);opacity:.85}
+.ov-c.feat .icon{background:rgba(255,255,255,.18);color:var(--on-accent)}
+.ov-c.feat .chip{background:rgba(255,255,255,.18);color:var(--on-accent)}
+.ov-c.feat:hover{background:var(--accent);filter:brightness(1.08)}
+@media (max-width:980px){.ov-cards{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:700px){.ov-cards{grid-template-columns:1fr 1fr}}
+@media (max-width:440px){.ov-cards{grid-template-columns:1fr}}
+</style>
+
+<section class="ov-hero">
   <h1>Product Marketing at One Click LCA</h1>
-  <p class="lede">Research, decision models and plans for the Senior Product Marketing Manager role. They cover the role, who buys and why, which segments to lead each launch with, what to say against each alternative, how to launch and enable, and how to measure the result.</p>
+  <p class="lede">Research, decision models and plans for the Senior Product Marketing Manager role, built around the regulatory dates that force each segment to buy.</p>
   <p class="meta">Arpan Bakshi, London. Research date 23 October 2026. Independent work from public sources.</p>
 </section>
+
+<div class="viz rv">
+  <div class="viz-h"><h3>Three waves of forced buyers</h3><p>Each dot is one forcing date from the Demand Drivers calendar, 2025 to 2031. Pick a wave.</p></div>
+  <div class="ov-wv">
+    <div>
+      <div class="btnrow" id="ov-waves" role="group" aria-label="Choose a wave">
+        <button type="button" data-w="all" aria-pressed="true">All dates</button>
+        <button type="button" data-w="0" aria-pressed="false">Now</button>
+        <button type="button" data-w="1" aria-pressed="false">2028</button>
+        <button type="button" data-w="2" aria-pressed="false">2030</button>
+      </div>
+      <div class="legend" aria-hidden="true"><span><i style="background:var(--s1)"></i>EU-wide</span><span><i style="background:var(--s2)"></i>National</span><span><i style="background:var(--s3)"></i>Outside Europe</span></div>
+      <div id="ov-chart"></div>
+    </div>
+    <div class="ov-cap" id="ov-cap" aria-live="polite"></div>
+  </div>
+  <details class="more"><summary>All dates in the chart</summary><div class="tw"><table class="t" id="ov-table"><thead><tr><th>Date</th><th>Where</th><th>What happens</th></tr></thead><tbody></tbody></table></div></details>
+</div>
 
 <section class="block">
   <span class="eyebrow">Headline findings</span>
   <h2>What the research shows</h2>
-  <div class="find">
-    <div><b>2028</b><p>From 1 January 2028 every new building over 1,000 m² in the EU must disclose life cycle carbon. This brings in the largest group of first-time buyers the company has faced, in markets with no national LCA habit.</p><small><a href="demand.html">Demand Drivers</a></small></div>
-    <div><b>22%</b><p>of manufacturers have EPDs for more than half their portfolio, while 65% of AEC professionals require EPDs on all or most projects. The gap is the manufacturing growth story.</p><small><a href="alternatives.html">Alternatives</a></small></div>
-    <div><b>4.0 of 5</b><p>Value for money is the lowest review score, while support scores 4.9. Free and national tools make the business case the most important sales asset.</p><small><a href="enablement.html">Enablement</a></small></div>
-    <div><b>Monthly</b><p>Product ships a major update every month. A tiering rule decides which two or three a year get the whole company and which get a release note.</p><small><a href="launch.html">Launch Playbook</a></small></div>
-    <div><b>Two brands</b><p>One Click LCA and SimaPro both serve manufacturers. Sellers need a rule for which buyer gets which product.</p><small><a href="positioning.html">Positioning</a></small></div>
-    <div><b>No decision</b><p>In this category the largest loss is often the buyer who waits or hires a consultant. Recording it as a loss reason is the first change to the CRM.</p><small><a href="metrics.html">Win Rate</a></small></div>
+  <div class="ov-find">
+    <a class="ov-f rv" href="demand.html">
+      <b class="n"><span class="count" data-to="1000">0</span> m²</b>
+      <p>From 1 January 2028 every new EU building above this size must disclose life cycle carbon. Most of these design teams have never bought an LCA tool.</p>
+      <svg viewBox="0 0 260 56" role="img" aria-label="Disclosure scope widens from national leaders now, to new EU buildings over 1,000 square metres in 2028, to all new buildings in 2030">
+        <path d="M0 50H86V32H172V14H260" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M0 50H86V32H172V14H260V56H0z" style="fill:var(--accent)" opacity=".1"/>
+        <text x="4" y="44">Now</text><text x="90" y="26">2028</text><text x="176" y="24">2030</text>
+      </svg>
+      <small>Demand Drivers</small>
+    </a>
+    <a class="ov-f rv" href="alternatives.html">
+      <b class="n"><span class="count" data-to="22" data-suffix="%">0%</span></b>
+      <p>of manufacturers have EPDs for more than half their portfolio, while 65% of AEC professionals require EPDs on all or most projects.</p>
+      <svg viewBox="0 0 260 58" role="img" aria-label="22 percent of manufacturers against 65 percent of AEC professionals">
+        <text x="0" y="12">Manufacturers with EPDs for most products</text>
+        <path d="M0 18h52.2a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H0z" style="fill:var(--s2)"/><text class="tv" x="62" y="28">22%</text>
+        <text x="0" y="44">AEC professionals requiring EPDs</text>
+        <path d="M0 48h150a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4H0z" style="fill:var(--s1)"/><text class="tv" x="160" y="57">65%</text>
+      </svg>
+      <small>Alternatives</small>
+    </a>
+    <a class="ov-f rv" href="enablement.html">
+      <b class="n"><span class="count" data-to="4.0">0.0</span> of 5</b>
+      <p>Value for money is the lowest Capterra sub-score. Support scores 4.9, so the business case is the sales asset that matters most.</p>
+      <svg viewBox="0 0 260 62" role="img" aria-label="Capterra sub-scores: support 4.9, ease of use 4.4, value for money 4.0">
+        <text x="0" y="13">Support</text><path d="M96 4h125a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H96z" style="fill:var(--ink3)"/><text class="tv" x="232" y="14">4.9</text>
+        <text x="0" y="35">Ease of use</text><path d="M96 26h108a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H96z" style="fill:var(--ink3)"/><text class="tv" x="215" y="36">4.4</text>
+        <text x="0" y="57">Value for money</text><path d="M96 48h94a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H96z" style="fill:var(--s2)"/><text class="tv" x="201" y="58">4.0</text>
+      </svg>
+      <small>Enablement</small>
+    </a>
+    <a class="ov-f rv" href="launch.html">
+      <b class="n"><span class="count" data-to="12">0</span> a year</b>
+      <p>Product ships a major update every month. A tiering rule picks the two or three a year that get the whole company.</p>
+      <svg viewBox="0 0 260 40" role="img" aria-label="Twelve monthly releases, of which two or three get a full launch" id="ov-months"></svg>
+      <small>Launch Playbook</small>
+    </a>
+    <a class="ov-f rv" href="positioning.html">
+      <b class="n">Two brands</b>
+      <p>One Click LCA and SimaPro both serve manufacturers. Sellers need a rule for which buyer gets which product.</p>
+      <svg viewBox="0 0 260 78" role="img" aria-label="One Click LCA and SimaPro overlap on manufacturers">
+        <circle cx="100" cy="32" r="30" style="fill:var(--s1)" opacity=".22"/><circle cx="160" cy="32" r="30" style="fill:var(--s7)" opacity=".22"/>
+        <circle cx="100" cy="32" r="30" fill="none" style="stroke:var(--s1)" stroke-width="2"/><circle cx="160" cy="32" r="30" fill="none" style="stroke:var(--s7)" stroke-width="2"/>
+        <text x="80" y="76" text-anchor="middle">One Click LCA</text><text x="180" y="76" text-anchor="middle">SimaPro</text><text x="130" y="35" text-anchor="middle" class="tv" style="font-size:9px">Mfrs</text>
+      </svg>
+      <small>Positioning</small>
+    </a>
+    <a class="ov-f rv" href="metrics.html">
+      <b class="n">No decision</b>
+      <p>The largest loss is often the buyer who waits or hires a consultant. Recording it as a loss reason is the first change to the CRM.</p>
+      <svg viewBox="0 0 260 44" role="img" aria-label="Loss reasons: competitor, free tool, consultant and no decision, with no decision highlighted">
+        <g id="ov-loss"></g>
+      </svg>
+      <small>Win Rate</small>
+    </a>
   </div>
 </section>
 
 <section class="block">
   <span class="eyebrow">Explore</span>
   <h2>Fourteen pages in the order of the job</h2>
-  <div class="cards">
-    <a class="pcard feature" href="role.html"><span class="eyebrow">Start here</span><h3>The Role</h3><p>What the eight duties in the listing mean at One Click LCA in 2026, who the role works with and what success looks like.</p><div class="stats"><span class="chip">8 duties</span><span class="chip">6 teams</span></div><span class="go">Open page</span></a>
-    <a class="pcard" href="fit.html"><span class="eyebrow">Profile</span><h3>Fit</h3><p>Each requirement set against eighteen years of selling to One Click LCA's customers.</p><div class="stats"><span class="chip">8 requirements</span></div><span class="go">Open page</span></a>
-    <a class="pcard" href="portfolio.html"><span class="eyebrow">Product</span><h3>Portfolio</h3><p>Every product mapped to buyer, job and trigger, with four fixes for the first quarter.</p><div class="stats"><span class="chip">11 product groups</span><span class="chip">4 tiers</span></div><span class="go">Open page</span></a>
-    <a class="pcard" href="demand.html"><span class="eyebrow">Market</span><h3>Demand Drivers</h3><p>The regulatory dates that force each segment to buy, from 2025 to 2031.</p><div class="stats"><span class="chip">3 waves</span><span class="chip">30 dates</span></div><span class="go">Open page</span></a>
-    <a class="pcard" href="buyers.html"><span class="eyebrow">Market</span><h3>Buyers</h3><p>Buying committees, criteria and objections per segment, in customers' own words.</p><div class="stats"><span class="chip">6 segments</span><span class="chip">9 criteria</span></div><span class="go">Open page</span></a>
-    <a class="pcard" href="segments.html"><span class="eyebrow">Model</span><h3>Segment Model</h3><p>An interactive scoring model that picks the priority sub-segments for each type of launch.</p><div class="stats"><span class="chip">15 sub-segments</span><span class="chip">6 factors</span></div><span class="go">Open page</span></a>
-    <a class="pcard" href="alternatives.html"><span class="eyebrow">Competition</span><h3>Alternatives</h3><p>Competitors, free national tools, consultants and the cost of doing nothing.</p><div class="stats"><span class="chip">10 alternatives</span><span class="chip">6 risks</span></div><span class="go">Open page</span></a>
-    <a class="pcard" href="positioning.html"><span class="eyebrow">Message</span><h3>Positioning</h3><p>A positioning statement, six message houses and a product rule for One Click LCA and SimaPro.</p><div class="stats"><span class="chip">6 segments</span></div><span class="go">Open page</span></a>
-    <a class="pcard" href="launch.html"><span class="eyebrow">Model</span><h3>Launch Playbook</h3><p>A tiering tool for monthly releases, a worked EU 2028 launch and a 2027 calendar.</p><div class="stats"><span class="chip">3 tiers</span><span class="chip">7 launches</span></div><span class="go">Open page</span></a>
-    <a class="pcard" href="enablement.html"><span class="eyebrow">Model</span><h3>Enablement</h3><p>A business case calculator, discovery questions, objection handling and a battlecard.</p><div class="stats"><span class="chip">2 calculators</span><span class="chip">6 objections</span></div><span class="go">Open page</span></a>
-    <a class="pcard" href="metrics.html"><span class="eyebrow">Model</span><h3>Win Rate</h3><p>What a few points of win rate are worth, the CRM fields to measure it and how to claim it.</p><div class="stats"><span class="chip">6 fields</span></div><span class="go">Open page</span></a>
-    <a class="pcard" href="first-90-days.html"><span class="eyebrow">Plan</span><h3>First 90 Days</h3><p>Listen, decide and ship, with an output at the end of each month.</p><div class="stats"><span class="chip">3 months</span></div><span class="go">Open page</span></a>
-    <a class="pcard" href="ai.html"><span class="eyebrow">Method</span><h3>AI Workflow</h3><p>How this site was researched and built with AI agents, and the routines I would run in the role.</p><div class="stats"><span class="chip">4 agents</span><span class="chip">4 routines</span></div><span class="go">Open page</span></a>
-    <a class="pcard" href="cv.html"><span class="eyebrow">Profile</span><h3>Curriculum Vitae</h3><p>Go-to-market and carbon strategy lead with almost eleven years at Foster + Partners.</p><div class="stats"><span class="chip">LEED AP</span><span class="chip">London</span></div><span class="go">Open page</span></a>
+  <div class="btnrow ov-filter" id="ov-filter" role="group" aria-label="Filter pages">
+    <button type="button" data-f="all" aria-pressed="true">All</button>
+    <button type="button" data-f="profile" aria-pressed="false">Profile</button>
+    <button type="button" data-f="market" aria-pressed="false">Market</button>
+    <button type="button" data-f="message" aria-pressed="false">Competition and message</button>
+    <button type="button" data-f="model" aria-pressed="false">Interactive models</button>
+    <button type="button" data-f="plan" aria-pressed="false">Plan and method</button>
   </div>
+  <div class="ov-cards" id="ov-cards"></div>
 </section>
 
-<section class="notes">
-  <h3>About this research</h3>
-  <p>Figures come from public sources dated up to 23 October 2026, including oneclicklca.com, One Click LCA press releases and job listings, official regulation pages, competitor sites and public reviews. Each page lists its sources. Claims that rest on a single secondary source are marked. The sourced research files are kept with the site.</p>
-</section>
+<details class="more" style="margin-top:56px"><summary>About this research</summary>
+  <p style="margin-top:10px;color:var(--muted);max-width:76ch">Figures come from public sources dated up to 23 October 2026, including oneclicklca.com, One Click LCA press releases and job listings, official regulation pages, competitor sites and public reviews. Each page lists its sources. Claims that rest on a single secondary source are marked. The sourced research files are kept with the site.</p>
+</details>
+
+<script>
+(function(){
+var D=[
+ [2025,"8 Jan","EU",0,"Revised Construction Products Regulation enters into force."],
+ [2025,"28 Apr","Global",2,"LEED v5 launched with an embodied carbon prerequisite."],
+ [2025,"1 Jul","Denmark",1,"Limits tighten to 7.5 kgCO₂e/m²/yr and a site emissions limit applies to contractors."],
+ [2025,"1 Sep","Iceland",1,"LCA becomes mandatory for most new building permits."],
+ [2025,"1 Sep","Ireland",1,"Public bodies must produce whole life carbon assessments on large projects."],
+ [2025,"16 Dec","EU",0,"The EU life cycle GWP calculation method is adopted."],
+ [2026,"1 Jan","Finland",1,"Climate declaration and building product list required for permits."],
+ [2026,"1 Jan","California",2,"CALGreen embodied carbon threshold falls to 50,000 ft²."],
+ [2026,"8 Jan","EU",0,"Main CPR provisions apply; declarations follow family by family."],
+ [2026,"18 Mar","EU",0,"Omnibus I limits CSRD to companies over 1,000 employees and €450m turnover."],
+ [2026,"1 Jun","Ireland",1,"Public thresholds fall; cement and concrete EPDs required in public tenders."],
+ [2026,"1 Jul","Netherlands",1,"MPG moves to EN 15804+A2 data and more building types come into scope."],
+ [2026,"1 Oct","Sweden",1,"Limit value roadmap due from Boverket; delivery to confirm."],
+ [2027,"1 Jan","EU",0,"National life cycle GWP roadmaps, with limit values, due from every member state."],
+ [2027,"1 Jan","EU",0,"CSRD wave two reporting year begins for the largest companies."],
+ [2027,"2027","Denmark",1,"Second tightening step signposted, not yet final."],
+ [2027,"Q4","EU",0,"Delegated act for cement expected; to confirm."],
+ [2028,"1 Jan","EU and EEA",0,"Life cycle GWP disclosure for new buildings over 1,000 m²."],
+ [2028,"1 Jan","France",1,"RE2020 construction carbon step two, 10 to 18% lower."],
+ [2028,"1 Jan","Netherlands",1,"Proposed GWP indicator for permits above 1,000 m²."],
+ [2028,"2028","Sweden",1,"Extended climate declaration expected."],
+ [2029,"1 Jan","Finland",1,"Limit values tighten."],
+ [2029,"2029","EU",0,"First construction product passports expected; to confirm."],
+ [2030,"1 Jan","EU and EEA",0,"Disclosure for all new buildings; national limit values apply."],
+ [2030,"2030","EU",0,"More indicators required in CPR declarations."],
+ [2031,"1 Jan","France",1,"RE2020 final construction carbon step."]
+];
+var WAVES=[
+ {y0:2025,y1:2028,big:"Now",name:"National leaders",who:"Denmark, Finland, the Netherlands, France, Sweden, Iceland and Ireland's public sector already require whole life carbon calculations. Buyers know LCA and compare tools, often against a cheap national tool.",wins:"Local compliance, speed per project and switching cost."},
+ {y0:2028,y1:2030,big:"2028",name:"The EU-wide step",who:"Every new building over 1,000 m² in the EU and EEA must disclose life cycle GWP. This reaches design teams in Germany, Italy, Spain and Poland, most of whom have never bought an LCA tool.",wins:"Education, an easy first project and a trusted EU method."},
+ {y0:2030,y1:2032,big:"2030",name:"All buildings and products",who:"Disclosure covers all new buildings and national limit values apply. Product declarations under the revised CPR arrive family by family, cement first.",wins:"Scale, automation and product data that flows from manufacturer to project."}
+];
+var COL=["var(--s1)","var(--s2)","var(--s3)"],GEO=["EU-wide","National","Outside Europe"];
+var host=document.getElementById("ov-chart"),cap=document.getElementById("ov-cap"),sel="all";
+function waveOf(y){return y>=2030?2:y>=2028?1:0}
+function caption(){
+ if(sel==="all"){cap.innerHTML='<span class="yr">26</span><h3>forcing dates from 2025 to 2031</h3><p style="margin-top:8px">Three steps widen the market: national leaders now, the EU-wide disclosure step in 2028 and all new buildings in 2030.</p><p class="k">Launch window</p><p>National roadmaps with limit values are due on 1 January 2027, about fourteen months before the first EU disclosure deadline.</p>';return}
+ var w=WAVES[sel];cap.innerHTML='<span class="yr">'+w.big+'</span><h3>'+w.name+'</h3><p style="margin-top:8px">'+w.who+'</p><p class="k">What wins</p><p>'+w.wins+'</p>';
+}
+function draw(){
+ host.innerHTML="";var W=Math.max(300,host.clientWidth),H=W<560?300:320,m={l:4,r:4,t:44,b:28};
+ var s=VZ.svg(host,W,H,"Stepped chart of 26 forcing dates from 2025 to 2031 in three waves: national leaders now, the EU-wide step in 2028 and all new buildings in 2030. 2026 has the most dates, seven.");
+ var x=VZ.lin(2025,2032,m.l,W-m.r),base=H-m.b,ph=base-m.t;
+ var lv=[.6,.8,1];
+ WAVES.forEach(function(w,i){
+  var g=VZ.el("g",{"class":"band"},s),x0=x(w.y0),x1=x(w.y1),top=base-ph*lv[i];
+  var on=sel==="all"||+sel===i;
+  VZ.el("rect",{x:x0,y:top,width:x1-x0,height:base-top,style:"fill:var(--accent)",opacity:on?(sel==="all"?.07+.03*i:.16):.03},g);
+  VZ.el("path",{d:"M"+x0+","+top+"H"+x1,fill:"none",style:"stroke:var(--accent)","stroke-width":2,opacity:on?1:.3},g);
+  var t=VZ.el("text",{x:x0+6,y:top-22,"class":"t-strong",style:"font-size:"+(W<560?14:17)+"px"},g);t.textContent=w.big;
+  var t2=VZ.el("text",{x:x0+6,y:top-7,"class":"t-muted"},g);t2.textContent=W<560?["National","EU step","All new"][i]:w.name;
+  g.addEventListener("click",function(){setWave(String(i))});
+ });
+ if(W>=560){}
+ for(var y=2025;y<=2031;y++){var tx=VZ.el("text",{x:(x(y)+x(y+1))/2,y:H-8,"text-anchor":"middle"},s);tx.textContent=y;}
+ VZ.el("line",{x1:m.l,x2:W-m.r,y1:base,y2:base,"class":"axis"},s);
+ var cnt={},R=W<560?6:7,gap=W<560?15:18;
+ D.forEach(function(d){
+  var k=cnt[d[0]]=(cnt[d[0]]||0)+1,cx=(x(d[0])+x(d[0]+1))/2,cy=base-gap*(k-1)-R-6;
+  var on=sel==="all"||waveOf(d[0])===+sel;
+  var g=VZ.el("g",{"class":"dot"+(on?"":" dim"),role:"img","aria-label":d[1]+" "+d[0]+", "+d[2]+": "+d[4]},s);
+  VZ.el("circle",{cx:cx,cy:cy,r:11,fill:"transparent"},g);
+  VZ.el("circle",{"class":"ring",cx:cx,cy:cy,r:R,style:"fill:"+COL[d[3]]+";stroke:var(--chart-bg)","stroke-width":2},g);
+  VZ.tip(g,function(){return "<b>"+d[1]+(d[1].indexOf(String(d[0]))<0?" "+d[0]:"")+", "+d[2]+"</b>"+d[4]+'<div class="m">'+GEO[d[3]]+"</div>"});
+ });
+}
+function setWave(w){sel=w;[].forEach.call(document.querySelectorAll("#ov-waves button"),function(b){b.setAttribute("aria-pressed",b.dataset.w===w)});VZ.hideTip();draw();caption()}
+[].forEach.call(document.querySelectorAll("#ov-waves button"),function(b){b.addEventListener("click",function(){setWave(b.dataset.w)})});
+var tb=document.querySelector("#ov-table tbody");D.forEach(function(d){var tr=document.createElement("tr");[d[1]+(d[1].indexOf(String(d[0]))<0?" "+d[0]:""),d[2],d[4]].forEach(function(v){var td=document.createElement("td");td.textContent=v;tr.appendChild(td)});tb.appendChild(tr)});
+draw();caption();
+var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(draw,120)});
+
+/* monthly releases mini */
+var mm=document.getElementById("ov-months");
+for(var i=0;i<12;i++){var hi=i===3||i===9,mid=i===6;VZ.el("rect",{x:i*21.6,y:hi?2:10,width:17,height:hi?26:18,rx:3,style:"fill:"+(hi?"var(--accent)":mid?"var(--seq-3)":"var(--grid)")},mm)}
+var lt=VZ.el("text",{x:0,y:40},mm);lt.textContent="Full launch";lt.setAttribute("style","font-size:10px");
+/* loss reasons mini */
+var lg=document.getElementById("ov-loss"),L=["Competitor","Free tool","Consultant","No decision"];
+L.forEach(function(n,i){var last=i===3;VZ.el("rect",{x:i*65,y:4,width:61,height:20,rx:3,style:"fill:"+(last?"var(--s2)":"var(--grid)")},lg);var t=VZ.el("text",{x:i*65+30.5,y:40,"text-anchor":"middle"},lg);t.textContent=n;if(last)t.setAttribute("class","tv")});
+
+/* page cards */
+var I={
+ role:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/>',
+ fit:'<path d="M20 6 9 17l-5-5"/>',
+ portfolio:'<path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 13 9 5 9-5"/>',
+ demand:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+ buyers:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/>',
+ segments:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/>',
+ alternatives:'<path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 0 0 6 0L5 7zM19 7l-3 7a3 3 0 0 0 6 0l-3-7z"/>',
+ positioning:'<path d="M4 5h16v11H9l-5 4V5z"/>',
+ launch:'<path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M14 4c3-1 6-1 6-1s0 3-1 6l-6 6-5-5 6-6z"/><circle cx="15" cy="9" r="1.5"/>',
+ enablement:'<path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>',
+ metrics:'<path d="M3 20h18M6 16l4-5 3 3 5-7"/>',
+ "first-90-days":'<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',
+ ai:'<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/>',
+ cv:'<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/>'
+};
+var C=[
+ ["role","The Role","profile","The eight duties, six partner teams and what success looks like.",["8 duties","6 teams"],1],
+ ["fit","Fit","profile","Each requirement set against eighteen years on the buying side.",["8 requirements"]],
+ ["portfolio","Portfolio","market","Every product mapped to buyer, job and trigger.",["11 product groups","4 tiers"]],
+ ["demand","Demand Drivers","market","The regulatory dates that force each segment to buy.",["3 waves"]],
+ ["buyers","Buyers","market","Buying committees, criteria and objections per segment.",["6 segments","9 criteria"]],
+ ["segments","Segment Model","model","A scoring model that picks priority sub-segments per launch.",["15 sub-segments","6 factors"]],
+ ["alternatives","Alternatives","message","Competitors, free national tools, consultants and doing nothing.",["10 alternatives"]],
+ ["positioning","Positioning","message","Message houses and a product rule for One Click LCA and SimaPro.",["6 segments"]],
+ ["launch","Launch Playbook","model","A tiering tool for monthly releases and a 2027 calendar.",["3 tiers","7 launches"]],
+ ["enablement","Enablement","model","A business case calculator, objection handling and a battlecard.",["2 calculators"]],
+ ["metrics","Win Rate","model","What a few points of win rate are worth and how to measure it.",["6 fields"]],
+ ["first-90-days","First 90 Days","plan","Listen, decide and ship, with an output each month.",["3 months"]],
+ ["ai","AI Workflow","plan","How this site was researched with agents, and the routines for the role.",["4 agents"]],
+ ["cv","Curriculum Vitae","profile","Go-to-market and carbon strategy lead, London.",["LEED AP"]]
+];
+var ch=document.getElementById("ov-cards");
+C.forEach(function(c){
+ var a=document.createElement("a");a.className="ov-c rv"+(c[5]?" feat":"");a.href=c[0]+".html";a.dataset.g=c[2];
+ a.innerHTML='<span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24">'+I[c[0]]+'</svg></span><h3></h3><p></p><div class="chips"></div>';
+ a.querySelector("h3").textContent=c[1];a.querySelector("p").textContent=c[3];
+ c[4].forEach(function(t){var s=document.createElement("span");s.className="chip";s.textContent=t;a.querySelector(".chips").appendChild(s)});
+ ch.appendChild(a);
+});
+[].forEach.call(document.querySelectorAll("#ov-filter button"),function(b){b.addEventListener("click",function(){
+ [].forEach.call(document.querySelectorAll("#ov-filter button"),function(x){x.setAttribute("aria-pressed",x===b)});
+ [].forEach.call(ch.children,function(a){a.hidden=!(b.dataset.f==="all"||a.dataset.g===b.dataset.f)});
+})});
+
+})();
+</script>

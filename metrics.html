@@ -21,81 +21,260 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="sitenav"><div class="in"><a class="brand" href="overview.html">Arpan Bakshi<span>One Click LCA product marketing</span></a><button class="theme" type="button" aria-label="Switch to dark mode">Dark</button><button class="menu" type="button" aria-expanded="false" aria-controls="sitelinks">Menu</button><nav class="links" id="sitelinks" aria-label="Site pages"><a href="overview.html">Overview</a><a href="role.html">The Role</a><a href="fit.html">Fit</a><a href="portfolio.html">Portfolio</a><a href="demand.html">Demand Drivers</a><a href="buyers.html">Buyers</a><a href="segments.html">Segment Model</a><a href="alternatives.html">Alternatives</a><a href="positioning.html">Positioning</a><a href="launch.html">Launch Playbook</a><a href="enablement.html">Enablement</a><a href="metrics.html" aria-current="page">Win Rate</a><a href="first-90-days.html">90 Days</a><a href="ai.html">AI Workflow</a><a href="cv.html">CV</a></nav></div></header><script>(function(){var r=document.documentElement,t=document.querySelector('.sitenav .theme');function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}function show(){var d=cur()==='dark';t.textContent=d?'Light':'Dark';t.setAttribute('aria-label','Switch to '+(d?'light':'dark')+' mode')}if(t){t.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n)}catch(e){}show()});show()}var b=document.querySelector('.sitenav .menu'),l=document.getElementById('sitelinks');if(!b)return;b.addEventListener('click',function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');b.textContent=o?'Close':'Menu';});l.addEventListener('click',function(e){if(e.target.tagName==='A'){l.classList.remove('open');b.textContent='Menu';b.setAttribute('aria-expanded','false');}});})();</script>
 <main class="wrap page" id="main" tabindex="-1">
+<style>
+#wr-main .viz{margin-top:0}
+.wr-model{display:grid;grid-template-columns:320px minmax(0,1fr);gap:20px;margin-top:24px;align-items:start}
+.wr-model .controls{background:var(--panel);border-radius:6px;padding:18px 20px 16px;position:sticky;top:76px}
+.wr-model .controls h3{font-size:16px}
+.wr-out{display:grid;gap:14px;min-width:0}
+.wr-hero{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 22px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px 22px}
+.wr-hero .big{margin:0;font-size:clamp(36px,4.4vw,54px)}
+.wr-hero p{font-size:14px;color:var(--muted);max-width:46ch}
+.wr-keys{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:6px 24px;margin-top:10px;font-size:13px;list-style:none;padding:0}
+.wr-keys li{display:flex;align-items:center;gap:8px;color:var(--ink2)}
+.wr-keys i{width:10px;height:10px;border-radius:2px;flex:none}
+.wr-keys b{color:var(--ink1);font-variant-numeric:tabular-nums;margin-left:auto}
+.wr-sk path{transition:opacity .2s}
+.wr-sk .fl:hover{opacity:.7}
+.wr-pre{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.wr-pre button{appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:6px 12px;font:500 12.5px/1 var(--sans);cursor:pointer}
+.wr-pre button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.wr-crm{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:16px;margin-top:24px;align-items:start}
+.wr-rec{border:1px solid var(--line);border-radius:6px;background:var(--surface);overflow:hidden}
+.wr-rech{padding:14px 18px;background:var(--panel);display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:space-between}
+.wr-rech b{font-size:15px}
+.wr-rech span{font-size:12px;color:var(--muted)}
+.wr-stage{display:flex;gap:2px;padding:12px 18px 0}
+.wr-stage span{flex:1;height:8px;background:var(--grid);border-radius:2px}
+.wr-stage span.on{background:var(--accent)}
+.wr-stl{display:flex;justify-content:space-between;padding:4px 18px 0;font-size:11px;color:var(--muted)}
+.wr-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px 18px 18px}
+.wr-fields button{appearance:none;font:inherit;color:inherit;text-align:left;border:1px solid var(--line);background:var(--bg);border-radius:5px;padding:10px 12px;cursor:pointer;position:relative}
+.wr-fields button:hover{border-color:var(--accent)}
+.wr-fields button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.wr-fields small{display:block;font-size:11.5px;color:var(--muted);letter-spacing:.02em}
+.wr-fields b{display:block;font-size:14px;font-weight:500;margin-top:2px}
+.wr-fields .new{position:absolute;right:8px;top:8px;font:600 10px/1 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+.wr-side{background:var(--panel);border-radius:6px;padding:18px 20px}
+.wr-side h3{font-size:16px}
+.wr-side .k{font:500 12px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px}
+.wr-side .opts{display:flex;flex-wrap:wrap;gap:6px}
+.wr-side .opts button{appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:3px;padding:6px 10px;font:400 13px/1.2 var(--sans);cursor:pointer}
+.wr-side .opts button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.wr-side p{font-size:14.5px}
+.wr-tree{margin-top:26px}
+.wr-root{display:flex;justify-content:center}
+.wr-root div{background:var(--ink);color:var(--bg);border-radius:6px;padding:12px 20px;font-weight:600;font-size:15px;text-align:center}
+.wr-br{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative;padding-top:34px}
+.wr-br:before{content:"";position:absolute;top:0;left:16.66%;right:16.66%;height:17px;border:2px solid var(--line);border-bottom:0;border-radius:6px 6px 0 0}
+.wr-br:after{content:"";position:absolute;top:-14px;left:50%;height:14px;border-left:2px solid var(--line)}
+.wr-col{position:relative;transition:opacity .25s}
+.wr-col:before{content:"";position:absolute;top:-17px;left:50%;height:17px;border-left:2px solid var(--line)}
+.wr-col.dim{opacity:.3}
+.wr-node{border-radius:6px;padding:12px 16px;text-align:center;font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px}
+.wr-node em{font-style:normal;font-weight:400;font-size:12px;color:var(--muted)}
+.wr-col.o .wr-node{background:var(--accent);color:var(--on-accent)}.wr-col.o .wr-node em{color:var(--on-accent);opacity:.85}
+.wr-col.s .wr-node{background:var(--accent-soft);color:var(--ink);border:2px solid var(--accent)}
+.wr-col.i .wr-node{background:var(--bg);color:var(--ink);border:2px dashed var(--line)}
+.wr-leaves{list-style:none;margin:12px 0 0 18px;padding:0;border-left:2px solid var(--line)}
+.wr-col.o .wr-leaves{border-left:3px solid var(--accent)}
+.wr-leaves li{position:relative;padding:8px 0 8px 18px;font-size:14px}
+.wr-leaves li:before{content:"";position:absolute;left:0;top:18px;width:12px;border-top:2px solid var(--line)}
+.wr-col.o .wr-leaves li:before{border-top-color:var(--accent)}
+.wr-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:24px;counter-reset:f}
+.wr-flow button{appearance:none;font:inherit;color:var(--ink);border:0;background:var(--panel);padding:14px 26px 14px 30px;text-align:left;cursor:pointer;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%,16px 50%);margin-right:-10px;counter-increment:f;min-height:70px}
+.wr-flow button:first-child{clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%);padding-left:18px}
+.wr-flow button:before{content:counter(f);display:block;font:600 12px/1 var(--sans);color:var(--muted);margin-bottom:4px}
+.wr-flow button b{font-size:14px;font-weight:600;line-height:1.25;display:block}
+.wr-flow button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.wr-flow button[aria-pressed="true"]:before{color:var(--on-accent)}
+.wr-flow button:focus-visible{outline:none;background:var(--accent-soft);color:var(--ink)}
+.wr-fd{margin-top:12px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px 22px}
+.wr-fd p{font-size:15px}
+.wr-mini{display:flex;gap:10px}
+.wr-mini div{flex:1;border-radius:5px;padding:12px;font-size:13px;background:var(--panel);text-align:center}
+.wr-mini div b{display:block;font-size:14px}
+.wr-mini div.t{background:var(--accent-soft);border:2px solid var(--accent)}
+@media (max-width:900px){.wr-model,.wr-crm{grid-template-columns:1fr}.wr-model .controls{position:static}}
+@media (max-width:760px){.wr-br{grid-template-columns:1fr;padding-top:16px}.wr-br:before,.wr-col:before{display:none}.wr-br:after{top:0;height:16px}.wr-flow{grid-template-columns:1fr 1fr;gap:6px}.wr-flow button,.wr-flow button:first-child{clip-path:none;margin:0;border-radius:5px;padding:12px 14px}.wr-fd{grid-template-columns:1fr}}
+@media (max-width:640px){#wr-main .viz{padding:16px 12px 12px}.wr-fields{grid-template-columns:1fr}}
+</style>
 <header class="phead">
   <span class="eyebrow">Improve win rates and hit targets</span>
   <h1>Win Rate</h1>
-  <p class="lede">The listing asks for business judgment about what positioning will do to a metric. That needs three things: a model of how the metric responds, the CRM fields to measure it, and a rule for which changes product marketing can claim. This page sets out all three.</p>
+  <p class="lede">Judging what positioning will do to a metric needs a model of how it responds, CRM fields to measure it and a rule for what product marketing can claim.</p>
 </header>
-
-<section class="sec">
+<div id="wr-main">
+<section class="sec lead-viz" aria-labelledby="wr-h1">
   <span class="eyebrow">Model</span>
-  <h2>What a few points of win rate are worth</h2>
-  <p class="intro">Enter the pipeline for one segment. The model shows the extra annual contract value from better positioning and enablement. Defaults are illustrative; in the role they would come from Salesforce.</p>
-  <div class="model">
-    <div class="controls" id="wctl">
+  <h2 id="wr-h1">Win Rate Value</h2>
+  <div class="wr-model">
+    <div class="controls">
       <h3>Segment pipeline</h3>
+      <p class="mini">Defaults are illustrative; in the role they would come from Salesforce.</p>
       <div class="ctl"><label for="o">Qualified opportunities a quarter<output id="oo"></output></label><input type="range" id="o" min="10" max="400" step="10" value="120"></div>
       <div class="ctl"><label for="w">Current win rate<output id="ow"></output></label><input type="range" id="w" min="5" max="60" step="1" value="22"></div>
-      <div class="ctl"><label for="nd">Share lost to no decision<output id="ond"></output></label><input type="range" id="nd" min="0" max="80" step="5" value="45"><span class="hint">Deals that end with the buyer doing nothing or staying with a consultant</span></div>
-      <div class="ctl"><label for="acv">Average first-year contract value (€)<output id="oacv"></output></label><input type="range" id="acv" min="2000" max="80000" step="1000" value="9000"></div>
+      <div class="ctl"><label for="nd">Share of losses to no decision<output id="ond"></output></label><input type="range" id="nd" min="0" max="80" step="5" value="45"><span class="hint">The buyer does nothing or stays with a consultant</span></div>
+      <div class="ctl"><label for="acv">Average first-year contract value<output id="oacv"></output></label><input type="range" id="acv" min="2000" max="80000" step="1000" value="9000"></div>
       <h3 style="margin-top:22px">Product marketing levers</h3>
+      <div class="wr-pre" role="group" aria-label="Lever presets" id="wr-pre"><button type="button" data-a="0" data-b="0">None</button><button type="button" data-a="10" data-b="10" aria-pressed="true">Base</button><button type="button" data-a="20" data-b="10">Business case push</button><button type="button" data-a="10" data-b="25">Battlecard push</button></div>
       <div class="ctl"><label for="nd2">No-decision losses recovered<output id="ond2"></output></label><input type="range" id="nd2" min="0" max="40" step="5" value="10"><span class="hint">Through the business case and cost of doing nothing</span></div>
       <div class="ctl"><label for="cw">Competitive losses recovered<output id="ocw"></output></label><input type="range" id="cw" min="0" max="40" step="5" value="10"><span class="hint">Through battlecards and positioning against named rivals</span></div>
     </div>
-    <div class="result" aria-live="polite" id="wout"></div>
+    <div class="wr-out">
+      <div class="wr-hero" aria-live="polite" id="wr-hero"></div>
+      <div class="viz">
+        <div class="viz-h"><h3>Where a year of opportunities ends up</h3><p>Today, then after the levers</p></div>
+        <div id="wr-sk" class="wr-sk"></div>
+        <ul class="wr-keys" id="wr-keys"></ul>
+      </div>
+      <div class="viz">
+        <div class="viz-h"><h3>Extra contract value per point of win rate</h3><p id="wr-sens-s"></p></div>
+        <div id="wr-sens"></div>
+      </div>
+      <p class="src">Simple model: recovered losses become wins at the same contract value. It ignores longer-term expansion.</p>
+    </div>
   </div>
-  <div class="callout"><p><b>Why no decision gets its own lever.</b> In a category where many buyers can still hire a consultant or wait for the rule, the largest loss is often to no decision. A business case that prices the wait moves more deals than a better battlecard. Most CRMs record these as "closed lost, other", so the first change is a loss reason that separates them.</p></div>
+  <div class="callout"><p><b>No decision gets its own lever.</b> Many buyers can still hire a consultant or wait for the rule, so the largest loss is often to no decision, and a business case that prices the wait moves more of those deals than a better battlecard. Most CRMs record these as "closed lost, other", so the first change is a loss reason that separates them.</p></div>
 </section>
 
-<section class="sec">
+<section class="sec" aria-labelledby="wr-h2">
   <span class="eyebrow">Measurement</span>
-  <h2>Fields to add to every opportunity</h2>
-  <div class="tw" tabindex="0" role="region" aria-label="Scrollable table"><table class="t">
-    <thead><tr><th style="width:22%">Field</th><th style="width:38%">Values</th><th>What it lets us see</th></tr></thead>
-    <tbody>
-      <tr><th>Segment and sub-segment</th><td>Role by country, matching the Segment Model</td><td>Win rate and cycle length per priority segment</td></tr>
-      <tr><th>Trigger</th><td>Regulation, scheme, client request, tender, specifier request, internal target</td><td>Which forcing dates actually create deals</td></tr>
-      <tr><th>Primary alternative</th><td>Named competitor, national tool, consultant, spreadsheet, no decision, SimaPro</td><td>Win rate against each alternative; where to build the next battlecard</td></tr>
-      <tr><th>Loss reason</th><td>Price, missing feature, BIM workflow, compliance gap, timing, no decision, lost to named rival</td><td>What to fix in product, packaging or message</td></tr>
-      <tr><th>Launch influence</th><td>The launch the deal was sourced or influenced by, if any</td><td>Launch-sourced pipeline and adoption against target</td></tr>
-      <tr><th>Enablement used</th><td>Business case, battlecard, demo script</td><td>Whether materials change outcomes, by comparing deals that used them with deals that did not</td></tr>
-    </tbody>
-  </table></div>
-</section>
-
-<section class="sec">
-  <span class="eyebrow">Metric tree</span>
-  <h2>What product marketing owns, shares and influences</h2>
-  <div class="grid3">
-    <div class="panel accent"><h3>Owns</h3><ul><li>Win rate against each named alternative in priority segments</li><li>Launch adoption at 30, 60 and 90 days against agreed targets</li><li>Share of closed deals with a recorded loss reason and alternative</li><li>Seller and partner certification on each tier one launch</li></ul></div>
-    <div class="panel"><h3>Shares with sales</h3><ul><li>Overall win rate and sales cycle length</li><li>No-decision rate</li><li>Expansion from Business to Designer and Expert Pack</li><li>Partner-sourced pipeline</li></ul></div>
-    <div class="panel"><h3>Influences</h3><ul><li>Pipeline from campaigns, through message choice and segment lists</li><li>Demo to opportunity conversion</li><li>Web shop conversion, through pricing page and packaging clarity</li><li>Retention, through what customers expect when they buy</li></ul></div>
+  <h2 id="wr-h2">Opportunity Fields</h2>
+  <p class="intro">Six fields to add to every opportunity. Select a field to see its values and what it reveals.</p>
+  <div class="wr-crm">
+    <div class="wr-rec rv">
+      <div class="wr-rech"><b>Example opportunity: German design firm</b><span>Illustrative record</span></div>
+      <div class="wr-stage" aria-hidden="true"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div>
+      <div class="wr-stl" aria-hidden="true"><span>Qualified</span><span>Discovery</span><span>Proposal</span><span>Negotiation</span><span>Closed</span></div>
+      <div class="wr-fields" role="group" aria-label="Opportunity fields" id="wr-fields"></div>
+    </div>
+    <div class="wr-side" aria-live="polite" id="wr-side"></div>
   </div>
 </section>
 
-<section class="sec">
-  <span class="eyebrow">Attribution</span>
-  <h2>How to claim a change honestly</h2>
-  <ol class="steps">
-    <li><b>Set the baseline first</b>Record two quarters of win rate by segment and alternative before changing positioning, or use the previous year where the data exists.</li>
-    <li><b>Change one segment at a time</b>Roll a new message or kit into one priority segment and keep a comparable segment as a control for a quarter.</li>
-    <li><b>Compare deals that used the material with those that did not</b>Within the same segment and quarter, so seasonality and pricing affect both.</li>
-    <li><b>Report the range, not a single number</b>Small samples per segment make win rate noisy. A change of a few points needs a few hundred closed deals before it is reliable.</li>
-  </ol>
+<section class="sec" aria-labelledby="wr-h3">
+  <span class="eyebrow">Metric tree</span>
+  <h2 id="wr-h3">Metric Ownership</h2>
+  <div class="btnrow" role="group" aria-label="Highlight a branch" id="wr-tb"><button type="button" aria-pressed="true" data-b="">All</button><button type="button" aria-pressed="false" data-b="o">Owns</button><button type="button" aria-pressed="false" data-b="s">Shares with sales</button><button type="button" aria-pressed="false" data-b="i">Influences</button></div>
+  <div class="wr-tree rv">
+    <div class="wr-root"><div>Product marketing metrics</div></div>
+    <div class="wr-br" id="wr-br">
+      <div class="wr-col o" data-b="o"><div class="wr-node">Owns <em>direct control</em></div><ul class="wr-leaves"><li>Win rate against each named alternative in priority segments</li><li>Launch adoption at 30, 60 and 90 days against agreed targets</li><li>Share of closed deals with a recorded loss reason and alternative</li><li>Seller and partner certification on each tier one launch</li></ul></div>
+      <div class="wr-col s" data-b="s"><div class="wr-node">Shares with sales <em>joint</em></div><ul class="wr-leaves"><li>Overall win rate and sales cycle length</li><li>No-decision rate</li><li>Expansion from Business to Designer and Expert Pack</li><li>Partner-sourced pipeline</li></ul></div>
+      <div class="wr-col i" data-b="i"><div class="wr-node">Influences <em>indirect</em></div><ul class="wr-leaves"><li>Pipeline from campaigns, through message choice and segment lists</li><li>Demo to opportunity conversion</li><li>Web shop conversion, through pricing page and packaging clarity</li><li>Retention, through what customers expect when they buy</li></ul></div>
+    </div>
+  </div>
 </section>
+
+<section class="sec" aria-labelledby="wr-h4">
+  <span class="eyebrow">Attribution</span>
+  <h2 id="wr-h4">Honest Attribution</h2>
+  <div class="wr-flow" role="group" aria-label="Attribution steps" id="wr-flow"></div>
+  <div class="wr-fd" id="wr-fd" aria-live="polite"></div>
+  <div class="viz" style="margin-top:14px">
+    <div class="viz-h"><h3>How noisy win rate is at a given sample</h3><p>95% range around the current win rate</p></div>
+    <div class="ctl" style="max-width:420px;margin-top:0"><label for="wr-n">Closed deals in the segment<output id="wr-no"></output></label><input type="range" id="wr-n" min="20" max="800" step="10" value="100"></div>
+    <div id="wr-ci"></div>
+    <p class="src">Normal approximation of a binomial proportion, using the win rate set in the model above.</p>
+  </div>
+</section>
+</div>
 
 <script>
 (function(){
-function v(id){return +document.getElementById(id).value}
+var $=function(id){return document.getElementById(id)};
+function v(id){return +$(id).value}
 function eur(x){return "€"+Math.round(x).toLocaleString("en-GB")}
+function k(x){var a=Math.abs(x);return a>=1e6?"€"+(a/1e6).toFixed(a>=1e7?0:1)+"m":a>=1e3?"€"+Math.round(a/1e3)+"k":"€"+Math.round(a)}
+var S={};
 function go(){
  var o=v("o")*4,w=v("w")/100,nd=v("nd")/100,acv=v("acv"),r1=v("nd2")/100,r2=v("cw")/100;
- document.getElementById("oo").textContent=v("o");document.getElementById("ow").textContent=v("w")+"%";document.getElementById("ond").textContent=v("nd")+"%";document.getElementById("oacv").textContent=eur(acv);document.getElementById("ond2").textContent=v("nd2")+"%";document.getElementById("ocw").textContent=v("cw")+"%";
- var lost=o*(1-w),lnd=lost*nd,lcomp=lost*(1-nd);
- var won0=o*w,add=lnd*r1+lcomp*r2,won1=won0+add,w1=won1/o;
- document.getElementById("wout").innerHTML='<span class="eyebrow">Extra first-year contract value a year</span><span class="big" style="margin-top:10px">'+eur(add*acv)+'</span><p>Win rate moves from '+(w*100).toFixed(0)+'% to '+(w1*100).toFixed(1)+'%, or '+(add).toFixed(0)+' more deals a year from '+o+' opportunities.</p><div class="kpis"><div><b>'+Math.round(lnd)+'</b><span>Deals a year lost to no decision today</span></div><div><b>'+Math.round(lcomp)+'</b><span>Deals a year lost to a named alternative</span></div><div><b>+'+((w1-w)*100).toFixed(1)+' pts</b><span>Change in win rate</span></div></div><p class="src" style="margin-top:14px">Simple model: recovered losses become wins at the same contract value. It ignores longer-term expansion.</p>';
+ $("oo").textContent=v("o");$("ow").textContent=v("w")+"%";$("ond").textContent=v("nd")+"%";$("oacv").textContent=eur(acv);$("ond2").textContent=v("nd2")+"%";$("ocw").textContent=v("cw")+"%";
+ var lost=o*(1-w),lnd=lost*nd,lcomp=lost*(1-nd),won0=o*w,a1=lnd*r1,a2=lcomp*r2,add=a1+a2,w1=(won0+add)/o;
+ S={o:o,w:w,acv:acv,won0:won0,lnd:lnd,lcomp:lcomp,a1:a1,a2:a2,add:add,w1:w1};
+ $("wr-hero").innerHTML='<div><span class="eyebrow">Extra first-year contract value a year</span><span class="big">'+eur(add*acv)+'</span></div><p>Win rate moves from <b>'+(w*100).toFixed(0)+'%</b> to <b>'+(w1*100).toFixed(1)+'%</b>, which is '+add.toFixed(0)+' more deals a year from '+o+' opportunities.</p>';
+ [].forEach.call($("wr-pre").querySelectorAll("button"),function(b){b.setAttribute("aria-pressed",+b.dataset.a===v("nd2")&&+b.dataset.b===v("cw"))});
+ drawSk();drawSens();drawCI();
 }
-["o","w","nd","acv","nd2","cw"].forEach(function(id){document.getElementById(id).addEventListener("input",go)});go();
+function clr(id){var h=$(id);h.innerHTML="";return h}
+function drawSk(){var h=clr("wr-sk"),W=Math.max(290,h.clientWidth||600),narrow=W<560,H=narrow?250:280,nw=12,gap=10,top=24,bot=6;
+ var c0=0,c1=narrow?W*.42:W*.38,c2=W-nw-(narrow?0:150);
+ var s=S,scale=(H-top-bot-2*gap)/s.o;
+ /* column 1 nodes */
+ var n1=[["Won today",s.won0,"var(--s1)"],["Lost to no decision",s.lnd,"var(--s4)"],["Lost to a named alternative",s.lcomp,"var(--s2)"]];
+ var n2=[["Won after levers",s.won0+s.add,"var(--s1)"],["Still lost to no decision",s.lnd-s.a1,"var(--s4)"],["Still lost to a named alternative",s.lcomp-s.a2,"var(--s2)"]];
+ function stack(ns){var y=top,out=[];ns.forEach(function(n){var hh=Math.max(1,n[1]*scale);out.push({y:y,h:hh,n:n});y+=hh+gap});return out}
+ var A=stack(n1),B=stack(n2);
+ var svg=VZ.svg(h,W,H,"Sankey of "+s.o+" opportunities a year: won today "+Math.round(s.won0)+", lost to no decision "+Math.round(s.lnd)+", lost to a named alternative "+Math.round(s.lcomp)+". After levers, won "+Math.round(s.won0+s.add)+".");svg.setAttribute("role","group");
+ function band(x0,y0a,y0b,x1,y1a,y1b,fill,tipf,op){var mx=(x0+x1)/2;var p=VZ.el("path",{d:"M"+x0+","+y0a+"C"+mx+","+y0a+" "+mx+","+y1a+" "+x1+","+y1a+"L"+x1+","+y1b+"C"+mx+","+y1b+" "+mx+","+y0b+" "+x0+","+y0b+"Z",fill:fill,opacity:op||.28,"class":"fl",role:"img","aria-label":tipf().replace(/<[^>]+>/g," ")},svg);VZ.tip(p,tipf);return p}
+ var H0=s.o*scale+2*gap,y0=top,oy=top; /* column 0 single node spanning full height including gaps */
+ var src=y0;
+ A.forEach(function(a){var hh=a.h;band(c0+nw,src,src+hh,c1,a.y,a.y+a.h,a.n[2],function(){return '<b>'+Math.round(a.n[1])+' deals a year</b><span class="m">Opportunities to '+a.n[0].toLowerCase()+'</span>'});src+=hh+gap});
+ /* column1 -> column2 */
+ var bOff=[0,0,0];
+ function flow(ai,bi,val,lab){if(val<=0.01)return;var a=A[ai],b=B[bi];a.off=a.off||0;var hh=val*scale;band(c1+nw,a.y+a.off,a.y+a.off+hh,c2,b.y+bOff[bi],b.y+bOff[bi]+hh,B[bi].n[2],function(){return '<b>'+Math.round(val)+' deals a year</b><span class="m">'+lab+'</span>'},bi===0&&ai>0?.55:.28);a.off+=hh;bOff[bi]+=hh}
+ flow(0,0,s.won0,"Won today and still won");flow(1,0,s.a1,"No-decision losses recovered by the business case");flow(1,1,s.lnd-s.a1,"Still lost to no decision");flow(2,0,s.a2,"Competitive losses recovered by battlecards and positioning");flow(2,2,s.lcomp-s.a2,"Still lost to a named alternative");
+ var r0=VZ.el("rect",{x:c0,y:top,width:nw,height:H-top-bot,rx:2,fill:"var(--ink2)"},svg);
+ A.concat(B).forEach(function(n,i){VZ.el("rect",{x:i<3?c1:c2,y:n.y,width:nw,height:n.h,rx:2,fill:n.n[2]},svg)});
+ if(!narrow){B.forEach(function(b){var t=VZ.el("text",{x:c2+nw+8,y:b.y+b.h/2,"dominant-baseline":"middle"},svg);var t1=VZ.el("tspan",{"class":"t-strong"},t);t1.textContent=Math.round(b.n[1])+" ";var t2=VZ.el("tspan",{},t);t2.textContent=b.n[0].replace("Still lost to a named alternative","Still lost to a rival").replace("Still lost to no decision","Still no decision")})}
+ [[c0,"start",narrow?"Opportunities":"Opportunities a year"],[c1+nw/2,"middle","Today"],[c2+nw,"end","After levers"]].forEach(function(d){var t=VZ.el("text",{x:d[0],y:13,"text-anchor":d[1],"class":"t-muted"},svg);t.textContent=d[2]});
+ $("wr-keys").innerHTML='<li><i style="background:var(--ink2)"></i>Opportunities a year<b>'+s.o+'</b></li>'+n1.map(function(n,i){return '<li><i style="background:'+n[2]+'"></i>'+n[0]+'<b>'+Math.round(n[1])+' → '+Math.round(n2[i][1])+'</b></li>'}).join("");
+}
+function drawSens(){var s=S,h=clr("wr-sens"),W=Math.max(290,h.clientWidth||600),H=210,L=W<520?44:56,R=W-14,top=22,bot=34,maxp=10,per=s.o*s.acv/100;
+ var cur=(s.w1-s.w)*100,xm=Math.max(maxp,Math.ceil(cur)),x=VZ.lin(0,xm,L,R),ym=per*xm,y=VZ.lin(0,ym,H-bot,top);
+ $("wr-sens-s").textContent="Each point is worth "+eur(per)+" a year";
+ var svg=VZ.svg(h,W,H,"Extra first-year contract value rises by "+eur(per)+" for each point of win rate. The levers add "+cur.toFixed(1)+" points, worth "+eur(cur*per)+".");svg.setAttribute("role","group");
+ for(var t=0;t<=4;t++){var vv=ym*t/4,yy=y(vv);VZ.el("line",{x1:L,x2:R,y1:yy,y2:yy,"class":"grid"},svg);var tx=VZ.el("text",{x:L-6,y:yy+4,"text-anchor":"end","class":"t-muted"},svg);tx.textContent=k(vv)}
+ for(var p=0;p<=xm;p+=(xm>12?4:2)){var tx2=VZ.el("text",{x:x(p),y:H-bot+16,"text-anchor":"middle","class":"t-muted"},svg);tx2.textContent="+"+p}
+ var xl=VZ.el("text",{x:R,y:H-2,"text-anchor":"end","class":"t-muted"},svg);xl.textContent="Points of win rate";
+ for(var b=1;b<=xm;b++){var bw=Math.min(20,(R-L)/xm*.5);VZ.bar(svg,x(b)-bw/2,y(per*b),bw,H-bot-y(per*b),b<=Math.round(cur)?"var(--s1)":"var(--grid)").setAttribute("opacity",b<=Math.round(cur)?.35:1)}
+ VZ.el("path",{d:"M"+x(0)+","+y(0)+"L"+x(xm)+","+y(ym),stroke:"var(--s1)","stroke-width":2,fill:"none"},svg);
+ var cx=x(cur),cy=y(cur*per);VZ.el("circle",{cx:cx,cy:cy,r:6,fill:"var(--s1)",stroke:"var(--ring)","stroke-width":2},svg);
+ var lb=VZ.el("text",{x:cx+(cx>R-120?-10:10),y:cy-10,"text-anchor":cx>R-120?"end":"start","class":"t-strong"},svg);lb.textContent="+"+cur.toFixed(1)+" pts = "+k(cur*per);
+ var hair=VZ.el("line",{y1:top,y2:H-bot,stroke:"var(--ink2)","stroke-width":1,opacity:0},svg),ov=VZ.el("rect",{x:L,y:top,width:R-L,height:H-bot-top,fill:"transparent"},svg);
+ ov.addEventListener("pointermove",function(e){var r=svg.getBoundingClientRect(),px=(e.clientX-r.left)*W/r.width,pt=Math.max(0,Math.min(xm,Math.round((px-L)/(R-L)*xm*2)/2));hair.setAttribute("x1",x(pt));hair.setAttribute("x2",x(pt));hair.setAttribute("opacity",1);var t=myTip();t.innerHTML='<b>'+eur(pt*per)+'</b><span class="m">+'+pt+' points of win rate</span>';t.classList.add("on");t.style.left=Math.min(innerWidth-200,e.clientX+14)+"px";t.style.top=(e.clientY+14)+"px"});
+ ov.addEventListener("pointerleave",function(){hair.setAttribute("opacity",0);myTip().classList.remove("on")});}
+var mt;function myTip(){if(!mt){mt=document.createElement("div");mt.className="vz-tip";mt.setAttribute("role","tooltip");document.body.appendChild(mt)}return mt}
+function drawCI(){var n=v("wr-n"),w=S.w,h=clr("wr-ci"),W=Math.max(290,h.clientWidth||600),H=110,L=8,R=W-8;$("wr-no").textContent=n;
+ var m=1.96*Math.sqrt(w*(1-w)/n),lo=Math.max(0,w-m),hi=Math.min(1,w+m),x=VZ.lin(0,.7,L,R);
+ var svg=VZ.svg(h,W,H,"At "+n+" closed deals a "+(w*100).toFixed(0)+"% win rate could truly be anywhere from "+(lo*100).toFixed(1)+"% to "+(hi*100).toFixed(1)+"%.");
+ for(var p=0;p<=70;p+=10){VZ.el("line",{x1:x(p/100),x2:x(p/100),y1:34,y2:76,"class":"grid"},svg);var t=VZ.el("text",{x:x(p/100),y:94,"text-anchor":"middle","class":"t-muted"},svg);t.textContent=p+"%"}
+ VZ.el("rect",{x:x(lo),y:46,width:x(hi)-x(lo),height:18,rx:4,fill:"var(--s1)",opacity:.3},svg);
+ VZ.el("line",{x1:x(w),x2:x(w),y1:40,y2:70,stroke:"var(--s1)","stroke-width":2},svg);
+ var tl=VZ.el("text",{x:Math.min(Math.max(x(w),110),W-110),y:22,"text-anchor":"middle","class":"t-strong"},svg);tl.textContent=(w*100).toFixed(0)+"% could be "+(lo*100).toFixed(1)+"% to "+(hi*100).toFixed(1)+"% (±"+(m*100).toFixed(1)+" pts)";}
+$("wr-n").addEventListener("input",drawCI);
+["o","w","nd","acv","nd2","cw"].forEach(function(id){$(id).addEventListener("input",go)});
+[].forEach.call($("wr-pre").querySelectorAll("button"),function(b){if(!b.hasAttribute("aria-pressed"))b.setAttribute("aria-pressed","false");b.addEventListener("click",function(){$("nd2").value=b.dataset.a;$("cw").value=b.dataset.b;go()})});
+
+/* CRM */
+var F=[["Segment and sub-segment",["Designer · Germany","Designer · Italy","Designer · Spain","Engineering firm · global"],0,"Win rate and cycle length per priority segment, matching the Segment Model."],
+["Trigger",["Regulation","Scheme","Client request","Tender","Specifier request","Internal target"],0,"Which forcing dates actually create deals."],
+["Primary alternative",["Named competitor","National tool","Consultant","Spreadsheet","No decision","SimaPro"],2,"Win rate against each alternative, and where to build the next battlecard."],
+["Loss reason",["Price","Missing feature","BIM workflow","Compliance gap","Timing","No decision","Lost to named rival"],5,"What to fix in product, packaging or message."],
+["Launch influence",["EU 2028 readiness","CPR readiness","Workflow release","None"],0,"Launch-sourced pipeline and adoption against target."],
+["Enablement used",["Business case","Battlecard","Demo script"],0,"Whether materials change outcomes, by comparing deals that used them with deals that did not."]];
+var fs=0;
+function crm(){$("wr-fields").innerHTML=F.map(function(f,i){return '<button type="button" aria-pressed="'+(i===fs)+'"><span class="new">New</span><small>'+f[0]+'</small><b>'+f[1][f[2]]+'</b></button>'}).join("");
+ [].forEach.call($("wr-fields").querySelectorAll("button"),function(b,i){b.addEventListener("click",function(){fs=i;crm();$("wr-fields").querySelectorAll("button")[i].focus()})});
+ var f=F[fs];$("wr-side").innerHTML='<h3>'+f[0]+'</h3><p class="k">Values</p><div class="opts" role="group" aria-label="Values for '+f[0]+'">'+f[1].map(function(o,j){return '<button type="button" aria-pressed="'+(j===f[2])+'">'+o+'</button>'}).join("")+'</div><p class="k">What it lets us see</p><p>'+f[3]+'</p>';
+ [].forEach.call($("wr-side").querySelectorAll(".opts button"),function(b,j){b.addEventListener("click",function(){f[2]=j;crm();$("wr-side").querySelectorAll(".opts button")[j].focus()})});}
+crm();
+
+/* tree */
+[].forEach.call($("wr-tb").querySelectorAll("button"),function(b){b.addEventListener("click",function(){var k=b.dataset.b;[].forEach.call($("wr-tb").querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x===b)});[].forEach.call($("wr-br").children,function(c){c.classList.toggle("dim",!!k&&c.dataset.b!==k)})})});
+
+/* attribution */
+var A=[["Set the baseline first","Record two quarters of win rate by segment and alternative before changing positioning, or use the previous year where the data exists.",'<div class="wr-mini"><div><b>Q1</b>Baseline</div><div><b>Q2</b>Baseline</div><div class="t"><b>Q3</b>Change</div></div>'],
+["Change one segment at a time","Roll a new message or kit into one priority segment and keep a comparable segment as a control for a quarter.",'<div class="wr-mini"><div class="t"><b>Test segment</b>New message and kit</div><div><b>Control segment</b>Unchanged</div></div>'],
+["Compare used with not used","Compare deals that used the material with those that did not, within the same segment and quarter, so seasonality and pricing affect both.",'<div class="wr-mini"><div class="t"><b>Used the kit</b>Same segment, same quarter</div><div><b>Did not</b>Same segment, same quarter</div></div>'],
+["Report the range","Small samples per segment make win rate noisy. A change of a few points needs a few hundred closed deals before it is reliable. Try the sample slider below.",'<div class="wr-mini"><div class="t"><b>±</b>Report a range with every result</div></div>']];
+$("wr-flow").innerHTML=A.map(function(a,i){return '<button type="button" aria-pressed="'+(i===0)+'"><b>'+a[0]+'</b></button>'}).join("");
+function fl(i){[].forEach.call($("wr-flow").querySelectorAll("button"),function(b,j){b.setAttribute("aria-pressed",i===j)});$("wr-fd").innerHTML='<p><b>Step '+(i+1)+'.</b> '+A[i][1]+'</p>'+A[i][2]}
+[].forEach.call($("wr-flow").querySelectorAll("button"),function(b,i){b.addEventListener("click",function(){fl(i)})});fl(0);
+
+var lw=innerWidth,rt;addEventListener("resize",function(){if(innerWidth===lw)return;lw=innerWidth;clearTimeout(rt);rt=setTimeout(go,150)});
+go();
 })();
 </script>
 

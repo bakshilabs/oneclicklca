@@ -1,80 +1,273 @@
 <!--meta title="Launch Playbook" desc="A tiering rule for One Click LCA's monthly releases, a worked launch plan for the EU 2028 disclosure, and a 2027 launch calendar."-->
+<style>
+.lp-presets{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:22px}
+.lp-presets>span{font-size:13px;color:var(--muted);margin-right:4px}
+.lp-presets button{appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:8px 14px;font:500 13px/1 var(--sans);cursor:pointer;transition:background .15s,border-color .15s}
+.lp-presets button:hover{border-color:var(--accent)}
+.lp-presets button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.lp-tool{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:20px;margin-top:20px;align-items:start}
+.lp-qs{background:var(--panel);border-radius:6px;padding:18px 20px 20px}
+.lp-qs fieldset{border:0;margin:0;padding:12px 0 0;min-width:0}
+.lp-qs fieldset+fieldset{border-top:1px solid var(--line);margin-top:12px}
+.lp-qs legend{font-size:14px;font-weight:500;padding:0;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.lp-qs legend i{width:10px;height:10px;border-radius:2px;display:inline-block;flex:none}
+.lp-chips{display:flex;flex-wrap:wrap;gap:6px}
+.lp-chips label{position:relative;cursor:pointer}
+.lp-chips input{position:absolute;opacity:0;width:1px;height:1px}
+.lp-chips span{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--line);background:var(--bg);border-radius:4px;padding:6px 10px;font-size:13px;line-height:1.25;transition:background .15s,border-color .15s}
+.lp-chips span em{font-style:normal;font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.lp-chips input:checked+span{background:var(--accent-soft);border-color:var(--accent);font-weight:500}
+.lp-chips input:checked+span em{color:var(--ink)}
+.lp-chips input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.lp-res{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:22px 22px 20px;position:sticky;top:76px}
+.lp-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 18px}
+.lp-head .big{margin:0}
+.lp-head p{font-size:14px;color:var(--muted);max-width:40ch}
+.lp-ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.lp-ladder div{border-radius:5px;padding:10px 12px;background:var(--panel);font-size:12.5px;color:var(--muted);border:1px solid transparent;transition:all .2s}
+.lp-ladder div b{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--ink);margin-bottom:3px}
+.lp-ladder div b i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.lp-ladder div.on{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
+.lp-kit{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px;margin-top:10px;padding:0;list-style:none}
+.lp-kit li{background:var(--panel);border-radius:5px;padding:12px 12px 12px 40px;font-size:13.5px;line-height:1.35;position:relative;animation:lpIn .45s ease both}
+.lp-kit li svg{position:absolute;left:12px;top:12px;width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.lp-k{font:500 12px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-top:18px}
+@keyframes lpIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.lp-brief{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:12px;margin-top:28px}
+.lp-brief .panel{padding:18px 20px}
+.lp-brief .panel p,.lp-brief .panel li{font-size:14px}
+.lp-brief blockquote{margin:0;font:500 19px/1.35 var(--sans);letter-spacing:-.01em;color:var(--ink)}
+.lp-ctl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:2px 0 8px}
+.lp-ctl button{appearance:none;border:1px solid var(--accent);background:var(--accent);color:var(--on-accent);border-radius:3px;padding:8px 14px;font:500 13px/1 var(--sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.lp-ctl input[type=range]{flex:1;min-width:160px;accent-color:var(--accent)}
+.lp-ctl output{font:600 14px/1 var(--sans);font-variant-numeric:tabular-nums;min-width:70px}
+.lp-now{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;margin-top:12px;min-height:76px}
+.lp-now div{border-left:3px solid var(--accent);background:var(--panel);border-radius:0 5px 5px 0;padding:10px 12px;font-size:13.5px}
+.lp-now div b{display:block;font-weight:600}
+.lp-now div span{color:var(--muted);font-size:12.5px}
+.lp-now p{font-size:13.5px;color:var(--muted);padding:10px 0}
+.lp-g .bar{cursor:pointer;transition:opacity .2s}
+.lp-g .bar:focus{outline:none}
+.lp-g .bar:focus path,.lp-g .bar:hover path,.lp-g .bar:focus rect,.lp-g .bar:hover rect{stroke:var(--ink1);stroke-width:1.5}
+.lp-ms{position:relative;margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.lp-ms:before{content:"";position:absolute;left:12px;right:12%;top:15px;height:2px;background:var(--line)}
+.lp-ms button{appearance:none;border:0;background:none;color:var(--ink);font:inherit;text-align:left;padding:0 10px 0 0;cursor:pointer;position:relative}
+.lp-ms button i{display:block;width:30px;height:30px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);margin-bottom:10px;transition:background .2s;position:relative}
+.lp-ms button[aria-pressed="true"] i{background:var(--accent)}
+.lp-ms button b{display:block;font:600 20px/1.1 var(--sans);letter-spacing:-.02em}
+.lp-ms button span{font-size:12.5px;color:var(--muted)}
+.lp-ms .t0 i{border-color:var(--ink3);background:var(--ink3)}
+.lp-msd{margin-top:14px;background:var(--accent-soft);border-radius:6px;padding:14px 18px;font-size:15px;min-height:52px}
+#lp-main svg .t-strong{paint-order:stroke;stroke:var(--chart-bg);stroke-width:3px;stroke-linejoin:round}
+.lp-cal .row{cursor:pointer;transition:opacity .2s}
+.lp-cal .row:focus{outline:none}
+.lp-cal .row:focus .hit,.lp-cal .row:hover .hit{fill:var(--grid)}
+.lp-cal .row.sel .hit{fill:var(--grid)}
+.lp-det{margin-top:12px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;font-size:14px;background:var(--panel);border-radius:6px;padding:14px 18px}
+.lp-det dt{color:var(--muted)}
+.lp-det dd{margin:0}
+@media (max-width:900px){.lp-tool{grid-template-columns:1fr}.lp-res{position:static}.lp-brief{grid-template-columns:1fr}}
+@media (max-width:640px){.lp-ladder{grid-template-columns:1fr}.lp-ms{grid-template-columns:repeat(2,1fr);row-gap:18px}.lp-ms:before{display:none}#lp-main .viz{padding:16px 12px 12px}}
+@media (prefers-reduced-motion:reduce){.lp-kit li{animation:none}}
+</style>
 <header class="phead">
   <span class="eyebrow">Plan and manage launches</span>
   <h1>Launch Playbook</h1>
-  <p class="lede">One Click LCA ships a major update every month and holds about two live launch events a year. Treating every release the same either exhausts sales or buries the releases that matter. The playbook starts with a rule for how much launch each release gets.</p>
+  <p class="lede">One Click LCA ships a major update every month and holds about two live launch events a year, so each release gets the size of launch its score earns.</p>
 </header>
-
-<section class="sec">
+<div id="lp-main">
+<section class="sec lead-viz" aria-labelledby="lp-h1">
   <span class="eyebrow">Tiering</span>
-  <h2>How big a launch does this release need?</h2>
-  <div class="model">
-    <div class="controls">
-      <h3>Describe the release</h3>
-      <p>Answer six questions. The tier and its launch kit update as you go.</p>
-      <div class="ctl"><label for="q1">Expected new or expansion revenue in 12 months</label><select id="q1"><option value="0">Under €250k</option><option value="2">€250k to €1m</option><option value="4">Over €1m</option></select></div>
-      <div class="ctl"><label for="q2">Who it changes things for</label><select id="q2"><option value="0">Existing users of one module</option><option value="1">One segment in a few markets</option><option value="3">Several segments or a new buyer</option></select></div>
-      <div class="ctl"><label for="q3">Tied to a regulation or scheme date</label><select id="q3"><option value="0">No</option><option value="1">Yes, more than six months away</option><option value="2">Yes, within six months</option></select></div>
-      <div class="ctl"><label for="q4">Effect on competitive deals</label><select id="q4"><option value="0">None</option><option value="1">Closes a known gap</option><option value="3">Creates a lead no rival matches</option></select></div>
-      <div class="ctl"><label for="q5">Pricing or packaging change</label><select id="q5"><option value="0">No</option><option value="2">Yes</option></select></div>
-      <div class="ctl"><label for="q6">Sellers or partners must change how they sell</label><select id="q6"><option value="0">No</option><option value="2">Yes</option></select></div>
+  <h2 id="lp-h1">Release Tiering</h2>
+  <div class="lp-presets" role="group" aria-label="Example releases"><span>Try an example release</span></div>
+  <div class="lp-tool">
+    <div class="lp-qs" id="lp-qs"></div>
+    <div class="lp-res" aria-live="polite">
+      <div class="lp-head"><span class="big" id="lp-tier">Tier one</span><p id="lp-desc"></p></div>
+      <div class="viz" style="margin-top:14px;padding:14px 14px 8px"><div id="lp-score"></div></div>
+      <div class="lp-ladder" id="lp-ladder"></div>
+      <p class="lp-k">Launch kit</p>
+      <ul class="lp-kit" id="lp-kit"></ul>
+      <p class="src" style="margin-top:12px">Thresholds: 9 or more is tier one, 4 to 8 is tier two, below 4 is tier three. Example answers are my judgement.</p>
     </div>
-    <div class="result" aria-live="polite" id="tierout"></div>
   </div>
 </section>
 
-<section class="sec">
+<section class="sec" aria-labelledby="lp-h2">
   <span class="eyebrow">Worked example</span>
-  <h2>Tier one launch: ready for the EU 2028 disclosure</h2>
-  <p class="intro">A launch built around the EU life cycle GWP method, timed to the national roadmaps due on 1 January 2027 and aimed at first-time buyers before the 1 January 2028 deadline.</p>
-  <div class="grid3">
-    <div class="panel"><h3>Goal</h3><p>Turn the 2028 deadline into new logos in the large EU markets that have no national LCA habit.</p><p class="k">Adoption target</p><p>Agreed with sales before release, for example new Business and Designer licences in Germany, Italy and Spain in the first two quarters.</p></div>
-    <div class="panel"><h3>Priority segments</h3><p>Chosen with the <a href="segments.html">Segment Model</a> using compliance weights:</p><ul><li>German designers, first-time buyers</li><li>Italian and Spanish designers</li><li>Global engineering firms standardising one EU method</li></ul></div>
-    <div class="panel"><h3>Core message</h3><p>"The EU method, done once, accepted everywhere you build." The proof: the EU method on the same model as national rules and certifications, an EPC-ready report, and local support.</p></div>
+  <h2 id="lp-h2">EU 2028 Launch Plan</h2>
+  <p class="intro">A tier one launch built around the EU life cycle GWP method, timed to the national roadmaps due on 1 January 2027 and aimed at first-time buyers before the 1 January 2028 deadline.</p>
+  <div class="lp-brief">
+    <div class="panel rv"><span class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><h3>Goal</h3><p>Turn the 2028 deadline into new logos in large EU markets with no national LCA habit. The adoption target is agreed with sales before release, for example new Business and Designer licences in Germany, Italy and Spain in the first two quarters.</p></div>
+    <div class="panel rv"><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><h3>Priority segments</h3><p>Chosen with the <a href="segments.html">Segment Model</a> using compliance weights.</p><ul><li>German designers buying for the first time</li><li>Italian and Spanish designers</li><li>Global engineering firms standardising one EU method</li></ul></div>
+    <div class="panel accent rv"><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></span><h3>Core message</h3><blockquote>"The EU method, done once, accepted everywhere you build."</blockquote><p style="margin-top:10px">The proof is the EU method on the same model as national rules and certifications, an EPC-ready report and local support.</p></div>
   </div>
-  <div class="tw"><table class="t">
-    <thead><tr><th style="width:14%">When</th><th style="width:30%">Work</th><th style="width:20%">Owner</th><th>Output</th></tr></thead>
-    <tbody>
-      <tr><th>T minus 8 weeks</th><td>Launch brief, segment choice, adoption target, pricing check</td><td>Product marketing with product and sales leadership</td><td>Signed launch brief</td></tr>
-      <tr><th>T minus 6 weeks</th><td>Message tests in calls; buyer interviews in Germany and Italy</td><td>Product marketing, regional sellers</td><td>Final message house</td></tr>
-      <tr><th>T minus 4 weeks</th><td>Battlecard, discovery guide, business case, demo script, FAQ</td><td>Product marketing, sales enablement</td><td>Enablement kit in all launch languages</td></tr>
-      <tr><th>T minus 3 weeks</th><td>Seller and reseller training; partner briefings with green building councils and Harpaceas</td><td>Product marketing, partner managers</td><td>Recorded training; certified sellers</td></tr>
-      <tr><th>T minus 2 weeks</th><td>Campaign build: landing pages, ABM lists, SDR sequences, webinar</td><td>Regional marketing, outbound and ABM</td><td>Campaigns ready</td></tr>
-      <tr><th>T</th><td>Live launch event, press release in local languages, customer story</td><td>Brand and communications</td><td>Launch day</td></tr>
-      <tr><th>T plus 2 to 12 weeks</th><td>Weekly adoption and pipeline review; loss reasons on early deals; message fixes</td><td>Product marketing, revenue operations</td><td>30, 60 and 90 day reports</td></tr>
-    </tbody>
-  </table></div>
-  <div class="kpis"><div><b>30 days</b><span>Sellers trained, pipeline created in priority segments</span></div><div><b>60 days</b><span>Opportunities and win rate against the national tool and consultants</span></div><div><b>90 days</b><span>New licences against target; feature use in accounts that bought</span></div></div>
+  <div class="viz rv">
+    <div class="viz-h"><h3>Launch Gantt, T minus 8 weeks to T plus 12 weeks</h3><p>Drag the week or press play. Select a bar for its output.</p></div>
+    <div class="lp-ctl"><button type="button" id="lp-play"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z" fill="currentColor"/></svg><span>Play</span></button><label class="sr" for="lp-wk">Launch week</label><input type="range" id="lp-wk" min="-8" max="12" step="1" value="-8"><output id="lp-wko" for="lp-wk">T−8</output></div>
+    <div class="legend"><span><i style="background:var(--ink2);border-radius:2px"></i>Lead owner</span><span><i style="background:var(--ink3);opacity:.45;border-radius:2px"></i>Supporting owner</span><span><i style="background:var(--ink1);border-radius:0;transform:rotate(45deg);width:9px;height:9px"></i>Launch day</span></div>
+    <div id="lp-gantt" class="lp-g"></div>
+    <div class="lp-now" id="lp-now" aria-live="polite"></div>
+  </div>
+  <div class="lp-ms" role="group" aria-label="Adoption checkpoints" id="lp-ms"></div>
+  <div class="lp-msd" id="lp-msd" aria-live="polite"></div>
 </section>
 
-<section class="sec">
+<section class="sec" aria-labelledby="lp-h3">
   <span class="eyebrow">Calendar</span>
-  <h2>A launch calendar for 2027 tied to regulatory dates</h2>
+  <h2 id="lp-h3">2027 Launch Calendar</h2>
+  <p class="intro">Each launch sits in the quarter its regulatory or budget date drives.</p>
+  <div class="btnrow" role="group" aria-label="Filter by tier" id="lp-filt"><button type="button" aria-pressed="true" data-t="0">All tiers</button><button type="button" aria-pressed="false" data-t="1">Tier one</button><button type="button" aria-pressed="false" data-t="2">Tier two</button><button type="button" aria-pressed="false" data-t="3">Tier three</button></div>
+  <div class="viz rv">
+    <div class="viz-h"><h3>Launches across 2027</h3><p>Select a row for detail.</p></div>
+    <div class="legend"><span><i style="background:var(--seq-5);border-radius:2px"></i>Tier one</span><span><i style="background:var(--seq-4);border-radius:2px"></i>Tier two</span><span><i style="background:var(--seq-3);border-radius:2px"></i>Tier three</span><span><i style="background:var(--ink1);border-radius:0;transform:rotate(45deg);width:9px;height:9px"></i>Fixed regulatory date</span></div>
+    <div id="lp-cal" class="lp-cal"></div>
+    <dl class="lp-det" id="lp-det" aria-live="polite"></dl>
+  </div>
+  <details class="more"><summary>Calendar as a table</summary>
   <div class="tw"><table class="t">
-    <thead><tr><th style="width:12%">Quarter</th><th style="width:30%">Date that drives it</th><th style="width:30%">Launch</th><th>Tier</th></tr></thead>
-    <tbody>
-      <tr><th>Q1 2027</th><td>National GWP roadmaps due 1 Jan 2027</td><td>EU 2028 readiness: EU method, EPC report, country roadmap guides</td><td><span class="tag a">Tier one</span></td></tr>
-      <tr><th>Q1 2027</th><td>CPR penalties apply 8 Jan 2027</td><td>CPR readiness for manufacturers: declaration templates and data checks</td><td><span class="tag">Tier two</span></td></tr>
-      <tr><th>Q2 2027</th><td>Spring live launch event</td><td>Workflow release: AI mapping and the new interface, aimed at users who compared Tally</td><td><span class="tag a">Tier one</span></td></tr>
-      <tr><th>Q2 2027</th><td>Denmark's signposted 2027 step</td><td>BR18 update for designers and contractors</td><td><span class="tag">Tier two</span></td></tr>
-      <tr><th>Q3 2027</th><td>Manufacturer budgets for 2028</td><td>Get specified: market intelligence and Manufacturer Pages for commercial directors</td><td><span class="tag">Tier two</span></td></tr>
-      <tr><th>Q4 2027</th><td>Cement delegated act expected</td><td>Cement and concrete EPD and passport readiness</td><td><span class="tag">Tier two</span></td></tr>
-      <tr><th>Monthly</th><td>Release notes</td><td>Country modules, scheme updates, integrations</td><td><span class="tag">Tier three</span></td></tr>
-    </tbody>
-  </table></div>
+    <thead><tr><th>Quarter</th><th>Date that drives it</th><th>Launch</th><th>Tier</th></tr></thead>
+    <tbody id="lp-caltb"></tbody>
+  </table></div></details>
 </section>
+</div>
 
 <script>
 (function(){
+var $=function(id){return document.getElementById(id)};
+var TC={1:"var(--seq-5)",2:"var(--seq-4)",3:"var(--seq-3)"},TN={1:"Tier one",2:"Tier two",3:"Tier three"};
+var Q=[
+ {id:"q1",s:"Revenue",l:"Expected new or expansion revenue in 12 months",o:[[0,"Under €250k"],[2,"€250k to €1m"],[4,"Over €1m"]]},
+ {id:"q2",s:"Reach",l:"Who it changes things for",o:[[0,"Existing users of one module"],[1,"One segment in a few markets"],[3,"Several segments or a new buyer"]]},
+ {id:"q3",s:"Deadline",l:"Tied to a regulation or scheme date",o:[[0,"No"],[1,"Yes, more than six months away"],[2,"Yes, within six months"]]},
+ {id:"q4",s:"Competition",l:"Effect on competitive deals",o:[[0,"None"],[1,"Closes a known gap"],[3,"Creates a lead no rival matches"]]},
+ {id:"q5",s:"Pricing",l:"Pricing or packaging change",o:[[0,"No"],[2,"Yes"]]},
+ {id:"q6",s:"Selling",l:"Sellers or partners must change how they sell",o:[[0,"No"],[2,"Yes"]]}
+];
+var P=[
+ {n:"EU 2028 readiness",a:[2,2,1,1,0,1]},
+ {n:"AI mapping and new interface",a:[1,2,0,2,0,1]},
+ {n:"CPR readiness for manufacturers",a:[1,1,2,1,0,0]},
+ {n:"Monthly country module",a:[0,0,1,0,0,0]}
+];
 var T={
-1:{n:"Tier one",d:"A company-wide launch. Two to three a year, usually at the live launch events.",k:["Launch brief signed by product and sales leadership eight weeks out","Buyer interviews and message testing","Full enablement kit, seller and reseller training with certification","Campaigns in each priority region, ABM and SDR sequences","Live event, press release in local languages, customer story","30, 60 and 90 day adoption and pipeline reviews"]},
-2:{n:"Tier two",d:"A segment launch. About one a month at most, aimed at named segments.",k:["One-page launch brief four weeks out","Updated battlecard or discovery questions for the segment","Short recorded training for sellers and partners","Targeted email, webinar and partner co-marketing","Release article and LinkedIn from subject experts","60 day adoption check"]},
-3:{n:"Tier three",d:"A release note. Most monthly updates belong here.",k:["Help centre and in-product announcement","Line in the monthly release summary for sellers","Customer success briefed for affected accounts"]}
+1:{d:"A company-wide launch. Two to three a year, usually at the live launch events.",f:"2 to 3 a year",k:["Launch brief signed by product and sales leadership eight weeks out","Buyer interviews and message testing","Full enablement kit, seller and reseller training with certification","Campaigns in each priority region, ABM and SDR sequences","Live event, press release in local languages, customer story","30, 60 and 90 day adoption and pipeline reviews"]},
+2:{d:"A segment launch. About one a month at most, aimed at named segments.",f:"Up to 1 a month",k:["One-page launch brief four weeks out","Updated battlecard or discovery questions for the segment","Short recorded training for sellers and partners","Targeted email, webinar and partner co-marketing","Release article and LinkedIn from subject experts","60 day adoption check"]},
+3:{d:"A release note. Most monthly updates belong here.",f:"Most months",k:["Help centre and in-product announcement","Line in the monthly release summary for sellers","Customer success briefed for affected accounts"]}
 };
-function go(){var s=["q1","q2","q3","q4","q5","q6"].reduce(function(a,id){return a+ +document.getElementById(id).value},0);
-var t=s>=9?1:s>=4?2:3,x=T[t];
-document.getElementById("tierout").innerHTML='<span class="eyebrow">Result, score '+s+' of 16</span><span class="big" style="margin-top:10px">'+x.n+'</span><p>'+x.d+'</p><p class="k" style="font:500 12px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:16px 0 6px">Launch kit</p><ul style="margin:0;padding-left:18px">'+x.k.map(function(i){return '<li style="margin-top:5px;font-size:15px">'+i+'</li>'}).join("")+'</ul><p class="src" style="margin-top:14px">Thresholds: 9 or more is tier one, 4 to 8 is tier two, below 4 is tier three.</p>';}
-["q1","q2","q3","q4","q5","q6"].forEach(function(id){document.getElementById(id).addEventListener("change",go)});
-go();
+/* questions as chip radios */
+var qs=$("lp-qs");
+qs.innerHTML='<h3 style="font-size:16px">Describe the release</h3><p class="mini">Six questions. The tier and kit update as you answer.</p>'+Q.map(function(q,i){return '<fieldset><legend><i style="background:var(--s'+(i+1)+')"></i>'+q.l+'</legend><div class="lp-chips">'+q.o.map(function(o,j){return '<label><input type="radio" name="'+q.id+'" value="'+o[0]+'"'+(j===0?' checked':'')+'><span>'+o[1]+'<em>+'+o[0]+'</em></span></label>'}).join("")+'</div></fieldset>'}).join("");
+var pr=document.querySelector(".lp-presets");
+P.forEach(function(p,i){var b=document.createElement("button");b.type="button";b.textContent=p.n;b.setAttribute("aria-pressed","false");b.addEventListener("click",function(){p.a.forEach(function(ix,k){qs.querySelectorAll('input[name="'+Q[k].id+'"]')[ix].checked=true});go(i)});pr.appendChild(b)});
+qs.addEventListener("change",function(){go(-1)});
+var check='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>';
+var lastTier=0;
+function vals(){return Q.map(function(q){return +qs.querySelector('input[name="'+q.id+'"]:checked').value})}
+function go(pi){
+ [].forEach.call(pr.querySelectorAll("button"),function(b,i){b.setAttribute("aria-pressed",i===pi?"true":"false")});
+ var v=vals(),s=v.reduce(function(a,b){return a+b},0),t=s>=9?1:s>=4?2:3,x=T[t];
+ $("lp-tier").textContent=TN[t];$("lp-desc").textContent=x.d;
+ $("lp-ladder").innerHTML=[1,2,3].map(function(k){return '<div class="'+(k===t?"on":"")+'"><b><i style="background:'+TC[k]+'"></i>'+TN[k]+'</b>'+(k===1?"Score 9 to 16":k===2?"Score 4 to 8":"Score 0 to 3")+' · '+T[k].f+'</div>'}).join("");
+ if(t!==lastTier){$("lp-kit").innerHTML=x.k.map(function(k,i){return '<li style="animation-delay:'+(i*60)+'ms">'+check+k+'</li>'}).join("");lastTier=t}
+ drawScore(v,s,t);
+}
+function drawScore(v,s,t){var host=$("lp-score");host.innerHTML="";var W=Math.max(260,host.clientWidth||500),H=96,L=6,R=W-6,x=VZ.lin(0,16,L,R);
+ var svg=VZ.svg(host,W,H,"Score "+s+" of 16, "+TN[t]+". Contributions: "+Q.map(function(q,i){return q.s+" "+v[i]}).join(", "));svg.setAttribute("role","group");
+ /* tier bands */
+ [[0,4,3],[4,9,2],[9,16,1]].forEach(function(b){var g=VZ.el("rect",{x:x(b[0])+(b[0]?1:0),y:56,width:x(b[1])-x(b[0])-(b[0]?1:0)-(b[1]<16?1:0),height:8,rx:2,fill:TC[b[2]],opacity:b[2]===t?1:.45},svg);
+  var tx=VZ.el("text",{x:(x(b[0])+x(b[1]))/2,y:82,"text-anchor":"middle","class":b[2]===t?"t-strong":""},svg);tx.textContent=TN[b[2]]});
+ [4,9].forEach(function(k){VZ.el("line",{x1:x(k),x2:x(k),y1:22,y2:66,"class":"axis"},svg);var tx=VZ.el("text",{x:x(k),y:14,"text-anchor":"middle","class":"t-muted"},svg);tx.textContent=k});
+ VZ.el("rect",{x:L,y:26,width:R-L,height:22,rx:3,fill:"var(--grid)",opacity:.5},svg);
+ var acc=0;v.forEach(function(val,i){if(!val)return;var x0=x(acc)+(acc?1:0),x1=x(acc+val)-1;acc+=val;var last=acc===s;
+  var g=VZ.el("g",{role:"img","aria-label":Q[i].s+": +"+val},svg);
+  var p=last?VZ.bar(g,x0,26,x1-x0+1,22,"var(--s"+(i+1)+")","h"):VZ.el("rect",{x:x0,y:26,width:Math.max(0,x1-x0),height:22,fill:"var(--s"+(i+1)+")"},g);
+  VZ.tip(g,function(){return '<b>+'+val+' points</b><span class="m">'+Q[i].l+'</span>'})});
+ var mx=x(s);VZ.el("line",{x1:mx,x2:mx,y1:20,y2:54,stroke:"var(--ink1)","stroke-width":2},svg);
+ var lab=VZ.el("text",{x:Math.min(Math.max(mx,40),W-40),y:14,"text-anchor":"middle","class":"t-strong"},svg);lab.textContent="Score "+s+" of 16";
+ if(Math.abs(mx-x(4))<40||Math.abs(mx-x(9))<40){[].forEach.call(svg.querySelectorAll("text.t-muted"),function(e){if(Math.abs(+e.getAttribute("x")-mx)<40)e.remove()})}
+}
+
+/* Gantt */
+var LN=["Product marketing","Sales and partners","Regional marketing","Brand and comms","Revenue operations"];
+var G=[
+ {s:-8,e:-6,l:0,sp:[],w:"Launch brief, segment choice, adoption target and pricing check",o:"Product marketing with product and sales leadership",out:"Signed launch brief",n:"Brief"},
+ {s:-6,e:-4,l:0,sp:[1],w:"Message tests in calls and buyer interviews in Germany and Italy",o:"Product marketing and regional sellers",out:"Final message house",n:"Message tests"},
+ {s:-4,e:-3,l:0,sp:[1],w:"Battlecard, discovery guide, business case, demo script and FAQ",o:"Product marketing and sales enablement",out:"Enablement kit in all launch languages",n:"Kit"},
+ {s:-3,e:-2,l:0,sp:[1],w:"Seller and reseller training, and partner briefings with green building councils and Harpaceas",o:"Product marketing and partner managers",out:"Recorded training and certified sellers",n:"Training"},
+ {s:-2,e:0,l:2,sp:[],w:"Campaign build: landing pages, ABM lists, SDR sequences and a webinar",o:"Regional marketing, outbound and ABM",out:"Campaigns ready",n:"Campaign build"},
+ {s:0,e:0,l:3,sp:[],w:"Live launch event, press release in local languages and a customer story",o:"Brand and communications",out:"Launch day",n:"Launch"},
+ {s:2,e:12,l:0,sp:[4],w:"Weekly adoption and pipeline review, loss reasons on early deals and message fixes",o:"Product marketing and revenue operations",out:"30, 60 and 90 day reports",n:"Adoption and pipeline review"}
+];
+function wl(w){return w===0?"T":w<0?"T−"+(-w):"T+"+w}
+var wk=-8,gEls=[];
+function active(t){return t.e===t.s?wk===t.s:(wk>=t.s&&wk<t.e)||(wk===12&&t.e===12)}
+function drawGantt(){var host=$("lp-gantt");host.innerHTML="";gEls=[];var W=Math.max(300,host.clientWidth||700),narrow=W<620;
+ var LW=narrow?0:150,top=26,rh=narrow?50:42,bh=narrow?18:20,H=top+LN.length*rh+8,x=VZ.lin(-8,12,LW+8,W-10);
+ var svg=VZ.svg(host,W,H,"Gantt of the EU 2028 launch from T minus 8 weeks to T plus 12 weeks across five owner lanes. Full list below the chart.");svg.setAttribute("role","group");
+ for(var k=-8;k<=12;k+=narrow?4:2){VZ.el("line",{x1:x(k),x2:x(k),y1:top-4,y2:H-6,"class":"grid"},svg);var tx=VZ.el("text",{x:x(k),y:14,"text-anchor":"middle","class":k===0?"t-strong":"t-muted"},svg);tx.textContent=wl(k)}
+ var cur=VZ.el("g",{"pointer-events":"none"},svg);VZ.el("line",{x1:0,x2:0,y1:top-4,y2:H-6,stroke:"var(--ink1)","stroke-width":2},cur);
+ LN.forEach(function(n,i){var y=top+i*rh;VZ.el("line",{x1:0,x2:W,y1:y,y2:y,"class":"grid"},svg);var tx=VZ.el("text",{x:narrow?0:0,y:narrow?y+14:y+rh/2+4,"class":"t-strong"},svg);tx.textContent=n;tx.setAttribute("font-size",narrow?"11.5":"12.5")});
+ G.forEach(function(t,ti){var lanes=[t.l].concat(t.sp);lanes.forEach(function(ln,li){var y=top+ln*rh+(narrow?rh-bh-8:(rh-bh)/2);
+  var g=VZ.el("g",{"class":"bar",role:"button","aria-label":wl(t.s)+": "+t.w+". "+t.o+". Output: "+t.out},svg);
+  if(t.e===t.s){var cx=x(t.s),cy=y+bh/2;VZ.el("rect",{x:cx-8,y:cy-8,width:16,height:16,transform:"rotate(45 "+cx+" "+cy+")",fill:"var(--s"+(ln+1)+")"},g)}
+  else{var x0=x(t.s)+1,x1=x(t.e)-1;var p=VZ.bar(g,x0,y,x1-x0,bh,"var(--s"+(ln+1)+")","h");if(li>0)p.setAttribute("opacity",".45");
+   if(!narrow&&li===0&&x1-x0>t.n.length*6.6+12){var tx=VZ.el("text",{x:x0+8,y:y+bh/2+4,fill:"#fff","font-size":"11.5","pointer-events":"none"},g);tx.style.fill="#fff";tx.textContent=t.n}}
+  VZ.tip(g,function(){return '<b>'+wl(t.s)+(t.e!==t.s?" to "+wl(t.e):"")+'</b>'+t.w+'<br><span class="m">'+(li?"Supporting: ":"Lead: ")+t.o+'<br>Output: '+t.out+'</span>'});
+  g.addEventListener("click",function(){setWk(t.s)});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();setWk(t.s)}});
+  gEls.push({g:g,t:t})})});
+ drawGantt.cur=cur;drawGantt.x=x;paint();
+}
+function paint(){gEls.forEach(function(o){o.g.style.opacity=active(o.t)?1:.28});if(drawGantt.cur)drawGantt.cur.setAttribute("transform","translate("+drawGantt.x(wk)+",0)");
+ $("lp-wko").textContent=wl(wk)+(wk===0?" launch":"");
+ var a=G.filter(active);$("lp-now").innerHTML=a.length?a.map(function(t){return '<div><b>'+t.w+'</b><span>'+t.o+'. Output: '+t.out+'</span></div>'}).join(""):'<p>'+wl(wk)+': launch week activity winds down; adoption reviews begin at T+2.</p>'}
+function setWk(w){wk=w;$("lp-wk").value=w;paint()}
+$("lp-wk").addEventListener("input",function(e){stop();setWk(+e.target.value)});
+var timer=null;function stop(){if(timer){clearInterval(timer);timer=null;$("lp-play").querySelector("span").textContent="Play"}}
+$("lp-play").addEventListener("click",function(){if(timer){stop();return}if(wk>=12)setWk(-8);this.querySelector("span").textContent="Pause";timer=setInterval(function(){if(wk>=12){stop();return}setWk(wk+1)},420)});
+
+/* milestones */
+var MS=[["T","Launch day","Live event, press release and customer story go out."],["30 days","Readiness","Sellers trained and pipeline created in the priority segments."],["60 days","Competition","Opportunities and win rate against the national tool and consultants."],["90 days","Results","New licences against target, and feature use in the accounts that bought."]];
+$("lp-ms").innerHTML=MS.map(function(m,i){return '<button type="button" class="'+(i===0?"t0":"")+'" aria-pressed="'+(i===1)+'"><i></i><b>'+m[0]+'</b><span>'+m[1]+'</span></button>'}).join("");
+var msb=[].slice.call($("lp-ms").querySelectorAll("button"));
+function ms(i){msb.forEach(function(b,j){b.setAttribute("aria-pressed",i===j)});$("lp-msd").innerHTML='<b>'+MS[i][0]+(i?" after launch":"")+'.</b> '+MS[i][2]}
+msb.forEach(function(b,i){b.addEventListener("click",function(){ms(i)})});ms(1);
+
+/* calendar */
+var C=[
+ {q:1,t:1,dr:"National GWP roadmaps due 1 Jan 2027",d:[1,1],n:"EU 2028 readiness",f:"EU method, EPC report and country roadmap guides"},
+ {q:1,t:2,dr:"CPR penalties apply 8 Jan 2027",d:[1,8],n:"CPR readiness",f:"Declaration templates and data checks for manufacturers"},
+ {q:2,t:1,dr:"Spring live launch event",n:"Workflow release",f:"AI mapping and the new interface, aimed at users who compared Tally"},
+ {q:2,t:2,dr:"Denmark's signposted 2027 step",n:"BR18 update",f:"For designers and contractors"},
+ {q:3,t:2,dr:"Manufacturer budgets for 2028",n:"Get specified",f:"Market intelligence and Manufacturer Pages for commercial directors"},
+ {q:4,t:2,dr:"Cement delegated act expected",n:"Cement and concrete",f:"EPD and passport readiness"},
+ {q:0,t:3,dr:"Release notes",n:"Monthly releases",f:"Country modules, scheme updates and integrations"}
+];
+$("lp-caltb").innerHTML=C.map(function(c){return '<tr><th>'+(c.q?"Q"+c.q+" 2027":"Monthly")+'</th><td>'+c.dr+'</td><td>'+c.n+': '+c.f+'</td><td>'+TN[c.t]+'</td></tr>'}).join("");
+var filt=0,sel=0,cEls=[];
+function drawCal(){var host=$("lp-cal");host.innerHTML="";cEls=[];var W=Math.max(300,host.clientWidth||700),narrow=W<620;
+ var LW=narrow?0:190,top=40,rh=narrow?50:40,H=top+C.length*rh+4,x=VZ.lin(0,12,LW+4,W-4);
+ var svg=VZ.svg(host,W,H,"2027 launch calendar with seven launches by quarter and tier. Table version below.");svg.setAttribute("role","group");
+ var MN=["J","F","M","A","M","J","J","A","S","O","N","D"];
+ for(var q=0;q<4;q++){var tx=VZ.el("text",{x:(x(q*3)+x(q*3+3))/2,y:12,"text-anchor":"middle","class":"t-strong"},svg);tx.textContent="Q"+(q+1);VZ.el("line",{x1:x(q*3),x2:x(q*3),y1:0,y2:H,"class":"axis"},svg)}
+ VZ.el("line",{x1:x(12),x2:x(12),y1:0,y2:H,"class":"axis"},svg);
+ for(var m=0;m<12;m++){var tm=VZ.el("text",{x:(x(m)+x(m+1))/2,y:30,"text-anchor":"middle","class":"t-muted"},svg);tm.textContent=MN[m];if(m%3)VZ.el("line",{x1:x(m),x2:x(m),y1:20,y2:H,"class":"grid"},svg)}
+ C.forEach(function(c,i){var y=top+i*rh,g=VZ.el("g",{"class":"row",role:"button","aria-label":c.n+", "+TN[c.t]+", "+(c.q?"Q"+c.q:"monthly")+". Driven by "+c.dr},svg);
+  VZ.el("rect",{"class":"hit",x:0,y:y,width:W,height:rh,fill:"transparent",rx:3},g);
+  var by=narrow?y+rh-20:y+(rh-14)/2;
+  var lb=VZ.el("text",{x:narrow?2:6,y:narrow?y+15:y+rh/2+4,"class":"t-strong"},g);lb.textContent=c.n;
+  if(c.q){var x0=x((c.q-1)*3)+3,x1=x(c.q*3)-3;VZ.bar(g,x0,by,x1-x0,14,TC[c.t],"h");}
+  else{for(var m=0;m<12;m++){var cx=(x(m)+x(m+1))/2;VZ.el("circle",{cx:cx,cy:by+7,r:4.5,fill:TC[3],stroke:"var(--ring)","stroke-width":2},g)}}
+  if(c.d){var dx=x((c.d[1]-1)/31),dy=by+7;VZ.el("rect",{x:dx-6,y:dy-6,width:12,height:12,transform:"rotate(45 "+dx+" "+dy+")",fill:"var(--ink1)",stroke:"var(--ring)","stroke-width":2},g)}
+  VZ.tip(g,function(){return '<b>'+c.n+'</b>'+c.f+'<br><span class="m">'+TN[c.t]+' · '+(c.q?"Q"+c.q+" 2027":"Every month")+'<br>Driver: '+c.dr+'</span>'});
+  g.addEventListener("click",function(){sel=i;paintCal()});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();sel=i;paintCal()}});
+  cEls.push(g)});paintCal()}
+function paintCal(){cEls.forEach(function(g,i){g.style.opacity=(!filt||C[i].t===filt)?1:.2;g.classList.toggle("sel",i===sel)});var c=C[sel];
+ $("lp-det").innerHTML='<dt>Launch</dt><dd><b>'+c.n+'</b>: '+c.f+'</dd><dt>Driver</dt><dd>'+c.dr+'</dd><dt>When</dt><dd>'+(c.q?"Q"+c.q+" 2027":"Every month")+' · '+TN[c.t]+'</dd>'}
+[].forEach.call($("lp-filt").querySelectorAll("button"),function(b){b.addEventListener("click",function(){filt=+b.dataset.t;[].forEach.call($("lp-filt").querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x===b)});var f=C.findIndex(function(c){return !filt||c.t===filt});if(filt&&C[sel].t!==filt)sel=f;paintCal()})});
+
+var rt,lw=innerWidth;addEventListener("resize",function(){if(innerWidth===lw)return;lw=innerWidth;clearTimeout(rt);rt=setTimeout(function(){var v=vals();drawScore(v,v.reduce(function(a,b){return a+b},0),lastTier);drawGantt();drawCal()},150)});
+P[0].a.forEach(function(ix,k){qs.querySelectorAll('input[name="'+Q[k].id+'"]')[ix].checked=true});
+go(0);drawGantt();drawCal();
 })();
 </script>
