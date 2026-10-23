@@ -26,7 +26,7 @@
 .dm-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .dm-scroll svg{overflow:visible}
 .dm-ev{cursor:pointer;transition:opacity .25s}
-.dm-ev.dim .c{fill:var(--ink3)!important}.dm-ev.dim .o{display:none}.dm-ev.dim{opacity:.85}
+.dm-ev.dim .c{fill:var(--chart-bg)!important;stroke:var(--ink3)!important;stroke-width:1.5px}.dm-ev.dim .o{display:none}.dm-ev.dim{opacity:.85}
 .dm-mob{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:8px}
 .dm-mob .yr{font:600 18px/1 var(--sans);margin-top:12px;padding-bottom:6px;border-bottom:1px solid var(--grid);display:flex;gap:8px;align-items:center}
 .dm-mob .dm-ev{display:flex;gap:10px;font-size:14px;line-height:1.4}
@@ -187,7 +187,7 @@ var VZ=window.VZ;
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
 function responsive(host,draw){var w=-1;function go(){var n=host.clientWidth;if(n&&n!==w){w=n;host.innerHTML="";draw(n)}}go();var t;addEventListener("resize",function(){clearTimeout(t);t=setTimeout(go,120)})}
 var SEG=[["des","Designers and consultants",1],["dev","Developers and owners",2],["con","Contractors",3],["mfr","Manufacturers",4],["pub","Public clients",5]];
-var segName={},segCol={};SEG.forEach(function(s){segName[s[0]]=s[1];segCol[s[0]]="var(--s"+s[2]+")"});segName.all="All segments";segCol.all="var(--ink2)";
+var segName={},segCol={};SEG.forEach(function(s){segName[s[0]]=s[1];segCol[s[0]]="var(--s"+s[2]+")"});segName.all="All segments";segCol.all="var(--ink3)";
 var ROWS=["EU","Finland","Denmark","Netherlands","France","Sweden","Ireland","Iceland","California","LEED (global)"];
 var FORCE={1:2026,2:2025,3:2025,4:2025,5:2025,6:2025.67,7:2025.67,0:2028};
 function d(y,m,dd){return y+(m-1)/12+((dd||1)-1)/365}
@@ -228,7 +228,7 @@ function hits(e,f){return !f||e.s.indexOf(f)>=0||e.s.indexOf("all")>=0}
 var fb=document.getElementById("dm-filter");
 [[null,"All segments"]].concat(SEG).forEach(function(s){var b=document.createElement("button");b.type="button";b.textContent=s[1];b.setAttribute("aria-pressed",s[0]===null);
  b.onclick=function(){filt=s[0];[].forEach.call(fb.children,function(x){x.setAttribute("aria-pressed",x===b)});apply()};fb.appendChild(b)});
-document.getElementById("dm-leg").innerHTML=SEG.map(function(s){return'<span><i style="background:var(--s'+s[2]+')"></i>'+s[1]+'</span>'}).join("")+'<span><i style="background:var(--ink2)"></i>All segments</span><span><i style="background:var(--axis);border-radius:2px;width:16px;height:6px"></i>Rule in force</span>';
+document.getElementById("dm-leg").innerHTML=SEG.map(function(s){return'<span><i style="background:var(--s'+s[2]+')"></i>'+s[1]+'</span>'}).join("")+'<span><i style="background:var(--ink3)"></i>All segments</span><span><i style="background:var(--axis);border-radius:2px;width:16px;height:6px"></i>Rule in force</span>';
 function apply(){evEls.forEach(function(g,i){if(g)g.classList.toggle("dim",!hits(EV[i],filt))})}
 function segTags(s){return s.map(function(k){return'<span class="dm-seg"><i style="background:'+segCol[k]+'"></i>'+segName[k]+'</span>'}).join("")}
 function detail(i){selE=i;var e=EV[i];evEls.forEach(function(g,k){if(g)g.classList.toggle("sel",k===i)});

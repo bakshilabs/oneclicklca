@@ -139,7 +139,7 @@ function draw(){
  host.innerHTML="";els=[];var W=Math.max(300,host.clientWidth),nar=W<640,lw=nar?0:275,rh=nar?40:28,top=34,H=top+A.length*rh+40;
  var s=VZ.svg(host,W,H,"Gantt chart of fifteen overlapping tasks over 90 days, from reading the roadmap on days 1 to 15 to setting the win rate baseline on days 75 to 90, with outputs at days 30, 60 and 90.");s.setAttribute("role","group");
  var x=VZ.lin(0,90,lw+4,W-12);
- PH.forEach(function(p,i){VZ.el("rect",{x:x(i*30),y:top-6,width:x(30)-x(0),height:A.length*rh+8,style:"fill:var(--accent)",opacity:mode.t==="phase"&&mode.p===i?.09:(i%2?.035:0)},s);
+ PH.forEach(function(p,i){VZ.el("rect",{x:x(i*30),y:top-6,width:x(30)-x(0),height:A.length*rh+8,style:"fill:var(--accent)",opacity:mode.t==="phase"&&mode.p===i?.1:.035},s);
   var t=VZ.el("text",{x:(x(i*30)+x(i*30+30))/2,y:14,"text-anchor":"middle","class":"t-strong"},s);t.textContent=p;
   var t2=VZ.el("text",{x:(x(i*30)+x(i*30+30))/2,y:28,"text-anchor":"middle","class":"t-muted"},s);t2.textContent=nar?"Days "+(i*30+1)+"–"+(i*30+30):"Days "+(i*30+1)+" to "+(i*30+30);});
  [0,30,60,90].forEach(function(d){VZ.el("line",{x1:x(d),x2:x(d),y1:top-6,y2:top+A.length*rh+2,"class":"grid"},s)});
@@ -154,15 +154,15 @@ function draw(){
  MS.forEach(function(m,i){var cx=x(m[0])-(i===2?8:0),g=VZ.el("g",{"class":"ms",tabindex:0,role:"button","aria-label":"Day "+m[0]+" output: "+m[1]},s);
   VZ.el("rect",{x:cx-14,y:my-14,width:28,height:28,fill:"transparent"},g);
   VZ.el("path",{d:"M"+cx+","+(my-9)+"l9,9l-9,9l-9,-9z",style:"fill:var(--accent);stroke:var(--chart-bg)","stroke-width":2},g);
-  var t=VZ.el("text",{x:cx-12,y:my+22,"text-anchor":"end","class":"t-muted"},g);t.textContent=nar?"Day "+m[0]:"Day "+m[0]+": "+m[1];
+  var t=VZ.el("text",{x:cx,y:my+24,"text-anchor":i===2?"end":"middle","class":"t-muted"},g);if(i===2)t.setAttribute("x",cx+9);t.textContent=nar?"Day "+m[0]:"Day "+m[0]+": "+m[1];
   VZ.tip(g,function(){return "<b>Day "+m[0]+": "+m[1]+"</b>"+m[2]});g.addEventListener("click",function(){setOut(i)});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();setOut(i)}});});
- showDet();
+ showDet();if(window.ndP)ndP();
 }
 var tbtn=document.getElementById("nd-team"),obtn=[].slice.call(document.querySelectorAll("#nd-out button"));
 var kbtn=[].slice.call(document.querySelectorAll("#nd-kpi button"));
 function clearCtl(){[].forEach.call(tbtn.querySelectorAll("button"),function(b){b.setAttribute("aria-pressed","false")});obtn.forEach(function(b){b.setAttribute("aria-pressed","false")});kbtn.forEach(function(b){b.setAttribute("aria-pressed","false")})}
 kbtn.forEach(function(b){b.addEventListener("click",function(){clearCtl();b.setAttribute("aria-pressed","true");mode={t:"kpi",k:+b.dataset.t};sel=null;draw()})});
-function setOut(i){clearCtl();obtn[i].setAttribute("aria-pressed","true");mode={t:"out",k:i};sel=null;draw()}
+function setOut(i){clearCtl();obtn[i].setAttribute("aria-pressed","true");mode={t:"out",k:i};sel=null;draw();if(window.ndP)ndP()}
 obtn.forEach(function(b,i){b.addEventListener("click",function(){setOut(i)})});
 TEAMS.forEach(function(t,k){var b=document.createElement("button");b.type="button";b.setAttribute("aria-pressed","false");b.textContent=t;b.addEventListener("click",function(){var was=mode.t==="team"&&mode.k===k;clearCtl();if(was){mode={t:"all"}}else{b.setAttribute("aria-pressed","true");mode={t:"team",k:k}}sel=null;draw()});tbtn.appendChild(b)});
 var tl=document.getElementById("nd-tabs");
@@ -181,19 +181,19 @@ function drawP(){[].forEach.call(pg.children,function(b,j){b.setAttribute("aria-
  pgh.innerHTML="";var W=Math.max(280,pgh.clientWidth),H=150,x=VZ.lin(0,90,16,W-16);
  var s=VZ.svg(pgh,W,H,pr[0]+" shapes the day "+m[0]+" output, "+m[1]+". Measure: "+pr[3]+".");
  VZ.el("line",{x1:x(0),x2:x(90),y1:40,y2:40,"class":"axis","stroke-width":2},s);
- MS.forEach(function(mm,i){var on=i===pr[2],cx=x(mm[0]);VZ.el("path",{d:"M"+cx+",30l10,10l-10,10l-10,-10z",style:"fill:"+(on?"var(--s1)":"var(--ink3)")+";stroke:var(--chart-bg)","stroke-width":2},s);
+ MS.forEach(function(mm,i){var on=i===pr[2],cx=x(mm[0]);VZ.el("path",{d:"M"+cx+",30l10,10l-10,10l-10,-10z",style:"fill:"+(on?"var(--accent)":"var(--ink3)")+";stroke:var(--chart-bg)","stroke-width":2},s);
   var t=VZ.el("text",{x:cx,y:18,"text-anchor":i===0?"middle":i===2?"end":"middle","class":on?"t-strong":"t-muted"},s);t.textContent="Day "+mm[0]+(W>420?": "+mm[1]:"");});
- var cx=x(m[0]);VZ.el("path",{d:"M"+cx+",52V82",style:"stroke:var(--s1)","stroke-width":2},s);
+ var cx=x(m[0]);VZ.el("path",{d:"M"+cx+",52V82",style:"stroke:var(--accent)","stroke-width":2},s);
  var two=pr[3].length*7+28>W-8,ws=pr[3].split(" "),hf=Math.ceil(ws.length/2),lines=two?[ws.slice(0,hf).join(" "),ws.slice(hf).join(" ")]:[pr[3]];
  var bw=Math.min(W-8,Math.max(220,Math.max.apply(null,lines.map(function(l){return l.length}))*7+28)),bx=Math.max(4,Math.min(cx-bw/2,W-4-bw)),bh2=two?62:44;
  if(two){H=168;s.setAttribute("viewBox","0 0 "+W+" "+H)}
- VZ.el("rect",{x:bx,y:82,width:bw,height:bh2,rx:3,style:"fill:var(--panel);stroke:var(--s1)","stroke-width":1.5},s);
+ VZ.el("rect",{x:bx,y:82,width:bw,height:bh2,rx:3,style:"fill:var(--panel);stroke:var(--accent)","stroke-width":1.5},s);
  var k=VZ.el("text",{x:bx+12,y:99,"class":"t-muted"},s);k.textContent="Measure";
  lines.forEach(function(l,j){var v=VZ.el("text",{x:bx+12,y:117+j*17,"class":"t-strong"},s);v.textContent=l;});
- var go=document.getElementById("nd-pgo");go.textContent="Show the day "+m[0]+" tasks in the plan";}
+ var go=document.getElementById("nd-pgo"),act=mode.t==="out"&&mode.k===pr[2];go.setAttribute("aria-pressed",act);go.textContent=act?"Day "+m[0]+" tasks highlighted in the plan; select to clear":"Highlight the day "+m[0]+" tasks in the plan";}
 PR.forEach(function(p,i){var b=document.createElement("button");b.type="button";b.innerHTML='<span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24">'+p[1]+'</svg></span><b></b>';txt(b.querySelector("b"),p[0]);b.addEventListener("click",function(){psel=i;drawP()});pg.appendChild(b)});
-document.getElementById("nd-pgo").addEventListener("click",function(){setOut(PR[psel][2]);host.scrollIntoView({behavior:"smooth",block:"center"})});
-drawP();
+document.getElementById("nd-pgo").addEventListener("click",function(){var k=PR[psel][2];if(mode.t==="out"&&mode.k===k){clearCtl();mode={t:"all"};sel=null;draw()}else{setOut(k);host.scrollIntoView({behavior:"smooth",block:"center"})}drawP()});
+drawP();window.ndP=drawP;
 var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){draw();drawP()},120)});
 })();
 </script>

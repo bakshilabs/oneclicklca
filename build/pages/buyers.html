@@ -21,7 +21,8 @@
 .by-hm td.col{box-shadow:inset 0 0 0 2.5px var(--ink1)}
 .by-vo small{display:block;font:600 11px/1.2 var(--sans);text-transform:uppercase;letter-spacing:.05em;color:var(--ink2);margin:10px 0 4px}
 .by-vo .ob{font-size:15px;font-weight:500}
-.by-vo blockquote{margin:0;background:var(--panel);border-left:4px solid var(--s2);border-radius:4px;padding:12px 14px;font-size:14.5px}
+.by-vo .ev{font-size:14.5px;background:var(--ok-soft);border-radius:4px;padding:10px 12px}
+.by-vo blockquote{margin:0;background:var(--panel);border-left:4px solid var(--ink3);border-radius:4px;padding:12px 14px;font-size:14.5px}
 .by-vo blockquote .src{display:block;margin-top:6px;font-size:12.5px;color:var(--ink2)}
 .by-vo2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .by-sn{display:block;padding:4px 10px;font-size:14px}
@@ -52,11 +53,11 @@
 .by-mode{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;font-size:13px;color:var(--ink2)}
 .by-vb{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .by-board{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
-.by-q{background:var(--panel);border-radius:6px;padding:16px 18px;font-size:15px;border-left:4px solid var(--s1)}
-.by-q.con{border-left-color:var(--s2)}
+.by-q{background:var(--panel);border-radius:6px;padding:16px 18px;font-size:15px;border-left:4px solid var(--s7)}
+.by-q.con{border-left-color:var(--s8)}
 .by-q .src{display:block;margin-top:8px;font-size:12.5px;color:var(--ink2)}
 .by-extra{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px;font-size:13px;color:var(--ink2)}
-.by-cyc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:center}
+.by-cyc{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:28px;align-items:center}
 .by-cyc .node{cursor:pointer}
 .by-cyc .node:focus-visible{outline:none}.by-cyc .node:focus-visible circle{stroke:var(--accent);stroke-width:3}
 .by-cinfo{background:var(--panel);border-radius:6px;padding:20px 22px}
@@ -111,15 +112,15 @@
   <h2>Praise and complaints</h2>
   <div class="viz rv">
     <div class="viz-h"><h3>G2 review tags, number of reviews</h3><p>Select a tag to read what customers wrote.</p></div>
-    <div class="legend"><span><i style="background:var(--s1)"></i>Praise tags</span><span><i style="background:var(--s2)"></i>Complaint tags</span></div>
+    <div class="legend"><span><i style="background:var(--s7)"></i>Praise tags</span><span><i style="background:var(--s8)"></i>Complaint tags</span></div>
     <div id="by-tags"></div>
     <div class="by-extra"><span>From case studies:</span><div class="btnrow" style="margin-top:0" id="by-xtra"></div></div>
     <div class="by-board" id="by-board" aria-live="polite"></div>
     <p class="mini" style="margin-top:12px">Quotes are grouped under tags by my reading. G2 quotes were read on the machine-translated Italian page and translated back, so wording may differ from the original.</p>
   </div>
   <div class="by-vb">
-    <div class="viz rv"><div class="viz-h"><h3>Capterra sub-scores</h3><p>18 reviews, out of 5</p></div><div id="by-cap"></div><p class="mini" id="by-capr" aria-live="polite" style="margin-top:8px"></p></div>
-    <div class="viz rv"><div class="viz-h"><h3>G2 star ratings</h3><p>4.5 out of 5 from 99 reviews</p></div><div id="by-g2"></div><p class="mini" id="by-g2r" aria-live="polite" style="margin-top:4px"></p><div class="legend" style="margin-top:10px"><span><i style="background:var(--seq-5);border-radius:2px"></i>5 stars</span><span><i style="background:var(--seq-4);border-radius:2px"></i>4 stars</span><span><i style="background:var(--seq-3);border-radius:2px"></i>3 stars</span><span><i style="background:var(--axis);border-radius:2px"></i>Lower</span></div></div>
+    <div class="viz rv"><div class="viz-h"><h3>Capterra sub-scores</h3><p>18 reviews, scale 0 to 5</p></div><div id="by-cap"></div><p class="mini" id="by-capr" aria-live="polite" style="margin-top:8px"></p></div>
+    <div class="viz rv"><div class="viz-h"><h3>G2 star ratings</h3><p>4.5 out of 5 from 99 reviews</p></div><div id="by-g2"></div><p class="mini" id="by-g2r" aria-live="polite" style="margin-top:4px"></p><div class="legend" style="margin-top:10px"><span><i style="background:var(--s7);border-radius:2px"></i>5 stars</span><span><i style="background:color-mix(in srgb,var(--s7) 55%,var(--chart-bg));border-radius:2px"></i>4 stars</span><span><i style="background:color-mix(in srgb,var(--s7) 25%,var(--chart-bg));border-radius:2px"></i>3 stars</span><span><i style="background:var(--axis);border-radius:2px"></i>Lower</span></div></div>
   </div>
   <div class="callout"><p><b>Positioning implication.</b> Customers praise the data and the support, and complain about the interface and the BIM round-trip. Lead with data and support, and show workflow launches to evaluators who tried Tally.</p></div>
 </section>
@@ -197,7 +198,7 @@ var QS=[["I encountered many bugs moving from Revit to the cloud, and the cloud 
  null,
  ["The software focuses mainly on the construction sector, while I work with electric heating appliances, making it hard to find suitable material data points.","EPD user, G2, December 2025, 3 of 5, translated"],
  null,null];
-function voice(i){var q=QS[i],sg=SEG[i];return'<div class="by-vo"><small>Top objection</small><p class="ob">'+esc(sg.st)+'</p><small>'+(q?'In a customer\'s words':'Evidence gap')+'</small>'+(q?'<blockquote>"'+esc(q[0])+'"<span class="src">'+esc(q[1])+'</span></blockquote>':'<p class="mini">No public review quote was found for '+esc(sg.n.toLowerCase())+', so this objection needs testing in interviews.</p>')+'</div>'}
+function voice(i){var q=QS[i],sg=SEG[i];return'<div class="by-vo"><small>Top objection</small><p class="ob">'+esc(sg.st)+'</p><small>Evidence that answers it for the signer</small><p class="ev">'+esc(sg.ev)+'</p><small>'+(q?'In a customer\'s words':'Evidence gap')+'</small>'+(q?'<blockquote>"'+esc(q[0])+'"<span class="src">'+esc(q[1])+'</span></blockquote>':'<p class="mini">No public review quote was found for '+esc(sg.n.toLowerCase())+', so this objection needs testing in interviews.</p>')+'</div>'}
 function drawLev(){var two=mode==="two",el=document.getElementById("by-lev");
  document.getElementById("by-lh").textContent=two?"What stalls each deal":"What stalls the deal for "+SEG[A].n.toLowerCase();
  el.innerHTML=two?'<div class="by-vo2"><div><b class="by-sn" style="box-shadow:inset 4px 0 0 var(--s1)">'+esc(SEG[A].n)+'</b>'+voice(A)+'</div><div><b class="by-sn" style="box-shadow:inset 4px 0 0 var(--s2)">'+esc(SEG[B].n)+'</b>'+voice(B)+'</div></div>':voice(A)}
@@ -242,7 +243,7 @@ responsive(document.getElementById("by-tags"),function(W){var narrow=W<600,rowH=
   var g=VZ.el("g",{role:"button",tabindex:0,"aria-label":t.n+", "+t.v+" reviews","aria-pressed":"false",style:"cursor:pointer"},s);
   VZ.el("rect",{x:0,y:y-(narrow?18:4),width:W,height:rowH,fill:"transparent"},g);
   VZ.el("text",{x:narrow?0:L-10,y:narrow?y-5:y+13,"text-anchor":narrow?"start":"end",class:"t-strong"},g).textContent=t.n;
-  var r=VZ.bar(g,x(0),y,x(t.v)-x(0),18,"","h");r.style.fill="var(--s"+(t.p?1:2)+")";
+  var r=VZ.bar(g,x(0),y,x(t.v)-x(0),18,"","h");r.style.fill="var(--s"+(t.p?7:8)+")";
   VZ.el("text",{x:x(t.v)+6,y:y+13,class:"t-strong"},g).textContent=t.v;
   g.addEventListener("click",function(){showQ(t,g)});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();showQ(t,g)}});
   g.addEventListener("focus",function(){r.style.opacity=.8});g.addEventListener("blur",function(){r.style.opacity=1});
@@ -255,16 +256,16 @@ XTRA.forEach(function(t){var b=document.createElement("button");b.type="button";
 function act(el,fn){el.style.cursor="pointer";el.addEventListener("click",fn);el.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();fn()}});el.addEventListener("focus",fn)}
 var CAPN={"Customer service":"Customer service is Capterra's highest sub-score, and G2 reviewers name individual support staff.","Ease of use":"Ease of use sits in the middle, matching the G2 split between Ease of Use praise and complexity complaints.","Value for money":"Value for money is the lowest sub-score, in line with complaints about annual upfront payment and licence gating."};
 responsive(document.getElementById("by-cap"),function(W){var D=[["Customer service",4.9],["Ease of use",4.4],["Value for money",4.0]],L=Math.min(130,W*.38),R=W-30,H=D.length*36+26,out=document.getElementById("by-capr"),dots=[];
- var s=VZ.svg(document.getElementById("by-cap"),W,H,"Capterra sub-scores: customer service 4.9, ease of use 4.4, value for money 4.0 out of 5.");s.setAttribute("role","group");var x=VZ.lin(3.5,5,L,R);
- [3.5,4,4.5,5].forEach(function(v){VZ.el("line",{x1:x(v),x2:x(v),y1:0,y2:H-22,class:"grid"},s);VZ.el("text",{x:x(v),y:H-6,"text-anchor":"middle",class:"t-muted"},s).textContent=v.toFixed(1)});
+ var s=VZ.svg(document.getElementById("by-cap"),W,H,"Capterra sub-scores: customer service 4.9, ease of use 4.4, value for money 4.0 out of 5.");s.setAttribute("role","group");var x=VZ.lin(0,5,L,R);
+ [0,1,2,3,4,5].forEach(function(v){VZ.el("line",{x1:x(v),x2:x(v),y1:0,y2:H-22,class:"grid"},s);VZ.el("text",{x:x(v),y:H-6,"text-anchor":"middle",class:"t-muted"},s).textContent=v});
  function pick(i){dots.forEach(function(c,k){c.setAttribute("r",k===i?8:6)});out.innerHTML="<b>"+D[i][0]+", "+D[i][1].toFixed(1)+".</b> "+esc(CAPN[D[i][0]])}
- D.forEach(function(d,i){var y=i*36+16;VZ.el("text",{x:L-10,y:y+4,"text-anchor":"end"},s).textContent=d[0];VZ.el("line",{x1:x(3.5),x2:x(d[1]),y1:y,y2:y,stroke:"var(--axis)","stroke-width":2},s);
-  var c=VZ.el("circle",{cx:x(d[1]),cy:y,r:6,stroke:"var(--ring)","stroke-width":2,role:"button","aria-label":d[0]+" "+d[1]},s);c.style.fill="var(--s1)";dots.push(c);
+ D.forEach(function(d,i){var y=i*36+16;VZ.el("text",{x:L-10,y:y+4,"text-anchor":"end"},s).textContent=d[0];VZ.el("line",{x1:x(0),x2:x(d[1]),y1:y,y2:y,stroke:"var(--axis)","stroke-width":2},s);
+  var c=VZ.el("circle",{cx:x(d[1]),cy:y,r:6,stroke:"var(--ring)","stroke-width":2,role:"button","aria-label":d[0]+" "+d[1]},s);c.style.fill="var(--s7)";dots.push(c);
   VZ.el("text",{x:x(d[1])+(d[1]>4.8?-12:12),y:y-9,"text-anchor":d[1]>4.8?"end":"start",class:"t-strong"},s).textContent=d[1].toFixed(1);
   VZ.tip(c,function(){return"<b>"+d[0]+"</b>"+d[1]+" out of 5 on Capterra"});act(c,function(){pick(i)})});
  pick(2)});
 /* g2 stacked */
-responsive(document.getElementById("by-g2"),function(W){var D=[[66,"5 stars","var(--seq-5)"],[28,"4 stars","var(--seq-4)"],[5,"3 stars","var(--seq-3)"],[1,"Lower or unrounded","var(--axis)"]],H=62,out=document.getElementById("by-g2r"),segs=[];
+responsive(document.getElementById("by-g2"),function(W){var D=[[66,"5 stars","var(--s7)"],[28,"4 stars","color-mix(in srgb,var(--s7) 55%,var(--chart-bg))"],[5,"3 stars","color-mix(in srgb,var(--s7) 25%,var(--chart-bg))"],[1,"Lower or unrounded","var(--axis)"]],H=62,out=document.getElementById("by-g2r"),segs=[];
  var s=VZ.svg(document.getElementById("by-g2"),W,H,"G2 ratings: 66% five stars, 28% four stars, 5% three stars.");s.setAttribute("role","group");var x=VZ.lin(0,100,0,W),acc=0;
  function pick(i){segs.forEach(function(r,k){r.style.stroke=k===i?"var(--ink1)":"none"});var d=D[i];out.innerHTML="<b>"+d[1]+": "+d[0]+"%</b> of 99 reviews, about "+Math.round(d[0]*0.99)+" reviews."+(i===0?" Two thirds give full marks.":"")}
  D.forEach(function(d,i){var x0=x(acc),x1=x(acc+d[0]),w=x1-x0-2,mid=x0+w/2;acc+=d[0];
@@ -282,7 +283,7 @@ var STEPS=[
 var ci=document.getElementById("by-cinfo"),nodes=[],cur=0;
 function step(i){cur=i;var s=STEPS[i];nodes.forEach(function(g,k){g.setAttribute("aria-pressed",k===i);g.querySelector("circle").style.fill=k===i?"var(--accent)":"var(--chart-bg)";g.querySelector("text").style.fill=k===i?"var(--on-accent)":"var(--ink1)"});
  ci.innerHTML='<span class="eyebrow">Step '+(i+1)+' of 4</span><h3>'+esc(s.h)+'</h3><p>'+esc(s.p)+'</p><div class="nums">'+s.n.map(function(n){return"<div><b>"+n[0]+"</b><span>"+n[1]+"</span></div>"}).join("")+'</div>'}
-responsive(document.getElementById("by-cycle"),function(W){var S=Math.min(W,380),H=S,cx=W/2,cy=H/2,R=S*0.34,nr=Math.max(34,S*0.11);
+responsive(document.getElementById("by-cycle"),function(W){var S=Math.min(W,400),H=S,cx=W/2,cy=H/2,R=S*0.34,nr=Math.max(34,S*0.11);
  var s=VZ.svg(document.getElementById("by-cycle"),W,H,"Quarterly interview cycle: sample, interview, tag, return findings, then sample again.");s.setAttribute("role","group");
  var ring=VZ.el("circle",{cx:cx,cy:cy,r:R,fill:"none","stroke-width":2,"stroke-dasharray":"6 4",class:"by-ring"},s);ring.style.stroke="var(--axis)";
  VZ.el("text",{x:cx,y:cy-4,"text-anchor":"middle",class:"t-strong"},s).textContent="Every";VZ.el("text",{x:cx,y:cy+14,"text-anchor":"middle",class:"t-strong"},s).textContent="quarter";
