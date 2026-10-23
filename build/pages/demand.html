@@ -216,7 +216,7 @@ function detail(i){selE=i;var e=EV[i];evEls.forEach(function(g,k){if(g)g.classLi
 
 responsive(document.getElementById("dm-gantt"),function(CW){var host=document.getElementById("dm-gantt");evEls=[];
  if(CW<640){document.getElementById("dm-detail").hidden=false;
-  var AB=["EU","FI","DK","NL","FR","SE","IE","IS","CA","LEED"],W=CW,LY=38,T=58,PY=78,cwd=(W-LY)/10,H=T+6.9*PY+10;
+  var AB=["EU","FI","DK","NL","FR","SE","IE","IS","CA","LEED"],W=CW,LY=38,T=58,PY=78,cwd=(W-LY-24)/10,H=T+6.9*PY+10;
   var y=VZ.lin(2025,2031.9,T,T+6.9*PY),xc=function(r){return LY+r*cwd+cwd/2};
   var s=VZ.svg(host,W,H,"Vertical timeline of forcing events from 2025 to 2031, one column per jurisdiction.");s.setAttribute("role","group");
   var lw=VZ.el("rect",{x:LY,y:y(2027),width:W-LY,height:y(2028)-y(2027)},s);lw.style.fill="var(--accent-soft)";

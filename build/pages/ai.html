@@ -191,6 +191,7 @@ var RT=[
  ["Launch kit drafting","Each launch",'<path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M14 4c3-1 6-1 6-1s0 3-1 6l-6 6-5-5 6-6z"/>',["The launch brief"],"First drafts in each launch language","A battlecard, FAQ, release article and partner email","A subject expert reviews each draft before use"],
  ["Proof point checks","Monthly",'<path d="M20 6 9 17l-5-5"/>',["The website, sales decks and partner kits"],"A scan against the proof point sheet","A list of claims that disagree, such as the number of standards, datasets or integrations","Owners fix each claim and the sheet stays the single source"]
 ];
+var LA=[[0.3,"EU 2028 readiness"],[0.5,"CPR readiness"],[3.5,"Workflow release"],[4.2,"BR18 update"],[7,"Get specified"],[10,"Cement and concrete"]];
 var rt=document.getElementById("ai-rt"),pipe=document.getElementById("ai-pipe"),stepEl=document.getElementById("ai-step"),stp=3,cur=0,timer=null,RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
 function paint(){[].forEach.call(pipe.children,function(d,j){d.className=j<stp?"":j===stp?"now":"todo"});txt(stepEl.querySelector(".mini"),"Step "+(stp+1)+" of 4: "+["input","agent","output","human check"][stp])}
 [].forEach.call(stepEl.querySelectorAll("button"),function(b){b.addEventListener("click",function(){clearInterval(timer);stp=Math.max(0,Math.min(3,stp+ +b.dataset.d));paint()})});
@@ -200,7 +201,6 @@ function showRt(i,auto){cur=i;var r=RT[i];
 RT.forEach(function(r,i){var b=document.createElement("button");b.setAttribute("role","tab");b.id="ai-rt"+i;b.setAttribute("aria-controls","ai-rp");b.setAttribute("aria-selected",i===0?"true":"false");b.dataset.i=i;b.textContent=r[0];rt.appendChild(b)});
 var first=true;VZ.tabs(rt,function(t){document.getElementById("ai-rp").hidden=false;document.getElementById("ai-rp").setAttribute("aria-labelledby",t.id);showRt(+t.dataset.i,!first);first=false});
 /* cadence strip: weekly, continuous, six launches (Q1 x2, Q2 x2, Q3, Q4), monthly */
-var LA=[[0.3,"EU 2028 readiness"],[0.5,"CPR readiness"],[3.5,"Workflow release"],[4.2,"BR18 update"],[7,"Get specified"],[10,"Cement and concrete"]];
 function cad(){var h=document.getElementById("ai-cad");if(!h)return;h.innerHTML="";var W=Math.max(300,h.clientWidth||700),nar=W<640,LW=nar?0:230,rh=nar?50:40,top=24,H=top+4*rh+4,x=VZ.lin(0,12,LW+4,W-6);
  var svg=VZ.svg(h,W,H,"2027 cadence: competitor watch weekly, call mining continuously, launch kits for six launches, proof point checks monthly.");svg.setAttribute("role","group");
  "JFMAMJJASOND".split("").forEach(function(m,k){var t=VZ.el("text",{x:(x(k)+x(k+1))/2,y:14,"text-anchor":"middle","class":"t-muted"},svg);t.textContent=m;VZ.el("line",{x1:x(k),x2:x(k),y1:20,y2:H,"class":"grid"},svg)});
