@@ -106,6 +106,12 @@
 #ps .ps-tree .nd.lf.on{background:var(--accent-soft);color:var(--ink);border-color:var(--ink1)}
 #ps .ps-res{background:var(--panel)!important;color:var(--ink)!important;position:relative;padding-left:28px!important}#ps .ps-res::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;border-radius:6px 0 0 6px;background:var(--pc)}
 #ps .ps-res span{color:var(--ink2)}
+#ps .ps-prods{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+#ps .ps-prods button{appearance:none;text-align:left;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:6px;padding:12px 14px;font:400 13px/1.35 var(--sans);cursor:pointer;color:var(--ink2)}
+#ps .ps-prods button b{display:flex;align-items:center;gap:8px;color:var(--ink);font-size:14px;font-weight:600;margin-bottom:4px}
+#ps .ps-prods button b i{width:12px;height:12px;border-radius:50%;background:var(--pc);flex:none}
+#ps .ps-prods button[aria-pressed="true"]{border-color:var(--ink1);box-shadow:inset 0 0 0 1px var(--ink1)}
+#ps .ps-tree li{padding:3px 0}
 @media (max-width:900px){#ps .ps-arc{grid-template-columns:1fr}}
 @media (max-width:640px){#ps .ps-st>div{grid-template-columns:1fr;gap:4px}#ps .ps-evk{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){#ps *{animation:none!important;transition:none!important}}
@@ -151,7 +157,8 @@
   <h2>Which product leads on a first call</h2>
   <p class="intro">The CEO frames the two brands as speed against depth. Answer the questions as the buyer would to see which one the seller leads with.</p>
   <div class="ps-dt">
-    <div class="result ps-q" id="quiz" aria-live="polite"></div>
+    <div><div class="result ps-q" id="quiz" aria-live="polite"></div>
+    <div class="ps-prods" id="prods" role="group" aria-label="Jump to a product"></div></div>
     <div class="viz" style="margin-top:0"><div class="viz-h"><h3>The whole rule</h3><p>Click a product to see its route</p></div><ul class="ps-tree" id="tree"></ul></div>
   </div>
 </section>
@@ -240,6 +247,8 @@ function quiz(){var id=path[path.length-1],n=N[id],q=$("quiz"),h="";
  if(n.r){h+='<div class="ps-res" style="--pc:'+n.c+'"><span>Lead with</span><b>'+n.r+'</b>'+n.w+'</div><button type="button" class="ps-again">Start again</button>'}
  else{h+='<span class="eyebrow">Question '+(path.filter(function(p){return N[p]&&N[p].q}).length)+'</span><h3>'+n.q+'</h3><div class="opts">'+n.o.map(function(o,i){return '<button type="button" data-i="'+i+'">'+o[0]+'</button>'}).join("")+'</div>'}
  q.innerHTML=h;
+ $("prods").innerHTML=["ocl","epd","sp1","both"].map(function(k){var x=N[k];return '<button type="button" data-k="'+k+'" aria-pressed="'+(id===k||(k==="sp1"&&id==="sp2")?"true":"false")+'" style="--pc:'+x.c+'"><b><i></i>'+x.r+'</b>'+x.w+'</button>'}).join("");
+ [].forEach.call($("prods").children,function(b){b.onclick=function(){var r=route(b.dataset.k);path=r[0];ans=r[1];quiz()}});
  [].forEach.call(q.querySelectorAll(".opts button"),function(b){b.onclick=function(){var o=n.o[+b.dataset.i];ans.push(o[0]);path.push(id+":"+o[1]);path.push(o[1]);quiz();var f=q.querySelector("button");if(f)f.focus()}});
  var ag=q.querySelector(".ps-again");if(ag)ag.onclick=function(){path=["q1"];ans=[];quiz();q.querySelector("button").focus()};
  tree()}
