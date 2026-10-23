@@ -49,6 +49,8 @@ HEAD = """<!doctype html>
 <link rel="stylesheet" href="assets/nav.css">
 <link rel="stylesheet" href="assets/a11y.css">
 <link rel="stylesheet" href="assets/pages.css">
+<link rel="stylesheet" href="assets/viz.css">
+<script src="assets/viz.js"></script>
 <script>try{{var s=localStorage.getItem("theme");if(s==="light"||s==="dark")document.documentElement.setAttribute("data-theme",s)}}catch(e){{}}</script>
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%23007a5e%27/%3E%3C/svg%3E">
