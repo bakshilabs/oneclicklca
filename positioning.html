@@ -123,7 +123,6 @@
   <div class="viz" style="margin-top:0">
     <div class="viz-h"><h3>The positioning arc, 2023 to 2026</h3><p>Click a claim or a numbered event to read it</p></div>
     <div id="arc"></div>
-    <ol class="ps-evk" id="evk"></ol>
     <div class="ps-arcd" id="arcd" aria-live="polite"></div>
   </div>
   <div class="callout"><p><b>Reading.</b> The platform story suits investors and enterprise buyers; other buyers need their own reason. The site tells manufacturers "Win more bids with EPDs", yet product pages address the sustainability manager.</p></div>
@@ -172,8 +171,7 @@
   <span class="eyebrow">Testing</span>
   <h2>How I would test a message before changing the site</h2>
   <div class="tabs" role="tablist" aria-label="Test steps" id="tsteps"></div>
-  <div class="ps-tgrid" id="tgrid" role="tabpanel" aria-labelledby="ts0"></div>
-  <p class="ps-cap" id="tcap" aria-live="polite"></p>
+  <div class="viz" id="tstage" role="tabpanel" aria-labelledby="ts0" style="margin-top:14px"><div class="viz-h"><h3 id="tst-h"></h3><p id="tst-p"></p></div><div id="tsvg"></div></div>
   <div class="btnrow" style="margin-top:8px"><button type="button" id="play" aria-pressed="false">Play the four steps</button></div>
 </section>
 
@@ -195,7 +193,6 @@ var L=[["Category leader",2023,2025,"“The world's number one construction LCA 
 ["The largest LCA platform",2025+8/12,2026+10/12,"“The world's largest LCA platform, delivering impact, compliance, and growth.”","Since September 2025","SimaPro widens the story from construction to every industry. This is the claim in use today."]];
 var E=[[2025+8/12+1/365,"2 Sep 2025","SimaPro and PRé join the group","Press release, 2 Sep 2025"],[2025+9/12+15/365,"16 Oct 2025","2026 compliance tools launch: “Compliance is no longer optional.”","Launch press release, 16 Oct 2025"],[2026+5/12+14/365,"15 Jun 2026","CEO interview frames the brands as depth with SimaPro and speed with One Click LCA","Climate Solutions News, 15 Jun 2026"],[2026+9/12+22/365,"23 Oct 2026","Homepage reads “Do more LCAs and EPDs, faster”","oneclicklca.com, read 23 Oct 2026"]];
 var selL=2,selE=-1,ahost=$("arc"),lanes=[];
-$("evk").innerHTML=E.map(function(e,i){return '<li><span class="n">'+(i+1)+'</span><span><b>'+e[1]+'</b> '+e[2]+'<span class="src">'+e[3]+'</span></span></li>'}).join("");
 function arc(){if(VZ.hideTip)VZ.hideTip();ahost.innerHTML="";lanes=[];var w=Math.max(280,ahost.clientWidth),m=w<560,lw=m?0:310,lh=m?30:38,rowH=m?lh+26:lh+14,top=26,y0=top+(m?20:6);
  var X=VZ.lin(2023,2027,lw+4,w-14),evY=y0+L.length*rowH+20,h=evY+22;
  var s=VZ.svg(ahost,w,h,"Timeline of One Click LCA headline claims. Category leader ran from 2023 to 2024. Automation and compliance as growth ran through 2025. The largest LCA platform has run since September 2025. Four numbered events are listed below the chart.");s.setAttribute("role","group");
@@ -238,7 +235,7 @@ var H=[["Architects","Get to a compliant design early, while changes are cheap",
 ["Manufacturers, sustainability manager","Verified EPDs in days, without an LCA team",[["Pre-verified method","Lower verification effort through eight programme operators.","chk",["8","operators"]],["Templates","Sector generators for concrete, luminaires, electronics and HVAC.","grid",["4","sector generators"]],["Ready for CPR","EN 15804+A2 throughout, with passports on the roadmap.","shd"]],["Spreadsheets and consultants","Sphera for smaller ranges"]],
 ["Enterprise","One carbon standard across every office and portfolio",[["Consistency","One method, one database and shared templates across countries.","lay"],["Reporting","Portfolio results for CSRD, Taxonomy and client reporting.","chart"],["Control","Internal verification, SSO, API and SOC 2 and ISO 27001.","lock"]],["Each office choosing its own tool"]]];
 var ht=$("htabs");H.forEach(function(h,i){var b=document.createElement("button");b.setAttribute("role","tab");b.id="ht"+i;b.setAttribute("aria-controls","house");b.setAttribute("aria-selected",i===0?"true":"false");b.textContent=h[0];b.dataset.i=i;ht.appendChild(b)});
-function house(i){var h=H[i],el=$("house");el.hidden=false;el.setAttribute("aria-labelledby","ht"+i);
+var curH=0;function house(i){curH=i;if(window.__psRedraw)window.__psRedraw();var h=H[i],el=$("house");el.hidden=false;el.setAttribute("aria-labelledby","ht"+i);
  el.innerHTML='<div class="ps-house"><div class="ps-roof"><span>Promise to '+h[0].toLowerCase()+'</span><h3>'+h[1]+'</h3></div><div class="ps-pil">'+h[2].map(function(p){return '<div><span class="icon"><svg viewBox="0 0 24 24">'+IC[p[2]]+'</svg></span><b>'+p[0]+'</b>'+(p[3]?'<em>'+p[3][0]+'<small>'+p[3][1]+'</small></em>':'')+'<p>'+p[1]+'</p></div>'}).join("")+'</div><div class="ps-found'+(on[2]&&!allOn()?" hl":"")+'"><span><b>Foundation:</b> the largest construction LCA database</span><span>More than a hundred standards in one model</span><span>EPD automation from data to publication</span></div><div class="ps-beats"><span class="mini">Beats</span>'+h[3].map(function(x){return '<span class="tag b">'+x+'</span>'}).join("")+'</div></div>'}
 VZ.tabs(ht,function(t){house(+t.dataset.i)});
 
@@ -296,43 +293,53 @@ function quiz(){var id=path[path.length-1],n=N[id],q=$("quiz"),h="";
 quiz();
 
 /* ---------- test plan ---------- */
-var T=[["Write the versions","Write two or three versions of the promise for one segment, for example manufacturers."],
-["Discovery calls","Sellers open with one version for two weeks and the other for two weeks, and record the buyer's response in a CRM field."],
-["Campaigns","Same audience list, split by message. Measure meetings booked and opportunities created, not clicks."],
-["Decide","Keep what moves opportunities. Change the website and the deck only after both tests point the same way."]];
-var ts=$("tsteps"),tg=$("tgrid"),cs=0,cells=[];
-T.forEach(function(t,i){var b=document.createElement("button");b.setAttribute("role","tab");b.id="ts"+i;b.setAttribute("aria-controls","tgrid");b.setAttribute("aria-selected",i===0?"true":"false");b.textContent=(i+1)+". "+t[0];ts.appendChild(b);
- var c=document.createElement("div");c.className="ps-cell";c.innerHTML='<h4><span>'+(i+1)+'</span>'+t[0]+'</h4>';tg.appendChild(c);cells.push(c)});
-function cellSvg(c,label){return VZ.svg(c,260,190,label)}
-(function(){var s=cellSvg(cells[0],"Two message variants: A, Get specified more often. B, Verified EPDs in days.");
- [["A","“Get specified","more often”","var(--s1)"],["B","“Verified EPDs","in days”","var(--s2)"]].forEach(function(v,j){var y=14+j*88;VZ.el("rect",{x:0,y:y,width:260,height:74,rx:4,fill:"var(--panel)"},s);VZ.el("rect",{x:0,y:y,width:6,height:74,rx:2,fill:v[3]},s);
-  txt(s,18,y+22,"Version "+v[0],{class:"t-strong"});var a=txt(s,18,y+44,v[1]);a.style.fontSize="15px";a.style.fill="var(--ink1)";var b=txt(s,18,y+62,v[2]);b.style.fontSize="15px";b.style.fill="var(--ink1)"})})();
-(function(){var s=cellSvg(cells[1],"Four weeks of discovery calls: version A in weeks 1 and 2, version B in weeks 3 and 4, with the response logged in the CRM"),X=VZ.lin(0,4,30,256);
- for(var k=0;k<=4;k++){VZ.el("line",{x1:X(k),x2:X(k),y1:10,y2:100,class:"grid"},s);if(k<4)txt(s,X(k+.5),118,"Wk "+(k+1),{"text-anchor":"middle"})}
- txt(s,0,40,"A",{class:"t-strong"});txt(s,0,80,"B",{class:"t-strong"});
- VZ.bar(s,X(0),24,X(2)-X(0)-2,22,"var(--s1)","h");VZ.bar(s,X(2),64,X(4)-X(2),22,"var(--s2)","h");
- VZ.el("rect",{x:30,y:140,width:226,height:40,rx:4,fill:"var(--panel)"},s);txt(s,143,165,"Buyer response → CRM field",{"text-anchor":"middle",class:"t-strong"})})();
-(function(){var s=cellSvg(cells[2],"One audience list split in two, one half per message");
- VZ.el("rect",{x:0,y:6,width:260,height:30,rx:4,fill:"var(--panel)"},s);txt(s,130,26,"One audience list",{"text-anchor":"middle",class:"t-strong"});
- VZ.el("path",{d:"M130,36 C130,56 65,52 65,72 M130,36 C130,56 195,52 195,72",fill:"none",stroke:"var(--axis)","stroke-width":2},s);
- [["A",0,"var(--s1)"],["B",134,"var(--s2)"]].forEach(function(v){VZ.el("rect",{x:v[1],y:74,width:126,height:34,rx:4,fill:v[2]},s);var t=txt(s,v[1]+63,96,"Message "+v[0],{"text-anchor":"middle"});t.style.fill="#fff";t.style.fontWeight="600"});
- txt(s,0,138,"Measure:",{class:"t-strong"});txt(s,0,158,"✓ meetings booked");txt(s,130,158,"✓ opportunities");txt(s,0,180,"✗ clicks are not the measure")})();
-(function(){var s=cellSvg(cells[3],"Illustrative outcome bars: version A ahead of version B on meetings booked and opportunities created in both tests, so the site changes to version A");
- var V=[["Meetings",[10,6]],["Opportunities",[6,3]]],X=VZ.lin(0,12,92,250);
- V.forEach(function(r,j){var y=10+j*58;txt(s,0,y+22,r[0],{class:"t-strong"});r[1].forEach(function(v,k){VZ.bar(s,92,y+k*24,X(v)-92,18,k?"var(--s2)":"var(--s1)","h");txt(s,X(v)+5,y+k*24+14,k?"B":"A")})});
- var t=txt(s,0,134,"Illustrative values, not data");t.style.fontStyle="italic";
- VZ.el("rect",{x:0,y:146,width:260,height:36,rx:4,fill:"var(--accent-soft)"},s);txt(s,130,169,"Both tests agree → change site and deck",{"text-anchor":"middle",class:"t-strong"})})();
-function step(i){cs=i;cells.forEach(function(c,j){c.classList.toggle("on",j===i)});$("tcap").innerHTML="<b style=\"color:var(--ink)\">Step "+(i+1)+".</b> "+T[i][1];tg.setAttribute("aria-labelledby","ts"+i);
- [].forEach.call(ts.children,function(b,j){b.setAttribute("aria-selected",j===i?"true":"false");b.tabIndex=j===i?0:-1})}
+var T=[["Write the versions","Two versions of the promise for one segment"],["Discovery calls","Two weeks per version, buyer response logged in a CRM field"],["Campaigns","Same audience list, split by message; meetings and opportunities, not clicks"],["Decide","Keep what moves opportunities in both tests"]];
+var HOME="Do more LCAs and EPDs, faster";
+function variants(){var h=H[curH],a=h[1],b=curH===3?H[4][1]:curH===4?H[3][1]:HOME,bn=curH===3?"sustainability manager promise":curH===4?"commercial director promise":"current homepage promise";return {seg:h[0],a:a,b:b,bn:bn}}
+var ts=$("tsteps"),cs=0,sv=$("tsvg");
+T.forEach(function(t,i){var b=document.createElement("button");b.setAttribute("role","tab");b.id="ts"+i;b.setAttribute("aria-controls","tstage");b.setAttribute("aria-selected",i===0?"true":"false");b.textContent=(i+1)+". "+t[0];ts.appendChild(b)});
+function wrapT(t,n){var w=t.split(" "),L=[],c="";w.forEach(function(x){if((c+" "+x).trim().length>n){L.push(c.trim());c=x}else c+=" "+x});if(c.trim())L.push(c.trim());return L}
+function multi(p,x,y,lines,lh,attrs){lines.forEach(function(l,i){txt(p,x,y+i*lh,l,attrs)})}
+function card(s,x,y,w,h,col,tag,text,win){VZ.el("rect",{x:x,y:y,width:w,height:h,rx:4,fill:win?"var(--accent-soft)":"var(--panel)",stroke:win?"var(--accent)":"none","stroke-width":2},s);VZ.el("rect",{x:x,y:y,width:7,height:h,rx:2,fill:col},s);
+ txt(s,x+20,y+24,tag,{class:"t-strong"});var L=wrapT("“"+text+"”",Math.max(16,Math.floor((w-36)/9.2)));L.forEach(function(l,i){var t=txt(s,x+20,y+50+i*21,l);t.style.fontSize="17px";t.style.fill="var(--ink1)"})}
+function note(s,x,y){var t=txt(s,x,y,"Illustrative values, not data");t.style.fontStyle="italic"}
+function draw(){sv.innerHTML="";var W=Math.max(300,sv.clientWidth),m=W<600,v=variants(),H2,s;
+ $("tst-h").textContent="Step "+(cs+1)+". "+T[cs][0];$("tst-p").textContent=T[cs][1];
+ if(cs===0){H2=m?300:140;s=VZ.svg(sv,W,H2,"Version A for "+v.seg+": "+v.a+". Version B, the "+v.bn+": "+v.b+".");
+  var cw=m?W:(W-20)/2;card(s,0,10,cw,m?110:100,"var(--s1)",m?"Version A":"Version A · "+v.seg+" promise",v.a);card(s,m?0:cw+20,m?130:10,cw,m?110:100,"var(--s2)",m?"Version B":"Version B · "+v.bn,v.b);
+  multi(s,0,m?H2-44:H2-8,m?wrapT("Version A is the "+v.seg+" promise. Pick another segment in the message house to change it.",Math.floor(W/7.2)):["Pick another segment in the message house above to change version A."],16)}
+ else if(cs===1){var days=10,cols=m?5:10,dw=m?(W-40)/5:(W-120)/10,H3=m?450:280;s=VZ.svg(sv,W,H3,"Illustrative discovery calls: version A in weeks 1 and 2, version B in weeks 3 and 4; each call is logged as a positive, neutral or objection response.");
+  var R={A:[2,1,2,1,0,2,1,2,2,1, 1,2,2,0,2,1,2,2,1,2],B:[1,0,1,2,0,1,0,1,2,0, 1,1,0,2,1,0,1,1,0,1]},RC=["var(--s8)","var(--ink3)","var(--s3)"],RN=["Objection","Neutral","Positive"];
+  ["A","B"].forEach(function(k,vi){var y0=m?20+vi*185:20+vi*110;var lab=txt(s,0,y0+16,"Version "+k,{class:"t-strong"});var sub=txt(s,0,y0+34,vi?"Weeks 3 and 4":"Weeks 1 and 2");
+   var x0=m?0:110,yy=m?y0+46:y0;R[k].forEach(function(r,i){var cx=x0+(i%cols)*dw+dw/2,cy=yy+12+Math.floor(i/cols)*(m?22:30);if(!m)cx=x0+(i%10)*dw+dw/2,cy=yy+12+Math.floor(i/10)*30;var c=VZ.el("circle",{cx:cx,cy:cy,r:8,fill:RC[r],stroke:"var(--ring)","stroke-width":2},s);VZ.tip(c,function(){return "<b>"+RN[r]+"</b><span class='m'>Version "+k+", call "+(i+1)+" (illustrative)</span>"})});
+   var pos=R[k].filter(function(r){return r===2}).length;txt(s,m?0:110,m?yy+12+3*22+28:yy+80,pos+" of 20 calls positive",{class:"t-strong"})});
+  var ly=H3-30;RN.forEach(function(n,i){VZ.el("circle",{cx:(m?0:110)+i*110+6,cy:ly-4,r:6,fill:RC[i]},s);txt(s,(m?0:110)+i*110+16,ly,n)});note(s,0,H3-6)}
+ else if(cs===2){var H4=m?360:200;s=VZ.svg(sv,W,H4,"One audience list split in two. Illustrative results: version A books 10 meetings and 6 opportunities; version B books 6 meetings and 3 opportunities.");
+  var lw=m?W:W*.38;VZ.el("rect",{x:0,y:10,width:lw,height:34,rx:4,fill:"var(--panel)"},s);txt(s,lw/2,32,"One audience list",{"text-anchor":"middle",class:"t-strong"});
+  VZ.el("path",{d:"M"+lw/2+",44 C"+lw/2+",64 "+lw/4+",60 "+lw/4+",80 M"+lw/2+",44 C"+lw/2+",64 "+3*lw/4+",60 "+3*lw/4+",80",fill:"none",stroke:"var(--axis)","stroke-width":2},s);
+  [["A","var(--s1)"],["B","var(--s2)"]].forEach(function(q,k){var bx=k*(lw/2+4);VZ.el("rect",{x:bx,y:82,width:lw/2-4,height:36,rx:4,fill:q[1]},s);var t=txt(s,bx+(lw/2-4)/2,105,"Message "+q[0],{"text-anchor":"middle"});t.style.fill="#fff";t.style.fontWeight="600"});
+  txt(s,0,146,"✗ Clicks are not the measure");
+  var gx=m?0:W*.46,gy=m?170:10,gw=m?W:W*.54,X=VZ.lin(0,12,gx+110,gx+gw-40);
+  [["Meetings booked",[10,6]],["Opportunities",[6,3]]].forEach(function(r,j){var y=gy+j*80;txt(s,gx,y+26,r[0],{class:"t-strong"});r[1].forEach(function(val,k){VZ.bar(s,gx+110,y+k*28+4,X(val)-gx-110,22,k?"var(--s2)":"var(--s1)","h");txt(s,X(val)+6,y+k*28+20,(k?"B ":"A ")+val)})});
+  note(s,gx,gy+180)}
+ else{var H5=m?420:150;s=VZ.svg(sv,W,H5,"Decision: both tests favour version A, so the website hero and the sales deck change to version A.");
+  [["Discovery calls","A ahead"],["Campaigns","A ahead"]].forEach(function(r,k){var y=10+k*46;VZ.el("rect",{x:0,y:y,width:m?W:W*.3,height:38,rx:4,fill:"var(--panel)"},s);txt(s,12,y+24,"✓ "+r[0]+": "+r[1],{class:"t-strong"})});
+  var cx=m?0:W*.34,cw=m?W:W*.3;card(s,cx,m?110:10,cw,m?130:116,"var(--s1)","Winner · version A",v.a,true);
+  var ox=m?0:W*.68,ow=m?W:W*.32;[["Website hero",0],["Sales deck",1]].forEach(function(r,k){var y=(m?260:10)+k*68;VZ.el("rect",{x:ox,y:y,width:ow,height:58,rx:4,fill:"var(--panel)"},s);txt(s,ox+12,y+22,r[0]+" changes to",{class:"t-strong"});var L=wrapT("“"+v.a+"”",Math.floor((ow-24)/7.2));txt(s,ox+12,y+42,L[0]+(L.length>1?" …":""))});
+  if(!m){VZ.el("path",{d:"M"+(W*.3+4)+",50 H"+(cx-4)+" M"+(cx+cw+4)+",75 H"+(ox-4),stroke:"var(--axis)","stroke-width":2,fill:"none"},s)}
+  note(s,0,m?H5-6:130)}
+ s.setAttribute("role",cs===1?"group":"img");
+ [].forEach.call(ts.children,function(b,j){b.setAttribute("aria-selected",j===cs?"true":"false");b.tabIndex=j===cs?0:-1});$("tstage").setAttribute("aria-labelledby","ts"+cs)}
+function step(i){cs=i;draw()}
+window.__psRedraw=function(){if(sv)draw()};
 [].forEach.call(ts.children,function(b,i){b.addEventListener("click",function(){stopPlay();step(i)});b.addEventListener("keydown",function(e){var k=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;if(k){var n=(i+k+4)%4;ts.children[n].focus();stopPlay();step(n)}})});
-cells.forEach(function(c,i){c.addEventListener("click",function(){stopPlay();step(i)})});
 step(0);
-var timer=null,played=false;
-if("IntersectionObserver" in window&&!matchMedia("(prefers-reduced-motion: reduce)").matches){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting&&!played){played=true;io.disconnect();setTimeout(function(){if(!timer)pb.click()},400)}},{threshold:.6});io.observe(tg)}
-var _t,pb=$("play");function stopPlay(){clearInterval(timer);timer=null;pb.setAttribute("aria-pressed","false");pb.textContent="Play the four steps"}
-pb.onclick=function(){played=true;if(timer){stopPlay();return}pb.setAttribute("aria-pressed","true");pb.textContent="Pause";step(0);timer=setInterval(function(){if(cs>=3){stopPlay();return}step(cs+1)},2600)};
+var timer=null,played=false,pb=$("play");
+if("IntersectionObserver" in window&&!matchMedia("(prefers-reduced-motion: reduce)").matches){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting&&!played){played=true;io.disconnect();setTimeout(function(){if(!timer)pb.click()},400)}},{threshold:.6});io.observe($("tstage"))}
+function stopPlay(){clearInterval(timer);timer=null;pb.setAttribute("aria-pressed","false");pb.textContent="Play the four steps"}
+pb.onclick=function(){played=true;if(timer){stopPlay();return}pb.setAttribute("aria-pressed","true");pb.textContent="Pause";step(0);timer=setInterval(function(){if(cs>=3){stopPlay();return}step(cs+1)},3000)};
 
-var rt,lw=ahost.clientWidth;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){if(Math.abs(ahost.clientWidth-lw)>4){lw=ahost.clientWidth;arc();drawTree()}},150)});
+var rt,lw=ahost.clientWidth;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){if(Math.abs(ahost.clientWidth-lw)>4){lw=ahost.clientWidth;arc();drawTree();draw()}},150)});
 })();
 </script>
 

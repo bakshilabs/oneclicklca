@@ -103,3 +103,29 @@ body:has(.secnav){padding-bottom:72px}
 .callout{max-width:none}
 .sources{padding:12px 18px;margin-top:48px;background:transparent;border-top:1px solid var(--line);border-radius:0}
 .sources h2{font-size:15px;margin-bottom:4px}
+
+/* section navigation rail (replaces the earlier stepper layout) */
+.secnav{top:50%;bottom:auto;right:14px;transform:translateY(-50%);padding:6px 4px;gap:4px;border-radius:20px}
+.secnav .rail{list-style:none;margin:2px 0;padding:0;display:flex;flex-direction:column;align-items:center;gap:2px}
+.secnav .dot{width:28px;height:22px;background:none;position:relative;display:grid;place-items:center;border-radius:4px}
+.secnav .dot::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ink3);transition:height .2s,background .2s}
+.secnav .dot:hover::before{background:var(--ink1)}
+.secnav .dot[aria-current]::before{height:18px;border-radius:4px;background:var(--accent)}
+.secnav .dot:hover,.secnav .dot:focus-visible{background:none}
+.secnav .dot .lab{position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);white-space:nowrap;background:var(--chart-bg);color:var(--ink1);border:1px solid var(--line);border-radius:4px;padding:5px 9px;font:500 12.5px/1.2 var(--sans);box-shadow:0 4px 14px rgba(0,0,0,.12);opacity:0;pointer-events:none;transition:opacity .12s}
+.secnav .dot:hover .lab,.secnav .dot:focus-visible .lab{opacity:1}
+.secnav .up,.secnav .dn,.secnav .pg{width:30px;height:30px;border-radius:15px}
+.secnav .pg{background:none;color:var(--ink3);margin-top:2px}
+.secnav .pg svg{width:16px;height:16px;stroke-width:1.8}
+.secnav .pg[aria-pressed="true"]{color:var(--accent);background:var(--accent-soft)}
+.secnav .pg:hover{background:var(--panel);color:var(--ink)}
+.secnav output{font-size:10.5px}
+@media (max-height:620px){.secnav .rail{display:none}}
+/* phones keep the bottom bar: buttons and counter only */
+@media (max-width:640px){
+ .secnav{top:auto;transform:none;right:0;border-radius:0;padding:5px 12px calc(5px + env(safe-area-inset-bottom))}
+ .secnav .rail,.secnav .pg{display:none}
+ .secnav .up,.secnav .dn{width:44px;height:34px;border-radius:5px}
+ .secnav output{font-size:11px}
+}
+.secnav button.dot:hover:not(:disabled),.secnav button.dot:focus-visible{background:none;color:inherit}.secnav button.pg:hover:not(:disabled){background:var(--panel);color:var(--ink)}

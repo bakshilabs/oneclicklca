@@ -52,27 +52,54 @@ VZ.reveal=function(){var els=[].slice.call(document.querySelectorAll(".rv,.count
 /* redraw on theme toggle: VZ.onTheme(fn) */
 VZ.onTheme=function(fn){new MutationObserver(fn).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});matchMedia("(prefers-color-scheme: dark)").addEventListener("change",fn)};
 
-/* section stepper. Sections are the visible top-level blocks of <main>. */
+/* section navigation: a rail of labelled dots with previous and next buttons, plus paged scrolling.
+   Sections are the visible top-level blocks of <main>. With paging on, one wheel turn, PageDown, Space or an arrow key
+   moves a whole section; a section taller than the screen scrolls normally until its end, then the next one snaps in. */
 VZ.secnav=function(){var main=document.getElementById("main");if(!main||document.querySelector(".secnav"))return;
  function blocks(el){return [].slice.call(el.children).filter(function(e){return !/^(SCRIPT|STYLE|NOSCRIPT|TEMPLATE)$/.test(e.tagName)&&e.offsetHeight>40&&getComputedStyle(e).position!=="fixed"})}
  function wrapper(e){var k=blocks(e);return k.length>1&&(!e.className||k.filter(function(c){return c.tagName==="SECTION"}).length>1)&&e.tagName!=="SECTION"}
  function flat(L,d){var o=[];L.forEach(function(e){if(d<3&&wrapper(e))o=o.concat(flat(blocks(e),d+1));else o.push(e)});return o}
  function secs(){var L=blocks(main),d=0;while(L.length===1&&d++<3){var k=blocks(L[0]);if(k.length<2)break;L=k}return flat(L,0)}
- if(secs().length<2)return;
+ var S=secs();if(S.length<2)return;
+ function label(e,i){var h=e.querySelector("h1,h2,h3,.eyebrow,caption,legend");var t=(h&&h.textContent||"").replace(/\s+/g," ").trim();if(!t)t="Section "+(i+1);return t.length>44?t.slice(0,42)+"…":t}
+ var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+ var touch=matchMedia("(pointer: coarse)").matches;
+ var paged=!touch;try{var v=localStorage.getItem("paged");if(v!==null)paged=v==="1"}catch(x){}
  var nav=document.createElement("nav");nav.className="secnav";nav.setAttribute("aria-label","Section navigation");
- nav.innerHTML='<button type="button" class="up" aria-label="Previous section"><svg viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg></button><output aria-live="polite"></output><button type="button" class="dn" aria-label="Next section"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>';
- document.body.appendChild(nav);var up=nav.querySelector(".up"),dn=nav.querySelector(".dn"),out=nav.querySelector("output");
+ var dots=S.map(function(e,i){return '<li><button type="button" class="dot" data-i="'+i+'"><span class="lab"></span></button></li>'}).join("");
+ nav.innerHTML='<button type="button" class="up" aria-label="Previous section"><svg viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg></button><ol class="rail">'+dots+'</ol><output aria-live="polite"></output><button type="button" class="dn" aria-label="Next section"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><button type="button" class="pg" aria-pressed="'+paged+'" title="Move one section per scroll"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="8" rx="1.5"/><rect x="5" y="13" width="14" height="8" rx="1.5"/></svg><span class="sr">Move one section per scroll</span></button>';
+ document.body.appendChild(nav);
+ var up=nav.querySelector(".up"),dn=nav.querySelector(".dn"),out=nav.querySelector("output"),pg=nav.querySelector(".pg"),D=[].slice.call(nav.querySelectorAll(".dot"));
+ D.forEach(function(d,i){var t=label(S[i],i);d.querySelector(".lab").textContent=t;d.setAttribute("aria-label","Go to section "+(i+1)+": "+t);d.addEventListener("click",function(){to(i)})});
  function off(){var h=document.querySelector(".sitenav");return (h?h.offsetHeight:0)+12}
- function cur(){var L=secs(),y=scrollY+off()+4,i=0;L.forEach(function(e,k){if(e.getBoundingClientRect().top+scrollY<=y)i=k});
-  if(innerHeight+scrollY>=document.documentElement.scrollHeight-2)i=L.length-1;return {i:i,L:L}}
- function upd(){var c=cur();out.textContent=(c.i+1)+" / "+c.L.length;up.disabled=c.i===0&&scrollY<4;dn.disabled=c.i>=c.L.length-1}
- function go(d){var c=cur(),L=c.L,t;
-  if(d<0){var top=L[c.i].getBoundingClientRect().top+scrollY-off();t=(scrollY-top>8)?L[c.i]:L[Math.max(0,c.i-1)]}else t=L[Math.min(L.length-1,c.i+1)];
-  var y=t===L[0]?0:t.getBoundingClientRect().top+scrollY-off();
-  scrollTo({top:y,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}
+ function cur(){var y=scrollY+off()+4,i=0;S.forEach(function(e,k){if(e.getBoundingClientRect().top+scrollY<=y)i=k});
+  if(innerHeight+scrollY>=document.documentElement.scrollHeight-2)i=S.length-1;return i}
+ function upd(){var i=cur();out.textContent=(i+1)+" / "+S.length;up.disabled=i===0&&scrollY<4;dn.disabled=i>=S.length-1;
+  D.forEach(function(d,k){if(k===i)d.setAttribute("aria-current","step");else d.removeAttribute("aria-current")})}
+ var lock=0;
+ function to(i){i=Math.max(0,Math.min(S.length-1,i));var y=i===0?0:S[i].getBoundingClientRect().top+scrollY-off();
+  lock=Date.now()+(reduce?150:750);scrollTo({top:y,behavior:reduce?"auto":"smooth"})}
+ function go(d){var i=cur();if(d<0){var top=S[i].getBoundingClientRect().top;to(top<off()-8?i:i-1)}else to(i+1)}
  up.addEventListener("click",function(){go(-1)});dn.addEventListener("click",function(){go(1)});
+ pg.addEventListener("click",function(){paged=!paged;pg.setAttribute("aria-pressed",paged);try{localStorage.setItem("paged",paged?"1":"0")}catch(x){}});
+ /* should this step leave the current section? only when its edge is on screen */
+ function atEdge(dir){var i=cur(),r=S[i].getBoundingClientRect();
+  if(dir>0)return i<S.length-1&&r.bottom<=innerHeight+4;
+  return r.top>=off()-8&&!(i===0&&scrollY<4)}
+ function scrollsInside(t,dir){for(var e=t;e&&e!==document.body;e=e.parentElement){var cs=getComputedStyle(e);if(/(auto|scroll)/.test(cs.overflowY)&&e.scrollHeight>e.clientHeight+1){if(dir>0?e.scrollTop+e.clientHeight<e.scrollHeight-1:e.scrollTop>0)return true}}return false}
+ addEventListener("wheel",function(e){if(!paged||e.ctrlKey||Math.abs(e.deltaY)<Math.abs(e.deltaX))return;
+  var dir=e.deltaY>0?1:-1;if(Date.now()<lock){e.preventDefault();return}
+  if(scrollsInside(e.target,dir))return;
+  if(atEdge(dir)){e.preventDefault();go(dir)}},{passive:false});
  document.addEventListener("keydown",function(e){var t=e.target;if(e.altKey||e.ctrlKey||e.metaKey||/^(INPUT|SELECT|TEXTAREA)$/.test(t.tagName)||t.isContentEditable)return;
-  if(e.key==="j"){go(1);e.preventDefault()}else if(e.key==="k"){go(-1);e.preventDefault()}});
+  var k=e.key,inCtl=/^(BUTTON|A|SUMMARY)$/.test(t.tagName)||t.getAttribute("role")==="tab"||t.hasAttribute("tabindex")&&t!==document.body&&t.id!=="main";
+  if(k==="j"){go(1);e.preventDefault();return}if(k==="k"){go(-1);e.preventDefault();return}
+  if(!paged)return;
+  var dir=(k==="PageDown"||(k===" "&&!e.shiftKey&&!inCtl)||(k==="ArrowDown"&&!inCtl))?1:(k==="PageUp"||(k===" "&&e.shiftKey&&!inCtl)||(k==="ArrowUp"&&!inCtl))?-1:0;
+  if(k==="Home"&&!inCtl){to(0);e.preventDefault();return}if(k==="End"&&!inCtl){to(S.length-1);e.preventDefault();return}
+  if(!dir)return;if(Date.now()<lock){e.preventDefault();return}
+  if(k.indexOf("Arrow")===0&&!atEdge(dir))return;
+  e.preventDefault();if(atEdge(dir))go(dir);else{lock=Date.now()+(reduce?150:600);scrollBy({top:dir*(innerHeight-off()-48),behavior:reduce?"auto":"smooth"})}});
  var raf;addEventListener("scroll",function(){cancelAnimationFrame(raf);raf=requestAnimationFrame(upd)},{passive:true});addEventListener("resize",upd);upd();};
 window.VZ=VZ;
 document.addEventListener("DOMContentLoaded",function(){VZ.reveal();VZ.secnav()});
