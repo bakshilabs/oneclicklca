@@ -129,3 +129,4 @@ body:has(.secnav){padding-bottom:72px}
  .secnav output{font-size:11px}
 }
 .secnav button.dot:hover:not(:disabled),.secnav button.dot:focus-visible{background:none;color:inherit}.secnav button.pg:hover:not(:disabled){background:var(--panel);color:var(--ink)}
+@media (max-width:640px){.secnav{bottom:0}}

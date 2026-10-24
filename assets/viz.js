@@ -74,17 +74,20 @@ VZ.secnav=function(){var main=document.getElementById("main");if(!main||document
  function off(){var h=document.querySelector(".sitenav");return (h?h.offsetHeight:0)+12}
  function cur(){var y=scrollY+off()+4,i=0;S.forEach(function(e,k){if(e.getBoundingClientRect().top+scrollY<=y)i=k});
   if(innerHeight+scrollY>=document.documentElement.scrollHeight-2)i=S.length-1;return i}
- function upd(){var i=cur();out.textContent=(i+1)+" / "+S.length;up.disabled=i===0&&scrollY<4;dn.disabled=i>=S.length-1;
+ function upd(){var i=cur();out.textContent=(i+1)+" / "+S.length;up.disabled=scrollY<4;dn.disabled=atBottom();
   D.forEach(function(d,k){if(k===i)d.setAttribute("aria-current","step");else d.removeAttribute("aria-current")})}
  var lock=0;
  function to(i){i=Math.max(0,Math.min(S.length-1,i));var y=i===0?0:S[i].getBoundingClientRect().top+scrollY-off();
   lock=Date.now()+(reduce?150:750);scrollTo({top:y,behavior:reduce?"auto":"smooth"})}
- function go(d){var i=cur();if(d<0){var top=S[i].getBoundingClientRect().top;to(top<off()-8?i:i-1)}else to(i+1)}
+ function topOf(k){return S[k].getBoundingClientRect().top+scrollY-off()}
+ function atBottom(){return innerHeight+scrollY>=document.documentElement.scrollHeight-2}
+ function go(d){var k;if(d>0){if(atBottom())return;for(k=0;k<S.length&&topOf(k)<=scrollY+8;k++);if(k<S.length)to(k);else{lock=Date.now()+(reduce?150:750);scrollTo({top:document.documentElement.scrollHeight,behavior:reduce?"auto":"smooth"})}}
+  else{for(k=S.length-1;k>=0&&topOf(k)>=scrollY-8;k--);to(Math.max(k,0))}}
  up.addEventListener("click",function(){go(-1)});dn.addEventListener("click",function(){go(1)});
  pg.addEventListener("click",function(){paged=!paged;pg.setAttribute("aria-pressed",paged);try{localStorage.setItem("paged",paged?"1":"0")}catch(x){}});
  /* should this step leave the current section? only when its edge is on screen */
  function atEdge(dir){var i=cur(),r=S[i].getBoundingClientRect();
-  if(dir>0)return i<S.length-1&&r.bottom<=innerHeight+4;
+  if(dir>0)return !atBottom()&&r.bottom<=innerHeight+4;
   return r.top>=off()-8&&!(i===0&&scrollY<4)}
  function scrollsInside(t,dir){for(var e=t;e&&e!==document.body;e=e.parentElement){var cs=getComputedStyle(e);if(/(auto|scroll)/.test(cs.overflowY)&&e.scrollHeight>e.clientHeight+1){if(dir>0?e.scrollTop+e.clientHeight<e.scrollHeight-1:e.scrollTop>0)return true}}return false}
  addEventListener("wheel",function(e){if(!paged||e.ctrlKey||Math.abs(e.deltaY)<Math.abs(e.deltaX))return;
