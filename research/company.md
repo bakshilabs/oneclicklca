@@ -11,12 +11,11 @@ Research date: 2026-10-23. Sources were accessed on that date unless noted. "Unv
 | Legal / origin | Developed by Bionova Ltd (Oy), Helsinki. Now trades as One Click LCA Ltd. Founded in **2001**. | https://oneclicklca.com/company/about-us ; https://www.environdec.com/news/the-international-epd-system-announces-partnership-with-one-click-lca (2021) |
 | Positioning line | "The AI-powered sustainability platform for construction & manufacturing" / "Powering the makers of a zero-carbon future" | About us page |
 | CEO | **Panu Pasanen**, CEO & Founder | SimaPro press release, 2 Sep 2025 |
-| Chair | **Colby Manwaring**, former CEO of Innovyze (sold to Autodesk for $1B in 2021) and former Autodesk VP | "Strengthened leadership" press release (dateline 17 Jun 2025; page header shows 17 Sep 2025) https://oneclicklca.com/en/resources/press-release/strengthened-leadership-to-power-a-zero-carbon-future |
-| CRO | **Suzana Delanghe** (ex-COO OpenClassrooms) | same |
-| CPO | **Alfred Gerum** (ex-CPO Benify) | same |
-| CFO | **Lin Li** (ex-CFO Teamtailor) | same |
+| Chair | Former CEO of Innovyze (sold to Autodesk for $1B in 2021) and former Autodesk VP | "Strengthened leadership" press release (dateline 17 Jun 2025; page header shows 17 Sep 2025) https://oneclicklca.com/en/resources/press-release/strengthened-leadership-to-power-a-zero-carbon-future |
+| CRO | Appointed 2025 (previously COO at OpenClassrooms) | same |
+| CPO | Appointed 2025 (previously CPO at Benify) | same |
+| CFO | Appointed 2025 (previously CFO at Teamtailor) | same |
 | CMO / VP Marketing / Head of PMM | **Not found.** The leadership release names no marketing executive, and the website has no leadership page. Searches turned up none. Check LinkedIn. | Searches, 23 Oct 2026 |
-| Comms names seen | Abigail Mela (Sustainability Communications, press contact on 2025 releases). Press bylines in 2026: Álvaro Martos, Kim Koivula, Asha Ramachandran. | Press releases |
 | Revenue target | "€100M annual revenue" target in the release body (the subtitle says $100M, which is inconsistent) | Leadership press release, 2025 |
 | Revenue (actual) | Not public. **Unverified:** Bionova Oy 2024 revenue of €20.1M, from the aggregator JobCrawls (its figures are internally inconsistent). Check PRH/Asiakastieto. | https://www.jobcrawls.com/fi/yritys/Bionova%20Oy |
 | Headcount | Figures vary by source: "200+ people across all continents" (leadership release, 2025); "over 180 professionals worldwide" (press-room boilerplate, likely stale); "team of 170 experts" (enterprise page). **Unverified** third-party estimates: Revelio Labs puts it at ~324 (Mar 2026), up from 295 at end-2025; LinkedIn and job boards use the 201-500 bracket. These figures probably exclude or predate PRé/SimaPro staff. | Press-room page; https://oneclicklca.com/enterprise-solutions ; https://www.reveliolabs.com/companies/bionova/employees |
@@ -35,7 +34,7 @@ Research date: 2026-10-23. Sources were accessed on that date unless noted. "Unv
 | 25 Apr 2024 | **Acquired Buildrz** (Paris, generative-AI feasibility platform for developers and architects, ~50 French customers). This became the generative design in Carbon Designer 3D / Forma integration. | https://oneclicklca.com/en/resources/press-release/one-click-lca-acquires-buildrz |
 | 17 Sep 2024 | **Acquired ENVI-met** (Germany, 3D microclimate simulation). Terms undisclosed. | https://tech.eu/2024/09/17/one-click-lca-acquires-envi-met/ |
 | 2 Sep 2025 | **Acquired SimaPro and PRé Sustainability** (Amersfoort, NL; general-purpose LCA software, 30+ years). Both products continue separately, with joint investment in AI, data and compliance. Reported value €25-50M (**unverified**, from an M&A award nominee listing). | SimaPro press release; https://mena.nl/nominee/one-click-lca-acquires-pre-sustainability |
-| 5 Feb 2026 | **EPD Hub became "fully independent"**, separated from EPD-creation platforms. It keeps its One Click LCA integration "as a partner". The release does not state the former ownership; it was historically closely linked to One Click LCA (**unverified**). EPD Hub reports 5,000+ EPDs and 1,000+ manufacturers. MD: Joshua Morshead. | https://www.epdhub.com/about-epd-hub/press-releases/epd-hub-fully-independent |
+| 5 Feb 2026 | **EPD Hub became "fully independent"**, separated from EPD-creation platforms. It keeps its One Click LCA integration "as a partner". The release does not state the former ownership; it was historically closely linked to One Click LCA (**unverified**). EPD Hub reports 5,000+ EPDs and 1,000+ manufacturers. | https://www.epdhub.com/about-epd-hub/press-releases/epd-hub-fully-independent |
 
 Note: I found no evidence that One Click LCA acquired EPD Hub. Treat EPD Hub as a partner programme operator, and since Feb 2026 an independent one.
 

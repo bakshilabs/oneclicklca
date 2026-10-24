@@ -30,4 +30,4 @@ Page bodies live in `build/pages/`. Run `python3 build/build.py` to wrap them wi
 - `PLAN.md`: the first plan for the interview materials
 - `session-notes.md`: decisions and open points
 
-Keep this repository private. The research names individual employees from public profiles.
+Keep this repository private. The research names no individual employees beyond the CEO.
