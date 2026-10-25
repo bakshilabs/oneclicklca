@@ -190,7 +190,7 @@ var Q=[
  ["Training others",[0,0,0,1,1,1,0],"I led internal LEED training for hundreds of architects and taught whole life carbon to studio partners. I teach at Imperial College London and taught at City University of New York.",[["Enablement","enablement.html"]]]
 ];
 var SRC=[[2008+9/12,2010],[2010+6/12,2013+9/12],[2013+9/12,2015+9/12],[2015+9/12,2026+6/12],[2025+9/12,2026+9.7/12],null,null];
-var rl=document.getElementById("fi-rl"),map=document.getElementById("fi-map"),qsel=0;
+var rl=document.getElementById("fi-rl"),map=document.getElementById("fi-map"),qsel=1;
 function drawMap(){map.innerHTML="";var q=Q[qsel],W=Math.max(280,map.clientWidth),nar=W<520,lw=nar?84:150,rh=28,H=7*rh+26;
  var s=VZ.svg(map,W,H,"Evidence map for "+q[0]+": "+COLS.filter(function(c,j){return q[1][j]}).join(", "));
  var x=VZ.lin(2008,2027,lw,W-6);
