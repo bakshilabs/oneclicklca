@@ -47,3 +47,9 @@
 - Removed stage directions ("minutes 9 to 17"), third-person panel notes and the Role timeline events taken from personal LinkedIn profiles.
 - Claims about One Click LCA's own deals, CRM and website are now conditional outside readings.
 - All 19 pages pass axe-core in light and dark, with no console errors and no sideways scroll at 1280 and 390 px.
+
+## Approach without figures (25 October 2026, continued)
+- The interview is about Arpan's approach, so the meeting pages hold no figures or data charts. They are Agenda, Background (fit.html), Market (market.html), Launch Approach (launch-approach.html), First Months (first-months.html) and Questions. The only numerals left are step markers.
+- Market and Launch Approach each set out the steps Arpan follows, with the EU disclosure requirement for new buildings as an example in words. The draft message is now "One model, reported to the EU method and to your national scheme", labelled as a draft to test.
+- The appendix keeps its data and models for anyone who asks. The footer carries no dates.
+- All 19 pages pass axe-core in light and dark, with no console errors and no sideways scroll at 1280 and 390 px.

@@ -1,403 +1,254 @@
-<!--meta title="Launch Proposal" desc="A tier one launch for first-time EU buyers in the twelve months before life cycle carbon disclosure begins on 1 January 2028."-->
+<!--meta title="Launch Approach" desc="The steps I follow to plan and run a launch, with the EU disclosure requirement for new buildings as the example."-->
 <style>
-#lp .icon{margin:0;flex:none}
-#lp .icon.sm{width:28px;height:28px;border-radius:5px}
-#lp .icon.sm svg{width:16px;height:16px}
-#lp .k{display:block;font:500 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--ink2)}
+.la-flow{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;position:relative}
+.la-flow::before{content:"";position:absolute;left:calc(100%/12);right:calc(100%/12);top:23px;height:2px;background:var(--line)}
+.la-flow li{position:relative}
+.la-flow button{appearance:none;border:0;background:none;color:var(--ink);font:inherit;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;padding:0 4px 6px;border-radius:6px}
+.la-flow .n{position:relative;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--bg);border:2px solid var(--line);font:600 17px/1 var(--sans);color:var(--ink);transition:background .2s,border-color .2s,color .2s}
+.la-flow .t{font:500 15px/1.3 var(--sans);max-width:17ch}
+.la-flow button:hover .n{border-color:var(--accent)}
+.la-flow button[aria-pressed="true"] .n{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.la-flow button[aria-pressed="true"] .t{color:var(--accent)}
+.la-flow button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.la-cycle{display:flex;align-items:center;gap:10px;margin-top:18px;font-size:14px;color:var(--muted)}
+.la-cycle svg{width:22px;height:22px;flex:none;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
-/* brief */
-.lp-brief{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);margin-top:36px;background:var(--chart-bg);border:1px solid var(--line);border-radius:6px;overflow:hidden}
-.lp-bm{padding:30px 32px 28px;display:flex;flex-direction:column;gap:14px;background:var(--accent-soft)}
-.lp-bm .q{font:500 clamp(24px,2.7vw,34px)/1.18 var(--sans);letter-spacing:-.025em;color:var(--ink1);max-width:20ch}
-.lp-bm p{font-size:14px;color:var(--ink2);margin-top:auto}
-.lp-bf{display:grid;grid-template-columns:1fr 1fr}
-.lp-bf div{padding:20px 22px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-content:start}
-.lp-bf div:nth-child(odd){border-right:1px solid var(--line)}
-.lp-bf div:nth-child(-n+2){border-bottom:1px solid var(--line)}
-.lp-bf .icon{grid-row:1/4}
-.lp-bf b{font:600 20px/1.2 var(--sans);letter-spacing:-.015em;color:var(--ink1)}
-.lp-bf span.s{font-size:13px;color:var(--ink2);line-height:1.4}
-@media (max-width:900px){.lp-brief{grid-template-columns:1fr}}
-@media (max-width:520px){.lp-bf{grid-template-columns:1fr}.lp-bf div:nth-child(odd){border-right:0}.lp-bf div:not(:last-child){border-bottom:1px solid var(--line)}}
+.la-steps{display:grid;gap:14px;margin-top:32px}
+.la-step{display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,1fr);gap:8px 28px;background:var(--panel);border-radius:8px;padding:26px 28px;transition:background .25s,box-shadow .25s;scroll-margin-top:96px}
+.la-step.on{background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.la-step .badge{grid-row:1/3;width:44px;height:44px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font:600 16px/1 var(--sans)}
+.la-step h3{grid-column:2/4;font-size:21px;letter-spacing:-.01em}
+.la-step .col .k{display:flex;align-items:center;gap:8px;font:500 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:6px 0 8px}
+.la-step .col .k svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.la-step .col p{font-size:15.5px;line-height:1.55}
+.la-step .col p+p{margin-top:10px}
+.la-step .col ul{margin:0;padding-left:18px;font-size:15.5px;line-height:1.5}
+.la-step .col li{margin-top:4px}
+.la-step .col ul+p{margin-top:12px}
+.la-step .ex{background:var(--bg);border-radius:6px;padding:16px 18px}
+.la-step.on .ex{background:var(--surface)}
+.la-step .ex .k{margin-top:0}
+.la-msg{margin-top:12px;background:var(--panel);border-radius:6px;padding:14px 16px}
+.la-step.on .la-msg{background:var(--accent-soft)}
+.la-msg span{display:block;font:500 11.5px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.la-msg b{display:block;font:500 19px/1.35 var(--sans);letter-spacing:-.01em;margin-top:6px}
+.la-sizes{display:grid;gap:8px;margin-top:4px}
+.la-sizes div{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:start;font-size:15px}
+.la-sizes i{width:12px;height:12px;border-radius:50%;margin-top:5px;background:var(--ink3)}
+.la-sizes .big i{background:var(--accent)}
+.la-sizes .mid i{background:var(--seq-3)}
+.la-sizes b{font-weight:600}
+.la-kit{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+.la-kit div{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.4;background:var(--panel);border-radius:5px;padding:10px 12px}
+.la-step.on .la-kit div{background:var(--accent-soft)}
+.la-kit svg{width:18px;height:18px;flex:none;margin-top:1px;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:900px){
+ .la-step{grid-template-columns:52px minmax(0,1fr)}
+ .la-step h3{grid-column:2/3}
+ .la-step .badge{grid-row:1/2}
+ .la-step .col{grid-column:1/-1}
+}
+@media (max-width:760px){
+ .la-flow{grid-template-columns:1fr;gap:0}
+ .la-flow::before{left:23px;right:auto;top:24px;bottom:24px;width:2px;height:auto}
+ .la-flow button{flex-direction:row;text-align:left;gap:16px;padding:6px 0}
+ .la-flow .t{max-width:none}
+ .la-kit{grid-template-columns:1fr}
+ .la-step{padding:22px 20px}
+}
 
-/* segment funnel */
-.lp-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:0 0 18px;counter-reset:st}
-.lp-steps button{appearance:none;border:0;background:none;color:var(--ink);text-align:left;cursor:pointer;font:inherit;padding:0 14px 0 0;position:relative;display:grid;grid-template-columns:32px 1fr;gap:2px 10px;align-items:center}
-.lp-steps button .n{grid-row:1/3;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font:600 14px/1 var(--sans);background:var(--panel);color:var(--ink2);transition:background .25s,color .25s;position:relative;z-index:1}
-.lp-steps button::after{content:"";position:absolute;left:32px;right:0;top:16px;height:2px;background:var(--grid);z-index:0}
-.lp-steps button:last-child::after{display:none}
-.lp-steps button.done::after{background:var(--accent)}
-.lp-steps button b{font:600 14px/1.2 var(--sans);position:relative;z-index:1;background:var(--chart-bg);padding-right:8px;justify-self:start}
-.lp-steps button span.d{font-size:12.5px;color:var(--ink2)}
-.lp-steps button[aria-pressed="true"] .n{background:var(--accent);color:var(--on-accent)}
-.lp-steps button:focus-visible{outline:2px solid var(--ink1);outline-offset:4px;border-radius:4px}
-.lp-cnt{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-bottom:8px}
-.lp-cnt b{font:600 40px/1 var(--sans);letter-spacing:-.03em;color:var(--ink1);font-variant-numeric:tabular-nums}
-.lp-cnt span{font-size:14px;color:var(--ink2)}
-.lp-cnt .trail{margin-left:auto;font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums}
-.lp-cnt .trail em{font-style:normal;color:var(--ink1);font-weight:600}
-@media (max-width:760px){.lp-steps{grid-template-columns:1fr 1fr;gap:14px 0}.lp-steps button::after{display:none}.lp-cnt .trail{margin-left:0;flex-basis:100%}}
-#lp-rank .row{outline:none}
-#lp-rank .row:focus-visible rect.hit{stroke:var(--ink1);stroke-width:1.5}
-#lp-rank rect.b{transition:width .5s cubic-bezier(.2,.7,.2,1),fill .3s,opacity .3s}
-#lp-rank text{transition:opacity .3s,fill .3s}
-.lp-sum{margin-top:14px;background:var(--panel);border-radius:6px;padding:14px 18px;font-size:14.5px;min-height:52px}
-.lp-sum b{font-weight:600}
+.la-risk{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.la-risk div{background:var(--panel);border-radius:8px;padding:22px 24px;display:flex;flex-direction:column;gap:8px}
+.la-risk .ic{width:36px;height:36px;border-radius:50%;background:var(--warn-soft);display:grid;place-items:center;margin-bottom:4px}
+.la-risk .ic svg{width:18px;height:18px;fill:none;stroke:var(--warn);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.la-risk h3{font-size:17px}
+.la-risk p{font-size:15px;color:var(--muted)}
+.la-risk .r{margin-top:6px;background:var(--accent-soft);border-radius:6px;padding:12px 14px;color:var(--ink);font-size:15px}
+.la-risk .r span{display:block;font:500 11.5px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+@media (max-width:900px){.la-risk{grid-template-columns:1fr}}
 
-/* message */
-.lp-msg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;margin-top:28px;align-items:stretch}
-.lp-pf{list-style:none;margin:0;padding:0;display:grid;gap:0;background:var(--chart-bg);border:1px solid var(--line);border-radius:6px}
-.lp-pf li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding:18px 20px;font-size:14.5px;color:var(--ink2)}
-.lp-pf li+li{border-top:1px solid var(--line)}
-.lp-pf .icon{grid-row:1/3}
-.lp-pf b{font-weight:600;font-size:15.5px;color:var(--ink1)}
-.lp-angw{background:var(--panel);border-radius:6px;padding:20px 22px;display:flex;flex-direction:column}
-.lp-angw .tabs{margin-top:10px}
-.lp-ang{margin-top:18px;animation:lpin .35s ease both}
-.lp-ang .q{font:500 21px/1.35 var(--sans);letter-spacing:-.015em;color:var(--ink1);margin:6px 0 16px}
-.lp-ang dl{margin:0;display:grid;gap:12px}
-.lp-ang dl div{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;align-items:start}
-.lp-ang dt{font:500 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--ink2);grid-column:2}
-.lp-ang dd{margin:0;font-size:14.5px;grid-column:2}
-.lp-ang dl .icon{grid-row:1/3;grid-column:1;background:var(--chart-bg)}
-@keyframes lpin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-@media (max-width:900px){.lp-msg{grid-template-columns:1fr}}
-.lp-kit{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}
-.lp-kit a{background:var(--panel);border-radius:6px;padding:16px 16px 14px;color:var(--ink);text-decoration:none;display:flex;flex-direction:column;gap:6px;font-size:13.5px;color:var(--ink2);transition:transform .18s,background .18s}
-.lp-kit a:hover,.lp-kit a:focus-visible{transform:translateY(-3px);background:var(--accent-soft)}
-.lp-kit a .icon{margin-bottom:6px}
-.lp-kit a b{font-weight:600;font-size:14.5px;color:var(--ink1)}
-.lp-kit a small{margin-top:auto;padding-top:8px;font:500 12.5px/1 var(--sans);color:var(--accent)}
-@media (max-width:1000px){.lp-kit{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){.lp-kit{grid-template-columns:1fr}}
-
-/* timeline */
-#lp-tl .ms{cursor:pointer;outline:none}
-#lp-tl .ms:focus-visible circle.dot{stroke:var(--ink1);stroke-width:2.5}
-.lp-tlc{display:flex;gap:8px;align-items:center;margin-bottom:4px}
-.lp-tlc button{appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:3px;width:34px;height:30px;cursor:pointer;display:grid;place-items:center}
-.lp-tlc button svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.lp-tlc button:disabled{opacity:.35;cursor:default}
-.lp-tlc output{font-size:13px;color:var(--ink2);margin-left:4px;font-variant-numeric:tabular-nums}
-.lp-tld{background:var(--panel);border-radius:6px;padding:16px 20px;margin-top:10px;display:grid;grid-template-columns:200px 1fr;gap:18px;font-size:14.5px;animation:lpin .3s ease both}
-.lp-tld .d{font:600 19px/1.2 var(--sans);letter-spacing:-.01em}
-.lp-tld .wk{display:inline-block;margin-top:8px;font:600 12px/1 var(--sans);padding:5px 8px;border-radius:3px;background:var(--chart-bg);color:var(--ink1)}
-.lp-tld .wk.t0{background:var(--accent);color:var(--on-accent)}
-.lp-tld .o{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:13.5px;color:var(--ink2)}
-.lp-tld .o svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;flex:none}
-@media (max-width:640px){.lp-tld{grid-template-columns:1fr;gap:8px}}
-
-/* value */
-.lp-val{display:grid;grid-template-columns:300px 1fr;gap:20px;margin-top:28px;align-items:start}
-.lp-val .controls{background:var(--panel);border-radius:6px;padding:20px 22px 14px}
-.lp-val .controls h3{font-size:16px}
-.lp-val .controls .grp{font:500 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--ink2);margin:18px 0 -4px;padding-top:14px;border-top:1px solid var(--line)}
-.lp-val .viz{margin-top:0}
-.lp-fleg b{font-weight:600;color:var(--ink1);font-variant-numeric:tabular-nums}
-.lp-fleg i{border-radius:2px}
-.lp-out{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
-.lp-out div{background:var(--panel);border-radius:6px;padding:14px 16px}
-.lp-out b{display:block;font:600 26px/1.05 var(--sans);letter-spacing:-.025em;color:var(--ink1);font-variant-numeric:tabular-nums}
-.lp-out b em{font-style:normal;color:var(--accent)}
-.lp-out span{display:block;font-size:13px;color:var(--ink2);margin-top:6px}
-.lp-out div.hi{background:var(--accent);}
-.lp-out div.hi b,.lp-out div.hi span{color:var(--on-accent)}
-.lp-tg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
-.lp-tg div{background:var(--chart-bg);border:1px solid var(--line);border-radius:6px;padding:18px 20px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start}
-.lp-tg .icon{grid-row:1/3}
-.lp-tg b{font:600 28px/1 var(--sans);letter-spacing:-.03em;color:var(--ink1)}
-.lp-tg span{font-size:13.5px;color:var(--ink2)}
-@media (max-width:900px){.lp-val{grid-template-columns:1fr}.lp-tg,.lp-out{grid-template-columns:1fr}}
-
-/* risks */
-.lp-risk{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px;align-items:start}
-.lp-risk button{appearance:none;border:1px solid var(--line);text-align:left;font:inherit;color:var(--ink);background:var(--chart-bg);border-radius:6px;padding:20px 22px;cursor:pointer;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;transition:background .2s,border-color .2s}
-.lp-risk button:hover{border-color:var(--ink3)}
-.lp-risk .rn{grid-row:1/3;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--warn-soft);color:var(--warn);font:600 14px/1 var(--sans)}
-.lp-risk b{font-weight:600;font-size:15.5px;line-height:1.3}
-.lp-risk p{font-size:14px;color:var(--ink2)}
-.lp-risk .m{grid-column:1/-1;display:none;margin-top:10px;padding:14px 16px;border-radius:5px;background:var(--accent-soft);font-size:14px;color:var(--ink1)}
-.lp-risk .m .k{margin-bottom:4px;color:var(--accent)}
-.lp-risk .hint{grid-column:2;display:inline-flex;align-items:center;gap:6px;margin-top:8px;font:500 13px/1 var(--sans);color:var(--accent)}
-.lp-risk .hint svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;transition:transform .2s}
-.lp-risk button[aria-expanded="true"]{border-color:var(--accent)}
-.lp-risk button[aria-expanded="true"] .rn{background:var(--accent);color:var(--on-accent)}
-.lp-risk button[aria-expanded="true"] .m{display:block;animation:lpin .3s ease both}
-.lp-risk button[aria-expanded="true"] .hint svg{transform:rotate(180deg)}
-@media (max-width:900px){.lp-risk{grid-template-columns:1fr}}
-@media (prefers-reduced-motion:reduce){#lp *{animation:none!important;transition:none!important}}
+.la-more{margin-top:56px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;font-size:15px;color:var(--muted)}
+.la-more a{display:inline-block;background:var(--panel);border-radius:4px;padding:7px 12px;color:var(--ink);text-decoration:none;font-size:14px}
+.la-more a:hover{background:var(--accent-soft);color:var(--accent)}
+@media (prefers-reduced-motion:reduce){.la-step,.la-flow .n{transition:none}}
 </style>
-<div id="lp">
+
 <header class="phead">
-  <span class="eyebrow">First launch</span>
-  <h1>Launch Proposal</h1>
-  <p class="lede">This is the first launch I would propose. It is a tier one launch of the EU life cycle carbon method for design teams that have not bought an LCA tool before. It would run in the twelve months between the national roadmaps on 1 January 2027 and EU disclosure on 1 January 2028.</p>
-  <p class="meta">A proposal for discussion, based on public information. The targets and weights are my judgement. I would check them against One Click LCA's own data.</p>
+  <span class="eyebrow">Taking a release to market</span>
+  <h1>Launch Approach</h1>
+  <p class="lede">These are the steps I follow to plan and run a launch. The example throughout is the EU requirement for new buildings to disclose their life cycle carbon.</p>
+  <p class="meta">The example would build on the EU work One Click LCA already does, including its regulation webinars and compliance releases. I would confirm the scope and timing against the product roadmap with product and sales.</p>
 </header>
 
-<div class="lp-brief rv">
-  <div class="lp-bm"><span class="k">Draft message to test</span><span class="q">The EU method, done once, accepted everywhere you build.</span><p>I would test it in sales calls in Germany and Italy before launch day.</p></div>
-  <div class="lp-bf">
-    <div><span class="icon sm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M14 4c3-1 6-1 6-1s0 3-1 6l-6 6-5-5 6-6z"/><circle cx="15" cy="9" r="1.5"/></svg></span><span class="k">Tier</span><b>Tier one</b><span class="s">One of the two or three company-wide launches I would plan for 2027</span></div>
-    <div><span class="icon sm" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><span class="k">Launch day</span><b>March 2027</b><span class="s">Brief signed in January, eight weeks before</span></div>
-    <div><span class="icon sm" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></span><span class="k">Segments</span><b>Three</b><span class="s">German designers, Italian and Spanish designers, global engineering firms</span></div>
-    <div><span class="icon sm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 20h18M6 16l4-5 3 3 5-7"/></svg></span><span class="k">Main measure</span><b>No-decision share</b><span class="s">Share of losses in the three segments, tracked with win rate</span></div>
-  </div>
-</div>
-
-<section class="sec">
-  <span class="eyebrow">Who it is for</span>
-  <h2>Who the launch is for</h2>
-  <p class="intro">I ranked the fifteen sub-segments from the Segment Model. For this launch I gave reachable volume the most weight. Each filter then removes segments that another launch would serve better.</p>
-  <div class="viz rv">
-    <div class="viz-h"><h3>Sub-segment scores with first-time buyer weights</h3><p>Volume 35%, room to win 20%, deal value 15%, and 10% each for pressure, fit and channel.</p></div>
-    <div class="lp-steps" id="lp-steps" role="group" aria-label="Apply the filters in order">
-      <button type="button" data-s="0" aria-pressed="true"><span class="n">1</span><b>All fifteen</b><span class="d">Ranked by score</span></button>
-      <button type="button" data-s="1" aria-pressed="false"><span class="n">2</span><b>In the EU</b><span class="d">The 2028 rule applies</span></button>
-      <button type="button" data-s="2" aria-pressed="false"><span class="n">3</span><b>First rule in 2028</b><span class="d">No national rule today</span></button>
-      <button type="button" data-s="3" aria-pressed="false"><span class="n">4</span><b>Design teams</b><span class="d">Manufacturers have their own launch</span></button>
-    </div>
-    <div class="lp-cnt" aria-live="polite"><b id="lp-left">15</b><span>sub-segments remain</span><span class="trail" id="lp-trail"></span></div>
-    <div id="lp-rank"></div>
-    <div class="lp-sum" id="lp-sum" aria-live="polite"></div>
-  </div>
-  <p class="src" style="margin-top:10px">Scores from <a href="segments.html">A5 Segment Model</a>. Global engineering firms score lower on volume. They stay in because they buy firm-wide and work in every EU market.</p>
+<section class="sec" style="margin-top:56px">
+  <span class="eyebrow">My approach</span>
+  <h2>Six steps</h2>
+  <ol class="la-flow" id="la-flow" aria-label="Launch steps">
+    <li><button type="button" aria-pressed="false" data-s="0"><span class="n">1</span><span class="t">Choose who it is for</span></button></li>
+    <li><button type="button" aria-pressed="false" data-s="1"><span class="n">2</span><span class="t">Find the message in buyers' own words</span></button></li>
+    <li><button type="button" aria-pressed="false" data-s="2"><span class="n">3</span><span class="t">Decide the size of the launch</span></button></li>
+    <li><button type="button" aria-pressed="false" data-s="3"><span class="n">4</span><span class="t">Equip sellers and partners</span></button></li>
+    <li><button type="button" aria-pressed="false" data-s="4"><span class="n">5</span><span class="t">Launch and listen</span></button></li>
+    <li><button type="button" aria-pressed="false" data-s="5"><span class="n">6</span><span class="t">Measure and adjust</span></button></li>
+  </ol>
+  <p class="la-cycle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg>What I learn in the last step feeds the choice of who the next launch is for.</p>
 </section>
 
 <section class="sec">
-  <span class="eyebrow">Message</span>
-  <h2>Draft message</h2>
-  <div class="lp-msg">
-    <ol class="lp-pf rv">
-      <li><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 13 9 5 9-5"/></svg></span><b>The EU method on the same model as national rules</b>A team runs one assessment and reports it to the EU method and to any national scheme the project also needs.</li>
-      <li><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 14l2 2 4-4"/></svg></span><b>A report ready for the energy certificate</b>The output matches what the disclosure asks for, so the first project ends with a document the client can file.</li>
-      <li><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></svg></span><b>Local support for the first project</b>Sellers, the Academy and partners such as Harpaceas in Italy take a new team through its first assessment.</li>
-    </ol>
-    <div class="lp-angw">
-      <span class="k">Draft angle to test, by segment</span>
-      <div class="tabs" role="tablist" aria-label="Segment angle" id="lp-angt">
-        <button role="tab" aria-selected="true" data-k="0">Germany</button>
-        <button role="tab" aria-selected="false" data-k="1">Italy and Spain</button>
-        <button role="tab" aria-selected="false" data-k="2">Global firms</button>
+  <span class="eyebrow">Each step</span>
+  <h2>How I do it, with an example</h2>
+  <div class="la-steps" id="la-steps">
+
+    <article class="la-step" id="la-s0">
+      <span class="badge" aria-hidden="true">1</span>
+      <h3>Choose who it is for</h3>
+      <div class="col">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h6"/></svg>How I do it</p>
+        <p>I compare possible segments on the same questions:</p>
+        <ul>
+          <li>How close is the deadline that makes them act?</li>
+          <li>Can our sellers and partners reach these buyers?</li>
+          <li>How well does the product fit their need today?</li>
+          <li>How strong are the alternatives they already have?</li>
+          <li>Is there a seller or partner who can carry the message?</li>
+        </ul>
+        <p>I agree the choice with product and sales before any material is written.</p>
       </div>
-      <div class="lp-ang" id="lp-ang" role="tabpanel" aria-live="polite"></div>
-    </div>
-  </div>
-  <h3 style="margin-top:40px">Seller kit, ready two weeks before launch</h3>
-  <div class="lp-kit">
-    <a href="enablement.html"><span class="icon sm" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h8"/></svg></span><b>Business case calculator</b>Consultant route against the tool route, with break-even.<small>A9 Enablement</small></a>
-    <a href="enablement.html"><span class="icon sm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z"/><path d="M10 9a2 2 0 1 1 2 2v1M12 14h0"/></svg></span><b>Discovery guide</b>Five questions that find the trigger and the person who signs.<small>A9 Enablement</small></a>
-    <a href="demand.html"><span class="icon sm" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><b>EU method explainer</b>Dates, scope and the country roadmap for each market.<small>A3 Demand Drivers</small></a>
-    <a href="alternatives.html"><span class="icon sm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 0 0 6 0L5 7zM19 7l-3 7a3 3 0 0 0 6 0l-3-7z"/></svg></span><b>Free tool battlecard</b>Talk track against eLCA and other free national tools.<small>A6 Alternatives</small></a>
-    <a href="launch.html"><span class="icon sm" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="m10 8 5 2.5-5 2.5zM8 21h8"/></svg></span><b>Demo script and FAQ</b>A first project from model import to report in twenty minutes.<small>A8 Launch Playbook</small></a>
-  </div>
-</section>
+      <div class="col ex">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11"/></svg>Example: EU disclosure</p>
+        <p>The first group would be design teams in EU countries that have no national rule yet. Many of them will need to learn how an LCA works before they compare tools.</p>
+        <p>Global firms that already use One Click LCA in one office are a second route. For them the launch is about extending to more offices.</p>
+        <p>German teams are harder. Free national tools exist and some projects already need an LCA for funding, so the case has to be about time and working across countries.</p>
+        <p>Manufacturers would get their own launch around the construction product rules.</p>
+      </div>
+    </article>
 
-<section class="sec">
-  <span class="eyebrow">Plan</span>
-  <h2>Timeline</h2>
-  <div class="viz rv">
-    <div class="viz-h"><h3>Launch milestones, January 2027 to January 2028</h3><p>Select a milestone or step through them. Weeks are counted from launch day.</p></div>
-    <div class="lp-tlc"><button type="button" id="lp-prev" aria-label="Previous milestone"><svg viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button><button type="button" id="lp-next" aria-label="Next milestone"><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button><output id="lp-tlo"></output></div>
-    <div id="lp-tl"></div>
-    <div class="lp-tld" id="lp-tld" aria-live="polite"></div>
-  </div>
-  <p class="src" style="margin-top:10px">The full owner-by-owner plan from eight weeks before to twelve weeks after is on <a href="launch.html">A8 Launch Playbook</a>. If I start in January 2027, launch day would fall in the third month of my <a href="first-90-days.html">first 90 days</a>.</p>
-</section>
+    <article class="la-step" id="la-s1">
+      <span class="badge" aria-hidden="true">2</span>
+      <h3>Find the message in buyers' own words</h3>
+      <div class="col">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5z"/></svg>How I do it</p>
+        <p>I interview buyers and prospects we lost, and I listen to sales calls. I write down the words buyers use for the problem and for what they want at the end of it.</p>
+        <p>I then draft a short message and test it in real calls. It goes on the website only after sellers have seen it work.</p>
+      </div>
+      <div class="col ex">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11"/></svg>Example: EU disclosure</p>
+        <p>I would talk to design teams facing their first disclosure, and to teams who chose to wait or to hire a consultant.</p>
+        <div class="la-msg"><span>Draft message to test</span><b>One model, reported to the EU method and to your national scheme.</b></div>
+        <p style="margin-top:12px">I would test it in sales calls in the first countries before it is used anywhere else.</p>
+      </div>
+    </article>
 
-<section class="sec">
-  <span class="eyebrow">Value</span>
-  <h2>Value model</h2>
-  <p class="intro">This is the A10 model with its two levers. All figures are placeholders. Enter One Click LCA's own pipeline figures to get a real estimate.</p>
-  <div class="lp-val">
-    <div class="controls">
-      <h3>Pipeline</h3>
-      <div class="ctl"><label for="lp-o">Qualified opportunities a quarter<output id="lp-oo"></output></label><input type="range" id="lp-o" min="20" max="300" step="10" value="120"></div>
-      <div class="ctl"><label for="lp-w">Current win rate<output id="lp-wo"></output></label><input type="range" id="lp-w" min="5" max="50" step="1" value="22"></div>
-      <div class="ctl"><label for="lp-nd">Share of losses to no decision<output id="lp-ndo"></output></label><input type="range" id="lp-nd" min="10" max="80" step="5" value="45"></div>
-      <div class="ctl"><label for="lp-acv">First-year contract value<output id="lp-acvo"></output></label><input type="range" id="lp-acv" min="2000" max="40000" step="1000" value="9000"></div>
-      <p class="grp">Levers</p>
-      <div class="ctl"><label for="lp-r1">No-decision losses recovered<output id="lp-r1o"></output></label><input type="range" id="lp-r1" min="0" max="40" step="5" value="10"><span class="hint">Through the business case and the first-project offer</span></div>
-      <div class="ctl"><label for="lp-r2">Competitive losses recovered<output id="lp-r2o"></output></label><input type="range" id="lp-r2" min="0" max="40" step="5" value="10"><span class="hint">Through the free tool battlecard</span></div>
-    </div>
-    <div class="viz">
-      <div class="viz-h"><h3>Where a year of lost deals goes</h3><p>Placeholder figures. The 95% ranges show whether the change would be visible in a year of closed deals.</p></div>
-      <div class="legend lp-fleg" id="lp-fleg" aria-hidden="true"></div><div id="lp-flow"></div>
-      <div id="lp-wr"></div>
-      <div class="lp-out" id="lp-out"></div>
-    </div>
+    <article class="la-step" id="la-s2">
+      <span class="badge" aria-hidden="true">3</span>
+      <h3>Decide the size of the launch</h3>
+      <div class="col">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h4V10H4zM10 18h4V6h-4zM16 18h4V3h-4z"/></svg>How I do it</p>
+        <div class="la-sizes">
+          <div class="big"><i></i><p><b>Company-wide launch.</b> The whole company takes part, with an event, press and full seller training.</p></div>
+          <div class="mid"><i></i><p><b>Segment launch.</b> Aimed at named segments, with targeted campaigns and seller briefings.</p></div>
+          <div><i></i><p><b>Release note.</b> Help pages, an in-product notice and a line for sellers.</p></div>
+        </div>
+        <p style="margin-top:10px">I decide on reach, on the revenue at stake and on whether the message to buyers changes.</p>
+      </div>
+      <div class="col ex">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11"/></svg>Example: EU disclosure</p>
+        <p>It reaches many new buyers in several countries and changes what sellers say. That makes it a candidate for a company-wide launch.</p>
+        <p>I would confirm the size with product and sales once the roadmap is clear.</p>
+      </div>
+    </article>
+
+    <article class="la-step" id="la-s3">
+      <span class="badge" aria-hidden="true">4</span>
+      <h3>Equip sellers and partners</h3>
+      <div class="col">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>How I do it</p>
+        <p>I give sellers material they can use on a call without me. I train them on the buyer's problem and the business case before launch day.</p>
+        <p>Partners get the same material, adapted for their markets.</p>
+      </div>
+      <div class="col ex">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11"/></svg>Example: EU disclosure</p>
+        <div class="la-kit">
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M9 12h6M9 16h4"/></svg>A business case that compares a consultant, or waiting, with a licence</div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4-4"/></svg>A discovery guide to find the trigger and the person who signs</div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg>An explainer of the EU method for buyers new to LCA</div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 0 0 6 0L5 7zM19 7l-3 7a3 3 0 0 0 6 0l-3-7z"/></svg>A battlecard for calls where a free national tool is the alternative</div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M10 9l4 2-4 2z"/></svg>A demo of a first project, from model to report</div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 11l10-5M7 13l10 5"/></svg>Briefings for green building councils and resellers</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="la-step" id="la-s4">
+      <span class="badge" aria-hidden="true">5</span>
+      <h3>Launch and listen</h3>
+      <div class="col">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M14 4c3-1 6-1 6-1s0 3-1 6l-6 6-5-5 6-6z"/></svg>How I do it</p>
+        <p>On launch day the work moves to listening. I follow the first deals, the questions sellers get and the questions that reach support.</p>
+        <p>Where buyers do not respond to a message, I change it and tell sellers what changed and why.</p>
+      </div>
+      <div class="col ex">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11"/></svg>Example: EU disclosure</p>
+        <p>A live event and a webinar with green building councils, material in each local language, and a customer story from an early project.</p>
+        <p>I would read the first deals in each country to see which alternative buyers chose and what made them wait.</p>
+      </div>
+    </article>
+
+    <article class="la-step" id="la-s5">
+      <span class="badge" aria-hidden="true">6</span>
+      <h3>Measure and adjust</h3>
+      <div class="col">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18M6 16l4-5 3 3 5-7"/></svg>How I do it</p>
+        <p>I agree the measures with sales before launch, so we judge the launch on the same terms.</p>
+        <p>To separate the launch from normal variation, I compare with a period before it. I state what we can claim and what we cannot.</p>
+      </div>
+      <div class="col ex">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11"/></svg>Example: EU disclosure</p>
+        <ul>
+          <li>Win rate in the chosen segments.</li>
+          <li>How many deals end with no decision.</li>
+          <li>How many new accounts finish a first project.</li>
+        </ul>
+        <p style="margin-top:10px">If the CRM does not yet record no decision as a loss reason, I would ask to add it before launch.</p>
+      </div>
+    </article>
+
   </div>
-  <h3 style="margin-top:40px">Targets</h3>
-  <div class="lp-tg">
-    <div><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span><b>−10 points</b><span>No-decision share of losses in the three segments within two quarters of launch</span></div>
-    <div><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span><b>+5 points</b><span>Win rate in the three segments against the baseline set before launch</span></div>
-    <div><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><b>60%</b><span>New accounts that finish a first EU method project within 90 days</span></div>
-  </div>
-  <p class="src" style="margin-top:10px">Example targets. I would agree them with sales before launch. They depend on the baseline, which the loss reason fields on <a href="metrics.html">A10 Win Rate</a> would provide.</p>
 </section>
 
 <section class="sec">
   <span class="eyebrow">Risks</span>
-  <h2>Risks</h2>
-  <div class="lp-risk" id="lp-risk">
-    <button type="button" aria-expanded="true"><span class="rn">1</span><b>Roadmaps arrive late or differ by country</b><p>Several member states may miss the 1 January 2027 date.</p><span class="m"><span class="k">My response</span>The launch rests on the EU method, which is fixed. Country guides follow each roadmap as it is published, as monthly tier three releases.</span><span class="hint">Hide my response<svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
-    <button type="button" aria-expanded="true"><span class="rn">2</span><b>Buyers wait until late 2027</b><p>A deadline a year away does not feel urgent to a design team.</p><span class="m"><span class="k">My response</span>A second wave in September targets budgets for 2028, with a customer story from the first projects and a fixed-price first project offer.</span><span class="hint">Hide my response<svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
-    <button type="button" aria-expanded="true"><span class="rn">3</span><b>Free national tools in Germany</b><p>eLCA and ÖKOBAUDAT cost nothing to start.</p><span class="m"><span class="k">My response</span>The business case compares time per project and one model across countries. Firms working in more than one market lose the most time with a national tool.</span><span class="hint">Hide my response<svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
+  <h2>Risks and how I would respond</h2>
+  <div class="la-risk">
+    <div>
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3zM12 10v5M12 18v.5"/></svg></span>
+      <h3>National rules arrive late or differ</h3>
+      <p>Some countries may publish their rules late, and each may set them differently.</p>
+      <p class="r"><span>My response</span>The launch rests on the EU method. Country guides follow as each national rule is published, as smaller releases.</p>
+    </div>
+    <div>
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3zM12 10v5M12 18v.5"/></svg></span>
+      <h3>Buyers wait until the deadline is close</h3>
+      <p>A deadline that feels far away does not move a design team to buy.</p>
+      <p class="r"><span>My response</span>A second campaign closer to the deadline, timed for next year's budgets and led by a customer story from the first projects.</p>
+    </div>
+    <div>
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3zM12 10v5M12 18v.5"/></svg></span>
+      <h3>Free national tools</h3>
+      <p>In some countries a free tool is enough to start.</p>
+      <p class="r"><span>My response</span>The business case compares time per project and one model across countries. Firms that work in more than one country gain the most.</p>
+    </div>
   </div>
 </section>
-</div>
+
+<p class="la-more">The models and data behind these steps are in the appendix: <a href="segments.html">Segment Model</a><a href="launch.html">Launch Playbook</a><a href="enablement.html">Enablement</a><a href="metrics.html">Win Rate</a></p>
 
 <script>
 (function(){
-function $(id){return document.getElementById(id)}
-function txt(el,t){el.textContent=t;return el}
-/* ---------- segment funnel ---------- */
-/* name, scores p v n f r c, in EU, rule before 2028, design side */
-var S=[
-["Finland, architects and engineers",[5,3,3,5,4,5],1,1,1],
-["Denmark, designers and contractors",[5,3,3,4,3,4],1,1,1],
-["Netherlands, designers",[5,3,3,3,2,3],1,1,1],
-["Netherlands, manufacturers",[5,4,3,4,3,4],1,1,0],
-["France, manufacturers",[4,4,4,4,3,3],1,1,0],
-["Germany, designers",[3,4,5,3,3,3],1,0,1],
-["Italy and Spain, designers",[3,3,5,3,4,3],1,0,1],
-["UK, engineers and consultancies",[3,4,4,5,3,4],0,0,1],
-["Ireland, public project teams",[4,3,2,4,4,2],1,1,1],
-["EU cement and concrete producers",[4,5,3,4,3,4],1,0,0],
-["EU MEP and HVAC manufacturers",[3,4,4,4,4,4],1,0,0],
-["Global engineering and design firms",[3,5,2,4,4,3],1,0,1],
-["United States, designers",[2,3,5,3,1,2],0,0,1],
-["Middle East, designers",[1,4,3,4,4,3],0,0,1],
-["Sweden, developers",[3,3,3,4,2,4],1,1,1]
-];
-var WT=[10,15,35,10,20,10];
-S.forEach(function(s){s.sc=s[1].reduce(function(a,v,i){return a+v*WT[i]},0)/100});
-var ORD=S.slice().sort(function(a,b){return b.sc-a.sc});
-var REASON=["","Outside the EU, so the 2028 rule does not apply.","A national rule already applies, so the national compliance launches cover these buyers.","Manufacturers get the CPR readiness launch in Q1 2027."];
-var TAG=["","Outside the EU","National rule today","Manufacturer"];
-function outAt(s){if(!s[2])return 1;if(s[3])return 2;if(!s[4])return 3;return 0}
-var STEP=0;
-function remain(st){return ORD.filter(function(sg){var o=outAt(sg);return !(o>0&&o<=st)}).length}
-function drawRank(){var host=$("lp-rank");host.innerHTML="";var W=Math.max(290,host.clientWidth),nar=W<640,LW=nar?0:250,TW=nar?0:150,rh=nar?38:26,bh=nar?10:12,top=4,H=top+ORD.length*rh+22;
- var s=VZ.svg(host,W,H,"Fifteen sub-segments ranked by first-time buyer score. After the filters, German designers, Italian and Spanish designers and global engineering firms remain.");s.setAttribute("role","group");
- var x=VZ.lin(0,5,LW+4,W-TW-(nar?36:44));
- [1,2,3,4,5].forEach(function(v){VZ.el("line",{x1:x(v),x2:x(v),y1:top,y2:H-20,"class":"grid"},s);var t=VZ.el("text",{x:x(v),y:H-5,"text-anchor":"middle","class":"t-muted"},s);t.textContent=v});
- ORD.forEach(function(sg,i){var y=top+i*rh,o=outAt(sg),cut=o>0&&o<=STEP,now=o===STEP&&STEP>0,keep=!cut&&STEP===3,live=!cut;
-  var g=VZ.el("g",{"class":"row",tabindex:0,role:"img","aria-label":sg[0]+", score "+sg.sc.toFixed(2)+(cut?". Removed: "+REASON[o]:"")},s);
-  VZ.el("rect",{"class":"hit",x:0,y:y,width:W,height:rh,rx:3,style:"fill:"+(keep?"var(--accent-soft)":"transparent")},g);
-  var by=nar?y+rh-bh-6:y+(rh-bh)/2;
-  VZ.el("rect",{x:x(0),y:by,width:x(5)-x(0),height:bh,rx:bh/2,style:"fill:var(--panel)"},g);
-  VZ.el("rect",{"class":"b",x:x(0),y:by,width:x(sg.sc)-x(0),height:bh,rx:bh/2,style:"fill:"+(keep?"var(--accent)":now?"var(--s2)":cut?"var(--ink3)":"var(--s1)"),opacity:cut&&!now?.3:keep?1:.85},g);
-  var t=VZ.el("text",nar?{x:x(0),y:y+13,style:"font-size:12.5px"}:{x:6,y:y+rh/2+4},g);t.textContent=sg[0];
-  if(keep)t.setAttribute("class","t-strong");else if(cut)t.setAttribute("style",(nar?"font-size:12.5px;":"")+"fill:var(--ink3)");else t.setAttribute("style",(nar?"font-size:12.5px;":"")+"fill:var(--ink1)");
-  var v=VZ.el("text",{x:x(sg.sc)+6,y:by+bh-1,style:"font-variant-numeric:tabular-nums;font-size:11.5px;fill:"+(cut?"var(--ink3)":"var(--ink2)")},g);v.textContent=sg.sc.toFixed(2);
-  if(cut){var tg=nar?VZ.el("text",{x:W-2,y:y+13,"text-anchor":"end",style:"font-size:11.5px;fill:"+(now?"var(--ink1)":"var(--ink3)")+";font-weight:"+(now?600:400)},g):VZ.el("text",{x:W-6,y:y+rh/2+4,"text-anchor":"end",style:"font-size:12px;fill:"+(now?"var(--ink1)":"var(--ink3)")+";font-weight:"+(now?600:400)},g);tg.textContent=TAG[o]}
-  VZ.tip(g,function(){return "<b>"+sg[0]+"</b>Score "+sg.sc.toFixed(2)+" of 5"+(o?'<div class="m">Removed at filter '+(o+1)+". "+REASON[o]+"</div>":'<div class="m">Remains after every filter.</div>')});
- });
- var left=remain(STEP);txt($("lp-left"),left);
- $("lp-trail").innerHTML=[0,1,2,3].map(function(k){var n=remain(k);return k===STEP?"<em>"+n+"</em>":'<span>'+n+'</span>'}).join(" → ");
- $("lp-sum").innerHTML=["<b>Fifteen sub-segments.</b> Before any filter, Italy and Spain, MEP and HVAC manufacturers and Germany score highest with these weights.","<b>"+left+" remain.</b> The UK, the United States and the Middle East are removed because the EU rule does not apply there.","<b>"+left+" remain.</b> Seven segments already work under a national rule. The national compliance launches would cover them.","<b>Three remain.</b> German designers, Italian and Spanish designers and global engineering firms. Cement and MEP manufacturers move to the CPR readiness launch."][STEP];
- [].forEach.call(document.querySelectorAll("#lp-steps button"),function(b){var k=+b.dataset.s;b.setAttribute("aria-pressed",k<=STEP?"true":"false");b.classList.toggle("done",k<STEP)});
-}
-[].forEach.call(document.querySelectorAll("#lp-steps button"),function(b){b.addEventListener("click",function(){STEP=+b.dataset.s;VZ.hideTip();drawRank()})});
-
-/* ---------- segment angles ---------- */
-var IC={who:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',alt:'<path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 0 0 6 0L5 7zM19 7l-3 7a3 3 0 0 0 6 0l-3-7z"/>',ch:'<circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 11l10-5M7 13l10 5"/>'};
-var ANG=[
- {q:"“Your first EU disclosure, on one model for every country you work in.”",who:"Architects and engineers in practices of 20 to 200 people.",alt:"Free eLCA and ÖKOBAUDAT, or a consultant per project.",ch:"Regional sellers, webinars with the German Sustainable Building Council and Autodesk resellers."},
- {q:"“Your first project done with local help, before your clients have to file.”",who:"Design firms that have not yet run an LCA.",alt:"Waiting for a client to ask, or a consultant per project.",ch:"Harpaceas in Italy, green building councils and Spanish-language webinars."},
- {q:"“One method and one licence for every EU office.”",who:"Sustainability directors who already use the product in one office.",alt:"Separate tools and processes in each office.",ch:"Account-based marketing and enterprise sellers."}
-];
-function ang(k){var a=ANG[k],p=$("lp-ang");p.innerHTML='<p class="q"></p><dl>'+[["who","Buyer"],["alt","Alternative to beat"],["ch","Channel"]].map(function(r){return '<div><span class="icon sm" aria-hidden="true"><svg viewBox="0 0 24 24">'+IC[r[0]]+'</svg></span><dt>'+r[1]+'</dt><dd data-f="'+r[0]+'"></dd></div>'}).join("")+'</dl>';
- p.style.animation="none";void p.offsetWidth;p.style.animation="";
- txt(p.querySelector(".q"),a.q);["who","alt","ch"].forEach(function(f){txt(p.querySelector('dd[data-f="'+f+'"]'),a[f])})}
-VZ.tabs($("lp-angt"),function(t){ang(+t.dataset.k)});
-
-/* ---------- timeline ---------- */
-/* month position from 1 Jan 2027, label, short label, week label, detail, owner */
-var M=[
- [0,"1 January 2027","Roadmaps","Week −10","Each member state publishes its national life cycle GWP roadmap with limit values. The launch would use their figures for each country.","Product marketing reads them; product updates the country guides"],
- [.5,"Mid January","Brief","Week −8","Launch brief signed by product and sales leadership, with the three segments, the adoption target and a pricing check.","Product marketing, product, sales"],
- [1.2,"February","Message test","Weeks −6 to −4","The message is tested in sales calls and buyer interviews in Germany and Italy, and the message house is finalised.","Product marketing and regional sellers"],
- [2,"Early March","Enablement","Week −2","Sellers and partners receive the kit and complete training: business case, discovery guide, battlecard and demo script.","Product marketing, enablement, partners"],
- [2.5,"Mid March","Launch day","Week 0","Live launch event, press release in German, Italian and Spanish, and a webinar with green building councils.","Marketing, product marketing, communications"],
- [5.5,"June","Review","Week 12","Adoption and pipeline review. Loss reasons on early deals show which messages to change.","Product marketing, revenue operations, sales"],
- [8,"September","Second wave","Week 26","A second campaign aimed at 2028 budgets, led by a customer story from the first projects.","Marketing and product marketing"],
- [12,"1 January 2028","Disclosure","","Life cycle GWP disclosure begins for new buildings over 1,000 m² in every EU country.","Regulation"]
-];
-var TSEL=4;
-function drawTl(){var host=$("lp-tl");host.innerHTML="";var W=Math.max(290,host.clientWidth),nar=W<640,L=12,R=W-12,band=24,y0=54,H=nar?128:126,x=VZ.lin(0,12,L,R);
- var s=VZ.svg(host,W,H,"Timeline from 1 January 2027 to 1 January 2028 with eight milestones. Launch day is in mid March 2027.");s.setAttribute("role","group");
- /* launch plan band above the line */
- VZ.el("rect",{x:x(.5),y:y0-band-8,width:x(5.5)-x(.5),height:band,rx:4,style:"fill:var(--accent-soft)"},s);
- var bl=VZ.el("text",{x:x(.5)+8,y:y0-band+8,style:"font-size:11.5px;fill:var(--accent);font-weight:600"},s);bl.textContent=nar?"Launch plan":"Launch plan, week −8 to week 12";
- VZ.el("rect",{x:x(0),y:y0-1.5,width:x(TSEL<0?0:M[TSEL][0])-x(0),height:3,rx:1.5,style:"fill:var(--accent)"},s);
- VZ.el("line",{x1:x(M[TSEL][0]),x2:R,y1:y0,y2:y0,"class":"axis","stroke-width":2},s);
- var MN="JFMAMJJASOND";for(var i=0;i<12;i++){var t=VZ.el("text",{x:(x(i)+x(i+1))/2,y:H-6,"text-anchor":"middle","class":"t-muted"},s);t.textContent=MN[i];VZ.el("line",{x1:x(i),x2:x(i),y1:H-22,y2:H-18,"class":"axis"},s)}
- M.forEach(function(m,i){var cx=x(m[0]),on=i===TSEL,past=i<TSEL,big=i===4||i===7;
-  var g=VZ.el("g",{"class":"ms",tabindex:0,role:"button","aria-pressed":on,"aria-label":m[1]+": "+m[2]},s);
-  VZ.el("circle",{cx:cx,cy:y0,r:15,fill:"transparent"},g);
-  VZ.el("circle",{"class":"dot",cx:cx,cy:y0,r:on?9:big?7:5.5,style:"fill:"+(on||past?"var(--accent)":big?"var(--ink1)":"var(--chart-bg)")+";stroke:"+(on||past?"var(--accent)":"var(--ink2)"),"stroke-width":2},g);
-  if(on)VZ.el("circle",{cx:cx,cy:y0,r:14,fill:"none",style:"stroke:var(--accent)",opacity:.35,"stroke-width":2},g);
-  var row=(i%2===0)?0:1,ty=y0+24+row*15;
-  if(!nar||on||big){var anc=i===0?"start":i===7?"end":"middle",tx=i===0?L-4:i===7?R+4:cx;
-   var t=VZ.el("text",{x:tx,y:nar?y0+26:ty,"text-anchor":anc,style:"font-size:12px;fill:"+(on?"var(--ink1)":"var(--ink2)")+";font-weight:"+(on?600:400)},g);t.textContent=m[2];}
-  VZ.tip(g,function(){return "<b>"+m[1]+(m[3]?", "+m[3].toLowerCase():"")+"</b>"+m[4]});
-  function p(){TSEL=i;drawTl()}
-  g.addEventListener("click",p);g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();p()}});
- });
- var m=M[TSEL],d=$("lp-tld");d.style.animation="none";void d.offsetWidth;d.style.animation="";
- d.innerHTML='<div><div class="d"></div><span class="wk'+(TSEL===4?" t0":"")+'"></span></div><div><p class="b"></p><p class="o"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></svg><span></span></p></div>';
- txt(d.querySelector(".d"),m[1]);txt(d.querySelector(".wk"),m[3]||"Deadline");txt(d.querySelector(".b"),m[4]);txt(d.querySelector(".o span"),"Owners: "+m[5]);
- $("lp-prev").disabled=TSEL===0;$("lp-next").disabled=TSEL===M.length-1;txt($("lp-tlo"),"Milestone "+(TSEL+1)+" of "+M.length);
-}
-$("lp-prev").addEventListener("click",function(){if(TSEL>0){TSEL--;drawTl()}});
-$("lp-next").addEventListener("click",function(){if(TSEL<M.length-1){TSEL++;drawTl()}});
-
-/* ---------- value model ---------- */
-function v(id){return +$(id).value}
-function eur(x){return "€"+Math.round(x).toLocaleString("en-GB")}
-var ST={};
-function calc(){var o=v("lp-o")*4,w=v("lp-w")/100,nd=v("lp-nd")/100,r1=v("lp-r1")/100,r2=v("lp-r2")/100,acv=v("lp-acv");
- var lost=o*(1-w),lnd=lost*nd,lcp=lost-lnd,a1=lnd*r1,a2=lcp*r2,a=a1+a2,w1=(o*w+a)/o;
- ST={o:o,w:w,w1:w1,won:o*w,lnd:lnd,lcp:lcp,a1:a1,a2:a2};
- txt($("lp-oo"),v("lp-o"));txt($("lp-wo"),v("lp-w")+"%");txt($("lp-ndo"),v("lp-nd")+"%");txt($("lp-r1o"),v("lp-r1")+"%");txt($("lp-r2o"),v("lp-r2")+"%");txt($("lp-acvo"),eur(acv));
- var d=w1-w,need=d>0?Math.ceil(1.96*1.96*(w*(1-w)+w1*(1-w1))/(d*d)/10)*10:null;
- $("lp-out").innerHTML='<div><b>'+(w*100).toFixed(0)+'% → <em>'+(w1*100).toFixed(1)+'%</em></b><span>Win rate in the three segments</span></div><div><b>+'+Math.round(a)+' deals</b><span>A year, from '+o+' opportunities</span></div><div class="hi"><b>About '+eur(Math.round(a*acv/1000)*1000)+'</b><span>Extra first-year contract value a year, from the placeholder figures</span></div>';
- drawFlow();drawWr(o,w,w1,need);}
-function drawFlow(){var s0=ST,host=$("lp-flow");host.innerHTML="";var W=Math.max(290,host.clientWidth),nar=W<520,H=58,y0=4,bh=26,x=VZ.lin(0,s0.o,0,W);
- var s=VZ.svg(host,W,H,"Of "+s0.o+" opportunities a year, about "+Math.round(s0.won)+" are won. The levers recover about "+Math.round(s0.a1)+" no-decision losses and "+Math.round(s0.a2)+" competitive losses.");
- var parts=[[s0.won,"Won today","var(--ink3)","Won at the current win rate","var(--ink1)"],[s0.a1+s0.a2,"Recovered","var(--accent)","Recovered by the two levers: "+Math.round(s0.a1)+" from no decision and "+Math.round(s0.a2)+" from named alternatives","var(--on-accent)"],[s0.lnd-s0.a1,"No decision","var(--s4)","Still lost to waiting, a consultant or a free tool","#1c1e1b"],[s0.lcp-s0.a2,"Named alternative","var(--s7)","Still lost to a named competitor","var(--chart-bg)"]],acc=0;
- parts.forEach(function(p,i){if(p[0]<=0.01)return;var x0=x(acc)+(i?1:0),x1=x(acc+p[0])-1;acc+=p[0];
-  var g=VZ.el("g",{tabindex:0,role:"img","aria-label":p[1]+": about "+Math.round(p[0])+" deals a year"},s);
-  VZ.el("rect",{x:x0,y:y0,width:Math.max(1,x1-x0),height:bh,rx:4,style:"fill:"+p[2]},g);
-  if(x1-x0>34){var tv=VZ.el("text",{x:x0+8,y:y0+bh/2+4,style:"font-weight:600;font-size:12px;fill:"+p[4]},g);tv.textContent=Math.round(p[0])}
-  VZ.tip(g,function(){return "<b>"+Math.round(p[0])+" deals a year</b>"+p[3]});
- });
- var t=VZ.el("text",{x:0,y:H-6,"class":"t-muted"},s);t.textContent=s0.o+" qualified opportunities a year";
- $("lp-fleg").innerHTML=parts.map(function(p){return '<span><i style="background:'+p[2]+'"></i>'+p[1]+' <b>'+Math.round(p[0])+'</b></span>'}).join("");
-}
-function drawWr(n,w,w1,need){var host=$("lp-wr");host.innerHTML="";var W=Math.max(290,host.clientWidth),nar=W<520,L=nar?4:96,R=W-12,H=nar?140:112;
- function me(p){return 1.96*Math.sqrt(p*(1-p)/n)}
- var lo=Math.max(0,Math.min(w-me(w),w1-me(w1))-.03),hi=Math.min(1,Math.max(w+me(w),w1+me(w1))+.03),x=VZ.lin(lo,hi,L,R);
- var sep=w1-w>1.96*Math.sqrt(w*(1-w)/n+w1*(1-w1)/n);
- var s=VZ.svg(host,W,H,"Win rate "+(w*100).toFixed(0)+"% before and "+(w1*100).toFixed(1)+"% after, with 95% ranges for "+n+" closed deals. "+(sep?"The ranges do not overlap.":"The ranges overlap."));
- [[w,"Before","var(--ink3)",nar?24:16],[w1,"After","var(--accent)",nar?74:52]].forEach(function(r){var y=r[3],a=Math.max(lo,r[0]-me(r[0])),b=Math.min(hi,r[0]+me(r[0]));
-  VZ.el("rect",{x:x(a),y:y,width:Math.max(2,x(b)-x(a)),height:20,rx:10,style:"fill:"+r[2],opacity:.28},s);
-  VZ.el("circle",{cx:x(r[0]),cy:y+10,r:6,style:"fill:"+r[2]+";stroke:var(--chart-bg)","stroke-width":2},s);
-  var t=VZ.el("text",nar?{x:L,y:y-6,"class":"t-strong"}:{x:L-12,y:y+14,"text-anchor":"end","class":"t-strong"},s);t.textContent=r[1]+" "+(r[0]*100).toFixed(1)+"%";});
- var mk=VZ.el("g",{},s),ok=sep;
- VZ.el("circle",{cx:L+(nar?6:6),cy:H-10,r:6,style:"fill:"+(ok?"var(--accent)":"var(--warn)")},mk);
- var msg=VZ.el("text",{x:L+18,y:H-6,style:"font-size:12.5px;fill:var(--ink2)"},s);msg.textContent=sep?"Visible within a year of closed deals"+(need?", from about "+need+" in each period":""):(need?"Needs about "+need+" closed deals in each period to see":"No lift at these settings");
-}
-["lp-o","lp-w","lp-nd","lp-r1","lp-r2","lp-acv"].forEach(function(id){$(id).addEventListener("input",calc)});
-
-/* ---------- risks ---------- */
-[].forEach.call(document.querySelectorAll("#lp-risk button"),function(b){b.addEventListener("click",function(){var o=b.getAttribute("aria-expanded")!=="true";b.setAttribute("aria-expanded",o);b.querySelector(".hint").firstChild.textContent=o?"Hide my response":"Show my response"})});
-
-function all(){drawRank();drawTl();calc()}
-all();
-var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(all,120)});
-VZ.onTheme(all);
+var btns=[].slice.call(document.querySelectorAll("#la-flow button")),steps=[].slice.call(document.querySelectorAll(".la-step"));
+function sel(i,scroll){btns.forEach(function(b,j){b.setAttribute("aria-pressed",j===i?"true":"false")});steps.forEach(function(s,j){s.classList.toggle("on",j===i)});
+ if(scroll){var rm=matchMedia("(prefers-reduced-motion: reduce)").matches;steps[i].scrollIntoView({behavior:rm?"auto":"smooth",block:"start"})}}
+btns.forEach(function(b,i){b.addEventListener("click",function(){sel(i,true)})});
+if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)sel(steps.indexOf(e.target),false)})},{rootMargin:"-45% 0px -45% 0px"});steps.forEach(function(s){io.observe(s)})}
 })();
 </script>

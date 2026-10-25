@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<script>try{if(sessionStorage.getItem("pw")!=="ok"){document.documentElement.style.visibility="hidden";location.replace("index.html?next="+encodeURIComponent(location.pathname.split("/").pop()))}}catch(e){location.replace("index.html")}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Launch Approach</title>
+<meta name="description" content="The steps I follow to plan and run a launch, with the EU disclosure requirement for new buildings as the example.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/nav.css">
+<link rel="stylesheet" href="assets/a11y.css">
+<link rel="stylesheet" href="assets/pages.css">
+<link rel="stylesheet" href="assets/viz.css">
+<script src="assets/viz.js"></script>
+<script>try{var s=localStorage.getItem("theme");if(s==="light"||s==="dark")document.documentElement.setAttribute("data-theme",s)}catch(e){}</script>
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%23007a5e%27/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="sitenav"><div class="in"><a class="brand" href="agenda.html">Arpan Bakshi<span>One Click LCA product marketing</span></a><button class="theme" type="button" aria-label="Switch to dark mode">Dark</button><button class="menu" type="button" aria-expanded="false" aria-controls="sitelinks">Menu</button><nav class="links" id="sitelinks" aria-label="Meeting pages"><a href="agenda.html">Agenda</a><a href="fit.html">Background</a><a href="market.html">Market</a><a href="launch-approach.html" aria-current="page">Launch Approach</a><a href="first-months.html">First Months</a><a href="questions.html">Questions</a><a class="appx" href="overview.html">Appendix</a></nav></div></header><script>(function(){var r=document.documentElement,t=document.querySelector('.sitenav .theme');function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}function show(){var d=cur()==='dark';t.textContent=d?'Light':'Dark';t.setAttribute('aria-label','Switch to '+(d?'light':'dark')+' mode')}if(t){t.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n)}catch(e){}show()});show()}var b=document.querySelector('.sitenav .menu'),l=document.getElementById('sitelinks');if(!b)return;b.addEventListener('click',function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');b.textContent=o?'Close':'Menu';});l.addEventListener('click',function(e){if(e.target.tagName==='A'){l.classList.remove('open');b.textContent='Menu';b.setAttribute('aria-expanded','false');}});})();</script>
+<main class="wrap page" id="main" tabindex="-1">
+<style>
+.la-flow{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;position:relative}
+.la-flow::before{content:"";position:absolute;left:calc(100%/12);right:calc(100%/12);top:23px;height:2px;background:var(--line)}
+.la-flow li{position:relative}
+.la-flow button{appearance:none;border:0;background:none;color:var(--ink);font:inherit;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;padding:0 4px 6px;border-radius:6px}
+.la-flow .n{position:relative;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--bg);border:2px solid var(--line);font:600 17px/1 var(--sans);color:var(--ink);transition:background .2s,border-color .2s,color .2s}
+.la-flow .t{font:500 15px/1.3 var(--sans);max-width:17ch}
+.la-flow button:hover .n{border-color:var(--accent)}
+.la-flow button[aria-pressed="true"] .n{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.la-flow button[aria-pressed="true"] .t{color:var(--accent)}
+.la-flow button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.la-cycle{display:flex;align-items:center;gap:10px;margin-top:18px;font-size:14px;color:var(--muted)}
+.la-cycle svg{width:22px;height:22px;flex:none;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+.la-steps{display:grid;gap:14px;margin-top:32px}
+.la-step{display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,1fr);gap:8px 28px;background:var(--panel);border-radius:8px;padding:26px 28px;transition:background .25s,box-shadow .25s;scroll-margin-top:96px}
+.la-step.on{background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.la-step .badge{grid-row:1/3;width:44px;height:44px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font:600 16px/1 var(--sans)}
+.la-step h3{grid-column:2/4;font-size:21px;letter-spacing:-.01em}
+.la-step .col .k{display:flex;align-items:center;gap:8px;font:500 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:6px 0 8px}
+.la-step .col .k svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.la-step .col p{font-size:15.5px;line-height:1.55}
+.la-step .col p+p{margin-top:10px}
+.la-step .col ul{margin:0;padding-left:18px;font-size:15.5px;line-height:1.5}
+.la-step .col li{margin-top:4px}
+.la-step .col ul+p{margin-top:12px}
+.la-step .ex{background:var(--bg);border-radius:6px;padding:16px 18px}
+.la-step.on .ex{background:var(--surface)}
+.la-step .ex .k{margin-top:0}
+.la-msg{margin-top:12px;background:var(--panel);border-radius:6px;padding:14px 16px}
+.la-step.on .la-msg{background:var(--accent-soft)}
+.la-msg span{display:block;font:500 11.5px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.la-msg b{display:block;font:500 19px/1.35 var(--sans);letter-spacing:-.01em;margin-top:6px}
+.la-sizes{display:grid;gap:8px;margin-top:4px}
+.la-sizes div{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:start;font-size:15px}
+.la-sizes i{width:12px;height:12px;border-radius:50%;margin-top:5px;background:var(--ink3)}
+.la-sizes .big i{background:var(--accent)}
+.la-sizes .mid i{background:var(--seq-3)}
+.la-sizes b{font-weight:600}
+.la-kit{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+.la-kit div{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.4;background:var(--panel);border-radius:5px;padding:10px 12px}
+.la-step.on .la-kit div{background:var(--accent-soft)}
+.la-kit svg{width:18px;height:18px;flex:none;margin-top:1px;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:900px){
+ .la-step{grid-template-columns:52px minmax(0,1fr)}
+ .la-step h3{grid-column:2/3}
+ .la-step .badge{grid-row:1/2}
+ .la-step .col{grid-column:1/-1}
+}
+@media (max-width:760px){
+ .la-flow{grid-template-columns:1fr;gap:0}
+ .la-flow::before{left:23px;right:auto;top:24px;bottom:24px;width:2px;height:auto}
+ .la-flow button{flex-direction:row;text-align:left;gap:16px;padding:6px 0}
+ .la-flow .t{max-width:none}
+ .la-kit{grid-template-columns:1fr}
+ .la-step{padding:22px 20px}
+}
+
+.la-risk{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.la-risk div{background:var(--panel);border-radius:8px;padding:22px 24px;display:flex;flex-direction:column;gap:8px}
+.la-risk .ic{width:36px;height:36px;border-radius:50%;background:var(--warn-soft);display:grid;place-items:center;margin-bottom:4px}
+.la-risk .ic svg{width:18px;height:18px;fill:none;stroke:var(--warn);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.la-risk h3{font-size:17px}
+.la-risk p{font-size:15px;color:var(--muted)}
+.la-risk .r{margin-top:6px;background:var(--accent-soft);border-radius:6px;padding:12px 14px;color:var(--ink);font-size:15px}
+.la-risk .r span{display:block;font:500 11.5px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+@media (max-width:900px){.la-risk{grid-template-columns:1fr}}
+
+.la-more{margin-top:56px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;font-size:15px;color:var(--muted)}
+.la-more a{display:inline-block;background:var(--panel);border-radius:4px;padding:7px 12px;color:var(--ink);text-decoration:none;font-size:14px}
+.la-more a:hover{background:var(--accent-soft);color:var(--accent)}
+@media (prefers-reduced-motion:reduce){.la-step,.la-flow .n{transition:none}}
+</style>
+
+<header class="phead">
+  <span class="eyebrow">Taking a release to market</span>
+  <h1>Launch Approach</h1>
+  <p class="lede">These are the steps I follow to plan and run a launch. The example throughout is the EU requirement for new buildings to disclose their life cycle carbon.</p>
+  <p class="meta">The example would build on the EU work One Click LCA already does, including its regulation webinars and compliance releases. I would confirm the scope and timing against the product roadmap with product and sales.</p>
+</header>
+
+<section class="sec" style="margin-top:56px">
+  <span class="eyebrow">My approach</span>
+  <h2>Six steps</h2>
+  <ol class="la-flow" id="la-flow" aria-label="Launch steps">
+    <li><button type="button" aria-pressed="false" data-s="0"><span class="n">1</span><span class="t">Choose who it is for</span></button></li>
+    <li><button type="button" aria-pressed="false" data-s="1"><span class="n">2</span><span class="t">Find the message in buyers' own words</span></button></li>
+    <li><button type="button" aria-pressed="false" data-s="2"><span class="n">3</span><span class="t">Decide the size of the launch</span></button></li>
+    <li><button type="button" aria-pressed="false" data-s="3"><span class="n">4</span><span class="t">Equip sellers and partners</span></button></li>
+    <li><button type="button" aria-pressed="false" data-s="4"><span class="n">5</span><span class="t">Launch and listen</span></button></li>
+    <li><button type="button" aria-pressed="false" data-s="5"><span class="n">6</span><span class="t">Measure and adjust</span></button></li>
+  </ol>
+  <p class="la-cycle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg>What I learn in the last step feeds the choice of who the next launch is for.</p>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Each step</span>
+  <h2>How I do it, with an example</h2>
+  <div class="la-steps" id="la-steps">
+
+    <article class="la-step" id="la-s0">
+      <span class="badge" aria-hidden="true">1</span>
+      <h3>Choose who it is for</h3>
+      <div class="col">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h6"/></svg>How I do it</p>
+        <p>I compare possible segments on the same questions:</p>
+        <ul>
+          <li>How close is the deadline that makes them act?</li>
+          <li>Can our sellers and partners reach these buyers?</li>
+          <li>How well does the product fit their need today?</li>
+          <li>How strong are the alternatives they already have?</li>
+          <li>Is there a seller or partner who can carry the message?</li>
+        </ul>
+        <p>I agree the choice with product and sales before any material is written.</p>
+      </div>
+      <div class="col ex">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11"/></svg>Example: EU disclosure</p>
+        <p>The first group would be design teams in EU countries that have no national rule yet. Many of them will need to learn how an LCA works before they compare tools.</p>
+        <p>Global firms that already use One Click LCA in one office are a second route. For them the launch is about extending to more offices.</p>
+        <p>German teams are harder. Free national tools exist and some projects already need an LCA for funding, so the case has to be about time and working across countries.</p>
+        <p>Manufacturers would get their own launch around the construction product rules.</p>
+      </div>
+    </article>
+
+    <article class="la-step" id="la-s1">
+      <span class="badge" aria-hidden="true">2</span>
+      <h3>Find the message in buyers' own words</h3>
+      <div class="col">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5z"/></svg>How I do it</p>
+        <p>I interview buyers and prospects we lost, and I listen to sales calls. I write down the words buyers use for the problem and for what they want at the end of it.</p>
+        <p>I then draft a short message and test it in real calls. It goes on the website only after sellers have seen it work.</p>
+      </div>
+      <div class="col ex">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11"/></svg>Example: EU disclosure</p>
+        <p>I would talk to design teams facing their first disclosure, and to teams who chose to wait or to hire a consultant.</p>
+        <div class="la-msg"><span>Draft message to test</span><b>One model, reported to the EU method and to your national scheme.</b></div>
+        <p style="margin-top:12px">I would test it in sales calls in the first countries before it is used anywhere else.</p>
+      </div>
+    </article>
+
+    <article class="la-step" id="la-s2">
+      <span class="badge" aria-hidden="true">3</span>
+      <h3>Decide the size of the launch</h3>
+      <div class="col">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h4V10H4zM10 18h4V6h-4zM16 18h4V3h-4z"/></svg>How I do it</p>
+        <div class="la-sizes">
+          <div class="big"><i></i><p><b>Company-wide launch.</b> The whole company takes part, with an event, press and full seller training.</p></div>
+          <div class="mid"><i></i><p><b>Segment launch.</b> Aimed at named segments, with targeted campaigns and seller briefings.</p></div>
+          <div><i></i><p><b>Release note.</b> Help pages, an in-product notice and a line for sellers.</p></div>
+        </div>
+        <p style="margin-top:10px">I decide on reach, on the revenue at stake and on whether the message to buyers changes.</p>
+      </div>
+      <div class="col ex">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11"/></svg>Example: EU disclosure</p>
+        <p>It reaches many new buyers in several countries and changes what sellers say. That makes it a candidate for a company-wide launch.</p>
+        <p>I would confirm the size with product and sales once the roadmap is clear.</p>
+      </div>
+    </article>
+
+    <article class="la-step" id="la-s3">
+      <span class="badge" aria-hidden="true">4</span>
+      <h3>Equip sellers and partners</h3>
+      <div class="col">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>How I do it</p>
+        <p>I give sellers material they can use on a call without me. I train them on the buyer's problem and the business case before launch day.</p>
+        <p>Partners get the same material, adapted for their markets.</p>
+      </div>
+      <div class="col ex">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11"/></svg>Example: EU disclosure</p>
+        <div class="la-kit">
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M9 12h6M9 16h4"/></svg>A business case that compares a consultant, or waiting, with a licence</div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4-4"/></svg>A discovery guide to find the trigger and the person who signs</div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg>An explainer of the EU method for buyers new to LCA</div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 0 0 6 0L5 7zM19 7l-3 7a3 3 0 0 0 6 0l-3-7z"/></svg>A battlecard for calls where a free national tool is the alternative</div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M10 9l4 2-4 2z"/></svg>A demo of a first project, from model to report</div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 11l10-5M7 13l10 5"/></svg>Briefings for green building councils and resellers</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="la-step" id="la-s4">
+      <span class="badge" aria-hidden="true">5</span>
+      <h3>Launch and listen</h3>
+      <div class="col">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M14 4c3-1 6-1 6-1s0 3-1 6l-6 6-5-5 6-6z"/></svg>How I do it</p>
+        <p>On launch day the work moves to listening. I follow the first deals, the questions sellers get and the questions that reach support.</p>
+        <p>Where buyers do not respond to a message, I change it and tell sellers what changed and why.</p>
+      </div>
+      <div class="col ex">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11"/></svg>Example: EU disclosure</p>
+        <p>A live event and a webinar with green building councils, material in each local language, and a customer story from an early project.</p>
+        <p>I would read the first deals in each country to see which alternative buyers chose and what made them wait.</p>
+      </div>
+    </article>
+
+    <article class="la-step" id="la-s5">
+      <span class="badge" aria-hidden="true">6</span>
+      <h3>Measure and adjust</h3>
+      <div class="col">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18M6 16l4-5 3 3 5-7"/></svg>How I do it</p>
+        <p>I agree the measures with sales before launch, so we judge the launch on the same terms.</p>
+        <p>To separate the launch from normal variation, I compare with a period before it. I state what we can claim and what we cannot.</p>
+      </div>
+      <div class="col ex">
+        <p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11"/></svg>Example: EU disclosure</p>
+        <ul>
+          <li>Win rate in the chosen segments.</li>
+          <li>How many deals end with no decision.</li>
+          <li>How many new accounts finish a first project.</li>
+        </ul>
+        <p style="margin-top:10px">If the CRM does not yet record no decision as a loss reason, I would ask to add it before launch.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Risks</span>
+  <h2>Risks and how I would respond</h2>
+  <div class="la-risk">
+    <div>
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3zM12 10v5M12 18v.5"/></svg></span>
+      <h3>National rules arrive late or differ</h3>
+      <p>Some countries may publish their rules late, and each may set them differently.</p>
+      <p class="r"><span>My response</span>The launch rests on the EU method. Country guides follow as each national rule is published, as smaller releases.</p>
+    </div>
+    <div>
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3zM12 10v5M12 18v.5"/></svg></span>
+      <h3>Buyers wait until the deadline is close</h3>
+      <p>A deadline that feels far away does not move a design team to buy.</p>
+      <p class="r"><span>My response</span>A second campaign closer to the deadline, timed for next year's budgets and led by a customer story from the first projects.</p>
+    </div>
+    <div>
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3zM12 10v5M12 18v.5"/></svg></span>
+      <h3>Free national tools</h3>
+      <p>In some countries a free tool is enough to start.</p>
+      <p class="r"><span>My response</span>The business case compares time per project and one model across countries. Firms that work in more than one country gain the most.</p>
+    </div>
+  </div>
+</section>
+
+<p class="la-more">The models and data behind these steps are in the appendix: <a href="segments.html">Segment Model</a><a href="launch.html">Launch Playbook</a><a href="enablement.html">Enablement</a><a href="metrics.html">Win Rate</a></p>
+
+<script>
+(function(){
+var btns=[].slice.call(document.querySelectorAll("#la-flow button")),steps=[].slice.call(document.querySelectorAll(".la-step"));
+function sel(i,scroll){btns.forEach(function(b,j){b.setAttribute("aria-pressed",j===i?"true":"false")});steps.forEach(function(s,j){s.classList.toggle("on",j===i)});
+ if(scroll){var rm=matchMedia("(prefers-reduced-motion: reduce)").matches;steps[i].scrollIntoView({behavior:rm?"auto":"smooth",block:"start"})}}
+btns.forEach(function(b,i){b.addEventListener("click",function(){sel(i,true)})});
+if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)sel(steps.indexOf(e.target),false)})},{rootMargin:"-45% 0px -45% 0px"});steps.forEach(function(s){io.observe(s)})}
+})();
+</script>
+
+</main>
+<nav class="pager" aria-label="Page navigation"><a class="prev" href="market.html"><small>Previous</small><b>Market</b></a><a class="next" href="first-months.html"><small>Next</small><b>First Months</b></a></nav><footer class="site-foot"><span>Prepared by Arpan Bakshi for the Senior Product Marketing Manager role at One Click LCA. It is based on public sources. One Click LCA did not produce or review it.</span></footer>
+</body>
+</html>

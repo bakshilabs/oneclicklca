@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<script>try{if(sessionStorage.getItem("pw")!=="ok"){document.documentElement.style.visibility="hidden";location.replace("index.html?next="+encodeURIComponent(location.pathname.split("/").pop()))}}catch(e){location.replace("index.html")}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Market</title>
+<meta name="description" content="How I find where new demand comes from and who will buy, with the coming EU disclosure requirement for new buildings as an example.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/nav.css">
+<link rel="stylesheet" href="assets/a11y.css">
+<link rel="stylesheet" href="assets/pages.css">
+<link rel="stylesheet" href="assets/viz.css">
+<script src="assets/viz.js"></script>
+<script>try{var s=localStorage.getItem("theme");if(s==="light"||s==="dark")document.documentElement.setAttribute("data-theme",s)}catch(e){}</script>
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%23007a5e%27/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="sitenav"><div class="in"><a class="brand" href="agenda.html">Arpan Bakshi<span>One Click LCA product marketing</span></a><button class="theme" type="button" aria-label="Switch to dark mode">Dark</button><button class="menu" type="button" aria-expanded="false" aria-controls="sitelinks">Menu</button><nav class="links" id="sitelinks" aria-label="Meeting pages"><a href="agenda.html">Agenda</a><a href="fit.html">Background</a><a href="market.html" aria-current="page">Market</a><a href="launch-approach.html">Launch Approach</a><a href="first-months.html">First Months</a><a href="questions.html">Questions</a><a class="appx" href="overview.html">Appendix</a></nav></div></header><script>(function(){var r=document.documentElement,t=document.querySelector('.sitenav .theme');function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}function show(){var d=cur()==='dark';t.textContent=d?'Light':'Dark';t.setAttribute('aria-label','Switch to '+(d?'light':'dark')+' mode')}if(t){t.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n)}catch(e){}show()});show()}var b=document.querySelector('.sitenav .menu'),l=document.getElementById('sitelinks');if(!b)return;b.addEventListener('click',function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');b.textContent=o?'Close':'Menu';});l.addEventListener('click',function(e){if(e.target.tagName==='A'){l.classList.remove('open');b.textContent='Menu';b.setAttribute('aria-expanded','false');}});})();</script>
+<main class="wrap page" id="main" tabindex="-1">
+<style>
+.mk-flow{list-style:none;padding:0;margin:32px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;position:relative}
+.mk-flow::before{content:"";position:absolute;left:12.5%;right:12.5%;top:27px;height:2px;background:var(--line)}
+.mk-flow li{position:relative}
+.mk-flow button{appearance:none;border:0;background:none;padding:0;width:100%;text-align:center;font:inherit;color:var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:12px}
+.mk-n{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--bg);border:2px solid var(--line);font:600 20px/1 var(--sans);color:var(--ink2);transition:background .2s,border-color .2s,color .2s;position:relative;z-index:1}
+.mk-flow .h{display:block;font:600 17px/1.3 var(--sans);max-width:20ch;margin:0 auto}
+.mk-flow .d{display:block;font-size:14.5px;color:var(--muted);max-width:28ch;margin:6px auto 0}
+.mk-flow button:hover .mk-n{border-color:var(--accent)}
+.mk-flow button[aria-pressed="true"] .mk-n{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.mk-flow button:focus-visible{outline:none}
+.mk-flow button:focus-visible .mk-n{box-shadow:0 0 0 3px var(--accent-soft),0 0 0 5px var(--accent)}
+.mk-ex{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:28px}
+.mk-ex article{background:var(--panel);border-radius:6px;padding:20px 20px 22px;transition:background .25s,box-shadow .25s,opacity .25s}
+.mk-ex article .k{display:flex;align-items:center;gap:10px;font:500 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.mk-ex article .k .icon{margin:0;width:30px;height:30px;flex:none}
+.mk-ex article h3{font-size:16.5px;margin:12px 0 8px;line-height:1.3}
+.mk-ex article p{font-size:14.5px;line-height:1.55}
+.mk-ex article p+p{margin-top:8px}
+.mk-ex article ul{margin:8px 0 0;padding-left:18px;font-size:14.5px}
+.mk-ex article li{margin-top:4px}
+.mk-ex article ul+p{margin-top:10px}
+
+.mk-ex.focus article.on{background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.mk-note{margin-top:14px;font-size:13.5px;color:var(--muted)}
+.mk-q{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.mk-q li{background:var(--panel);border-radius:6px;padding:16px 18px;display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:start;font-size:15px}
+.mk-q .icon{margin:0;width:34px;height:34px}
+.mk-q b{display:block;font:500 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.mk-imp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
+.mk-imp div{background:var(--panel);border-radius:6px;padding:22px 22px 24px}
+.mk-imp .icon{margin:0 0 14px;width:38px;height:38px}
+.mk-imp h3{font-size:17px;margin-bottom:8px}
+.mk-imp p{font-size:14.5px}
+.mk-links{margin-top:56px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;font-size:14px;color:var(--muted)}
+.mk-links a{display:inline-flex;align-items:center;gap:6px;background:var(--panel);color:var(--ink);text-decoration:none;border-radius:4px;padding:8px 12px;transition:background .15s}
+.mk-links a:hover{background:var(--accent-soft)}
+.mk-links a svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:980px){.mk-ex{grid-template-columns:1fr 1fr}.mk-imp{grid-template-columns:1fr}}
+@media (max-width:760px){
+ .mk-flow{grid-template-columns:1fr;gap:0}
+ .mk-flow::before{left:27px;right:auto;top:28px;bottom:28px;width:2px;height:auto}
+ .mk-flow li{padding:0 0 18px}
+ .mk-flow button{flex-direction:row;align-items:flex-start;text-align:left;gap:16px}
+ .mk-flow button>span.t{display:block}
+ .mk-flow .h{max-width:none;margin:6px 0 0}
+ .mk-flow .d{max-width:none;margin:4px 0 0}
+ .mk-ex,.mk-q{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.mk-ex article,.mk-n{transition:none}}
+</style>
+
+<header class="phead">
+  <span class="eyebrow">Finding where new business comes from</span>
+  <h1>Market</h1>
+  <p class="lede">This page shows how I find where new demand comes from and who will buy. The example is the coming EU requirement for new buildings to disclose their life cycle carbon.</p>
+  <p class="meta">The example is an outside reading from public sources. I would check each part with One Click LCA's sellers and data.</p>
+</header>
+
+<section class="sec" style="margin-top:56px">
+  <span class="eyebrow">My approach</span>
+  <h2>Four steps I follow</h2>
+  <p class="intro">I use the same steps for any market. Select a step to see it in the example below.</p>
+  <ol class="mk-flow" id="mk-flow">
+    <li><button type="button" aria-pressed="false" data-s="0"><span class="mk-n" aria-hidden="true">1</span><span class="t"><span class="h">Find the trigger</span><span class="d">Find the rule or deadline that makes someone act.</span></span></button></li>
+    <li><button type="button" aria-pressed="false" data-s="1"><span class="mk-n" aria-hidden="true">2</span><span class="t"><span class="h">Find who has to act</span><span class="d">Work out who has to act, who uses the tool and who signs.</span></span></button></li>
+    <li><button type="button" aria-pressed="false" data-s="2"><span class="mk-n" aria-hidden="true">3</span><span class="t"><span class="h">Learn the alternatives</span><span class="d">Learn what they would do instead of buying.</span></span></button></li>
+    <li><button type="button" aria-pressed="false" data-s="3"><span class="mk-n" aria-hidden="true">4</span><span class="t"><span class="h">Test before acting</span><span class="d">Test what I think with buyers, sellers and sales data.</span></span></button></li>
+  </ol>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Example</span>
+  <h2>EU disclosure for new buildings</h2>
+  <p class="intro">The EU will require new buildings to disclose their life cycle carbon. Each step below applies my approach to that requirement.</p>
+  <div class="mk-ex" id="mk-ex">
+    <article data-s="0">
+      <div class="k"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>The trigger</div>
+      <h3>An EU rule with a fixed start</h3>
+      <p>The Energy Performance of Buildings Directive requires life cycle carbon to be disclosed for new buildings, starting with larger ones.</p>
+      <p>The rule applies in every EU country on the same start date, including countries with no national rule of their own.</p>
+    </article>
+    <article data-s="1">
+      <div class="k"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></svg></span>Who has to act</div>
+      <h3>Design teams new to LCA</h3>
+      <p>Public sources suggest that many design teams in countries without a national rule have not run an LCA before.</p>
+      <ul><li>The user is the architect or engineer who runs the assessment.</li><li>The signer is the practice leader who wants the permit and the client relationship.</li></ul>
+    </article>
+    <article data-s="2">
+      <div class="k"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 0 0 6 0L5 7zM19 7l-3 7a3 3 0 0 0 6 0l-3-7z"/></svg></span>What they do instead</div>
+      <h3>Wait, outsource or use a free tool</h3>
+      <ul><li>Wait until a client asks for the calculation.</li><li>Hire a consultant for each project.</li><li>Use a free national tool where one exists.</li></ul>
+      <p>Each of these delays a licence decision, so I would expect many lost deals to end with no decision.</p>
+    </article>
+    <article data-s="3">
+      <div class="k"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></span>How I would test it</div>
+      <h3>Talk to buyers and sellers first</h3>
+      <ul><li>Conversations with design firms in my network and in the target countries.</li><li>Time with the sellers who cover those countries.</li><li>Loss reasons in the CRM, if they are recorded.</li></ul>
+      <p>I would change the plan where these disagree with the public sources.</p>
+    </article>
+  </div>
+  <p class="mk-note">The examples are my reading of public sources. The research behind them is in the appendix.</p>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Questions</span>
+  <h2>What I would want to learn first</h2>
+  <ul class="mk-q">
+    <li><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 20h18M6 16l4-5 3 3 5-7"/></svg></span><div><b>For sellers</b>Which countries are already asking about the EU requirement, and who is asking?</div></li>
+    <li><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z"/></svg></span><div><b>For sellers</b>When a deal is lost in these countries, what does the buyer do instead?</div></li>
+    <li><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/></svg></span><div><b>For buyers</b>Who in the practice would decide to buy a tool, and what would they need to see?</div></li>
+    <li><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><div><b>For buyers</b>What would make them start before a client asks for the calculation?</div></li>
+    <li><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 0 0 6 0L5 7zM19 7l-3 7a3 3 0 0 0 6 0l-3-7z"/></svg></span><div><b>For buyers</b>Have they used a consultant or a free tool, and what did they think of it?</div></li>
+    <li><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span><div><b>For the CRM</b>Is no decision recorded as a loss reason, separately from losses to competitors?</div></li>
+  </ul>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">For product marketing</span>
+  <h2>What this means for product marketing</h2>
+  <div class="mk-imp">
+    <div><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg></span><h3>Explain the method first</h3><p>Teams new to LCA need to understand the method and their first project before they compare tools.</p></div>
+    <div><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h3M13 11h3M8 15h3M13 15h3"/></svg></span><h3>Show the cost of waiting</h3><p>Sellers need a simple way to compare waiting or outsourcing with buying a licence, using the buyer's own figures.</p></div>
+    <div><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span><h3>Record no decision</h3><p>If no decision is recorded as a loss reason, the company can see whether the work reduces it.</p></div>
+  </div>
+</section>
+
+<p class="mk-links">Research and data in the appendix:
+  <a href="demand.html"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Demand Drivers</a>
+  <a href="buyers.html"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Buyers</a>
+  <a href="alternatives.html"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Alternatives</a>
+</p>
+
+<script>
+(function(){
+var bs=[].slice.call(document.querySelectorAll("#mk-flow button")),ex=document.getElementById("mk-ex"),arts=[].slice.call(ex.querySelectorAll("article")),cur=null;
+var NAMES=["one","two","three","four"];
+bs.forEach(function(b,i){b.setAttribute("aria-label","Step "+NAMES[i]+": "+b.querySelector(".h").textContent+". Highlights it in the example.");
+ b.addEventListener("click",function(){cur=cur===i?null:i;
+  bs.forEach(function(x,j){x.setAttribute("aria-pressed",j===cur?"true":"false")});
+  ex.classList.toggle("focus",cur!==null);
+  arts.forEach(function(a,j){a.classList.toggle("on",j===cur)});
+  if(cur!==null&&ex.getBoundingClientRect().top>innerHeight*.7)ex.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"});
+ })});
+})();
+</script>
+
+</main>
+<nav class="pager" aria-label="Page navigation"><a class="prev" href="fit.html"><small>Previous</small><b>Background</b></a><a class="next" href="launch-approach.html"><small>Next</small><b>Launch Approach</b></a></nav><footer class="site-foot"><span>Prepared by Arpan Bakshi for the Senior Product Marketing Manager role at One Click LCA. It is based on public sources. One Click LCA did not produce or review it.</span></footer>
+</body>
+</html>
