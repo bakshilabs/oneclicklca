@@ -9,7 +9,7 @@ import hashlib, html, pathlib, re, shutil
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 PAGES_DIR = ROOT / "build" / "pages"
-DATE = "23 October 2026"
+DATE = "25 October 2026"
 SALT = "oneclicklca-pmm-2026:"
 PASSWORD_FILE = ROOT / "build" / ".password"  # not committed; see README
 OUT = ROOT / "docs"  # the published site: pages, index.html and assets only
@@ -109,7 +109,7 @@ def pager(i):
 
 
 FOOT = ('<footer class="site-foot"><span>Prepared {date} by Arpan Bakshi for the Senior Product Marketing Manager role at One Click LCA. '
-        'Independent work from public sources; not produced or endorsed by One Click LCA.</span></footer>')
+        'It is based on public sources up to 23 October 2026. One Click LCA did not produce or review it.</span></footer>')
 
 
 def build_page(i, fname):
