@@ -8,11 +8,14 @@ The site is shown on Arpan's screen during the interview and then shared with th
 - Do not tell them how their company works. Say what the public sources show, then what I would check, ask or do.
 - Write in the first person (I) for Arpan. Call the company One Click LCA. Do not write "the panel", "he", "the interviewer" or stage directions.
 
+## No figures on meeting pages
+The interview is about Arpan's approach to finding and growing business. The meeting pages (Agenda, Background, Market, Launch Approach, First Months, Questions) contain no numbers and no data charts: no statistics, scores, percentages, prices, counts, targets, durations, minutes or dates. Use words for order and sequence, and process diagrams in place of charts. The worked example is described in words. Data and models stay in the appendix for anyone who asks.
+
 ## How to write
 - Plain words and short sentences, usually under 20 words. One idea per sentence.
-- Headings name the topic: "Countries with a rule today", "Where lost deals go", "Launch timeline". They are not claims, slogans or jokes.
+- Headings name the topic: "Who has to act", "Choosing the segment", "Testing the message". They are not claims, slogans or jokes.
 - Ledes are one or two plain sentences that say what the page contains and what it is based on.
-- Prefer numbers, dates, names and sources to adjectives.
+- Prefer names, sources and concrete nouns to adjectives. On appendix pages, numbers and dates may be used where a source supports them.
 - Mark judgement as judgement: "My estimate", "Placeholder figures", "To check with your data".
 - British spelling. Full sentences in body copy.
 

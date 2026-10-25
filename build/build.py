@@ -18,10 +18,10 @@ OUT = ROOT / "docs"  # the published site: pages, index.html and assets only
 # appendix pages hold the research behind it and get a code (A1, A2, ...).
 PAGES = [
     ("agenda.html", "Agenda", "meeting"),
-    ("fit.html", "Fit", "meeting"),
-    ("buyer-2028.html", "The 2028 Buyer", "meeting"),
-    ("proposal.html", "Launch Proposal", "meeting"),
-    ("first-90-days.html", "First 90 Days", "meeting"),
+    ("fit.html", "Background", "meeting"),
+    ("market.html", "Market", "meeting"),
+    ("launch-approach.html", "Launch Approach", "meeting"),
+    ("first-months.html", "First Months", "meeting"),
     ("questions.html", "Questions", "meeting"),
     ("overview.html", "Research Appendix", "index"),
     ("role.html", "The Role", "appendix"),
@@ -108,8 +108,8 @@ def pager(i):
     return f'<nav class="pager" aria-label="Page navigation">{"".join(parts)}</nav>'
 
 
-FOOT = ('<footer class="site-foot"><span>Prepared {date} by Arpan Bakshi for the Senior Product Marketing Manager role at One Click LCA. '
-        'It is based on public sources up to 23 October 2026. One Click LCA did not produce or review it.</span></footer>')
+FOOT = ('<footer class="site-foot"><span>Prepared by Arpan Bakshi for the Senior Product Marketing Manager role at One Click LCA. '
+        'It is based on public sources. One Click LCA did not produce or review it.</span></footer>')
 
 
 def build_page(i, fname):
