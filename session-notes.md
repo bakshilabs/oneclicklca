@@ -24,3 +24,8 @@
 - Corrections made along the way: the launch window is twelve months (roadmaps 1 Jan 2027, disclosure 1 Jan 2028); 301 unique source links across the research files; the 2030 map shows disclosure required with national limits due, not limits in force everywhere; the CPR penalties date is marked to confirm.
 - Named employees and LinkedIn links were removed from `research/` on 24 October 2026 at the user's request. Only the CEO is named. Earlier versions remain in git history.
 - Optional polish noted by the last review: CV role cards repeat the title and both Foster cards open the same entry; the Positioning test-plan tabs are still shallow.
+
+## Meeting and appendix split (25 October 2026)
+- Re-read the site as the candidate in a one-hour panel. Six pages carry the meeting: Agenda, Fit, The 2028 Buyer, Launch Proposal, First 90 Days and Questions. The other twelve became a numbered Research Appendix (A1 to A12) with its own bar under the navigation; `overview.html` is now the appendix index. The password page now opens on the Agenda.
+- New pages: `agenda.html`, `buyer-2028.html`, `proposal.html`, `questions.html`. All nineteen pages checked at 1280 and 390 px in light and dark with no script errors and no sideways scroll.
+- To fill or confirm: the underperforming launch answer on Questions needs Arpan's own example; the proposal targets (minus 10 points no-decision share, plus 5 points win rate, 60% first-project adoption) and the segment angles are judgement; the Germany angle mentions KfW and QNG work, which assumes those projects run in One Click LCA.

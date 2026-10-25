@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<script>try{if(sessionStorage.getItem("pw")!=="ok"){document.documentElement.style.visibility="hidden";location.replace("index.html?next="+encodeURIComponent(location.pathname.split("/").pop()))}}catch(e){location.replace("index.html")}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questions</title>
+<meta name="description" content="The questions the panel is likely to ask, with prepared short answers, and the questions Arpan Bakshi will ask the panel, ranked to fit the time left.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/nav.css">
+<link rel="stylesheet" href="assets/a11y.css">
+<link rel="stylesheet" href="assets/pages.css">
+<link rel="stylesheet" href="assets/viz.css">
+<script src="assets/viz.js"></script>
+<script>try{var s=localStorage.getItem("theme");if(s==="light"||s==="dark")document.documentElement.setAttribute("data-theme",s)}catch(e){}</script>
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%23007a5e%27/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="sitenav"><div class="in"><a class="brand" href="agenda.html">Arpan Bakshi<span>One Click LCA product marketing</span></a><button class="theme" type="button" aria-label="Switch to dark mode">Dark</button><button class="menu" type="button" aria-expanded="false" aria-controls="sitelinks">Menu</button><nav class="links" id="sitelinks" aria-label="Meeting pages"><a href="agenda.html">Agenda</a><a href="fit.html">Fit</a><a href="buyer-2028.html">The 2028 Buyer</a><a href="proposal.html">Launch Proposal</a><a href="first-90-days.html">First 90 Days</a><a href="questions.html" aria-current="page">Questions</a><a class="appx" href="overview.html">Appendix</a></nav></div></header><script>(function(){var r=document.documentElement,t=document.querySelector('.sitenav .theme');function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}function show(){var d=cur()==='dark';t.textContent=d?'Light':'Dark';t.setAttribute('aria-label','Switch to '+(d?'light':'dark')+' mode')}if(t){t.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n)}catch(e){}show()});show()}var b=document.querySelector('.sitenav .menu'),l=document.getElementById('sitelinks');if(!b)return;b.addEventListener('click',function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');b.textContent=o?'Close':'Menu';});l.addEventListener('click',function(e){if(e.target.tagName==='A'){l.classList.remove('open');b.textContent='Menu';b.setAttribute('aria-expanded','false');}});})();</script>
+<main class="wrap page" id="main" tabindex="-1">
+<style>
+.qs-w{display:grid;grid-template-columns:330px minmax(0,1fr);gap:20px;margin-top:28px;align-items:start}
+.qs-list{display:grid;gap:8px}
+.qs-list button{appearance:none;border:0;text-align:left;font:inherit;color:var(--ink);background:var(--panel);border-radius:6px;padding:12px 14px;cursor:pointer;display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:center;transition:background .2s}
+.qs-list button:hover{background:var(--accent-soft)}
+.qs-list button .n{width:26px;height:26px;border-radius:50%;background:var(--bg);color:var(--ink2);font:600 13px/26px var(--sans);text-align:center}
+.qs-list button b{font-weight:500;font-size:14.5px;line-height:1.3}
+.qs-list button small{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.qs-list button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.qs-list button[aria-pressed="true"] .n{background:rgba(255,255,255,.22);color:var(--on-accent)}
+.qs-list button[aria-pressed="true"] small{color:var(--on-accent)}
+.qs-det{margin-top:0}
+.qs-det h3{font-size:clamp(20px,2.2vw,26px);letter-spacing:-.02em;line-height:1.25}
+.qs-why{font-size:14px;color:var(--muted);margin-top:8px}
+.qs-ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:16px}
+.qs-ctl .btnrow{margin-top:0}
+.qs-beats{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:10px}
+.qs-beats li{display:grid;grid-template-columns:86px 1fr;gap:14px;background:var(--panel);border-radius:6px;padding:14px 16px;font-size:15px;border-left:4px solid var(--c);animation:qsin .35s ease both}
+.qs-beats li .k{font:500 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--ink2);padding-top:3px}
+.qs-beats li.hid{border-left-color:var(--line);color:var(--muted);font-style:italic;animation:none}
+.qs-flag{display:inline-block;margin:0 0 6px;border-radius:3px;padding:3px 9px;font:600 12px/1.4 var(--sans);background:var(--warn-soft,var(--accent-soft));color:var(--warn,var(--ink));border:1px dashed currentColor}
+.qs-ev{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;font-size:14px;align-items:center}
+.qs-ev a{display:inline-block;background:var(--accent-soft);color:var(--accent);border-radius:3px;padding:5px 10px;text-decoration:none;font-weight:500}
+.qs-ev a:hover{text-decoration:underline}
+.qs-tm{margin-top:18px}
+.qs-tm .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.qs-tm .row .btnrow{margin-top:0}
+.qs-tm output{font:600 15px/1 var(--sans);font-variant-numeric:tabular-nums}
+@keyframes qsin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (max-width:900px){.qs-w{grid-template-columns:1fr}.qs-beats li{grid-template-columns:1fr;gap:4px}}
+
+.qs-ask{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;margin-top:24px;align-items:start}
+.qs-aq{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.qs-aq li{background:var(--panel);border-radius:6px;padding:12px 14px 12px 52px;position:relative;font-size:14.5px;transition:opacity .25s,background .25s}
+.qs-aq li .r{position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--ink3);font:600 13px/23px var(--sans);text-align:center;color:var(--ink2)}
+.qs-aq li b{display:block;font-weight:600}
+.qs-aq li span.q{display:block;margin-top:2px}
+.qs-aq li span.w{display:block;color:var(--muted);font-size:13.5px;margin-top:3px}
+.qs-aq li.on{background:var(--accent-soft)}
+.qs-aq li.on .r{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.qs-aq li.off{opacity:.55}
+.qs-sum{font-size:14.5px;margin-top:12px}
+@media (max-width:900px){.qs-ask{grid-template-columns:1fr}}
+
+.qs-close{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}
+.qs-close .panel blockquote{margin:8px 0 0;font-size:17px;line-height:1.45;letter-spacing:-.01em}
+.qs-steps{display:grid;gap:8px;margin-top:10px}
+.qs-steps div{display:grid;grid-template-columns:78px 1fr;gap:10px;font-size:14.5px;align-items:baseline}
+.qs-steps div b{font:600 15px/1.2 var(--sans);color:var(--accent)}
+@media (max-width:760px){.qs-close{grid-template-columns:1fr}}
+.viz svg .t-muted{font-size:12px}
+@media (prefers-reduced-motion:reduce){.qs-beats li{animation:none}}
+</style>
+
+<header class="phead">
+  <span class="eyebrow">Meeting, minutes 30 to 58</span>
+  <h1>Questions</h1>
+  <p class="lede">The questions I expect from the panel, each with a short prepared answer and the page that backs it. Below them are the questions I will ask the panel, ranked so the most useful ones fit whatever time is left.</p>
+</header>
+
+<section class="sec" style="margin-top:40px">
+  <span class="eyebrow">Prepared answers</span>
+  <h2>Questions I expect</h2>
+  <p class="intro">Each answer has three beats and a target length. Practice mode hides the beats so I can say each one before revealing it.</p>
+  <div class="qs-w">
+    <div class="qs-list" id="qs-list" role="group" aria-label="Choose a question"></div>
+    <div class="viz qs-det" id="qs-det" aria-live="polite">
+      <h3 id="qs-q"></h3>
+      <p class="qs-why" id="qs-why"></p>
+      <div class="qs-ctl">
+        <div class="btnrow" role="group" aria-label="Answer mode">
+          <button type="button" id="qs-prac" aria-pressed="false">Practice mode</button>
+          <button type="button" id="qs-next" hidden>Reveal next beat</button>
+        </div>
+      </div>
+      <ol class="qs-beats" id="qs-beats"></ol>
+      <div class="qs-tm">
+        <div class="row">
+          <div class="btnrow"><button type="button" id="qs-go">Start timer</button></div>
+          <output id="qs-out" aria-live="off"></output>
+        </div>
+        <div id="qs-bar"></div>
+      </div>
+      <div class="qs-ev" id="qs-ev"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">For the panel</span>
+  <h2>Questions I will ask</h2>
+  <p class="intro">Eight questions in priority order. Each takes about a minute and a half with the answer, so the time left decides how far down the list I go.</p>
+  <div class="viz">
+    <div class="viz-h"><h3>What fits in the time left</h3><p>Choose the minutes remaining. Hover a block for the question.</p></div>
+    <div class="btnrow" id="qs-time" role="group" aria-label="Time left">
+      <button type="button" data-m="2" aria-pressed="false">2 minutes</button>
+      <button type="button" data-m="5" aria-pressed="true">5 minutes</button>
+      <button type="button" data-m="10" aria-pressed="false">10 minutes</button>
+    </div>
+    <div id="qs-min"></div>
+    <p class="qs-sum" id="qs-sum" aria-live="polite"></p>
+  </div>
+  <div class="qs-ask">
+    <ol class="qs-aq" id="qs-aq1"></ol>
+    <ol class="qs-aq" id="qs-aq2" start="5"></ol>
+  </div>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Last two minutes</span>
+  <h2>Close</h2>
+  <div class="qs-close">
+    <div class="panel">
+      <h3>What I will say</h3>
+      <blockquote>“The 2028 disclosure step brings a new group of buyers to One Click LCA within about fourteen months. I would like to spend my first quarter getting the company ready for them, and I would start with the interviews and the loss data.”</blockquote>
+    </div>
+    <div class="panel">
+      <h3>What I send afterwards</h3>
+      <div class="qs-steps">
+        <div><b>Same day</b><span>A thank-you note to each panel member with the link to this site.</span></div>
+        <div><b>Within 24 hours</b><span>A one-page summary of the Launch Proposal, updated with anything the panel told me.</span></div>
+        <div><b>On request</b><span>The research files behind the appendix, with every claim marked verified, secondary or unverified.</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="src" style="margin-top:20px">The answers are drafts in my own voice to rehearse and adapt in the room. Figures come from the pages they link to; the win rate and no-decision figures are illustrative defaults from the Win Rate model.</p>
+</section>
+
+<script>
+(function(){
+function $(id){return document.getElementById(id)}
+function txt(el,t){el.textContent=t;return el}
+var RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+var BK=["Answer","Evidence","Link to the role"],BC=["var(--s1)","var(--s3)","var(--s5)"];
+/* question, short label, why they ask, beats, seconds, evidence [label, href], flag beat index */
+var Q=[
+ ["You have never held a product marketing title. Why should we hire you?","No product marketing title","The listing asks for seven or more years of product marketing or closely related work, and my CV says sustainability and design.",
+  ["The closest work I have done is product marketing for a service. At Foster + Partners I co-created and launched an advisory service line, and the pitches and bids I led won more than £10 million a year in fees.",
+   "For eighteen years I have been on the buying side of this market. I sat on the Foster + Partners whole life carbon leadership team, built early design carbon tools and helped choose the carbon tools we used.",
+   "Today I run sales and marketing at Atlas Learn. This site is the work I would do in month three, so you can judge the output directly."],75,[["Fit","fit.html"],["CV","cv.html"]]],
+ ["Free tools such as EC3 and the national tools put pressure on price. How do you sell against free?","Selling against free","Value for money is the lowest Capterra sub-score at 4.0 of 5, and buyers in the US and several national markets can choose a free tool.",
+  ["I move the conversation from the licence price to the cost of the whole assessment. A design firm paying a consultant €3,000 an assessment twelve times a year spends €36,000 before anyone counts the bids it loses.",
+   "A free national tool covers one market's rules. A firm that works in several countries needs one model that holds each market's rules, and the business case calculator shows the buyer that with their own figures.",
+   "Support scores 4.9 on Capterra, so the help behind the tool belongs in the price argument. I would give sellers the calculator and train them to run it live on the call."],75,[["Enablement","enablement.html"],["Alternatives","alternatives.html"]]],
+ ["Tell us about a launch or campaign that underperformed.","A launch that missed","The panel wants to see how I find the cause of a miss and what I change afterwards.",
+  ["What I launched, to whom, the target I set and the number it reached.",
+   "How I found the cause, from what buyers said and where the deals stalled, and what I changed in the message, the segment or the timing.",
+   "What the next launch did differently. In this role that lesson would become a rule in the launch tiering and a field in the CRM."],90,[["Launch Playbook","launch.html"],["Win Rate","metrics.html"]],0],
+ ["How would you know a positioning change worked?","Measuring positioning","The listing asks for the business judgement to assess positioning and its likely effect on metrics.",
+  ["I agree the number with sales before the change. For a priority segment that is win rate, the share of losses to no decision and cycle length.",
+   "The CRM needs the fields first: the alternative the buyer considered, the trigger that started the deal and a loss reason that separates no decision from a named competitor.",
+   "Then I check the lift is larger than the noise. A small segment needs enough closed deals before the 95% ranges for the two periods stop overlapping, so I would state the number of deals we need before claiming a result."],70,[["Win Rate","metrics.html"],["Positioning","positioning.html"]]],
+ ["Why leave practice for a software vendor?","Why a vendor","The panel will want to know that I will stay, and what I bring from the other side of the table.",
+  ["In practice I improve the carbon of one project at a time. A tool used by thousands of firms changes far more buildings each year.",
+   "The part of my work I enjoy most has always been explaining carbon tools and selling the work. Product marketing is that job full time.",
+   "The 2028 EU disclosure step brings in buyers who have never bought an LCA tool. I know what worries those buyers because I have been one."],50,[["The 2028 Buyer","buyer-2028.html"],["Fit","fit.html"]]],
+ ["How do you use AI in your daily work?","AI in daily work","The listing asks for effective use of AI in daily work.",
+  ["I researched and built this site with Claude Code agents. Each research agent sourced its claims and marked them verified, secondary or unverified, and I checked the findings before they reached a page.",
+   "In the role I would run a competitor monitoring routine and a launch asset drafting routine, each with a person checking the output before it goes out.",
+   "I co-founded Atlas Learn and have trained more than 250 senior professionals to use Claude Code, Cowork and other AI tools, so I can help the wider team adopt the same routines."],55,[["AI Workflow","ai.html"]]],
+ ["How do One Click LCA and SimaPro avoid competing for the same manufacturer?","One Click LCA or SimaPro","SimaPro and PRé joined the group in September 2025, and both brands sell to manufacturers.",
+  ["Sellers need a rule for which product leads on a first call, based on what the buyer has to produce. Building results against a code start with One Click LCA, and expert process models or non-construction products start with SimaPro.",
+   "A construction manufacturer with an expert team and a large product range is one account for both: the experts model in SimaPro and the range is published through the EPD Generator, with one account team.",
+   "I would agree the rule with both product teams, test it in lost-deal reviews and then put it in the battlecards."],60,[["Positioning","positioning.html"]]]
+];
+var cur=0,prac=false,shown=3,timer=null,t0=0,el=0;
+var list=$("qs-list");
+Q.forEach(function(q,i){var b=document.createElement("button");b.type="button";b.setAttribute("aria-pressed",i===0);
+ b.innerHTML='<span class="n">'+(i+1)+'</span><b></b><small>'+q[4]+' s</small>';txt(b.querySelector("b"),q[1]);
+ b.addEventListener("click",function(){cur=i;shown=prac?0:3;stop();show()});list.appendChild(b)});
+function show(){var q=Q[cur];[].forEach.call(list.children,function(b,j){b.setAttribute("aria-pressed",j===cur)});
+ txt($("qs-q"),q[0]);txt($("qs-why"),"Why they will ask: "+q[2]);
+ var ol=$("qs-beats");ol.innerHTML="";
+ q[3].forEach(function(t,j){var li=document.createElement("li");li.style.setProperty("--c",BC[j]);var hid=j>=shown;if(hid)li.className="hid";
+  li.innerHTML='<span class="k"></span><div></div>';txt(li.querySelector(".k"),(j+1)+". "+BK[j]);var d=li.lastChild;
+  if(q[6]===j&&!hid){var f=document.createElement("span");f.className="qs-flag";f.textContent="Arpan to fill in his own example";d.appendChild(f);d.appendChild(document.createElement("br"))}
+  d.appendChild(document.createTextNode(hid?"Say this beat aloud, then reveal it.":t));ol.appendChild(li)});
+ var nx=$("qs-next");nx.hidden=!prac||shown>=3;nx.textContent="Reveal beat "+(shown+1);
+ var ev=$("qs-ev");ev.innerHTML='<span class="mini">Evidence to open</span>';q[5].forEach(function(e){var a=document.createElement("a");a.href=e[1];a.textContent=e[0];ev.appendChild(a)});
+ drawBar();}
+$("qs-prac").addEventListener("click",function(){prac=!prac;this.setAttribute("aria-pressed",prac);shown=prac?0:3;show()});
+$("qs-next").addEventListener("click",function(){shown=Math.min(3,shown+1);show();if(shown>=3)$("qs-prac").focus();else this.focus()});
+
+/* timer bar */
+function drawBar(){var h=$("qs-bar");h.innerHTML="";var q=Q[cur],T=q[4],W=Math.max(260,h.clientWidth||500),H=50,x=VZ.lin(0,90,4,W-6);
+ var s=VZ.svg(h,W,H,"Target length "+T+" seconds on a scale to 90 seconds. Three beats of about "+Math.round(T/3)+" seconds each.");
+ VZ.el("rect",{x:x(0),y:8,width:x(90)-x(0),height:16,rx:4,style:"fill:var(--panel)"},s);
+ VZ.el("rect",{x:x(0),y:8,width:x(T)-x(0),height:16,rx:4,style:"fill:none;stroke:var(--ink3)","stroke-width":1.5},s);
+ var fill=VZ.el("rect",{x:x(0),y:8,width:Math.max(0,x(Math.min(el,T))-x(0)),height:16,rx:4,style:"fill:"+(el>T?"var(--bad,var(--s4))":"var(--accent)")},s);
+ for(var j=1;j<3;j++){VZ.el("line",{x1:x(T*j/3),x2:x(T*j/3),y1:5,y2:27,style:"stroke:var(--chart-bg)","stroke-width":2},s)}
+ [0,30,60,90].forEach(function(v){var t=VZ.el("text",{x:x(v),y:44,"text-anchor":v===0?"start":v===90?"end":"middle","class":"t-muted"},s);t.textContent=v+" s"});
+ var tt=VZ.el("text",{x:Math.min(x(T),W-60),y:44,"text-anchor":"middle","class":"t-strong"},s);if(T%30)tt.textContent="Target "+T+" s";
+ drawBar.fill=fill;drawBar.x=x;
+ $("qs-out").textContent=timer?(Math.floor(el)+" of "+T+" s"):(el>0?"Stopped at "+Math.floor(el)+" s of "+T+" s":"Target "+T+" seconds, about "+Math.round(T/3)+" per beat");}
+function tick(ts){if(!timer)return;el=(ts-t0)/1000;var T=Q[cur][4];
+ if(RM){var s=Math.floor(el);if(s!==tick.last){tick.last=s;drawBar()}}else{var f=drawBar.fill,x=drawBar.x;f.setAttribute("width",Math.max(0,x(Math.min(el,90))-x(0)));f.setAttribute("style","fill:"+(el>T?"var(--bad,var(--s4))":"var(--accent)"));$("qs-out").textContent=Math.floor(el)+" of "+T+" s"}
+ if(el>=90){stop();return}timer=requestAnimationFrame(tick)}
+function stop(){if(timer)cancelAnimationFrame(timer);timer=null;$("qs-go").textContent="Start timer";$("qs-go").setAttribute("aria-pressed","false")}
+$("qs-go").addEventListener("click",function(){if(timer){stop();drawBar();return}el=0;t0=performance.now();tick.last=-1;this.textContent="Stop timer";this.setAttribute("aria-pressed","true");timer=requestAnimationFrame(tick)});
+$("qs-go").setAttribute("aria-pressed","false");
+show();
+
+/* questions to ask */
+var A=[
+ ["Reporting line and metric","Where does product marketing report after the 2026 leadership changes, and which metric will judge this role?","The listing sits in Product while other product marketers sit under Marketing, and the metric decides where my first quarter goes."],
+ ["Best and worst launch","Which launch in the past year beat expectations, and which fell short?","The launch tiering rule should learn from real launches before I change it."],
+ ["Loss reasons in the CRM","Are loss reasons and named competitors recorded on opportunities today?","Without them win rate cannot be read by segment, and the first change I would make is to the CRM."],
+ ["Fastest and riskiest segment","Which segment is growing fastest, and which worries the company most?","Growth and risk set the first launch priorities in the Segment Model."],
+ ["One Click LCA or SimaPro","How will the two brands be positioned for a manufacturer who could use either?","Both brands serve manufacturers, and sellers need the rule before the first call."],
+ ["Product line ownership","Which product line and segments would this role own?","The February 2026 listing covered manufacturing, and the answer changes my first ten interviews."],
+ ["Partner share of revenue","What share of new revenue comes through resellers and partners, and in which countries?","Partners need kits that work without product marketing on the call."],
+ ["Co-marketing partners","Which green building councils and EPD programme operators co-market launches today?","A launch tied to a standard lands better with the body behind it."]
+];
+var PER=1.5,mins=5;
+function fit(m){return Math.floor(m/PER+1e-9)}
+function renderAsk(){var n=fit(mins);[$("qs-aq1"),$("qs-aq2")].forEach(function(o){o.innerHTML=""});
+ A.forEach(function(a,i){var li=document.createElement("li");li.className=i<n?"on":"off";
+  li.innerHTML='<span class="r">'+(i+1)+'</span><b></b><span class="q"></span><span class="w"></span>';
+  txt(li.querySelector("b"),a[0]);txt(li.querySelector(".q"),a[1]);txt(li.querySelector(".w"),"Why it matters: "+a[2]);
+  (i<4?$("qs-aq1"):$("qs-aq2")).appendChild(li)});
+ txt($("qs-sum"),"With "+mins+" minutes left I ask the top "+n+" question"+(n>1?"s":"")+", which take about "+(n*PER).toFixed(1).replace(".0","")+" minutes. "+(n<A.length?"Questions "+(n+1)+" to "+A.length+" go in my follow-up note.":"All eight fit."));
+ drawMin(n);}
+function drawMin(n){var h=$("qs-min");h.innerHTML="";var W=Math.max(280,h.clientWidth||600),nar=W<560,H=nar?92:78,x=VZ.lin(0,12,4,W-6);
+ var s=VZ.svg(h,W,H,mins+" minutes left. "+n+" questions of 1.5 minutes each fill "+(n*PER)+" minutes.");s.setAttribute("role","group");
+ VZ.el("rect",{x:x(0),y:10,width:x(mins)-x(0),height:30,rx:4,style:"fill:var(--accent-soft)"},s);
+ VZ.el("rect",{x:x(0),y:10,width:x(mins)-x(0),height:30,rx:4,style:"fill:none;stroke:var(--accent)","stroke-dasharray":"4 3","stroke-width":1.5},s);
+ A.forEach(function(a,i){var on=i<n,x0=x(i*PER)+1,x1=x((i+1)*PER)-1;if(!on&&(i+1)*PER>12)return;
+  var g=VZ.el("g",{tabindex:0,role:"button","aria-label":"Question "+(i+1)+": "+a[0]+(on?", fits":", does not fit")},s);
+  VZ.el("rect",{x:x0,y:14,width:x1-x0,height:22,rx:3,style:on?"fill:var(--accent)":"fill:none;stroke:var(--ink3)","stroke-width":1},g);
+  var t=VZ.el("text",{x:(x0+x1)/2,y:29,"text-anchor":"middle",style:on?"fill:var(--on-accent);font-weight:600":"fill:var(--ink2)"},g);t.textContent=i+1;
+  VZ.tip(g,function(){return "<b>"+(i+1)+". "+a[0]+"</b>"+a[1]+'<div class="m">'+(on?"Fits in "+mins+" minutes":"Goes in the follow-up note")+"</div>"})});
+ for(var m=0;m<=12;m+=nar?3:1){var tx=VZ.el("text",{x:x(m),y:58,"text-anchor":m===0?"start":m===12?"end":"middle","class":"t-muted"},s);tx.textContent=m+(m===12?" min":"")}
+ var lt=VZ.el("text",{x:Math.min(x(mins),W-8),y:nar?78:72,"text-anchor":"end","class":"t-strong"},s);lt.textContent=mins+" minutes left";}
+[].forEach.call(document.querySelectorAll("#qs-time button"),function(b){b.addEventListener("click",function(){mins=+b.dataset.m;[].forEach.call(document.querySelectorAll("#qs-time button"),function(x){x.setAttribute("aria-pressed",x===b)});VZ.hideTip();renderAsk()})});
+renderAsk();
+var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){drawBar();drawMin(fit(mins))},120)});
+})();
+</script>
+
+</main>
+<nav class="pager" aria-label="Page navigation"><a class="prev" href="first-90-days.html"><small>Previous</small><b>First 90 Days</b></a><a class="next" href="overview.html"><small>Next</small><b>Research Appendix</b></a></nav><footer class="site-foot"><span>Prepared 23 October 2026 by Arpan Bakshi for the Senior Product Marketing Manager role at One Click LCA. Independent work from public sources; not produced or endorsed by One Click LCA.</span></footer>
+</body>
+</html>

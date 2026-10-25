@@ -41,7 +41,7 @@
 var HASH="%HASH%",SALT="%SALT%";
 var OK=[%OK%];
 function hex(b){return Array.prototype.map.call(new Uint8Array(b),function(x){return ("0"+x.toString(16)).slice(-2)}).join("")}
-function dest(){var n=new URLSearchParams(location.search).get("next");return OK.indexOf(n)>-1?n:"overview.html"}
+function dest(){var n=new URLSearchParams(location.search).get("next");return OK.indexOf(n)>-1?n:"agenda.html"}
 try{if(sessionStorage.getItem("pw")==="ok"){location.replace(dest());return}}catch(e){}
 document.getElementById("f").addEventListener("submit",function(e){
  e.preventDefault();var err=document.getElementById("err");err.textContent="";

@@ -3,24 +3,20 @@
 A static site of research, decision models and plans for the One Click LCA Senior Product Marketing Manager interview. Built 23 October 2026.
 
 ## Site
-Open `index.html`. It is a password page; only a salted hash of the password is stored here. Pages in nav order:
+Open `index.html`. It is a password page; only a salted hash of the password is stored here. The site has two groups.
 
-- `overview.html`: headline findings and links
-- `role.html`: the eight duties decoded, context, working relationships, operating rhythm, success at 6 and 12 months, questions for the panel
-- `fit.html`: each requirement against career evidence
-- `portfolio.html`: products by buyer, job and trigger; packaging; four first-quarter fixes
-- `demand.html`: regulatory forcing dates 2025 to 2031 and the three waves of buyers
-- `buyers.html`: buying committees, criteria heat map, customer quotes, interview programme
-- `segments.html`: interactive sub-segment scoring model with launch-type presets
-- `alternatives.html`: competitor map and table, cost of doing nothing, six risks
-- `positioning.html`: positioning statement, six message houses, One Click LCA and SimaPro rule, test plan
-- `launch.html`: interactive launch tiering tool, worked EU 2028 launch, 2027 calendar
-- `enablement.html`: business case calculator, discovery questions, objections, battlecard
-- `metrics.html`: interactive win rate model, CRM fields, metric tree, attribution
-- `first-90-days.html`, `ai.html`, `cv.html`
+Meeting pages, in the order of a one-hour interview (about 25 minutes of material):
+- `agenda.html`: the hour as a run sheet with 60, 45 and 30 minute versions, the argument in four steps, and a map of which appendix pages back each part
+- `fit.html`: each requirement against career evidence (minutes 5 to 9)
+- `buyer-2028.html`: three findings about the first-time buyer created by EU disclosure in 2028 (minutes 9 to 17)
+- `proposal.html`: the tier one launch proposal for first-time EU buyers, with segment filter, message, milestones, value model, targets and risks (minutes 17 to 27)
+- `first-90-days.html`: listen, decide, ship (minutes 27 to 30)
+- `questions.html`: prepared answers to the panel's likely questions and the questions to ask them (minutes 30 to 58)
+
+Research appendix, indexed by `overview.html` and shown with an appendix bar on each page: A1 `role.html`, A2 `portfolio.html`, A3 `demand.html`, A4 `buyers.html`, A5 `segments.html`, A6 `alternatives.html`, A7 `positioning.html`, A8 `launch.html`, A9 `enablement.html`, A10 `metrics.html`, A11 `ai.html`, A12 `cv.html`.
 
 ## Build
-Page bodies live in `build/pages/`. Run `python3 build/build.py` to wrap them with the shared head, navigation and footer and to write `index.html` from `build/gate.html`. Put the password in `build/.password` (ignored by git) to change it; otherwise the stored hash in `build/gate.hash` is reused. Styles: `assets/site.css`, `nav.css`, `a11y.css` (from the Populous site) and `assets/pages.css` (this site's components and green accent).
+Page bodies live in `build/pages/`. Run `python3 build/build.py` to wrap them with the shared head, navigation (meeting links, plus the appendix bar on appendix pages) and footer and to write `index.html` from `build/gate.html`. Put the password in `build/.password` (ignored by git) to change it; otherwise the stored hash in `build/gate.hash` is reused. Styles: `assets/site.css`, `nav.css`, `a11y.css` (from the Populous site) and `assets/pages.css` (this site's components and green accent).
 
 ## Research
 `research/` holds the four sourced research files behind the pages: `company.md`, `competitors.md`, `regulation.md`, `team-and-voice.md`. Claims are flagged verified, secondary or unverified.

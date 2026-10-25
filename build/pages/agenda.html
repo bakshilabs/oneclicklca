@@ -1,0 +1,244 @@
+<!--meta title="Agenda" desc="How I would use a one-hour interview for the Senior Product Marketing Manager role at One Click LCA: what I show, in what order, and which research backs each part."-->
+<style>
+.ag-ver{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 6px}
+.ag-ver .mini{margin-right:4px}
+.ag-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0 4px}
+.ag-kpi div{background:var(--panel);border-radius:5px;padding:12px 14px;border-left:4px solid var(--c)}
+.ag-kpi b{display:block;font:600 26px/1 var(--sans);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.ag-kpi span{display:block;font-size:12.5px;color:var(--muted);margin-top:4px}
+#ag-bar .seg{cursor:pointer;outline:none}
+#ag-bar .seg rect.b{transition:opacity .2s}
+#ag-bar .seg.dim rect.b{opacity:.35}
+#ag-bar .seg:focus-visible rect.r,#ag-bar .seg.sel rect.r{stroke:var(--ink1);stroke-width:2.5}
+#ag-bar .seg text{pointer-events:none}
+.ag-run{display:grid;grid-template-columns:300px minmax(0,1fr);gap:18px;margin-top:16px;align-items:start}
+.ag-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.ag-list button{appearance:none;border:0;width:100%;text-align:left;font:inherit;color:var(--ink);background:var(--panel);border-radius:5px;padding:10px 12px;cursor:pointer;display:grid;grid-template-columns:12px 1fr auto;gap:10px;align-items:center;transition:background .2s}
+.ag-list button i{width:12px;height:12px;border-radius:3px;background:var(--c)}
+.ag-list button b{font-weight:500;font-size:14.5px}
+.ag-list button span{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ag-list button:hover{background:var(--accent-soft)}
+.ag-list button[aria-pressed="true"]{outline:2px solid var(--accent);outline-offset:-2px;background:var(--accent-soft)}
+.ag-list button.off b{text-decoration:line-through;color:var(--muted)}
+.ag-det{background:var(--panel);border-radius:6px;padding:18px 22px;border-top:5px solid var(--c);animation:agin .35s ease both}
+.ag-det .t{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline}
+.ag-det h3{font-size:21px;letter-spacing:-.015em}
+.ag-det .mm{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ag-det .k{font:500 12px/1.3 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:14px 0 4px}
+.ag-det p{font-size:14.5px}
+.ag-det blockquote{margin:0;font-size:17px;line-height:1.4;letter-spacing:-.01em;border-left:3px solid var(--accent);padding-left:12px}
+.ag-det .links{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.ag-det .links a{font-size:13px;text-decoration:none;border-radius:3px;padding:4px 9px;background:var(--bg);border:1px solid var(--line);color:var(--ink)}
+.ag-det .links a.mt{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.ag-det .links a b{font-weight:600;margin-right:4px}
+@media (max-width:860px){.ag-run{grid-template-columns:1fr}}
+@media (max-width:560px){.ag-kpi b{font-size:21px}}
+
+.ag-chain{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:28px;counter-reset:ag}
+.ag-step{position:relative;display:flex;flex-direction:column;background:var(--panel);border-radius:6px;padding:20px 20px 16px;color:var(--ink);text-decoration:none;border-top:4px solid var(--accent);transition:transform .18s,background .18s}
+.ag-step:hover,.ag-step:focus-visible{transform:translateY(-3px);background:var(--accent-soft)}
+.ag-step .n{font:600 34px/1 var(--sans);letter-spacing:-.03em;color:var(--accent)}
+.ag-step h3{font-size:17px;margin:10px 0 8px;line-height:1.25}
+.ag-step p{font-size:14px;color:var(--ink2)}
+.ag-step small{margin-top:auto;padding-top:14px;font:500 13px/1.3 var(--sans);color:var(--accent)}
+.ag-step svg.ar{position:absolute;right:-14px;top:30px;width:14px;height:14px;z-index:1;stroke:var(--ink3);fill:none;stroke-width:2}
+.ag-step:last-child svg.ar{display:none}
+.ag-step svg.sp{display:block;width:100%;height:auto;margin-top:14px}
+.ag-step svg.sp text{font-family:var(--sans);font-size:11px;fill:var(--ink2)}
+@media (max-width:980px){.ag-chain{grid-template-columns:1fr 1fr}.ag-step svg.ar{display:none}}
+@media (max-width:600px){.ag-chain{grid-template-columns:1fr}}
+
+.ag-mxw{overflow-x:auto;margin-top:20px}
+table.ag-mx{border-collapse:separate;border-spacing:0;width:100%;font-size:14px}
+table.ag-mx th,table.ag-mx td{padding:0;border-bottom:1px solid var(--line);transition:background .15s}
+table.ag-mx thead th{vertical-align:bottom;border-bottom:1px solid var(--axis)}
+table.ag-mx button{appearance:none;border:0;background:transparent;color:var(--ink);font:inherit;cursor:pointer;width:100%;text-align:left;padding:9px 10px;border-radius:3px}
+table.ag-mx thead button{text-align:center;font-size:13px;font-weight:500;padding:8px 6px;line-height:1.25}
+table.ag-mx thead button small{display:block;font-size:11.5px;color:var(--muted);font-weight:400;margin-top:2px}
+table.ag-mx tbody th button b{display:inline-block;min-width:34px;font-weight:600;color:var(--accent)}
+table.ag-mx tbody th button{font-weight:400}
+table.ag-mx td{text-align:center;width:16%}
+table.ag-mx td i{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--accent);transition:transform .2s}
+table.ag-mx td i.o{background:transparent;width:6px;height:6px;background:var(--grid)}
+table.ag-mx .hl{background:var(--accent-soft)}
+table.ag-mx .hl i:not(.o){transform:scale(1.25)}
+table.ag-mx button[aria-pressed="true"]{outline:2px solid var(--accent);outline-offset:-2px}
+table.ag-mx .sh{display:none}
+@media (max-width:640px){table.ag-mx .lg{display:none}table.ag-mx .sh{display:inline}table.ag-mx thead button small{display:none}table.ag-mx tbody th button{font-size:13px;padding:8px 6px}table.ag-mx tbody th button b{min-width:30px}}
+.ag-mxd{margin-top:14px;font-size:14.5px;min-height:44px;background:var(--panel);border-radius:5px;padding:12px 16px}
+@keyframes agin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.ag-det{animation:none}.ag-step,#ag-bar .seg rect.b{transition:none}}
+.viz svg .t-muted{font-size:12px}
+</style>
+
+<header class="phead">
+  <span class="eyebrow">One hour with the panel</span>
+  <h1>Agenda</h1>
+  <p class="lede">I would use about twenty-five minutes to show material and leave the rest of the hour for introductions and conversation. Each part answers one question I expect the panel to bring, and the research behind it waits in the appendix for follow-up questions.</p>
+  <p class="meta">Times are my plan for a one-hour panel. The 45 and 30 minute versions show what I would cut if the meeting runs short.</p>
+</header>
+
+<div class="viz rv">
+  <div class="viz-h"><h3>Run sheet</h3><p>Choose a meeting length, then select a part of the hour.</p></div>
+  <div class="ag-ver btnrow" id="ag-ver" role="group" aria-label="Meeting length">
+    <span class="mini">Meeting length</span>
+    <button type="button" data-v="60" aria-pressed="true">60 minutes</button>
+    <button type="button" data-v="45" aria-pressed="false">45 minutes</button>
+    <button type="button" data-v="30" aria-pressed="false">30 minutes</button>
+  </div>
+  <div class="ag-kpi" id="ag-kpi"></div>
+  <div class="legend" id="ag-leg" role="group" aria-label="Highlight by who talks"></div>
+  <div id="ag-bar"></div>
+  <div class="ag-run">
+    <ol class="ag-list" id="ag-list" aria-label="Parts of the meeting"></ol>
+    <div class="ag-det" id="ag-det" aria-live="polite"></div>
+  </div>
+</div>
+
+<section class="sec">
+  <span class="eyebrow">Four steps</span>
+  <h2>The argument</h2>
+  <p class="intro">The material in the meeting makes one case in four steps. Each step is shown on a meeting page and backed by an appendix page.</p>
+  <div class="ag-chain">
+    <a class="ag-step rv" href="buyer-2028.html">
+      <span class="n">1</span>
+      <h3>The market widens in 2028.</h3>
+      <p>From 1 January 2028 every new EU building over 1,000 m² must disclose its life cycle carbon. Most of the design teams this reaches have never bought an LCA tool.</p>
+      <svg class="sp" viewBox="0 0 200 50" aria-hidden="true"><path d="M2 44H66V30H132V14H198" fill="none" style="stroke:var(--accent)" stroke-width="2.5"/><path d="M2 44H66V30H132V14H198V48H2z" style="fill:var(--accent)" opacity=".12"/><text x="4" y="40">Now</text><text x="70" y="26">2028</text><text x="136" y="10">2030</text></svg>
+      <small>The 2028 Buyer, backed by A3 Demand Drivers</small>
+      <svg class="ar" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+    </a>
+    <a class="ag-step rv" href="buyer-2028.html">
+      <span class="n">2</span>
+      <h3>The new buyer's alternative is waiting.</h3>
+      <p>A first-time buyer can hire a consultant for one project or wait for national limit values. I expect no decision to be the largest loss in these segments, and the CRM needs a loss reason to show it.</p>
+      <svg class="sp" viewBox="0 0 200 50" aria-hidden="true"><rect x="2" y="10" width="40" height="16" rx="3" style="fill:none;stroke:var(--ink3)"/><rect x="46" y="10" width="40" height="16" rx="3" style="fill:none;stroke:var(--ink3)"/><rect x="90" y="10" width="40" height="16" rx="3" style="fill:none;stroke:var(--ink3)"/><rect x="134" y="10" width="64" height="16" rx="3" style="fill:var(--accent)"/><text x="2" y="42">Competitor</text><text x="64" y="42">Free tool</text><text x="134" y="42">No decision</text></svg>
+      <small>The 2028 Buyer, backed by A4 Buyers and A6 Alternatives</small>
+      <svg class="ar" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+    </a>
+    <a class="ag-step rv" href="buyer-2028.html">
+      <span class="n">3</span>
+      <h3>The business case wins the waiting buyer.</h3>
+      <p>Value for money is the lowest Capterra sub-score at 4.0 of 5, while support scores 4.9. A seller who sets a consultant's fees against a licence gives the waiting buyer a reason to act this year.</p>
+      <svg class="sp" viewBox="0 0 200 50" aria-hidden="true"><text x="2" y="14">Support</text><rect x="94" y="5" width="96" height="11" rx="3" style="fill:var(--ink3)"/><text x="2" y="38">Value for money</text><rect x="94" y="29" width="78" height="11" rx="3" style="fill:var(--accent)"/></svg>
+      <small>The 2028 Buyer, backed by A9 Enablement</small>
+      <svg class="ar" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+    </a>
+    <a class="ag-step rv" href="proposal.html">
+      <span class="n">4</span>
+      <h3>The first launch follows from the first three.</h3>
+      <p>I would run a tier one launch in 2027 for first-time buyers in Germany, Italy, Spain and global engineering firms, give sellers a business case kit, and judge it on win rate and the no-decision share in those segments.</p>
+      <svg class="sp" viewBox="0 0 200 50" aria-hidden="true"><path d="M2 40H198" style="stroke:var(--axis)" stroke-width="1.5"/><circle cx="20" cy="40" r="5" style="fill:var(--ink3)"/><circle cx="180" cy="40" r="5" style="fill:var(--ink3)"/><rect x="40" y="18" width="110" height="12" rx="3" style="fill:var(--accent)"/><text x="2" y="12">1 Jan 2027</text><text x="198" y="12" text-anchor="end">1 Jan 2028</text></svg>
+      <small>Launch Proposal, backed by A5 Segment Model and A8 Launch Playbook</small>
+      <svg class="ar" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+    </a>
+  </div>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Research appendix</span>
+  <h2>What sits in the appendix</h2>
+  <p class="intro">I keep the twelve appendix pages open on a second tab during the meeting and open one only when a question calls for it. Select a page or a meeting part to see which research backs which part. The full list is in the <a href="overview.html">Research Appendix</a>.</p>
+  <div class="viz rv">
+    <div class="ag-mxw"><table class="ag-mx" id="ag-mx"><thead></thead><tbody></tbody></table></div>
+    <div class="ag-mxd" id="ag-mxd" aria-live="polite"></div>
+  </div>
+</section>
+
+<script>
+(function(){
+function $(id){return document.getElementById(id)}
+function txt(el,t){el.textContent=t;return el}
+var WHO=[["Me presenting","var(--s1)","#fff"],["Conversation","var(--s4)","#0b0b0b"],["The panel","var(--s7)","#fff"]];
+var AX={A1:["The Role","role.html"],A2:["Portfolio","portfolio.html"],A3:["Demand Drivers","demand.html"],A4:["Buyers","buyers.html"],A5:["Segment Model","segments.html"],A6:["Alternatives","alternatives.html"],A7:["Positioning","positioning.html"],A8:["Launch Playbook","launch.html"],A9:["Enablement","enablement.html"],A10:["Win Rate","metrics.html"],A11:["AI Workflow","ai.html"],A12:["CV","cv.html"]};
+/* name, short, who, minutes for 60/45/30, question, show, remember, cut, page [label,href], appendix codes */
+var P=[
+ ["Introductions","Intro",2,{60:5,45:3,30:2},"Who is in the room, and what does each person need from this hire?","Nothing on screen. I note what each panel member says matters most to them.","I ask each person what a good first year in this role would look like for them.","I keep this and shorten my own introduction instead.",null,["A1"]],
+ ["About me","Me",0,{60:4,45:3,30:2},"Can someone without a product marketing title do this job?","The career map and the requirement matrix on the Fit page.","I spent eighteen years as the buyer One Click LCA sells to, and I have launched and sold technical services to those buyers.","I drop the four lessons panel and keep the requirement matrix.",["Fit","fit.html"],["A12","A11"]],
+ ["The 2028 Buyer","2028",0,{60:8,45:6,30:5},"Does he understand where the next customers will come from?","Three findings: the widening buyer pool, where a first-time buyer's deal goes, and the Capterra sub-scores.","From 1 January 2028 every new EU building over 1,000 m² must disclose life cycle carbon, and most of those design teams have never bought an LCA tool.","I show the first finding and state the other two in a sentence each.",["The 2028 Buyer","buyer-2028.html"],["A3","A4","A6","A9"]],
+ ["Launch Proposal","Launch",0,{60:10,45:6,30:5},"What would he do with a real launch?","The launch brief, the segment ranking and the value of a win rate gain.","I would launch to first-time EU buyers in 2027 with the message “The EU method, done once, accepted everywhere you build.”","I drop the segment ranking and keep the brief and the measure.",["Launch Proposal","proposal.html"],["A5","A7","A8","A9","A10","A2"]],
+ ["First 90 Days","90 days",0,{60:3,45:3,30:0},"What happens in his first three months?","The 90-day plan chart with its outputs at day 30, 60 and 90.","I listen in month one, decide in month two and ship a launch in month three.","In the 30-minute version I give the plan as an answer to a question.",["First 90 Days","first-90-days.html"],["A1","A10"]],
+ ["Their questions","Their Qs",1,{60:18,45:14,30:10},"What does the panel still want to test?","Only the appendix page a question calls for, opened on the second tab.","Every answer points to evidence I can open on screen.","I protect this time first, because it is the part the panel values most.",["Questions","questions.html"],["A1","A6","A7","A10","A11","A12"]],
+ ["My questions","My Qs",1,{60:10,45:8,30:5},"What does he want to know about the company?","Nothing on screen.","I ask about the reporting line, the product line the role owns and how win rate is measured today.","I ask the top two questions and send the rest by email.",["Questions","questions.html"],["A1","A10"]],
+ ["Next steps","Next",2,{60:2,45:2,30:1},"What happens after today?","Nothing on screen.","I offer to send the site link and a one-page summary the same day.","I keep this to one minute.",null,[]]
+];
+var ver=60,sel=2,whoF=null;
+/* legend doubles as a filter */
+var leg=$("ag-leg");
+WHO.forEach(function(w,i){var b=document.createElement("button");b.type="button";b.setAttribute("aria-pressed","false");b.innerHTML='<i style="background:'+w[1]+';border-radius:2px"></i>';b.appendChild(document.createTextNode(w[0]));
+ b.addEventListener("click",function(){whoF=whoF===i?null:i;[].forEach.call(leg.children,function(x,j){x.setAttribute("aria-pressed",whoF===j)});draw()});leg.appendChild(b)});
+function starts(){var t=0;return P.map(function(p){var s=t;t+=p[3][ver];return s})}
+function kpis(){var m=[0,0,0];P.forEach(function(p){m[p[2]]+=p[3][ver]});
+ $("ag-kpi").innerHTML=WHO.map(function(w,i){return '<div style="--c:'+w[1]+'"><b>'+m[i]+' min</b><span>'+w[0]+'</span></div>'}).join("")}
+function mm(s,d){return d?"Minutes "+s+" to "+(s+d):"Folded into an answer"}
+var segs=[];
+function draw(){
+ var host=$("ag-bar");host.innerHTML="";segs=[];var W=Math.max(300,host.clientWidth),nar=W<620,top=8,bh=nar?40:52,H=top+bh+34;
+ var st=starts(),s=VZ.svg(host,W,H,"Bar of the "+ver+"-minute meeting split into "+P.filter(function(p){return p[3][ver]}).length+" parts: "+P.filter(function(p){return p[3][ver]}).map(function(p,i){return p[0]+" "+p[3][ver]+" minutes"}).join(", ")+".");
+ s.setAttribute("role","group");
+ var x=VZ.lin(0,60,2,W-2);
+ if(ver<60){VZ.el("rect",{x:x(ver)+2,y:top,width:x(60)-x(ver)-2,height:bh,rx:4,style:"fill:none;stroke:var(--grid);stroke-dasharray:4 4"},s);var tt=VZ.el("text",{x:(x(ver)+x(60))/2,y:top+bh/2+4,"text-anchor":"middle","class":"t-muted"},s);tt.textContent=(60-ver)+" min saved";}
+ for(var m=0;m<=60;m+=nar?10:5){VZ.el("line",{x1:x(m),x2:x(m),y1:top+bh+2,y2:top+bh+8,"class":"axis"},s);var t=VZ.el("text",{x:x(m),y:top+bh+22,"text-anchor":m===0?"start":m===60?"end":"middle","class":"t-muted"},s);t.textContent=m;}
+ P.forEach(function(p,i){var d=p[3][ver];if(!d)return;var x0=x(st[i])+1,x1=x(st[i]+d)-1,w=WHO[p[2]],on=whoF===null||whoF===p[2];
+  var g=VZ.el("g",{"class":"seg"+(on?"":" dim")+(sel===i?" sel":""),tabindex:0,role:"button","aria-pressed":sel===i,"aria-label":p[0]+", "+mm(st[i],d)+", "+w[0]},s);
+  VZ.el("rect",{"class":"b",x:x0,y:top,width:x1-x0,height:bh,rx:4,style:"fill:"+w[1]},g);
+  VZ.el("rect",{"class":"r",x:x0,y:top,width:x1-x0,height:bh,rx:4,fill:"none"},g);
+  var lab=x1-x0>p[0].length*7+10?p[0]:x1-x0>p[1].length*6.6+8?p[1]:x1-x0>18?String(d):"";
+  if(lab){var tx=VZ.el("text",{x:(x0+x1)/2,y:top+bh/2+(nar?4:-2),"text-anchor":"middle",style:"fill:"+w[2]+";font-weight:600;font-size:"+(nar?11:13)+"px"},g);tx.textContent=lab;
+   if(!nar&&x1-x0>30){var t2=VZ.el("text",{x:(x0+x1)/2,y:top+bh/2+15,"text-anchor":"middle",style:"fill:"+w[2]+";font-size:11.5px;opacity:.9"},g);t2.textContent=d+" min";}}
+  VZ.tip(g,function(){return "<b>"+p[0]+"</b>"+p[4]+'<div class="m">'+mm(st[i],d)+" · "+w[0]+"</div>"});
+  g.addEventListener("click",function(){pick(i)});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();pick(i)}});segs.push(g);
+ });
+ list();det();kpis();
+}
+function list(){var ol=$("ag-list"),st=starts();ol.innerHTML="";
+ P.forEach(function(p,i){var d=p[3][ver],li=document.createElement("li"),b=document.createElement("button");b.type="button";b.setAttribute("aria-pressed",sel===i);if(!d)b.className="off";
+  b.style.setProperty("--c",WHO[p[2]][1]);b.innerHTML="<i></i><b></b><span></span>";txt(b.querySelector("b"),p[0]);txt(b.querySelector("span"),d?st[i]+" to "+(st[i]+d)+" min":"cut");
+  b.setAttribute("aria-label",p[0]+", "+mm(st[i],d));
+  if(whoF!==null&&whoF!==p[2])b.style.opacity=".55";
+  b.addEventListener("click",function(){pick(i)});li.appendChild(b);ol.appendChild(li)})}
+function det(){var p=P[sel],st=starts(),d=p[3][ver],el=$("ag-det");el.style.setProperty("--c",WHO[p[2]][1]);
+ el.innerHTML='<div class="t"><h3></h3><span class="mm"></span></div><p class="k">The question it answers</p><p class="q"></p><p class="k">What I show</p><p class="s"></p><p class="k">The sentence I want remembered</p><blockquote></blockquote><p class="k">If time is short</p><p class="c"></p><p class="k">Where it lives</p><div class="links"></div>';
+ txt(el.querySelector("h3"),p[0]);txt(el.querySelector(".mm"),mm(st[sel],d)+" · "+WHO[p[2]][0]);txt(el.querySelector(".q"),p[4]);txt(el.querySelector(".s"),p[5]);txt(el.querySelector("blockquote"),p[6]);txt(el.querySelector(".c"),p[7]);
+ var lk=el.querySelector(".links");
+ if(p[8]){var a=document.createElement("a");a.className="mt";a.href=p[8][1];a.textContent="Meeting page: "+p[8][0];lk.appendChild(a)}
+ p[9].forEach(function(c){var a=document.createElement("a");a.href=AX[c][1];a.innerHTML="<b></b>";txt(a.querySelector("b"),c);a.appendChild(document.createTextNode(AX[c][0]));lk.appendChild(a)});
+ if(!p[8]&&!p[9].length){var s=document.createElement("span");s.className="mini";s.textContent="No page; this part is conversation.";lk.appendChild(s)}}
+function pick(i){sel=i;VZ.hideTip();draw()}
+[].forEach.call(document.querySelectorAll("#ag-ver button"),function(b){b.addEventListener("click",function(){ver=+b.dataset.v;[].forEach.call(document.querySelectorAll("#ag-ver button"),function(x){x.setAttribute("aria-pressed",x===b)});draw()})});
+draw();
+var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(draw,120)});
+
+/* appendix matrix */
+var COLS=[["Fit","Fit",1],["The 2028 Buyer","2028",2],["Launch Proposal","Launch",3],["First 90 Days","90d",4],["Questions","Q&A",5]];
+var ROWS=Object.keys(AX),mx=$("ag-mx"),hd=mx.querySelector("thead"),bd=mx.querySelector("tbody"),msel=null;
+function backs(r,c){return P[COLS[c][2]][9].indexOf(r)>=0}
+var hr=document.createElement("tr");hr.innerHTML='<th scope="col"><span class="mini" style="display:block;padding:8px 10px">Appendix page</span></th>';
+COLS.forEach(function(c,j){var th=document.createElement("th");th.scope="col";var n=ROWS.filter(function(r){return backs(r,j)}).length;
+ th.innerHTML='<button type="button" aria-pressed="false"><span class="lg"></span><span class="sh"></span><small></small></button>';txt(th.querySelector(".lg"),c[0]);txt(th.querySelector(".sh"),c[1]);txt(th.querySelector("small"),n+" pages");
+ th.querySelector("button").setAttribute("aria-label",c[0]+": backed by "+n+" appendix pages");
+ th.querySelector("button").addEventListener("click",function(){msel=msel&&msel.t==="c"&&msel.i===j?null:{t:"c",i:j};paint()});hr.appendChild(th)});
+hd.appendChild(hr);
+ROWS.forEach(function(r,i){var tr=document.createElement("tr"),th=document.createElement("th");th.scope="row";
+ th.innerHTML='<button type="button" aria-pressed="false"><b></b><span></span></button>';txt(th.querySelector("b"),r);txt(th.querySelector("span"),AX[r][0]);
+ th.querySelector("button").addEventListener("click",function(){msel=msel&&msel.t==="r"&&msel.i===i?null:{t:"r",i:i};paint()});tr.appendChild(th);
+ COLS.forEach(function(c,j){var td=document.createElement("td"),on=backs(r,j);td.innerHTML=on?'<i role="img" aria-label="'+r+' backs '+c[0]+'"></i>':'<i class="o" aria-hidden="true"></i>';
+  if(on)VZ.tip(td,function(){return "<b>"+r+" "+AX[r][0]+"</b>Backs "+c[0]});tr.appendChild(td)});
+ tr.addEventListener("pointerenter",function(){if(!msel)hl({t:"r",i:i})});tr.addEventListener("pointerleave",function(){if(!msel)hl(null)});
+ bd.appendChild(tr)});
+function hl(s){[].forEach.call(bd.rows,function(tr,i){[].forEach.call(tr.cells,function(td,j){var on=s&&((s.t==="r"&&s.i===i&&(j===0||backs(ROWS[i],j-1)))||(s.t==="c"&&(j===s.i+1||(j===0&&backs(ROWS[i],s.i)))&&backs(ROWS[i],s.i)));td.classList.toggle("hl",!!on)})});
+ [].forEach.call(hd.rows[0].cells,function(th,j){th.classList.toggle("hl",!!(s&&((s.t==="c"&&j===s.i+1)||(s.t==="r"&&j>0&&backs(ROWS[s.i],j-1)))))})}
+function paint(){hl(msel);
+ [].forEach.call(mx.querySelectorAll("button"),function(b){b.setAttribute("aria-pressed","false")});
+ var d=$("ag-mxd");
+ if(!msel){d.textContent="The twelve pages back the five meeting parts in "+ROWS.reduce(function(a,r){return a+COLS.filter(function(c,j){return backs(r,j)}).length},0)+" places. The Launch Proposal draws on the most research, six pages.";return}
+ if(msel.t==="r"){var r=ROWS[msel.i];bd.rows[msel.i].cells[0].querySelector("button").setAttribute("aria-pressed","true");
+  var cs=COLS.filter(function(c,j){return backs(r,j)}).map(function(c){return c[0]});
+  d.textContent=r+" "+AX[r][0]+" backs "+(cs.length?cs.join(", ").replace(/, ([^,]*)$/," and $1"):"no meeting part")+".";
+  var a=document.createElement("a");a.href=AX[r][1];a.textContent=" Open "+AX[r][0];d.appendChild(document.createTextNode(" "));d.appendChild(a)}
+ else{var c=COLS[msel.i];hd.rows[0].cells[msel.i+1].querySelector("button").setAttribute("aria-pressed","true");
+  var rs=ROWS.filter(function(r){return backs(r,msel.i)}).map(function(r){return r+" "+AX[r][0]});
+  d.textContent=c[0]+" is backed by "+rs.join(", ").replace(/, ([^,]*)$/," and $1")+"."}}
+paint();
+})();
+</script>
