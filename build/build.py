@@ -5,13 +5,14 @@ Each page body file starts with a metadata comment:
 <!--meta title="..." desc="..."-->
 followed by the HTML that goes inside <main>. Run: python3 build/build.py
 """
-import hashlib, html, pathlib, re
+import hashlib, html, pathlib, re, shutil
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 PAGES_DIR = ROOT / "build" / "pages"
 DATE = "23 October 2026"
 SALT = "oneclicklca-pmm-2026:"
 PASSWORD_FILE = ROOT / "build" / ".password"  # not committed; see README
+OUT = ROOT / "docs"  # the published site: pages, index.html and assets only
 
 # nav order: (file, nav label, group). Meeting pages carry the one-hour conversation;
 # appendix pages hold the research behind it and get a code (A1, A2, ...).
@@ -123,7 +124,7 @@ def build_page(i, fname):
            + '<a class="skip" href="#main">Skip to content</a>\n' + nav(fname)
            + f'\n<main class="wrap page" id="main" tabindex="-1">\n{body}\n</main>\n'
            + pager(i) + FOOT.format(date=DATE) + "\n</body>\n</html>\n")
-    (ROOT / fname).write_text(out)
+    (OUT / fname).write_text(out)
 
 
 def build_gate():
@@ -135,10 +136,14 @@ def build_gate():
     (ROOT / "build" / "gate.hash").write_text(digest + "\n")
     ok = ",".join(f'"{f}"' for f, _, _ in PAGES)
     tpl = (ROOT / "build" / "gate.html").read_text()
-    (ROOT / "index.html").write_text(tpl.replace("%HASH%", digest).replace("%SALT%", SALT).replace("%OK%", ok))
+    (OUT / "index.html").write_text(tpl.replace("%HASH%", digest).replace("%SALT%", SALT).replace("%OK%", ok))
 
 
 if __name__ == "__main__":
+    if OUT.exists():
+        shutil.rmtree(OUT)
+    shutil.copytree(ROOT / "assets", OUT / "assets")
+    (OUT / ".nojekyll").write_text("")
     for i, (f, _, _) in enumerate(PAGES):
         if (PAGES_DIR / f).exists():
             build_page(i, f)

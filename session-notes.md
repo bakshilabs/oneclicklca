@@ -29,3 +29,8 @@
 - Re-read the site as the candidate in a one-hour panel. Six pages carry the meeting: Agenda, Fit, The 2028 Buyer, Launch Proposal, First 90 Days and Questions. The other twelve became a numbered Research Appendix (A1 to A12) with its own bar under the navigation; `overview.html` is now the appendix index. The password page now opens on the Agenda.
 - New pages: `agenda.html`, `buyer-2028.html`, `proposal.html`, `questions.html`. All nineteen pages checked at 1280 and 390 px in light and dark with no script errors and no sideways scroll.
 - To fill or confirm: the underperforming launch answer on Questions needs Arpan's own example; the proposal targets (minus 10 points no-decision share, plus 5 points win rate, 60% first-project adoption) and the segment angles are judgement; the Germany angle mentions KfW and QNG work, which assumes those projects run in One Click LCA.
+
+## Publishing preparation (25 October 2026)
+- No new information was added. Removed the question about an underperforming launch from Questions, because it needed Arpan's own example. Reworded the Germany angle on Launch Proposal so it no longer assumes KfW and QNG work runs in One Click LCA.
+- References to `research/*.md` on the pages now say the research files are available on request, since those files are not published.
+- The build now writes the site to `docs/` (pages, `index.html`, `assets/`, `.nojekyll`); the built HTML files were removed from the repository root.
