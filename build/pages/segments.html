@@ -82,10 +82,10 @@
 </style>
 <div id="sg">
 <header class="phead">
-  <span class="eyebrow">Choosing who a launch is for</span>
+  <span class="eyebrow">Choosing segments for a launch</span>
   <h1>Segment Model</h1>
-  <p class="lede">Every release suits someone, so each launch needs its two or three priority sub-segments chosen on purpose. Pick a launch type, move the weights and watch fifteen sub-segments re-rank.</p>
-  <p class="meta">Scores are my judgement from the Demand Drivers, Buyers and Alternatives research. In the role I would replace them with CRM data on pipeline, win rate and deal size.</p>
+  <p class="lede">A scoring model for choosing the two or three sub-segments each launch is aimed at. Pick a launch type or move the weights to re-rank fifteen sub-segments.</p>
+  <p class="meta">The scores are my estimates from the Demand Drivers, Buyers and Alternatives pages. They should be checked against your CRM data on pipeline, win rate and deal size.</p>
 </header>
 
 <section class="sec" style="margin-top:36px">
@@ -100,7 +100,7 @@
     <div>
       <div class="sg-top" id="top" aria-live="polite"></div>
       <div class="viz">
-        <div class="viz-h"><h3>Fifteen sub-segments on two factors</h3><p>Click a bubble for its profile</p></div>
+        <div class="viz-h"><h3>Fifteen sub-segments on two factors</h3><p>Select a bubble for its profile</p></div>
         <div class="sg-axes">
           <label>Across<select id="ax-x"></select></label>
           <label>Up<select id="ax-y"></select></label>
@@ -115,7 +115,7 @@
 
 <section class="sec">
   <span class="eyebrow">Ranking</span>
-  <h2>Weighted score and what drives it</h2>
+  <h2>Weighted scores</h2>
   <div class="sg-sort" id="sort" role="group" aria-label="Sort the ranking"></div>
   <p class="sg-def" id="def" aria-live="polite"></p>
   <div class="legend" id="flegend" style="margin-top:14px" aria-hidden="true"></div>
@@ -133,13 +133,13 @@
 
 <section class="sec">
   <span class="eyebrow">In practice</span>
-  <h2>How I would use it before a launch</h2>
+  <h2>Using the model before a launch</h2>
   <div class="sg-flow rv">
-    <div class="st"><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h6"/><circle cx="18" cy="12" r="2"/><circle cx="14" cy="18" r="2"/></svg></span><b>Agree the weights first</b><p>Product, sales and product marketing set the weights before any scores, so the debate stays on what the launch is for.</p></div>
+    <div class="st"><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h6"/><circle cx="18" cy="12" r="2"/><circle cx="14" cy="18" r="2"/></svg></span><b>Agree the weights first</b><p>Product, sales and product marketing agree the weights before scoring. This keeps the discussion on the purpose of the launch.</p></div>
     <div class="ar" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
     <div class="st"><span class="icon"><svg viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"/></svg></span><b>Then agree the scores</b><p>Each tier one or tier two launch scores the sub-segments with the latest pipeline and win-rate data.</p></div>
     <div class="ar" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-    <div class="st hi"><span class="icon"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.1l5.8-.8z"/></svg></span><b>Top two or three get the launch</b><p>They get the campaign, the enablement and an adoption target. The other segments get the release note.</p></div>
+    <div class="st hi"><span class="icon"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.1l5.8-.8z"/></svg></span><b>Focus on the top two or three</b><p>The top segments get the campaign, the sales material and an adoption target. Other segments get the release note.</p></div>
   </div>
 </section>
 </div>
@@ -153,7 +153,7 @@ var F=[["p","Regulatory pressure","Pressure","How close and how binding the next
 ["r","Room to win","Room","The inverse of competitive pressure. A free national tool or a strong local incumbent lowers this score.",'<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>'],
 ["c","Channel readiness","Channel","Whether a local team, reseller, association or programme operator is ready to carry the message.",'<circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 11l10-5M7 13l10 5"/>']];
 var S=[
-["Finland, architects and engineers",5,3,3,5,4,5,"Limits in force since January 2026 and tightening in 2029. Home market with the strongest team and partners. Finite market size."],
+["Finland, architects and engineers",5,3,3,5,4,5,"Limits in force since January 2026 and tightening in 2029. Home market, with a local team and partners. A small market."],
 ["Denmark, designers and contractors",5,3,3,4,3,4,"Limits tightened in 2025 with a new site limit for contractors. LCAbyg is the official tool and costs less."],
 ["Netherlands, designers",5,3,3,3,2,3,"MPG moved to A2 data in July 2026 and new building types came into scope. Dutch-language incumbent tools are strong."],
 ["Netherlands, manufacturers",5,4,3,4,3,4,"Every NMD entry must move to EN 15804+A2. The NMD EPD generator exists. Ecochain is Dutch and strong here."],
@@ -163,7 +163,7 @@ var S=[
 ["UK, engineers and consultancies",3,4,4,5,3,4,"RICS v2 and the London Plan drive demand without a national mandate. CarboniCa is now also RICS validated."],
 ["Ireland, public project teams",4,3,2,4,4,2,"Public thresholds fell to €5m and €30m in June 2026. A small market with a clear rule and few tools."],
 ["EU cement and concrete producers",4,5,3,4,3,4,"Cement is the first CPR product family and Irish tenders already require EPDs. Sector tools and associations compete."],
-["EU MEP and HVAC manufacturers",3,4,4,4,4,4,"The biggest data gap by the company's own survey. Schneider data and new HVAC generators. Association partners."],
+["EU MEP and HVAC manufacturers",3,4,4,4,4,4,"The largest data gap in One Click LCA's own survey. Schneider data and new HVAC generators. Association partners."],
 ["Global engineering and design firms",3,5,2,4,4,3,"Firm-wide deals through ABM and enterprise sales. Many already use One Click LCA somewhere."],
 ["United States, designers",2,3,5,3,1,2,"LEED v5 and California drive demand. EC3 is free and Tally is under new ownership. Federal funding was cut."],
 ["Middle East, designers",1,4,3,4,4,3,"Demand comes from certification schemes. Grey Matters resells in the UAE. Few local tools."],

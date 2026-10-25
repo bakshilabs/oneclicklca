@@ -71,9 +71,9 @@ main svg .t-strong{paint-order:stroke;stroke:var(--chart-bg);stroke-width:3px;st
 .wr-flow button:last-child{margin-right:0}
 </style>
 <header class="phead">
-  <span class="eyebrow">Improve win rates and hit targets</span>
+  <span class="eyebrow">Win rates and targets</span>
   <h1>Win Rate</h1>
-  <p class="lede">Judging what positioning will do to a metric needs a model of how it responds, CRM fields to measure it and a rule for what product marketing can claim.</p>
+  <p class="lede">A simple model of how win rate responds to product marketing work, the CRM fields needed to measure it and a rule for what product marketing can claim. All figures are placeholders.</p>
 </header>
 <section class="sec lead-viz" aria-labelledby="wr-h1">
   <span class="eyebrow">Model</span>
@@ -81,7 +81,7 @@ main svg .t-strong{paint-order:stroke;stroke:var(--chart-bg);stroke-width:3px;st
   <div class="wr-model">
     <div class="controls">
       <h3>Segment pipeline</h3>
-      <p class="mini">Defaults are illustrative; in the role they would come from Salesforce.</p>
+      <p class="mini">These are placeholder figures. Enter your own figures to see the effect.</p>
       <div class="ctl"><label for="o">Qualified opportunities a quarter<output id="oo"></output></label><input type="range" id="o" min="10" max="400" step="10" value="120"></div>
       <div class="ctl"><label for="w">Current win rate<output id="ow"></output></label><input type="range" id="w" min="5" max="60" step="1" value="22"></div>
       <div class="ctl"><label for="nd">Share of losses to no decision<output id="ond"></output></label><input type="range" id="nd" min="0" max="80" step="5" value="45"><span class="hint">The buyer does nothing or stays with a consultant</span></div>
@@ -105,13 +105,13 @@ main svg .t-strong{paint-order:stroke;stroke:var(--chart-bg);stroke-width:3px;st
       <p class="src">Simple model: recovered losses become wins at the same contract value. It ignores longer-term expansion.</p>
     </div>
   </div>
-  <div class="callout"><p><b>No decision gets its own lever.</b> Buyers can hire a consultant or wait, so no decision is often the largest loss. CRMs log it as "closed lost, other", so separate it first.</p></div>
+  <div class="callout"><p><b>No decision gets its own lever.</b> Buyers can hire a consultant or wait, so no decision can be the largest loss. Many CRMs log it as "closed lost, other". If that is the case, I would record it separately first.</p></div>
 </section>
 
 <section class="sec" aria-labelledby="wr-h2">
   <span class="eyebrow">Measurement</span>
   <h2 id="wr-h2">Opportunity fields</h2>
-  <p class="intro">Six fields to add to every opportunity. Select a field to see its values and what it reveals.</p>
+  <p class="intro">Six fields I would add to each opportunity, where they are not already recorded. Select a field to see its values and what it reveals.</p>
   <div class="wr-crm">
     <div class="wr-rec rv">
       <div class="wr-rech"><b id="wr-rt">Example opportunity: Designer · Germany</b><span>Illustrative record</span></div>
@@ -127,18 +127,18 @@ main svg .t-strong{paint-order:stroke;stroke:var(--chart-bg);stroke-width:3px;st
   <span class="eyebrow">Metric tree</span>
   <h2 id="wr-h3">Metric ownership</h2>
   <div class="viz rv" style="margin-top:18px">
-    <div class="viz-h"><h3>Metric tree</h3><p>Hover a metric for how product marketing moves it.</p></div>
+    <div class="viz-h"><h3>Metric tree</h3><p>Hover over or select a metric to see how product marketing affects it.</p></div>
     <div id="wr-tree" class="wr-t"></div>
   </div>
 </section>
 
 <section class="sec" aria-labelledby="wr-h4">
   <span class="eyebrow">Attribution</span>
-  <h2 id="wr-h4">Honest attribution</h2>
+  <h2 id="wr-h4">Attribution</h2>
   <div class="wr-flow" role="group" aria-label="Attribution steps" id="wr-flow"></div>
   <div class="wr-fd" id="wr-fd" aria-live="polite"></div>
   <div class="viz" style="margin-top:14px">
-    <div class="viz-h"><h3>Can the model's lift be seen through the noise?</h3><p>95% ranges before and after the levers</p></div>
+    <div class="viz-h"><h3>Whether the model's lift would show in real data</h3><p>95% ranges before and after the levers</p></div>
     <div class="wr-nc"><div class="ctl" style="margin-top:0"><label for="wr-n">Closed deals in each period<output id="wr-no"></output></label><input type="range" id="wr-n" min="20" max="1500" step="10" value="100"></div><div class="btnrow" style="margin-top:0"><button type="button" id="wr-need"></button></div></div>
     <p id="wr-verd" class="wr-verd" aria-live="polite"></p>
     <div id="wr-ci"></div>
@@ -247,7 +247,7 @@ function tree(){var h=clr("wr-tree"),W=Math.max(290,h.clientWidth||900),nar=W<70
    VZ.el("path",{"class":"lk",d:"M"+(rx+rw)+","+ry+"C"+(rx+rw+40)+","+ry+" "+(bx-40)+","+by+" "+bx+","+by,stroke:b[3],"stroke-width":b[5]},g);
    b[6].forEach(function(l,li){var ly=y0+li*lh+lh/2;VZ.el("path",{"class":"lk",d:"M"+(bx+bw)+","+by+"C"+(bx+bw+40)+","+by+" "+(lx-40)+","+ly+" "+(lx-8)+","+ly,stroke:b[3],"stroke-width":b[5]},g);
     var lg=VZ.el("g",{role:"img","aria-label":b[1]+": "+l},g);VZ.el("circle",{cx:lx-4,cy:ly,r:4.5,fill:b[3],stroke:"var(--ring)","stroke-width":2},lg);VZ.el("rect",{x:lx-10,y:ly-lh/2,width:W-lx+10,height:lh,fill:"transparent"},lg);
-    var t=VZ.el("text",{x:lx+8,y:ly+4.5,style:"font-size:13.5px;fill:var(--ink1)"},lg);t.textContent=l;VZ.tip(lg,function(){return '<b>'+b[1]+'</b>'+l+'<br><span class="m">'+(b[0]==="o"?"Product marketing is accountable for this number.":b[0]==="s"?"Product marketing and sales report it together.":"Product marketing moves it indirectly, so it is not claimed alone.")+'</span>'})});
+    var t=VZ.el("text",{x:lx+8,y:ly+4.5,style:"font-size:13.5px;fill:var(--ink1)"},lg);t.textContent=l;VZ.tip(lg,function(){return '<b>'+b[1]+'</b>'+l+'<br><span class="m">'+(b[0]==="o"?"Product marketing is accountable for this number.":b[0]==="s"?"Product marketing and sales report it together.":"Product marketing affects it indirectly, so it does not claim it alone.")+'</span>'})});
    VZ.el("rect",{"class":"nb",x:bx,y:by-24,width:bw,height:48,rx:4,fill:b[3]},g);var t1=VZ.el("text",{x:bx+bw/2,y:by-3,"text-anchor":"middle",style:"font-size:14px;font-weight:600;fill:"+b[4]},g);t1.textContent=b[1];var t2=VZ.el("text",{x:bx+bw/2,y:by+15,"text-anchor":"middle",style:"font-size:12px;fill:"+b[4]},g);t2.textContent=b[2]});
   VZ.el("rect",{x:rx,y:ry-34,width:rw,height:68,rx:4,fill:"var(--panel)",stroke:"var(--ink3)"},svg);var r1=VZ.el("text",{x:rx+rw/2,y:ry-4,"text-anchor":"middle","class":"t-strong"},svg);r1.textContent="Product marketing";var r2=VZ.el("text",{x:rx+rw/2,y:ry+14,"text-anchor":"middle"},svg);r2.textContent="metrics";}
  else{var per=Math.floor((W-40)/7.2),rows=[];var y=70;TB.forEach(function(b){var it={b:b,y:y,leaves:[]};y+=58;b[6].forEach(function(l){var L=wrap(l,per);it.leaves.push({L:L,y:y});y+=L.length*17+12});y+=10;rows.push(it)});
