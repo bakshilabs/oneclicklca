@@ -1,39 +1,33 @@
-<!--meta title="Agenda" desc="Agenda for the Senior Product Marketing Manager interview at One Click LCA, prepared by Arpan Bakshi from public sources."-->
+<!--meta title="Agenda" desc="Agenda for the Senior Product Marketing Manager interview at One Click LCA, prepared by Arpan Bakshi."-->
 <style>
-.ag-hour{margin-top:36px}
-.ag-bar{display:flex;gap:3px;height:44px}
-.ag-bar span{display:flex;align-items:center;justify-content:center;border-radius:4px;font:500 13px/1.2 var(--sans);overflow:hidden;white-space:nowrap;min-width:0}
-.ag-bar .p{background:var(--accent);color:var(--on-accent)}
-.ag-bar .c{background:var(--accent-soft);color:var(--ink)}
-.ag-bar .o{background:var(--panel);color:var(--ink)}
-.ag-ticks{position:relative;height:22px;margin-top:6px;font-size:12px;color:var(--muted)}
-.ag-ticks span{position:absolute;transform:translateX(-50%)}
-.ag-ticks span:first-child{transform:none}.ag-ticks span:last-child{transform:translateX(-100%)}
-.ag-key{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:6px;font-size:13.5px;color:var(--muted)}
-.ag-key span{display:inline-flex;align-items:center;gap:8px}
-.ag-key i{width:12px;height:12px;border-radius:3px;display:inline-block}
 .ag-list{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:10px}
-.ag-list li{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:6px 24px;align-items:start;background:var(--panel);border-radius:6px;padding:18px 22px}
+.ag-list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 24px;align-items:center;background:var(--panel);border-radius:6px;padding:18px 22px}
 .ag-list li.p{background:var(--chart-bg);border:1px solid var(--line)}
-.ag-list .t{font:600 15px/1.3 var(--sans);font-variant-numeric:tabular-nums}
-.ag-list .t small{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:2px}
+.ag-list .h{display:flex;align-items:center;gap:12px}
+.ag-list .h i{flex:none;width:10px;height:10px;border-radius:50%;background:var(--line)}
+.ag-list li.p .h i{background:var(--accent)}
 .ag-list h3{font-size:17px;letter-spacing:-.01em}
-.ag-list p{font-size:15px;color:var(--ink2);margin-top:4px;max-width:62ch}
-.ag-list .bk{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;align-items:center;font-size:13px;color:var(--muted)}
+.ag-list p{font-size:15px;color:var(--ink2);margin-top:4px;max-width:64ch;padding-left:22px}
+.ag-list .bk{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;align-items:center;font-size:13px;color:var(--muted);padding-left:22px}
 .ag-list .bk a{display:inline-block;border:1px solid var(--line);border-radius:3px;padding:3px 8px;color:var(--ink);text-decoration:none;font-size:13px;background:var(--bg)}
-.ag-list .bk a b{font-weight:600;margin-right:4px;color:var(--accent)}
 .ag-list .bk a:hover{background:var(--accent-soft)}
-.ag-list .go{align-self:center;display:inline-block;background:var(--accent);color:var(--on-accent);border-radius:3px;padding:9px 14px;font:500 14px/1 var(--sans);text-decoration:none;white-space:nowrap}
+.ag-list .go{display:inline-block;background:var(--accent);color:var(--on-accent);border-radius:3px;padding:9px 14px;font:500 14px/1 var(--sans);text-decoration:none;white-space:nowrap}
 .ag-list .go:hover{opacity:.9}
-@media (max-width:700px){.ag-list li{grid-template-columns:1fr}.ag-list .go{justify-self:start}.ag-bar .s{font-size:0}}
-.ag-four{list-style:none;counter-reset:f;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.ag-four li{counter-increment:f;background:var(--panel);border-radius:6px;padding:20px 20px 18px;display:flex;flex-direction:column}
-.ag-four li::before{content:counter(f);width:28px;height:28px;border-radius:50%;background:var(--bg);font:600 14px/28px var(--sans);text-align:center;margin-bottom:12px}
-.ag-four h3{font-size:16px;margin-bottom:6px}
-.ag-four p{font-size:14.5px;color:var(--ink2)}
-.ag-four a{margin-top:auto;padding-top:12px;font-size:13.5px}
-@media (max-width:980px){.ag-four{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.ag-four{grid-template-columns:1fr}}
+.ag-key{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:13.5px;color:var(--muted)}
+.ag-key span{display:inline-flex;align-items:center;gap:8px}
+.ag-key i{width:10px;height:10px;border-radius:50%;display:inline-block}
+@media (max-width:700px){.ag-list li{grid-template-columns:1fr}.ag-list .go{justify-self:start;margin-left:22px}}
+.ag-flow{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.ag-flow li{position:relative;padding:0 18px 0 0;display:flex;flex-direction:column}
+.ag-flow li:not(:last-child)::after{content:"";position:absolute;top:21px;left:46px;right:4px;height:2px;background:var(--line)}
+.ag-flow .ic{position:relative;z-index:1;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--accent-soft);color:var(--accent)}
+.ag-flow li:last-child .ic{background:var(--accent);color:var(--on-accent)}
+.ag-flow .ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ag-flow .card{margin-top:14px;background:var(--panel);border-radius:6px;padding:18px 18px 16px;flex:1;display:flex;flex-direction:column}
+.ag-flow h3{font-size:16px;margin-bottom:6px}
+.ag-flow p{font-size:14.5px;color:var(--ink2)}
+.ag-flow a{margin-top:auto;padding-top:12px;font-size:13.5px;font-weight:500}
+@media (max-width:900px){.ag-flow{grid-template-columns:1fr;gap:14px}.ag-flow li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:0}.ag-flow li:not(:last-child)::after{top:44px;bottom:-14px;left:21px;right:auto;width:2px;height:auto}.ag-flow .card{margin-top:0}}
 .ag-use{margin-top:28px;background:var(--panel);border-radius:6px;padding:22px 26px;max-width:880px}
 .ag-use p{font-size:15px}
 .ag-use p+p{margin-top:10px}
@@ -42,49 +36,35 @@
 <header class="phead">
   <span class="eyebrow">Senior Product Marketing Manager, One Click LCA</span>
   <h1>Agenda</h1>
-  <p class="lede">Prepared by Arpan Bakshi for the interview. This page sets out what I would like to cover in the hour, with links to the pages I will show and the research behind them.</p>
-  <p class="meta">Independent work from public sources, read in October 2026.</p>
+  <p class="lede">This is what I would like to cover in our conversation. The pages show my approach to finding and growing business for One Click LCA. The research behind them is in the appendix for anyone who wants it.</p>
+  <p class="meta">Prepared by Arpan Bakshi from public sources.</p>
 </header>
 
-<section class="ag-hour" aria-label="The hour at a glance">
-  <div class="ag-bar" role="img" aria-label="One hour: introductions 5 minutes, about me 4, The 2028 Buyer 8, Launch Proposal 10, First 90 Days 3, your questions 18, my questions 10, next steps 2.">
-    <span class="o s" style="flex:5">Intro</span>
-    <span class="p s" style="flex:4">Me</span>
-    <span class="p" style="flex:8">2028 Buyer</span>
-    <span class="p" style="flex:10">Launch Proposal</span>
-    <span class="p s" style="flex:3" title="First 90 Days">90d</span>
-    <span class="c" style="flex:18">Your questions</span>
-    <span class="c" style="flex:10">My questions</span>
-    <span class="o s" style="flex:2"></span>
-  </div>
-  <div class="ag-ticks" aria-hidden="true"><span style="left:0">0 min</span><span style="left:25%">15</span><span style="left:50%">30</span><span style="left:75%">45</span><span style="left:100%">60</span></div>
-  <div class="ag-key" aria-hidden="true"><span><i style="background:var(--accent)"></i>I present, about 25 minutes</span><span><i style="background:var(--accent-soft)"></i>Questions, about 28 minutes</span><span><i style="background:var(--panel);border:1px solid var(--line)"></i>Introductions and next steps</span></div>
-</section>
-
-<section class="sec" style="margin-top:56px">
-  <span class="eyebrow">The hour</span>
+<section class="sec" style="margin-top:48px">
+  <span class="eyebrow">The conversation</span>
   <h2>What we will cover</h2>
+  <div class="ag-key" aria-hidden="true"><span><i style="background:var(--accent)"></i>A page I will show</span><span><i style="background:var(--line)"></i>Conversation</span></div>
   <ol class="ag-list">
-    <li><div class="t">0 to 5<small>5 minutes</small></div><div><h3>Introductions</h3><p>We introduce ourselves.</p></div></li>
-    <li class="p"><div class="t">5 to 9<small>4 minutes</small></div><div><h3>About me</h3><p>My background on the buying side of this market, set against each requirement in the listing.</p><div class="bk">Background: <a href="cv.html"><b>A12</b>CV</a><a href="ai.html"><b>A11</b>AI Workflow</a></div></div><a class="go" href="fit.html">Fit</a></li>
-    <li class="p"><div class="t">9 to 17<small>8 minutes</small></div><div><h3>The 2028 Buyer</h3><p>Three findings from public sources about the design teams that EU disclosure will bring into the market in 2028.</p><div class="bk">Background: <a href="demand.html"><b>A3</b>Demand Drivers</a><a href="buyers.html"><b>A4</b>Buyers</a><a href="alternatives.html"><b>A6</b>Alternatives</a><a href="enablement.html"><b>A9</b>Enablement</a></div></div><a class="go" href="buyer-2028.html">The 2028 Buyer</a></li>
-    <li class="p"><div class="t">17 to 27<small>10 minutes</small></div><div><h3>Launch Proposal</h3><p>A first launch I would propose for 2027, with the segments, the message, the timeline and how it would be measured.</p><div class="bk">Background: <a href="portfolio.html"><b>A2</b>Portfolio</a><a href="segments.html"><b>A5</b>Segment Model</a><a href="positioning.html"><b>A7</b>Positioning</a><a href="launch.html"><b>A8</b>Launch Playbook</a><a href="enablement.html"><b>A9</b>Enablement</a><a href="metrics.html"><b>A10</b>Win Rate</a></div></div><a class="go" href="proposal.html">Launch Proposal</a></li>
-    <li class="p"><div class="t">27 to 30<small>3 minutes</small></div><div><h3>First 90 Days</h3><p>What I would do in my first three months, with an output at the end of each month.</p><div class="bk">Background: <a href="role.html"><b>A1</b>The Role</a><a href="metrics.html"><b>A10</b>Win Rate</a></div></div><a class="go" href="first-90-days.html">First 90 Days</a></li>
-    <li><div class="t">30 to 48<small>about 18 minutes</small></div><div><h3>Your questions</h3><p>Your questions to me. I can open any appendix page that helps answer them.</p><div class="bk">Often useful: <a href="role.html"><b>A1</b>The Role</a><a href="alternatives.html"><b>A6</b>Alternatives</a><a href="positioning.html"><b>A7</b>Positioning</a><a href="metrics.html"><b>A10</b>Win Rate</a></div></div></li>
-    <li><div class="t">48 to 58<small>about 10 minutes</small></div><div><h3>My questions</h3><p>The questions I would like to ask you about the role.</p></div><a class="go" href="questions.html">Questions</a></li>
-    <li><div class="t">58 to 60<small>2 minutes</small></div><div><h3>Next steps</h3><p>What happens after today.</p></div></li>
+    <li><div><div class="h"><i></i><h3>Introductions</h3></div><p>We introduce ourselves.</p></div></li>
+    <li class="p"><div><div class="h"><i></i><h3>Background</h3></div><p>My work in building sustainability, set against what the listing asks for, including where I have gaps.</p><div class="bk">Also in the appendix: <a href="cv.html">CV</a><a href="ai.html">AI Workflow</a></div></div><a class="go" href="fit.html">Background</a></li>
+    <li class="p"><div><div class="h"><i></i><h3>Market</h3></div><p>How I work out where demand comes from, who has to act and what they do instead of buying.</p><div class="bk">Also in the appendix: <a href="demand.html">Demand Drivers</a><a href="buyers.html">Buyers</a><a href="alternatives.html">Alternatives</a></div></div><a class="go" href="market.html">Market</a></li>
+    <li class="p"><div><div class="h"><i></i><h3>Launch Approach</h3></div><p>How I would choose who to go after, find the message, plan a launch and equip sellers and partners.</p><div class="bk">Also in the appendix: <a href="segments.html">Segment Model</a><a href="positioning.html">Positioning</a><a href="launch.html">Launch Playbook</a><a href="enablement.html">Enablement</a><a href="metrics.html">Win Rate</a></div></div><a class="go" href="launch-approach.html">Launch Approach</a></li>
+    <li class="p"><div><div class="h"><i></i><h3>First Months</h3></div><p>How I would start in the role: listen first, then agree priorities, then run a first launch.</p><div class="bk">Also in the appendix: <a href="role.html">The Role</a></div></div><a class="go" href="first-months.html">First Months</a></li>
+    <li><div><div class="h"><i></i><h3>Your questions</h3></div><p>Your questions to me. I can open any appendix page that helps answer them.</p><div class="bk">Often useful: <a href="role.html">The Role</a><a href="alternatives.html">Alternatives</a><a href="positioning.html">Positioning</a></div></div></li>
+    <li><div><div class="h"><i></i><h3>My questions</h3></div><p>The questions I would like to ask you about the role.</p></div><a class="go" href="questions.html">Questions</a></li>
+    <li><div><div class="h"><i></i><h3>Next steps</h3></div><p>What happens after today.</p></div></li>
   </ol>
 </section>
 
 <section class="sec">
-  <span class="eyebrow">Summary</span>
-  <h2>The case in four parts</h2>
-  <p class="intro">The meeting pages follow these four points in order.</p>
-  <ol class="ag-four">
-    <li><h3>Disclosure in 2028</h3><p>From 1 January 2028, every new EU building over 1,000 m² must disclose its life cycle carbon. Most of the design teams this affects have never bought an LCA tool.</p><a href="buyer-2028.html">The 2028 Buyer</a></li>
-    <li><h3>The alternative to buying</h3><p>A first-time buyer can hire a consultant for one project, or wait. I expect no decision to be the most common loss in these segments. A loss reason in the CRM would show whether that is right.</p><a href="buyer-2028.html">The 2028 Buyer</a></li>
-    <li><h3>Price</h3><p>Value for money is the lowest Capterra sub-score, at 4.0 of 5. Support scores 4.9. Setting a consultant's fees against the licence cost gives a first-time buyer a reason to start this year.</p><a href="buyer-2028.html">The 2028 Buyer</a></li>
-    <li><h3>A first launch</h3><p>I would propose a tier one launch in 2027 for first-time buyers in Germany, Italy and Spain, and for global engineering firms. Sellers would get a business case kit. The launch would be judged on win rate and on the share of deals lost to no decision in those segments.</p><a href="proposal.html">Launch Proposal</a></li>
+  <span class="eyebrow">Overview</span>
+  <h2>How the pages fit together</h2>
+  <p class="intro">The meeting pages follow the order in which I would approach the work.</p>
+  <ol class="ag-flow">
+    <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><div class="card"><h3>Where demand comes from</h3><p>I start from the rules and deadlines that make firms act, then ask who has to act and what they do today.</p><a href="market.html">Market</a></div></li>
+    <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/></svg></span><div class="card"><h3>Who to go after and what to say</h3><p>I choose the segments a launch is for and draft the message from what buyers say, then test it with sellers and buyers.</p><a href="launch-approach.html">Launch Approach</a></div></li>
+    <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M14 4c3-1 6-1 6-1s0 3-1 6l-6 6-5-5 6-6z"/></svg></span><div class="card"><h3>How to take it to market</h3><p>I size each launch to what it deserves and give sellers and partners material they can use without me.</p><a href="launch-approach.html">Launch Approach</a></div></li>
+    <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg></span><div class="card"><h3>How I would start</h3><p>I listen to buyers, sellers and product first, then agree priorities, then run a first launch and learn from it.</p><a href="first-months.html">First Months</a></div></li>
   </ol>
 </section>
 
@@ -92,7 +72,8 @@
   <span class="eyebrow">Using the site</span>
   <h2>How to use this site</h2>
   <div class="ag-use">
-    <p>The meeting pages are in the top bar, in the order of the meeting. The <a href="overview.html">Research Appendix</a> holds the background research, numbered A1 to A12. Most appendix pages list their sources at the bottom.</p>
-    <p>The site is password protected. It is independent work built from public sources read in October 2026, and it is not produced or endorsed by One Click LCA. Where a number is my estimate or a placeholder, the page says so.</p>
+    <p>The meeting pages are in the top bar, in the order of the conversation. The <a href="overview.html">Research Appendix</a> holds the background research. Most appendix pages list their sources at the bottom.</p>
+    <p>I researched and built the site with AI tools and checked the content myself. The <a href="ai.html">AI Workflow</a> page describes how.</p>
+    <p>The site is password protected. It is independent work built from public sources, and One Click LCA did not produce or review it.</p>
   </div>
 </section>
