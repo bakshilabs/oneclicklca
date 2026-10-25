@@ -1,7 +1,7 @@
 /* One Click LCA site layer: accent, page header, tables, matrices, models. Loaded last. */
-:root{--accent:#00684f;--accent-strong:#00684f;--accent-soft:#e3f3ee;--on-accent:#fff;--c0:#00684f}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent:#3ddc97;--accent-soft:#0d2e24;--on-accent:#000;--c0:#3ddc97}}
-:root[data-theme="dark"]{--accent:#3ddc97;--accent-soft:#0d2e24;--on-accent:#000;--c0:#3ddc97}
+:root{--accent:#00684f;--accent-strong:#00684f;--accent-soft:#e4efe9;--on-accent:#fff;--c0:#00684f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent:#5ec79c;--accent-soft:#15291f;--on-accent:#06140e;--c0:#5ec79c}}
+:root[data-theme="dark"]{--accent:#5ec79c;--accent-soft:#15291f;--on-accent:#06140e;--c0:#5ec79c}
 
 .page{padding-bottom:24px}
 .phead{padding:72px 0 8px;max-width:860px}

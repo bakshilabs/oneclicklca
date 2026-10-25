@@ -1,19 +1,19 @@
-/* Shared chart layer. Series colours are the validated reference palette (dataviz skill, palette.md).
+/* Shared chart layer. Series colours are an earth palette (slate, terracotta, sage, ochre, clay, moss, heather, berry) tuned to the green accent.
    Use roles, never raw hex: --s1..--s8 categorical in fixed order, --seq-* one-hue ramp, status --good/--warning/--serious/--critical. */
 :root{
-  --chart-bg:#fcfcfb;--ink1:#0b0b0b;--ink2:#52514e;--ink3:#898781;--grid:#e1e0d9;--axis:#c3c2b7;--ring:#fcfcfb;
-  --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--s5:#e87ba4;--s6:#008300;--s7:#6250d6;--s8:#e34948;
+  --chart-bg:#fffefc;--ink1:#1c1e1b;--ink2:#4f514b;--ink3:#8b8c84;--grid:#e8e5dd;--axis:#cbc8be;--ring:#fffefc;
+  --s1:#33658a;--s2:#c2612f;--s3:#4fae86;--s4:#d9a63a;--s5:#d98fa3;--s6:#6d8c3c;--s7:#5f5294;--s8:#9c3550;
   --seq-1:#e3f3ee;--seq-2:#b5e0d1;--seq-3:#6fc3a6;--seq-4:#2a9a77;--seq-5:#00684f;
-  --good:#0ca30c;--warning:#fab219;--serious:#ec835a;--critical:#d03b3b;
+  --good:#2e7a4d;--warning:#d9a63a;--serious:#c2612f;--critical:#b03a2e;
 }
 @media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){
-  --chart-bg:#1a1a19;--ink1:#f0efec;--ink2:#c3c2b7;--ink3:#898781;--grid:#2c2c2a;--axis:#383835;--ring:#1a1a19;
-  --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--s6:#008300;--s7:#9085e9;--s8:#e66767;
-  --seq-1:#123a2e;--seq-2:#16574a;--seq-3:#1f7d63;--seq-4:#2ea580;--seq-5:#3ddc97;}}
+  --chart-bg:#151714;--ink1:#ecebe5;--ink2:#c0c0b6;--ink3:#85867e;--grid:#262924;--axis:#353831;--ring:#151714;
+  --s1:#4f86b3;--s2:#cf6d3b;--s3:#4fb88c;--s4:#d9ab45;--s5:#d690a4;--s6:#85a64f;--s7:#8a7cc4;--s8:#c4526c;
+  --seq-1:#132a20;--seq-2:#1a4535;--seq-3:#25694f;--seq-4:#3b9a74;--seq-5:#5ec79c;}}
 :root[data-theme="dark"]{
-  --chart-bg:#1a1a19;--ink1:#f0efec;--ink2:#c3c2b7;--ink3:#898781;--grid:#2c2c2a;--axis:#383835;--ring:#1a1a19;
-  --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--s6:#008300;--s7:#9085e9;--s8:#e66767;
-  --seq-1:#123a2e;--seq-2:#16574a;--seq-3:#1f7d63;--seq-4:#2ea580;--seq-5:#3ddc97;}
+  --chart-bg:#151714;--ink1:#ecebe5;--ink2:#c0c0b6;--ink3:#85867e;--grid:#262924;--axis:#353831;--ring:#151714;
+  --s1:#4f86b3;--s2:#cf6d3b;--s3:#4fb88c;--s4:#d9ab45;--s5:#d690a4;--s6:#85a64f;--s7:#8a7cc4;--s8:#c4526c;
+  --seq-1:#132a20;--seq-2:#1a4535;--seq-3:#25694f;--seq-4:#3b9a74;--seq-5:#5ec79c;}
 
 /* chart frame */
 .viz{background:var(--chart-bg);border-radius:6px;padding:22px 22px 16px;margin-top:28px;border:1px solid var(--line)}

@@ -32,12 +32,12 @@
 #ps .ps-evk .n{width:20px;height:20px;border-radius:50%;background:var(--ink2);color:var(--chart-bg);font:600 12px/20px var(--sans);text-align:center}
 #ps .ps-evk b{color:var(--ink);font-weight:600}
 #ps .ps-evk .src{display:block;margin-top:2px}
-#ps .ps-arcd{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;margin-top:16px;background:var(--panel);border-radius:6px;padding:16px 20px;border-left:4px solid var(--s1)}
+#ps .ps-arcd{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;margin-top:16px;background:var(--panel);border-radius:6px;padding:16px 20px}
 #ps .ps-arcd .q{font-size:18px;line-height:1.4;letter-spacing:-.01em;margin-top:6px}
 #ps .ps-arcd p.r{font-size:14px;color:var(--ink2)}
 #ps .ps-flow{display:grid;grid-template-columns:1fr 26px 1fr 26px 1.15fr 26px 1fr;margin-top:18px;align-items:stretch}
 #ps .ps-flow .ar{display:grid;place-items:center;color:var(--ink3)}
-#ps .ps-node{background:var(--panel);border-radius:6px;padding:16px 16px 18px;border-top:5px solid var(--c);transition:opacity .3s}
+#ps .ps-node{background:var(--panel);border-radius:6px;padding:16px 16px 18px;transition:opacity .3s}
 #ps .ps-node.off{opacity:.4;border-top-color:var(--grid)}
 #ps .ps-node .k{font:500 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--ink2)}
 #ps .ps-node h3{font-size:18px;margin:6px 0 6px}
@@ -53,7 +53,7 @@
 #ps .ps-roof span{display:block;font:500 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;opacity:.85}
 #ps .ps-roof h3{font-size:clamp(20px,2.4vw,28px);margin-top:6px;letter-spacing:-.02em}
 #ps .ps-pil{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 18px 0}
-#ps .ps-pil div{background:var(--panel);border-radius:0 0 4px 4px;padding:16px 18px 20px;border-top:4px solid var(--accent);font-size:14px;color:var(--ink2);animation:psin .45s ease both;display:grid;grid-template-columns:auto 1fr auto;gap:4px 12px;align-items:start;min-height:118px}
+#ps .ps-pil div{background:var(--panel);border-radius:6px;padding:16px 18px 20px;font-size:14px;color:var(--ink2);animation:psin .45s ease both;display:grid;grid-template-columns:auto 1fr auto;gap:4px 12px;align-items:start;min-height:118px}
 #ps .ps-pil div:nth-child(2){animation-delay:.07s}#ps .ps-pil div:nth-child(3){animation-delay:.14s}
 #ps .ps-pil .icon{margin:0;grid-row:1/3}
 #ps .ps-pil b{color:var(--ink);font-weight:600;font-size:15px}
@@ -68,13 +68,13 @@
 #ps .ps-dt{display:grid;grid-template-columns:330px minmax(0,1fr);gap:20px;margin-top:24px;align-items:start}
 #ps .ps-q h3{font-size:19px;margin:6px 0 14px}
 #ps .ps-q .opts{display:grid;gap:8px}
-#ps .ps-q .opts button{appearance:none;text-align:left;border:0;border-left:3px solid var(--accent);background:var(--panel);color:var(--ink);border-radius:3px;padding:11px 12px;font:500 14px/1.35 var(--sans);cursor:pointer;display:flex;gap:10px;align-items:center}
+#ps .ps-q .opts button{appearance:none;text-align:left;border:0;background:var(--panel);color:var(--ink);border-radius:3px;padding:11px 12px;font:500 14px/1.35 var(--sans);cursor:pointer;display:flex;gap:10px;align-items:center}
 #ps .ps-q .opts button:hover{background:var(--accent-soft)}
 #ps .ps-q .opts button::after{content:"→";margin-left:auto;color:var(--ink2)}
 #ps .ps-trail{list-style:none;padding:0;margin:0 0 14px;font-size:13px;color:var(--ink2)}
-#ps .ps-trail li{padding:4px 0 4px 14px;border-left:2px solid var(--accent);margin-left:4px}
-#ps .ps-res{background:var(--panel);border-radius:6px;padding:16px 18px 16px 26px;position:relative;animation:psin .4s ease both;font-size:14px}
-#ps .ps-res::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;border-radius:6px 0 0 6px;background:var(--pc)}
+#ps .ps-trail li{padding:4px 0 4px 14px;margin-left:4px}
+#ps .ps-res{background:var(--panel);border-radius:6px;padding:16px 18px;position:relative;animation:psin .4s ease both;font-size:14px}
+
 #ps .ps-res span{font:500 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--ink2)}
 #ps .ps-res b{display:block;font:600 22px/1.2 var(--sans);letter-spacing:-.02em;margin:4px 0 6px}
 #ps .ps-tsvg .nd rect{fill:var(--panel);stroke:var(--line);stroke-width:1}
