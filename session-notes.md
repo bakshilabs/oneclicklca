@@ -34,3 +34,9 @@
 - No new information was added. Removed the question about an underperforming launch from Questions, because it needed Arpan's own example. Reworded the Germany angle on Launch Proposal so it no longer assumes KfW and QNG work runs in One Click LCA.
 - References to `research/*.md` on the pages now say the research files are available on request, since those files are not published.
 - The build now writes the site to `docs/` (pages, `index.html`, `assets/`, `.nojekyll`); the built HTML files were removed from the repository root.
+
+## Visual pass (25 October 2026, continued)
+- Replaced the stock palette: Apple system greys became warm stone neutrals, and the reference chart series became an earth palette (slate, terracotta, sage, ochre, clay, moss, muted heather, berry). The dark-mode accent is a softer green.
+- Removed every coloured edge stripe (border-left, border-top and ::before bars) across meeting and appendix pages.
+- Refined Agenda, The 2028 Buyer, Launch Proposal and Questions to appendix standard. Each scored about 8 after review, up from 5 to 6.
+- All 19 pages pass axe-core in light and dark, with no console errors and no sideways scroll at 1280 and 390 px.
