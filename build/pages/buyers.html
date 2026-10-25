@@ -77,7 +77,7 @@
 <header class="phead">
   <span class="eyebrow">Users and buyers</span>
   <h1>Buyers</h1>
-  <p class="lede">The user runs the LCA and judges the tool by the hours it takes. The buyer signs for it and judges it by the permit, bid, certification or sale it secures.</p>
+  <p class="lede">This page sets out who buys One Click LCA in each segment, what they weigh up and what customers say in public reviews. The person who runs the LCA cares about the hours it takes. The person who signs cares about the permit, bid, certification or sale it supports.</p>
   <p class="meta">Built from public reviews, case studies, forum threads and my experience selling sustainability services at Foster + Partners, SOM and WSP. Criteria weights are my judgement.</p>
 </header>
 
@@ -90,7 +90,7 @@
 <section class="sec">
   <span class="eyebrow">Buying criteria</span>
   <h2>Criteria weights</h2>
-  <p class="intro">Scores from 0 to 4 show how much each criterion moves the decision. Select a segment to see its profile, or a criterion to sort the segments by it.</p>
+  <p class="intro">Scores from 0 to 4 show how much each criterion affects the decision. The scores are my judgement from reviews, case studies and my own work with these buyers. Select a segment to see its profile, or a criterion to sort the segments by it.</p>
     <div class="viz rv">
       <div class="by-mode"><div class="btnrow" role="group" aria-label="Mode" id="by-mode" style="margin-top:0"><button type="button" data-k="one" aria-pressed="true">One segment</button><button type="button" data-k="two" aria-pressed="false">Compare two</button></div><span id="by-hint">Select a cell or a segment name.</span></div>
       <div class="btnrow" id="by-find" role="group" aria-label="Findings" style="margin:0 0 12px"><button type="button" data-k="0" aria-pressed="false">Finding: local compliance</button><button type="button" data-k="7" aria-pressed="false">Finding: revenue impact</button></div>
@@ -123,7 +123,7 @@
     <div class="viz rv"><div class="viz-h"><h3>Capterra sub-scores</h3><p>18 reviews, scale 0 to 5</p></div><div id="by-cap"></div><p class="mini" id="by-capr" aria-live="polite" style="margin-top:8px"></p></div>
     <div class="viz rv"><div class="viz-h"><h3>G2 star ratings</h3><p>4.5 out of 5 from 99 reviews</p></div><div id="by-g2"></div><p class="mini" id="by-g2r" aria-live="polite" style="margin-top:4px"></p><div class="by-rt"><div><b>4.5</b><span>G2 average out of 5, 99 reviews</span></div><div><b>4.6</b><span>Capterra average out of 5, 18 reviews, mostly from 2017 to 2020</span></div></div><div class="legend" style="margin-top:10px"><span><i style="background:var(--s7);border-radius:2px"></i>5 stars</span><span><i style="background:color-mix(in srgb,var(--s7) 55%,var(--chart-bg));border-radius:2px"></i>4 stars</span><span><i style="background:color-mix(in srgb,var(--s7) 25%,var(--chart-bg));border-radius:2px"></i>3 stars</span><span><i style="background:var(--axis);border-radius:2px"></i>Lower</span></div></div>
   </div>
-  <div class="callout"><p><b>Positioning implication.</b> Customers praise the data and the support, and complain about the interface and the BIM round-trip. Lead with data and support, and show workflow launches to evaluators who tried Tally.</p></div>
+  <div class="callout"><p><b>What I take from this.</b> Reviewers praise the data and the support. Their complaints are mostly about the interface and moving models between BIM tools and the cloud. I would lead with data and support, and show workflow improvements to buyers who have tried Tally.</p></div>
 </section>
 
 <section class="sec">
@@ -156,7 +156,7 @@ function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
 function responsive(host,draw){var w=-1;function go(){var n=host.clientWidth;if(n&&n!==w){w=n;host.innerHTML="";draw(n)}}go();var t;addEventListener("resize",function(){clearTimeout(t);t=setTimeout(go,120)})}
 var SEG=[
  {n:"Architects",t:"A permit, certification or client asks for whole life carbon on a live project",s:"Sustainability lead or an associate running the project",e:"Sustainability team, BIM manager, project architects",g:"Practice partner or studio director",ev:"It fits Revit or Archicad, it covers the local rule, and the team can learn it before the deadline",st:"A consultant can do this one project; doubts about the BIM round-trip; annual payment for a project need",c:[4,4,2,3,3,3,0,2,2]},
- {n:"Engineers and consultancies",t:"Volume of client LCAs across countries and schemes",s:"Head of sustainability or service line lead",e:"Senior LCA practitioners, QA lead",g:"Director or regional board",ev:"Hours per assessment, database depth, multi-country coverage and review-ready reports",st:"Existing workflows in Tally, Excel or national tools; concurrent licence maths",c:[4,3,4,4,2,2,1,2,3]},
+ {n:"Engineers and consultancies",t:"Volume of client LCAs across countries and schemes",s:"Head of sustainability or service line lead",e:"Senior LCA practitioners, QA lead",g:"Director or regional board",ev:"Hours per assessment, database depth, multi-country coverage and review-ready reports",st:"Existing workflows in Tally, Excel or national tools; comparing concurrent licence costs",c:[4,3,4,4,2,2,1,2,3]},
  {n:"Contractors",t:"Tender scoring, a client requirement, site emission limits, CSRD",s:"Bid manager or preconstruction director",e:"Sustainability manager, estimators, procurement",g:"Operations or commercial director",ev:"Bids won, supplier comparison at tender stage and as-built reporting",st:"Supplier EPDs not available at tender time; cost charged to one project",c:[3,2,3,3,3,2,1,4,2]},
  {n:"Manufacturers",t:"A specifier or tender asks for EPDs; CPR; national databases",s:"Sustainability or product manager",e:"Technical team, plant data owners, quality",g:"Commercial director or managing director",ev:"Cost and time per EPD across the range, programme operator acceptance and specification wins",st:"Verification time and cost; data collection from plants; \"we only need three EPDs\"",c:[3,0,3,4,4,3,4,4,1]},
  {n:"Developers and owners",t:"Investor targets, EU Taxonomy, GRESB, SBTi",s:"Head of ESG or development director",e:"Design and cost consultants",g:"Chief executive or investment committee",ev:"A portfolio view, benchmarks and consistency across projects and countries",st:"Delegating it to the design team on each project",c:[3,0,1,1,2,1,1,3,4]},
@@ -190,7 +190,7 @@ function pinCap(){if(selK===null)return;var v=SEG[A].c[selK],avg=SEG.reduce(func
 var mb=document.getElementById("by-mode");[].forEach.call(mb.children,function(b){b.onclick=function(){mode=b.dataset.k;[].forEach.call(mb.children,function(x){x.setAttribute("aria-pressed",x===b)});
  document.getElementById("by-hint").textContent=mode==="two"?"Select a second segment or cell to compare.":"Select a cell or a segment name.";if(B===A)B=(A+3)%6;drawHM();drawProf()}});
 var profHost=document.getElementById("by-prof");
-var FIND={0:"Local compliance is the only criterion that scores high almost everywhere, which is why the company packages by market.",7:"Revenue impact separates manufacturers and contractors, who buy for the specification or the bid, from designers, who buy for the permit and the credit."};
+var FIND={0:"Local compliance is the only criterion that scores high in almost every segment. This matches how One Click LCA packages its products by market.",7:"Revenue impact scores high for manufacturers and contractors, who buy to win a specification or a bid. Designers buy for the permit and the certification credit."};
 var fbtn=[].slice.call(document.querySelectorAll("#by-find button"));
 fbtn.forEach(function(b){b.onclick=function(){var k=+b.dataset.k;sortK=sortK===k?null:k;drawHM();syncFind()}});
 function syncFind(){selK=null;fbtn.forEach(function(b){b.setAttribute("aria-pressed",+b.dataset.k===sortK)});document.getElementById("by-fcap").textContent=FIND[sortK]||(sortK!==null?"Segments sorted by "+CR[sortK].toLowerCase()+".":"")}
@@ -225,8 +225,8 @@ drawHM();drawProf();var pt;addEventListener("resize",function(){clearTimeout(pt)
 /* review tags */
 var TAGS=[
  {n:"Ease of Use",v:21,p:1,q:[["Designed in a way that even someone with no LCA background can figure it out.","Operations manager, OTB Materials, case study"],["One Click LCA was my first hands-on exposure to carbon measurement and sustainability, introduced in clear and manageable steps.","Enterprise user, G2, March 2026"]]},
- {n:"Customer Support",v:13,p:1,q:[["I honestly don't think I could have completed my project on time without his exceptional support.","Designer or architect, mid-market, G2, translated"],["Capterra scores customer service 4.9 out of 5, its highest sub-score, and several G2 reviews name individual support staff.","Capterra and G2 summary"]]},
- {n:"User Interface",v:11,p:1,q:[["Eleven reviews praise the interface, while thirteen complaints are tagged Poor User Experience or Complex UI, so the interface splits opinion.","G2 tag counts"]]},
+ {n:"Customer Support",v:13,p:1,q:[["I honestly don't think I could have completed my project on time without his exceptional support.","Designer or architect, mid-market, G2, translated"],["Customer service scores 4.9 out of 5 on Capterra, the highest sub-score. Several G2 reviews name individual support staff.","Capterra and G2 summary"]]},
+ {n:"User Interface",v:11,p:1,q:[["Eleven reviews praise the interface and thirteen complaints are tagged Poor User Experience or Complex UI. Opinion on the interface is divided.","G2 tag counts"]]},
  {n:"Efficiency",v:9,p:1,q:[["The platform breaks EPD development down into logical, manageable steps... automated documentation features significantly reduce manual work and minimise the risk of errors.","Small business, G2, translated"],["I appreciate the availability of supplier EPD data inside the software, which means I don't have to include these details manually as I would with other software.","Consultant, G2, translated"]]},
  {n:"Poor User Experience",v:7,p:0,q:[["The platform has a steep learning curve and some workflows (imports, baselines, compliance paths) are not very intuitive without training.","Mid-market user, G2, translated"]]},
  {n:"Data Management Issues",v:7,p:0,q:[["Model updates require manual re-imports, user/licence management is confusing, and unit handling and report clarity could be improved.","Mid-market user, G2, translated"],["The method of importing quantities from Archicad or Revit is slow.","G2 reviewer, December 2025, translated"]]},
@@ -258,7 +258,7 @@ XTRA.forEach(function(t){var b=document.createElement("button");b.type="button";
 
 /* capterra dot plot */
 function act(el,fn){el.style.cursor="pointer";el.addEventListener("click",fn);el.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();fn()}});el.addEventListener("focus",fn)}
-var CAPN={"Customer service":"Customer service is Capterra's highest sub-score, and G2 reviewers name individual support staff.","Ease of use":"Ease of use sits in the middle, matching the G2 split between Ease of Use praise and complexity complaints.","Value for money":"Value for money is the lowest sub-score, in line with complaints about annual upfront payment and licence gating."};
+var CAPN={"Customer service":"Customer service is Capterra's highest sub-score, and G2 reviewers name individual support staff.","Ease of use":"Ease of use is in the middle. This matches the mix of Ease of Use praise and complexity complaints on G2.","Value for money":"Value for money is the lowest sub-score. Some reviews mention paying a year in advance and licence limits."};
 responsive(document.getElementById("by-cap"),function(W){var D=[["Customer service",4.9],["Ease of use",4.4],["Value for money",4.0]],L=Math.min(130,W*.38),R=W-30,H=D.length*36+26,out=document.getElementById("by-capr"),dots=[];
  var s=VZ.svg(document.getElementById("by-cap"),W,H,"Capterra sub-scores: customer service 4.9, ease of use 4.4, value for money 4.0 out of 5.");s.setAttribute("role","group");var x=VZ.lin(0,5,L,R);
  [0,1,2,3,4,5].forEach(function(v){VZ.el("line",{x1:x(v),x2:x(v),y1:0,y2:H-22,class:"grid"},s);VZ.el("text",{x:x(v),y:H-6,"text-anchor":"middle",class:"t-muted"},s).textContent=v});
@@ -280,10 +280,10 @@ responsive(document.getElementById("by-g2"),function(W){var D=[[66,"5 stars","va
 
 /* interview cycle */
 var STEPS=[
- {t:"Sample",h:"Sample by segment, outcome and alternative",p:"Each quarter, take accounts across the priority segments. Losses to free tools and to national tools are sampled on purpose.",n:[["10","wins"],["10","losses"],["5","churned or downgraded"]]},
- {t:"Interview",h:"Interview the signer and the user separately",p:"The signer explains why money was spent. The user explains where the time went.",n:[["30","minutes each"],["8","fixed questions"]]},
- {t:"Tag",h:"Tag every call the same way",p:"Trigger, alternative considered, criteria in order, objection and the proof that worked. Tags go into the CRM next to the deal so win rate can be cut by them.",n:[["5","tags per call"]]},
- {t:"Return",h:"Return the findings within two weeks",p:"A one-page summary goes to product, sales and marketing, with the changes it suggests to messaging, enablement or the roadmap.",n:[["2","weeks"],["3","suggested changes"]]}];
+ {t:"Sample",h:"Sample by segment, outcome and alternative",p:"Each quarter, pick accounts across the priority segments. Include deals lost to free tools and national tools.",n:[["10","wins"],["10","losses"],["5","churned or downgraded"]]},
+ {t:"Interview",h:"Interview the signer and the user separately",p:"The signer explains why the money was spent. The user explains where the time went.",n:[["30","minutes each"],["8","fixed questions"]]},
+ {t:"Tag",h:"Tag every call the same way",p:"Record the trigger, the alternative considered, the criteria in order, the main objection and the evidence that helped. Add these tags to the deal in the CRM so win rate can be read by each one.",n:[["5","tags per call"]]},
+ {t:"Return",h:"Return the findings within two weeks",p:"Send a one-page summary to product, sales and marketing, with suggested changes to messaging, sales material or the roadmap.",n:[["2","weeks"],["3","suggested changes"]]}];
 var ci=document.getElementById("by-cinfo"),nodes=[],cur=0;
 function step(i){cur=i;var s=STEPS[i];nodes.forEach(function(g,k){g.setAttribute("aria-pressed",k===i);g.querySelector("circle").style.fill=k===i?"var(--accent)":"var(--chart-bg)";g.querySelector("text").style.fill=k===i?"var(--on-accent)":"var(--ink1)"});
  ci.innerHTML='<span class="eyebrow">Step '+(i+1)+' of 4</span><h3>'+esc(s.h)+'</h3><p>'+esc(s.p)+'</p><div class="nums">'+s.n.map(function(n){return"<div><b>"+n[0]+"</b><span>"+n[1]+"</span></div>"}).join("")+'</div>'}
