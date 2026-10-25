@@ -140,9 +140,10 @@ def build_gate():
 
 
 if __name__ == "__main__":
-    if OUT.exists():
-        shutil.rmtree(OUT)
-    shutil.copytree(ROOT / "assets", OUT / "assets")
+    OUT.mkdir(exist_ok=True)
+    for old in OUT.glob("*.html"):  # clear in place so a server running in docs/ keeps working
+        old.unlink()
+    shutil.copytree(ROOT / "assets", OUT / "assets", dirs_exist_ok=True)
     (OUT / ".nojekyll").write_text("")
     for i, (f, _, _) in enumerate(PAGES):
         if (PAGES_DIR / f).exists():
