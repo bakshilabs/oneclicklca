@@ -107,7 +107,7 @@ main svg .t-muted{font-size:12px}
 <header class="phead">
   <span class="eyebrow"><b class="acode">Appendix A9</b>Train sales channels</span>
   <h1>Enablement</h1>
-  <p class="lede">Sellers must justify an LCA licence to buyers who are not LCA experts, often against a free tool. Each tool here works on a live call without product marketing present.</p>
+  <p class="lede">Draft sales material for One Click LCA sellers and partners: a business case calculator, discovery questions, objection replies and a battlecard. Each item is meant to be used on a call without product marketing present.</p>
 </header>
 <section class="sec lead-viz" aria-labelledby="en-h1">
   <span class="eyebrow">Business case</span>
@@ -126,13 +126,13 @@ main svg .t-muted{font-size:12px}
         <div id="en-wf"></div>
         </div>
         <div role="tabpanel" id="en-cp2" aria-labelledby="en-ct2" hidden>
-        <div class="viz-h" style="margin-top:14px"><h3 id="en-beh">Break-even</h3><p>Click the chart to set the volume.</p></div>
+        <div class="viz-h" style="margin-top:14px"><h3 id="en-beh">Break-even</h3><p>Select a point on the chart to set the volume.</p></div>
         <div id="en-be"></div>
         </div>
       </div>
     </div>
   </div>
-  <p class="src" style="margin-top:10px">Illustrative model for a sales conversation, not a quote. Published licence prices are used where they exist; manufacturer licences are quoted, so that figure is an assumption.</p>
+  <p class="src" style="margin-top:10px">The default figures are placeholders for a sales conversation. Enter your own figures to replace them. This is not a quote. Published licence prices are used where they exist; manufacturer licences are quoted, so that figure is an assumption.</p>
 </section>
 
 <section class="sec" aria-labelledby="en-h2">
@@ -150,6 +150,7 @@ main svg .t-muted{font-size:12px}
 <section class="sec" aria-labelledby="en-h3">
   <span class="eyebrow">Objections</span>
   <h2 id="en-h3">Objection handling</h2>
+  <p class="intro">Draft replies to common objections, to test with sellers.</p>
   <div class="en-obj">
     <div class="en-ol" role="group" aria-label="Objections" id="en-ol"></div>
     <div class="en-od" id="en-od" aria-live="polite"></div>
@@ -158,17 +159,17 @@ main svg .t-muted{font-size:12px}
 
 <section class="sec" aria-labelledby="en-h4">
   <span class="eyebrow">Battlecard</span>
-  <h2 id="en-h4">Battlecard against an AI-first EPD startup</h2>
+  <h2 id="en-h4">Battlecard for an AI-led EPD startup</h2>
   <div class="en-meet rv">
     <div><p class="k">When you meet them</p>A mid-size product manufacturer in DACH, the Nordics or the US, starting an EPD programme, with an AI-led pitch and startup pricing in front of them.</div>
     <div><p class="k">What they say</p><q>AI turns your spreadsheets and invoices into verified EPDs in weeks.</q></div>
   </div>
   <div class="en-vs rv">
-    <div class="en-vsh"><div><i style="background:var(--s2)"></i><h3>AI-first startup</h3></div><em aria-hidden="true">vs</em><div><h3>One Click LCA</h3><i style="background:var(--s1)"></i></div></div>
+    <div class="en-vsh"><div><i style="background:var(--s2)"></i><h3>AI-led startup</h3></div><em aria-hidden="true">vs</em><div><h3>One Click LCA</h3><i style="background:var(--s1)"></i></div></div>
     <ul class="en-rows" id="en-rows"></ul>
-    <div class="en-tally"><span>Bar length is the size of the edge, from slight to strong. The text opposite is the talk track.</span><span>Edges are my judgement from the battlecard.</span></div>
+    <div class="en-tally"><span>Bar length shows the size of the advantage, from slight to strong. The text opposite is the draft talk track.</span><span>Advantages are my estimates.</span></div>
   </div>
-  <div class="callout rv"><p><b>Landmine to set.</b> "Ask them how many of their EPDs have been verified by your market's programme operator, and how long the last ten took."</p></div>
+  <div class="callout rv"><p><b>Question to ask.</b> "Ask them how many of their EPDs have been verified by your market's programme operator, and how long the last ten took."</p></div>
 </section>
 
 <script>
@@ -187,7 +188,7 @@ m:{vol:"y",vn:"EPDs a year",f:[["p","Products that need EPDs",40,1,1000,1,""],["
 };
 var mode="d",V={};
 function fmt(f,x){return /€/.test(f[1])?eur(x):/%/.test(f[1])?x+"%":x.toLocaleString("en-GB")}
-function build(){var c=$("en-inputs");c.innerHTML='<h3>'+(mode==="d"?"Design firm":"Manufacturer")+'</h3><p class="mini">Move any figure to match the buyer.</p>';V={};
+function build(){var c=$("en-inputs");c.innerHTML='<h3>'+(mode==="d"?"Design firm":"Manufacturer")+'</h3><p class="mini">Placeholder figures. Change any of them to match the buyer.</p>';V={};
  M[mode].f.forEach(function(f){V[f[0]]=f[2];var d=document.createElement("div");d.className="ctl";d.innerHTML='<label for="en_'+f[0]+'">'+f[1].replace(/ \((€|%)\)/,"").replace(" (€ a year)"," a year")+'<output id="eno_'+f[0]+'">'+fmt(f,f[2])+'</output></label><input type="range" id="en_'+f[0]+'" min="'+f[3]+'" max="'+f[4]+'" step="'+f[5]+'" value="'+f[2]+'">'+(f[6]?'<span class="hint">'+f[6]+'</span>':'');c.appendChild(d);
   d.querySelector("input").addEventListener("input",function(e){V[f[0]]=+e.target.value;$("eno_"+f[0]).textContent=fmt(f,V[f[0]]);draw()})});draw()}
 function beN(){var m=M[mode],v0=Object.assign({},V);v0[m.vol]=0;var fx=net(v0);v0[m.vol]=1;var sl=net(v0)-fx;return sl>0?Math.ceil(-fx/sl):"None"}
@@ -285,7 +286,7 @@ function obj(i){cur=i;ob.forEach(function(b,j){b.setAttribute("aria-pressed",i==
 /* battlecard: edge size 1 slight, 2 clear, 3 strong (judgement) */
 var SN={1:"Slight edge",2:"Clear edge",3:"Strong edge"};
 var B=[["L","Story and pitch",2,"A modern, AI-led story that promises verified EPDs in weeks."],["L","Hands-on service",2,"They do much of the work with the manufacturer's team."],["L","Introductory pricing",3,"Startup pricing, and in Norway an EPD Global grant."],
-["R","Cost per EPD across the range",3,"Ask about the range. The cost per EPD across fifty products matters more than the first one."],["R","Publishing reach",3,"Ask where the EPDs will be published. One Click LCA publishes through eight programme operators."],["R","Demand after publication",2,"Designers find the product inside One Click LCA with real data, and usage analytics show who used it."],["R","Verification record",1,"Show the record with a named customer that has a similar product range."]];
+["R","Cost per EPD across the range",3,"Ask about the range. For a manufacturer, the cost per EPD across fifty products usually matters more than the cost of the first one."],["R","Publishing reach",3,"Ask where the EPDs will be published. One Click LCA publishes through eight programme operators."],["R","Demand after publication",2,"Designers find the product inside One Click LCA with real data, and usage analytics show who used it."],["R","Verification record",1,"Show the record with a named customer that has a similar product range."]];
 $("en-rows").innerHTML=B.map(function(b,i){var L=b[0]==="L";return '<li class="'+b[0]+'"><div class="cell l">'+(L?'<span class="d">'+b[1]+'<span class="st">Their '+SN[b[2]].toLowerCase()+'</span></span>':'<span class="tt">'+b[3]+'</span>')+'</div><span class="sd" role="img" aria-label="'+(L?"Their ":"Our ")+SN[b[2]].toLowerCase()+'"><i style="width:'+(b[2]/3*50)+'%"></i></span><div class="cell r">'+(L?'<span class="tt">'+b[3]+'</span>':'<span class="d">'+b[1]+'<span class="st">Our '+SN[b[2]].toLowerCase()+'</span></span>')+'</div></li>'}).join("");
 
 var lw=innerWidth,rt;addEventListener("resize",function(){if(innerWidth===lw)return;lw=innerWidth;clearTimeout(rt);rt=setTimeout(draw,150)});
@@ -295,6 +296,6 @@ build();
 </script>
 
 </main>
-<nav class="pager" aria-label="Page navigation"><a class="prev" href="launch.html"><small>Previous</small><b>Launch Playbook</b></a><a class="next" href="metrics.html"><small>Next</small><b>Win Rate</b></a></nav><footer class="site-foot"><span>Prepared 23 October 2026 by Arpan Bakshi for the Senior Product Marketing Manager role at One Click LCA. Independent work from public sources; not produced or endorsed by One Click LCA.</span></footer>
+<nav class="pager" aria-label="Page navigation"><a class="prev" href="launch.html"><small>Previous</small><b>Launch Playbook</b></a><a class="next" href="metrics.html"><small>Next</small><b>Win Rate</b></a></nav><footer class="site-foot"><span>Prepared 25 October 2026 by Arpan Bakshi for the Senior Product Marketing Manager role at One Click LCA. It is based on public sources up to 23 October 2026. One Click LCA did not produce or review it.</span></footer>
 </body>
 </html>

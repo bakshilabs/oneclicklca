@@ -53,9 +53,9 @@
 </style>
 
 <header class="phead">
-  <span class="eyebrow">Meeting, minutes 27 to 30</span>
+  <span class="eyebrow">Plan for the first three months</span>
   <h1>First 90 Days</h1>
-  <p class="lede">Listen in month one, decide in month two and ship in month three, with an output at the end of each month that product, sales and marketing can review.</p>
+  <p class="lede">In the first month I would listen, in the second I would agree priorities, and in the third I would run a launch. Each month ends with a document or result that product, sales and marketing can review.</p>
 </header>
 
 <div class="viz rv">
@@ -68,7 +68,7 @@
   </div>
   <div class="btnrow nd-team" id="nd-team" role="group" aria-label="Highlight the tasks a team is involved in"><span class="mini">Team view</span></div>
   <div class="nd-kpi" id="nd-kpi" role="group" aria-label="Highlight the tasks behind each number">
-    <button type="button" aria-pressed="false" data-t="3"><b>10</b><span>Sales calls shadowed</span></button>
+    <button type="button" aria-pressed="false" data-t="3"><b>10</b><span>Sales calls joined</span></button>
     <button type="button" aria-pressed="false" data-t="4"><b>15</b><span>Customer and lost-prospect interviews</span></button>
     <button type="button" aria-pressed="false" data-t="6"><b>3</b><span>Priority sub-segments agreed</span></button>
     <button type="button" aria-pressed="false" data-t="10"><b>2</b><span>Battlecards released</span></button>
@@ -79,16 +79,16 @@
   <div class="nd-det" id="nd-det" aria-live="polite"></div>
   <div class="nd-out" id="nd-out" role="group" aria-label="Monthly outputs">
     <button type="button" aria-pressed="false"><span class="day">Day 30</span><h3>Findings memo</h3><p>What buyers say, where deals are lost, and what the CRM data can show.</p></button>
-    <button type="button" aria-pressed="false"><span class="day">Day 60</span><h3>Two-quarter plan</h3><p>A product marketing plan for two quarters, signed by product and sales.</p></button>
-    <button type="button" aria-pressed="false"><span class="day">Day 90</span><h3>A launched release</h3><p>A release with adoption tracking, and enablement sellers use without help.</p></button>
+    <button type="button" aria-pressed="false"><span class="day">Day 60</span><h3>Two-quarter plan</h3><p>A product marketing plan for two quarters, agreed with product and sales.</p></button>
+    <button type="button" aria-pressed="false"><span class="day">Day 90</span><h3>A launched release</h3><p>A launched release with adoption tracking, and sales material that sellers can use on their own.</p></button>
   </div>
 </div>
 
 
 
 <section class="sec">
-  <span class="eyebrow">Working principles</span>
-  <h2>How I would approach the job</h2>
+  <span class="eyebrow">Approach</span>
+  <h2>Working principles</h2>
   <div class="nd-prw">
     <div class="nd-pr" id="nd-pr" role="group" aria-label="Choose a principle"></div>
     <div class="viz nd-pv"><p class="w" id="nd-pw"></p><div id="nd-pg"></div><div class="btnrow"><button type="button" id="nd-pgo"></button></div></div>
@@ -102,22 +102,22 @@ var TEAMS=["Product","Sales","Marketing","Revenue operations","Partners","Custom
 /* phase, workstream, label, detail, start, end, teams */
 var A=[
  [0,3,"Read roadmap and release notes","Read the roadmap and the last six months of release notes.",1,15,[0]],
- [0,0,"Meet the leaders","Meet product leadership, the Lead Product Marketing role, the VP Marketing, sales leadership, enablement and two regional sales teams.",1,20,[0,1,2]],
- [0,2,"Pull win rate and loss data","Pull win rate, cycle length and loss reasons from Salesforce, and note where the fields are empty.",3,25,[3]],
- [0,1,"Shadow ten sales calls","Shadow ten sales calls across construction and manufacturing, including two lost deals.",5,40,[1]],
+ [0,0,"Meet the leaders","Meet the product, marketing and sales leaders, the enablement team and two regional sales teams.",1,20,[0,1,2]],
+ [0,2,"Review win rate and loss data","Ask for win rate, cycle length and loss reasons from the CRM, and note which fields are not filled in.",3,25,[3]],
+ [0,1,"Join ten sales calls","Join ten sales calls in construction and manufacturing, and review two lost deals.",5,40,[1]],
  [0,1,"Interview 15 customers and lost prospects","Interview ten customers and five lost prospects in the segments this role owns.",10,45,[5]],
- [1,2,"Propose new CRM fields","Propose the CRM fields for alternative, trigger and loss reason with revenue operations.",25,50,[3,1]],
+ [1,2,"Propose new CRM fields","If they are not already recorded, propose CRM fields for the alternative considered, the trigger and the loss reason, with revenue operations.",25,50,[3,1]],
  [1,3,"Score and agree top 3 sub-segments","Score sub-segments with product and sales and agree the top three.",30,55,[0,1]],
  [1,3,"Agree the launch tiering rule","Agree the launch tiering rule and apply it to the next two quarters of releases.",35,60,[0,2]],
  [1,4,"Draft and test the message house","Draft the message house for the priority segments and test it in calls.",40,75,[2,1,5]],
- [1,4,"Agree a proof point sheet","Agree a one-page proof point sheet with web, brand and sales.",45,65,[2,1]],
+ [1,4,"Agree an evidence sheet","Agree a one-page sheet of evidence for each message with the web, brand and sales teams.",45,65,[2,1]],
  [2,5,"Release two battlecards","Release battlecards for the two alternatives that appear most in lost deals.",50,75,[1]],
- [2,3,"Run a tier one or two launch","Run the next tier one or tier two launch end to end with the new kit.",55,90,[0,2,1]],
- [2,5,"Train sellers on the business case","Put the business case calculator in sellers' hands and train them on it.",65,85,[1]],
- [2,0,"Brief two partners","Brief two reseller or association partners with the same kit.",70,88,[4]],
+ [2,3,"Run a tier one or two launch","Run the next tier one or tier two launch from start to finish with the new material.",55,90,[0,2,1]],
+ [2,5,"Train sellers on the business case","Give sellers the business case calculator and train them to use it.",65,85,[1]],
+ [2,0,"Brief two partners","Brief two reseller or association partners with the same material.",70,88,[4]],
  [2,2,"Set the win rate baseline","Set the baseline for win rate in priority segments.",75,90,[3,1]]
 ];
-var MS=[[30,"Findings memo","What buyers say, where deals are lost, and what the data can and cannot show.",[0,1,2,3,4]],[60,"Two-quarter plan","A product marketing plan for the next two quarters, signed by product and sales.",[5,6,7,8,9]],[90,"Launched release","A launched release with adoption tracking, and enablement that sellers use without help.",[10,11,12,13,14]]];
+var MS=[[30,"Findings memo","What buyers say, where deals are lost, and what the data can and cannot show.",[0,1,2,3,4]],[60,"Two-quarter plan","A product marketing plan for the next two quarters, agreed with product and sales.",[5,6,7,8,9]],[90,"Launched release","A launched release with adoption tracking, and sales material that sellers can use on their own.",[10,11,12,13,14]]];
 var PH=["Listen","Decide","Ship"];
 var host=document.getElementById("nd-g"),det=document.getElementById("nd-det"),mode={t:"all"},sel=null,els=[];
 var leg=document.getElementById("nd-leg");
@@ -130,7 +130,7 @@ function showDet(){var h,sub,body,list=null;
  else if(mode.t==="team"){var ix=A.map(function(a,i){return i}).filter(inFocus);h=TEAMS[mode.k];sub="Involved in "+ix.length+" of 15 tasks";body="";list=ix}
  else if(mode.t==="kpi"){var a=A[mode.k];h=a[2];sub=range(a);body=a[3]}
  else if(mode.t==="out"){var m=MS[mode.k];h="Day "+m[0]+": "+m[1];sub="Fed by "+m[3].length+" tasks";body=m[2];list=m[3]}
- else if(mode.t==="phase"){h=PH[mode.p];sub="Days "+(mode.p*30+1)+" to "+(mode.p*30+30)+" · output "+MS[mode.p][1].toLowerCase();body="Five tasks belong to this phase; several start earlier or finish later because the work overlaps.";}
+ else if(mode.t==="phase"){h=PH[mode.p];sub="Days "+(mode.p*30+1)+" to "+(mode.p*30+30)+" · output "+MS[mode.p][1].toLowerCase();body="Five tasks belong to this phase. Some start earlier or finish later because the work overlaps.";}
  else{h="15 tasks, 3 outputs";sub="Days 1 to 90";body="Listening overlaps with deciding, and message testing runs into the launch month."}
  det.innerHTML='<div><div class="d"></div><p class="mini"></p></div><div><p class="b"></p></div>';txt(det.querySelector(".d"),h);txt(det.querySelector(".mini"),sub);txt(det.querySelector(".b"),body);
  if(list){var ul=document.createElement("ul");ul.style.cssText="margin:0;padding-left:18px;font-size:14px";listInto(ul,list);det.lastChild.appendChild(ul)}
@@ -171,9 +171,9 @@ var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){host.class
 
 /* principles */
 var PR=[
- ["Evidence before opinion",'<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',0,"15 interviews and 10 calls before any message changes","Every positioning choice cites a buyer interview, a deal or a number."],
- ["Fewer, better launches",'<path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M14 4c3-1 6-1 6-1s0 3-1 6l-6 6-5-5 6-6z"/>',1,"Two or three launches a year get the whole company","The tiering rule in the two-quarter plan sets the effort per release."],
- ["Material that works without me",'<path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>',2,"Sellers use the kit on calls without help","A battlecard is finished when a seller has used it and won."],
+ ["Start from evidence",'<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',0,"15 interviews and 10 calls before any message changes","Each positioning choice should point to a buyer interview, a deal or a number."],
+ ["Fewer full launches",'<path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M14 4c3-1 6-1 6-1s0 3-1 6l-6 6-5-5 6-6z"/>',1,"Two or three full company launches a year","The tiering rule in the two-quarter plan sets the effort per release."],
+ ["Material sellers can use alone",'<path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>',2,"Sellers use the material on calls without help","I would count a battlecard as finished once sellers have used it in real deals."],
  ["One number per launch",'<path d="M3 20h18M6 16l4-5 3 3 5-7"/>',2,"A win rate baseline and a 90-day adoption goal","Targets are agreed with sales before release."]
 ];
 var pg=document.getElementById("nd-pr"),pgh=document.getElementById("nd-pg"),pw=document.getElementById("nd-pw"),psel=0;

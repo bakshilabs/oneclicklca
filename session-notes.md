@@ -40,3 +40,10 @@
 - Removed every coloured edge stripe (border-left, border-top and ::before bars) across meeting and appendix pages.
 - Refined Agenda, The 2028 Buyer, Launch Proposal and Questions to appendix standard. Each scored about 8 after review, up from 5 to 6.
 - All 19 pages pass axe-core in light and dark, with no console errors and no sideways scroll at 1280 and 390 px.
+
+## Rewrite for the reader (25 October 2026, continued)
+- The site is shown during the interview and then shared with the One Click LCA interviewer, so every page now addresses that reader. Rules are in `build/STYLE.md`: plain words, topic headings, no slogans or punch lines, no contrast constructions, judgement and placeholder figures labelled, example messaging marked as drafts to test.
+- Agenda became a plain cover and agenda. Questions now lists only my questions for One Click LCA. The prepared answers moved to `private/prepared-answers.md`, which git ignores so it is never pushed or published.
+- Removed stage directions ("minutes 9 to 17"), third-person panel notes and the Role timeline events taken from personal LinkedIn profiles.
+- Claims about One Click LCA's own deals, CRM and website are now conditional outside readings.
+- All 19 pages pass axe-core in light and dark, with no console errors and no sideways scroll at 1280 and 390 px.

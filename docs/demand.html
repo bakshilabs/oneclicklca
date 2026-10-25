@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Demand Drivers</title>
-<meta name="description" content="The regulations that force each segment to buy LCA and EPD software, with dates, and the launch windows they create.">
+<meta name="description" content="The regulations that require LCAs and EPDs in each segment, with their dates.">
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/nav.css">
@@ -102,14 +102,14 @@
 </style>
 
 <header class="phead">
-  <span class="eyebrow"><b class="acode">Appendix A3</b>Why buyers buy</span>
+  <span class="eyebrow"><b class="acode">Appendix A3</b>Regulatory dates</span>
   <h1>Demand Drivers</h1>
-  <p class="lede">Most One Click LCA purchases start with a date in a regulation, a certification scheme or a tender, and each date forces a particular buyer to act.</p>
+  <p class="lede">This page lists the regulations, certification schemes and tenders that require building or product LCAs, with their dates and the buyers they affect. It covers 2025 to 2031.</p>
   <p class="meta">Status checked against official and secondary sources on 23 October 2026. Items marked "to confirm" rest on one secondary source.</p>
 </header>
 
 <section class="viz lead-viz rv" aria-labelledby="dm-gh">
-  <div class="viz-h"><h3 id="dm-gh">Forcing dates, 2025 to 2031</h3><p>Filter by segment, then select a marker. Grey bars show a rule already in force.</p></div>
+  <div class="viz-h"><h3 id="dm-gh">Regulatory dates, 2025 to 2031</h3><p>Choose a segment, then select a marker. Grey bars show a rule already in force.</p></div>
   <div class="btnrow" role="group" aria-label="Filter by segment" id="dm-filter" style="margin-top:0"></div>
   <div class="legend" id="dm-leg" style="margin-top:12px"></div>
   <div class="dm-scroll" id="dm-gantt"></div>
@@ -118,9 +118,9 @@
 </section>
 
 <section class="sec">
-  <span class="eyebrow">The shape of demand</span>
-  <h2>Three waves of forced buyers</h2>
-  <p class="intro">Move through the waves to see how far the obligation spreads across Europe. Select a country for its rule.</p>
+  <span class="eyebrow">Across Europe</span>
+  <h2>Countries with a rule in 2026, 2028 and 2030</h2>
+  <p class="intro">Choose a date to see which countries require a life cycle carbon calculation. Select a country to read its rule.</p>
   <div class="tabs" role="tablist" aria-label="Wave" id="dm-waves">
     <button role="tab" id="dm-w0" aria-controls="dm-wp" aria-selected="true">Now, October 2026</button>
     <button role="tab" id="dm-w1" aria-controls="dm-wp" aria-selected="false">1 January 2028</button>
@@ -137,25 +137,25 @@
     </div>
     <div class="dm-counts" id="dm-counts"></div>
   </div>
-  <div class="callout"><p><b>Launch window.</b> National roadmaps with limit values land on 1 January 2027, leaving a twelve-month launch window before EU disclosure on 1 January 2028. First-time buyer campaigns for Germany, Italy, Spain and Poland should be ready by then.</p></div>
+  <div class="callout"><p><b>Launch window.</b> National roadmaps with limit values are due on 1 January 2027. EU disclosure starts on 1 January 2028, twelve months later. I would have campaigns for first-time buyers in Germany, Italy, Spain and Poland ready by the start of that period.</p></div>
 </section>
 
 <section class="sec">
   <span class="eyebrow">By segment</span>
   <h2>Segment deadlines</h2>
-  <p class="intro">Each cell counts the forcing events on the timeline that reach a segment in a year. Select a cell to list them.</p>
+  <p class="intro">Each cell counts the regulatory events on the timeline that affect a segment in a year. Select a cell to list them.</p>
   <div class="viz rv">
     <div class="legend"><span>Fewer</span><span class="dm-sw" style="background:var(--seq-1)"></span><span class="dm-sw" style="background:var(--seq-2)"></span><span class="dm-sw" style="background:var(--seq-3)"></span><span class="dm-sw" style="background:var(--seq-5)"></span><span>More events</span></div>
-    <div class="tw" tabindex="0" role="region" aria-label="Scrollable table"><table class="dm-hm" id="dm-hm"><caption class="sr">Forcing events per segment and year</caption></table></div>
+    <div class="tw" tabindex="0" role="region" aria-label="Scrollable table"><table class="dm-hm" id="dm-hm"><caption class="sr">Regulatory events per segment and year</caption></table></div>
     <div class="dm-hlist" id="dm-hlist" aria-live="polite"></div>
   </div>
 </section>
 
 <section class="sec">
-  <span class="eyebrow">Where demand is softer</span>
-  <h2>Voluntary markets</h2>
+  <span class="eyebrow">Outside the EU rules</span>
+  <h2>Markets without a national rule</h2>
   <div class="viz rv">
-    <div class="viz-h"><h3>What pushes buyers where no national rule forces them</h3><p>Select a market to see its drivers, counted, and the message to lead with.</p></div>
+    <div class="viz-h"><h3>What drives buyers in markets without a national rule</h3><p>Select a market to see its drivers and the message I would lead with.</p></div>
     <div class="tabs" role="tablist" aria-label="Market" id="dm-vt" style="margin-top:0">
       <button role="tab" id="dm-v0" aria-controls="dm-vp" aria-selected="true">United States</button>
       <button role="tab" id="dm-v1" aria-controls="dm-vp" aria-selected="false">United Kingdom</button>
@@ -164,8 +164,8 @@
     <div id="dm-vp" role="tabpanel" aria-labelledby="dm-v0"><div class="dm-vg" id="dm-vg"></div><div class="dm-vmsg" id="dm-vmsg" aria-live="polite"></div></div>
   </div>
   <div class="dm-msg">
-    <div><small>Where a rule forces the purchase</small>The message is compliance done faster and with less risk.</div>
-    <div style="background:var(--accent-soft);border-color:transparent"><small>Where demand is voluntary</small>The message is the bid won, the certification credit gained or the client target met, because nobody is fined for doing nothing.</div>
+    <div><small>Where a rule requires an LCA</small>Lead with compliance done faster and with less risk.</div>
+    <div style="background:var(--accent-soft);border-color:transparent"><small>Where an LCA is voluntary</small>Lead with the bid, the certification credit or the client target. There is no penalty for not doing an LCA in these markets.</div>
   </div>
 </section>
 
@@ -199,14 +199,14 @@ var E=[
  [0,d(2027,1,1),"1 Jan 2027","National life cycle GWP roadmaps, including limit values, due from every member state.",["all"],"Launch window"],
  [0,d(2027,1,1)+.001,"1 Jan 2027","CSRD wave two reporting year begins for the largest companies.",["con"]],
  [0,2027.83,"Q4 2027","Delegated act for cement expected, with digital product passports to follow. To confirm.",["mfr"]],
- [0,d(2028,1,1),"1 Jan 2028","Life cycle GWP disclosure for new buildings over 1,000 m² across the EU and EEA.",["dev","des","con"],"Largest new buyer group"],
+ [0,d(2028,1,1),"1 Jan 2028","Life cycle GWP disclosure for new buildings over 1,000 m² across the EU and EEA.",["dev","des","con"],"Largest group of new buyers"],
  [0,2029.5,"2029","First mandatory construction product passports expected for early product families. To confirm.",["mfr"]],
  [0,d(2030,1,1),"1 Jan 2030","Disclosure for all new buildings; national limit values apply.",["all"]],
  [0,2030.5,"2030","More environmental indicators required in CPR declarations.",["mfr"]],
  [1,d(2026,1,1),"1 Jan 2026","Climate declaration and building product list required for permits; limit values apply from 9 January.",["dev","des"]],
  [1,d(2029,1,1),"1 Jan 2029","Limit values tighten.",["dev","des"]],
  [2,d(2025,7,1),"1 Jul 2025","Limits tighten to 7.5 kgCO₂e/m²/yr for flats and offices, and a site emissions limit of 1.5 applies to contractors.",["con","des"]],
- [2,2027.5,"2027","Second tightening step signposted, not yet final.",["des"]],
+ [2,2027.5,"2027","Second tightening step signposted. It is not yet final.",["des"]],
  [3,d(2026,7,1),"1 Jul 2026","MPG moves to EN 15804+A2 data, office limits tighten by 15%, and schools, retail, healthcare and industrial buildings come into scope.",["des","mfr"]],
  [3,d(2028,1,1),"1 Jan 2028","Proposed GWP indicator with permits above 1,000 m², alongside MPG.",["des"]],
  [4,d(2028,1,1),"1 Jan 2028","RE2020 construction carbon step two, 10 to 18% lower.",["des","mfr"]],
@@ -238,7 +238,7 @@ responsive(document.getElementById("dm-gantt"),function(CW){var host=document.ge
  if(CW<640){document.getElementById("dm-detail").hidden=false;
   var AB=["EU","FI","DK","NL","FR","SE","IE","IS","CA","LEED"],W=CW,LY=38,T=58,PY=78,cwd=(W-LY-24)/10,H=T+6.9*PY+10;
   var y=VZ.lin(2025,2031.9,T,T+6.9*PY),xc=function(r){return LY+r*cwd+cwd/2};
-  var s=VZ.svg(host,W,H,"Vertical timeline of forcing events from 2025 to 2031, one column per jurisdiction.");s.setAttribute("role","group");
+  var s=VZ.svg(host,W,H,"Vertical timeline of regulatory events from 2025 to 2031, one column per jurisdiction.");s.setAttribute("role","group");
   var lw=VZ.el("rect",{x:LY,y:y(2027),width:W-LY,height:y(2028)-y(2027)},s);lw.style.fill="var(--accent-soft)";
   for(var yr=2025;yr<=2031;yr++){VZ.el("line",{x1:LY,x2:W,y1:y(yr),y2:y(yr),class:"grid"},s);VZ.el("text",{x:0,y:y(yr)+4,class:"t-strong"},s).textContent=yr}
   var ny=y(d(2026,10,23));VZ.el("line",{x1:LY,x2:W,y1:ny,y2:ny,stroke:"var(--ink1)","stroke-width":1.5},s);VZ.el("text",{x:W-4,y:ny-5,"text-anchor":"end",class:"t-muted"},s).textContent="Today";
@@ -259,7 +259,7 @@ responsive(document.getElementById("dm-gantt"),function(CW){var host=document.ge
  var lanesOf={},laneEnd={};EV.slice().sort(function(a,b){return a.t-b.t}).forEach(function(e){var cx=x(e.t),ends=laneEnd[e.r]||(laneEnd[e.r]=[]),k=0;while(ends[k]!==undefined&&cx-ends[k]<GAP)k++;ends[k]=cx;e.lane=k;e.cx=cx});
  var rowTop=[],y0=T;ROWS.forEach(function(r,i){var n=(laneEnd[i]||[0]).length;rowTop[i]={y:y0,h:Math.max(38,n*LH+18),n:n};y0+=rowTop[i].h});
  var B=y0,H=B+18;
- var s=VZ.svg(host,W,H,"Timeline of regulatory forcing events from 2025 to 2031 by jurisdiction, coloured by the segment that must act.");s.setAttribute("role","group");
+ var s=VZ.svg(host,W,H,"Timeline of regulatory events from 2025 to 2031 by jurisdiction, coloured by the segment that must act.");s.setAttribute("role","group");
  var lw=VZ.el("rect",{x:x(2027),y:T-6,width:x(2028)-x(2027),height:B-T+6},s);lw.style.fill="var(--accent-soft)";
  VZ.el("text",{x:x(2027)+6,y:B+14,class:"t-muted"},s).textContent="Launch window";
  for(var yr=2025;yr<=2031;yr++){VZ.el("line",{x1:x(yr),x2:x(yr),y1:T-6,y2:B,class:"grid"},s);VZ.el("text",{x:x(yr)+4,y:T-12,class:"t-strong"},s).textContent=yr}
@@ -291,7 +291,7 @@ var C=[
  ["DK","Denmark",5,1,4,"LCA has been mandatory since 2023. Limits tightened in July 2025, with a site emissions limit for contractors."],
  ["EE","Estonia",7,1,3,"A carbon footprint calculation for new buildings over 1,000 m² from July 2025. To confirm."],
  ["NL","Netherlands",4,2,4,"MPG limits have applied since 2013 for homes and 2018 for offices. EN 15804+A2 data from July 2026."],
- ["DE","Germany",5,2,2,"There is no legal requirement. KfW funding and the QNG seal require an LCA, so demand follows subsidy."],
+ ["DE","Germany",5,2,2,"There is no legal requirement. KfW funding and the QNG seal require an LCA, so demand follows funding."],
  ["PL","Poland",6,2,1],["LV","Latvia",7,2,1],
  ["BE","Belgium",3,3,2,"TOTEM is the national tool. A Flanders draft decree would set GWP limits from 2030; adoption not confirmed."],
  ["LU","Luxembourg",4,3,1],["CZ","Czechia",5,3,1],["SK","Slovakia",6,3,1],["LT","Lithuania",7,3,1],
@@ -301,15 +301,15 @@ var C=[
  ["PT","Portugal",1,5,1],["ES","Spain",2,5,1],["IT","Italy",4,5,1],["SI","Slovenia",5,5,1],["HR","Croatia",6,5,1],["BG","Bulgaria",7,5,1],
  ["MT","Malta",4,6,1],["GR","Greece",7,6,1],["CY","Cyprus",8,6,1]];
 var WAVES=[
- {h:"Now: national leaders.",w:"Buyers know LCA and compare tools, often against a cheap national tool. Local compliance, speed per project and switching cost win."},
- {h:"2028: the EU-wide step.",w:"New buildings over 1,000 m² across the EU and EEA must disclose life cycle GWP. Education, an easy first project and a trusted EU method win."},
- {h:"2030: all new buildings.",w:"Disclosure covers all new buildings and national limit values fall due. Scale, automation and product data flowing from manufacturer to project win."}];
+ {h:"Now: national rules.",w:"Buyers know LCA and compare tools, often with a low-cost national tool. They look for local compliance, speed per project and a low cost of switching."},
+ {h:"2028: EU disclosure begins.",w:"New buildings over 1,000 m² across the EU and EEA must disclose life cycle GWP. Many of these buyers need training, help with a first project and the official EU method."},
+ {h:"2030: all new buildings.",w:"Disclosure covers all new buildings and national limit values are due. Buyers need to handle more projects, with product data passed from manufacturers to projects."}];
 var wave=0,hl=null,selC="FI",tiles={};
 function lab(k){if(k===3)return["Calculation required","Calculation or disclosure required","Disclosure required; national limit values due"][wave];if(k===4)return"Limit values in force";return ST[k]}
 function stat(c){var base=c[4],nonEU=c[6];if(nonEU||wave===0)return base;return Math.max(base,3)}
 var WN={FI:["Limits stay in force, and EU disclosure for new buildings over 1,000 m² begins.","Limits tightened at the start of 2029, and disclosure now covers all new buildings."],
- DK:["Limits stay in force. Further tightening steps are signposted for 2027 and 2029, not yet final.","Disclosure now covers all new buildings. The 2029 tightening step was signposted, not final."],
- NL:["A proposed GWP indicator would be required with permits above 1,000 m², alongside MPG.","The aim to halve the MPG requirement by 2030 is a policy aim, not law."],
+ DK:["Limits stay in force. Further tightening steps are signposted for 2027 and 2029. They are not yet final.","Disclosure now covers all new buildings. A tightening step was signposted for 2029. It is not yet final."],
+ NL:["A proposed GWP indicator would be required with permits above 1,000 m², alongside MPG.","Halving the MPG requirement by 2030 is a policy aim and is not yet law."],
  FR:["RE2020 construction carbon step two applies, 10 to 18% lower.","Disclosure covers all new buildings, and the final RE2020 step follows on 1 January 2031."],
  SE:["An extended climate declaration is expected from 2028.","Limit values are expected in force by 2030."],
  IE:["GWP goes on the BER certificate for new buildings over 1,000 m².","GWP on the BER certificate extends to all new buildings."],
@@ -336,9 +336,9 @@ VZ.tabs(document.getElementById("dm-waves"),function(t){wave=+t.id.slice(-1);doc
 
 /* voluntary markets */
 var VR=[["Binding national rule","var(--ink3)"],["Local or regional rules","var(--ink2)"],["Certification schemes","var(--ink2)"],["Free or rival tools","var(--ink2)"]];
-var VM=[{n:"US",c:[["Federal Buy Clean funding rescinded, July 2025"],["California CALGreen","States and cities"],["LEED v5"],["EC3, free and the default reference"]],why:"Federal Buy Clean funding was rescinded in July 2025, so demand rests on California, a few states and cities, and LEED v5.",msg:"Lead with the LEED v5 credit and the bid won, and answer EC3 being free."},
- {n:"UK",c:[["Part Z not adopted","Future Homes Standard covers operational energy only"],["London Plan","RICS whole life carbon standard"],[],["CarboniCa, now RICS validated"]],why:"Part Z is still not adopted, so the London Plan and the RICS standard drive demand.",msg:"Lead with London Plan and RICS assessments done faster, and answer CarboniCa on validation."},
- {n:"ME and APAC",c:[["No binding UAE rule found"],[],["LEED","Estidama","GSAS","Mostadam","Green Star","Green Mark","NABERS embodied carbon rating"],[]],why:"No binding UAE rule was found, so certification schemes drive demand.",msg:"Lead with the certification credit gained, scheme by scheme."}];
+var VM=[{n:"US",c:[["Federal Buy Clean funding rescinded, July 2025"],["California CALGreen","States and cities"],["LEED v5"],["EC3, free and the default reference"]],why:"Federal Buy Clean funding was rescinded in July 2025, so demand rests on California, a few states and cities, and LEED v5.",msg:"Lead with the LEED v5 credit and bids won. Be ready to explain the cost against EC3, which is free."},
+ {n:"UK",c:[["Part Z not adopted","Future Homes Standard covers operational energy only"],["London Plan","RICS whole life carbon standard"],[],["CarboniCa, now RICS validated"]],why:"Part Z has not been adopted. The London Plan and the RICS standard drive demand.",msg:"Lead with faster London Plan and RICS assessments. Be ready to compare validation with CarboniCa."},
+ {n:"ME and APAC",c:[["No binding UAE rule found"],[],["LEED","Estidama","GSAS","Mostadam","Green Star","Green Mark","NABERS embodied carbon rating"],[]],why:"I found no binding UAE rule. Certification schemes drive demand.",msg:"Lead with the certification credit gained, scheme by scheme."}];
 var vg=document.getElementById("dm-vg"),vsel=0;
 function drawV(){var m=VM[vsel],h="";
  VR.forEach(function(r,ri){var L=m.c[ri];h+='<div class="rh">'+r[0]+'<span class="n">'+(ri?L.length:'')+'</span></div><div class="cells">'+(L.length?L.map(function(x){return'<span class="'+(ri===3?'tag w':ri===0?'tag b':'tag')+'">'+esc(x)+'</span>'}).join(""):'<span class="none">None listed</span>')+'</div>'});
@@ -347,24 +347,24 @@ VZ.tabs(document.getElementById("dm-vt"),function(t){vsel=+t.id.slice(-1);var vp
 
 /* heatmap */
 var YRS=[2025,2026,2027,2028,2029,2030,2031],hm=document.getElementById("dm-hm");
-var SUM={des:"Already forced in Finland, Denmark, the Netherlands, France and Iceland. Next: national methods align to the EU method during 2027, then 2028.",
- dev:"Already forced in Finland, Denmark, the Netherlands, France, Iceland, London and California. Next: EU disclosure on 1 January 2028, France 2028, Finland 2029.",
- con:"Forced now by Denmark's site limit, Finnish and Swedish declarations and Irish public projects. Next: 2028 as-built disclosure and CSRD for the largest contractors.",
- mfr:"Forced now by Dutch A2 data, French INIES, Californian EPD demand, Irish concrete EPDs and the CPR. Next: CPR acts, cement first, and product passports from about 2029.",
- pub:"Already forced in Ireland, by Canada's federal standard, Norwegian procurement and Toronto. Next: the EU public procurement revision and the proposed Industrial Accelerator Act."};
+var SUM={des:"Required now in Finland, Denmark, the Netherlands, France and Iceland. Next: national methods align to the EU method during 2027, then 2028.",
+ dev:"Required now in Finland, Denmark, the Netherlands, France, Iceland, London and California. Next: EU disclosure on 1 January 2028, France 2028, Finland 2029.",
+ con:"Required now by Denmark's site limit, Finnish and Swedish declarations and Irish public projects. Next: 2028 as-built disclosure and CSRD for the largest contractors.",
+ mfr:"Required now by Dutch A2 data, French INIES, Californian EPD demand, Irish concrete EPDs and the CPR. Next: CPR acts, cement first, and product passports from about 2029.",
+ pub:"Required now in Ireland, by Canada's federal standard, Norwegian procurement and Toronto. Next: the EU public procurement revision and the proposed Industrial Accelerator Act."};
 var html='<thead><tr><th scope="col">Segment</th>'+YRS.map(function(y){return'<th scope="col">'+y+'</th>'}).join("")+'</tr></thead><tbody>';
 SEG.forEach(function(s){html+='<tr><th scope="row">'+s[1]+'</th>'+YRS.map(function(y){var n=EV.filter(function(e){return e.y===y&&hits(e,s[0])}).length;var h=n===0?0:n===1?1:n===2?2:n<=4?3:4;
  return'<td><button type="button" class="h'+h+'" data-s="'+s[0]+'" data-y="'+y+'" aria-pressed="false" aria-label="'+s[1]+', '+y+': '+n+' events">'+n+'</button></td>'}).join("")+'</tr>'});
 hm.insertAdjacentHTML("beforeend",html+'</tbody>');
 var hb=[].slice.call(hm.querySelectorAll("button"));
 function cell(b){hb.forEach(function(x){x.setAttribute("aria-pressed",x===b)});var s=b.dataset.s,y=+b.dataset.y,L=EV.filter(function(e){return e.y===y&&hits(e,s)});
- document.getElementById("dm-hlist").innerHTML='<b>'+segName[s]+', '+y+'</b><p class="mini" style="margin-top:4px">'+esc(SUM[s])+'</p>'+(L.length?'<ul>'+L.map(function(e){return'<li><b>'+esc(e.d)+', '+esc(ROWS[e.r])+'.</b> '+esc(e.x)+'</li>'}).join("")+'</ul>':'<p style="margin-top:8px">No forcing event on the timeline.</p>')}
+ document.getElementById("dm-hlist").innerHTML='<b>'+segName[s]+', '+y+'</b><p class="mini" style="margin-top:4px">'+esc(SUM[s])+'</p>'+(L.length?'<ul>'+L.map(function(e){return'<li><b>'+esc(e.d)+', '+esc(ROWS[e.r])+'.</b> '+esc(e.x)+'</li>'}).join("")+'</ul>':'<p style="margin-top:8px">No regulatory event on the timeline.</p>')}
 hb.forEach(function(b){b.onclick=function(){cell(b)};VZ.tip(b,function(){return"<b>"+segName[b.dataset.s]+", "+b.dataset.y+"</b>"+b.textContent+" forcing events"})});
 cell(hm.querySelector('[data-s="dev"][data-y="2028"]'));
 })();
 </script>
 
 </main>
-<nav class="pager" aria-label="Page navigation"><a class="prev" href="portfolio.html"><small>Previous</small><b>Portfolio</b></a><a class="next" href="buyers.html"><small>Next</small><b>Buyers</b></a></nav><footer class="site-foot"><span>Prepared 23 October 2026 by Arpan Bakshi for the Senior Product Marketing Manager role at One Click LCA. Independent work from public sources; not produced or endorsed by One Click LCA.</span></footer>
+<nav class="pager" aria-label="Page navigation"><a class="prev" href="portfolio.html"><small>Previous</small><b>Portfolio</b></a><a class="next" href="buyers.html"><small>Next</small><b>Buyers</b></a></nav><footer class="site-foot"><span>Prepared 25 October 2026 by Arpan Bakshi for the Senior Product Marketing Manager role at One Click LCA. It is based on public sources up to 23 October 2026. One Click LCA did not produce or review it.</span></footer>
 </body>
 </html>

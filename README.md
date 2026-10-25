@@ -5,13 +5,15 @@ A static site of research, decision models and plans for the One Click LCA Senio
 ## Site
 The published site is the `docs/` folder. Open `docs/index.html`. It is a password page; only a salted hash of the password is stored here. The site has two groups.
 
+The pages are shown on screen in the interview and then shared with the One Click LCA interviewer. Writing rules are in `build/STYLE.md`.
+
 Meeting pages, in the order of a one-hour interview (about 25 minutes of material):
-- `agenda.html`: the hour as a run sheet with 60, 45 and 30 minute versions, the argument in four steps, and a map of which appendix pages back each part
+- `agenda.html`: the first page a reader sees: what the hour covers, the case in four parts and how to use the site
 - `fit.html`: each requirement against career evidence (minutes 5 to 9)
 - `buyer-2028.html`: three findings about the first-time buyer created by EU disclosure in 2028 (minutes 9 to 17)
 - `proposal.html`: the tier one launch proposal for first-time EU buyers, with segment filter, message, milestones, value model, targets and risks (minutes 17 to 27)
 - `first-90-days.html`: listen, decide, ship (minutes 27 to 30)
-- `questions.html`: prepared answers to the panel's likely questions and the questions to ask them (minutes 30 to 58)
+- `questions.html`: the questions I will ask One Click LCA, in priority order
 
 Research appendix, indexed by `overview.html` and shown with an appendix bar on each page: A1 `role.html`, A2 `portfolio.html`, A3 `demand.html`, A4 `buyers.html`, A5 `segments.html`, A6 `alternatives.html`, A7 `positioning.html`, A8 `launch.html`, A9 `enablement.html`, A10 `metrics.html`, A11 `ai.html`, A12 `cv.html`.
 
