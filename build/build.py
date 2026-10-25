@@ -91,7 +91,7 @@ def nav(current):
         bar = (f'<nav class="appxbar" aria-label="Research appendix"><div class="in">'
                f'<a class="home" href="overview.html"{" aria-current=\"page\"" if current == "overview.html" else ""}>Research Appendix</a>'
                f'{items}</div></nav>')
-    return ('<header class="sitenav"><div class="in"><a class="brand" href="agenda.html">Arpan Bakshi<span>One Click LCA product marketing</span></a>'
+    return ('<header class="sitenav"><div class="in"><a class="brand" href="agenda.html">Arpan Bakshi<span>One Click LCA Product Marketing</span></a>'
             '<button class="theme" type="button" aria-label="Switch to dark mode">Dark</button>'
             '<button class="menu" type="button" aria-expanded="false" aria-controls="sitelinks">Menu</button>'
             f'<nav class="links" id="sitelinks" aria-label="Meeting pages">{links}</nav></div>{bar}</header>' + NAV_JS)
