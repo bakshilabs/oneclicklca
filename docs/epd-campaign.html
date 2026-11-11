@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<script>try{if(sessionStorage.getItem("pw")!=="ok"){document.documentElement.style.visibility="hidden";location.replace("index.html?next="+encodeURIComponent(location.pathname.split("/").pop()))}}catch(e){location.replace("index.html")}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EPD Generator Campaign</title>
+<meta name="description" content="Core messaging for a six-month EPD Generator amplification campaign from Q1 2027, a campaign landing page wireframe with full copy, the rationale, and the research method behind them.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/nav.css">
+<link rel="stylesheet" href="assets/a11y.css">
+<link rel="stylesheet" href="assets/pages.css">
+<link rel="stylesheet" href="assets/viz.css">
+<script src="assets/viz.js"></script>
+<script>try{var s=localStorage.getItem("theme");if(s==="light"||s==="dark")document.documentElement.setAttribute("data-theme",s)}catch(e){}</script>
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%23007a5e%27/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="sitenav"><div class="in"><a class="brand" href="agenda.html">Arpan Bakshi<span>One Click LCA Product Marketing</span></a><button class="theme" type="button" aria-label="Switch to dark mode">Dark</button><button class="menu" type="button" aria-expanded="false" aria-controls="sitelinks">Menu</button><nav class="links" id="sitelinks" aria-label="Meeting pages"><a href="agenda.html">Agenda</a><a href="fit.html">Background</a><a href="market.html">Market</a><a href="launch-approach.html">Launch Approach</a><a href="first-months.html">First Months</a><a href="questions.html">Questions</a><a class="appx" href="overview.html" aria-current="page">Appendix</a></nav></div><nav class="appxbar" aria-label="Research appendix"><div class="in"><a class="home" href="overview.html">Research Appendix</a><a href="role.html"><b>A1</b>The Role</a><a href="portfolio.html"><b>A2</b>Portfolio</a><a href="demand.html"><b>A3</b>Demand Drivers</a><a href="buyers.html"><b>A4</b>Buyers</a><a href="segments.html"><b>A5</b>Segment Model</a><a href="alternatives.html"><b>A6</b>Alternatives</a><a href="positioning.html"><b>A7</b>Positioning</a><a href="launch.html"><b>A8</b>Launch Playbook</a><a href="enablement.html"><b>A9</b>Enablement</a><a href="metrics.html"><b>A10</b>Win Rate</a><a href="ai.html"><b>A11</b>AI Workflow</a><a href="cv.html"><b>A12</b>CV</a><a href="epd-campaign.html" aria-current="page"><b>A13</b>EPD Campaign</a></div></nav></header><script>(function(){var r=document.documentElement,t=document.querySelector('.sitenav .theme');function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}function show(){var d=cur()==='dark';t.textContent=d?'Light':'Dark';t.setAttribute('aria-label','Switch to '+(d?'light':'dark')+' mode')}if(t){t.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n)}catch(e){}show()});show()}var b=document.querySelector('.sitenav .menu'),l=document.getElementById('sitelinks');if(!b)return;b.addEventListener('click',function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');b.textContent=o?'Close':'Menu';});l.addEventListener('click',function(e){if(e.target.tagName==='A'){l.classList.remove('open');b.textContent='Menu';b.setAttribute('aria-expanded','false');}});})();</script>
+<main class="wrap page" id="main" tabindex="-1">
+<style>
+#eg .eg-toc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:28px}
+#eg .eg-toc a{background:var(--panel);border-radius:6px;padding:14px 16px;color:var(--ink);text-decoration:none;font-size:14px;display:grid;gap:4px;transition:background .18s}
+#eg .eg-toc a:hover,#eg .eg-toc a:focus-visible{background:var(--accent-soft)}
+#eg .eg-toc b{font:600 13px/1 var(--sans);color:var(--accent);letter-spacing:.03em}
+#eg .ph{display:inline-block;font:600 11px/1.4 var(--sans);letter-spacing:.04em;text-transform:uppercase;background:var(--warn-soft);color:var(--warn);border-radius:3px;padding:2px 7px;margin-right:6px;vertical-align:1px}
+#eg .ok{display:inline-block;font:600 11px/1.4 var(--sans);letter-spacing:.04em;text-transform:uppercase;background:var(--ok-soft);color:var(--ok);border-radius:3px;padding:2px 7px;margin-right:6px;vertical-align:1px}
+#eg .phrow{background:var(--warn-soft);border-radius:4px;padding:8px 10px;font-size:13.5px;margin-top:8px}
+#eg .k{font:500 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--ink2);display:block}
+/* persona */
+#eg .eg-per{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:14px;margin-top:24px}
+#eg .eg-per .panel h3{font-size:20px;margin-top:6px}
+#eg .eg-per dl{display:grid;grid-template-columns:130px 1fr;gap:8px 14px;margin:14px 0 0;font-size:14.5px}
+#eg .eg-per dt{color:var(--ink2);font-weight:500}
+#eg .eg-per dd{margin:0}
+#eg .eg-trig{display:grid;gap:10px;margin-top:12px;counter-reset:t}
+#eg .eg-trig li{list-style:none;display:grid;grid-template-columns:26px 1fr;gap:10px;font-size:14.5px}
+#eg .eg-trig li::before{counter-increment:t;content:counter(t);width:24px;height:24px;border-radius:50%;background:var(--accent);color:var(--on-accent);font:600 12px/24px var(--sans);text-align:center}
+#eg .eg-trig{padding:0}
+/* from-to */
+#eg .eg-ft{display:grid;gap:8px;margin-top:22px}
+#eg .eg-ft .r{display:grid;grid-template-columns:150px minmax(0,1fr) 30px minmax(0,1fr);gap:12px;align-items:stretch}
+#eg .eg-ft .r>div{border-radius:5px;padding:12px 14px;font-size:14.5px}
+#eg .eg-ft .lab{font:600 13px/1.35 var(--sans);color:var(--ink2);padding-left:0!important;display:flex;align-items:center}
+#eg .eg-ft .fr{background:var(--panel);color:var(--ink2)}
+#eg .eg-ft .to{background:var(--accent-soft);color:var(--ink)}
+#eg .eg-ft .ar{display:grid;place-items:center;color:var(--ink3);font-size:18px;padding:0!important}
+#eg .eg-ft .hd>div{background:none;padding-top:0;padding-bottom:0;font:500 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--ink2)}
+/* statement */
+#eg .eg-stmt{margin-top:22px;background:var(--panel);border-radius:6px;padding:24px 28px;font-size:clamp(17px,1.6vw,20px);line-height:1.5;max-width:900px}
+#eg .eg-stmt mark{background:none;color:var(--accent);font-weight:600}
+/* narrative */
+#eg .eg-nar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:22px;padding:0;counter-reset:n}
+#eg .eg-nar li{list-style:none;background:var(--panel);border-radius:6px;padding:16px 16px 18px;font-size:14px;color:var(--ink2);position:relative}
+#eg .eg-nar li b{display:block;color:var(--ink);font-size:15.5px;margin:6px 0 6px}
+#eg .eg-nar li::before{counter-increment:n;content:"Beat " counter(n);font:500 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+/* pillars */
+#eg .eg-pil{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}
+#eg .eg-pil .panel{display:flex;flex-direction:column;gap:8px;padding:20px 22px}
+#eg .eg-pil h3{font-size:18px;margin:0}
+#eg .eg-pil p{font-size:14.5px}
+#eg .eg-pil ul{list-style:none;padding:0;margin:4px 0 0;display:grid;gap:8px;font-size:13.5px}
+#eg .eg-pil li{margin:0}
+/* pitch */
+#eg .eg-pitch{margin-top:22px;background:var(--accent);color:var(--on-accent);border-radius:6px;padding:26px 30px;max-width:900px}
+#eg .eg-pitch p{font-size:clamp(17px,1.6vw,20px);line-height:1.55}
+#eg .eg-pitch small{display:block;margin-top:12px;font-size:13px;opacity:.85}
+/* wireframe */
+#eg .wf{margin-top:24px;border:1.5px solid var(--ink3);border-radius:8px;overflow:hidden;background:var(--bg)}
+#eg .wf-bar{display:flex;gap:6px;align-items:center;padding:8px 12px;border-bottom:1.5px solid var(--ink3);background:var(--panel);font:500 12px/1 var(--sans);color:var(--ink2)}
+#eg .wf-bar i{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--ink3);display:inline-block}
+#eg .wf-bar span{margin-left:10px;background:var(--bg);border-radius:3px;padding:4px 10px;flex:1;max-width:420px}
+#eg .wf-sec{padding:30px clamp(16px,4vw,40px);border-bottom:1.5px dashed var(--ink3);position:relative}
+#eg .wf-sec:last-child{border-bottom:0}
+#eg .wf-tag{position:absolute;top:8px;right:10px;font:600 11px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--ink2);background:var(--panel);border-radius:3px;padding:3px 7px}
+#eg .an{display:inline-block;font:500 10.5px/1.3 ui-monospace,Menlo,Consolas,monospace;color:var(--ink2);border:1px dashed var(--ink3);border-radius:3px;padding:1px 5px;margin-bottom:6px}
+#eg .wf-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;color:var(--ink2);padding:12px clamp(16px,4vw,40px);border-bottom:1.5px dashed var(--ink3)}
+#eg .wf-nav .lg{width:110px;height:22px;border:1.5px solid var(--ink3);border-radius:3px;display:grid;place-items:center;font-size:11px}
+#eg .wf-nav .lk{display:flex;gap:16px;flex-wrap:wrap}
+#eg .wf-hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:32px;align-items:start}
+#eg .wf h4{font-size:clamp(26px,3.3vw,40px);line-height:1.12;letter-spacing:-.02em;margin:0;max-width:20ch}
+#eg .wf h5{font-size:clamp(21px,2.3vw,28px);line-height:1.2;letter-spacing:-.015em;margin:0;max-width:30ch}
+#eg .wf .sub{font-size:16.5px;color:var(--ink2);margin-top:14px;max-width:58ch}
+#eg .wf .eyb{font:600 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+#eg .wf-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;align-items:center}
+#eg .wf-btn{display:inline-block;border-radius:4px;padding:11px 16px;font:600 14.5px/1.2 var(--sans);background:var(--ink);color:var(--bg)}
+#eg .wf-btn.o{background:none;color:var(--ink);border:1.5px solid var(--ink)}
+#eg .wf .micro{font-size:13px;color:var(--ink2);margin-top:10px;max-width:52ch}
+#eg .wf-viz{border:1.5px dashed var(--ink3);border-radius:6px;padding:16px 18px;font-size:13px}
+#eg .wf-viz .ttl{font:600 13.5px/1.3 var(--sans);color:var(--ink)}
+#eg .bars{display:grid;gap:12px;margin-top:14px}
+#eg .bars .b{display:grid;gap:4px}
+#eg .bars .b span{font-size:13px;color:var(--ink2)}
+#eg .bars .b div{height:22px;border-radius:3px;background:var(--ink3);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font:600 12px/1 var(--sans);color:var(--bg)}
+#eg .bars .b.me div{background:var(--accent);color:var(--on-accent)}
+#eg .bars .b.def div{background:repeating-linear-gradient(135deg,var(--ink3) 0 6px,var(--ink2) 6px 12px)}
+#eg .wf-proof{margin-top:26px;display:grid;gap:10px;justify-items:start}
+#eg .wf-proof .logos{display:flex;flex-wrap:wrap;gap:8px}
+#eg .wf-proof .logos span{border:1.5px solid var(--ink3);border-radius:3px;padding:6px 10px;font-size:12.5px;color:var(--ink2)}
+#eg .wf-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px;padding:0}
+#eg .wf-steps li{list-style:none;border:1.5px solid var(--ink3);border-radius:6px;padding:16px 18px;font-size:14.5px}
+#eg .wf-steps li b{display:block;font-size:16px;margin:6px 0}
+#eg .wf-ico{width:34px;height:34px;border:1.5px dashed var(--ink3);border-radius:50%;display:grid;place-items:center;font:600 13px/1 var(--sans);color:var(--ink2)}
+#eg .wf-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
+#eg .wf-three>div{border:1.5px solid var(--ink3);border-radius:6px;padding:18px 18px;font-size:14.5px;display:flex;flex-direction:column;gap:8px}
+#eg .wf-three h6{font-size:17px;margin:0;line-height:1.3}
+#eg .wf-three .pf{margin-top:auto;padding-top:10px;border-top:1px dashed var(--ink3);font-size:13px;color:var(--ink2)}
+#eg .wf-band{margin-top:24px;border:1.5px solid var(--ink3);border-radius:6px;padding:16px 18px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+#eg .wf-band p{font-size:15px;max-width:60ch}
+/* rationale */
+#eg .eg-rat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}
+#eg .eg-rat .panel ul{padding-left:18px}
+#eg .eg-wc{font-size:13px;color:var(--ink2);margin-top:10px}
+/* workflow diagram */
+#eg .wfd{margin-top:24px;display:grid;grid-template-columns:150px 26px minmax(0,1.6fr) 26px minmax(0,1fr) 26px minmax(0,1fr);align-items:center;gap:0}
+#eg .wfd .ar{display:grid;place-items:center;color:var(--ink3);font-size:20px}
+#eg .wfd .nd{background:var(--panel);border-radius:6px;padding:14px 14px;font-size:13.5px;color:var(--ink2)}
+#eg .wfd .nd b{display:block;color:var(--ink);font-size:14.5px;margin:4px 0 4px}
+#eg .wfd .nd.in{background:var(--accent);color:var(--on-accent)}
+#eg .wfd .nd.in b,#eg .wfd .nd.in .k{color:var(--on-accent)}
+#eg .wfd .par{display:grid;gap:8px;border:1.5px dashed var(--ink3);border-radius:8px;padding:10px}
+#eg .wfd .par>.k{text-align:center}
+#eg .wfd .par .nd{background:var(--accent-soft);color:var(--ink)}
+#eg .wfd .col{display:grid;gap:8px}
+#eg .eg-agents{margin-top:24px}
+#eg .eg-agents td,#eg .eg-agents th{vertical-align:top}
+@media (max-width:1000px){
+ #eg .eg-nar{grid-template-columns:1fr 1fr}
+ #eg .wfd{grid-template-columns:1fr;gap:6px}
+ #eg .wfd .ar{transform:rotate(90deg);height:24px}
+}
+@media (max-width:860px){
+ #eg .eg-toc{grid-template-columns:1fr 1fr}
+ #eg .eg-per,#eg .eg-pil,#eg .eg-rat,#eg .wf-hero,#eg .wf-steps,#eg .wf-three{grid-template-columns:1fr}
+ #eg .eg-ft .r{grid-template-columns:1fr;gap:4px}
+ #eg .eg-ft .ar{transform:rotate(90deg);height:18px}
+ #eg .eg-ft .hd{display:none}
+ #eg .eg-ft .r{margin-top:10px}
+}
+@media (max-width:520px){#eg .eg-nar{grid-template-columns:1fr}#eg .eg-per dl{grid-template-columns:1fr;gap:2px}#eg .eg-per dd{margin-bottom:8px}}
+</style>
+<div id="eg">
+<header class="phead">
+  <span class="eyebrow"><b class="acode">Appendix A13</b>Campaign brief</span>
+  <h1>EPD Generator Campaign</h1>
+  <p class="lede">Core messaging for a six-month EPD Generator amplification campaign starting in Q1 2027, a landing page wireframe with the copy written in full, and the rationale. It is based on public sources and the product as it is today, and it builds on the manufacturer message house in A7.</p>
+  <p class="meta">All message lines on this page are drafts to test. <span class="ph">Placeholder</span> marks proof that needs One Click LCA's own data or a customer's permission. <span class="ok">Public</span> marks proof taken from a public source listed at the end of the page.</p>
+  <nav class="eg-toc" aria-label="Parts of this page">
+    <a href="#framework"><b>Part 1</b>Messaging framework</a>
+    <a href="#landing"><b>Part 2</b>Landing page wireframe</a>
+    <a href="#rationale"><b>Part 3</b>Rationale</a>
+    <a href="#method"><b>Method</b>Research workflow and subagents</a>
+  </nav>
+</header>
+
+<!-- ============ PART 1 ============ -->
+<section class="sec" id="framework">
+  <span class="eyebrow">Part 1 · Messaging framework</span>
+  <h2>Target buyer and trigger moment</h2>
+  <p class="intro">I picked one buyer: the commercial director at a mid-sized construction product manufacturer that sells into the Nordic countries and has no LCA team. This person owns the sales number and the budget. The sustainability or quality manager runs the tool and is the internal champion.</p>
+  <div class="eg-per">
+    <div class="panel">
+      <span class="k">Buyer</span>
+      <h3>Commercial director, mid-sized Nordic product manufacturer</h3>
+      <dl>
+        <dt>Company</dt><dd>Roughly 100 to 1,000 staff, one to four plants, often family or private equity owned. My estimate of the core of the market.</dd>
+        <dt>Range</dt><dd>Dozens to a few hundred products in a handful of families, such as windows, insulation, precast, flooring or façade systems.</dd>
+        <dt>EPDs today</dt><dd>A few consultant-made EPDs for flagship products. Most of the range has none.</dd>
+        <dt>Sells through</dt><dd>Distributors, contractors and specifications written by architects and engineers.</dd>
+        <dt>Measured on</dt><dd>Revenue, margin and specification share in the home and export markets.</dd>
+        <dt>Worry</dt><dd>Paying for EPDs that sit on a shelf, and losing projects to a competitor that looks greener on paper.</dd>
+      </dl>
+    </div>
+    <div class="panel accent">
+      <span class="k">Trigger moment</span>
+      <h3>A specification is lost to a competitor with an EPD</h3>
+      <ol class="eg-trig">
+        <li>A design team the sales team has been tracking models the building in a carbon tool, as the national rules require.</li>
+        <li>The tool has no EPD for this manufacturer's product, so the model uses the national generic value with a safety margin added.</li>
+        <li>A competing product with its own EPD shows a lower figure and goes into the specification.</li>
+        <li>The commercial director hears about it from a distributor or a contractor after the decision.</li>
+      </ol>
+      <p style="margin-top:14px;font-size:14.5px"><b>Why Q1 2027.</b> From 1 January 2028, new buildings over 1,000 m² in every EU country must disclose life-cycle carbon. The buildings that report in 2028 are being designed during 2027, so their product choices are made during the campaign.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Part 1 · Messaging framework</span>
+  <h2>From today's message to the campaign message</h2>
+  <p class="intro">"Faster, compliant, cheaper" describes how the EPD is made. Every competitor now says the same. The campaign moves the message to what happens to the product once the EPD exists.</p>
+  <div class="eg-ft" role="table" aria-label="From and to">
+    <div class="r hd" role="row"><div role="columnheader"></div><div role="columnheader">From</div><div aria-hidden="true"></div><div role="columnheader">To</div></div>
+    <div class="r" role="row"><div class="lab" role="rowheader">Main idea</div><div class="fr" role="cell">Make EPDs faster, compliant and cheaper.</div><div class="ar" aria-hidden="true">→</div><div class="to" role="cell">Get every product counted at its own carbon figure where specifications are decided.</div></div>
+    <div class="r" role="row"><div class="lab" role="rowheader">What an EPD is</div><div class="fr" role="cell">A compliance document a customer asks for.</div><div class="ar" aria-hidden="true">→</div><div class="to" role="cell">Product data that enters the designer's carbon model on every project.</div></div>
+    <div class="r" role="row"><div class="lab" role="rowheader">Buyer</div><div class="fr" role="cell">The sustainability manager who produces the EPD.</div><div class="ar" aria-hidden="true">→</div><div class="to" role="cell">The commercial director who loses or wins the specification.</div></div>
+    <div class="r" role="row"><div class="lab" role="rowheader">Cost of waiting</div><div class="fr" role="cell">A missing EPD may block a tender later.</div><div class="ar" aria-hidden="true">→</div><div class="to" role="cell">A missing EPD already counts against the product today, through the generic value.</div></div>
+    <div class="r" role="row"><div class="lab" role="rowheader">Scope</div><div class="fr" role="cell">One EPD when a customer asks for it.</div><div class="ar" aria-hidden="true">→</div><div class="to" role="cell">The product families customers specify most, before they ask.</div></div>
+    <div class="r" role="row"><div class="lab" role="rowheader">Proof</div><div class="fr" role="cell">Speed, such as "10× faster".</div><div class="ar" aria-hidden="true">→</div><div class="to" role="cell">Projects that used the manufacturer's EPDs, shown in usage analytics.</div></div>
+  </div>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Part 1 · Draft to test</span>
+  <h2>Positioning statement</h2>
+  <p class="eg-stmt">For <mark>commercial directors at mid-sized Nordic construction product manufacturers without an LCA team</mark>, One Click LCA EPD Generator is the way to get <mark>every product in the range counted at its own verified carbon figure</mark> in the design tools where specifications are decided. It produces EPDs with a pre-verified method at a fixed price per product, publishes them through the programme operators each market accepts and shows which projects use them. Consultant EPDs arrive one product at a time and leave the rest of the range on generic values.</p>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Part 1 · Draft to test</span>
+  <h2>Core narrative</h2>
+  <p class="intro">The story runs in five beats. Each campaign asset tells all five or starts at one of them.</p>
+  <ol class="eg-nar">
+    <li><b>Carbon is calculated at design stage</b>Sweden, Denmark, Finland and Norway already require a carbon calculation for new buildings. From 2028 every EU country requires a disclosure. Designers model the building before they fix the specification.</li>
+    <li><b>Missing data is filled with a penalty</b>When a product has no EPD, the tool uses a national generic value. These values are set high on purpose. Sweden adds 25% to its generic data.</li>
+    <li><b>The loss is silent</b>The product looks worse than it is, a competitor with an EPD looks better, and the decision is made before the sales team hears about the project.</li>
+    <li><b>The range can be covered without an LCA team</b>EPD Generator turns plant and product data into verified EPDs at a fixed price per product, and publishes them where designers will find them.</li>
+    <li><b>Start with what customers specify most</b>The first product families to cover are the ones that appear most often in customers' projects in 2027, while those designs are still open.</li>
+  </ol>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Part 1 · Drafts to test</span>
+  <h2>Value pillars and proof</h2>
+  <div class="eg-pil">
+    <div class="panel">
+      <span class="k">Pillar 1</span>
+      <h3>Your products are counted at their real figure</h3>
+      <p>Each verified EPD replaces the generic value in every project that uses the product, in every country where the EPD is accepted.</p>
+      <ul>
+        <li><span class="ok">Public</span>Sweden's climate declaration adds 25% to generic data from the Boverket database.</li>
+        <li><span class="ok">Public</span>EPDs are published through EPD Hub, the International EPD System, INIES and UL Solutions.</li>
+        <li><span class="ph">Placeholder</span>Share of 2026 Nordic projects in One Click LCA where the buyer's product category was modelled with generic data.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <span class="k">Pillar 2</span>
+      <h3>The whole range is covered at a price you know in advance</h3>
+      <p>The method is pre-verified by an independent programme operator, so each new EPD in a family needs less verification work. Prices are fixed per EPD, and a sustainability manager can run it without an LCA team.</p>
+      <ul>
+        <li><span class="ok">Public</span>Blue Marble turned 5,500 components into 5 EPDs. Saudi Readymix published 54 concrete EPDs.</li>
+        <li><span class="ok">Public</span>Glob-el produces its EPDs in-house with one sustainability manager.</li>
+        <li><span class="ph">Placeholder</span>Price per EPD and weeks from data to publication for a range of 30 products.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <span class="k">Pillar 3</span>
+      <h3>You see which projects are using your products</h3>
+      <p>Usage analytics show where designers selected the EPDs, by country and project type. The sales team can follow up while the project is still in design.</p>
+      <ul>
+        <li><span class="ok">Public</span>EPD usage analytics, specification opportunities and Manufacturer Pages are part of One Click LCA's manufacturer offer.</li>
+        <li><span class="ph">Placeholder</span>A commercial director's quote on a specification won after publishing EPDs.</li>
+        <li><span class="ph">Placeholder</span>To check: how early and at what level of detail usage analytics show a project.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <span class="eyebrow">Part 1 · Draft to test</span>
+  <h2>Elevator pitch</h2>
+  <div class="eg-pitch">
+    <p>Nordic designers already calculate a building's carbon before they fix the specification, and from 2028 designers across the EU will too. If your product has no EPD in their tool, it is modelled with a generic value that has a safety margin added. A competitor with an EPD looks better, and you never hear about the project. EPD Generator gives your whole range verified EPDs at a fixed price each, without an LCA team. Designers find them in their tool, and you can see which projects use them.</p>
+    <small>About 85 words, or 30 to 35 seconds spoken.</small>
+  </div>
+</section>
+
+<!-- ============ PART 2 ============ -->
+<section class="sec" id="landing">
+  <span class="eyebrow">Part 2 · Campaign landing page</span>
+  <h2>Landing page wireframe</h2>
+  <p class="intro">The hero and the first two sections, with the copy written in full. Grey boxes and dashed labels are wireframe notes. The primary offer is a free EPD gap check, which gives the commercial director a reason to act on their own product list.</p>
+
+  <div class="wf" id="wf">
+    <div class="wf-bar" aria-hidden="true"><i></i><i></i><i></i><span>oneclicklca.com/epd-gap-check</span></div>
+    <div class="wf-nav"><span class="lg">One Click LCA logo</span><span class="lk"><span>Manufacturers</span><span>Pricing</span><span>Log in</span><span><b>Book a demo</b></span></span></div>
+
+    <div class="wf-sec">
+      <span class="wf-tag">Hero</span>
+      <div class="wf-hero">
+        <div>
+          <span class="an">Eyebrow</span>
+          <div class="eyb">EPD Generator for construction product manufacturers</div>
+          <span class="an" style="margin-top:14px">H1</span>
+          <h4>Designers are calculating your product's carbon. Give them your real figure.</h4>
+          <span class="an" style="margin-top:14px">Subhead</span>
+          <p class="sub" style="margin-top:0">When your product has no EPD in the designer's tool, the calculation uses a generic value with a safety margin added. Your product looks worse than it is, and a competitor with an EPD gets specified. EPD Generator gives your whole range verified EPDs, without an in-house LCA team.</p>
+          <div class="wf-ctas"><span class="an" style="margin:0">Primary CTA</span><span class="wf-btn">Get your free EPD gap check</span><span class="an" style="margin:0">Secondary CTA</span><span class="wf-btn o">See prices for your range</span></div>
+          <p class="micro"><span class="an" style="margin:0 6px 0 0">Microcopy</span>Send us your product list. We show which products designers in your markets model with generic values, and what an EPD for each would cost.</p>
+        </div>
+        <div class="wf-viz">
+          <span class="an">Visual: designer's carbon report, illustrative</span>
+          <div class="ttl">Façade panel in a Swedish climate declaration</div>
+          <div class="bars">
+            <div class="b def"><span>Your panel, generic value with 25% added</span><div style="width:100%">125</div></div>
+            <div class="b me"><span>Your panel, with its own EPD</span><div style="width:80%">100</div></div>
+            <div class="b"><span>Competitor's panel, with its own EPD</span><div style="width:76%">95</div></div>
+          </div>
+          <p class="phrow"><span class="ph">Placeholder</span>Illustrative index. It assumes the generic value equals the product's own figure before the 25% uplift. Replace with a real category from One Click LCA data.</p>
+        </div>
+      </div>
+      <div class="wf-proof">
+        <span class="an">Proof bar</span>
+        <div style="font-size:13.5px;color:var(--ink2)">Pre-verified EPDs published by</div>
+        <div class="logos"><span>METSEC</span><span>Uponor</span><span>Abetong</span><span>Lindab</span><span>Wienerberger</span><span>Peikko</span></div>
+        <div style="font-size:13.5px;color:var(--ink2)">Published through EPD Hub, the International EPD System, INIES and UL Solutions.</div>
+      </div>
+    </div>
+
+    <div class="wf-sec">
+      <span class="wf-tag">Section 1</span>
+      <span class="an">H2</span>
+      <h5>What a missing EPD costs you</h5>
+      <span class="an" style="margin-top:12px">Intro</span>
+      <p class="sub" style="margin-top:0">Sweden, Denmark, Finland and Norway already require a carbon calculation for new buildings. From 1 January 2028, every new building over 1,000 m² in the EU must disclose its life-cycle carbon. The calculation happens at design stage, often before your sales team hears about the project.</p>
+      <ol class="wf-steps">
+        <li><span class="wf-ico">1</span><b>The designer models the building</b>An architect or engineer enters the materials into a carbon tool to check the building against the national limit.</li>
+        <li><span class="wf-ico">2</span><b>The tool finds no EPD for your product</b>It falls back to the national generic value. Sweden adds 25% to generic data, and other countries set their defaults high in the same way.</li>
+        <li><span class="wf-ico">3</span><b>The specification goes to the product with data</b>A competing product with its own EPD shows a lower figure. It goes into the specification, and you lose a project you did not know was open.</li>
+      </ol>
+      <p class="phrow"><span class="ph">Placeholder</span>Proof line under the steps: "In 2026, [x]% of Nordic projects in One Click LCA used generic data for [product category]." One Click LCA holds this figure.</p>
+    </div>
+
+    <div class="wf-sec">
+      <span class="wf-tag">Section 2</span>
+      <span class="an">H2</span>
+      <h5>What changes when your range is in the tool</h5>
+      <div class="wf-three">
+        <div><span class="wf-ico">A</span><h6>Your products are counted at their real figure</h6><p>Each verified EPD replaces the generic value in every project that uses your product. Designers find it inside One Click LCA, and it is published through the programme operators your markets accept.</p><p class="pf">Published through EPD Hub, the International EPD System, INIES and UL Solutions.</p></div>
+        <div><span class="wf-ico">B</span><h6>Your whole range is covered at a price you know</h6><p>The method is pre-verified by an independent programme operator. Your sustainability manager enters plant and product data, and each EPD has a fixed price. You do not need an LCA team.</p><p class="pf">Blue Marble turned 5,500 components into 5 EPDs. Saudi Readymix published 54 concrete EPDs.</p></div>
+        <div><span class="wf-ico">C</span><h6>You see which projects are using your products</h6><p>Usage analytics show where designers selected your EPDs, by country and project type. Your sales team can follow up while the design is still open.</p><p class="pf"><span class="ph">Placeholder</span>"[Quote from a commercial director on a specification won after publishing EPDs.]"</p></div>
+      </div>
+      <div class="wf-band">
+        <p><b>Start with the products your customers specify most.</b> We check your product list against your markets and show where generic values are costing you.</p>
+        <span class="wf-btn">Get your free EPD gap check</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 3 ============ -->
+<section class="sec" id="rationale">
+  <span class="eyebrow">Part 3</span>
+  <h2>Rationale</h2>
+  <div class="eg-rat">
+    <div class="panel">
+      <h3>Assumptions</h3>
+      <ul>
+        <li>Designers using One Click LCA pick a product-specific EPD when one is available.</li>
+        <li>Generic values make most products look worse than their real figure. A product worse than the generic value gains nothing, so the gap check screens for this.</li>
+        <li>The commercial director holds the budget and reacts to lost specifications more than to compliance.</li>
+        <li>Most mid-sized Nordic manufacturers have EPDs for a few flagship products only.</li>
+        <li>One Click LCA's usage data can show generic-data use by product category and country. The gap check and the placeholder proof depend on this.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Validating the messaging</h3>
+      <ul>
+        <li>Eight to ten interviews with commercial directors at target manufacturers, testing the trigger moment and the H1 against "faster, compliant, cheaper".</li>
+        <li>A win and loss review of 2026 EPD Generator deals for the reasons buyers gave.</li>
+        <li>A paid LinkedIn test of two headlines to sales and commercial roles at Nordic manufacturers, measured on gap-check requests per visitor.</li>
+        <li>Two weeks of sales calls using the narrative, with sellers logging which beat moved the conversation.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Extending to other channels</h3>
+      <ul>
+        <li>Sales: the gap check becomes the first-call agenda, run on each prospect's own product list.</li>
+        <li>Associations: co-hosted webinars and member offers, following the Aluminium Danmark partnership.</li>
+        <li>Designers: content showing architects how generic values inflate their results, so they ask suppliers for EPDs.</li>
+        <li>Events: a manufacturer customer on stage at the Carbon Experts Summit.</li>
+        <li>Email: a nurture sequence for gap-check leads, one product family at a time.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="eg-wc" id="wc"></p>
+</section>
+
+<!-- ============ METHOD ============ -->
+<section class="sec" id="method">
+  <span class="eyebrow">Method</span>
+  <h2>Research workflow</h2>
+  <p class="intro">I ran four research subagents in parallel, one per question, while I drafted the structure. Each wrote a sourced research file. I then chose the angle, wrote the framework and wireframe, and checked the page against the site's writing rules and accessibility tests.</p>
+  <div class="wfd" role="img" aria-label="Workflow: the brief and existing appendix research feed four parallel research subagents on proof, default values, competitor messaging and buyer voice. Their files feed synthesis, where the angle and buyer are chosen. Synthesis feeds drafting of the framework, landing page and rationale. Drafting feeds checks against the writing rules, placeholder marking and accessibility, then publishing.">
+    <div class="nd in"><span class="k">Input</span><b>Brief and A1 to A12</b>The campaign brief and the existing research files.</div>
+    <div class="ar" aria-hidden="true">→</div>
+    <div class="par"><span class="k">Four subagents in parallel</span>
+      <div class="nd"><b>Proof</b>Public EPD Generator claims, case studies and offer.</div>
+      <div class="nd"><b>Default values</b>How each country penalises products without an EPD.</div>
+      <div class="nd"><b>Competitor messaging</b>Which angles rivals already claim.</div>
+      <div class="nd"><b>Buyer voice</b>Who buys EPDs, why and what stops them.</div>
+    </div>
+    <div class="ar" aria-hidden="true">→</div>
+    <div class="col">
+      <div class="nd"><span class="k">Synthesis</span><b>Angle and buyer</b>Pick the open angle and the one buyer it moves.</div>
+      <div class="nd"><span class="k">Drafting</span><b>Framework, page, rationale</b>Write the copy in full and mark placeholder proof.</div>
+    </div>
+    <div class="ar" aria-hidden="true">→</div>
+    <div class="col">
+      <div class="nd"><span class="k">Checks</span><b>Rules and accessibility</b>Writing rules, placeholder labels, axe-core in light and dark, phone width.</div>
+      <div class="nd in"><span class="k">Output</span><b>Appendix A13</b>This page.</div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:44px">The four subagents</h3>
+  <div class="tw eg-agents"><table>
+    <thead><tr><th scope="col">Subagent</th><th scope="col">Question</th><th scope="col">Sources it used</th><th scope="col">What it fed</th></tr></thead>
+    <tbody id="agents">
+      <tr><th scope="row">Proof</th><td>What can One Click LCA prove today about EPD Generator, from public sources?</td><td>oneclicklca.com product, pricing and case study pages; press releases; programme operator sites.</td><td>The public proof under each pillar and the proof bar.</td></tr>
+      <tr><th scope="row">Default values</th><td>What happens in a carbon calculation when a product has no EPD, country by country?</td><td>Boverket, Finnish, Danish, Norwegian, Dutch and French national methods; the EPBD recast and the CPR.</td><td>The trigger moment, narrative beats 1 and 2, and Section 1 of the landing page.</td></tr>
+      <tr><th scope="row">Competitor messaging</th><td>Which value angles do EPD Hub, Ecochain, Sphera, AI startups and consultants already claim?</td><td>Competitor homepages and product pages.</td><td>The from and to shift, and the choice of an angle nobody claims.</td></tr>
+      <tr><th scope="row">Buyer voice</th><td>Who decides and pays for EPDs at a manufacturer, and what triggers the purchase?</td><td>Trade press, associations, programme operator statistics, surveys and public reviews.</td><td>The buyer profile, the assumptions and the validation plan.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="src" style="margin-top:10px">The research files are available on request.</p>
+</section>
+
+<section class="sources"><details class="more" style="margin-top:0"><summary>Sources</summary><ul id="srcs">
+<li>One Click LCA manufacturing, EPD Generator and Pre-Verified EPD Generator pages, case studies and pricing pages</li>
+<li>EPBD recast, Directive (EU) 2024/1275, Article 7: life-cycle GWP disclosure for new buildings over 1,000 m² from 1 January 2028</li>
+<li>Boverket climate declaration rules and climate database (generic values with a 25% conservative uplift)</li>
+</ul></details></section>
+</div>
+<script>
+(function(){
+ var r=document.querySelector("#rationale .eg-rat");if(!r)return;
+ var n=(r.innerText||r.textContent).trim().split(/\s+/).length;
+ document.getElementById("wc").textContent="The rationale above is "+n+" words, within the 300-word limit.";
+})();
+</script>
+
+</main>
+<nav class="pager" aria-label="Page navigation"><a class="prev" href="cv.html"><small>Previous</small><b>CV</b></a></nav><footer class="site-foot"><span>Prepared by Arpan Bakshi for the Senior Product Marketing Manager role at One Click LCA. It is based on public sources. One Click LCA did not produce or review it.</span></footer>
+</body>
+</html>

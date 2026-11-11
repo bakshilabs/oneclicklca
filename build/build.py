@@ -36,6 +36,7 @@ PAGES = [
     ("metrics.html", "Win Rate", "appendix"),
     ("ai.html", "AI Workflow", "appendix"),
     ("cv.html", "CV", "appendix"),
+    ("epd-campaign.html", "EPD Campaign", "appendix"),
 ]
 APPX = [f for f, _, g in PAGES if g == "appendix"]
 CODE = {f: f"A{i + 1}" for i, f in enumerate(APPX)}
