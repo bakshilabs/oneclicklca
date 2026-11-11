@@ -53,3 +53,10 @@
 - Market and Launch Approach each set out the steps Arpan follows, with the EU disclosure requirement for new buildings as an example in words. The draft message is now "One model, reported to the EU method and to your national scheme", labelled as a draft to test.
 - The appendix keeps its data and models for anyone who asks. The footer carries no dates.
 - All 19 pages pass axe-core in light and dark, with no console errors and no sideways scroll at 1280 and 390 px.
+
+## A13 EPD Generator Campaign (11 November 2026)
+- Added `epd-campaign.html` as appendix A13 from the take-home brief: messaging framework, landing page wireframe with full copy, a rationale of under 300 words, and a seven-step record of the work.
+- Four research subagents ran in parallel and wrote `research/epd-proof.md`, `research/epd-defaults.md`, `research/epd-competitors.md` and `research/epd-buyers.md`.
+- Chosen angle: a product with no EPD is counted at a conservative generic value (Norway and Sweden about +25%, Finland +20%, Netherlands +30%). No EPD creation vendor uses it.
+- Chosen buyer: the commercial director at a mid-sized Nordic manufacturer. Risk to test: no public source shows sales owning the EPD budget.
+- To confirm: Swedish government decision on Boverket report 2026:27; whether the Pre-Verified EPD Generator is offered in the Nordics; One Click LCA data for the placeholder proof and the gap check.

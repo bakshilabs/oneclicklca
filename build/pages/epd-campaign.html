@@ -59,8 +59,8 @@
 #eg .wf-nav .lg{width:110px;height:22px;border:1.5px solid var(--ink3);border-radius:3px;display:grid;place-items:center;font-size:11px}
 #eg .wf-nav .lk{display:flex;gap:16px;flex-wrap:wrap}
 #eg .wf-hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:32px;align-items:start}
-#eg .wf h4{font-size:clamp(26px,3.3vw,40px);line-height:1.12;letter-spacing:-.02em;margin:0;max-width:20ch}
-#eg .wf h5{font-size:clamp(21px,2.3vw,28px);line-height:1.2;letter-spacing:-.015em;margin:0;max-width:30ch}
+#eg .wf .h4{font-weight:600;font-size:clamp(26px,3.3vw,40px);line-height:1.12;letter-spacing:-.02em;margin:0;max-width:20ch}
+#eg .wf .h5{font-weight:600;font-size:clamp(21px,2.3vw,28px);line-height:1.2;letter-spacing:-.015em;margin:0;max-width:30ch}
 #eg .wf .sub{font-size:16.5px;color:var(--ink2);margin-top:14px;max-width:58ch}
 #eg .wf .eyb{font:600 12px/1.3 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
 #eg .wf-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;align-items:center}
@@ -72,7 +72,7 @@
 #eg .bars{display:grid;gap:12px;margin-top:14px}
 #eg .bars .b{display:grid;gap:4px}
 #eg .bars .b span{font-size:13px;color:var(--ink2)}
-#eg .bars .b div{height:22px;border-radius:3px;background:var(--ink3);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font:600 12px/1 var(--sans);color:var(--bg)}
+#eg .bars .b div{height:22px;border-radius:3px;background:var(--ink2);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font:600 12px/1 var(--sans);color:var(--bg)}
 #eg .bars .b.me div{background:var(--accent);color:var(--on-accent)}
 #eg .bars .b.def div{background:repeating-linear-gradient(135deg,var(--ink3) 0 6px,var(--ink2) 6px 12px)}
 #eg .wf-proof{margin-top:26px;display:grid;gap:10px;justify-items:start}
@@ -84,7 +84,7 @@
 #eg .wf-ico{width:34px;height:34px;border:1.5px dashed var(--ink3);border-radius:50%;display:grid;place-items:center;font:600 13px/1 var(--sans);color:var(--ink2)}
 #eg .wf-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
 #eg .wf-three>div{border:1.5px solid var(--ink3);border-radius:6px;padding:18px 18px;font-size:14.5px;display:flex;flex-direction:column;gap:8px}
-#eg .wf-three h6{font-size:17px;margin:0;line-height:1.3}
+#eg .wf-three .h6{font-weight:600;font-size:17px;margin:0;line-height:1.3}
 #eg .wf-three .pf{margin-top:auto;padding-top:10px;border-top:1px dashed var(--ink3);font-size:13px;color:var(--ink2)}
 #eg .wf-band{margin-top:24px;border:1.5px solid var(--ink3);border-radius:6px;padding:16px 18px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
 #eg .wf-band p{font-size:15px;max-width:60ch}
@@ -120,25 +120,224 @@
 }
 @media (max-width:520px){#eg .eg-nar{grid-template-columns:1fr}#eg .eg-per dl{grid-template-columns:1fr;gap:2px}#eg .eg-per dd{margin-bottom:8px}}
 </style>
+<style>
+#eg .wl{list-style:none;padding:0;margin:8px 0 0}
+#eg .wl>li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:20px;padding:34px 0;border-top:1px solid var(--line)}
+#eg .wl>li:first-child{border-top:0}
+#eg .wl .no{font:600 13px/1.2 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+#eg .wl .no b{display:block;font:600 40px/1 var(--sans);letter-spacing:-.03em;margin-top:4px}
+#eg .wl h3{font-size:22px;margin:0}
+#eg .wl .what{color:var(--ink2);font-size:15.5px;margin-top:8px;max-width:72ch}
+#eg .wl .out{margin-top:16px}
+#eg .wl .out>.k{margin-bottom:8px}
+#eg .wl .tw{margin-top:0}
+#eg .wl td,#eg .wl th{font-size:14px;vertical-align:top}
+#eg .v{display:inline-block;font:600 11px/1.4 var(--sans);letter-spacing:.04em;text-transform:uppercase;border-radius:3px;padding:2px 7px}
+#eg .v.y{background:var(--ok-soft);color:var(--ok)}
+#eg .v.n{background:var(--panel);color:var(--ink2);border:1px solid var(--line)}
+#eg .v.p{background:var(--warn-soft);color:var(--warn)}
+#eg .drafts{display:grid;gap:8px}
+#eg .drafts>div{display:grid;grid-template-columns:52px minmax(0,1.3fr) minmax(0,1fr);gap:14px;background:var(--panel);border-radius:5px;padding:12px 14px;font-size:14.5px;align-items:start}
+#eg .drafts>div.fin{background:var(--accent-soft)}
+#eg .drafts b.ver{font:600 13px/1.4 var(--sans);color:var(--ink2)}
+#eg .drafts q{quotes:none;font-weight:600;color:var(--ink)}
+#eg .drafts span{color:var(--ink2);font-size:13.5px}
+#eg .find4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#eg .find4 .panel{padding:16px 18px}
+#eg .find4 h4{font-size:16px;margin:4px 0 6px}
+#eg .find4 ul{margin:4px 0 0;padding-left:18px;font-size:14px}
+#eg .find4 li{margin-top:4px}
+@media (max-width:860px){#eg .wl>li{grid-template-columns:minmax(0,1fr);gap:8px}#eg .wl .no b{display:inline;font-size:28px;margin-left:6px}#eg .find4{grid-template-columns:1fr}#eg .drafts>div{grid-template-columns:1fr;gap:4px}}
+</style>
 <div id="eg">
 <header class="phead">
   <span class="eyebrow">Campaign brief</span>
   <h1>EPD Generator Campaign</h1>
-  <p class="lede">Core messaging for a six-month EPD Generator amplification campaign starting in Q1 2027, a landing page wireframe with the copy written in full, and the rationale. It is based on public sources and the product as it is today, and it builds on the manufacturer message house in A7.</p>
+  <p class="lede">Core messaging for a six-month EPD Generator amplification campaign starting in Q1 2027, a landing page wireframe with the copy written in full, and the rationale. The first section records how I did the work, step by step. Everything is based on public sources and the product as it is today.</p>
   <p class="meta">All message lines on this page are drafts to test. <span class="ph">Placeholder</span> marks proof that needs One Click LCA's own data or a customer's permission. <span class="ok">Public</span> marks proof taken from a public source listed at the end of the page.</p>
   <nav class="eg-toc" aria-label="Parts of this page">
+    <a href="#work"><b>Steps 1 to 7</b>How the work was done</a>
     <a href="#framework"><b>Part 1</b>Messaging framework</a>
     <a href="#landing"><b>Part 2</b>Landing page wireframe</a>
     <a href="#rationale"><b>Part 3</b>Rationale</a>
-    <a href="#method"><b>Method</b>Research workflow and subagents</a>
   </nav>
 </header>
+
+<!-- ============ WORK ============ -->
+<section class="sec" id="work">
+  <span class="eyebrow">Method</span>
+  <h2>How the work was done</h2>
+  <p class="intro">I worked in seven steps. Each step below says what I did and shows what it produced. Steps 3 and 4 ran at the same time: four research subagents worked in parallel while I drafted the page structure.</p>
+
+  <ol class="wl">
+    <li>
+      <div class="no">Step<b>1</b></div>
+      <div>
+        <h3>Breaking down the brief</h3>
+        <p class="what">I split the brief into the parts it asks for and the ground rules it sets, and noted where each one is answered on this page.</p>
+        <div class="out"><span class="k">Output: the brief as a checklist</span>
+        <div class="tw" tabindex="0" role="region" aria-label="The brief as a checklist"><table>
+          <thead><tr><th scope="col">The brief asks for</th><th scope="col">Limit or rule</th><th scope="col">Where it is answered</th></tr></thead>
+          <tbody>
+            <tr><td>Target persona and trigger moment</td><td>Pick one buyer</td><td><a href="#framework">Part 1</a></td></tr>
+            <tr><td>A from and to shift from today's messaging</td><td>"Faster, compliant, cheaper" is table stakes</td><td><a href="#fromto">Part 1</a></td></tr>
+            <tr><td>Positioning statement, core narrative, three value pillars with proof, a 30-second pitch</td><td>Two pages at most. Value over features</td><td><a href="#statement">Part 1</a></td></tr>
+            <tr><td>Landing page hero and first two sections, as a wireframe with full copy</td><td>Bring a new angle</td><td><a href="#landing">Part 2</a></td></tr>
+            <tr><td>Rationale: assumptions, validation, other channels</td><td>300 words at most</td><td><a href="#rationale">Part 3</a></td></tr>
+            <tr><td>Proof throughout</td><td>Mark placeholder proof clearly</td><td>Labels on every proof line</td></tr>
+          </tbody>
+        </table></div></div>
+      </div>
+    </li>
+
+    <li>
+      <div class="no">Step<b>2</b></div>
+      <div>
+        <h3>Reusing the appendix research</h3>
+        <p class="what">Before new research, I read what the appendix already held on manufacturers, so the campaign would build on it.</p>
+        <div class="out"><span class="k">Output: what I carried forward</span>
+        <div class="tw" tabindex="0" role="region" aria-label="What I carried forward"><table>
+          <thead><tr><th scope="col">Page</th><th scope="col">What it gave the campaign</th></tr></thead>
+          <tbody>
+            <tr><td>A2 Portfolio</td><td>EPD Generator, the Pre-Verified EPD Generator and the market intelligence tools sit together in the manufacturing offer.</td></tr>
+            <tr><td>A3 Demand Drivers</td><td>Life-cycle carbon disclosure for new EU buildings over 1,000 m² from 1 January 2028, and Nordic rules already in force.</td></tr>
+            <tr><td>A4 Buyers</td><td>The manufacturer buying group: a sustainability or product manager, plant data owners and a commercial or managing director who signs.</td></tr>
+            <tr><td>A7 Positioning</td><td>A manufacturer message house built on "Get specified more often", which this campaign sharpens.</td></tr>
+          </tbody>
+        </table></div></div>
+      </div>
+    </li>
+
+    <li>
+      <div class="no">Step<b>3</b></div>
+      <div>
+        <h3>Running four research subagents in parallel</h3>
+        <p class="what">I gave four subagents one question each, so they could search at the same time without overlapping. Each worked only from public sources, marked anything it could not confirm as unverified, and wrote a sourced research file.</p>
+        <div class="out"><span class="k">Output: the research workflow</span>
+        <div class="wfd" role="img" aria-label="Research workflow. The brief and the appendix research feed four subagents that run in parallel: proof, default values, competitor messaging and buyer voice. Their four research files feed synthesis, where the angle and buyer are chosen. Synthesis feeds drafting in rounds. Drafting feeds checks against the writing rules and accessibility tests, which produce this page.">
+          <div class="nd in"><span class="k">Input</span><b>Brief and A1 to A12</b>The campaign brief and the appendix research.</div>
+          <div class="ar" aria-hidden="true">→</div>
+          <div class="par"><span class="k">Four subagents in parallel</span>
+            <div class="nd"><b>1. Proof</b>What One Click LCA can prove today.</div>
+            <div class="nd"><b>2. Default values</b>How each country counts a product with no EPD.</div>
+            <div class="nd"><b>3. Competitor messaging</b>Which angles rivals already claim.</div>
+            <div class="nd"><b>4. Buyer voice</b>Who buys EPDs, why, and what stops them.</div>
+          </div>
+          <div class="ar" aria-hidden="true">→</div>
+          <div class="col">
+            <div class="nd"><span class="k">Steps 4 and 5</span><b>Angle and buyer</b>Compare the angles and buyers, then choose one of each.</div>
+            <div class="nd"><span class="k">Step 6</span><b>Drafting in rounds</b>Write, correct against the research, and rewrite.</div>
+          </div>
+          <div class="ar" aria-hidden="true">→</div>
+          <div class="col">
+            <div class="nd"><span class="k">Step 7</span><b>Checks</b>Writing rules, placeholder labels, word counts, accessibility.</div>
+            <div class="nd in"><span class="k">Output</span><b>Appendix A13</b>This page.</div>
+          </div>
+        </div></div>
+
+        <div class="out"><span class="k">Output: the four subagents and what each found</span>
+        <div class="tw eg-agents" tabindex="0" role="region" aria-label="The four subagents"><table>
+          <thead><tr><th scope="col">Subagent</th><th scope="col">Question it was given</th><th scope="col">Sources it used</th><th scope="col">What it found</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">1. Proof</th><td>What can One Click LCA prove today about EPD Generator from public sources?</td><td>oneclicklca.com product, pricing and case study pages, press releases and programme operator sites.</td><td>Case studies with in-house results from Glob-el, Vindunor, Datek, Saudi Readymix and Hydrotec. Usage analytics show views, project selections and locations each quarter or year. No published price. Blue Marble's story was run by a consultancy, so I dropped it.</td></tr>
+            <tr><th scope="row">2. Default values</th><td>What happens in a building carbon calculation when a product has no EPD, country by country?</td><td>Boverket, DiBK, the Finnish and Danish methods, the Dutch NMD, French RE2020 rules, the EPBD recast and Delegated Regulation (EU) 2026/52.</td><td>Generic values are set above the average product in every country checked. Norway and Sweden add about 25%, Finland 20%, the Netherlands 30%. EU rules from 2026 require national generic data to stay conservative.</td></tr>
+            <tr><th scope="row">3. Competitor messaging</th><td>Which value angles do EPD Hub, Ecochain, Emidat, Sphera, consultants and designer-side databases already claim?</td><td>Competitor homepages and product pages.</td><td>Speed, cost, compliance and automation are claimed by everyone. AI is contested. No EPD creation vendor uses the default-value penalty, and every vendor leads with the sustainability team.</td></tr>
+            <tr><th scope="row">4. Buyer voice</th><td>Who decides and pays for EPDs at a manufacturer, and what triggers the purchase?</td><td>Trade press, industry associations, ECO Platform counts, a DGNB and BPIE survey of manufacturers and manufacturer statements.</td><td>Requests arrive through tenders, contractors and consultants. A consultant EPD costs about €8,000 to €12,000 and takes months. Sales gains after publishing are not proven. Technical and quality roles do the work, and the managing director likely signs a first purchase.</td></tr>
+          </tbody>
+        </table></div></div>
+      </div>
+    </li>
+
+    <li>
+      <div class="no">Step<b>4</b></div>
+      <div>
+        <h3>Choosing the angle</h3>
+        <p class="what">I listed the angles a campaign could take and checked each against the competitor research and the evidence available.</p>
+        <div class="out"><span class="k">Output: angles compared</span>
+        <div class="tw" tabindex="0" role="region" aria-label="Angles compared"><table>
+          <thead><tr><th scope="col">Angle</th><th scope="col">Who already claims it</th><th scope="col">Evidence available</th><th scope="col">Decision</th></tr></thead>
+          <tbody>
+            <tr><td>Faster and cheaper EPDs</td><td>EPD Hub, Ecochain, Emidat and Sphera</td><td>Strong, but the same for every vendor</td><td><span class="v n">Kept as proof</span></td></tr>
+            <tr><td>AI-generated EPDs</td><td>Emidat for it, Ecochain against it</td><td>Contested, and it invites doubts about data quality</td><td><span class="v n">Not used</span></td></tr>
+            <tr><td>CPR compliance</td><td>Most vendors</td><td>Requirements arrive product family by product family, so the date differs for each buyer</td><td><span class="v n">Not used</span></td></tr>
+            <tr><td>EPDs grow sales</td><td>Emidat and Ecochain, in general terms</td><td>Weak. Only 27% of German manufacturers say EPD products sell better</td><td><span class="v n">Not used</span></td></tr>
+            <tr><td>A product with no EPD is counted at a penalty</td><td>No EPD creation vendor</td><td>Strong. Written into Nordic, Dutch and French national methods and backed by EU rules</td><td><span class="v y">Chosen as the lead</span></td></tr>
+            <tr><td>Seeing which projects use your EPDs</td><td>No vendor uses it as a headline</td><td>The feature is public. Results need One Click LCA data</td><td><span class="v y">Pillar 3</span></td></tr>
+          </tbody>
+        </table></div></div>
+      </div>
+    </li>
+
+    <li>
+      <div class="no">Step<b>5</b></div>
+      <div>
+        <h3>Choosing the buyer</h3>
+        <p class="what">The brief asks for one buyer. I compared the people involved in a manufacturer's EPD purchase.</p>
+        <div class="out"><span class="k">Output: buyers compared</span>
+        <div class="tw" tabindex="0" role="region" aria-label="Buyers compared"><table>
+          <thead><tr><th scope="col">Buyer</th><th scope="col">Role in the purchase</th><th scope="col">Reaction to the penalty angle</th><th scope="col">Decision</th></tr></thead>
+          <tbody>
+            <tr><td>Sustainability or quality manager</td><td>Runs the evaluation and does the work</td><td>Already knows about generic values. Feels the workload more than the lost project</td><td><span class="v n">User and champion</span></td></tr>
+            <tr><td>Commercial director</td><td>Hears about lost tenders and specifications first</td><td>Strong. A lost project is their number</td><td><span class="v y">Campaign target</span></td></tr>
+            <tr><td>Managing director</td><td>Likely signs a first purchase of €10,000 or more (my inference)</td><td>Responds to the cost against consultant EPDs</td><td><span class="v n">Signs, reached through sales</span></td></tr>
+            <tr><td>LCA consultant</td><td>Sells EPDs to manufacturers today</td><td>Sees the tool as a substitute</td><td><span class="v n">Separate campaign</span></td></tr>
+          </tbody>
+        </table></div>
+        <p class="phrow" style="margin-top:10px"><span class="v p" style="margin-right:6px">Risk</span>No public source shows a sales leader owning the EPD budget. The commercial director is the person who starts the purchase, and the managing director and quality manager join it. This is the first thing the buyer interviews in Part 3 should test.</p></div>
+      </div>
+    </li>
+
+    <li>
+      <div class="no">Step<b>6</b></div>
+      <div>
+        <h3>Drafting in rounds</h3>
+        <p class="what">I drafted the page while the subagents ran, then corrected it as each research file arrived. The headline went through three rounds.</p>
+        <div class="out"><span class="k">Output: headline drafts</span>
+        <div class="drafts">
+          <div><b class="ver">Draft 1</b><q>Create verified EPDs for your whole range, without an LCA team.</q><span>Describes the feature. It says the same thing as every competitor.</span></div>
+          <div><b class="ver">Draft 2</b><q>Without an EPD, your product carries a 25% carbon penalty.</q><span>Sharp, but the figure differs by country, and a negative headline with a number invites a dispute about the method.</span></div>
+          <div class="fin"><b class="ver">Final</b><q>Designers are calculating your product's carbon. Give them your real figure.</q><span>States the situation and the action. The penalty and its size move to the subhead and Section 1, where each country's figure can be shown.</span></div>
+        </div></div>
+        <div class="out"><span class="k">Output: corrections made from the research</span>
+        <div class="tw" tabindex="0" role="region" aria-label="Corrections made from the research"><table>
+          <thead><tr><th scope="col">First draft said</th><th scope="col">Research showed</th><th scope="col">Changed to</th></tr></thead>
+          <tbody>
+            <tr><td>Blue Marble turned 5,500 components into 5 EPDs</td><td>A UK consultancy did that work for a manufacturer</td><td>Glob-el, Vindunor and Hydrotec, who make EPDs in-house</td></tr>
+            <tr><td>Proof bar of pre-verified customer logos</td><td>The logos have no case studies, and the Pre-Verified page redirects in Sweden and Finland</td><td>Case study customers, with the Nordic ones first</td></tr>
+            <tr><td>Sales can follow up while the design is still open</td><td>Usage analytics report each quarter or year</td><td>See which countries and projects select your EPDs</td></tr>
+            <tr><td>Sweden adds 25% to generic data</td><td>Norway's regulator states its 25% uplift most clearly. Sweden is moving to new rules for 2028</td><td>Norway and Sweden add about 25%, Finland 20%</td></tr>
+            <tr><td>EPDs published through four programme operators</td><td>The site lists eight</td><td>Eight operators, with EPD Norge and the International EPD System named</td></tr>
+          </tbody>
+        </table></div></div>
+      </div>
+    </li>
+
+    <li>
+      <div class="no">Step<b>7</b></div>
+      <div>
+        <h3>Checking the page</h3>
+        <p class="what">I checked the finished page against the brief and the site's writing rules, then tested it the same way as the other appendix pages.</p>
+        <div class="out"><span class="k">Output: checks</span>
+        <div class="tw" tabindex="0" role="region" aria-label="Checks"><table>
+          <thead><tr><th scope="col">Check</th><th scope="col">Result</th></tr></thead>
+          <tbody>
+            <tr><td>Every proof line labelled Public or Placeholder</td><td id="ck-ph"></td></tr>
+            <tr><td>Rationale within 300 words</td><td id="ck-wc"></td></tr>
+            <tr><td>Elevator pitch speakable in about 30 seconds</td><td id="ck-pt"></td></tr>
+            <tr><td>Writing rules: no em dashes, no contrast slogans, no rhetorical questions</td><td>Passed a text scan of the page source</td></tr>
+            <tr><td>Accessibility and layout</td><td>axe-core in light and dark mode with no violations, and no sideways scroll at 390 px</td></tr>
+          </tbody>
+        </table></div></div>
+      </div>
+    </li>
+  </ol>
+</section>
 
 <!-- ============ PART 1 ============ -->
 <section class="sec" id="framework">
   <span class="eyebrow">Part 1 · Messaging framework</span>
   <h2>Target buyer and trigger moment</h2>
-  <p class="intro">I picked one buyer: the commercial director at a mid-sized construction product manufacturer that sells into the Nordic countries and has no LCA team. This person owns the sales number and the budget. The sustainability or quality manager runs the tool and is the internal champion.</p>
+  <p class="intro">The campaign targets one buyer: the commercial director at a mid-sized construction product manufacturer that sells into the Nordic countries and has no LCA team. The managing director signs, and the sustainability or quality manager runs the tool.</p>
   <div class="eg-per">
     <div class="panel">
       <span class="k">Buyer</span>
@@ -146,19 +345,19 @@
       <dl>
         <dt>Company</dt><dd>Roughly 100 to 1,000 staff, one to four plants, often family or private equity owned. My estimate of the core of the market.</dd>
         <dt>Range</dt><dd>Dozens to a few hundred products in a handful of families, such as windows, insulation, precast, flooring or façade systems.</dd>
-        <dt>EPDs today</dt><dd>A few consultant-made EPDs for flagship products. Most of the range has none.</dd>
-        <dt>Sells through</dt><dd>Distributors, contractors and specifications written by architects and engineers.</dd>
-        <dt>Measured on</dt><dd>Revenue, margin and specification share in the home and export markets.</dd>
-        <dt>Worry</dt><dd>Paying for EPDs that sit on a shelf, and losing projects to a competitor that looks greener on paper.</dd>
+        <dt>EPDs today</dt><dd>A few consultant-made EPDs for flagship products. One Click LCA's 2026 survey found only 22% of manufacturers have EPDs for more than half their range.</dd>
+        <dt>Sells through</dt><dd>Distributors, contractors, public tenders and specifications written by architects and engineers.</dd>
+        <dt>Measured on</dt><dd>Revenue, margin and tender and specification share in the home and export markets.</dd>
+        <dt>Worry</dt><dd>Paying about €10,000 per consultant EPD for documents that sit on a shelf, and losing projects to a competitor that looks lower-carbon on paper.</dd>
       </dl>
     </div>
     <div class="panel accent">
       <span class="k">Trigger moment</span>
-      <h3>A specification is lost to a competitor with an EPD</h3>
+      <h3>A project is lost to a competitor with an EPD</h3>
       <ol class="eg-trig">
         <li>A design team the sales team has been tracking models the building in a carbon tool, as the national rules require.</li>
-        <li>The tool has no EPD for this manufacturer's product, so the model uses the national generic value with a safety margin added.</li>
-        <li>A competing product with its own EPD shows a lower figure and goes into the specification.</li>
+        <li>The tool has no EPD for this manufacturer's product, so the model uses the national generic value. In Norway that value is the average plus 25%.</li>
+        <li>A competing product with its own EPD shows a lower figure and goes into the specification or wins the tender.</li>
         <li>The commercial director hears about it from a distributor or a contractor after the decision.</li>
       </ol>
       <p style="margin-top:14px;font-size:14.5px"><b>Why Q1 2027.</b> From 1 January 2028, new buildings over 1,000 m² in every EU country must disclose life-cycle carbon. The buildings that report in 2028 are being designed during 2027, so their product choices are made during the campaign.</p>
@@ -166,25 +365,25 @@
   </div>
 </section>
 
-<section class="sec">
+<section class="sec" id="fromto">
   <span class="eyebrow">Part 1 · Messaging framework</span>
   <h2>From today's message to the campaign message</h2>
-  <p class="intro">"Faster, compliant, cheaper" describes how the EPD is made. Every competitor now says the same. The campaign moves the message to what happens to the product once the EPD exists.</p>
+  <p class="intro">"Faster, compliant, cheaper" describes how the EPD is made, and every competitor now says the same. The campaign moves the message to what happens to the product once the EPD exists.</p>
   <div class="eg-ft" role="table" aria-label="From and to">
-    <div class="r hd" role="row"><div role="columnheader"></div><div role="columnheader">From</div><div aria-hidden="true"></div><div role="columnheader">To</div></div>
+    <div class="r hd" role="row"><div role="columnheader"><span class="sr">Topic</span></div><div role="columnheader">From</div><div aria-hidden="true"></div><div role="columnheader">To</div></div>
     <div class="r" role="row"><div class="lab" role="rowheader">Main idea</div><div class="fr" role="cell">Make EPDs faster, compliant and cheaper.</div><div class="ar" aria-hidden="true">→</div><div class="to" role="cell">Get every product counted at its own carbon figure where specifications are decided.</div></div>
     <div class="r" role="row"><div class="lab" role="rowheader">What an EPD is</div><div class="fr" role="cell">A compliance document a customer asks for.</div><div class="ar" aria-hidden="true">→</div><div class="to" role="cell">Product data that enters the designer's carbon model on every project.</div></div>
-    <div class="r" role="row"><div class="lab" role="rowheader">Buyer</div><div class="fr" role="cell">The sustainability manager who produces the EPD.</div><div class="ar" aria-hidden="true">→</div><div class="to" role="cell">The commercial director who loses or wins the specification.</div></div>
+    <div class="r" role="row"><div class="lab" role="rowheader">Buyer</div><div class="fr" role="cell">The sustainability manager who produces the EPD.</div><div class="ar" aria-hidden="true">→</div><div class="to" role="cell">The commercial director who loses or wins the project.</div></div>
     <div class="r" role="row"><div class="lab" role="rowheader">Cost of waiting</div><div class="fr" role="cell">A missing EPD may block a tender later.</div><div class="ar" aria-hidden="true">→</div><div class="to" role="cell">A missing EPD already counts against the product today, through the generic value.</div></div>
     <div class="r" role="row"><div class="lab" role="rowheader">Scope</div><div class="fr" role="cell">One EPD when a customer asks for it.</div><div class="ar" aria-hidden="true">→</div><div class="to" role="cell">The product families customers specify most, before they ask.</div></div>
-    <div class="r" role="row"><div class="lab" role="rowheader">Proof</div><div class="fr" role="cell">Speed, such as "10× faster".</div><div class="ar" aria-hidden="true">→</div><div class="to" role="cell">Projects that used the manufacturer's EPDs, shown in usage analytics.</div></div>
+    <div class="r" role="row"><div class="lab" role="rowheader">Proof</div><div class="fr" role="cell">Speed, such as "10× faster".</div><div class="ar" aria-hidden="true">→</div><div class="to" role="cell">The projects and countries where designers selected the manufacturer's EPDs.</div></div>
   </div>
 </section>
 
-<section class="sec">
+<section class="sec" id="statement">
   <span class="eyebrow">Part 1 · Draft to test</span>
   <h2>Positioning statement</h2>
-  <p class="eg-stmt">For <mark>commercial directors at mid-sized Nordic construction product manufacturers without an LCA team</mark>, One Click LCA EPD Generator is the way to get <mark>every product in the range counted at its own verified carbon figure</mark> in the design tools where specifications are decided. It produces EPDs with a pre-verified method at a fixed price per product, publishes them through the programme operators each market accepts and shows which projects use them. Consultant EPDs arrive one product at a time and leave the rest of the range on generic values.</p>
+  <p class="eg-stmt">For <mark>commercial directors at mid-sized Nordic construction product manufacturers without an LCA team</mark>, One Click LCA EPD Generator is the way to get <mark>every product in the range counted at its own verified carbon figure</mark> in the design tools where specifications are decided. A sustainability manager produces the EPDs in-house at a fixed cost per EPD. They are published through the programme operators each market accepts, and they appear inside One Click LCA, where designers can select them. Consultant EPDs arrive one product at a time and leave the rest of the range on penalised generic values.</p>
 </section>
 
 <section class="sec">
@@ -192,10 +391,10 @@
   <h2>Core narrative</h2>
   <p class="intro">The story runs in five beats. Each campaign asset tells all five or starts at one of them.</p>
   <ol class="eg-nar">
-    <li><b>Carbon is calculated at design stage</b>Sweden, Denmark, Finland and Norway already require a carbon calculation for new buildings. From 2028 every EU country requires a disclosure. Designers model the building before they fix the specification.</li>
-    <li><b>Missing data is filled with a penalty</b>When a product has no EPD, the tool uses a national generic value. These values are set high on purpose. Sweden adds 25% to its generic data.</li>
-    <li><b>The loss is silent</b>The product looks worse than it is, a competitor with an EPD looks better, and the decision is made before the sales team hears about the project.</li>
-    <li><b>The range can be covered without an LCA team</b>EPD Generator turns plant and product data into verified EPDs at a fixed price per product, and publishes them where designers will find them.</li>
+    <li><b>Carbon is calculated at design stage</b>Norway, Sweden, Denmark and Finland already require a carbon calculation for new buildings. From 2028 every EU country requires a disclosure. Designers model the building before they fix the specification.</li>
+    <li><b>Missing data is filled with a penalty</b>When a product has no EPD, the tool uses a national generic value set above the average product. Norway and Sweden add about 25%, and Finland 20%.</li>
+    <li><b>The loss is silent</b>The product looks worse than it is, and a competitor with an EPD looks better. The decision is made before the sales team hears about the project.</li>
+    <li><b>The range can be covered without an LCA team</b>A sustainability manager turns plant and product data into verified EPDs at a fixed cost each, and publishes them where designers will find them.</li>
     <li><b>Start with what customers specify most</b>The first product families to cover are the ones that appear most often in customers' projects in 2027, while those designs are still open.</li>
   </ol>
 </section>
@@ -207,31 +406,31 @@
     <div class="panel">
       <span class="k">Pillar 1</span>
       <h3>Your products are counted at their real figure</h3>
-      <p>Each verified EPD replaces the generic value in every project that uses the product, in every country where the EPD is accepted.</p>
+      <p>Each verified EPD replaces the generic value in every project that selects the product, in every country where the EPD is accepted.</p>
       <ul>
-        <li><span class="ok">Public</span>Sweden's climate declaration adds 25% to generic data from the Boverket database.</li>
-        <li><span class="ok">Public</span>EPDs are published through EPD Hub, the International EPD System, INIES and UL Solutions.</li>
+        <li><span class="ok">Public</span>Norway's regulator adds 25% to generic values and adds nothing when a product or sector EPD is used.</li>
+        <li><span class="ok">Public</span>One Click LCA's 2026 survey: 90% of design and construction professionals prefer products with EPDs.</li>
         <li><span class="ph">Placeholder</span>Share of 2026 Nordic projects in One Click LCA where the buyer's product category was modelled with generic data.</li>
       </ul>
     </div>
     <div class="panel">
       <span class="k">Pillar 2</span>
-      <h3>The whole range is covered at a price you know in advance</h3>
-      <p>The method is pre-verified by an independent programme operator, so each new EPD in a family needs less verification work. Prices are fixed per EPD, and a sustainability manager can run it without an LCA team.</p>
+      <h3>The whole range is covered at a cost you know in advance</h3>
+      <p>Your sustainability manager produces the EPDs in-house. Each one is published at a fixed cost, with no extra charge for annual maintenance. A consultant quote of about €10,000 per EPD becomes a cost per EPD across the range.</p>
       <ul>
-        <li><span class="ok">Public</span>Blue Marble turned 5,500 components into 5 EPDs. Saudi Readymix published 54 concrete EPDs.</li>
-        <li><span class="ok">Public</span>Glob-el produces its EPDs in-house with one sustainability manager.</li>
-        <li><span class="ph">Placeholder</span>Price per EPD and weeks from data to publication for a range of 30 products.</li>
+        <li><span class="ok">Public</span>Glob-el produced EPDs for 417 products in two years with one sustainability manager, after a consultant quoted about €12,000 for one.</li>
+        <li><span class="ok">Public</span>Vindunor, a Danish window maker, moved all EPD work in-house: "What used to take months now takes days."</li>
+        <li><span class="ph">Placeholder</span>Cost per EPD and weeks to publication for a range of 30 products.</li>
       </ul>
     </div>
     <div class="panel">
       <span class="k">Pillar 3</span>
-      <h3>You see which projects are using your products</h3>
-      <p>Usage analytics show where designers selected the EPDs, by country and project type. The sales team can follow up while the project is still in design.</p>
+      <h3>You see which projects select your products</h3>
+      <p>Usage analytics show views, project selections and countries for each EPD. The sales team can see where the range is being designed in and point its effort there.</p>
       <ul>
-        <li><span class="ok">Public</span>EPD usage analytics, specification opportunities and Manufacturer Pages are part of One Click LCA's manufacturer offer.</li>
-        <li><span class="ph">Placeholder</span>A commercial director's quote on a specification won after publishing EPDs.</li>
-        <li><span class="ph">Placeholder</span>To check: how early and at what level of detail usage analytics show a project.</li>
+        <li><span class="ok">Public</span>Analytics report views, project selections and locations each quarter or year. Manufacturer Pages carry a contact form for designers.</li>
+        <li><span class="ok">Public</span>Datek, a Norwegian manufacturer: an EPD "allows us to pre-qualify for tenders, access more customers".</li>
+        <li><span class="ph">Placeholder</span>A commercial director's account of a project won after a designer selected the EPD.</li>
       </ul>
     </div>
   </div>
@@ -241,8 +440,8 @@
   <span class="eyebrow">Part 1 · Draft to test</span>
   <h2>Elevator pitch</h2>
   <div class="eg-pitch">
-    <p>Nordic designers already calculate a building's carbon before they fix the specification, and from 2028 designers across the EU will too. If your product has no EPD in their tool, it is modelled with a generic value that has a safety margin added. A competitor with an EPD looks better, and you never hear about the project. EPD Generator gives your whole range verified EPDs at a fixed price each, without an LCA team. Designers find them in their tool, and you can see which projects use them.</p>
-    <small>About 85 words, or 30 to 35 seconds spoken.</small>
+    <p id="pitch">Nordic designers already calculate a building's carbon before they fix the specification, and from 2028 the whole EU will. If your product has no EPD in their tool, it is counted at a generic value set 20 to 25% above the average product. A competitor with an EPD looks better, and you never hear about the project. EPD Generator lets your own team produce verified EPDs for the whole range at a fixed cost each, and shows which projects select them.</p>
+    <small id="pitch-n"></small>
   </div>
 </section>
 
@@ -263,41 +462,41 @@
           <span class="an">Eyebrow</span>
           <div class="eyb">EPD Generator for construction product manufacturers</div>
           <span class="an" style="margin-top:14px">H1</span>
-          <h4>Designers are calculating your product's carbon. Give them your real figure.</h4>
+          <div class="h4">Designers are calculating your product's carbon. Give them your real figure.</div>
           <span class="an" style="margin-top:14px">Subhead</span>
-          <p class="sub" style="margin-top:0">When your product has no EPD in the designer's tool, the calculation uses a generic value with a safety margin added. Your product looks worse than it is, and a competitor with an EPD gets specified. EPD Generator gives your whole range verified EPDs, without an in-house LCA team.</p>
-          <div class="wf-ctas"><span class="an" style="margin:0">Primary CTA</span><span class="wf-btn">Get your free EPD gap check</span><span class="an" style="margin:0">Secondary CTA</span><span class="wf-btn o">See prices for your range</span></div>
+          <p class="sub" style="margin-top:0">When your product has no EPD in the designer's tool, it is counted at the national generic value. In Norway and Sweden that value is about 25% above the average product. A competitor with an EPD gets specified. EPD Generator lets your own team produce verified EPDs for your whole range, without an LCA department.</p>
+          <div class="wf-ctas"><span class="an" style="margin:0">Primary CTA</span><span class="wf-btn">Get your free EPD gap check</span><span class="an" style="margin:0">Secondary CTA</span><span class="wf-btn o">See the cost for your range</span></div>
           <p class="micro"><span class="an" style="margin:0 6px 0 0">Microcopy</span>Send us your product list. We show which products designers in your markets model with generic values, and what an EPD for each would cost.</p>
         </div>
         <div class="wf-viz">
-          <span class="an">Visual: designer's carbon report, illustrative</span>
-          <div class="ttl">Façade panel in a Swedish climate declaration</div>
+          <span class="an">Visual: one product in a designer's carbon report, illustrative</span>
+          <div class="ttl">Façade panel in a Norwegian climate calculation</div>
           <div class="bars">
-            <div class="b def"><span>Your panel, generic value with 25% added</span><div style="width:100%">125</div></div>
-            <div class="b me"><span>Your panel, with its own EPD</span><div style="width:80%">100</div></div>
-            <div class="b"><span>Competitor's panel, with its own EPD</span><div style="width:76%">95</div></div>
+            <div class="b def"><span>Your panel with no EPD: generic value, average plus 25%</span><div style="width:100%">125</div></div>
+            <div class="b"><span>Average panel in the category</span><div style="width:80%">100</div></div>
+            <div class="b me"><span>Your panel with its own EPD</span><div style="width:72%">90</div></div>
           </div>
-          <p class="phrow"><span class="ph">Placeholder</span>Illustrative index. It assumes the generic value equals the product's own figure before the 25% uplift. Replace with a real category from One Click LCA data.</p>
+          <p class="phrow"><span class="ph">Placeholder</span>Illustrative index. The 25% uplift is public. The figure of 90 for the product's own EPD is invented and assumes a better-than-average product. Replace with a real category from One Click LCA data.</p>
         </div>
       </div>
       <div class="wf-proof">
         <span class="an">Proof bar</span>
-        <div style="font-size:13.5px;color:var(--ink2)">Pre-verified EPDs published by</div>
-        <div class="logos"><span>METSEC</span><span>Uponor</span><span>Abetong</span><span>Lindab</span><span>Wienerberger</span><span>Peikko</span></div>
-        <div style="font-size:13.5px;color:var(--ink2)">Published through EPD Hub, the International EPD System, INIES and UL Solutions.</div>
+        <div style="font-size:13.5px;color:var(--ink2)">Manufacturers producing their own EPDs with One Click LCA</div>
+        <div class="logos"><span>Vindunor</span><span>Datek</span><span>Glob-el</span><span>Saudi Readymix</span><span>Hydrotec</span></div>
+        <div style="font-size:13.5px;color:var(--ink2)">Published through eight programme operators, including EPD Norge, the International EPD System and EPD Hub.</div>
       </div>
     </div>
 
     <div class="wf-sec">
       <span class="wf-tag">Section 1</span>
       <span class="an">H2</span>
-      <h5>What a missing EPD costs you</h5>
+      <div class="h5">What a missing EPD costs you</div>
       <span class="an" style="margin-top:12px">Intro</span>
-      <p class="sub" style="margin-top:0">Sweden, Denmark, Finland and Norway already require a carbon calculation for new buildings. From 1 January 2028, every new building over 1,000 m² in the EU must disclose its life-cycle carbon. The calculation happens at design stage, often before your sales team hears about the project.</p>
+      <p class="sub" style="margin-top:0">Norway, Sweden, Denmark and Finland already require a carbon calculation for new buildings. From 1 January 2028, every new building over 1,000 m² in the EU must disclose its life-cycle carbon. The calculation happens at design stage, often before your sales team hears about the project.</p>
       <ol class="wf-steps">
-        <li><span class="wf-ico">1</span><b>The designer models the building</b>An architect or engineer enters the materials into a carbon tool to check the building against the national limit.</li>
-        <li><span class="wf-ico">2</span><b>The tool finds no EPD for your product</b>It falls back to the national generic value. Sweden adds 25% to generic data, and other countries set their defaults high in the same way.</li>
-        <li><span class="wf-ico">3</span><b>The specification goes to the product with data</b>A competing product with its own EPD shows a lower figure. It goes into the specification, and you lose a project you did not know was open.</li>
+        <li><span class="wf-ico">1</span><b>The designer models the building</b>An architect or engineer enters the materials into a carbon tool to check the building against the national rules.</li>
+        <li><span class="wf-ico">2</span><b>The tool finds no EPD for your product</b>It falls back to the national generic value, which is set above the average on purpose. Norway and Sweden add about 25%, Finland 20% and the Netherlands 30%.</li>
+        <li><span class="wf-ico">3</span><b>The project goes to the product with data</b>A competing product with its own EPD shows a lower figure. It goes into the specification, and you lose a project you did not know was open.</li>
       </ol>
       <p class="phrow"><span class="ph">Placeholder</span>Proof line under the steps: "In 2026, [x]% of Nordic projects in One Click LCA used generic data for [product category]." One Click LCA holds this figure.</p>
     </div>
@@ -305,14 +504,14 @@
     <div class="wf-sec">
       <span class="wf-tag">Section 2</span>
       <span class="an">H2</span>
-      <h5>What changes when your range is in the tool</h5>
+      <div class="h5">What changes when your range is in the tool</div>
       <div class="wf-three">
-        <div><span class="wf-ico">A</span><h6>Your products are counted at their real figure</h6><p>Each verified EPD replaces the generic value in every project that uses your product. Designers find it inside One Click LCA, and it is published through the programme operators your markets accept.</p><p class="pf">Published through EPD Hub, the International EPD System, INIES and UL Solutions.</p></div>
-        <div><span class="wf-ico">B</span><h6>Your whole range is covered at a price you know</h6><p>The method is pre-verified by an independent programme operator. Your sustainability manager enters plant and product data, and each EPD has a fixed price. You do not need an LCA team.</p><p class="pf">Blue Marble turned 5,500 components into 5 EPDs. Saudi Readymix published 54 concrete EPDs.</p></div>
-        <div><span class="wf-ico">C</span><h6>You see which projects are using your products</h6><p>Usage analytics show where designers selected your EPDs, by country and project type. Your sales team can follow up while the design is still open.</p><p class="pf"><span class="ph">Placeholder</span>"[Quote from a commercial director on a specification won after publishing EPDs.]"</p></div>
+        <div><span class="wf-ico">A</span><div class="h6">Your products are counted at their real figure</div><p>Each verified EPD replaces the generic value in every project that selects your product. Designers find it inside One Click LCA, and it is published through the programme operators your markets accept.</p><p class="pf">90% of design and construction professionals prefer products with EPDs. One Click LCA Carbon Experts Report, 2026.</p></div>
+        <div><span class="wf-ico">B</span><div class="h6">Your whole range is covered at a cost you know</div><p>Your sustainability manager enters plant and product data, and each EPD is published at a fixed cost with no annual maintenance charge. You do not need an LCA department.</p><p class="pf">Glob-el produced EPDs for 417 products in two years with one sustainability manager.</p></div>
+        <div><span class="wf-ico">C</span><div class="h6">You see which projects select your products</div><p>Usage analytics show views, project selections and countries for each EPD. Your sales team can see where your range is being designed in.</p><p class="pf"><span class="ph">Placeholder</span>"[A commercial director on a project won after a designer selected the EPD.]"</p></div>
       </div>
       <div class="wf-band">
-        <p><b>Start with the products your customers specify most.</b> We check your product list against your markets and show where generic values are costing you.</p>
+        <p><b>Start with the products your customers specify most.</b> We check your product list against your markets and show where generic values are counting against you.</p>
         <span class="wf-btn">Get your free EPD gap check</span>
       </div>
     </div>
@@ -327,85 +526,58 @@
     <div class="panel">
       <h3>Assumptions</h3>
       <ul>
-        <li>Designers using One Click LCA pick a product-specific EPD when one is available.</li>
-        <li>Generic values make most products look worse than their real figure. A product worse than the generic value gains nothing, so the gap check screens for this.</li>
-        <li>The commercial director holds the budget and reacts to lost specifications more than to compliance.</li>
-        <li>Most mid-sized Nordic manufacturers have EPDs for a few flagship products only.</li>
-        <li>One Click LCA's usage data can show generic-data use by product category and country. The gap check and the placeholder proof depend on this.</li>
+        <li>Designers using One Click LCA select a product-specific EPD when one is available.</li>
+        <li>Most products are at or below the generic value. A product above it gains nothing, so the gap check screens for this.</li>
+        <li>The commercial director starts the purchase, and the managing director signs it.</li>
+        <li>One Click LCA's usage data shows generic-data use by product category and country. The gap check and the placeholder proof depend on this.</li>
+        <li>The message fits the product's own "verified defaults" feature, which fills gaps in a manufacturer's data.</li>
       </ul>
     </div>
     <div class="panel">
       <h3>Validating the messaging</h3>
       <ul>
-        <li>Eight to ten interviews with commercial directors at target manufacturers, testing the trigger moment and the H1 against "faster, compliant, cheaper".</li>
-        <li>A win and loss review of 2026 EPD Generator deals for the reasons buyers gave.</li>
-        <li>A paid LinkedIn test of two headlines to sales and commercial roles at Nordic manufacturers, measured on gap-check requests per visitor.</li>
+        <li>Eight to ten interviews with commercial and managing directors, testing the trigger moment and the H1 against "faster, compliant, cheaper".</li>
+        <li>A win and loss review of 2026 EPD Generator deals.</li>
+        <li>A LinkedIn test of two headlines to commercial roles at Nordic manufacturers, measured on gap-check requests.</li>
         <li>Two weeks of sales calls using the narrative, with sellers logging which beat moved the conversation.</li>
       </ul>
     </div>
     <div class="panel">
       <h3>Extending to other channels</h3>
       <ul>
-        <li>Sales: the gap check becomes the first-call agenda, run on each prospect's own product list.</li>
-        <li>Associations: co-hosted webinars and member offers, following the Aluminium Danmark partnership.</li>
+        <li>Sales: the gap check becomes the first-call agenda, run on each prospect's product list.</li>
+        <li>Associations: member webinars and offers, following the Aluminium Danmark partnership.</li>
         <li>Designers: content showing architects how generic values inflate their results, so they ask suppliers for EPDs.</li>
-        <li>Events: a manufacturer customer on stage at the Carbon Experts Summit.</li>
-        <li>Email: a nurture sequence for gap-check leads, one product family at a time.</li>
+        <li>Events: a manufacturer customer at the Carbon Experts Summit.</li>
+        <li>Email: a sequence for gap-check leads, one product family at a time.</li>
       </ul>
     </div>
   </div>
-  <p class="eg-wc" id="wc"></p>
 </section>
 
-<!-- ============ METHOD ============ -->
-<section class="sec" id="method">
-  <span class="eyebrow">Method</span>
-  <h2>Research workflow</h2>
-  <p class="intro">I ran four research subagents in parallel, one per question, while I drafted the structure. Each wrote a sourced research file. I then chose the angle, wrote the framework and wireframe, and checked the page against the site's writing rules and accessibility tests.</p>
-  <div class="wfd" role="img" aria-label="Workflow: the brief and existing appendix research feed four parallel research subagents on proof, default values, competitor messaging and buyer voice. Their files feed synthesis, where the angle and buyer are chosen. Synthesis feeds drafting of the framework, landing page and rationale. Drafting feeds checks against the writing rules, placeholder marking and accessibility, then publishing.">
-    <div class="nd in"><span class="k">Input</span><b>Brief and A1 to A12</b>The campaign brief and the existing research files.</div>
-    <div class="ar" aria-hidden="true">→</div>
-    <div class="par"><span class="k">Four subagents in parallel</span>
-      <div class="nd"><b>Proof</b>Public EPD Generator claims, case studies and offer.</div>
-      <div class="nd"><b>Default values</b>How each country penalises products without an EPD.</div>
-      <div class="nd"><b>Competitor messaging</b>Which angles rivals already claim.</div>
-      <div class="nd"><b>Buyer voice</b>Who buys EPDs, why and what stops them.</div>
-    </div>
-    <div class="ar" aria-hidden="true">→</div>
-    <div class="col">
-      <div class="nd"><span class="k">Synthesis</span><b>Angle and buyer</b>Pick the open angle and the one buyer it moves.</div>
-      <div class="nd"><span class="k">Drafting</span><b>Framework, page, rationale</b>Write the copy in full and mark placeholder proof.</div>
-    </div>
-    <div class="ar" aria-hidden="true">→</div>
-    <div class="col">
-      <div class="nd"><span class="k">Checks</span><b>Rules and accessibility</b>Writing rules, placeholder labels, axe-core in light and dark, phone width.</div>
-      <div class="nd in"><span class="k">Output</span><b>Appendix A13</b>This page.</div>
-    </div>
-  </div>
-
-  <h3 style="margin-top:44px">The four subagents</h3>
-  <div class="tw eg-agents"><table>
-    <thead><tr><th scope="col">Subagent</th><th scope="col">Question</th><th scope="col">Sources it used</th><th scope="col">What it fed</th></tr></thead>
-    <tbody id="agents">
-      <tr><th scope="row">Proof</th><td>What can One Click LCA prove today about EPD Generator, from public sources?</td><td>oneclicklca.com product, pricing and case study pages; press releases; programme operator sites.</td><td>The public proof under each pillar and the proof bar.</td></tr>
-      <tr><th scope="row">Default values</th><td>What happens in a carbon calculation when a product has no EPD, country by country?</td><td>Boverket, Finnish, Danish, Norwegian, Dutch and French national methods; the EPBD recast and the CPR.</td><td>The trigger moment, narrative beats 1 and 2, and Section 1 of the landing page.</td></tr>
-      <tr><th scope="row">Competitor messaging</th><td>Which value angles do EPD Hub, Ecochain, Sphera, AI startups and consultants already claim?</td><td>Competitor homepages and product pages.</td><td>The from and to shift, and the choice of an angle nobody claims.</td></tr>
-      <tr><th scope="row">Buyer voice</th><td>Who decides and pays for EPDs at a manufacturer, and what triggers the purchase?</td><td>Trade press, associations, programme operator statistics, surveys and public reviews.</td><td>The buyer profile, the assumptions and the validation plan.</td></tr>
-    </tbody>
-  </table></div>
-  <p class="src" style="margin-top:10px">The research files are available on request.</p>
-</section>
-
-<section class="sources"><details class="more" style="margin-top:0"><summary>Sources</summary><ul id="srcs">
-<li>One Click LCA manufacturing, EPD Generator and Pre-Verified EPD Generator pages, case studies and pricing pages</li>
-<li>EPBD recast, Directive (EU) 2024/1275, Article 7: life-cycle GWP disclosure for new buildings over 1,000 m² from 1 January 2028</li>
-<li>Boverket climate declaration rules and climate database (generic values with a 25% conservative uplift)</li>
+<section class="sources"><details class="more" style="margin-top:0"><summary>Sources</summary><ul>
+<li>One Click LCA EPD Generator, manufacturing, pricing and EPD usage analytics pages, read 11 Nov 2026</li>
+<li>One Click LCA case studies: Glob-el (10 Nov 2026), Vindunor (22 Jan 2026), Datek Light Control (22 Apr 2025), Saudi Readymix, Hydrotec (10 Apr 2024)</li>
+<li>One Click LCA, Carbon Experts Report press release, 6 May 2026</li>
+<li>DiBK (Norway), guidance on climate calculations under TEK17 §17-1, Aug 2023: 25% uplift on generic values</li>
+<li>Boverket (Sweden), climate database page, updated 21 Jan 2026; Boverket Report 2026:27 (proposal, May 2026)</li>
+<li>Finland CO2data.fi conservative values (factor 1.2), as described in DiBK guidance and a Nordic Council of Ministers report</li>
+<li>Denmark BEK 271/2025 generic data rules; Netherlands NMD category 3 data (factor 1.3)</li>
+<li>Directive (EU) 2024/1275 (EPBD recast), Article 7; Delegated Regulation (EU) 2026/52 on conservative generic data</li>
+<li>Competitor pages: EPD Hub, Ecochain, Emidat, Sphera, read Nov 2026</li>
+<li>DGNB and BPIE survey of German manufacturers on EPDs, Jan 2025; TEKNIQ consultant EPD cost estimate, Dec 2023</li>
+<li>The four research files written by the subagents are available on request.</li>
 </ul></details></section>
 </div>
 <script>
 (function(){
- var r=document.querySelector("#rationale .eg-rat");if(!r)return;
- var n=(r.innerText||r.textContent).trim().split(/\s+/).length;
- document.getElementById("wc").textContent="The rationale above is "+n+" words, within the 300-word limit.";
+ function words(el){return (el.innerText||el.textContent).trim().split(/\s+/).length}
+ var r=document.querySelector("#rationale .eg-rat"),p=document.getElementById("pitch");
+ var nr=words(r),np=words(p),secs=Math.round(np/150*60);
+ document.getElementById("ck-wc").textContent=nr+" words";
+ document.getElementById("pitch-n").textContent=np+" words, or about "+secs+" seconds spoken at 150 words a minute.";
+ document.getElementById("ck-pt").textContent=np+" words, about "+secs+" seconds";
+ var ph=document.querySelectorAll("#eg .ph").length-1,ok=document.querySelectorAll("#eg .ok").length-1;
+ document.getElementById("ck-ph").textContent=ok+" public and "+ph+" placeholder labels";
 })();
 </script>
