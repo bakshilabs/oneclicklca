@@ -60,3 +60,5 @@
 - Chosen angle: a product with no EPD is counted at a conservative generic value (Norway and Sweden about +25%, Finland +20%, Netherlands +30%). No EPD creation vendor uses it.
 - Chosen buyer: the commercial director at a mid-sized Nordic manufacturer. Risk to test: no public source shows sales owning the EPD budget.
 - To confirm: Swedish government decision on Boverket report 2026:27; whether the Pre-Verified EPD Generator is offered in the Nordics; One Click LCA data for the placeholder proof and the gap check.
+- Same day: moved the campaign from the Nordics to the UK at the user's request. Two more subagents wrote `research/epd-uk-rules.md` and `research/epd-uk-market.md`. No UK rule adds a fixed uplift to generic data, so the UK argument is "counted as average, your advantage is invisible", paired with BREEAM Mat 02 EPD points and contractor requests (Laing O'Rourke). Step 7 on the page records the switch.
+- To confirm for the UK: BREEAM V7 EPD point values against BRE's licensed manual; adoption of the draft London Plan Policy GHR3; whether METSEC can be shown as a UK proof logo; a named UK project won after publishing EPDs.
